@@ -1,0 +1,17 @@
+﻿@import '_colors.scss';
+@import '_starRating.scss';
+@import '_general.scss';
+
+nav {
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    background: $NavBackground;
+
+    @include shadow-mega();
+    @include trans(.5s);
+}
+
+footer{
+    
+}
