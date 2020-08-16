@@ -1,6 +1,6 @@
 ﻿/*#region name*/
 
-$Background: #F7F7F7;
+$Background: #141414;
 
 $white: #fff;
 $white-mid: #EBEBEB;
@@ -10,30 +10,29 @@ $black: #404040;
 $black-mid: #5B5B5B;
 $black-light: #848484;
 
-$primary: #00679A;
-$primary-dark: #005580;
-$primary-light: #297FAA;
+$primary: #B41313;
+$primary-dark: #8B0E0E;
+$primary-light: #E73434;
 $accent: #43ADD5;
 $accent-light: #74D3F6;
 
 /*#endregion */
 
 /*#region Global */
-
+$NavBackground: #888;
 $link: #3299F3;
 $Title: #656565;
 $Title-secondary: #656565;
-$Text: rgba(95, 95, 95, 0.85);
+$Text: rgba(250, 250, 250, 0.85);
 $White-text: #fff;
 $Alert: rgb(221, 100, 88);
 $FooterBackround: $white-mid;
 
-$PlaceholderColor: #afafaf;
+$PlaceholderColor: #cacaca;
+$CardBackground: #252525;
 
 /*#endregion */
-
 /*#region difficulty */
-
 $dif-easy: #97E435;
 $dif-easy: #E4D335;
 $dif-easy: #E45F35;
@@ -55,14 +54,6 @@ $dif-online: #2F90C7;
 
 /*#endregion */
 
-/*#region Controls*/
-
-$Primary: #5f95e8;
-$Secondary: #27FFA0;
-$PriorityIcon: #46AE13;
-
-/*#endregion */
-
 /*#region Scrollbar */
 
 $ScrollbarTrack: $white-mid;
@@ -71,14 +62,14 @@ $ScrollbarHandle: $white-dark;
 /*#endregion */
 /*#region shadow */
 @mixin shadow-mild {
-    $shadowColor: rgba(112, 112, 112, 0.38);
+    $shadowColor: rgba(0, 0, 0, 0.38);
     -moz-box-shadow: $shadowColor 0 0px .4vw;
     -webkit-box-shadow: $shadowColor 0 0px .4vw;
     box-shadow: $shadowColor 0 0px .4vw;
 }
 
 @mixin shadow-medium {
-    $shadowColor: rgba(48, 48, 48, 0.54);
+    $shadowColor: rgba(0, 0, 0, 0.54);
     -moz-box-shadow: $shadowColor 0 0px .6vw;
     -webkit-box-shadow: $shadowColor 0 0px .6vw;
     box-shadow: $shadowColor 0 0px .6vw;
@@ -99,7 +90,7 @@ $ScrollbarHandle: $white-dark;
 }
 
 @mixin shadow-mega {
-    $shadowColor: rgba(85, 85, 85, 0.38);
+    $shadowColor: rgba(0, 0, 0, 0.38);
     -moz-box-shadow: $shadowColor 0 0px 2vw;
     -webkit-box-shadow: $shadowColor 0 0px 2vw;
     box-shadow: $shadowColor 0 0px 2vw;
@@ -140,11 +131,15 @@ $ScrollbarHandle: $white-dark;
 
 @mixin mat() {
     padding: 20px;
-    background: $white;
-    @include shadow-mild;
+    background: $CardBackground;
+    @include shadow-medium();
 }
 
-
+@mixin icon-glow() {
+    -webkit-filter: drop-shadow( 0px 0px 5px white);
+    filter: drop-shadow( 0px 0px 5px white);
+    @include trans(.2s);
+}
 
 @mixin sign($lighten) {
     background-image: -moz-linear-gradient(-45deg, lighten($Primary,$lighten), lighten($Secondary,$lighten));
@@ -162,3 +157,16 @@ $ScrollbarHandle: $white-dark;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d04848",endColorstr="#ffc000",GradientType=1);
 }
 /*#endregion */
+
+/*
+backdrop-filter: blur(2px);
+backdrop-filter: brightness(60%);
+backdrop-filter: contrast(40%);
+backdrop-filter: drop-shadow(4px 4px 10px blue);
+backdrop-filter: grayscale(30%);
+backdrop-filter: hue-rotate(120deg);
+backdrop-filter: invert(70%);
+backdrop-filter: opacity(20%);
+backdrop-filter: sepia(90%);
+backdrop-filter: saturate(80%);
+*/

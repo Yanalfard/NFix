@@ -1,4 +1,6 @@
-﻿.space {
+﻿@import '_colors.scss';
+
+.space {
     width: 100vw;
     height: 4vw;
 }
@@ -90,3 +92,31 @@
 }
 
 /*#endregion */
+
+@mixin grid($width) {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: .6em;
+    grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
+}
+
+@mixin grid-gap($width , $gap) {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: $gap;
+    grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
+}
+
+.clipped{
+    margin-left:auto;
+    margin-right:auto;
+    width:92vw;
+}
+
+.full-width {
+    width: 100vw;
+}
+
+.full-height {
+    height: 100vh;
+}

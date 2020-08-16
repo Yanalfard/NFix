@@ -3,3 +3,121 @@
 @import "_general.scss";
 @import "_layout.scss";
 
+.hero {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../Resources/Png/Background.png');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+
+    header.column {
+        z-index: 10;
+        position: absolute;
+        top: 80px;
+        width: 32vw;
+        margin-left: 90px;
+        /*        margin-left:4vw;*/
+        h1 {
+            font-size: 14vw;
+            text-align: left;
+            margin-left: -10px;
+
+            span {
+                color: $primary;
+            }
+        }
+
+        * {
+            color: $white;
+        }
+
+        p {
+            text-align: left;
+            font-size: 1.5em;
+        }
+
+        button {
+            width: 170px !important;
+            border-color: $white !important;
+            border-width: 2px;
+            @include trans(.4s);
+        }
+
+        button:hover {
+            border-color: $primary !important;
+            @include trans(.2s);
+        }
+    }
+
+    * {
+        overflow-y: hidden;
+    }
+
+    > .uk-icon {
+        position: absolute;
+        margin-top: 90vh;
+        color: white;
+        z-index: 20;
+        @include trans(.4s);
+    }
+
+    > .uk-icon:hover {
+        @include icon-glow();
+    }
+
+    .player {
+        position: absolute;
+        margin-left: 95vw;
+        margin-top: 48vh;
+        margin-bottom: 48vh;
+    }
+}
+
+.man {
+    width: 100vw;
+    height: 100vh;
+    margin-top: -100vh;
+    background-image: url('../Resources/Png/Man.png');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+.stripe {
+    width: 100vw;
+    background: $primary-light;
+    padding: 24px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+
+    h4 {
+        color: $white;
+        margin: auto;
+    }
+}
+
+.videos {
+    background: #171717;
+
+    .grid {
+        @include grid-gap(420px, 2em);
+        padding: 20px 2vw;
+    }
+}
+
+.slider{
+    padding:0 4vw;
+
+    *{
+        overflow-y:hidden;
+    }
+
+    .dummy{
+        width:24vw;
+        margin:auto;
+    }
+}

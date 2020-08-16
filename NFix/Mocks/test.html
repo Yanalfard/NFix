@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- Project Css -->
+
+    <!-- UIkit CSS -->
+    <link href="../Styles/UIKit/uikit.min.css" rel="stylesheet" />
+
+    <!--Jquery-->
+    <script src="jquery-3.5.1.min.js"></script>
+
+    <!-- UIkit JS -->
+    <script src="../Scripts/UIKit/uikit.min.js"></script>
+    <script src="../Scripts/UIKit/uikit-icons.min.js"></script>
+
+
+</head>
+<body>
+
+    <!-- #region Nav -->
+
+    <nav class="uk-navbar-container " uk-navbar>
+
+        <div class="uk-navbar-left uk-margin-small-left">
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a href="#">
+                        ثبت نام
+                    </a>
+                </li>
+                <li>
+                    <form class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left">
+                        <a href="" uk-search-icon></a>
+                        <input class="uk-search-input" type="search" dir="rtl" placeholder="جستجو...">
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+        <div class="uk-navbar-right uk-margin-small-right">
+            <ul class="uk-navbar-nav">
+                <li><a href="#">درباره ما</a></li>
+                <li><a href="#">وبلاگ</a></li>
+                <li>
+                    <button href="#" mode="hover" type="button">Parent</button>
+                    <div mode="hover" delay-hide="400"
+                         uk-drop="pos: bottom-right;duration: 300"
+                         class="uk-navbar-dropdown  uk-width-large">
+                        <div class="uk-dropdown-grid uk-child-width-1-2@m" uk-grid>
+                            <div>
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li class="uk-active"><a href="#">Active</a></li>
+                                    <li><a href="#">Item</a></li>
+                                    <li class="uk-nav-header">Header</li>
+                                    <li><a href="#">Item</a></li>
+                                    <li><a href="#">Item</a></li>
+                                    <li class="uk-nav-divider"></li>
+                                    <li><a href="#">Item</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li class="uk-active"><a href="#">Active</a></li>
+                                    <li><a href="#">Item</a></li>
+                                    <li class="uk-nav-header">Header</li>
+                                    <li><a href="#">Item</a></li>
+                                    <li><a href="#">Item</a></li>
+                                    <li class="uk-nav-divider"></li>
+                                    <li><a href="#">Item</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#" mode="click" type="button">ویدیو</a>
+                    <div uk-drop="pos: bottom-right" class="uk-position-fixed">
+                        <ul class="uk-nav uk-dropdown-nav ">
+                            <li>
+                                <a href="#">
+                                    <span>دسته بندی ها</span>
+                                    <span uk-icon="icon:grid"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span>لایو</span>
+                                    <span uk-icon="icon:rss"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="../Resources/Svg/NFIX.svg" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <!-- #endregion -->
+
+
+</body>
+</html>

@@ -2,16 +2,108 @@
 @import '_starRating.scss';
 @import '_general.scss';
 
-nav {
-    position: fixed;
+.uk-navbar-container {
+    display: flex;
+    position: fixed !important;
     z-index: 100;
+    overflow-y: visible;
     width: 100vw;
-    background: $NavBackground;
-
-    @include shadow-mega();
+    height: 80px;
+    backdrop-filter: blur(12px);
+    background: transparent !important;
     @include trans(.5s);
+
+    .uk-navbar-dropdown {
+        background: red !important;
+        z-index: 500;
+        position: fixed !important;
+    }
+
+    a {
+        color: $white;
+    }
 }
 
-footer{
-    
+.uk-search {
+    * {
+        color: white !important;
+    }
+}
+
+.uk-drop {
+    background: $CardBackground !important;
+
+    a {
+        color: white !important;
+    }
+
+    hr {
+        border-color: #3E3E3E !important;
+    }
+}
+
+.card {
+    @include mat();
+    @include border-radius(6px,6px,6px,6px);
+    min-height: 50px;
+    min-width: 50px;
+}
+
+.video {
+    margin: auto;
+    width: 400px;
+    height: 280px;
+    padding:0;
+    @include trans(.2s);
+
+    span {
+        color: $black-light;
+    }
+
+    .vid {
+        flex: 4;
+
+        img {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            @include trans(.2s);
+        }
+
+        .uk-icon {
+            margin-top: -155px;
+            margin-left: auto;
+            margin-right: auto;
+            color: transparent;
+            @include trans(.2s);
+        }
+
+        .uk-icon:hover {
+            @include icon-glow();
+        }
+    }
+
+    .row {
+        flex: .8;
+
+        * {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
+}
+
+.video:hover img {
+    filter: blur(4px) brightness(64%);
+    @include trans(.2s);
+}
+
+.video:hover .uk-icon {
+    color: $white;
+    @include trans(.2s);
+}
+
+
+footer {
 }

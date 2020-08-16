@@ -13,23 +13,22 @@
 }
 
 html {
-    background:$Background;
-
+    background: $Background;
     /* width */
     ::-webkit-scrollbar {
-        width: 12px;
+        width: 14px;
     }
     /* Track */
     ::-webkit-scrollbar-track {
-        background: #dbdbdb;
+        background: lighten($Background,12%);
     }
     /* Handle */
     ::-webkit-scrollbar-thumb {
-        background: #c1c1c1;
+        background: lighten($Background,20%);
     }
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-        background: #afb6c2;
+        background: lighten($Background,32%);
     }
 }
 
@@ -43,6 +42,10 @@ a {
 
 a:hover {
     text-decoration: none !important;
+}
+
+h1 , h2 , h3 , h4 , h5 , h6{
+    color:$Text!important;
 }
 
 p {
@@ -102,16 +105,4 @@ img {
     width: 100px;
     height: 100px;
     background: red;
-}
-
-::-webkit-input-placeholder {
-    color: $PlaceholderColor;
-}
-
-:-ms-input-placeholder {
-    color: $PlaceholderColor;
-}
-
-::placeholder {
-    color: $PlaceholderColor;
 }
