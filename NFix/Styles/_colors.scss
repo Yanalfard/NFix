@@ -20,7 +20,7 @@ $accent-light: #74D3F6;
 
 /*#region Global */
 $NavBackground: #888;
-$link: #3299F3;
+$link: #E91E1E;
 $Title: #656565;
 $Title-secondary: #656565;
 $Text: rgba(250, 250, 250, 0.85);
@@ -99,9 +99,9 @@ $ScrollbarHandle: $white-dark;
 /*#endregion */
 
 @mixin subtle-glow($rgba) {
-    -moz-box-shadow: $rgba 0 6px 1.0vw;
-    -webkit-box-shadow: $rgba 0 6px 1.0vw;
-    box-shadow: $rgba 0 6px 1.0vw;
+    -moz-box-shadow: $rgba 0 6px 16px;
+    -webkit-box-shadow: $rgba 0 6px 16px;
+    box-shadow: $rgba 0 6px 16px;
 }
 
 @mixin border-radius($tl, $tr, $bl, $br) {

@@ -168,6 +168,7 @@
     <Content Include="Scripts\Jquery\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\Jquery\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Jquery\modernizr-2.8.3.js" />
+    <Content Include="Scripts\OwlCarousel\owl.carousel.min.js" />
     <Content Include="Scripts\UIKit\uikit-icons.js" />
     <Content Include="Scripts\UIKit\uikit-icons.min.js" />
     <Content Include="Scripts\UIKit\uikit.js" />
@@ -178,6 +179,8 @@
     <Content Include="Styles\Index.min.css">
       <DependentUpon>Index.css</DependentUpon>
     </Content>
+    <Content Include="Styles\OwlCarousel\owl.carousel.min.css" />
+    <Content Include="Styles\OwlCarousel\owl.theme.default.min.css" />
     <Content Include="Styles\UIKit\uikit-rtl.css" />
     <Content Include="Styles\UIKit\uikit-rtl.min.css" />
     <Content Include="Styles\UIKit\uikit.css" />

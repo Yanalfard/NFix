@@ -104,6 +104,26 @@
     @include trans(.2s);
 }
 
-
 footer {
+}
+
+
+button {
+    background: darken($primary-light, 5%);
+    padding: 10px 26px 11px 26px;
+    font-size: 16px;
+    color: $white;
+    border: 0;
+    @include trans(.5s);
+    cursor:pointer;
+}
+
+button:hover {
+    @include subtle-glow(rgba(221, 28, 28, 0.64));
+    @include trans(.2s);
+}
+
+button:active {
+    background: lighten($primary-light, 2%);
+    @include trans(0s);
 }
