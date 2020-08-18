@@ -377,7 +377,37 @@
         </li>
     </ul>
 
-    <div class="space-double"></div>
+
+    <div class="calculator full-width row">
+        <div class="column card center">
+            <h5>
+                محاسبه شاخص توده بدنی
+            </h5>
+            <!--<label>سن</label>
+            <input id="txtAge" type="text" value="" />-->
+            <label>قد</label>
+            <input id="txtHeight" type="text" value="" />
+            <label>وزن</label>
+            <input id="txtWeight" type="text" value="" />
+            <div class="row">
+                <a class="uk-margin-auto-top">
+                    <span>شاخص توده بدنی</span>
+                </a>
+                <button class="uk-margin-auto-left uk-margin-top" onclick="Calculate('bmi')">
+                    <span uk-icon="right"></span>
+                    <span>نتیجه</span>
+                </button>
+            </div>
+
+            <hr />
+
+            <div class="row" dir="rtl">
+                <span>شاخص توده بدنی شما:</span>
+                <span id="bmi" class="uk-margin-small-right"></span>
+            </div>
+        </div>
+    </div>
+
     <div class="space-double"></div>
 
 
@@ -435,7 +465,8 @@
             }
         })
 
-        
+
     </script>
+    <script src="../Scripts/UIScripts/BMICalculator.js"></script>
 </body>
 </html>

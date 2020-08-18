@@ -127,3 +127,22 @@ button:active {
     background: lighten($primary-light, 2%);
     @include trans(0s);
 }
+
+hr {
+    border-top: dashed #3E3E3E 1px !important;
+}
+
+input[type=text] {
+    outline: none;
+    padding: 4px 6px;
+    border: #464646 1px solid;
+    background: #1E1E1E;
+    color:$white;
+    @include trans(.4s);
+    @include border-radius(0,0,0,0);
+}
+
+input[type=text]:focus {
+    @include trans(.2s);
+    border: $primary-light 1px solid;
+}

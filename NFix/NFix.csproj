@@ -150,6 +150,7 @@
     <Content Include="Mocks\Index.html" />
     <Content Include="Mocks\test.html" />
     <Content Include="Resources\Png\Background.png" />
+    <Content Include="Resources\Png\CalculatorBackground.png" />
     <Content Include="Resources\Png\Categories\Aero.png" />
     <Content Include="Resources\Png\Categories\Bike.png" />
     <Content Include="Resources\Png\Categories\BodyB.png" />
@@ -173,6 +174,7 @@
     <Content Include="Scripts\UIKit\uikit-icons.min.js" />
     <Content Include="Scripts\UIKit\uikit.js" />
     <Content Include="Scripts\UIKit\uikit.min.js" />
+    <Content Include="Scripts\UIScripts\BMICalculator.js" />
     <Content Include="Styles\Index.css">
       <DependentUpon>Index.scss</DependentUpon>
     </Content>

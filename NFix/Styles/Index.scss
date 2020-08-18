@@ -198,7 +198,7 @@ article {
         height: 120px;
 
         img {
-            margin:auto 16px!important;
+            margin: auto 16px !important;
             width: 72px !important;
             height: 72px;
             -moz-border-radius: 100%;
@@ -263,6 +263,63 @@ article {
             .price {
                 font-size: 26px;
             }
+        }
+    }
+}
+
+.calculator {
+    height: 40vw;
+    background-image: url('../Resources/Png/CalculatorBackground.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    overflow-y:hidden;
+    /*img {
+        -o-object-position: bottom;
+        object-position: bottom;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }*/
+    .card {
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 22vw;
+        min-height: 26vw;
+        @include shadow-mega();
+
+        hr{
+            margin:10px 0;
+        }
+
+        label {
+            margin-bottom: 4px;
+        }
+
+        input {
+            margin-bottom: 12px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+
+    .calculator {
+        height: 62vw;
+
+        .card {
+            width: 40vw;
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    .calculator {
+        height: 80vw;
+
+        .card {
+            width: 40vw;
         }
     }
 }

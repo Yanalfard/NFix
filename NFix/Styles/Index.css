@@ -457,6 +457,30 @@ button:active {
   -webkit-transition: all ease 0s;
   transition: all ease 0s; }
 
+hr {
+  border-top: dashed #3E3E3E 1px !important; }
+
+input[type=text] {
+  outline: none;
+  padding: 4px 6px;
+  border: #464646 1px solid;
+  background: #1E1E1E;
+  color: #fff;
+  -moz-transition: all ease 0.4s;
+  -o-transition: all ease 0.4s;
+  -webkit-transition: all ease 0.4s;
+  transition: all ease 0.4s;
+  -moz-border-radius: 0 0 0 0;
+  -webkit-border-radius: 0 0 0 0;
+  border-radius: 0 0 0 0; }
+
+input[type=text]:focus {
+  -moz-transition: all ease 0.2s;
+  -o-transition: all ease 0.2s;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+  border: #E73434 1px solid; }
+
 /*#region name*/
 /*#endregion */
 /*#region Global */
@@ -961,3 +985,43 @@ article a:hover {
         font-size: 18px; }
       .market li content .price {
         font-size: 26px; }
+
+.calculator {
+  height: 40vw;
+  background-image: url("../Resources/Png/CalculatorBackground.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-y: hidden;
+  /*img {
+        -o-object-position: bottom;
+        object-position: bottom;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }*/ }
+  .calculator .card {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 22vw;
+    min-height: 26vw;
+    -moz-box-shadow: rgba(0, 0, 0, 0.38) 0 0px 2vw;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.38) 0 0px 2vw;
+    box-shadow: rgba(0, 0, 0, 0.38) 0 0px 2vw; }
+    .calculator .card hr {
+      margin: 10px 0; }
+    .calculator .card label {
+      margin-bottom: 4px; }
+    .calculator .card input {
+      margin-bottom: 12px; }
+
+@media only screen and (max-width: 1100px) {
+  .calculator {
+    height: 62vw; }
+    .calculator .card {
+      width: 40vw; } }
+
+@media only screen and (max-width: 700px) {
+  .calculator {
+    height: 80vw; }
+    .calculator .card {
+      width: 40vw; } }
