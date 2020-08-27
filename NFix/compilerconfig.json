@@ -2,5 +2,9 @@
   {
     "outputFile": "Styles/Index.css",
     "inputFile": "Styles/Index.scss"
+  },
+  {
+    "outputFile": "Styles/Category.css",
+    "inputFile": "Styles/Category.scss"
   }
 ]

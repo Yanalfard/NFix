@@ -15,6 +15,7 @@
     <link href="../Styles/OwlCarousel/owl.carousel.min.css" rel="stylesheet" />
     <link href="../Styles/OwlCarousel/owl.theme.default.min.css" rel="stylesheet" />
 
+
     <!--Jquery-->
     <script src="../Scripts/Jquery/jquery-3.5.1.js"></script>
 
@@ -22,7 +23,7 @@
     <script src="../Scripts/UIKit/uikit.min.js"></script>
     <script src="../Scripts/UIKit/uikit-icons.min.js"></script>
 
-    <!--Owl Carousel CSS-->
+    <!--Owl Carousel Scripts-->
     <script src="../Scripts/OwlCarousel/owl.carousel.min.js"></script>
 
     <!--Scroll Reveal-->
@@ -41,9 +42,76 @@
         <div class="uk-navbar-left uk-margin-small-left">
             <ul class="uk-navbar-nav">
                 <li>
-                    <a href="#">
+                    <a href="#" uk-toggle="target: #ModalLogin" type="button">
                         ثبت نام
                     </a>
+
+                    <!-- #region Register -->
+                    <!--name-->
+                    <!--tell-->
+                    <!--user-->
+                    <!--pass-->
+
+                    <div id="ModalRegister" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <div class="row">
+                                <img src="../Resources/Png/LoginImage.png" alt="" />
+                                <content class="column uk-padding-remove-bottom">
+                                    <h3>
+                                        ثبت نام
+                                    </h3>
+                                    <label>
+                                        نام و نام خانوادگی
+                                    </label>
+                                    <input class="uk-margin-small-top" type="text" value="" />
+                                    <label class="uk-margin-top">
+                                        شماره تلفن
+                                    </label>
+                                    <input class="uk-margin-small-top" type="text" value="" />
+                                    <div class="row uk-margin-medium-top">
+                                        <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
+                                           onclick="UIkit.modal(document.getElementById('ModalLogin')).show();">ورود</a>
+                                        <button class="
+
+                                                uk-margin-remove-bottom">
+                                            گذرواژه
+                                        </button>
+                                    </div>
+                                </content>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- #endregion -->
+                    <!-- #region Login -->
+                    <div id="ModalLogin" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <div class="row">
+                                <img src="../Resources/Png/LoginImage.png" alt="" />
+                                <content class="column uk-padding-remove-bottom">
+                                    <h3>
+                                        ورود
+                                    </h3>
+                                    <label>
+                                        نام کاربری
+                                    </label>
+                                    <input class="uk-margin-small-top" type="text" value="" />
+                                    <label class="uk-margin-top">
+                                        رمز عبور
+                                    </label>
+                                    <input class="uk-margin-small-top" type="text" value="" />
+                                    <div class="row uk-margin-medium-top">
+                                        <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
+                                           onclick="UIkit.modal(document.getElementById('ModalRegister')).show();">ثبت نام</a>
+                                        <button class=" uk-margin-remove-bottom ">
+                                            ورود
+                                        </button>
+                                    </div>
+                                </content>
+                            </div>
+                        </div>
+                    </div>
+                    <!--#endregion-->
                 </li>
                 <li>
                     <form class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left">
@@ -81,20 +149,22 @@
             <h1 class=""><span>N</span>FIX</h1>
             <hr class="uk-margin-remove" />
             <p>Proffesional Fitness App</p>
-            <button class="uk-button uk-button-default uk-margin-top">
+            <button class="button-outline uk-button uk-button-default uk-margin-top">
                 <span class="uk-icon" uk-icon="icon:download"></span>
                 <span>
                     Download
                 </span>
             </button>
         </header>
-        <a uk-icon="icon:chevron-down; ratio:2.5"
+        <a href="#videos" uk-icon="icon:chevron-down; ratio:2.5"
            class="uk-icon center"></a>
-        <a href="Index.html" uk-icon="icon: play-circle; ratio: 2" class="player uk-icon uk-margin-small-right"></a>
+        <a href="../Resources/Png/Man.png" uk-icon="icon: play-circle; ratio: 2"
+           class="player uk-icon uk-margin-small-right"></a>
     </section>
     <div class="man"></div>
 
     <!-- #endregion -->
+    <a name="videos"></a>
     <!-- #region Stripe -->
     <div class="stripe row">
         <h4>Lorem</h4>
@@ -104,13 +174,13 @@
     </div>
     <!-- #endregion -->
 
+
     <section class="videos">
         <h3 class="clipped uk-margin-medium-top">ویدیو های اخیر</h3>
 
         <content class="grid ">
 
             <!-- #region Video -->
-
             <div class="video card column">
                 <div class="vid column">
                     <img src="../Resources/Png/Categories/Bike.png" alt="" />
@@ -230,7 +300,6 @@
             <h3>لورم ایپسوم متن</h3>
             <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
             <br />
-            <h4>Disc</h4>
             <ul>
                 <li><a href="#">آیتم آیتم</a></li>
                 <li><a href="#">آیتم آیتم</a></li>
@@ -249,7 +318,7 @@
             </p>
             <button dir="rtl" class="uk-margin-auto-right">بیشتر...</button>
         </content>
-        <img src="../Resources/Png/Man.png" class="" alt="" />
+        <img src="../Resources/Png/BodyBuilding.png" class="" alt="" />
     </section>
 
     <ul class="tutors clipped owl-carousel uk-margin-medium-top">
@@ -378,6 +447,7 @@
     </ul>
 
 
+
     <div class="calculator full-width row">
         <div class="column card center">
             <h5>
@@ -390,9 +460,19 @@
             <label>وزن</label>
             <input id="txtWeight" type="text" value="" />
             <div class="row">
-                <a class="uk-margin-auto-top">
+                <a href="#BMIModal" class="uk-margin-auto-top" uk-toggle>
                     <span>شاخص توده بدنی</span>
                 </a>
+                <!-- This is the modal -->
+                <div id="BMIModal" uk-modal>
+                    <div class="card">
+                        <h2 class=" uk-modal-title">Headline</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <button type="button" onclick="UIkit.modal(document.getElementById('BMIModal')).hide();">
+                            باشه
+                        </button>
+                    </div>
+                </div>
                 <button class="uk-margin-auto-left uk-margin-top" onclick="Calculate('bmi')">
                     <span uk-icon="right"></span>
                     <span>نتیجه</span>
@@ -410,6 +490,65 @@
 
     <div class="space-double"></div>
 
+    <a href="#" class="image-banner column">
+        <div class="column">
+            <h2>
+                HELLo
+            </h2>
+            <h4>
+                Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
+            </h4>
+        </div>
+        <div class="cover"></div>
+        <img src="/Resources/Png/Man.png" alt="" />
+
+    </a>
+
+    <div class="space"></div>
+
+    <div class="row">
+        <a href="" class="blog card uk-padding-remove column">
+            <img src="../Resources/Png/Categories/Box.png" alt="" />
+            <content class="column uk-padding-small">
+                <h3>مربی1</h3>
+                <h5>
+                    لورم ایپسوم متن
+                </h5>
+            </content>
+        </a>
+    </div>
+
+    <ul class="blogs clipped owl-carousel uk-margin-medium-top">
+        <li>
+
+        </li>
+    </ul>
+
+    <div class="space"></div>
+
+    <!-- #region footer -->
+
+    <footer class="column uk-margin-large-top">
+        <a href="#top" class="pill uk-card center uk-border-rounded">
+            <span uk-icon="icon:chevron-up ; ratio:2"></span>
+        </a>
+        <div class="row">
+            <div class="contacts">
+
+            </div>
+            <div class="links">
+
+            </div>
+            <div class="map">
+
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-stripe"></div>
+
+    <!-- #endregion -->
+
 
     <script>
 
@@ -423,6 +562,29 @@
         });
 
         $('#categories').owlCarousel({
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 3500,
+            autoplayHoverPause: true,
+            nav: true,
+            responsive: {
+                400: {
+                    items: 2
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                },
+                1200: {
+                    items: 5
+                }
+            }
+        })
+
+        $('#blogs').owlCarousel({
             loop: true,
             margin: 10,
             autoplay: true,

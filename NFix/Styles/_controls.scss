@@ -24,6 +24,58 @@
     }
 }
 
+
+#ModalLogin, #ModalRegister {
+    backdrop-filter: blur(4px) brightness(80%);
+
+    .uk-modal-dialog {
+        background: $CardBackground !important;
+        background-image: none !important;
+        padding: 0 !important;
+        width: 60vw;
+        @include shadow-mega();
+        @include border-radius(8px,8px,8px,8px);
+        margin: 0 auto !important;
+    }
+
+    content {
+        flex: 1.2;
+        padding: 20px;
+
+        .row {
+            overflow: visible;
+        }
+    }
+
+    img {
+        height: 83vh;
+        background: $primary;
+        flex: 1;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    #ModalLogin, #ModalRegister {
+
+        .uk-modal-dialog {
+            width: 90vw;
+        }
+
+        content {
+            flex: 1.2;
+        }
+
+        img {
+            height: 83vh;
+            flex: 1;
+        }
+    }
+}
+
 .uk-search {
     * {
         color: white !important;
@@ -104,8 +156,58 @@
     @include trans(.2s);
 }
 
-footer {
+/*#region Footer */
+
+.pill {
+    border: none;
+    padding: 4px;
+    background: $primary;
+    @include shadow-more();
+    color: $white !important;
+    margin-top: -24px !important;
+    position: absolute;
+    cursor: pointer;
+    @include trans(.3s);
+    z-index: 1000;
 }
+
+.pill:hover {
+    @include trans(.1s);
+    background: lighten($primary,12%);
+}
+
+footer {
+    padding: 0;
+    background: $FooterBackround;
+    border-top: solid 1px #373737;
+    min-height: 50vh;
+    bottom: 0;
+    width: 100%;
+    overflow: visible;
+
+    .row {
+        flex: 1;
+
+        .contacts {
+            flex: 1;
+        }
+
+        .links {
+            flex: 1;
+        }
+
+        .map {
+            flex: 1;
+        }
+    }
+}
+
+.footer-stripe {
+    height: 8px;
+    background: $primary;
+}
+
+/*#endregion */
 
 
 button {
@@ -116,6 +218,36 @@ button {
     border: 0;
     @include trans(.5s);
     cursor:pointer;
+}
+
+.uk-button-default{
+    color:$white!important;
+    border:1px solid $white!important;
+}
+
+.uk-button-default:hover {
+    border-color: $primary !important;
+    @include trans(.2s);
+}
+
+.uk-button{
+    @include trans(.2s);
+}
+
+.uk-button:hover{
+    border-color:$primary;
+}
+
+.button-outline {
+    width: 170px !important;
+    border: $white!important solid 1px;
+    border-width: 2px;
+    @include trans(.4s);
+}
+
+.button-outline:hover {
+    border-color: $primary !important;
+    @include trans(.2s);
 }
 
 button:hover {

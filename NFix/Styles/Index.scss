@@ -18,7 +18,7 @@
         top: 80px;
         width: 32vw;
         margin-left: 90px;
-        /*        margin-left:4vw;*/
+        /*margin-left:4vw;*/
         h1 {
             font-size: 14vw;
             text-align: left;
@@ -27,6 +27,11 @@
             span {
                 color: $primary;
             }
+        }
+
+        hr {
+            border-style: solid !important;
+            border-color: white !important;
         }
 
         * {
@@ -38,17 +43,7 @@
             font-size: 1.5em;
         }
 
-        button {
-            width: 170px !important;
-            border-color: $white !important;
-            border-width: 2px;
-            @include trans(.4s);
-        }
-
-        button:hover {
-            border-color: $primary !important;
-            @include trans(.2s);
-        }
+        
     }
 
     * {
@@ -72,6 +67,8 @@
         margin-left: 95vw;
         margin-top: 48vh;
         margin-bottom: 48vh;
+
+
     }
 }
 
@@ -102,9 +99,10 @@
 
 .videos {
     background: #171717;
+    margin: auto;
 
     .grid {
-        @include grid-gap(420px, 2em);
+        @include grid-gap(380px, 1.2em);
         padding: 20px 2vw;
     }
 }
@@ -123,6 +121,10 @@
         padding: 0;
         width: 220px;
         height: 220px;
+
+        li{
+            cursor:pointer;
+        }
 
         img {
             -o-object-fit: cover;
@@ -168,9 +170,12 @@ article {
     background: #1F1F1F;
 
     img {
+        margin:auto;
         flex: 1;
         -o-object-fit: cover;
         object-fit: cover;
+        -o-object-position: top;
+        object-position: top;
         height: 20vw;
     }
 
@@ -273,8 +278,7 @@ article {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
-    overflow-y:hidden;
+    overflow-y: hidden;
     /*img {
         -o-object-position: bottom;
         object-position: bottom;
@@ -288,16 +292,20 @@ article {
         min-height: 26vw;
         @include shadow-mega();
 
-        hr{
-            margin:10px 0;
+        hr {
+            margin: 10px 0;
         }
 
         label {
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         input {
             margin-bottom: 12px;
+        }
+
+        .row {
+            overflow: visible !important;
         }
     }
 }
@@ -323,3 +331,57 @@ article {
         }
     }
 }
+
+.image-banner {
+    height: 360px;
+
+    .column {
+        position: absolute;
+        z-index: 100;
+        margin: auto;
+        width: 100vw;
+        margin-top: 100px;
+
+        * {
+            text-align: center;
+            vertical-align: central;
+        }
+
+        h4{
+            margin:auto;
+            width:70%;
+        }
+    }
+
+    .cover {
+        height: 360px;
+        width: 100vw;
+        position: absolute;
+        @include trans(.2s);
+        z-index: 50;
+    }
+
+    img {
+        height: 360px;
+        width: 100vw;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+    }
+}
+
+.image-banner:hover .cover {
+    background: rgba(0, 0, 0, 0.32);
+}
+
+.blog {
+
+    a {
+        width: 320px;
+    }
+
+    content {
+    }
+}
+

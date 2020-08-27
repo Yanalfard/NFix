@@ -1,0 +1,36 @@
+﻿@import "_colors.scss";
+@import "_controls.scss";
+@import "_general.scss";
+@import "_layout.scss";
+
+.parallax {
+    position: relative;
+    width: 100vw;
+    height: 46vh;
+    background: url(/Resources/Png/LoginImage.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: center;
+    background-size: cover;
+    z-index: 10;
+
+    h1 {
+        color: $white;
+        z-index: 100;
+        margin: auto;
+        padding-bottom: 4px;
+    }
+}
+
+@media only screen and (min-device-width : 280px) and (max-device-width : 670px) {
+    .parallax {
+        height: 24vh;
+    }
+}
+
+.videos {
+    .grid {
+        @include grid-gap(380px, 1.2em);
+        padding: 20px 2vw;
+    }
+}
