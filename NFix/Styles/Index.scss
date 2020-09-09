@@ -42,8 +42,6 @@
             text-align: left;
             font-size: 1.5em;
         }
-
-        
     }
 
     * {
@@ -67,8 +65,6 @@
         margin-left: 95vw;
         margin-top: 48vh;
         margin-bottom: 48vh;
-
-
     }
 }
 
@@ -108,12 +104,14 @@
 }
 
 .categories {
-    /*    @include grid-gap(200px,2.5em);*/
-    padding: 8px 0;
     overflow-y: hidden;
 
     * {
         overflow-y: hidden;
+    }
+
+    .owl-stage-outer {
+        padding: 0 !important;
     }
 
     .category {
@@ -122,8 +120,8 @@
         width: 220px;
         height: 220px;
 
-        li{
-            cursor:pointer;
+        li {
+            cursor: pointer;
         }
 
         img {
@@ -136,7 +134,7 @@
 }
 
 .category-article {
-    width: 94vw !important;
+    width: 96vw;
     margin: auto;
     padding: 0;
 
@@ -156,6 +154,28 @@
     }
 }
 
+@media only screen and (max-width: 724px) {
+    .category-article {
+        width: 90vw;
+
+        img {
+            flex: 0;
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-device-width: 512px) {
+    .category-article {
+        width: 90vw;
+
+        img {
+            flex: 0;
+            display: none;
+        }
+    }
+}
+
 article {
     a {
         color: $link !important;
@@ -170,7 +190,7 @@ article {
     background: #1F1F1F;
 
     img {
-        margin:auto;
+        margin: auto;
         flex: 1;
         -o-object-fit: cover;
         object-fit: cover;
@@ -181,6 +201,24 @@ article {
 
     content {
         flex: 2.5;
+    }
+}
+
+@media only screen and (max-width: 724px) {
+    .banner {
+        img {
+            display: none;
+            flex: 0;
+        }
+    }
+}
+
+@media only screen and (max-device-width: 512px) {
+    .banner {
+        img {
+            display: none;
+            flex: 0;
+        }
     }
 }
 
@@ -347,9 +385,9 @@ article {
             vertical-align: central;
         }
 
-        h4{
-            margin:auto;
-            width:70%;
+        h4 {
+            margin: auto;
+            width: 70%;
         }
     }
 
@@ -375,6 +413,33 @@ article {
     background: rgba(0, 0, 0, 0.32);
 }
 
+
+.owl-carousel {
+    padding: 0;
+
+    .owl-stage-outer {
+        padding: 0 20px;
+    }
+
+    .owl-nav {
+        display: none;
+    }
+
+    .owl-dots {
+        @include row();
+        -ms-align-content: center !important;
+        -webkit-align-content: center !important;
+        align-content: center !important;
+        margin:auto!important;
+
+        .owl-dot {
+            height: 24px !important;
+            width: 24px !important;
+            background: red !important;
+        }
+    }
+}
+
 .blog {
 
     a {
@@ -384,4 +449,3 @@ article {
     content {
     }
 }
-

@@ -1030,11 +1030,11 @@ backdrop-filter: saturate(80%);
     padding: 20px 2vw; }
 
 .categories {
-  /*    @include grid-gap(200px,2.5em);*/
-  padding: 8px 0;
   overflow-y: hidden; }
   .categories * {
     overflow-y: hidden; }
+  .categories .owl-stage-outer {
+    padding: 0 !important; }
   .categories .category {
     margin: auto;
     padding: 0;
@@ -1049,7 +1049,7 @@ backdrop-filter: saturate(80%);
       height: 220px; }
 
 .category-article {
-  width: 94vw !important;
+  width: 96vw;
   margin: auto;
   padding: 0; }
   .category-article img {
@@ -1061,6 +1061,20 @@ backdrop-filter: saturate(80%);
     flex: 1.5; }
     .category-article article li {
       margin-top: 8px; }
+
+@media only screen and (max-width: 724px) {
+  .category-article {
+    width: 90vw; }
+    .category-article img {
+      flex: 0;
+      display: none; } }
+
+@media only screen and (max-device-width: 512px) {
+  .category-article {
+    width: 90vw; }
+    .category-article img {
+      flex: 0;
+      display: none; } }
 
 article a {
   color: #E91E1E !important; }
@@ -1080,6 +1094,16 @@ article a:hover {
     height: 20vw; }
   .banner content {
     flex: 2.5; }
+
+@media only screen and (max-width: 724px) {
+  .banner img {
+    display: none;
+    flex: 0; } }
+
+@media only screen and (max-device-width: 512px) {
+  .banner img {
+    display: none;
+    flex: 0; } }
 
 .tutors {
   margin-right: 24px !important;
@@ -1216,6 +1240,29 @@ article a:hover {
 
 .image-banner:hover .cover {
   background: rgba(0, 0, 0, 0.32); }
+
+.owl-carousel {
+  padding: 0; }
+  .owl-carousel .owl-stage-outer {
+    padding: 0 20px; }
+  .owl-carousel .owl-nav {
+    display: none; }
+  .owl-carousel .owl-dots {
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -ms-align-content: center !important;
+    -webkit-align-content: center !important;
+    align-content: center !important;
+    margin: auto !important; }
+    .owl-carousel .owl-dots .owl-dot {
+      height: 24px !important;
+      width: 24px !important;
+      background: red !important; }
 
 .blog a {
   width: 320px; }
