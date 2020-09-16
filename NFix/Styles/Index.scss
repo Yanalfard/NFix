@@ -18,6 +18,7 @@
         top: 80px;
         width: 32vw;
         margin-left: 90px;
+        overflow:visible!important;
         /*margin-left:4vw;*/
         h1 {
             font-size: 14vw;
@@ -427,15 +428,20 @@ article {
 
     .owl-dots {
         @include row();
-        -ms-align-content: center !important;
-        -webkit-align-content: center !important;
-        align-content: center !important;
         margin:auto!important;
+        width:92px;
 
         .owl-dot {
-            height: 24px !important;
-            width: 24px !important;
-            background: red !important;
+            @include border-radius(100%,100%,100%,100%);
+            height: 20px !important;
+            width: 20px !important;
+            background: #505355;
+            margin:0 auto;
+            box-shadow: none !important;
+        }
+
+        .active {
+            background: #7d7d7d;
         }
     }
 }

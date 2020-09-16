@@ -150,6 +150,7 @@
     <Content Include="Mocks\Category.html" />
     <Content Include="Mocks\Index.html" />
     <Content Include="Mocks\test.html" />
+    <Content Include="Mocks\VideoUpload.html" />
     <Content Include="Resources\Png\Background.png" />
     <Content Include="Resources\Png\BodyBuilding.png" />
     <Content Include="Resources\Png\CalculatorBackground.png" />

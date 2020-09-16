@@ -959,6 +959,7 @@ backdrop-filter: saturate(80%);
     top: 80px;
     width: 32vw;
     margin-left: 90px;
+    overflow: visible !important;
     /*margin-left:4vw;*/ }
     .hero header.column h1 {
       font-size: 14vw;
@@ -1255,14 +1256,19 @@ article a:hover {
     -ms-align-content: center;
     -webkit-align-content: center;
     align-content: center;
-    -ms-align-content: center !important;
-    -webkit-align-content: center !important;
-    align-content: center !important;
-    margin: auto !important; }
+    margin: auto !important;
+    width: 92px; }
     .owl-carousel .owl-dots .owl-dot {
-      height: 24px !important;
-      width: 24px !important;
-      background: red !important; }
+      -moz-border-radius: 100% 100% 100% 100%;
+      -webkit-border-radius: 100% 100% 100% 100%;
+      border-radius: 100% 100% 100% 100%;
+      height: 20px !important;
+      width: 20px !important;
+      background: #505355;
+      margin: 0 auto;
+      box-shadow: none !important; }
+    .owl-carousel .owl-dots .active {
+      background: #7d7d7d; }
 
 .blog a {
   width: 320px; }
