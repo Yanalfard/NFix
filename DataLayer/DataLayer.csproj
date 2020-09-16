@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E12D5E4-229A-4EC7-ABF4-B84AE74F0702}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataLayer</RootNamespace>
+    <AssemblyName>DataLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiDecoder\AdCore.cs" />
+    <Compile Include="ApiDecoder\BlogCommentRelCore.cs" />
+    <Compile Include="ApiDecoder\BlogCore.cs" />
+    <Compile Include="ApiDecoder\BlogKeywordRelCore.cs" />
+    <Compile Include="ApiDecoder\CatagoryCore.cs" />
+    <Compile Include="ApiDecoder\ClientCore.cs" />
+    <Compile Include="ApiDecoder\ClientProductRelCore.cs" />
+    <Compile Include="ApiDecoder\CommentCore.cs" />
+    <Compile Include="ApiDecoder\Config.cs" />
+    <Compile Include="ApiDecoder\DealCore.cs" />
+    <Compile Include="ApiDecoder\DealPropertyRelCore.cs" />
+    <Compile Include="ApiDecoder\DiscountCore.cs" />
+    <Compile Include="ApiDecoder\ImageCore.cs" />
+    <Compile Include="ApiDecoder\KeywordCore.cs" />
+    <Compile Include="ApiDecoder\LogCore.cs" />
+    <Compile Include="ApiDecoder\ProductCommentRelCore.cs" />
+    <Compile Include="ApiDecoder\ProductCore.cs" />
+    <Compile Include="ApiDecoder\ProductImageRelCore.cs" />
+    <Compile Include="ApiDecoder\ProductKeywordRelCore.cs" />
+    <Compile Include="ApiDecoder\ProductPropertyRelCore.cs" />
+    <Compile Include="ApiDecoder\PropertyCore.cs" />
+    <Compile Include="ApiDecoder\TuotorVideoRelCore.cs" />
+    <Compile Include="ApiDecoder\TutorCore.cs" />
+    <Compile Include="ApiDecoder\UserPassCore.cs" />
+    <Compile Include="ApiDecoder\VideoCore.cs" />
+    <Compile Include="Models\Dto\DtoTblAd.cs" />
+    <Compile Include="Models\Dto\DtoTblBlog.cs" />
+    <Compile Include="Models\Dto\DtoTblBlogCommentRel.cs" />
+    <Compile Include="Models\Dto\DtoTblBlogKeywordRel.cs" />
+    <Compile Include="Models\Dto\DtoTblCatagory.cs" />
+    <Compile Include="Models\Dto\DtoTblClient.cs" />
+    <Compile Include="Models\Dto\DtoTblClientProductRel.cs" />
+    <Compile Include="Models\Dto\DtoTblComment.cs" />
+    <Compile Include="Models\Dto\DtoTblDeal.cs" />
+    <Compile Include="Models\Dto\DtoTblDealPropertyRel.cs" />
+    <Compile Include="Models\Dto\DtoTblDiscount.cs" />
+    <Compile Include="Models\Dto\DtoTblImage.cs" />
+    <Compile Include="Models\Dto\DtoTblKeyword.cs" />
+    <Compile Include="Models\Dto\DtoTblLog.cs" />
+    <Compile Include="Models\Dto\DtoTblProduct.cs" />
+    <Compile Include="Models\Dto\DtoTblProductCommentRel.cs" />
+    <Compile Include="Models\Dto\DtoTblProductImageRel.cs" />
+    <Compile Include="Models\Dto\DtoTblProductKeywordRel.cs" />
+    <Compile Include="Models\Dto\DtoTblProductPropertyRel.cs" />
+    <Compile Include="Models\Dto\DtoTblProperty.cs" />
+    <Compile Include="Models\Dto\DtoTblTuotorVideoRel.cs" />
+    <Compile Include="Models\Dto\DtoTblTutor.cs" />
+    <Compile Include="Models\Dto\DtoTblUserPass.cs" />
+    <Compile Include="Models\Dto\DtoTblVideo.cs" />
+    <Compile Include="Models\Regular\NfixModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NfixModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\NfixModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\NfixModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NfixModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\sysdiagrams.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblAd.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblBlog.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblBlogCommentRel.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblBlogKeywordRel.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblCatagory.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblClient.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblClientProductRel.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblComment.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblDeal.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblDealPropertyRel.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblDiscount.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblImage.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblKeyword.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblLog.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblProduct.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblProductCommentRel.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblProductImageRel.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblProductKeywordRel.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblProductPropertyRel.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblProperty.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblTuotorVideoRel.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblTutor.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblUserPass.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Regular\TblVideo.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Api\IAdRepo.cs" />
+    <Compile Include="Repositories\Api\IBlogCommentRelRepo.cs" />
+    <Compile Include="Repositories\Api\IBlogKeywordRelRepo.cs" />
+    <Compile Include="Repositories\Api\IBlogRepo.cs" />
+    <Compile Include="Repositories\Api\ICatagoryRepo.cs" />
+    <Compile Include="Repositories\Api\IClientProductRelRepo.cs" />
+    <Compile Include="Repositories\Api\IClientRepo.cs" />
+    <Compile Include="Repositories\Api\ICommentRepo.cs" />
+    <Compile Include="Repositories\Api\IDealPropertyRelRepo.cs" />
+    <Compile Include="Repositories\Api\IDealRepo.cs" />
+    <Compile Include="Repositories\Api\IDiscountRepo.cs" />
+    <Compile Include="Repositories\Api\IHeartRepo.cs" />
+    <Compile Include="Repositories\Api\IImageRepo.cs" />
+    <Compile Include="Repositories\Api\IKeywordRepo.cs" />
+    <Compile Include="Repositories\Api\ILogRepo.cs" />
+    <Compile Include="Repositories\Api\IProductCommentRelRepo.cs" />
+    <Compile Include="Repositories\Api\IProductImageRelRepo.cs" />
+    <Compile Include="Repositories\Api\IProductKeywordRelRepo.cs" />
+    <Compile Include="Repositories\Api\IProductPropertyRelRepo.cs" />
+    <Compile Include="Repositories\Api\IProductRepo.cs" />
+    <Compile Include="Repositories\Api\IPropertyRepo.cs" />
+    <Compile Include="Repositories\Api\ITuotorVideoRelRepo.cs" />
+    <Compile Include="Repositories\Api\ITutorRepo.cs" />
+    <Compile Include="Repositories\Api\IUserPassRepo.cs" />
+    <Compile Include="Repositories\Api\IVideoRepo.cs" />
+    <Compile Include="Repositories\Impl\AdRepo.cs" />
+    <Compile Include="Repositories\Impl\BlogCommentRelRepo.cs" />
+    <Compile Include="Repositories\Impl\BlogKeywordRelRepo.cs" />
+    <Compile Include="Repositories\Impl\BlogRepo.cs" />
+    <Compile Include="Repositories\Impl\CatagoryRepo.cs" />
+    <Compile Include="Repositories\Impl\ClientProductRelRepo.cs" />
+    <Compile Include="Repositories\Impl\ClientRepo.cs" />
+    <Compile Include="Repositories\Impl\CommentRepo.cs" />
+    <Compile Include="Repositories\Impl\DealPropertyRelRepo.cs" />
+    <Compile Include="Repositories\Impl\DealRepo.cs" />
+    <Compile Include="Repositories\Impl\DiscountRepo.cs" />
+    <Compile Include="Repositories\Impl\HeartRepo.cs" />
+    <Compile Include="Repositories\Impl\ImageRepo.cs" />
+    <Compile Include="Repositories\Impl\KeywordRepo.cs" />
+    <Compile Include="Repositories\Impl\LogRepo.cs" />
+    <Compile Include="Repositories\Impl\ProductCommentRelRepo.cs" />
+    <Compile Include="Repositories\Impl\ProductImageRelRepo.cs" />
+    <Compile Include="Repositories\Impl\ProductKeywordRelRepo.cs" />
+    <Compile Include="Repositories\Impl\ProductPropertyRelRepo.cs" />
+    <Compile Include="Repositories\Impl\ProductRepo.cs" />
+    <Compile Include="Repositories\Impl\PropertyRepo.cs" />
+    <Compile Include="Repositories\Impl\TuotorVideoRelRepo.cs" />
+    <Compile Include="Repositories\Impl\TutorRepo.cs" />
+    <Compile Include="Repositories\Impl\UserPassRepo.cs" />
+    <Compile Include="Repositories\Impl\VideoRepo.cs" />
+    <Compile Include="Services\Api\IAdService.cs" />
+    <Compile Include="Services\Api\IBlogCommentRelService.cs" />
+    <Compile Include="Services\Api\IBlogKeywordRelService.cs" />
+    <Compile Include="Services\Api\IBlogService.cs" />
+    <Compile Include="Services\Api\ICatagoryService.cs" />
+    <Compile Include="Services\Api\IClientProductRelService.cs" />
+    <Compile Include="Services\Api\IClientService.cs" />
+    <Compile Include="Services\Api\ICommentService.cs" />
+    <Compile Include="Services\Api\IDealPropertyRelService.cs" />
+    <Compile Include="Services\Api\IDealService.cs" />
+    <Compile Include="Services\Api\IDiscountService.cs" />
+    <Compile Include="Services\Api\IImageService.cs" />
+    <Compile Include="Services\Api\IKeywordService.cs" />
+    <Compile Include="Services\Api\ILogService.cs" />
+    <Compile Include="Services\Api\IProductCommentRelService.cs" />
+    <Compile Include="Services\Api\IProductImageRelService.cs" />
+    <Compile Include="Services\Api\IProductKeywordRelService.cs" />
+    <Compile Include="Services\Api\IProductPropertyRelService.cs" />
+    <Compile Include="Services\Api\IProductService.cs" />
+    <Compile Include="Services\Api\IPropertyService.cs" />
+    <Compile Include="Services\Api\ITuotorVideoRelService.cs" />
+    <Compile Include="Services\Api\ITutorService.cs" />
+    <Compile Include="Services\Api\IUserPassService.cs" />
+    <Compile Include="Services\Api\IVideoService.cs" />
+    <Compile Include="Services\Impl\AdService.cs" />
+    <Compile Include="Services\Impl\BlogCommentRelService.cs" />
+    <Compile Include="Services\Impl\BlogKeywordRelService.cs" />
+    <Compile Include="Services\Impl\BlogService.cs" />
+    <Compile Include="Services\Impl\CatagoryService.cs" />
+    <Compile Include="Services\Impl\ClientProductRelService.cs" />
+    <Compile Include="Services\Impl\ClientService.cs" />
+    <Compile Include="Services\Impl\CommentService.cs" />
+    <Compile Include="Services\Impl\DealPropertyRelService.cs" />
+    <Compile Include="Services\Impl\DealService.cs" />
+    <Compile Include="Services\Impl\DiscountService.cs" />
+    <Compile Include="Services\Impl\ImageService.cs" />
+    <Compile Include="Services\Impl\KeywordService.cs" />
+    <Compile Include="Services\Impl\LogService.cs" />
+    <Compile Include="Services\Impl\ProductCommentRelService.cs" />
+    <Compile Include="Services\Impl\ProductImageRelService.cs" />
+    <Compile Include="Services\Impl\ProductKeywordRelService.cs" />
+    <Compile Include="Services\Impl\ProductPropertyRelService.cs" />
+    <Compile Include="Services\Impl\ProductService.cs" />
+    <Compile Include="Services\Impl\PropertyService.cs" />
+    <Compile Include="Services\Impl\TuotorVideoRelService.cs" />
+    <Compile Include="Services\Impl\TutorService.cs" />
+    <Compile Include="Services\Impl\UserPassService.cs" />
+    <Compile Include="Services\Impl\VideoService.cs" />
+    <Compile Include="Utilities\Config.cs" />
+    <Compile Include="Utilities\EnumRepo.cs" />
+    <Compile Include="Utilities\MainProvider.cs" />
+    <Compile Include="Utilities\MethodRepo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\Regular\NfixModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NfixModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="Models\Regular\NfixModel.edmx.diagram">
+      <DependentUpon>NfixModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Regular\NfixModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NfixModel.Context.cs</LastGenOutput>
+      <DependentUpon>NfixModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Regular\NfixModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NfixModel.edmx</DependentUpon>
+      <LastGenOutput>NfixModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
