@@ -186,99 +186,123 @@ namespace DataLayer.Utilities
                 object tableObj = table;
                 if (table.GetType() == typeof(TblAd))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblBlog))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblBlogCommentRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblBlogKeywordRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblCatagory))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblClientProductRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblComment))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblImage))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblKeyword))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblProduct))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblProductCommentRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblProductImageRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblProductKeywordRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblProductPropertyRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblProperty))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblTutor))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblVideo))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblDeal))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblDealPropertyRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblUserPass))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblDiscount))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblClient))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblTuotorVideoRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
                 else if (table.GetType() == typeof(TblLog))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId); val = (TblAd)tableObj;
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    val = (TblAd)tableObj;
                 }
 
                 Heart.SaveChanges();
@@ -383,8 +407,9 @@ namespace DataLayer.Utilities
 
         public IEnumerable SelectAll(EnumRepo.Tables tableType)
         {
-            try
-            {
+            //try
+            //{
+                Heart = new NFixEntities();
                 switch (tableType)
                 {
                     case EnumRepo.Tables.TblAd:
@@ -462,11 +487,11 @@ namespace DataLayer.Utilities
                     default:
                         return new List<bool>();
                 }
-            }
-            catch
-            {
-                return new List<bool>();
-            }
+            //}
+            //catch(Exception e)
+            //{
+            //    return new List<bool>();
+            //}
         }
 
         public object SelectById(EnumRepo.Tables table, int id)
