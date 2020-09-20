@@ -6,7 +6,7 @@
 .parallax {
     position: relative;
     width: 100vw;
-    height: 46vh;
+    height: 38vh;
     background: url(/Resources/Png/LoginImage.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -28,11 +28,33 @@
     }
 }
 
-.videos {
-    direction:rtl;
+.videohead {
+    width: 100%;
+    height: 280px !important;
 
-    .grid {
-        @include grid-gap(380px, 1.2em);
-        padding: 20px 2vw;
+    h2 {
+        font-weight: 500;
+        font-size: 50px;
+        padding: 10px;
     }
 }
+
+@media only screen and (max-device-width: 512px) {
+    .videohead {
+        height: 320px !important;
+    }
+}
+
+.simple {
+    color: #00ff90;
+}
+
+.mediocre {
+    color: #ead24b;
+}
+
+.difficult {
+    color: #d82b2b;
+}
+
+

@@ -17,7 +17,6 @@ namespace DataLayer.ApiDecoder
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("api/AdCore"));
             _httpClient.BaseAddress = new Uri(Config.Url);
-
         }
         /// <summary>
         /// Adds a ad to NFix.TblAd

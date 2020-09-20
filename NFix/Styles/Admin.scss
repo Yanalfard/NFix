@@ -1,0 +1,151 @@
+﻿@import "_colors.scss";
+@import "_controls.scss";
+@import "_general.scss";
+@import "_layout.scss";
+
+table {
+    td, th {
+        text-align: right !important;
+    }
+
+    caption {
+        text-align: center !important;
+        font-size: 20px !important;
+        font-weight: 500;
+    }
+
+    tr:nth-child(even) {
+        background-color: #1A1A1A;
+    }
+}
+
+$menucomponentColor: #2b2b2b;
+
+.hamburger-button {
+    position: fixed;
+    padding: 10px !important;
+    right: 18px;
+    top: 18px;
+    color: white !important;
+    margin: auto;
+    -moz-border-radius: 50% !important;
+    -webkit-border-radius: 50% !important;
+    border-radius: 50% !important;
+    background: $menucomponentColor !important;
+    @include shadow-more();
+}
+
+.uk-close {
+    padding: 10px !important;
+}
+
+.uk-close:hover {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.menuComponent {
+    background: $menucomponentColor;
+    width: 280px;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+#menu {
+    width: 280px;
+}
+
+.uk-offcanvas-bar {
+    padding: 70px 0 !important;
+}
+
+a:hover {
+    color: #909090 !important;
+    //@include icon-glow();
+}
+
+a.plus {
+    margin-right: auto;
+    margin-left: 26px;
+}
+
+.see {
+    height: 40px;
+    width: 140px;
+    margin: auto 30px 30px auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.myVideo {
+    width: 100%;
+    height: 200px;
+    background: $menucomponentColor;
+    margin-top: 50px;
+}
+
+.uk-accordion {
+    margin-bottom: 0;
+}
+
+.uk-accordion-title {
+    font-size: 14px !important;
+    margin-right: 20px;
+}
+
+.uk-accordion-content {
+    margin-right: 52px;
+    font-size: 14px;
+    margin-top: 14px !important;
+
+    li {
+        margin-bottom: 8px;
+    }
+}
+
+a.uk-accordion-title:hover {
+}
+.baseDiv{
+    padding:50px;
+}
+@media only screen and (max-device-width: 600px) {
+    .uk-offcanvas-bar {
+        width: 46vw !important;
+    }
+
+    .hamburger-button {
+        padding: 36px !important;
+        margin-right: 50px;
+    }
+
+    #menu {
+        width: 100% !important;
+    }
+
+    .menuComponent {
+        width: 100%;
+        margin-top: 28px;
+
+        img {
+            width: 60px;
+            height: 50px;
+        }
+
+        .uk-accordion-title {
+            font-size: 32px !important;
+            // margin-right: 40px;
+        }
+
+        .uk-accordion-content {
+            font-size: 30px;
+            //margin-right: 80px;
+        }
+    }
+    .baseDiv{
+        padding:100px;
+    }
+}

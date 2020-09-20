@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>داشبورد</title>
+    <!-- Project Css -->
+    <link href="/Styles/Admin.min.css" rel="stylesheet" />
+
+    <!-- UIkit CSS -->
+    <link href="/Styles/UIKit/uikit.min.css" rel="stylesheet" />
+
+    <!--Owl Carousel CSS-->
+    <link href="/Styles/OwlCarousel/owl.carousel.min.css" rel="stylesheet" />
+    <link href="/Styles/OwlCarousel/owl.theme.default.min.css" rel="stylesheet" />
+
+
+    <!--Jquery-->
+    <script src="/Scripts/Jquery/jquery-3.5.1.js"></script>
+
+    <!-- UIkit JS -->
+    <script src="/Scripts/UIKit/uikit.min.js"></script>
+    <script src="/Scripts/UIKit/uikit-icons.js"></script>
+
+    <!--Owl Carousel Scripts-->
+    <script src="/Scripts/OwlCarousel/owl.carousel.min.js"></script>
+
+    <!--Scroll Reveal-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <!--region menu-->
+    <a class="hamburger-button uk-margin-auto" href="#menu" uk-icon="icon: menu ; ratio:1" uk-toggle="target: #menu"></a>
+    <div id="menu" uk-offcanvas="overlay: true; flip: true" dir="rtl">
+        <div class="uk-offcanvas-bar">
+
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            <content class="menuComponent column" dir="rtl">
+                <ul uk-accordion dir="rtl">
+                    <li>
+                        <a href="#" class="plus uk-accordion-title">
+                            <img src="../../Resources/Svg/Admin/admin_video_nor.svg" />
+                            <span>ویدیو ها</span>
+                        </a>
+                        <div class="uk-accordion-content">
+                            <ul class="column">
+                                <li>
+
+                                    <a href="TblVideo.html">
+                                        <img src="../../Resources/Svg/Admin/admin_video_nor.svg" />
+                                        <span>ویدیوها</span>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="VideoAdder.html">
+                                        <img src="../../Resources/Svg/Admin/admin_video_add.svg" />
+                                        <span>اضافه کردن ویدیو جدید</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </content>
+            <content class="menuComponent column" dir="rtl">
+                <ul uk-accordion dir="rtl">
+                    <li>
+                        <a href="#" class="plus uk-accordion-title">
+                            <img src="../../Resources/Svg/Admin/admin_blog_nor.svg" />
+                            <span>مقاله ها</span>
+                        </a>
+                        <div class="uk-accordion-content">
+                            <ul class="column">
+                                <li>
+
+                                    <a href="TblBlog.html">
+                                        <img src="../../Resources/Svg/Admin/admin_blog_nor.svg" />
+                                        <span>مقاله ها</span>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="BlogAdder.html">
+                                        <img src="../../Resources/Svg/Admin/admin_blog_add.svg" />
+                                        <span>اضافه کردن مقاله جدید</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </content>
+            
+        </div>
+    </div>
+    <!--end region-->
+
+
+</body>
+</html>

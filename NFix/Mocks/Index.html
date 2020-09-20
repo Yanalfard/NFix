@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <title>خانه</title>
 
-
     <!-- Project Css -->
     <link href="../Styles/Index.min.css" rel="stylesheet" />
 
@@ -21,20 +20,16 @@
 
     <!-- UIkit JS -->
     <script src="../Scripts/UIKit/uikit.min.js"></script>
-    <script src="../Scripts/UIKit/uikit-icons.min.js"></script>
+    <script src="../Scripts/UIKit/uikit-icons.js"></script>
 
     <!--Owl Carousel Scripts-->
     <script src="../Scripts/OwlCarousel/owl.carousel.min.js"></script>
 
     <!--Scroll Reveal-->
     <script src="https://unpkg.com/scrollreveal"></script>
-
-
-
 </head>
 
 <body>
-
     <!-- #region Nav -->
 
     <nav class="uk-navbar-container " uk-navbar>
@@ -142,13 +137,14 @@
     </nav>
 
     <!-- #endregion -->
+
     <!-- #region Hero -->
 
     <section class="hero column">
         <header class="column uk-margin-auto-right">
             <h1 class="uk-margin-remove-bottom"><span>N</span>FIX</h1>
             <hr class="uk-margin-remove" />
-            <p>Proffesional Fitness App</p>
+            <p class="uk-margin-small-top">Proffesional Fitness App</p>
             <button class="button-outline uk-button uk-button-default uk-margin-small-top">
                 <span class="uk-icon" uk-icon="icon:download"></span>
                 <span>
@@ -156,6 +152,19 @@
                 </span>
             </button>
         </header>
+        <!--icons in header-->
+        <div class="rowIcon row uk-margin-auto-top">
+            <a href="#">
+                <img src="../Resources/Svg/Union.svg" />
+            </a>
+            <a href="#">
+                <img src="../Resources/Svg/Unio2n.svg" />
+            </a>
+            <a href="#">
+                <img src="../Resources/Svg/asdfwe03.svg" />
+            </a>
+        </div>
+        <!---->
         <a href="#videos" uk-icon="icon:chevron-down; ratio:2.5"
            class="uk-icon center"></a>
         <a href="../Resources/Png/Man.png" uk-icon="icon: play-circle; ratio: 2"
@@ -166,7 +175,6 @@
     <!-- #endregion -->
 
     <a name="videos"></a>
-
     <!-- #region Stripe -->
     <div class="stripe row">
         <h4>Lorem</h4>
@@ -175,96 +183,257 @@
         <h4>Set</h4>
     </div>
     <!-- #endregion -->
+    <!--region sticky icons-->
+    <div id="stickies" class="column" uk-sticky="offset:250">
+        <a href="#" class="stickIcon"><img src="../Resources/Svg/asdfwe01.svg" /></a>
+        <a href="#" class="stickIcon"><img src="../Resources/Svg/asdfwe04.svg" /></a>
+        <a href="#" class="stickIcon"><img src="../Resources/Svg/asdfwe03.svg" /></a>
+        <a href="#" class="stickIcon"><img src="../Resources/Svg/Unio2n.svg" /></a>
+    </div>
+    <!--end region-->
 
     <section class="videos">
-        <h3 class="clipped uk-margin-medium-top">ویدیو های اخیر</h3>
+        <h3 class="clipped uk-margin-medium-top text-center">ویدیو های اخیر</h3>
 
-        <content class="grid ">
+        <content class="grid" dir="rtl">
 
             <!-- #region Video -->
-            <div class="video card column">
+            <div class="video column" dir="rtl">
                 <div class="vid column">
-                    <img src="../Resources/Png/Categories/Bike.png" alt="" />
+                    <img class="thumbnail" src="https://picsum.photos/400/300" alt="" />
                     <a class="uk-icon" uk-icon="icon: play; ratio:4"></a>
                 </div>
-                <div class="row">
-                    <span class="uk-margin-left row">
-                        <span>بازدید</span>
-                        <span>1600</span>
-                    </span>
-                    <h5 class="uk-margin-auto-left uk-margin-right">این یک ویدیو است</h5>
+                <div class="uk-margin-small-top row">
+                    <div class="tutor uk-margin-remove-top row">
+                        <a href="#">
+                            <img class="profile-img" src="https://picsum.photos/64" />
+                        </a>
+                    </div>
+                    <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
+                        <a href="#">
+                            <h5 class="uk-margin-auto-left">
+                                این یک ویدیو است
+                                این یک ویدیو است
+                                این یک ویدیو است
+                            </h5>
+                        </a>
+                        <div class="row">
+                            <a href="#" class="tutor-link uk-margin-auto-left">
+                                نام و نام خانوادگی
+                            </a>
+                            <span class="row">
+                                <span>1600</span>
+                                <span uk-icon="icon: play"></span>
+                            </span>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <!-- #endregion -->
             <!-- #region Video -->
-
-            <div class="video card column">
+            <div class="video column" dir="rtl">
                 <div class="vid column">
-                    <img src="../Resources/Png/Categories/Aero.png" alt="" />
+                    <img class="thumbnail" src="https://picsum.photos/400/300" alt="" />
                     <a class="uk-icon" uk-icon="icon: play; ratio:4"></a>
                 </div>
-                <div class="row">
-                    <span class="uk-margin-left row">
-                        <span>بازدید</span>
-                        <span>1600</span>
-                    </span>
-                    <h5 class="uk-margin-auto-left uk-margin-right">این یک ویدیو است</h5>
+                <div class="uk-margin-small-top row">
+                    <div class="tutor uk-margin-remove-top row">
+                        <a href="#">
+                            <img class="profile-img" src="https://picsum.photos/64" />
+                        </a>
+                    </div>
+                    <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
+                        <a href="#">
+                            <h5 class="uk-margin-auto-left">
+                                این یک ویدیو است
+                                این یک ویدیو است
+                                این یک ویدیو است
+                            </h5>
+                        </a>
+                        <div class="row">
+                            <a href="#" class="tutor-link uk-margin-auto-left">
+                                نام و نام خانوادگی
+                            </a>
+                            <span class="row">
+                                <span>1600</span>
+                                <span uk-icon="icon: play"></span>
+                            </span>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <!-- #endregion -->
             <!-- #region Video -->
-
-            <div class="video card column">
+            <div class="video column" dir="rtl">
                 <div class="vid column">
-                    <img src="../Resources/Png/Categories/BodyB.png" alt="" />
+                    <img class="thumbnail" src="https://picsum.photos/400/300" alt="" />
                     <a class="uk-icon" uk-icon="icon: play; ratio:4"></a>
                 </div>
-                <div class="row">
-                    <span class="uk-margin-left row">
-                        <span>بازدید</span>
-                        <span>1600</span>
-                    </span>
-                    <h5 class="uk-margin-auto-left uk-margin-right">این یک ویدیو است</h5>
+                <div class="uk-margin-small-top row">
+                    <div class="tutor uk-margin-remove-top row">
+                        <a href="#">
+                            <img class="profile-img" src="https://picsum.photos/64" />
+                        </a>
+                    </div>
+                    <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
+                        <a href="#">
+                            <h5 class="uk-margin-auto-left">
+                                این یک ویدیو است
+                                این یک ویدیو است
+                                این یک ویدیو است
+                            </h5>
+                        </a>
+                        <div class="row">
+                            <a href="#" class="tutor-link uk-margin-auto-left">
+                                نام و نام خانوادگی
+                            </a>
+                            <span class="row">
+                                <span>1600</span>
+                                <span uk-icon="icon: play"></span>
+                            </span>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <!-- #endregion -->
             <!-- #region Video -->
-
-            <div class="video card column">
+            <div class="video column" dir="rtl">
                 <div class="vid column">
-                    <img src="../Resources/Png/Categories/Gymn.png" alt="" />
+                    <img class="thumbnail" src="https://picsum.photos/400/300" alt="" />
                     <a class="uk-icon" uk-icon="icon: play; ratio:4"></a>
                 </div>
-                <div class="row">
-                    <span class="uk-margin-left row">
-                        <span>بازدید</span>
-                        <span>1600</span>
-                    </span>
-                    <h5 class="uk-margin-auto-left uk-margin-right">این یک ویدیو است</h5>
+                <div class="uk-margin-small-top row">
+                    <div class="tutor uk-margin-remove-top row">
+                        <a href="#">
+                            <img class="profile-img" src="https://picsum.photos/64" />
+                        </a>
+                    </div>
+                    <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
+                        <a href="#">
+                            <h5 class="uk-margin-auto-left">
+                                این یک ویدیو است
+                                این یک ویدیو است
+                                این یک ویدیو است
+                            </h5>
+                        </a>
+                        <div class="row">
+                            <a href="#" class="tutor-link uk-margin-auto-left">
+                                نام و نام خانوادگی
+                            </a>
+                            <span class="row">
+                                <span>1600</span>
+                                <span uk-icon="icon: play"></span>
+                            </span>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <!-- #endregion -->
             <!-- #region Video -->
-
-            <div class="video card column">
+            <div class="video column" dir="rtl">
                 <div class="vid column">
-                    <img src="../Resources/Png/Categories/Box.png" alt="" />
+                    <img class="thumbnail" src="https://picsum.photos/400/300" alt="" />
                     <a class="uk-icon" uk-icon="icon: play; ratio:4"></a>
                 </div>
+                <div class="uk-margin-small-top row">
+                    <div class="tutor uk-margin-remove-top row">
+                        <a href="#">
+                            <img class="profile-img" src="https://picsum.photos/64" />
+                        </a>
+                    </div>
+                    <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
+                        <a href="#">
+                            <h5 class="uk-margin-auto-left">
+                                این یک ویدیو است
+                                این یک ویدیو است
+                                این یک ویدیو است
+                            </h5>
+                        </a>
+                        <div class="row">
+                            <a href="#" class="tutor-link uk-margin-auto-left">
+                                نام و نام خانوادگی
+                            </a>
+                            <span class="row">
+                                <span>1600</span>
+                                <span uk-icon="icon: play"></span>
+                            </span>
 
-                <div class="row">
-                    <span class="uk-margin-left row">
-                        <span>بازدید</span>
-                        <span>1600</span>
-                    </span>
-                    <h5 class="uk-margin-auto-left uk-margin-right">این یک ویدیو است</h5>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- #endregion -->
+            <!-- #region Video -->
+            <div class="video column" dir="rtl">
+                <div class="vid column">
+                    <img class="thumbnail" src="https://picsum.photos/400/300" alt="" />
+                    <a class="uk-icon" uk-icon="icon: play; ratio:4"></a>
+                </div>
+                <div class="uk-margin-small-top row">
+                    <div class="tutor uk-margin-remove-top row">
+                        <a href="#">
+                            <img class="profile-img" src="https://picsum.photos/64" />
+                        </a>
+                    </div>
+                    <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
+                        <a href="#">
+                            <h5 class="uk-margin-auto-left">
+                                این یک ویدیو است
+                                این یک ویدیو است
+                                این یک ویدیو است
+                            </h5>
+                        </a>
+                        <div class="row">
+                            <a href="#" class="tutor-link uk-margin-auto-left">
+                                نام و نام خانوادگی
+                            </a>
+                            <span class="row">
+                                <span>1600</span>
+                                <span uk-icon="icon: play"></span>
+                            </span>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion -->
+            <!-- #region Video -->
+            <div class="video column" dir="rtl">
+                <div class="vid column">
+                    <img class="thumbnail" src="https://picsum.photos/400/300" alt="" />
+                    <a class="uk-icon" uk-icon="icon: play; ratio:4"></a>
+                </div>
+                <div class="uk-margin-small-top row">
+                    <div class="tutor uk-margin-remove-top row">
+                        <a href="#">
+                            <img class="profile-img" src="https://picsum.photos/64" />
+                        </a>
+                    </div>
+                    <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
+                        <a href="#">
+                            <h5 class="uk-margin-auto-left">
+                                این یک ویدیو است
+                                این یک ویدیو است
+                                این یک ویدیو است
+                            </h5>
+                        </a>
+                        <div class="row">
+                            <a href="#" class="tutor-link uk-margin-auto-left">
+                                نام و نام خانوادگی
+                            </a>
+                            <span class="row">
+                                <span>1600</span>
+                                <span uk-icon="icon: play"></span>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- #endregion -->
 
         </content>
@@ -372,7 +541,7 @@
 
     </ul>
 
-    <ul class="market clipped owl-carousel uk-margin-medium-top">
+    <ul id="product" class="market clipped owl-carousel uk-margin-medium-top">
         <!-- #region Product -->
 
         <li class="column card">
@@ -383,7 +552,7 @@
                     <div class="Stars" style="--rating: 2.6;" aria-label="Rating of this product is 2.3 out of 5."></div>
                     <label class="uk-margin-small-right">2.6</label>
                 </div>
-                <div class="row uk-margin-top uk-margin-left">
+                <div class="row uk-margin-small-top uk-margin-left">
                     <div class="column">
                         <span class="discount">85000</span>
                         <span class="price">79000</span>
@@ -447,6 +616,8 @@
         </li>
     </ul>
 
+
+
     <div class="calculator full-width row">
         <div class="column card center">
             <h5>
@@ -505,23 +676,61 @@
 
     <div class="space"></div>
 
-    <div class="row">
-        <a href="" class="blog card uk-padding-remove column">
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-            <content class="column uk-padding-small">
-                <h3>مربی1</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-        </a>
-    </div>
+    <!-- #region educator -->
 
-    <ul class="blogs clipped owl-carousel uk-margin-medium-top">
+    <h3 class="clipped uk-margin-medium-top text-center">وبلاگ های من </h3>
+    <ul id="educator" class="clipped owl-carousel uk-margin-medium-top">
         <li>
+            <article class="column card ">
+                <img src="../Resources/Png/Categories/Box.png" alt="" />
+                <content>
 
+                    <h3>مربی 1</h3>
+                    <p>و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در راهکارها، و شرایط سخت تایپ به پایان رسد</p>
+                    <a class="uk-margin-auto-top" href="#">...بیشتر</a>
+                </content>
+
+            </article>
+        </li>
+        <li>
+            <article class="column card ">
+                <img src="../Resources/Png/Categories/Box.png" alt="" />
+                <content>
+
+                    <h3>مربی 2</h3>
+                    <p>و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در راهکارها، و شرایط سخت تایپ به پایان رسد</p>
+                    <a class="uk-margin-auto-top" href="#">...بیشتر</a>
+                </content>
+
+            </article>
+        </li>
+        <li>
+            <article class="column card ">
+                <img src="../Resources/Png/Categories/Box.png" alt="" />
+                <content>
+
+                    <h3>مربی 3</h3>
+                    <p>و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در راهکارها، و شرایط سخت تایپ به پایان رسد</p>
+                    <a class="uk-margin-auto-top" href="#">...بیشتر</a>
+                </content>
+
+            </article>
+        </li>
+        <li>
+            <article class="column card  ">
+                <img src="../Resources/Png/Categories/Box.png" alt="" />
+                <content>
+
+                    <h3>مربی 4</h3>
+                    <p>و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در راهکارها، و شرایط سخت تایپ به پایان رسد</p>
+                    <a class="uk-margin-auto-top" href="#">...بیشتر</a>
+                </content>
+
+            </article>
         </li>
     </ul>
+
+
 
     <div class="space"></div>
 
@@ -548,6 +757,7 @@
 
     <!-- #endregion -->
 
+
     <script>
 
         let duration = 1400;
@@ -555,6 +765,12 @@
         sr.reveal('.man', {
             duration: duration,
             origin: 'bottom',
+            distance: '72px',
+            opacity: 1,
+        });
+        sr.reveal('#stickies', {
+            duration: duration,
+            origin: 'right',
             distance: '72px',
             opacity: 1,
         });
@@ -611,7 +827,7 @@
             }
         })
 
-        $('.owl-carousel').owlCarousel({
+        $('#educator').owlCarousel({
             loop: true,
             margin: 10,
             autoplay: true,
@@ -622,22 +838,48 @@
                 1: {
                     items: 1
                 },
-                600: {
+                300: {
                     items: 1
                 },
-                800: {
+                600: {
                     items: 2
                 },
-                1000: {
+                900: {
                     items: 3
+                },
+                1200: {
+                    items: 4
+                }
+            }
+        })
+
+        $('#product').owlCarousel({
+            loop: true,
+            margin: 0,
+            autoplay: true,
+            autoplayTimeout: 3500,
+            autoplayHoverPause: true,
+            nav: true,
+            responsive: {
+                1: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                800: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
                 }
             }
         })
 
 
+
+
     </script>
-
     <script src="../Scripts/UIScripts/BMICalculator.js"></script>
-
 </body>
 </html>

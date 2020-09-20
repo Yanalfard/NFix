@@ -991,43 +991,56 @@ backdrop-filter: saturate(80%);
 .text-center {
   text-align: center !important; }
 
-.parallax {
-  position: relative;
-  width: 100vw;
-  height: 38vh;
-  background: url(/Resources/Png/LoginImage.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-position-y: center;
-  background-size: cover;
-  z-index: 10; }
-  .parallax h1 {
-    color: #fff;
-    z-index: 100;
-    margin: auto;
-    padding-bottom: 4px; }
+.alternate {
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -ms-align-content: center;
+  -webkit-align-content: center;
+  align-content: center;
+  width: 96vw;
+  margin: 0 auto; }
+  .alternate > aside {
+    padding-right: 28px; }
+    .alternate > aside .video {
+      margin-bottom: 16px; }
+  .alternate > content {
+    flex: 1; }
+    .alternate > content .uk-comment {
+      padding: 16px;
+      background: #1C1C1C;
+      margin-bottom: 20px; }
+    .alternate > content .tutor * {
+      margin: 0; }
+    .alternate > content .tutor h6 {
+      color: #fff !important; }
+    .alternate > content .tutor p {
+      color: #D1D1D1 !important;
+      margin-top: 6px;
+      font-size: 13px; }
+    .alternate > content .tutor img {
+      -moz-border-radius: 100% 100% 100% 100%;
+      -webkit-border-radius: 100% 100% 100% 100%;
+      border-radius: 100% 100% 100% 100%;
+      height: 52px;
+      width: 52px; }
 
-@media only screen and (min-device-width: 280px) and (max-device-width: 670px) {
-  .parallax {
-    height: 16vh; } }
+@media only screen and (max-width: 864px) {
+  .alternate {
+    width: 90vw; }
+    .alternate > aside {
+      display: none;
+      width: 100vw; } }
 
-.videohead {
-  width: 100%;
-  height: 280px !important; }
-  .videohead h2 {
-    font-weight: 500;
-    font-size: 50px;
-    padding: 10px; }
+.textbox-bulk-btn {
+  margin: auto !important; }
 
-@media only screen and (max-device-width: 512px) {
-  .videohead {
-    height: 320px !important; } }
+.textbox-bulk-btn:hover {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
 
-.simple {
-  color: #00ff90; }
-
-.mediocre {
-  color: #ead24b; }
-
-.difficult {
-  color: #d82b2b; }
+.textbox-bulk-txt {
+  background: #5B5B5B;
+  width: 100%; }

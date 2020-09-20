@@ -55,6 +55,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -124,9 +127,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -175,16 +175,24 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="Scripts\Jquery\jquery-3.5.1.intellisense.js" />
+    <Content Include="Mocks\about.html" />
+    <Content Include="Mocks\Admin\BlogAdder.html" />
+    <Content Include="Mocks\Admin\dashboardHUB.html" />
+    <Content Include="Mocks\Admin\TblBlog.html" />
+    <Content Include="Mocks\Admin\TblVideo.html" />
+    <Content Include="Mocks\Admin\VideoAdder.html" />
+    <Content Include="Mocks\Blogs.html" />
     <Content Include="Mocks\Category.html" />
     <Content Include="Mocks\Index.html" />
     <Content Include="Mocks\test.html" />
+    <Content Include="Mocks\Videos.html" />
     <Content Include="Mocks\VideoUpload.html" />
+    <Content Include="Mocks\VideoView.html" />
     <Content Include="Resources\Png\Background.png" />
     <Content Include="Resources\Png\BodyBuilding.png" />
     <Content Include="Resources\Png\CalculatorBackground.png" />
@@ -213,6 +221,24 @@
     <Content Include="Scripts\UIKit\uikit.js" />
     <Content Include="Scripts\UIKit\uikit.min.js" />
     <Content Include="Scripts\UIScripts\BMICalculator.js" />
+    <Content Include="Styles\about.css">
+      <DependentUpon>about.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\about.min.css">
+      <DependentUpon>about.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\Admin.css">
+      <DependentUpon>Admin.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Admin.min.css">
+      <DependentUpon>Admin.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\blogs.css">
+      <DependentUpon>blogs.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\blogs.min.css">
+      <DependentUpon>blogs.css</DependentUpon>
+    </Content>
     <Content Include="Styles\Category.css">
       <DependentUpon>Category.scss</DependentUpon>
     </Content>
@@ -231,6 +257,12 @@
     <Content Include="Styles\UIKit\uikit-rtl.min.css" />
     <Content Include="Styles\UIKit\uikit.css" />
     <Content Include="Styles\UIKit\uikit.min.css" />
+    <Content Include="Styles\Video.css">
+      <DependentUpon>Video.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Video.min.css">
+      <DependentUpon>Video.css</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -252,6 +284,10 @@
     <Content Include="Styles\_layout.scss" />
     <Content Include="Styles\Index.scss" />
     <Content Include="Styles\Category.scss" />
+    <Content Include="Styles\Admin.scss" />
+    <Content Include="Styles\about.scss" />
+    <Content Include="Styles\blogs.scss" />
+    <Content Include="Styles\Video.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

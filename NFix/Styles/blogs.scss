@@ -1,0 +1,66 @@
+﻿@import "_colors.scss";
+@import "_controls.scss";
+@import "_general.scss";
+@import "_layout.scss";
+
+#educator {
+    overflow-y: hidden !important;
+    padding: 0 !important;
+
+    * {
+        overflow-y: hidden !important;
+    }
+}
+
+p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical
+}
+
+article {
+    overflow: hidden !important;
+    display: flex;
+    padding: 0 !important;
+    height: 440px;
+    width: 310px !important;
+    margin: auto !important;
+
+    h3 {
+        font-weight: 600;
+    }
+
+    img {
+        flex: 1;
+        object-fit: cover;
+        margin: 0;
+    }
+
+    content {
+        flex: 1;
+        padding: 4px 12px;
+    }
+
+    a {
+        font-weight: 600;
+    }
+}
+
+.grid {
+    @include grid-gap(310px, 1.1em);
+    padding: 20px 2vw;
+}
+.myBlogs {
+    margin-right:28px;
+}
+@media only screen and (max-device-width: 1008px) {
+    artical{
+        width:220px;
+    }
+    .grid {
+        @include grid-gap(220px, 1.8em);
+        padding: 20px 2vw;
+    }
+}

@@ -1,0 +1,87 @@
+﻿@import "_colors.scss";
+@import "_controls.scss";
+@import "_general.scss";
+@import "_layout.scss";
+
+.alternate {
+    @include row();
+    width: 96vw;
+    margin: 0 auto;
+
+    > aside {
+        padding-right: 28px;
+
+        .video {
+            margin-bottom: 16px;
+        }
+    }
+
+    > content {
+        flex: 1;
+
+        .video-playback {
+        }
+
+        .uk-comment {
+            padding: 16px;
+            background: $CommentBackground;
+            margin-bottom: 20px;
+        }
+
+        .tutor {
+            * {
+                margin: 0;
+            }
+
+            h6 {
+                color: $white !important;
+            }
+
+            p {
+                color: $white-dark !important;
+                margin-top: 6px;
+                font-size: 13px;
+            }
+
+            img {
+                @include border-radius(100%,100%,100%,100%);
+                height: 52px;
+                width: 52px;
+            }
+        }
+
+        .media {
+            .view-count {
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 864px) {
+    .alternate {
+        width: 90vw;
+
+        > aside {
+            display: none;
+            width: 100vw;
+        }
+    }
+}
+
+.textbox-bulk {
+
+    &-btn {
+        margin: auto !important;
+    }
+
+    &-btn:hover {
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    &-txt {
+        background: $black-mid;
+        width: 100%;
+    }
+}

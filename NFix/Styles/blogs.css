@@ -991,43 +991,55 @@ backdrop-filter: saturate(80%);
 .text-center {
   text-align: center !important; }
 
-.parallax {
-  position: relative;
-  width: 100vw;
-  height: 38vh;
-  background: url(/Resources/Png/LoginImage.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-position-y: center;
-  background-size: cover;
-  z-index: 10; }
-  .parallax h1 {
-    color: #fff;
-    z-index: 100;
-    margin: auto;
-    padding-bottom: 4px; }
+#educator {
+  overflow-y: hidden !important;
+  padding: 0 !important; }
+  #educator * {
+    overflow-y: hidden !important; }
 
-@media only screen and (min-device-width: 280px) and (max-device-width: 670px) {
-  .parallax {
-    height: 16vh; } }
+p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  /* number of lines to show */
+  -webkit-box-orient: vertical; }
 
-.videohead {
-  width: 100%;
-  height: 280px !important; }
-  .videohead h2 {
-    font-weight: 500;
-    font-size: 50px;
-    padding: 10px; }
+article {
+  overflow: hidden !important;
+  display: flex;
+  padding: 0 !important;
+  height: 440px;
+  width: 310px !important;
+  margin: auto !important; }
+  article h3 {
+    font-weight: 600; }
+  article img {
+    flex: 1;
+    object-fit: cover;
+    margin: 0; }
+  article content {
+    flex: 1;
+    padding: 4px 12px; }
+  article a {
+    font-weight: 600; }
 
-@media only screen and (max-device-width: 512px) {
-  .videohead {
-    height: 320px !important; } }
+.grid {
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 1.1em;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  padding: 20px 2vw; }
 
-.simple {
-  color: #00ff90; }
+.myBlogs {
+  margin-right: 28px; }
 
-.mediocre {
-  color: #ead24b; }
-
-.difficult {
-  color: #d82b2b; }
+@media only screen and (max-device-width: 1008px) {
+  artical {
+    width: 220px; }
+  .grid {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 1.8em;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    padding: 20px 2vw; } }

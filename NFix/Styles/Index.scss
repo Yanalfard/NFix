@@ -18,7 +18,6 @@
         top: 80px;
         width: 32vw;
         margin-left: 90px;
-        overflow:visible!important;
         /*margin-left:4vw;*/
         h1 {
             font-size: 14vw;
@@ -94,15 +93,7 @@
     }
 }
 
-.videos {
-    background: #171717;
-    margin: auto;
 
-    .grid {
-        @include grid-gap(380px, 1.2em);
-        padding: 20px 2vw;
-    }
-}
 
 .categories {
     overflow-y: hidden;
@@ -428,15 +419,15 @@ article {
 
     .owl-dots {
         @include row();
-        margin:auto!important;
-        width:92px;
+        margin: auto !important;
+        width: 92px;
 
         .owl-dot {
             @include border-radius(100%,100%,100%,100%);
             height: 20px !important;
             width: 20px !important;
             background: #505355;
-            margin:0 auto;
+            margin: 0 auto;
             box-shadow: none !important;
         }
 
@@ -446,12 +437,103 @@ article {
     }
 }
 
-.blog {
+#educator {
+    overflow: hidden !important;
 
-    a {
-        width: 320px;
+    * {
+        overflow-y: hidden !important;
     }
 
-    content {
+    p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4; /* number of lines to show */
+        -webkit-box-orient: vertical
+    }
+
+    article {
+        display: flex;
+        padding: 0 !important;
+        height: 440px;
+        width: 320px !important;
+        margin: auto !important;
+
+        h3 {
+            font-weight: 600;
+        }
+
+        img {
+            flex: 1;
+            object-fit: cover;
+            margin: 0;
+        }
+
+        content {
+            flex: 1;
+            padding: 4px 12px;
+        }
+
+        a {
+            font-weight: 600;
+        }
+    }
+}
+
+.uk-sticky {
+    display: block;
+    overflow: visible;
+    height: 0px !important;
+    right: 0px;
+}
+
+#stickies {
+    a:hover {
+        background: #3d3d3d;
+    }
+}
+
+.stickIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #2f2f2f;
+    margin: 10px;
+    margin-left: auto;
+    @include column();
+    @include trans(.2s);
+
+    img {
+        margin: auto;
+    }
+
+    overflow: hidden !important;
+}
+
+@media only screen and (max-device-width: 512px) {
+    .stickIcon {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.rowIcon {
+    z-index: 1000;
+    position: relative;
+    margin-right: auto;
+    margin-left: 60px;
+    padding: 10px;
+
+    a {
+        cursor: pointer;
+    }
+
+    a:hover {
+        @include icon-glow();
+    }
+
+    img {
+        margin-left: 15px;
+        margin-right: 15px;
     }
 }

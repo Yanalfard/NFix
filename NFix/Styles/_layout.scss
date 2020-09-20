@@ -22,7 +22,7 @@
 
 .space-nav-bottom {
     width: 100vw;
-    height: 60px;
+    height: 80px;
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
@@ -41,6 +41,16 @@
 
 /*#region Alignment */
 
+.column {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+}
+
 @mixin column() {
     display: flex;
     -ms-flex-direction: column;
@@ -51,8 +61,14 @@
     align-content: center;
 }
 
-.column {
-    @include column();
+.row {
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
 }
 
 @mixin row() {
@@ -64,11 +80,6 @@
     -webkit-align-content: center;
     align-content: center;
 }
-
-.row {
-    @include row();
-}
-
 
 .fillwidth {
     min-width: 100%;
@@ -89,17 +100,17 @@
     grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
 }
 
-@mixin grid-gap($width , $gap) {
+@mixin grid-gap($width, $gap) {
     display: grid;
     grid-template-rows: auto;
     grid-gap: $gap;
     grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
 }
 
-.clipped{
-    margin-left:auto;
-    margin-right:auto;
-    width:92vw;
+.clipped {
+    margin-left: auto;
+    margin-right: auto;
+    width: 92vw;
 }
 
 .full-width {
@@ -110,10 +121,14 @@
     height: 100vh;
 }
 
-.overflow-visible{
-    overflow:visible!important;
+.overflow-visible {
+    overflow: visible !important;
 }
 
-.overflow-hidden{
-    overflow:hidden!important;
+.overflow-hidden {
+    overflow: hidden !important;
+}
+
+.text-center {
+    text-align: center !important
 }
