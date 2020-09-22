@@ -3,22 +3,6 @@
 @import "_general.scss";
 @import "_layout.scss";
 
-table {
-    td, th {
-        text-align: right !important;
-    }
-
-    caption {
-        text-align: center !important;
-        font-size: 20px !important;
-        font-weight: 500;
-    }
-
-    tr:nth-child(even) {
-        background-color: #1A1A1A;
-    }
-}
-
 $menucomponentColor: #2b2b2b;
 
 .hamburger-button {

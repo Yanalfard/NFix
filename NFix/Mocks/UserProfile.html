@@ -5,23 +5,18 @@
     <title>پروفایل</title>
 
     <!-- Project Css -->
-    <link href="../Styles/Index.min.css" rel="stylesheet" />
+    <link href="../Styles/Profile.min.css" rel="stylesheet" />
 
     <!-- UIkit CSS -->
     <link href="../Styles/UIKit/uikit.min.css" rel="stylesheet" />
-
-    <!--Owl Carousel CSS-->
-    <link href="../Styles/OwlCarousel/owl.carousel.min.css" rel="stylesheet" />
-    <link href="../Styles/OwlCarousel/owl.theme.default.min.css" rel="stylesheet" />
 
     <!-- UIkit JS -->
     <script src="../Scripts/UIKit/uikit.min.js"></script>
     <script src="../Scripts/UIKit/uikit-icons.js"></script>
 
-    <!--Owl Carousel Scripts-->
-    <script src="../Scripts/OwlCarousel/owl.carousel.min.js"></script>
 </head>
 <body>
+
     <!-- #region Nav -->
 
     <nav class="uk-navbar-container " uk-navbar>
@@ -128,7 +123,187 @@
 
     </nav>
 
+    <div class="space-nav-bottom"></div>
+
     <!-- #endregion -->
+    <!-- #region EditModal -->
+
+    <div id="Modal-Edit" uk-modal>
+        <div class="card column">
+            <h2 class="uk-modal-title">
+                ویرایش پروفایل
+            </h2>
+            <div class="row">
+                <div class="column uk-margin-auto-left">
+                    <label>
+                        نام و نام خانوادگی
+                    </label>
+                    <input type="text" value="صدرا محمدی" />
+                    <label>
+                        گذرواژه
+                    </label>
+                    <input type="password" value="ThisIsMyPassword" />
+                </div>
+                <div class="column uk-margin-auto-left">
+                    <label>
+                        نام کاربری
+                    </label>
+                    <input type="text" value="ShockyLemi" />
+                    <label>
+                        رایانامه
+                    </label>
+                    <input type="email" value="Shockylemi@gmail.com" />
+                    <label>
+                        شماره تلفن
+                    </label>
+                    <input type="tel" value="09355932930" />
+                </div>
+            </div>
+            <label>
+                آدرس
+            </label>
+            <textarea>
+                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز
+            </textarea>
+            <label>
+                کد پستی
+            </label>
+            <input type="text" value="1900 - 8970 4 822" />
+            <div class="row uk-margin-top">
+                <button class="uk-modal-close uk-button-default uk-margin-auto-left uk-margin-right" type="button">
+                    بازگشت
+                </button>
+                <button class="uk-modal-close" type="button">
+                    ویرایش
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- #endregion -->
+
+    <content class="column clipped">
+
+        <div class="alternate">
+            <!-- #region Plan -->
+
+            <section class="plan mat column uk-padding ">
+                <h4 class="center uk-margin-bottom">
+                    اشتراک شما
+                </h4>
+                <label class="uk-margin-small-bottom center">
+                    اشتراک 6 ماهه
+                </label>
+                <div class="row uk-margin-bottom center">
+                    <!--<label class="uk-margin-small-right uk-margin-auto-top uk-margin-small-bottom">
+                        روز
+                    </label>
+                    <h1 id="Days" class="uk-margin-remove overflow-hidden">
+                        30
+                    </h1>-->
+                    <div class="progress-ring-container" percentage="64">
+                        <svg class="progress-ring"
+                             width="120"
+                             height="120">
+                            <circle class="progress-ring__circle"
+                                    stroke="white"
+                                    stroke-width="4"
+                                    fill="transparent"
+                                    r="56"
+                                    cx="60"
+                                    cy="60" />
+                        </svg>
+                        <div class="text">
+                            <div class="column">
+                                <p>
+                                    31
+                                </p>
+                                <label>
+                                    روز
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="uk-margin-auto-top center">
+                    تمدید
+                </button>
+            </section>
+
+            <!-- #endregion -->
+            <div class="gap"></div>
+            <!-- #region Profile -->
+
+            <section class="profile mat column uk-padding">
+                <h4>
+                    اطلاعات حساب
+                </h4>
+                <div class="row">
+                    <div class="column uk-margin-auto-left">
+                        <label>
+                            نام کاربری
+                        </label>
+                        <h5>
+                            ShockyLemi
+                        </h5>
+
+                    </div>
+                    <div class="column uk-margin-auto-left">
+                        <label>
+                            رایانامه
+                        </label>
+                        <h5>
+                            Shockylemi@gmail.com
+                        </h5>
+                        <label>
+                            کد دعوت شما
+                        </label>
+                        <h5>
+                            166cEd85
+                        </h5>
+                    </div>
+                </div>
+                <button class="uk-margin-auto-left uk-margin-auto-top" type="button" uk-toggle="target: #Modal-Edit">
+                    ویرایش
+                </button>
+            </section>
+
+            <!-- #endregion -->
+        </div>
+
+        <h4 class="uk-margin-remove-bottom">
+            سابقه خرید شما
+        </h4>
+
+        <table class="uk-table uk-table-striped uk-table-divider">
+            <thead>
+                <tr>
+                    <th>Table Heading</th>
+                    <th>Table Heading</th>
+                    <th>Table Heading</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Table Data</td>
+                    <td>Table Data</td>
+                    <td>Table Data</td>
+                </tr>
+                <tr>
+                    <td>Table Data</td>
+                    <td>Table Data</td>
+                    <td>Table Data</td>
+                </tr>
+                <tr>
+                    <td>Table Data</td>
+                    <td>Table Data</td>
+                    <td>Table Data</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </content>
+
     <!-- #region footer -->
 
     <footer class="column uk-margin-large-top">
@@ -152,6 +327,23 @@
 
     <!-- #endregion -->
 
+    <script>
+        var circle = document.getElementsByClassName('progress-ring__circle')[0];
+        var radius = circle.r.baseVal.value;
+        var circumference = radius * 2 * Math.PI;
+
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        circle.style.strokeDashoffset = `${circumference}`;
+
+        function setProgress(percent) {
+            const offset = circumference - percent / 100 * circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+
+        const percentage = document.getElementsByClassName('progress-ring-container')[0].getAttribute("percentage");
+        setProgress(parseInt(percentage));
+
+    </script>
 
 </body>
 </html>

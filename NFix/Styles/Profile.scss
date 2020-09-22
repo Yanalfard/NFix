@@ -2,3 +2,111 @@
 @import "_controls.scss";
 @import "_general.scss";
 @import "_layout.scss";
+
+$Gap-Amount: 28px;
+
+
+#Modal-Edit {
+    overflow: visible !important;
+
+    * {
+        overflow: visible !important;
+    }
+
+    label {
+        margin-bottom: 6px;
+    }
+
+    input, textarea {
+        margin-bottom: 12px;
+    }
+
+    textarea {
+        min-height: 42px;
+    }
+}
+
+h5 {
+    margin-top: 4px !important;
+}
+
+content {
+    overflow: visible !important;
+}
+
+.alternate {
+    @include row();
+    overflow: visible !important;
+
+    .profile {
+        flex: 3;
+    }
+
+    .gap {
+        width: $Gap-Amount;
+    }
+
+    .plan {
+        flex: 1;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .alternate {
+        @include column();
+
+        .gap {
+            height: $Gap-Amount;
+        }
+    }
+}
+
+@media only screen and (max-device-width : 480px) {
+    .alternate {
+        @include column();
+
+        .gap {
+            height: $Gap-Amount;
+        }
+    }
+}
+
+
+.progress-ring-container {
+    display: flex;
+
+    .progress-ring {
+
+        .progress-ring__circle {
+            stroke: $primary;
+            transition: 0.35s stroke-dashoffset;
+            // axis compensation
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    }
+
+    .text {
+        position: absolute;
+        height: 120px;
+        width: 120px;
+        display: flex;
+
+        .column {
+            margin: auto !important;
+
+            p {
+                width: 120px;
+                text-align: center !important;
+                font-size: 50px;
+                margin: 0 !important;
+            }
+
+            label {
+                margin: 0 auto !important;
+                margin-top: -16px !important;
+                margin-bottom: 12px !important;
+            }
+        }
+    }
+}
