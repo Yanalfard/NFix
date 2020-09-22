@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>پروفایل</title>
+
+    <!-- Project Css -->
+    <link href="../Styles/Index.min.css" rel="stylesheet" />
+
+    <!-- UIkit CSS -->
+    <link href="../Styles/UIKit/uikit.min.css" rel="stylesheet" />
+
+    <!--Owl Carousel CSS-->
+    <link href="../Styles/OwlCarousel/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../Styles/OwlCarousel/owl.theme.default.min.css" rel="stylesheet" />
+
+    <!-- UIkit JS -->
+    <script src="../Scripts/UIKit/uikit.min.js"></script>
+    <script src="../Scripts/UIKit/uikit-icons.js"></script>
+
+    <!--Owl Carousel Scripts-->
+    <script src="../Scripts/OwlCarousel/owl.carousel.min.js"></script>
+</head>
+<body>
+    <!-- #region Nav -->
+
+    <nav class="uk-navbar-container " uk-navbar>
+
+        <div class="uk-navbar-left uk-margin-small-left">
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a href="#" uk-toggle="target: #ModalLogin" type="button">
+                        ثبت نام
+                    </a>
+
+                    <!-- #region Register -->
+                    <!--name-->
+                    <!--tell-->
+                    <!--user-->
+                    <!--pass-->
+
+                    <div id="ModalRegister" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <div class="row">
+                                <img src="../Resources/Png/LoginImage.png" alt="" />
+                                <content class="column uk-padding-remove-bottom">
+                                    <h3>
+                                        ثبت نام
+                                    </h3>
+                                    <label>
+                                        نام و نام خانوادگی
+                                    </label>
+                                    <input class="uk-margin-small-top" type="text" value="" />
+                                    <label class="uk-margin-top">
+                                        شماره تلفن
+                                    </label>
+                                    <input class="uk-margin-small-top" type="text" value="" />
+                                    <div class="row uk-margin-medium-top">
+                                        <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
+                                           onclick="UIkit.modal(document.getElementById('ModalLogin')).show();">ورود</a>
+                                        <button class="
+
+                                                uk-margin-remove-bottom">
+                                            گذرواژه
+                                        </button>
+                                    </div>
+                                </content>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- #endregion -->
+                    <!-- #region Login -->
+                    <div id="ModalLogin" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <div class="row">
+                                <img src="../Resources/Png/LoginImage.png" alt="" />
+                                <content class="column uk-padding-remove-bottom">
+                                    <h3>
+                                        ورود
+                                    </h3>
+                                    <label>
+                                        نام کاربری
+                                    </label>
+                                    <input class="uk-margin-small-top" type="text" value="" />
+                                    <label class="uk-margin-top">
+                                        رمز عبور
+                                    </label>
+                                    <input class="uk-margin-small-top" type="text" value="" />
+                                    <div class="row uk-margin-medium-top">
+                                        <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
+                                           onclick="UIkit.modal(document.getElementById('ModalRegister')).show();">ثبت نام</a>
+                                        <button class=" uk-margin-remove-bottom ">
+                                            ورود
+                                        </button>
+                                    </div>
+                                </content>
+                            </div>
+                        </div>
+                    </div>
+                    <!--#endregion-->
+                </li>
+                <li>
+                    <form class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left">
+                        <a href="" uk-search-icon></a>
+                        <input class="uk-search-input" type="search" dir="rtl" placeholder="جستجو...">
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+        <div class="uk-navbar-right uk-margin-small-right">
+            <ul class="uk-navbar-nav">
+                <li><a href="#">درباره ما</a></li>
+                <li><a href="#">وبلاگ</a></li>
+                <li><a href="#">مربیان</a></li>
+                <li>
+                    <a href="#" mode="click" type="button">ویدیو</a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <img src="../Resources/Svg/NFIX.svg" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <!-- #endregion -->
+    <!-- #region footer -->
+
+    <footer class="column uk-margin-large-top">
+        <a href="#top" class="pill uk-card center uk-border-rounded">
+            <span uk-icon="icon:chevron-up ; ratio:2"></span>
+        </a>
+        <div class="row">
+            <div class="contacts">
+
+            </div>
+            <div class="links">
+
+            </div>
+            <div class="map">
+
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-stripe"></div>
+
+    <!-- #endregion -->
+
+
+</body>
+</html>

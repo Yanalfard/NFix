@@ -26,5 +26,9 @@
   {
     "outputFile": "Styles/Video.css",
     "inputFile": "Styles/Video.scss"
+  },
+  {
+    "outputFile": "Styles/Profile.css",
+    "inputFile": "Styles/Profile.scss"
   }
 ]

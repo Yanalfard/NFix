@@ -255,6 +255,7 @@ backdrop-filter: saturate(80%);
   padding: 0;
   float: none;
   overflow-x: hidden;
+  /*    font-family: 'A Iranian Sans', 'numbers','Segoe UI';*/
   font-family: 'Segoe UI';
   text-decoration: none;
   text-align: right;
@@ -636,7 +637,7 @@ button:active {
 hr {
   border-top: dashed #3E3E3E 1px !important; }
 
-input[type=text] {
+input[type=text], textarea {
   outline: none;
   padding: 4px 6px;
   border: #464646 1px solid;
@@ -650,12 +651,19 @@ input[type=text] {
   -webkit-border-radius: 0 0 0 0;
   border-radius: 0 0 0 0; }
 
-input[type=text]:focus {
+input[type=text]:focus, textarea:focus {
   -moz-transition: all ease 0.2s;
   -o-transition: all ease 0.2s;
   -webkit-transition: all ease 0.2s;
   transition: all ease 0.2s;
   border: #E73434 1px solid; }
+
+textarea {
+  min-height: 28px;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  -webkit-transition: none !important;
+  transition: none !important; }
 
 /*#region name*/
 /*#endregion */
@@ -792,6 +800,7 @@ backdrop-filter: saturate(80%);
   padding: 0;
   float: none;
   overflow-x: hidden;
+  /*    font-family: 'A Iranian Sans', 'numbers','Segoe UI';*/
   font-family: 'Segoe UI';
   text-decoration: none;
   text-align: right;
@@ -1002,11 +1011,20 @@ backdrop-filter: saturate(80%);
   width: 96vw;
   margin: 0 auto; }
   .alternate > aside {
-    padding-right: 28px; }
+    padding-right: 28px;
+    margin-bottom: auto; }
     .alternate > aside .video {
-      margin-bottom: 16px; }
+      margin-bottom: 20px; }
   .alternate > content {
     flex: 1; }
+    .alternate > content .video-playback {
+      background: #1C1C1C;
+      width: 100%;
+      height: auto; }
+    .alternate > content .media {
+      background: #1C1C1C; }
+      .alternate > content .media a {
+        margin-left: 8px; }
     .alternate > content .uk-comment {
       padding: 16px;
       background: #1C1C1C;
@@ -1033,14 +1051,17 @@ backdrop-filter: saturate(80%);
       display: none;
       width: 100vw; } }
 
-.textbox-bulk-btn {
-  margin: auto !important; }
-
-.textbox-bulk-btn:hover {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none; }
+@media only screen and (max-device-width: 864px) {
+  .alternate {
+    width: 90vw; }
+    .alternate > aside {
+      display: none;
+      width: 100vw; } }
 
 .textbox-bulk-txt {
-  background: #5B5B5B;
-  width: 100%; }
+  background: #1E1E1E;
+  width: auto !important;
+  flex: auto; }
+
+.uk-tooltip {
+  background: #404040 !important; }

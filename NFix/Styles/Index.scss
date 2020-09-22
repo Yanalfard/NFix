@@ -427,7 +427,7 @@ article {
             height: 20px !important;
             width: 20px !important;
             background: #505355;
-            margin: 0 auto;
+            margin: 50px auto;
             box-shadow: none !important;
         }
 
@@ -488,22 +488,33 @@ article {
 }
 
 #stickies {
+    margin-top: -24px;
+
     a:hover {
         background: #3d3d3d;
     }
 }
 
+.animated-bubble {
+    width: 68px !important;
+    margin-right:12px;
+}
+
 .stickIcon {
-    width: 50px;
-    height: 50px;
+    width: 38px;
+    height: 38px;
+    padding: 4px;
     border-radius: 50%;
     background: #2f2f2f;
     margin: 10px;
     margin-left: auto;
+    margin-right: 24px;
     @include column();
     @include trans(.2s);
 
     img {
+        height: 24px;
+        width: 24px;
         margin: auto;
     }
 
@@ -537,3 +548,4 @@ article {
         margin-right: 15px;
     }
 }
+

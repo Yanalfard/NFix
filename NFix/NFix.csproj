@@ -190,6 +190,8 @@
     <Content Include="Mocks\Category.html" />
     <Content Include="Mocks\Index.html" />
     <Content Include="Mocks\test.html" />
+    <Content Include="Mocks\TutorView.html" />
+    <Content Include="Mocks\UserProfile.html" />
     <Content Include="Mocks\Videos.html" />
     <Content Include="Mocks\VideoUpload.html" />
     <Content Include="Mocks\VideoView.html" />
@@ -203,8 +205,21 @@
     <Content Include="Resources\Png\Categories\Gymn.png" />
     <Content Include="Resources\Png\LoginImage.png" />
     <Content Include="Resources\Png\Man.png" />
+    <Content Include="Resources\Svg\3.svg" />
+    <Content Include="Resources\Svg\Admin\admin_blog_add.svg" />
+    <Content Include="Resources\Svg\Admin\admin_blog_nor.svg" />
+    <Content Include="Resources\Svg\Admin\admin_video_add.svg" />
+    <Content Include="Resources\Svg\Admin\admin_video_nor.svg" />
+    <Content Include="Resources\Svg\AnimatedBubble.svg" />
+    <Content Include="Resources\Svg\asdfwe01.svg" />
+    <Content Include="Resources\Svg\asdfwe02.svg" />
+    <Content Include="Resources\Svg\asdfwe03.svg" />
+    <Content Include="Resources\Svg\asdfwe04.svg" />
     <Content Include="Resources\Svg\Buiscuits\Poly_1.svg" />
+    <Content Include="Resources\Svg\Formula.svg" />
     <Content Include="Resources\Svg\NFIX.svg" />
+    <Content Include="Resources\Svg\Unio2n.svg" />
+    <Content Include="Resources\Svg\Union.svg" />
     <Content Include="Scripts\Jquery\jquery-3.5.1.js" />
     <Content Include="Scripts\Jquery\jquery-3.5.1.min.js" />
     <Content Include="Scripts\Jquery\jquery-3.5.1.slim.js" />
@@ -288,6 +303,7 @@
     <Content Include="Styles\about.scss" />
     <Content Include="Styles\blogs.scss" />
     <Content Include="Styles\Video.scss" />
+    <Content Include="Styles\Profile.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

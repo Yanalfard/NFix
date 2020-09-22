@@ -305,7 +305,7 @@ hr {
     border-top: dashed #3E3E3E 1px !important;
 }
 
-input[type=text] {
+input[type=text], textarea {
     outline: none;
     padding: 4px 6px;
     border: #464646 1px solid;
@@ -315,8 +315,15 @@ input[type=text] {
     @include border-radius(0,0,0,0);
 }
 
-input[type=text]:focus {
+input[type=text]:focus, textarea:focus {
     @include trans(.2s);
     border: $primary-light 1px solid;
 }
 
+textarea {
+    min-height: 28px;
+    -moz-transition: none!important;
+    -o-transition: none!important;
+    -webkit-transition: none!important;
+    transition: none!important;
+}

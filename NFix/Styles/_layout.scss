@@ -41,16 +41,6 @@
 
 /*#region Alignment */
 
-.column {
-    display: flex;
-    -ms-flex-direction: column;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    -ms-align-content: center;
-    -webkit-align-content: center;
-    align-content: center;
-}
-
 @mixin column() {
     display: flex;
     -ms-flex-direction: column;
@@ -61,14 +51,8 @@
     align-content: center;
 }
 
-.row {
-    display: flex;
-    -ms-flex-direction: row;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -ms-align-content: center;
-    -webkit-align-content: center;
-    align-content: center;
+.column {
+    @include column();
 }
 
 @mixin row() {
@@ -80,6 +64,12 @@
     -webkit-align-content: center;
     align-content: center;
 }
+
+.row {
+    @include row();
+}
+
+
 
 .fillwidth {
     min-width: 100%;

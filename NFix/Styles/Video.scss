@@ -10,9 +10,10 @@
 
     > aside {
         padding-right: 28px;
+        margin-bottom: auto;
 
         .video {
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
     }
 
@@ -20,6 +21,20 @@
         flex: 1;
 
         .video-playback {
+            background: $CommentBackground;
+            width: 100%;
+            height: auto;
+        }
+
+        .media {
+            background: $CommentBackground;
+
+            .view-count {
+            }
+
+            a {
+                margin-left: 8px;
+            }
         }
 
         .uk-comment {
@@ -49,11 +64,6 @@
                 width: 52px;
             }
         }
-
-        .media {
-            .view-count {
-            }
-        }
     }
 }
 
@@ -68,20 +78,30 @@
     }
 }
 
-.textbox-bulk {
+@media only screen and (max-device-width : 864px) {
+    .alternate {
+        width: 90vw;
 
-    &-btn {
-        margin: auto !important;
+        > aside {
+            display: none;
+            width: 100vw;
+        }
     }
+}
 
-    &-btn:hover {
-        -moz-box-shadow: none;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-    }
+.textbox-bulk-txt {
+    background: #1E1E1E;
+    width: auto !important;
+    flex: auto;
+}
 
-    &-txt {
-        background: $black-mid;
-        width: 100%;
+.uk-tooltip {
+    background: $black !important;
+}
+
+.uk-comment {
+    .uk-comment-body{
+        p{
+        }
     }
 }

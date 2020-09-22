@@ -4,5 +4,5 @@
 
     const txt = document.getElementById(inputId);
 
-    txt.innerText = String(weight / Math.pow(height, 2)).slice(0,5);
+    txt.innerText = (weight / ((height / 100) * (height / 100))).toString().slice(0,4);
 }

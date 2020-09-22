@@ -255,6 +255,7 @@ backdrop-filter: saturate(80%);
   padding: 0;
   float: none;
   overflow-x: hidden;
+  /*    font-family: 'A Iranian Sans', 'numbers','Segoe UI';*/
   font-family: 'Segoe UI';
   text-decoration: none;
   text-align: right;
@@ -636,7 +637,7 @@ button:active {
 hr {
   border-top: dashed #3E3E3E 1px !important; }
 
-input[type=text] {
+input[type=text], textarea {
   outline: none;
   padding: 4px 6px;
   border: #464646 1px solid;
@@ -650,12 +651,19 @@ input[type=text] {
   -webkit-border-radius: 0 0 0 0;
   border-radius: 0 0 0 0; }
 
-input[type=text]:focus {
+input[type=text]:focus, textarea:focus {
   -moz-transition: all ease 0.2s;
   -o-transition: all ease 0.2s;
   -webkit-transition: all ease 0.2s;
   transition: all ease 0.2s;
   border: #E73434 1px solid; }
+
+textarea {
+  min-height: 28px;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  -webkit-transition: none !important;
+  transition: none !important; }
 
 /*#region name*/
 /*#endregion */
@@ -792,6 +800,7 @@ backdrop-filter: saturate(80%);
   padding: 0;
   float: none;
   overflow-x: hidden;
+  /*    font-family: 'A Iranian Sans', 'numbers','Segoe UI';*/
   font-family: 'Segoe UI';
   text-decoration: none;
   text-align: right;
@@ -1027,15 +1036,11 @@ table tr:nth-child(even) {
 
 .menuComponent {
   background: #2b2b2b;
-  width: 280px;
   left: 0;
   right: 0;
   padding: 10px;
   margin-top: 12px;
   overflow: hidden; }
-
-#menu {
-  width: 280px; }
 
 .uk-offcanvas-bar {
   padding: 70px 0 !important; }
@@ -1046,19 +1051,6 @@ a:hover {
 a.plus {
   margin-right: auto;
   margin-left: 26px; }
-
-.see {
-  height: 40px;
-  width: 140px;
-  margin: auto 30px 30px auto;
-  overflow: hidden;
-  text-align: center; }
-
-.myVideo {
-  width: 100%;
-  height: 200px;
-  background: #2b2b2b;
-  margin-top: 50px; }
 
 .uk-accordion {
   margin-bottom: 0; }
@@ -1073,9 +1065,6 @@ a.plus {
   margin-top: 14px !important; }
   .uk-accordion-content li {
     margin-bottom: 8px; }
-
-.baseDiv {
-  padding: 50px; }
 
 @media only screen and (max-device-width: 600px) {
   .uk-offcanvas-bar {
