@@ -266,8 +266,8 @@ footer {
 table {
     border: 1px solid #0D0D0D;
 
-    thead {
-        background-color: #1A1A1A !important;
+    thead, tfoot {
+        background-color: #212121 !important;
     }
 
     td, th {
@@ -280,14 +280,14 @@ table {
         font-weight: 500;
     }
 
-    tr:nth-child(even) {
-        border-color: #0D0D0D !important;
-        background-color: #141414 !important;
-    }
+    tbody {
+        tr:nth-child(even) {
+            background-color: #141414 !important;
+        }
 
-    tr:nth-child(odd) {
-        border-color: #0D0D0D !important;
-        background-color: #1A1A1A !important;
+        tr:nth-child(odd) {
+            background-color: #1A1A1A !important;
+        }
     }
 }
 

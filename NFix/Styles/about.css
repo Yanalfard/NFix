@@ -581,19 +581,17 @@ footer {
 /*#endregion */
 table {
   border: 1px solid #0D0D0D; }
-  table thead {
-    background-color: #1A1A1A !important; }
+  table thead, table tfoot {
+    background-color: #212121 !important; }
   table td, table th {
     text-align: right !important; }
   table caption {
     text-align: center !important;
     font-size: 20px !important;
     font-weight: 500; }
-  table tr:nth-child(even) {
-    border-color: #0D0D0D !important;
+  table tbody tr:nth-child(even) {
     background-color: #141414 !important; }
-  table tr:nth-child(odd) {
-    border-color: #0D0D0D !important;
+  table tbody tr:nth-child(odd) {
     background-color: #1A1A1A !important; }
 
 .owl-carousel {
