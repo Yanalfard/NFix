@@ -142,6 +142,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\User\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\BlogCommentRelController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -175,6 +179,16 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\User\Views\web.config" />
+    <Content Include="Areas\User\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\VideoTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\VideoAdder.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\BlogTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\BlogAdder.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -208,6 +222,15 @@
     <Content Include="Resources\Svg\3.svg" />
     <Content Include="Resources\Svg\Admin\admin_blog_add.svg" />
     <Content Include="Resources\Svg\Admin\admin_blog_nor.svg" />
+    <Content Include="Resources\Svg\Admin\admin_dashboard.svg" />
+    <Content Include="Resources\Svg\Admin\admin_home.svg" />
+    <Content Include="Resources\Svg\Admin\admin_orders.svg" />
+    <Content Include="Resources\Svg\Admin\admin_products.svg" />
+    <Content Include="Resources\Svg\Admin\admin_product_add.svg" />
+    <Content Include="Resources\Svg\Admin\admin_tutor_add.svg" />
+    <Content Include="Resources\Svg\Admin\admin_tutor_nor.svg" />
+    <Content Include="Resources\Svg\Admin\admin_user_add.svg" />
+    <Content Include="Resources\Svg\Admin\admin_user_nor.svg" />
     <Content Include="Resources\Svg\Admin\admin_video_add.svg" />
     <Content Include="Resources\Svg\Admin\admin_video_nor.svg" />
     <Content Include="Resources\Svg\AnimatedBubble.svg" />
@@ -215,7 +238,7 @@
     <Content Include="Resources\Svg\asdfwe02.svg" />
     <Content Include="Resources\Svg\asdfwe03.svg" />
     <Content Include="Resources\Svg\asdfwe04.svg" />
-    <Content Include="Resources\Svg\Buiscuits\Poly_1.svg" />
+    <Content Include="Resources\Svg\Biscuits\Poly_1.svg" />
     <Content Include="Resources\Svg\Formula.svg" />
     <Content Include="Resources\Svg\NFIX.svg" />
     <Content Include="Resources\Svg\Unio2n.svg" />
@@ -310,9 +333,16 @@
     <Content Include="Styles\blogs.scss" />
     <Content Include="Styles\Video.scss" />
     <Content Include="Styles\Profile.scss" />
+    <Content Include="Views\Shared\_VideoBlock.cshtml" />
+    <Content Include="Views\Shared\_ProductBlock.cshtml" />
+    <Content Include="Views\Shared\_BlogBlock.cshtml" />
+    <Content Include="Views\Home\VideoView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\User\Data\" />
+    <Folder Include="Areas\User\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

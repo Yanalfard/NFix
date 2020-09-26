@@ -1,31 +1,489 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "NFix";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<!--  -->
+<!-- #region Hero -->
+
+<section class="hero column">
+    <header class="column uk-margin-auto-right">
+        <h1 class="uk-margin-remove-bottom"><span>N</span>FIX</h1>
+        <hr class="uk-margin-remove" />
+        <p class="uk-margin-small-top">Proffesional Fitness App</p>
+        <button class="button-outline uk-button uk-button-default uk-margin-small-top">
+            <span class="uk-icon" uk-icon="icon:download"></span>
+            <span>
+                Download
+            </span>
+        </button>
+    </header>
+    <!--icons in header-->
+    <div class="rowIcon row uk-margin-auto-top">
+        <a href="#">
+            <img src="../Resources/Svg/Union.svg" />
+        </a>
+        <a href="#">
+            <img src="../Resources/Svg/Unio2n.svg" />
+        </a>
+        <a href="#">
+            <img src="../Resources/Svg/asdfwe03.svg" />
+        </a>
+    </div>
+    <!---->
+    <a href="#videos" uk-icon="icon:chevron-down; ratio:2.5"
+       class="uk-icon center"></a>
+    <a href="../Resources/Png/Man.png" uk-icon="icon: play-circle; ratio: 2"
+       class="player uk-icon uk-margin-small-right"></a>
+</section>
+<div class="man"></div>
+
+<!-- #endregion -->
+<a name="videos"></a>
+
+<!-- #region Stripe -->
+<div class="stripe row">
+    <h4>Lorem</h4>
+    <h4>Ipsum</h4>
+    <h4>Dolor</h4>
+    <h4>Set</h4>
+</div>
+<!-- #endregion -->
+<!--#region Sticky icons-->
+<div id="stickies" class="column" uk-sticky="offset:250">
+    <img class="animated-bubble" src="../Resources/Svg/AnimatedBubble.svg" />
+    <a href="#" class="stickIcon"><img src="../Resources/Svg/asdfwe01.svg" /></a>
+    <a href="#" class="stickIcon"><img src="../Resources/Svg/asdfwe04.svg" /></a>
+    <a href="#" class="stickIcon"><img src="../Resources/Svg/asdfwe03.svg" /></a>
+    <a href="#" class="stickIcon"><img src="../Resources/Svg/Unio2n.svg" /></a>
+</div>
+<!--#endregion-->
+<!-- #region Videos -->
+
+<section class="videos ">
+    <div class="space-half"></div>
+    <h3 class="clipped text-center">ویدیو های اخیر</h3>
+
+    <content class="grid" dir="rtl">
+
+        @*Foreach Here*@
+
+        @Html.Partial("_VideoBlock")
+        @Html.Partial("_VideoBlock")
+        @Html.Partial("_VideoBlock")
+        @Html.Partial("_VideoBlock")
+        @Html.Partial("_VideoBlock")
+        @Html.Partial("_VideoBlock")
+        @Html.Partial("_VideoBlock")
+
+    </content>
+</section>
+
+<!-- #endregion -->
+
+<img class="full-width" src="../Resources/Svg/Biscuits/Poly_1.svg" />
+
+<!-- #region Categories -->
+
+<h3 class="clipped uk-margin-medium-top text-center">دسته بندی ها</h3>
+
+<section class="categories clipped uk-margin-auto uk-margin-medium-bottom">
+    <a href="" class="category">
+        <img src="https://picsum.photos/220" alt="" />
+    </a>
+    <a href="" class="category">
+        <img src="https://picsum.photos/220" alt="" />
+    </a>
+    <a href="" class="category">
+        <img src="https://picsum.photos/220" alt="" />
+    </a>
+    <a href="" class="category">
+        <img src="https://picsum.photos/220" alt="" />
+    </a>
+    <a href="" class="category">
+        <img src="https://picsum.photos/220" alt="" />
+    </a>
+    <a href="" class="category">
+        <img src="https://picsum.photos/220" alt="" />
+    </a>
+    <a href="" class="category">
+        <img src="https://picsum.photos/220" alt="" />
+    </a>
+    <a href="" class="category">
+        <img src="https://picsum.photos/220" alt="" />
+    </a>
+    <a href="" class="category">
+        <img src="https://picsum.photos/220" alt="" />
+    </a>
+    <a href="" class="category">
+        <img src="https://picsum.photos/220" alt="" />
+    </a>
+</section>
+
+<!-- #endregion -->
+
+<section class="category-article row card uk-margin-top">
+    <img src="../Resources/Png/Categories/BodyB.png" alt="" />
+    <article>
+        <h3>لورم ایپسوم متن</h3>
+        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+        <br />
+        <ul>
+            <li><a href="#">آیتم آیتم</a></li>
+            <li><a href="#">آیتم آیتم</a></li>
+            <li><a href="#">آیتم آیتم</a></li>
+        </ul>
+    </article>
+</section>
+
+<div class="space"></div>
+
+<!-- #region Banner -->
+
+<section class="banner row">
+    <content class="column uk-padding">
+        <h3 class="uk-margin-remove">درباره فیتنس</h3>
+        <p>
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها
+        </p>
+        <button dir="rtl" class="uk-margin-auto-right">بیشتر...</button>
+    </content>
+    <img src="../Resources/Png/BodyBuilding.png" class="" alt="" />
+</section>
+
+
+<!-- #endregion -->
+
+<h3 class="clipped uk-margin-medium-top text-center">مربیان</h3>
+
+<!-- #region Tutors -->
+
+
+<ul id="tutors" class="tutors owl-carousel uk-margin-small-top">
+    <li>
+        <a href="" class=" card uk-padding row">
+            <content>
+                <h3>مربی4</h3>
+                <h5>
+                    لورم ایپسوم متن
+                </h5>
+            </content>
+            <img src="../Resources/Png/Categories/Box.png" alt="" />
+        </a>
+    </li>
+    <li>
+        <a href="" class="card uk-padding row">
+            <content>
+                <h3>مربی4</h3>
+                <h5>
+                    لورم ایپسوم متن
+                </h5>
+            </content>
+            <img src="../Resources/Png/Categories/Box.png" alt="" />
+        </a>
+    </li>
+    <li>
+        <a href="" class="card uk-padding row">
+            <content>
+                <h3>مربی4</h3>
+                <h5>
+                    لورم ایپسوم متن
+                </h5>
+            </content>
+            <img src="../Resources/Png/Categories/Box.png" alt="" />
+        </a>
+    </li>
+    <li>
+        <a href="" class="card uk-padding row">
+            <content>
+                <h3>مربی4</h3>
+                <h5>
+                    لورم ایپسوم متن
+                </h5>
+            </content>
+            <img src="../Resources/Png/Categories/Box.png" alt="" />
+        </a>
+    </li>
+    <li>
+        <a href="" class="card uk-padding row">
+            <content>
+                <h3>مربی4</h3>
+                <h5>
+                    لورم ایپسوم متن
+                </h5>
+            </content>
+            <img src="../Resources/Png/Categories/Box.png" alt="" />
+        </a>
+    </li>
+    <li>
+        <a href="" class="card uk-padding row">
+            <content>
+                <h3>مربی4</h3>
+                <h5>
+                    لورم ایپسوم متن
+                </h5>
+            </content>
+            <img src="../Resources/Png/Categories/Box.png" alt="" />
+        </a>
+    </li>
+    <li>
+        <a href="" class="card uk-padding row">
+            <content>
+                <h3>مربی4</h3>
+                <h5>
+                    لورم ایپسوم متن
+                </h5>
+            </content>
+            <img src="../Resources/Png/Categories/Box.png" alt="" />
+        </a>
+    </li>
+    <li>
+        <a href="" class="card uk-padding row">
+            <content>
+                <h3>مربی4</h3>
+                <h5>
+                    لورم ایپسوم متن
+                </h5>
+            </content>
+            <img src="../Resources/Png/Categories/Box.png" alt="" />
+        </a>
+    </li>
+    <li>
+        <a href="" class="card uk-padding row">
+            <content>
+                <h3>مربی4</h3>
+                <h5>
+                    لورم ایپسوم متن
+                </h5>
+            </content>
+            <img src="../Resources/Png/Categories/Box.png" alt="" />
+        </a>
+    </li>
+    <li>
+        <a href="" class="card uk-padding row">
+            <content>
+                <h3>مربی4</h3>
+                <h5>
+                    لورم ایپسوم متن
+                </h5>
+            </content>
+            <img src="../Resources/Png/Categories/Box.png" alt="" />
+        </a>
+    </li>
+</ul>
+
+
+<!-- #endregion -->
+
+<h3 class="clipped uk-margin-medium-top uk-margin-remove-bottom text-center">محصولات</h3>
+
+<!-- #region Products -->
+
+<div id="product" dir="ltr" class="clipped uk-margin-auto owl-carousel uk-margin-small-top">
+    @Html.Partial("_ProductBlock")
+    @Html.Partial("_ProductBlock")
+    @Html.Partial("_ProductBlock")
+    @Html.Partial("_ProductBlock")
+    @Html.Partial("_ProductBlock")
+    @Html.Partial("_ProductBlock")
+    @Html.Partial("_ProductBlock")
+    @Html.Partial("_ProductBlock")
+    @Html.Partial("_ProductBlock")
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+<!-- #endregion -->
+
+<div class="space-half"></div>
+
+<div class="calculator full-width row">
+    <div class="column card center">
+        <h5>
+            محاسبه شاخص توده بدنی
+        </h5>
+        <!--<label>سن</label>
+        <input id="txtAge" type="text" value="" />-->
+        <label>قد</label>
+        <input id="txtHeight" type="text" value="" placeholder="cm" />
+        <label>وزن</label>
+        <input id="txtWeight" type="text" value="" placeholder="kg" />
+        <div class="row">
+            <a href="#BMIModal" class="uk-margin-auto-top" uk-toggle>
+                <span>شاخص توده بدنی</span>
+            </a>
+            <!-- This is the modal -->
+            <div id="BMIModal" uk-modal>
+                <div class="card">
+                    <h2 class=" uk-modal-title">جدول شاخص توده بدنی</h2>
+                    <div class="row">
+                        <img src="../Resources/Svg/Formula.svg" class="uk-margin-auto" />
+                        <ul class="uk-list uk-margin-auto-left" dir="rtl">
+                            <li>- کمتراز 15 معادل کمبود وزن بسیار شدید</li>
+                            <li>- کمتراز 16 و بیشتراز 15 معادل کمبود وزن شدید</li>
+                            <li>- درمحدوده 16 تا 18.5 بمعنی کمبود وزن</li>
+                            <li>- بین 18.5 و 25 بمعنی وزن طبیعی و نرمال</li>
+                            <li>- بیشتراز 25 و کمتراز 30 شخص دارای اضافه وزن</li>
+                            <li>- درمحدوده 30 و 35 نشانگر چاقی معمولی (چاقی نوع اول)</li>
+                            <li>- بین 35 و 40 نشان دهنده چاقی شدید (چاقی نوع دوم)</li>
+                            <li>- بیشتر از 40 شخص دارای چاقی بسیار شدید (چاقی نوع سوم)</li>
+                        </ul>
+                    </div>
+                    <button type="button" onclick="UIkit.modal(document.getElementById('BMIModal')).hide();">
+                        باشه
+                    </button>
+                </div>
+            </div>
+            <button class="uk-margin-auto-left uk-margin-top" onclick="Calculate('bmi')">
+                <span uk-icon="right"></span>
+                <span>نتیجه</span>
+            </button>
+        </div>
+
+        <hr />
+
+        <div class="row" dir="rtl">
+            <span>شاخص توده بدنی شما:</span>
+            <span id="bmi" class="uk-margin-small-right"></span>
+        </div>
     </div>
 </div>
+
+<div class="space-double"></div>
+
+<!-- #region Banner -->
+
+<a href="#" class="image-banner column">
+    <div class="column">
+        <h2>
+            HELLo
+        </h2>
+        <h4>
+            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
+        </h4>
+    </div>
+    <div class="cover"></div>
+    <img src="/Resources/Png/Man.png" alt="" />
+
+</a>
+
+
+<!-- #endregion -->
+
+<div class="space"></div>
+
+<h3 class="clipped uk-margin-medium-top text-center">وبلاگ ها  </h3>
+
+<!-- #region Blogs -->
+
+<div id="blogs" class="clipped row uk-margin-auto owl-carousel uk-margin-remove-top">
+    @Html.Partial("_BlogBlock")
+    @Html.Partial("_BlogBlock")
+    @Html.Partial("_BlogBlock")
+    @Html.Partial("_BlogBlock")
+    @Html.Partial("_BlogBlock")
+    @Html.Partial("_BlogBlock")
+    @Html.Partial("_BlogBlock")
+    @Html.Partial("_BlogBlock")
+</div>
+
+<!-- #endregion -->
+
+<div class="space"></div>
+
+
+<script>
+
+    let duration = 1400;
+    window.sr = ScrollReveal();
+    sr.reveal('.man', {
+        duration: duration,
+        origin: 'bottom',
+        distance: '72px',
+        opacity: 1,
+    });
+    sr.reveal('#stickies', {
+        duration: duration,
+        origin: 'right',
+        distance: '72px',
+        opacity: 1,
+    });
+
+    $('#product').owlCarousel({
+        loop: true,
+        margin: 20,
+        autoplay: false,
+        autoplayTimeout: 3500,
+        autoplayHoverPause: true,
+        nav: true,
+        responsive: {
+            1: {
+                items: 1
+            },
+            800: {
+                items: 2
+            },
+            1200: {
+                items: 3
+            },
+            1600: {
+                items: 3
+            },
+            1700: {
+                items: 4
+            }
+        }
+    })
+
+    $('#blogs').owlCarousel({
+        loop: true,
+        margin: 20,
+        autoplay: false,
+        autoplayTimeout: 3500,
+        autoplayHoverPause: true,
+        nav: true,
+        responsive: {
+            1: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            800: {
+                items: 3
+            },
+            1300: {
+                items: 3
+            },
+            1700: {
+                items: 4
+            }
+        }
+    })
+
+    $('#tutors').owlCarousel({
+        loop: true,
+        margin: 0,
+        autoplay: true,
+        autoplayTimeout: 3500,
+        autoplayHoverPause: true,
+        nav: true,
+        responsive: {
+            1: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            950: {
+                items: 3
+            },
+            1200: {
+                items: 4
+            },
+            1500: {
+                items: 5
+            }
+        }
+    })
+
+</script>
+
+<script src="../Scripts/UIScripts/BMICalculator.js"></script>

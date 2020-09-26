@@ -22,5 +22,10 @@ namespace NFix.Controllers
 
             return View();
         }
+
+        public ActionResult VideoView()
+        {
+            return View();
+        }
     }
 }

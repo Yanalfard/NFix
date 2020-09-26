@@ -93,35 +93,36 @@
     }
 }
 
-
-
 .categories {
+    $Category-Size: 220px;
     overflow-y: hidden;
-
-    * {
-        overflow-y: hidden;
-    }
-
-    .owl-stage-outer {
-        padding: 0 !important;
-    }
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 2.2vw 5px;
+    grid-template-columns: repeat(auto-fill, minmax($Category-Size, 1fr));
 
     .category {
         margin: auto;
         padding: 0;
-        width: 220px;
-        height: 220px;
-
-        li {
-            cursor: pointer;
-        }
+        width: $Category-Size;
+        height: $Category-Size;
+        @include column();
+        @include border-radius(8px,8px,8px,8px);
+        overflow: hidden !important;
+        cursor: pointer;
 
         img {
+            margin: auto !important;
             -o-object-fit: cover;
             object-fit: cover;
-            width: 220px;
-            height: 220px;
+            width: $Category-Size;
+            height: $Category-Size;
+            @include trans(.2s);
         }
+    }
+
+    .category:hover img {
+        filter: brightness(64%);
     }
 }
 
@@ -215,9 +216,7 @@ article {
 }
 
 .tutors {
-    margin-right: 24px !important;
-    height: 200px;
-    background: #161616;
+    margin:0!important;
     overflow-y: hidden;
 
     * {
@@ -225,9 +224,7 @@ article {
     }
 
     a {
-        margin-top: 24px;
-        margin-bottom: 24px;
-        margin-left: 6px;
+        margin: 24px auto !important;
         padding: 0;
         width: 85%;
         height: 120px;
@@ -265,7 +262,7 @@ article {
         color: white;
     }
 
-    li {
+    > div {
         height: 480px;
         margin-top: 24px;
         margin-bottom: 24px;
@@ -414,18 +411,18 @@ article {
 
 #stickies {
     margin-left: auto !important;
-    width:100px!important;
-    background:coral;
+    width: 100px !important;
+    background: coral;
 
     a:hover {
-        pointer-events: auto!important;
+        pointer-events: auto !important;
         background: #3d3d3d;
     }
 }
 
 .animated-bubble {
     width: 68px !important;
-    margin-right:12px;
+    margin-right: 12px;
 }
 
 .stickIcon {
@@ -452,7 +449,7 @@ article {
 @media only screen and (max-device-width: 512px) {
     .animated-bubble {
         width: 92px !important;
-        margin-right: 32px!important;
+        margin-right: 32px !important;
     }
 
 
@@ -490,24 +487,62 @@ article {
 }
 
 .blog {
-    height:420px!important;
+    height: 420px !important;
+    width: 364px;
+    margin: 16px auto;
 
     img {
-        flex: 1!important;
+        flex: 1 !important;
     }
 
     content {
-        flex: 1.1!important;
+        flex: 1.1 !important;
         @include column();
-        padding-bottom:16px!important;
+        padding-bottom: 16px !important;
 
         h3 {
-            margin:0!important;
+            margin: 0 !important;
         }
 
-        a{
-            margin-bottom:0;
-            margin-top:auto!important;
+        a {
+            margin-bottom: 0;
+            margin-top: auto !important;
         }
+    }
+}
+
+$productWidth: 380px;
+$imageHeight: 300px;
+
+.product-block {
+    margin: 16px auto;
+    width: 380px;
+    @include column();
+    overflow:hidden;
+
+    img {
+        -o-object-fit: contain;
+        object-fit: contain;
+        max-width: 100% !important;
+        height: $imageHeight !important;
+    }
+
+    .uk-padding {
+        padding: 18px !important;
+    }
+
+    button {
+        height: 42px;
+    }
+
+    .discount {
+        text-decoration: line-through;
+        margin: auto;
+    }
+
+    .price {
+        margin: auto;
+        color: $white;
+        font-size: 1.5em;
     }
 }

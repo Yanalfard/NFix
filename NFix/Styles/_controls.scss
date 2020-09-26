@@ -100,6 +100,9 @@
     min-width: 50px;
 }
 
+
+/*#region Video */
+
 $VideoWidth: 300px;
 
 .video {
@@ -175,7 +178,7 @@ $VideoWidth: 300px;
 }
 
 .vid:hover .thumbnail {
-    filter: blur(4px) brightness(64%);
+    filter: brightness(64%);
     @include trans(.2s);
 }
 
@@ -211,8 +214,9 @@ $VideoWidth: 300px;
     }
 }
 
-/*#region Footer */
+/*#endregion */
 
+/*#region Footer */
 .pill {
     border: none;
     padding: 4px;
@@ -292,10 +296,16 @@ table {
 }
 
 .owl-carousel {
-    padding: 0;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    padding: 0 !important;
+    cursor: grab;
+
+    > * {
+        padding: 0 !important;
+    }
 
     .owl-stage-outer {
-        padding: 0 20px;
     }
 
     .owl-nav {
@@ -304,9 +314,10 @@ table {
 
     .owl-dots {
         @include row();
+        direction: ltr!important;
         margin: auto !important;
         height: 42px !important;
-        width: 92px;
+        width: 124px;
 
         .owl-dot {
             @include border-radius(100%,100%,100%,100%);
@@ -321,8 +332,20 @@ table {
             background: #f27a14;
         }
     }
-}
 
+    @media only screen and (max-width: 800px) {
+        .owl-dots {
+            width: 256px;
+        }
+    }
+
+    @media only screen and (max-width: 512px) {
+        .owl-dots {
+            width: 80vw;
+        }
+    }
+}
+/*#region Button */
 button {
     background: darken($primary-light, 5%);
     padding: 10px 26px 11px 26px;
@@ -381,7 +404,7 @@ button:active {
     background: lighten($primary-light, 2%);
     @include trans(0s);
 }
-
+/*#endregion */
 hr {
     border-top: dashed #3E3E3E 1px !important;
 }

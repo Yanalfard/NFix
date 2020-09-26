@@ -5,7 +5,6 @@
     margin: 0;
     padding: 0;
     float: none;
-    overflow-x: hidden;
     /*    font-family: 'A Iranian Sans', 'numbers','Segoe UI';*/
     font-family: 'Segoe UI';
     text-decoration: none;
@@ -16,6 +15,7 @@
 html {
     scroll-behavior: smooth;
     min-height: 100vh;
+    overflow-x: hidden;
     background: $Background !important;
     /* width */
     ::-webkit-scrollbar {
@@ -37,6 +37,7 @@ html {
 
 body {
     background: $Background;
+    overflow-x: hidden;
     min-height: 100vh;
 }
 
@@ -118,3 +119,4 @@ img {
 h1, h2, h3, h4, h5, h6 {
     padding-bottom: 1px;
 }
+
