@@ -29,6 +29,10 @@
             }
         }
 
+        br {
+            display: none;
+        }
+
         hr {
             border-style: solid !important;
             border-color: white !important;
@@ -73,23 +77,191 @@
     height: 100vh;
     margin-top: -100vh;
     background-image: url('../Resources/Png/Man.png');
-    background-position: top;
+    background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 2;
 }
 
+$bgPosition-X: 50%;
+$bgPosition-Y: 60px;
+
+.rowIcon {
+    @include row();
+    z-index: 1000;
+    position: relative;
+    margin-right: auto;
+    margin-left: 60px;
+    padding: 10px;
+
+    a {
+        cursor: pointer;
+    }
+
+    a:hover {
+        @include icon-glow();
+    }
+
+    img {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+.show-on-mobile {
+    display: none;
+}
+
+@media only screen and (max-device-width :550px) {
+    .hero {
+        background-position-x: $bgPosition-X !important;
+        background-position-y: $bgPosition-Y !important;
+
+        header.column {
+            top: 80px;
+            width: 52vw !important;
+            margin-left: 24px !important;
+
+            h1 {
+                font-size: 22vw !important;
+                margin-left: -6px !important;
+
+                span {
+                    color: $primary;
+                }
+            }
+
+            br {
+                display: block;
+            }
+
+            hr {
+                margin-right: 8vw !important;
+            }
+
+            * {
+                color: $white;
+            }
+
+            p {
+                text-align: left;
+                font-size: 7.5vw;
+            }
+        }
+    }
+
+    .button-outline {
+        padding: 0 0px !important;
+        width: 80% !important;
+    }
+
+    .man {
+        background-position-x: $bgPosition-X !important;
+        background-position-y: $bgPosition-Y !important;
+    }
+
+    .hide-on-mobile {
+        display: none;
+        visibility: collapse;
+    }
+
+    .show-on-mobile {
+        display: block;
+    }
+
+    .rowIcon {
+        @include column();
+        margin-left: 0px;
+
+        a {
+            margin-bottom: 16px;
+        }
+    }
+
+    .player {
+        margin-left: 85vw !important;
+        width: 10vw;
+    }
+}
+
+@media only screen and (max-width :700px) {
+    .hero {
+        background-position-x: 20%;
+        background-position-y: 60px;
+
+        header.column {
+            top: 80px;
+            width: 52vw !important;
+            margin-left: 24px !important;
+
+            h1 {
+                font-size: 22vw !important;
+                margin-left: -6px !important;
+
+                span {
+                    color: $primary;
+                }
+            }
+
+            br {
+                display: block;
+            }
+
+            hr {
+                margin-right: 8vw !important;
+            }
+
+            * {
+                color: $white;
+            }
+
+            p {
+                text-align: left;
+                font-size: 7.5vw;
+            }
+        }
+    }
+
+    .button-outline {
+        padding: 0 0px !important;
+        width: 80% !important;
+    }
+
+    .man {
+        background-position-x: 20%;
+        background-position-y: 60px;
+    }
+
+    .hide-on-mobile {
+        display: none;
+        visibility: collapse;
+    }
+
+    .show-on-mobile {
+        display: block;
+    }
+
+    .rowIcon {
+        @include column();
+        margin-left: 0px;
+
+        a {
+            margin-bottom: 16px;
+        }
+    }
+}
+
 .stripe {
     width: 100vw;
     background: $primary-light;
-    padding: 24px;
+    padding: 24px 0;
     align-items: center;
     justify-content: center;
     align-content: center;
 
-    h4 {
-        color: $white;
-        margin: auto;
+    a {
+        margin: auto !important;
+        text-decoration: none !important;
     }
 }
 
@@ -130,6 +302,7 @@
     width: 96vw;
     margin: auto;
     padding: 0;
+    overflow: hidden !important;
 
     img {
         flex: 1;
@@ -149,7 +322,8 @@
 
 @media only screen and (max-width: 724px) {
     .category-article {
-        width: 90vw;
+        width: 100vw;
+        @include border-radius(0,0,0,0);
 
         img {
             flex: 0;
@@ -159,8 +333,38 @@
 }
 
 @media only screen and (max-device-width: 512px) {
+    .categories {
+        $Category-Size: 140px;
+        grid-gap: 10px !important;
+        grid-template-columns: repeat(auto-fill, minmax($Category-Size, 1fr));
+        width: 92vw !important;
+
+        .category {
+            width: $Category-Size !important;
+            height: $Category-Size !important;
+
+            img {
+                margin: auto !important;
+                -o-object-fit: cover;
+                object-fit: cover;
+                width: $Category-Size;
+                height: $Category-Size;
+            }
+        }
+
+        .category-article {
+            width: 90vw;
+
+            img {
+                flex: 0;
+                display: none;
+            }
+        }
+    }
+
     .category-article {
-        width: 90vw;
+        width: 100vw;
+        @include border-radius(0,0,0,0);
 
         img {
             flex: 0;
@@ -216,7 +420,7 @@ article {
 }
 
 .tutors {
-    margin:0!important;
+    margin: 0 !important;
     overflow-y: hidden;
 
     * {
@@ -300,7 +504,7 @@ article {
 }
 
 .calculator {
-    height: 40vw;
+    padding: 64px 0;
     background-image: url('../Resources/Png/CalculatorBackground.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -315,8 +519,7 @@ article {
     .card {
         margin-top: auto;
         margin-bottom: auto;
-        width: 22vw;
-        min-height: 26vw;
+        width: 290px;
         @include shadow-mega();
 
         hr {
@@ -333,55 +536,49 @@ article {
 
         .row {
             overflow: visible !important;
+            margin-bottom: 24px;
         }
     }
 }
 
-@media only screen and (max-width: 1100px) {
-
+@media only screen and (max-device-width: 500px) {
     .calculator {
-        height: 62vw;
-
         .card {
-            width: 40vw;
+            width: 256px;
         }
     }
 }
 
-@media only screen and (max-width: 700px) {
-
-    .calculator {
-        height: 80vw;
-
-        .card {
-            width: 40vw;
-        }
-    }
-}
 
 .image-banner {
-    height: 360px;
+    $banner-height: 360px;
+    height: $banner-height;
 
     .column {
+        margin: auto !important;
         position: absolute;
         z-index: 100;
-        margin: auto;
+        height: $banner-height - 20px;
         width: 100vw;
-        margin-top: 100px;
 
         * {
             text-align: center;
             vertical-align: central;
         }
 
+        h2 {
+            margin-top: auto;
+        }
+
         h4 {
-            margin: auto;
+            margin: 0 auto;
+            margin-bottom: auto;
             width: 70%;
         }
     }
 
     .cover {
-        height: 360px;
+        height: $banner-height;
         width: 100vw;
         position: absolute;
         @include trans(.2s);
@@ -389,7 +586,7 @@ article {
     }
 
     img {
-        height: 360px;
+        height: $banner-height;
         width: 100vw;
         -o-object-fit: cover;
         object-fit: cover;
@@ -446,16 +643,35 @@ article {
     overflow: hidden !important;
 }
 
+//-> To Controls
+
 @media only screen and (max-device-width: 512px) {
-    .animated-bubble {
-        width: 92px !important;
-        margin-right: 32px !important;
+    .image-banner {
+        .column {
+            margin: auto;
+            width: 100vw;
+
+            h2 {
+                font-size: 26px !important;
+            }
+
+            h4 {
+                width: 92%;
+                font-size: 18px !important;
+            }
+        }
     }
 
 
+    .animated-bubble {
+        width: 64px !important;
+        margin-right: 12px !important;
+    }
+
     .stickIcon {
-        width: 80px;
-        height: 80px;
+        width: 22px;
+        height: 22px;
+        padding: 10px;
 
         img {
             height: 44px;
@@ -465,39 +681,28 @@ article {
     }
 }
 
-.rowIcon {
-    z-index: 1000;
-    position: relative;
-    margin-right: auto;
-    margin-left: 60px;
-    padding: 10px;
-
-    a {
-        cursor: pointer;
-    }
-
-    a:hover {
-        @include icon-glow();
-    }
-
-    img {
-        margin-left: 15px;
-        margin-right: 15px;
-    }
-}
+$blog-Object-Fit: cover;
+$blog-Height: auto;
+$blog-Width: 342px;
+$blog-Image-Height: 300px;
 
 .blog {
-    height: 420px !important;
-    width: 364px;
+    height: $blog-Height;
+    width: $blog-Width;
     margin: 16px auto;
+    overflow: hidden !important;
 
     img {
         flex: 1 !important;
+        height: $blog-Image-Height;
+        -o-object-fit: $blog-Object-Fit;
+        object-fit: $blog-Object-Fit;
     }
 
     content {
-        flex: 1.1 !important;
+        flex: 1 !important;
         @include column();
+        margin-top: 4px;
         padding-bottom: 16px !important;
 
         h3 {
@@ -507,24 +712,27 @@ article {
         a {
             margin-bottom: 0;
             margin-top: auto !important;
+            padding-bottom: 4px;
         }
     }
 }
 
-$productWidth: 380px;
-$imageHeight: 300px;
+$product-Height: auto;
+$product-Width: 342px;
+$product-Image-Height: 280px;
+$product-Image-Fit: contain;
 
 .product-block {
     margin: 16px auto;
-    width: 380px;
-    @include column();
-    overflow:hidden;
+    width: $product-Width;
+    height: $product-Height;
+    overflow: hidden;
 
     img {
-        -o-object-fit: contain;
-        object-fit: contain;
-        max-width: 100% !important;
-        height: $imageHeight !important;
+        -o-object-fit: $product-Image-Fit;
+        object-fit: $product-Image-Fit;
+        height: $product-Image-Height;
+        max-width: 100%;
     }
 
     .uk-padding {
@@ -544,5 +752,35 @@ $imageHeight: 300px;
         margin: auto;
         color: $white;
         font-size: 1.5em;
+    }
+}
+
+@media only screen and (max-device-width : 480px) {
+    .blog {
+        width: $blog-Width * .9;
+
+        image {
+            height: $blog-Image-Height * .9;
+        }
+    }
+
+    .product-block {
+        width: $product-Width * .9;
+
+        image {
+            height: $product-Image-Height * .9;
+        }
+    }
+}
+
+#MobileNavigation {
+    direction: rtl !important;
+
+    * {
+        direction: rtl !important;
+    }
+
+    .uk-offcanvas-bar {
+        direction: rtl !important;
     }
 }

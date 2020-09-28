@@ -8,30 +8,98 @@
     @Scripts.Render("~/bundles/modernizr")
 
     <!-- Project Css -->
-    <link href="/Styles/Index.min.css" rel="stylesheet" />
+    <link href="../Styles/Index.min.css" rel="stylesheet" />
 
     <!-- UIkit CSS -->
-    <link href="/Styles/UIKit/uikit.min.css" rel="stylesheet" />
+    <link href="../Styles/UIKit/uikit.min.css" rel="stylesheet" />
 
     <!--Owl Carousel CSS-->
-    <link href="/Styles/OwlCarousel/owl.carousel.min.css" rel="stylesheet" />
-    <link href="/Styles/OwlCarousel/owl.theme.default.min.css" rel="stylesheet" />
+    <link href="../Styles/OwlCarousel/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../Styles/OwlCarousel/owl.theme.default.min.css" rel="stylesheet" />
 
     <!--Jquery-->
-    <script src="/Scripts/Jquery/jquery-3.5.1.js"></script>
+    <script src="../Scripts/Jquery/jquery-3.5.1.js"></script>
 
     <!-- UIkit JS -->
-    <script src="/Scripts/UIKit/uikit.min.js"></script>
-    <script src="/Scripts/UIKit/uikit-icons.js"></script>
+    <script src="../Scripts/UIKit/uikit.min.js"></script>
+    <script src="../Scripts/UIKit/uikit-icons.js"></script>
 
     <!--Owl Carousel Scripts-->
-    <script src="/Scripts/OwlCarousel/owl.carousel.min.js"></script>
+    <script src="../Scripts/OwlCarousel/owl.carousel.min.js"></script>
 
     <!--Scroll Reveal-->
     <script src="https://unpkg.com/scrollreveal"></script>
 
 </head>
 <body>
+
+
+    <div id="MobileNavigation" dir="rtl" uk-offcanvas="overlay: true ;flip: true">
+        <div class="uk-offcanvas-bar column">
+
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+            <a href="/Home/Index" class="uk-margin-auto">
+                <img src="/Resources/Svg/NFIX.svg" />
+            </a>
+            <ul class="column">
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        <a href="#" uk-toggle="target: #ModalLogin">
+                            <span uk-icon="user"></span>
+                            ورود / ثبت نام
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="#">
+                            <span uk-icon="user"></span>
+                            پروفایل
+                        </a>
+                    </li>
+                }
+
+                <li>
+                    <a href="#">
+                        <span uk-icon="info"></span>
+                        درباره ما
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span uk-icon="file-text"></span>
+                        وبلاگ ها
+                    </a>
+                </li>
+                <li>
+                    <a href="#" mode="click" type="button">
+                        <span uk-icon="play"></span>
+                        ویدیو ها
+                    </a>
+                </li>
+                <li>
+                    <hr class="uk-margin-top uk-margin-remove-bottom" />
+                </li>
+                <li dir="rtl">
+                    <a href="#">
+                        <span uk-icon="phone"></span>
+                        دانلود برنامه
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span uk-icon="home"></span>
+                        خانه
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
 
     <!-- #region Nav -->
 
@@ -43,13 +111,13 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <a href="/User/Profile/Index">
+                        <a class="nav-profile" href="/User/Profile/Index">
                             پروفایل
                         </a>
                     }
                     else
                     {
-                        <a href="#" uk-toggle="target: #ModalLogin" type="button">
+                        <a class="nav-profile" href="#" uk-toggle="target: #ModalLogin" type="button">
                             ورود
                         </a>
                     }
@@ -62,20 +130,29 @@
 
                     <div id="ModalRegister" uk-modal>
                         <div class="uk-modal-dialog uk-modal-body">
-                            <div class="row">
-                                <img src="/Resources/Png/LoginImage.png" alt="" />
+                            <div class="alternate">
+                                <img src="https://picsum.photos/400/600" alt="" />
                                 <content class="column uk-padding-remove-bottom">
                                     <h3>
                                         ثبت نام
                                     </h3>
                                     <label>
+                                        نام کاربری
+                                    </label>
+                                    <input class="uk-margin-small-top" type="text" value="" />
+                                    <label class="uk-margin-top">
+                                        گذر واژه
+                                    </label>
+                                    <input class="uk-margin-small-top" type="password" value="" />
+                                    <label  class="uk-margin-top">
                                         نام و نام خانوادگی
                                     </label>
                                     <input class="uk-margin-small-top" type="text" value="" />
                                     <label class="uk-margin-top">
                                         شماره تلفن
                                     </label>
-                                    <input class="uk-margin-small-top" type="text" value="" />
+                                    <input class="uk-margin-small-top" type="tel" value="" />
+
                                     <div class="row uk-margin-medium-top">
                                         <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
                                            onclick="UIkit.modal(document.getElementById('ModalLogin')).show();">ورود</a>
@@ -92,9 +169,9 @@
                     <!-- #region Login -->
                     <div id="ModalLogin" uk-modal>
                         <div class="uk-modal-dialog uk-modal-body">
-                            <div class="row">
-                                <img src="/Resources/Png/LoginImage.png" alt="" />
-                                <content class="column uk-padding-remove-bottom">
+                            <div class="alternate" onclick="">
+                                <img src="https://picsum.photos/400/600" alt="" />
+                                <content class="column">
                                     <h3>
                                         ورود
                                     </h3>
@@ -107,9 +184,9 @@
                                     </label>
                                     <input class="uk-margin-small-top" type="text" value="" />
                                     <div class="row uk-margin-medium-top">
-                                        <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
+                                        <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
                                            onclick="UIkit.modal(document.getElementById('ModalRegister')).show();">ثبت نام</a>
-                                        <button class=" uk-margin-remove-bottom ">
+                                        <button class=" uk-margin-auto-bottom ">
                                             ورود
                                         </button>
                                     </div>
@@ -121,7 +198,7 @@
 
                 </li>
                 <li>
-                    <form class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left">
+                    <form class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left ">
                         <a href="" uk-search-icon></a>
                         <input class="uk-search-input" type="search" dir="rtl" placeholder="جستجو...">
                     </form>
@@ -133,18 +210,22 @@
 
         <div class="uk-navbar-right uk-margin-small-right">
             <ul class="uk-navbar-nav">
-                <li><a href="#">درباره ما</a></li>
-                <li><a href="#">وبلاگ</a></li>
-                <li><a href="#">مربیان</a></li>
-                <li>
+                <li class="show-on-mobile">
+                    <a class="hamburger-button uk-margin-auto" href="#MobileNavigation"
+                       uk-icon="icon: menu ; ratio:1.6" uk-toggle="target: #MobileNavigation"></a>
+                </li>
+                <li class="hide-on-mobile"><a href="#">درباره ما</a></li>
+                <li class="hide-on-mobile"><a href="#">وبلاگ</a></li>
+        @*        <li class="hide-on-mobile"><a href="#">مربیان</a></li>*@
+                <li class="hide-on-mobile">
                     <a href="#" mode="click" type="button">ویدیو</a>
                 </li>
-
                 <li>
                     <a href="/Home/Index">
                         <img src="/Resources/Svg/NFIX.svg" />
                     </a>
                 </li>
+
             </ul>
         </div>
 
@@ -178,9 +259,6 @@
     <div class="footer-stripe"></div>
 
     <!-- #endregion -->
-
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
 
 </body>
 </html>

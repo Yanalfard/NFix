@@ -27,6 +27,7 @@
 
     <!--Scroll Reveal-->
     <script src="https://unpkg.com/scrollreveal"></script>
+
 </head>
 
 <body>
@@ -143,7 +144,7 @@
 
     <section class="hero column">
         <header class="column uk-margin-auto-right">
-            <h1 class="uk-margin-remove-bottom"><span>N</span>FIX</h1>
+            <h1 class="uk-margin-remove-bottom"><span id="en">N</span><strong id="Fix">FIX</strong></h1>
             <hr class="uk-margin-remove" />
             <p class="uk-margin-small-top">Proffesional Fitness App</p>
             <button class="button-outline uk-button uk-button-default uk-margin-small-top">
@@ -174,6 +175,9 @@
     <div class="man"></div>
 
     <!-- #endregion -->
+
+
+
     <!-- #region Stripe -->
     <div class="stripe row">
         <h4>Lorem</h4>
@@ -835,6 +839,18 @@
 
         let duration = 1400;
         window.sr = ScrollReveal();
+        sr.reveal('#en', {
+            duration: duration,
+            origin: 'left',
+            distance: '50px',
+            opacity: 1,
+        });
+        sr.reveal('#Fix', {
+            duration: duration,
+            origin: 'right',
+            distance: '30px',
+            opacity: 1,
+        });
         sr.reveal('.man', {
             duration: duration,
             origin: 'bottom',
@@ -847,6 +863,7 @@
             distance: '72px',
             opacity: 1,
         });
+        
 
         $('#categories').owlCarousel({
             loop: true,

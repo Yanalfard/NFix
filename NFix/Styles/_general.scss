@@ -5,8 +5,9 @@
     margin: 0;
     padding: 0;
     float: none;
-    /*    font-family: 'A Iranian Sans', 'numbers','Segoe UI';*/
+    /*font-family: 'A Iranian Sans', 'numbers','Segoe UI';*/
     font-family: 'Segoe UI';
+    list-style: none!important;
     text-decoration: none;
     text-align: right;
     outline: none;
@@ -14,8 +15,8 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden !important;
     min-height: 100vh;
-    overflow-x: hidden;
     background: $Background !important;
     /* width */
     ::-webkit-scrollbar {
@@ -37,7 +38,7 @@ html {
 
 body {
     background: $Background;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
     min-height: 100vh;
 }
 
@@ -119,4 +120,3 @@ img {
 h1, h2, h3, h4, h5, h6 {
     padding-bottom: 1px;
 }
-

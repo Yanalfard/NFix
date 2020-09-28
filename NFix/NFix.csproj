@@ -189,6 +189,13 @@
     <Content Include="Areas\Admin\Views\Dashboard\VideoAdder.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\BlogTable.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\BlogAdder.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\TutorTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\TutorAdder.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\ProductTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\ProductAdder.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\OrderTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\UserTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\UserAdder.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -233,6 +240,7 @@
     <Content Include="Resources\Svg\Admin\admin_user_nor.svg" />
     <Content Include="Resources\Svg\Admin\admin_video_add.svg" />
     <Content Include="Resources\Svg\Admin\admin_video_nor.svg" />
+    <Content Include="Resources\Svg\Admin\ConstructionPattern.svg" />
     <Content Include="Resources\Svg\AnimatedBubble.svg" />
     <Content Include="Resources\Svg\asdfwe01.svg" />
     <Content Include="Resources\Svg\asdfwe02.svg" />
@@ -241,6 +249,7 @@
     <Content Include="Resources\Svg\Biscuits\Poly_1.svg" />
     <Content Include="Resources\Svg\Formula.svg" />
     <Content Include="Resources\Svg\NFIX.svg" />
+    <Content Include="Resources\Svg\NFixAnimated.svg" />
     <Content Include="Resources\Svg\Unio2n.svg" />
     <Content Include="Resources\Svg\Union.svg" />
     <Content Include="Scripts\Jquery\jquery-3.5.1.js" />

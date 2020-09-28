@@ -34,5 +34,40 @@ namespace NFix.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult TutorTable()
+        {
+            return View();
+        }
+
+        public ActionResult TutorAdder()
+        {
+            return View();
+        }
+
+        public ActionResult ProductTable()
+        {
+            return View();
+        }
+
+        public ActionResult ProductAdder()
+        {
+            return View();
+        }
+
+        public ActionResult OrderTable()
+        {
+            return View();
+        }
+
+        public ActionResult UserTable()
+        {
+            return View();
+        }
+
+        public ActionResult UserAdder()
+        {
+            return View();
+        }
+
     }
 }

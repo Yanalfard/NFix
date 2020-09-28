@@ -24,38 +24,34 @@
     }
 }
 
-#ModalLogin, #ModalRegister {
-    backdrop-filter: blur(4px) brightness(80%);
+@media only screen and (max-device-width : 480px) {
+    .uk-navbar-container {
+        width: 100vw;
 
-    .uk-modal-dialog {
-        background: $CardBackground !important;
-        background-image: none !important;
-        padding: 0 !important;
-        width: 60vw;
-        @include shadow-mega();
-        @include border-radius(8px,8px,8px,8px);
-        margin: 0 auto !important;
-    }
+        li, li > * {
+            padding-left: 3px !important;
+            padding-right: 3px !important;
+        }
 
-    content {
-        flex: 1.2;
-        padding: 20px;
+        .hamburger-button {
+            margin: 0 auto !important;
+        }
 
-        .row {
-            overflow: visible;
+        a {
+            color: $white;
+        }
+
+        .uk-search {
+            margin-left: 0 !important;
+            margin-right: auto !important;
+        }
+
+        .nav-profile {
+            padding: 0 4px !important
         }
     }
-
-    img {
-        height: 83vh;
-        background: $primary;
-        flex: 1;
-        -o-object-fit: cover;
-        object-fit: cover;
-        -o-object-position: center;
-        object-position: center;
-    }
 }
+
 
 @media only screen and (max-width: 1024px) {
     #ModalLogin, #ModalRegister {
@@ -197,20 +193,12 @@ $VideoWidth: 300px;
     }
 }
 
-@media only screen and (max-device-width : 480px) {
-    $VideoWidth: 42vw;
+@media only screen and (max-device-width : 400px) {
+    $VideoWidth: 80vw;
 
     .video {
-        height: 312px;
         width: $VideoWidth;
-    }
-
-    .videos {
-
-        .grid {
-            @include grid-gap($VideoWidth, 1em);
-            padding: 20px 2vw;
-        }
+        padding-bottom: 16px;
     }
 }
 
@@ -314,7 +302,7 @@ table {
 
     .owl-dots {
         @include row();
-        direction: ltr!important;
+        direction: ltr !important;
         margin: auto !important;
         height: 42px !important;
         width: 124px;
@@ -434,4 +422,27 @@ textarea {
     -o-transition: none !important;
     -webkit-transition: none !important;
     transition: none !important;
+}
+
+.uk-offcanvas-bar {
+    .uk-close:hover {
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    ul {
+        padding-left:0!important;
+        padding-right: 4px;
+        list-style: none !important;
+
+        li {
+            list-style: none !important;
+            margin-top: 8px;
+
+            a {
+                font-size: 18px;
+            }
+        }
+    }
 }

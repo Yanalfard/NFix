@@ -5,6 +5,16 @@
 
 $menucomponentColor: #2b2b2b;
 
+.construction {
+    width: 100vw;
+    height: 100vh;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    z-index: -50;
+}
+
 .hamburger-button {
     position: fixed;
     padding: 10px !important;
@@ -12,11 +22,14 @@ $menucomponentColor: #2b2b2b;
     top: 18px;
     color: white !important;
     margin: auto;
+    width: 20px;
+    height: 20px;
     -moz-border-radius: 50% !important;
     -webkit-border-radius: 50% !important;
     border-radius: 50% !important;
     background: $menucomponentColor !important;
     @include shadow-more();
+    z-index: 500;
 }
 
 .uk-close {
@@ -58,11 +71,11 @@ a.plus {
 
 .uk-accordion-title {
     font-size: 14px !important;
-    margin-right: 20px;
 }
 
 .uk-accordion-content {
-    margin-right: 52px;
+    padding-left: 0 !important;
+    margin-right: 57px;
     font-size: 14px;
     margin-top: 14px !important;
 
@@ -74,41 +87,5 @@ a.plus {
 a.uk-accordion-title:hover {
 }
 
-@media only screen and (max-device-width: 600px) {
-    .uk-offcanvas-bar {
-        width: 46vw !important;
-    }
 
-    .hamburger-button {
-        padding: 36px !important;
-        margin-right: 50px;
-    }
 
-    #menu {
-        width: 100% !important;
-    }
-
-    .menuComponent {
-        width: 100%;
-        margin-top: 28px;
-
-        img {
-            width: 60px;
-            height: 50px;
-        }
-
-        .uk-accordion-title {
-            font-size: 32px !important;
-            // margin-right: 40px;
-        }
-
-        .uk-accordion-content {
-            font-size: 30px;
-            //margin-right: 80px;
-        }
-    }
-
-    .baseDiv {
-        padding: 100px;
-    }
-}

@@ -15,6 +15,23 @@
     height: 2vw;
 }
 
+@media only screen and (max-device-width : 480px) {
+    .space-half {
+        width: 100vw;
+        height: 3vh
+    }
+
+    .space {
+        width: 100vw;
+        height: 6vh;
+    }
+
+    .space-double {
+        width: 100vw;
+        height: 9vh;
+    }
+}
+
 .space-nav {
     width: 100vw;
     height: 140px;
