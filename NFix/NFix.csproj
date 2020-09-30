@@ -353,6 +353,10 @@
     <Content Include="Views\Shared\_ProductBlock.cshtml" />
     <Content Include="Views\Shared\_BlogBlock.cshtml" />
     <Content Include="Views\Home\VideoView.cshtml" />
+    <Content Include="Views\Home\CategoryView.cshtml" />
+    <Content Include="Views\Home\BlogsPage.cshtml" />
+    <Content Include="Views\Home\TutorView.cshtml" />
+    <Content Include="Views\Home\VideosPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

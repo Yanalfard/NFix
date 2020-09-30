@@ -27,5 +27,26 @@ namespace NFix.Controllers
         {
             return View();
         }
+
+        public ActionResult CategoryView()
+        {
+            return View();
+        }
+
+        public ActionResult BlogsPage()
+        {
+            return View();
+        }
+
+        public ActionResult TutorView()
+        {
+            return View();
+        }
+
+        public ActionResult VideosPage()
+        {
+            return View();
+        }
+
     }
 }

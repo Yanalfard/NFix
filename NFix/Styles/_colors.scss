@@ -31,6 +31,7 @@ $CommentBackground: #1C1C1C;
 
 $PlaceholderColor: #cacaca;
 $CardBackground: #252525;
+$video-section-background: #171717;
 
 /*#endregion */
 /*#region difficulty */
@@ -40,6 +41,10 @@ $dif-easy: #E45F35;
 $dif-online: #2F90C7;
 
 /*#endregion */
+
+.video-section-background {
+    background: $video-section-background;
+}
 
 /*#region Card*/
 
@@ -109,7 +114,7 @@ $ScrollbarHandle: $white-dark;
     -moz-border-radius: $tl $tr $bl $br;
     -webkit-border-radius: $tl $tr $bl $br;
     border-radius: $tl $tr $bl $br;
-   /* -moz-border-radius: 0;
+    /* -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;*/
 }

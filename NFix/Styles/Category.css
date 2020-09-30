@@ -4,6 +4,9 @@
 /*#endregion */
 /*#region difficulty */
 /*#endregion */
+.video-section-background {
+  background: #171717; }
+
 /*#region Card*/
 /*#endregion */
 /*#region Scrollbar */
@@ -30,6 +33,9 @@ backdrop-filter: saturate(80%);
 /*#endregion */
 /*#region difficulty */
 /*#endregion */
+.video-section-background {
+  background: #171717; }
+
 /*#region Card*/
 /*#endregion */
 /*#region Scrollbar */
@@ -56,6 +62,9 @@ backdrop-filter: saturate(80%);
 /*#endregion */
 /*#region difficulty */
 /*#endregion */
+.video-section-background {
+  background: #171717; }
+
 /*#region Card*/
 /*#endregion */
 /*#region Scrollbar */
@@ -275,6 +284,9 @@ h1, h2, h3, h4, h5, h6 {
 /*#endregion */
 /*#region difficulty */
 /*#endregion */
+.video-section-background {
+  background: #171717; }
+
 /*#region Card*/
 /*#endregion */
 /*#region Scrollbar */
@@ -387,8 +399,7 @@ backdrop-filter: saturate(80%);
 .parallax {
   position: relative;
   width: 100vw;
-  height: 38vh;
-  background: url(/Resources/Png/LoginImage.png);
+  height: 300px;
   background-repeat: no-repeat;
   background-position: center;
   background-position-y: center;
@@ -398,11 +409,12 @@ backdrop-filter: saturate(80%);
     color: #fff;
     z-index: 100;
     margin: auto;
-    padding-bottom: 4px; }
+    padding: 16px;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.4); }
 
 @media only screen and (min-device-width: 280px) and (max-device-width: 670px) {
   .parallax {
-    height: 16vh; } }
+    height: 320px; } }
 
 .videohead {
   width: 100%;
