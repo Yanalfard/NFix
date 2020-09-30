@@ -9,7 +9,7 @@
 <link href="../Styles/Video.min.css" rel="stylesheet" />
 <div class="space-nav-bottom"></div>
 
-<div class="alternate">
+<div class="main">
 
     <!-- #region Aside -->
 
@@ -20,27 +20,30 @@
         </h4>
         <hr />
 
-        @Html.Partial("_VideoBlock");
-        @Html.Partial("_VideoBlock");
-        @Html.Partial("_VideoBlock");
-        @Html.Partial("_VideoBlock");
-        @Html.Partial("_VideoBlock");
+        @Html.Partial("_VideoBlock")
+        @Html.Partial("_VideoBlock")
+        @Html.Partial("_VideoBlock")
+        @Html.Partial("_VideoBlock")
+        @Html.Partial("_VideoBlock")
 
     </aside>
 
-
     <!-- #endregion -->
-
 
     <content class="column">
 
         <!--<img class="video-playback" src="https://picsum.photos/800/400" />-->
         <video class="video-playback" controls controlsList="nodownload">
             <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-            Your browser does not support HTML video.
+            مرورگر شما پخش ویدیو را پشتیبانی نمی کند.
         </video>
-        <h4>تیتر ویدیو اینجا قرار می گیرد</h4>
-        <div class="row">
+        <h4 class="video-title">
+            تیتر ویدیو اینجا قرار می گیرد
+            تیتر ویدیو اینجا قرار می گیرد
+            تیتر ویدیو اینجا قرار می گیرد
+            تیتر ویدیو اینجا قرار می گیرد
+        </h4>
+        <div class="profile-media-container">
             <section class="media row uk-padding-small">
                 <label class="view-count" uk-tooltip="تعداد بازدید">
                     <span>1228</span>
@@ -58,17 +61,28 @@
                 </div>
                 <img class="tutor-img uk-margin-small-left" src="https://picsum.photos/64" />
             </a>
-
         </div>
         <p>
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
         </p>
+
         <hr />
 
-        <section class="make-comment uk-margin-bottom">
-            <h6 class="uk-margin-small-bottom">
-                نظر شما
-            </h6>
+
+        <!--Comment Section-->
+        <div class="row uk-margin-small-bottom">
+            <h4 class="uk-margin-auto-left uk-margin-remove-top
+                    uk-margin-remove-bottom ">
+                نظرات
+            </h4>
+            <a onclick="HideElementsByIds(['comments','makeComment'])"
+               class="rotary-chevron uk-margin-auto-top"
+               id="btnHideCommentSection"
+               uk-icon="icon:chevron-down;ratio:1.5"></a>
+        </div>
+
+
+        <section id="makeComment" class="make-comment uk-margin-bottom">
             <div class="mat column">
                 <div class="column">
                     <textarea class="textbox-bulk-txt" type="text" placeholder="..."></textarea>
@@ -91,7 +105,7 @@
             </div>
         </section>
 
-        <section class="comments">
+        <section id="comments" class="comments">
             <!-- #region Comment -->
             <article class="uk-comment">
                 <header class="row uk-margin-small-bottom ">
@@ -169,3 +183,32 @@
 
     </content>
 </div>
+
+<div class="space"></div>
+
+<script>
+
+    if (localStorage.getItem('isCommentSectionVisible') === 'false') {
+        document.getElementById('comments').style.height = "0";
+        document.getElementById('makeComment').style.height = "0";
+        document.getElementById('btnHideCommentSection').classList.add('rotate-180');
+    }
+
+    function HideElementsByIds(listOfIds) {
+        if ((localStorage.getItem('isCommentSectionVisible') == 'true')) {
+            for (let id of listOfIds) {
+                document.getElementById(id).style.height = "0";
+            }
+            (localStorage.setItem('isCommentSectionVisible', 'false'))
+            document.getElementById('btnHideCommentSection').classList.add('rotate-180');
+        }
+        else {
+            for (let id of listOfIds) {
+                document.getElementById(id).style.height = "auto";
+            }
+            (localStorage.setItem('isCommentSectionVisible', 'true'))
+            document.getElementById('btnHideCommentSection').classList.remove('rotate-180');
+        }
+    }
+
+</script>

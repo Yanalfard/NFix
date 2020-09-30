@@ -242,6 +242,7 @@
     <Content Include="Resources\Svg\Admin\admin_video_nor.svg" />
     <Content Include="Resources\Svg\Admin\ConstructionPattern.svg" />
     <Content Include="Resources\Svg\AnimatedBubble.svg" />
+    <Content Include="Resources\Svg\ArvinTavWhite.svg" />
     <Content Include="Resources\Svg\asdfwe01.svg" />
     <Content Include="Resources\Svg\asdfwe02.svg" />
     <Content Include="Resources\Svg\asdfwe03.svg" />
@@ -292,6 +293,12 @@
     <Content Include="Styles\Category.min.css">
       <DependentUpon>Category.css</DependentUpon>
     </Content>
+    <Content Include="Styles\Controls.css">
+      <DependentUpon>Controls.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Controls.min.css">
+      <DependentUpon>Controls.css</DependentUpon>
+    </Content>
     <Content Include="Styles\Index.css">
       <DependentUpon>Index.scss</DependentUpon>
     </Content>
@@ -331,7 +338,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Styles\_colors.scss" />
-    <Content Include="Styles\_controls.scss" />
+    <Content Include="Styles\Controls.scss" />
     <Content Include="Styles\_general.scss" />
     <Content Include="Styles\_starRating.scss" />
     <Content Include="Styles\_layout.scss" />

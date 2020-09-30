@@ -1,5 +1,4 @@
 ﻿@import "_colors.scss";
-@import "_controls.scss";
 @import "_general.scss";
 @import "_layout.scss";
 
@@ -299,20 +298,24 @@ $bgPosition-Y: 60px;
 }
 
 .category-article {
-    width: 96vw;
-    margin: auto;
-    padding: 0;
     overflow: hidden !important;
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
 
     img {
+        width: 50vw !important;
+        height: auto;
         flex: 1;
         -o-object-fit: cover;
         object-fit: cover;
     }
 
     article {
+        width: 50vw !important;
         padding: 20px;
-        flex: 1.5;
+        padding-right: 32px;
+        flex: 2;
 
         li {
             margin-top: 8px;
@@ -320,7 +323,7 @@ $bgPosition-Y: 60px;
     }
 }
 
-@media only screen and (max-width: 724px) {
+@media only screen and (max-width: 764px) {
     .category-article {
         width: 100vw;
         @include border-radius(0,0,0,0);
@@ -419,7 +422,7 @@ article {
     }
 }
 
-.tutors {
+#tutors {
     margin: 0 !important;
     overflow-y: hidden;
 
@@ -549,7 +552,6 @@ article {
     }
 }
 
-
 .image-banner {
     $banner-height: 360px;
     height: $banner-height;
@@ -606,9 +608,12 @@ article {
     right: 0px;
 }
 
+$Stickies-Width: 100px;
+
 #stickies {
     margin-left: auto !important;
-    width: 100px !important;
+    margin-right: 24px;
+    width: $Stickies-Width !important;
     background: coral;
 
     a:hover {
@@ -618,29 +623,25 @@ article {
 }
 
 .animated-bubble {
-    width: 68px !important;
-    margin-right: 12px;
+    width: $Stickies-Width - 28px !important;
+    margin: 0 auto !important;
 }
 
 .stickIcon {
-    width: 38px;
-    height: 38px;
-    padding: 4px;
+    padding: 8px;
     border-radius: 50%;
     background: #2f2f2f;
     margin: 10px;
     margin-left: auto;
-    margin-right: 24px;
+    margin-right: auto;
     @include column();
     @include trans(.2s);
 
     img {
-        height: 24px;
-        width: 24px;
+        height: 28px;
+        width: 28px;
         margin: auto;
     }
-
-    overflow: hidden !important;
 }
 
 //-> To Controls
@@ -659,24 +660,6 @@ article {
                 width: 92%;
                 font-size: 18px !important;
             }
-        }
-    }
-
-
-    .animated-bubble {
-        width: 64px !important;
-        margin-right: 12px !important;
-    }
-
-    .stickIcon {
-        width: 22px;
-        height: 22px;
-        padding: 10px;
-
-        img {
-            height: 44px;
-            width: 44px;
-            margin: auto;
         }
     }
 }
@@ -731,7 +714,7 @@ $product-Image-Fit: contain;
     img {
         -o-object-fit: $product-Image-Fit;
         object-fit: $product-Image-Fit;
-        height: $product-Image-Height;
+        max-height: $blog-Image-Height;
         max-width: 100%;
     }
 

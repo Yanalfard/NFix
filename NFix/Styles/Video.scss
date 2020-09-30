@@ -1,9 +1,8 @@
 ﻿@import "_colors.scss";
-@import "_controls.scss";
 @import "_general.scss";
 @import "_layout.scss";
 
-.alternate {
+.main {
     @include row();
     width: 96vw;
     margin: 0 auto;
@@ -26,14 +25,18 @@
             height: auto;
         }
 
-        .media {
-            background: $CommentBackground;
+        .profile-media-container {
+            @include row();
 
-            .view-count {
-            }
+            .media {
+                background: $CommentBackground;
 
-            a {
-                margin-left: 8px;
+                .view-count {
+                }
+
+                a {
+                    margin-left: 8px;
+                }
             }
         }
 
@@ -67,24 +70,49 @@
     }
 }
 
-@media only screen and (max-width: 864px) {
-    .alternate {
+@media only screen and (max-device-width : 864px) {
+    .main {
         width: 90vw;
+        -ms-flex-direction: column-reverse;
+        -webkit-flex-direction: column-reverse;
+        flex-direction: column-reverse;
 
         > aside {
-            display: none;
-            width: 100vw;
+            padding: 0;
+        }
+
+        > content {
+            > .video-title {
+                margin-top: 12px;
+                font-size: 18px;
+            }
+
+            > .profile-media-container {
+                -ms-flex-direction: column-reverse;
+                -webkit-flex-direction: column-reverse;
+                flex-direction: column-reverse;
+
+                > .media {
+                    margin-top: 18px;
+
+                    .star-container {
+                        margin-left: auto !important;
+                    }
+                }
+            }
         }
     }
 }
 
-@media only screen and (max-device-width : 864px) {
-    .alternate {
+@media only screen and (max-width: 864px) {
+    .main {
         width: 90vw;
+        -ms-flex-direction: column-reverse;
+        -webkit-flex-direction: column-reverse;
+        flex-direction: column-reverse;
 
         > aside {
-            display: none;
-            width: 100vw;
+            padding: 0;
         }
     }
 }
@@ -95,13 +123,19 @@
     flex: auto;
 }
 
-.uk-tooltip {
-    background: $black !important;
-}
 
 .uk-comment {
-    .uk-comment-body{
-        p{
+    .uk-comment-body {
+        p {
         }
     }
+}
+
+.comments, .make-comment {
+    overflow: hidden !important;
+    @include trans(.2s);
+}
+
+.rotate-180 {
+    transform: rotate(-180deg);
 }

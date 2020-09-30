@@ -432,7 +432,7 @@ textarea {
     }
 
     ul {
-        padding-left:0!important;
+        padding-left: 0 !important;
         padding-right: 4px;
         list-style: none !important;
 
@@ -445,4 +445,9 @@ textarea {
             }
         }
     }
+}
+
+.uk-tooltip {
+    background: darken($black,12%) !important;
+    @include shadow-mild;
 }

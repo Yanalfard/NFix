@@ -30,5 +30,9 @@
   {
     "outputFile": "Styles/Profile.css",
     "inputFile": "Styles/Profile.scss"
+  },
+  {
+    "outputFile": "Styles/Controls.css",
+    "inputFile": "Styles/Controls.scss"
   }
 ]
