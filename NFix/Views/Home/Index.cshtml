@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "NFix";
 }
 
@@ -42,6 +43,10 @@
 <div class="man"></div>
 
 <!-- #endregion -->
+
+
+
+
 <a name="videos"></a>
 
 <!-- #region Stripe -->
@@ -70,31 +75,19 @@
 </div>
 <!--#endregion-->
 <!-- #region Videos -->
+<!-- #Dynamic Videos -->
 
-<section class="videos ">
-    <div class="space-half"></div>
-    <h3 class="clipped text-center">ویدیو های اخیر</h3>
 
-    <content class="grid" dir="rtl">
+@Html.Action("VideosPage", "HomeVideo")
 
-        @*Foreach Here*@
-
-        @Html.Partial("_VideoBlock")
-        @Html.Partial("_VideoBlock")
-        @Html.Partial("_VideoBlock")
-        @Html.Partial("_VideoBlock")
-        @Html.Partial("_VideoBlock")
-        @Html.Partial("_VideoBlock")
-        @Html.Partial("_VideoBlock")
-
-    </content>
-</section>
 
 <!-- #endregion -->
+
 
 <img class="full-width" src="../Resources/Svg/Biscuits/Poly_1.svg" />
 
 <!-- #region Categories -->
+<!-- #Dynamic Categories -->
 
 <h3 class="clipped uk-margin-medium-top text-center">دسته بندی ها</h3>
 
@@ -133,6 +126,11 @@
 
 <!-- #endregion -->
 
+
+
+
+
+
 <section class="category-article full-width row card uk-margin-top uk-padding-remove">
     <img src="https://picsum.photos/500/400" class="uk-child-width-1-4" alt="" />
     <article class="uk-width-1-1">
@@ -162,7 +160,8 @@
 
 <h3 class="clipped uk-margin-medium-top text-center">مربیان</h3>
 
-<!-- #region Tutors -->
+<!-- #region  Tutors -->
+<!-- #Dynamic Tutors -->
 
 
 <ul id="tutors" class="owl-carousel uk-margin-small-top">
@@ -284,6 +283,7 @@
 <h3 class="clipped uk-margin-medium-top uk-margin-remove-bottom text-center">محصولات</h3>
 
 <!-- #region Products -->
+<!-- #Dynamic Products -->
 
 <div id="product" dir="ltr" class="clipped uk-margin-auto owl-carousel uk-margin-small-top">
     @Html.Partial("_ProductBlock")
@@ -379,6 +379,7 @@
 <h3 class="clipped uk-margin-medium-top text-center">وبلاگ ها  </h3>
 
 <!-- #region Blogs -->
+<!-- #Dynamic Blogs -->
 
 <div id="blogs" class="clipped row uk-margin-auto owl-carousel uk-margin-remove-top">
     @Html.Partial("_BlogBlock")

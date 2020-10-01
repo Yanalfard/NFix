@@ -158,6 +158,7 @@
     <Compile Include="Controllers\DealPropertyRelController.cs" />
     <Compile Include="Controllers\DiscountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeVideoController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\KeywordController.cs" />
     <Compile Include="Controllers\LogController.cs" />
@@ -357,6 +358,8 @@
     <Content Include="Views\Home\BlogsPage.cshtml" />
     <Content Include="Views\Home\TutorView.cshtml" />
     <Content Include="Views\Home\VideosPage.cshtml" />
+    <Content Include="Views\HomeVideo\VideosPage.cshtml" />
+    <Content Include="Views\HomeVideo\VideoView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
