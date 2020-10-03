@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerator<DataLayer.Models.Dto.DtoTblVideo>
 @{
     ViewBag.Title = "فیلم ها";
 }
@@ -39,6 +39,41 @@
                 </div>
             </div>
         </div>
+
+
+
+        <div class="video column" dir="rtl">
+            <div class="vid column">
+                <img class="thumbnail" src="https://picsum.photos/400/300" alt="" />
+                <a href="/Home/VideoView" class="uk-icon" uk-icon="icon: play; ratio:4"></a>
+            </div>
+            <div class="uk-margin-small-top row">
+                <div class="tutor uk-margin-remove-top row">
+                    <a href="/Home/VideoView">
+                        <img class="profile-img uk-border-circle" src="https://picsum.photos/64" />
+                    </a>
+                </div>
+                <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
+                    <a href="/Home/VideoView">
+                        <h5 class="uk-margin-auto-left">
+                            این یک ویدیو است
+                            این یک ویدیو است
+                            این یک ویدیو است
+                        </h5>
+                    </a>
+                    <div class="row">
+                        <a href="#" class="tutor-link uk-margin-auto-left">
+                            نام و نام خانوادگی
+                        </a>
+                        <span class="row">
+                            <span>1600</span>
+                            <span uk-icon="icon: play"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- #endregion -->
     </content>
 </section>

@@ -1,4 +1,9 @@
-﻿using System;
+﻿using DataLayer.Models.Dto;
+using DataLayer.Models.Regular;
+using DataLayer.Services.Api;
+using DataLayer.Services.Impl;
+using DataLayer.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,14 +13,37 @@ namespace NFix.Controllers
 {
     public class HomeVideoController : Controller
     {
+        private VideoService _video;
+        public HomeVideoController()
+        {
+            _video = new VideoService();
+        }
         // GET: HomeVideo
         public ActionResult VideosPage()
         {
-            return View();
+            var allVideo = _video.SelectAllVideos();
+            List<DtoTblVideo> result = MethodRepo.ConvertToDto<TblVideo, DtoTblVideo>(allVideo);
+            return PartialView(result);
         }
-        public ActionResult VideoView()
+        public ActionResult VideoView(int id)
         {
-            return View();
+            TblVideo selectVideoById = _video.SelectVideoById(id);
+            DtoTblVideo result = new DtoTblVideo()
+            {
+                VideoUrl = selectVideoById.VideoUrl,
+                VidioDemoUrl = selectVideoById.VidioDemoUrl,
+                MainImage = selectVideoById.MainImage,
+                Title = selectVideoById.Title,
+                Description = selectVideoById.Description,
+                DescriptionDemo = selectVideoById.DescriptionDemo,
+                DateSubmited = selectVideoById.DateSubmited,
+                IsOnline = selectVideoById.IsOnline,
+                ViewCount = selectVideoById.ViewCount,
+                IsHome = selectVideoById.IsHome,
+                Raiting = selectVideoById.Raiting,
+                ShareLink = selectVideoById.ShareLink,
+            };
+            return View(result);
         }
     }
 }

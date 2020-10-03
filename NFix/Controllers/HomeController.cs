@@ -9,6 +9,35 @@ namespace NFix.Controllers
             return View();
         }
 
+        public ActionResult Hero()
+        {
+            return PartialView();
+        }
+        public ActionResult Stripe()
+        {
+            return PartialView();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

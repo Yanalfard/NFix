@@ -6,41 +6,7 @@
 <!--  -->
 <!-- #region Hero -->
 
-<section class="hero column">
-    <header class="column uk-margin-auto-right">
-        <h1 class="uk-margin-remove-bottom"><span>N</span>FIX</h1>
-        <hr class="uk-margin-remove" />
-        <p class="uk-margin-small-top">
-            Proffesional
-            <br />
-            Fitness App
-        </p>
-        <button class="button-outline uk-button uk-button-default uk-margin-small-top">
-            <span class="uk-icon" uk-icon="icon:download"></span>
-            <span>
-                Download
-            </span>
-        </button>
-    </header>
-    <!--icons in header-->
-    <div class="rowIcon uk-margin-auto-top">
-        <a href="#" uk-tooltip="اشتراک">
-            <img src="../Resources/Svg/Union.svg" />
-        </a>
-        <a href="#" uk-tooltip="اینستاکرام">
-            <img src="../Resources/Svg/Unio2n.svg" />
-        </a>
-        <a href="#" uk-tooltip="فیس بوک">
-            <img src="../Resources/Svg/asdfwe03.svg" />
-        </a>
-    </div>
-    <!---->
-    <a href="#videos" uk-icon="icon:chevron-down; ratio:2.5"
-       class="uk-icon center"></a>
-    <a href="../Resources/Png/Man.png" uk-icon="icon: play-circle; ratio: 2"
-       class="player uk-icon uk-margin-small-right"></a>
-</section>
-<div class="man"></div>
+@Html.Action("Hero", "Home")
 
 <!-- #endregion -->
 
@@ -64,6 +30,7 @@
         <img src="~/Resources/Svg/Admin/admin_video_nor.svg" alt="" />
     </a>
 </section>
+
 <!-- #endregion -->
 <!--#region Sticky icons-->
 <div id="stickies" class="column" uk-sticky="offset:250;">
@@ -84,45 +51,12 @@
 <!-- #endregion -->
 
 
-<img class="full-width" src="../Resources/Svg/Biscuits/Poly_1.svg" />
+<img class="full-width" src="~/Resources/Svg/Biscuits/Poly_1.svg" />
 
 <!-- #region Categories -->
 <!-- #Dynamic Categories -->
 
-<h3 class="clipped uk-margin-medium-top text-center">دسته بندی ها</h3>
-
-<section class="categories clipped uk-margin-auto uk-margin-medium-bottom">
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-</section>
+@Html.Action("CategoriesPage", "HomeCategories")
 
 <!-- #endregion -->
 
@@ -164,119 +98,7 @@
 <!-- #Dynamic Tutors -->
 
 
-<ul id="tutors" class="owl-carousel uk-margin-small-top">
-    <li>
-        <a href="" class=" card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-</ul>
-
+@Html.Action("TutorsPage", "HomeTutors")
 
 <!-- #endregion -->
 
@@ -285,18 +107,7 @@
 <!-- #region Products -->
 <!-- #Dynamic Products -->
 
-<div id="product" dir="ltr" class="clipped uk-margin-auto owl-carousel uk-margin-small-top">
-    @Html.Partial("_ProductBlock")
-    @Html.Partial("_ProductBlock")
-    @Html.Partial("_ProductBlock")
-    @Html.Partial("_ProductBlock")
-    @Html.Partial("_ProductBlock")
-    @Html.Partial("_ProductBlock")
-    @Html.Partial("_ProductBlock")
-    @Html.Partial("_ProductBlock")
-    @Html.Partial("_ProductBlock")
-</div>
-
+@Html.Action("ProductsPage", "HomeProducts")
 <!-- #endregion -->
 
 <div class="space-half"></div>
@@ -381,16 +192,7 @@
 <!-- #region Blogs -->
 <!-- #Dynamic Blogs -->
 
-<div id="blogs" class="clipped row uk-margin-auto owl-carousel uk-margin-remove-top">
-    @Html.Partial("_BlogBlock")
-    @Html.Partial("_BlogBlock")
-    @Html.Partial("_BlogBlock")
-    @Html.Partial("_BlogBlock")
-    @Html.Partial("_BlogBlock")
-    @Html.Partial("_BlogBlock")
-    @Html.Partial("_BlogBlock")
-    @Html.Partial("_BlogBlock")
-</div>
+@Html.Action("BlogsPage", "HomeBlogs")
 
 <!-- #endregion -->
 
