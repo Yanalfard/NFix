@@ -1,0 +1,85 @@
+﻿@model DataLayer.Models.Dto.DtoTblClient
+<div id="ModalRegister" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <div class="alternate">
+            <img src="https://picsum.photos/400/600" alt="" />
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal column uk-padding-remove-bottom">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control uk-margin-small-top" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TblUserPass.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TblUserPass.Username, new { htmlAttributes = new { @class = "form-control uk-margin-small-top" } })
+                            @Html.ValidationMessageFor(model => model.TblUserPass.Username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TellNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TellNo, new { htmlAttributes = new { @class = "form-control uk-margin-small-top" } })
+                            @Html.ValidationMessageFor(model => model.TellNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TblUserPass.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TblUserPass.Password, new { htmlAttributes = new { @class = "form-control uk-margin-small-top" } })
+                            @Html.ValidationMessageFor(model => model.TblUserPass.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="ثبت نام" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @*<form class="column uk-padding-remove-bottom" action="/HomeAccount/Register" method="post">
+            <h3>
+                ثبت نام
+            </h3>
+            <label>
+                نام کاربری
+            </label>
+            <input class="uk-margin-small-top" name="Username" type="text" value="" required />
+            <label class="uk-margin-top">
+                گذر واژه
+            </label>
+            <input class="uk-margin-small-top" name="Password" type="password" value="" required />
+            <label class="uk-margin-top">
+                نام و نام خانوادگی
+            </label>
+            <input class="uk-margin-small-top" name="Name" type="text" value="" required />
+            <label class="uk-margin-top">
+                شماره تلفن
+            </label>
+            <input class="uk-margin-small-top" name="TellNo" type="tel" value="" required />
+
+            <div class="row uk-margin-medium-top">
+                <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
+                   onclick="UIkit.modal(document.getElementById('ModalLogin')).show();">ورود</a>
+                <button class="uk-margin-remove-bottom">
+                    ثبت نام
+                </button>
+            </div>
+        </form>*@
+        </div>
+    </div>
+</div>

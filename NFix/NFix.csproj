@@ -157,6 +157,7 @@
     <Compile Include="Controllers\DealController.cs" />
     <Compile Include="Controllers\DealPropertyRelController.cs" />
     <Compile Include="Controllers\DiscountController.cs" />
+    <Compile Include="Controllers\HomeAccountController.cs" />
     <Compile Include="Controllers\HomeBlogsController.cs" />
     <Compile Include="Controllers\HomeCategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -380,6 +381,9 @@
     <Content Include="Views\Home\Stripe.cshtml" />
     <Content Include="Views\HomeCategories\CategoryView.cshtml" />
     <Content Include="Views\HomeTutors\TutorView.cshtml" />
+    <Content Include="Views\HomeAccount\Login.cshtml" />
+    <Content Include="Views\HomeAccount\Register.cshtml" />
+    <Content Include="Views\Shared\_LoggedInUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

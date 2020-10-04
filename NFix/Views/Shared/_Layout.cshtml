@@ -110,91 +110,18 @@
             <ul class="uk-navbar-nav">
                 <li>
 
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <a class="nav-profile" href="/User/Profile/Index">
-                            پروفایل
-                        </a>
-                    }
-                    else
-                    {
-                        <a class="nav-profile" href="#" uk-toggle="target: #ModalLogin" type="button">
-                            ورود
-                        </a>
-                    }
+                    @Html.Partial("_LoggedInUser")
 
                     <!-- #region Register -->
                     <!--name-->
                     <!--tell-->
                     <!--user-->
                     <!--pass-->
-
-                    <div id="ModalRegister" uk-modal>
-                        <div class="uk-modal-dialog uk-modal-body">
-                            <div class="alternate">
-                                <img src="https://picsum.photos/400/600" alt="" />
-                                <form class="column uk-padding-remove-bottom">
-                                    <h3>
-                                        ثبت نام
-                                    </h3>
-                                    <label>
-                                        نام کاربری
-                                    </label>
-                                    <input class="uk-margin-small-top" type="text" value="" required />
-                                    <label class="uk-margin-top">
-                                        گذر واژه
-                                    </label>
-                                    <input class="uk-margin-small-top" type="password" value="" required />
-                                    <label class="uk-margin-top">
-                                        نام و نام خانوادگی
-                                    </label>
-                                    <input class="uk-margin-small-top" type="text" value="" required />
-                                    <label class="uk-margin-top">
-                                        شماره تلفن
-                                    </label>
-                                    <input class="uk-margin-small-top" type="tel" value="" required />
-
-                                    <div class="row uk-margin-medium-top">
-                                        <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
-                                           onclick="UIkit.modal(document.getElementById('ModalLogin')).show();">ورود</a>
-                                        <button class="uk-margin-remove-bottom">
-                                            ثبت نام
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
+                    @Html.Action("Register", "HomeAccount", new { area = "" })
                     <!-- #endregion -->
                     <!-- #region Login -->
-                    <div id="ModalLogin" uk-modal>
-                        <div class="uk-modal-dialog uk-modal-body">
-                            <div class="alternate" onclick="">
-                                <img src="https://picsum.photos/400/600" alt="" />
-                                <form class="column">
-                                    <h3>
-                                        ورود
-                                    </h3>
-                                    <label>
-                                        نام کاربری
-                                    </label>
-                                    <input class="uk-margin-small-top" type="text" value="" required />
-                                    <label class="uk-margin-top">
-                                        رمز عبور
-                                    </label>
-                                    <input class="uk-margin-small-top" type="text" value="" required />
-                                    <div class="row uk-margin-medium-top">
-                                        <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
-                                           onclick="UIkit.modal(document.getElementById('ModalRegister')).show();">ثبت نام</a>
-                                        <button class=" uk-margin-auto-bottom ">
-                                            ورود
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    @Html.Action("Login", "HomeAccount", new { area = "" })
+
                     <!--#endregion-->
 
                 </li>
