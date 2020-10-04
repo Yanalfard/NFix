@@ -157,7 +157,12 @@
     <Compile Include="Controllers\DealController.cs" />
     <Compile Include="Controllers\DealPropertyRelController.cs" />
     <Compile Include="Controllers\DiscountController.cs" />
+    <Compile Include="Controllers\HomeBlogsController.cs" />
+    <Compile Include="Controllers\HomeCategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeProductsController.cs" />
+    <Compile Include="Controllers\HomeTutorsController.cs" />
+    <Compile Include="Controllers\HomeVideoController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\KeywordController.cs" />
     <Compile Include="Controllers\LogController.cs" />
@@ -363,12 +368,23 @@
     <Content Include="Views\Home\BlogsPage.cshtml" />
     <Content Include="Views\Home\TutorView.cshtml" />
     <Content Include="Views\Home\VideosPage.cshtml" />
+    <Content Include="Views\HomeVideo\VideosPage.cshtml" />
+    <Content Include="Views\HomeVideo\VideoView.cshtml" />
+    <Content Include="Views\HomeCategories\CategoriesPage.cshtml" />
+    <Content Include="Views\HomeTutors\TutorsPage.cshtml" />
+    <Content Include="Views\HomeProducts\ProductsPage.cshtml" />
+    <Content Include="Views\HomeProducts\ProductView.cshtml" />
+    <Content Include="Views\HomeBlogs\BlogsPage.cshtml" />
+    <Content Include="Views\HomeBlogs\BlogView.cshtml" />
+    <Content Include="Views\Home\Hero.cshtml" />
+    <Content Include="Views\Home\Stripe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Views\Shared\" />
+    <Folder Include="Resources\Blogs\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
