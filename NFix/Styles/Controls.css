@@ -382,10 +382,10 @@ h1, h2, h3, h4, h5, h6 {
       -ms-align-content: center;
       -webkit-align-content: center;
       align-content: center; }
-  #ModalLogin content, #ModalRegister content {
+  #ModalLogin form, #ModalRegister form {
     flex: 1;
     padding: 20px; }
-    #ModalLogin content .row, #ModalRegister content .row {
+    #ModalLogin form .row, #ModalRegister form .row {
       overflow: visible; }
   #ModalLogin img, #ModalRegister img {
     background: #B41313;
