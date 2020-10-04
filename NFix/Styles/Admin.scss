@@ -86,5 +86,22 @@ a.plus {
 a.uk-accordion-title:hover {
 }
 
+.uk-table {
+    margin: 0 !important;
+
+    td > a > img {
+        height: 32px;
+        width: 32px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+    }
+
+
+    a:hover {
+        color: #eb5251 !important;
+    }
+}
 
 

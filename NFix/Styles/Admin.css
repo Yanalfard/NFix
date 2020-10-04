@@ -462,3 +462,15 @@ a.plus {
   margin-top: 14px !important; }
   .uk-accordion-content li {
     margin-bottom: 8px; }
+
+.uk-table {
+  margin: 0 !important; }
+  .uk-table td > a > img {
+    height: 32px;
+    width: 32px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center; }
+  .uk-table a:hover {
+    color: #eb5251 !important; }
