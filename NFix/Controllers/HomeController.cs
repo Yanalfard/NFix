@@ -18,26 +18,6 @@ namespace NFix.Controllers
             return PartialView();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -66,12 +46,10 @@ namespace NFix.Controllers
         {
             return View();
         }
-
         public ActionResult TutorView()
         {
             return View();
         }
-
         public ActionResult VideosPage()
         {
             return View();

@@ -372,6 +372,8 @@
     <Content Include="Views\HomeBlogs\BlogView.cshtml" />
     <Content Include="Views\Home\Hero.cshtml" />
     <Content Include="Views\Home\Stripe.cshtml" />
+    <Content Include="Views\HomeCategories\CategoryView.cshtml" />
+    <Content Include="Views\HomeTutors\TutorView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
