@@ -1,20 +1,25 @@
-﻿
-<div id="ModalLogin" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <div class="alternate" onclick="">
-            <img src="https://picsum.photos/400/600" alt="" />
-            <form class="column">
+﻿@model DataLayer.Models.Dto.DtoTblClient
+
+<div class="uk-modal-dialog uk-modal-body">
+    <div class="alternate" onclick="">
+        <img src="https://picsum.photos/400/600" alt="" />
+        @using (Ajax.BeginForm("Login", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ModalLogin" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="column">
                 <h3>
                     ورود
                 </h3>
-                <label>
-                    نام کاربری
-                </label>
-                <input class="uk-margin-small-top" type="text" value="" required />
-                <label class="uk-margin-top">
-                    رمز عبور
-                </label>
-                <input class="uk-margin-small-top" type="text" value="" required />
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2"})
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+
+
                 <div class="row uk-margin-medium-top">
                     <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
                        onclick="UIkit.modal(document.getElementById('ModalRegister')).show();">ثبت نام</a>
@@ -22,8 +27,10 @@
                         ورود
                     </button>
                 </div>
-            </form>
-        </div>
+            </div>
+        }
+
     </div>
 </div>
+
 

@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class ProductKeywordRelService : IProductKeywordRelService
     {
-        public TblProductKeywordRel AddProductKeywordRel(TblProductKeywordRel productKeywordRel)
+        public bool AddProductKeywordRel(TblProductKeywordRel productKeywordRel)
         {
             return new ProductKeywordRelRepo().Add(productKeywordRel);
         }

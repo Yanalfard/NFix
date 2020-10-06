@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class DiscountService : IDiscountService
     {
-        public TblDiscount AddDiscount(TblDiscount discount)
+        public bool AddDiscount(TblDiscount discount)
         {
             return new DiscountRepo().Add(discount);
         }

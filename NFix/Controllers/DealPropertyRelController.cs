@@ -20,12 +20,13 @@ namespace NFix.Controllers
             var task = Task.Run(() => new DealPropertyRelService().AddDealPropertyRel(dealPropertyRel));
             if (task.Wait(TimeSpan.FromSeconds(10)))
                 if (task.Result != null)
-                    return Ok(new DtoTblDealPropertyRel(task.Result));
+                    return Ok(true);
                 else
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-        [Route("DeleteDealPropertyRel")]
+
+        [Route("DeleteDealPropertyRel")]
         [HttpPost]
         public IHttpActionResult DeleteDealPropertyRel(int id)
         {
@@ -37,7 +38,8 @@ namespace NFix.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-        [Route("UpdateDealPropertyRel")]
+
+        [Route("UpdateDealPropertyRel")]
         [HttpPost]
         public IHttpActionResult UpdateDealPropertyRel(List<object> dealPropertyRelLogId)
         {
@@ -51,7 +53,8 @@ namespace NFix.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-        [Route("SelectAllDealPropertyRels")]
+
+        [Route("SelectAllDealPropertyRels")]
         [HttpGet]
         public IHttpActionResult SelectAllDealPropertyRels()
         {
@@ -68,7 +71,8 @@ namespace NFix.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-        [Route("SelectDealPropertyRelById")]
+
+        [Route("SelectDealPropertyRelById")]
         [HttpPost]
         public IHttpActionResult SelectDealPropertyRelById(int id)
         {
@@ -80,7 +84,8 @@ namespace NFix.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-        [Route("SelectDealPropertyRelByDealId")]
+
+        [Route("SelectDealPropertyRelByDealId")]
         [HttpPost]
         public IHttpActionResult SelectDealPropertyRelByDealId(int lId)
         {
@@ -97,7 +102,8 @@ namespace NFix.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-        [Route("SelectDealPropertyRelByPropertyId")]
+
+        [Route("SelectDealPropertyRelByPropertyId")]
         [HttpPost]
         public IHttpActionResult SelectDealPropertyRelByPropertyId(int pertyId)
         {
@@ -114,6 +120,7 @@ namespace NFix.Controllers
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);
         }
-
+
+
     }
 }

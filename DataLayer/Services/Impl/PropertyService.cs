@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class PropertyService : IPropertyService
     {
-        public TblProperty AddProperty(TblProperty property)
+        public bool AddProperty(TblProperty property)
         {
             return new PropertyRepo().Add(property);
         }

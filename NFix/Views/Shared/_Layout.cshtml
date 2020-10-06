@@ -31,6 +31,14 @@
     <!--Scroll Reveal-->
     <script src="https://unpkg.com/scrollreveal"></script>
 
+
+
+    <script src="~/Scripts/Jquery/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
+
+
 </head>
 <body>
 
@@ -117,10 +125,21 @@
                     <!--tell-->
                     <!--user-->
                     <!--pass-->
-                    @Html.Action("Register", "HomeAccount", new { area = "" })
+
+                    <div id="ModalRegister" uk-modal>
+                        @Html.Action("Register", "HomeAccount", new { area = "" })
+                    </div>
+
+                    @*@Html.Action("Register", "HomeAccount", new { area = "" })*@
                     <!-- #endregion -->
                     <!-- #region Login -->
-                    @Html.Action("Login", "HomeAccount", new { area = "" })
+                    <div id="ModalLogin" uk-modal>
+                        @Html.Action("Login", "HomeAccount", new { area = "" })
+                    </div>
+
+
+
+
 
                     <!--#endregion-->
 

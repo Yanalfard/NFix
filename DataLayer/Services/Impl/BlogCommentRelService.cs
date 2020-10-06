@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class BlogCommentRelService : IBlogCommentRelService
     {
-        public TblBlogCommentRel AddBlogCommentRel(TblBlogCommentRel blogCommentRel)
+        public bool AddBlogCommentRel(TblBlogCommentRel blogCommentRel)
         {
             return new BlogCommentRelRepo().Add(blogCommentRel);
         }

@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class ProductImageRelService : IProductImageRelService
     {
-        public TblProductImageRel AddProductImageRel(TblProductImageRel productImageRel)
+        public bool AddProductImageRel(TblProductImageRel productImageRel)
         {
             return new ProductImageRelRepo().Add(productImageRel);
         }

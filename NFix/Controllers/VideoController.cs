@@ -20,7 +20,7 @@ namespace NFix.Controllers
             var task = Task.Run(() => new VideoService().AddVideo(video));
             if (task.Wait(TimeSpan.FromSeconds(10)))
                 if (task.Result != null)
-                    return Ok(new DtoTblVideo(task.Result));
+                    return Ok(true);
                 else
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);

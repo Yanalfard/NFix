@@ -321,76 +321,76 @@ namespace DataLayer.Utilities
                 switch (tableType)
                 {
                     case EnumRepo.Tables.TblAd:
-                        Heart.TblAd.Remove(new TblAd {id = id});
+                        Heart.TblAd.Remove(new TblAd { id = id });
                         break;
                     case EnumRepo.Tables.TblBlog:
-                        Heart.TblBlog.Remove(new TblBlog {id = id});
+                        Heart.TblBlog.Remove(new TblBlog { id = id });
                         break;
                     case EnumRepo.Tables.TblBlogCommentRel:
-                        Heart.TblBlogCommentRel.Remove(new TblBlogCommentRel {id = id});
+                        Heart.TblBlogCommentRel.Remove(new TblBlogCommentRel { id = id });
                         break;
                     case EnumRepo.Tables.TblBlogKeywordRel:
-                        Heart.TblBlogKeywordRel.Remove(new TblBlogKeywordRel {id = id});
+                        Heart.TblBlogKeywordRel.Remove(new TblBlogKeywordRel { id = id });
                         break;
                     case EnumRepo.Tables.TblCatagory:
-                        Heart.TblCatagory.Remove(new TblCatagory {id = id});
+                        Heart.TblCatagory.Remove(new TblCatagory { id = id });
                         break;
                     case EnumRepo.Tables.TblClientProductRel:
-                        Heart.TblClientProductRel.Remove(new TblClientProductRel {id = id});
+                        Heart.TblClientProductRel.Remove(new TblClientProductRel { id = id });
                         break;
                     case EnumRepo.Tables.TblComment:
-                        Heart.TblComment.Remove(new TblComment {id = id});
+                        Heart.TblComment.Remove(new TblComment { id = id });
                         break;
                     case EnumRepo.Tables.TblImage:
-                        Heart.TblImage.Remove(new TblImage {id = id});
+                        Heart.TblImage.Remove(new TblImage { id = id });
                         break;
                     case EnumRepo.Tables.TblKeyword:
-                        Heart.TblKeyword.Remove(new TblKeyword {id = id});
+                        Heart.TblKeyword.Remove(new TblKeyword { id = id });
                         break;
                     case EnumRepo.Tables.TblProduct:
-                        Heart.TblProduct.Remove(new TblProduct {id = id});
+                        Heart.TblProduct.Remove(new TblProduct { id = id });
                         break;
                     case EnumRepo.Tables.TblProductCommentRel:
-                        Heart.TblProductCommentRel.Remove(new TblProductCommentRel {id = id});
+                        Heart.TblProductCommentRel.Remove(new TblProductCommentRel { id = id });
                         break;
                     case EnumRepo.Tables.TblProductImageRel:
-                        Heart.TblProductImageRel.Remove(new TblProductImageRel {id = id});
+                        Heart.TblProductImageRel.Remove(new TblProductImageRel { id = id });
                         break;
                     case EnumRepo.Tables.TblProductKeywordRel:
-                        Heart.TblProductKeywordRel.Remove(new TblProductKeywordRel {id = id});
+                        Heart.TblProductKeywordRel.Remove(new TblProductKeywordRel { id = id });
                         break;
                     case EnumRepo.Tables.TblProductPropertyRel:
-                        Heart.TblProductPropertyRel.Remove(new TblProductPropertyRel {id = id});
+                        Heart.TblProductPropertyRel.Remove(new TblProductPropertyRel { id = id });
                         break;
                     case EnumRepo.Tables.TblProperty:
-                        Heart.TblProperty.Remove(new TblProperty {id = id});
+                        Heart.TblProperty.Remove(new TblProperty { id = id });
                         break;
                     case EnumRepo.Tables.TblTutor:
-                        Heart.TblTutor.Remove(new TblTutor {id = id});
+                        Heart.TblTutor.Remove(new TblTutor { id = id });
                         break;
                     case EnumRepo.Tables.TblVideo:
-                        Heart.TblVideo.Remove(new TblVideo {id = id});
+                        Heart.TblVideo.Remove(new TblVideo { id = id });
                         break;
                     case EnumRepo.Tables.TblDeal:
-                        Heart.TblDeal.Remove(new TblDeal {id = id});
+                        Heart.TblDeal.Remove(new TblDeal { id = id });
                         break;
                     case EnumRepo.Tables.TblDealPropertyRel:
-                        Heart.TblDealPropertyRel.Remove(new TblDealPropertyRel {id = id});
+                        Heart.TblDealPropertyRel.Remove(new TblDealPropertyRel { id = id });
                         break;
                     case EnumRepo.Tables.TblUserPass:
-                        Heart.TblUserPass.Remove(new TblUserPass {id = id});
+                        Heart.TblUserPass.Remove(new TblUserPass { id = id });
                         break;
                     case EnumRepo.Tables.TblDiscount:
-                        Heart.TblDiscount.Remove(new TblDiscount {id = id});
+                        Heart.TblDiscount.Remove(new TblDiscount { id = id });
                         break;
                     case EnumRepo.Tables.TblClient:
-                        Heart.TblClient.Remove(new TblClient {id = id});
+                        Heart.TblClient.Remove(new TblClient { id = id });
                         break;
                     case EnumRepo.Tables.TblTuotorVideoRel:
-                        Heart.TblTuotorVideoRel.Remove(new TblTuotorVideoRel {id = id});
+                        Heart.TblTuotorVideoRel.Remove(new TblTuotorVideoRel { id = id });
                         break;
                     case EnumRepo.Tables.TblLog:
-                        Heart.TblLog.Remove(new TblLog {id = id});
+                        Heart.TblLog.Remove(new TblLog { id = id });
                         break;
                     default:
                         return false;
@@ -409,84 +409,84 @@ namespace DataLayer.Utilities
         {
             //try
             //{
-                Heart = new NFixEntities();
-                switch (tableType)
-                {
-                    case EnumRepo.Tables.TblAd:
-                        return Heart.TblAd.ToList();
+            Heart = new NFixEntities();
+            switch (tableType)
+            {
+                case EnumRepo.Tables.TblAd:
+                    return Heart.TblAd.ToList();
 
-                    case EnumRepo.Tables.TblBlog:
-                        return Heart.TblBlog.ToList();
+                case EnumRepo.Tables.TblBlog:
+                    return Heart.TblBlog.ToList();
 
-                    case EnumRepo.Tables.TblBlogCommentRel:
-                        return Heart.TblBlogCommentRel.ToList();
+                case EnumRepo.Tables.TblBlogCommentRel:
+                    return Heart.TblBlogCommentRel.ToList();
 
-                    case EnumRepo.Tables.TblBlogKeywordRel:
-                        return Heart.TblBlogKeywordRel.ToList();
+                case EnumRepo.Tables.TblBlogKeywordRel:
+                    return Heart.TblBlogKeywordRel.ToList();
 
-                    case EnumRepo.Tables.TblCatagory:
-                        return Heart.TblCatagory.ToList();
+                case EnumRepo.Tables.TblCatagory:
+                    return Heart.TblCatagory.ToList();
 
-                    case EnumRepo.Tables.TblClientProductRel:
-                        return Heart.TblClientProductRel.ToList();
+                case EnumRepo.Tables.TblClientProductRel:
+                    return Heart.TblClientProductRel.ToList();
 
-                    case EnumRepo.Tables.TblComment:
-                        return Heart.TblComment.ToList();
+                case EnumRepo.Tables.TblComment:
+                    return Heart.TblComment.ToList();
 
-                    case EnumRepo.Tables.TblImage:
-                        return Heart.TblImage.ToList();
+                case EnumRepo.Tables.TblImage:
+                    return Heart.TblImage.ToList();
 
-                    case EnumRepo.Tables.TblKeyword:
-                        return Heart.TblKeyword.ToList();
+                case EnumRepo.Tables.TblKeyword:
+                    return Heart.TblKeyword.ToList();
 
-                    case EnumRepo.Tables.TblProduct:
-                        return Heart.TblProduct.ToList();
+                case EnumRepo.Tables.TblProduct:
+                    return Heart.TblProduct.ToList();
 
-                    case EnumRepo.Tables.TblProductCommentRel:
-                        return Heart.TblProductCommentRel.ToList();
+                case EnumRepo.Tables.TblProductCommentRel:
+                    return Heart.TblProductCommentRel.ToList();
 
-                    case EnumRepo.Tables.TblProductImageRel:
-                        return Heart.TblProductImageRel.ToList();
+                case EnumRepo.Tables.TblProductImageRel:
+                    return Heart.TblProductImageRel.ToList();
 
-                    case EnumRepo.Tables.TblProductKeywordRel:
-                        return Heart.TblProductKeywordRel.ToList();
+                case EnumRepo.Tables.TblProductKeywordRel:
+                    return Heart.TblProductKeywordRel.ToList();
 
-                    case EnumRepo.Tables.TblProductPropertyRel:
-                        return Heart.TblProductPropertyRel.ToList();
+                case EnumRepo.Tables.TblProductPropertyRel:
+                    return Heart.TblProductPropertyRel.ToList();
 
-                    case EnumRepo.Tables.TblProperty:
-                        return Heart.TblProperty.ToList();
+                case EnumRepo.Tables.TblProperty:
+                    return Heart.TblProperty.ToList();
 
-                    case EnumRepo.Tables.TblTutor:
-                        return Heart.TblTutor.ToList();
+                case EnumRepo.Tables.TblTutor:
+                    return Heart.TblTutor.ToList();
 
-                    case EnumRepo.Tables.TblVideo:
-                        return Heart.TblVideo.ToList();
+                case EnumRepo.Tables.TblVideo:
+                    return Heart.TblVideo.ToList();
 
-                    case EnumRepo.Tables.TblDeal:
-                        return Heart.TblDeal.ToList();
+                case EnumRepo.Tables.TblDeal:
+                    return Heart.TblDeal.ToList();
 
-                    case EnumRepo.Tables.TblDealPropertyRel:
-                        return Heart.TblDealPropertyRel.ToList();
+                case EnumRepo.Tables.TblDealPropertyRel:
+                    return Heart.TblDealPropertyRel.ToList();
 
-                    case EnumRepo.Tables.TblUserPass:
-                        return Heart.TblUserPass.ToList();
+                case EnumRepo.Tables.TblUserPass:
+                    return Heart.TblUserPass.ToList();
 
-                    case EnumRepo.Tables.TblDiscount:
-                        return Heart.TblDiscount.ToList();
+                case EnumRepo.Tables.TblDiscount:
+                    return Heart.TblDiscount.ToList();
 
-                    case EnumRepo.Tables.TblClient:
-                        return Heart.TblClient.ToList();
+                case EnumRepo.Tables.TblClient:
+                    return Heart.TblClient.ToList();
 
-                    case EnumRepo.Tables.TblTuotorVideoRel:
-                        return Heart.TblTuotorVideoRel.ToList();
+                case EnumRepo.Tables.TblTuotorVideoRel:
+                    return Heart.TblTuotorVideoRel.ToList();
 
-                    case EnumRepo.Tables.TblLog:
-                        return Heart.TblLog.ToList();
+                case EnumRepo.Tables.TblLog:
+                    return Heart.TblLog.ToList();
 
-                    default:
-                        return new List<bool>();
-                }
+                default:
+                    return new List<bool>();
+            }
             //}
             //catch(Exception e)
             //{

@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class DealService : IDealService
     {
-        public TblDeal AddDeal(TblDeal deal)
+        public bool AddDeal(TblDeal deal)
         {
             return new DealRepo().Add(deal);
         }

@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class BlogService : IBlogService
     {
-        public TblBlog AddBlog(TblBlog blog)
+        public bool AddBlog(TblBlog blog)
         {
             return new BlogRepo().Add(blog);
         }

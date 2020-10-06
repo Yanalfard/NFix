@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class VideoService : IVideoService
     {
-        public TblVideo AddVideo(TblVideo video)
+        public bool AddVideo(TblVideo video)
         {
             return new VideoRepo().Add(video);
         }

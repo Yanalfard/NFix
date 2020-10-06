@@ -20,7 +20,7 @@ namespace NFix.Controllers
             var task = Task.Run(() => new DiscountService().AddDiscount(discount));
             if (task.Wait(TimeSpan.FromSeconds(10)))
                 if (task.Result != null)
-                    return Ok(new DtoTblDiscount(task.Result));
+                    return Ok(true);
                 else
                     return Conflict();
             return StatusCode(HttpStatusCode.RequestTimeout);

@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class KeywordService : IKeywordService
     {
-        public TblKeyword AddKeyword(TblKeyword keyword)
+        public bool AddKeyword(TblKeyword keyword)
         {
             return new KeywordRepo().Add(keyword);
         }

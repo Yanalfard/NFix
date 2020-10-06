@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class LogService : ILogService
     {
-        public TblLog AddLog(TblLog log)
+        public bool AddLog(TblLog log)
         {
             return new LogRepo().Add(log);
         }
