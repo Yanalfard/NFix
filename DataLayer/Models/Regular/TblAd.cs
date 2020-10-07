@@ -11,7 +11,8 @@ namespace DataLayer.Models.Regular
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TblAd
     {
         public int id { get; set; }

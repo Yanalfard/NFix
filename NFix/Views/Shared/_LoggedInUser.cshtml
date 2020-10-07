@@ -1,7 +1,7 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
     <a class="nav-profile" href="/User/Profile/Index">
-        پروفایل
+        @User.Identity.Name
     </a>
 }
 else

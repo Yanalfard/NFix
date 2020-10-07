@@ -5,6 +5,8 @@ namespace DataLayer.Models.Dto
 {
     public class DtoTblBlogKeywordRel : TblBlogKeywordRel
     {
+        public virtual TblBlog Blog { get; set; }
+        public virtual TblKeyword Keyword { get; set; }
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
 
@@ -15,7 +17,8 @@ namespace DataLayer.Models.Dto
 
         public DtoTblBlogKeywordRel(TblBlogKeywordRel blogKeywordRel)
         {
-
+            Blog = blogKeywordRel.TblBlog;
+            Keyword = blogKeywordRel.TblKeyword;
             StatusEffect = HttpStatusCode.OK;
         }
 

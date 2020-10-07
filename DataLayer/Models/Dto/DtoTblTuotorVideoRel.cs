@@ -5,6 +5,9 @@ namespace DataLayer.Models.Dto
 {
     public class DtoTblTuotorVideoRel : TblTuotorVideoRel
     {
+        public virtual TblTutor Tutor { get; set; }
+        public virtual TblVideo Video { get; set; }
+
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
 
@@ -15,7 +18,8 @@ namespace DataLayer.Models.Dto
 
         public DtoTblTuotorVideoRel(TblTuotorVideoRel tuotorVideoRel)
         {
-
+            Tutor = tuotorVideoRel.TblTutor;
+            Video = tuotorVideoRel.TblVideo;
             StatusEffect = HttpStatusCode.OK;
         }
 

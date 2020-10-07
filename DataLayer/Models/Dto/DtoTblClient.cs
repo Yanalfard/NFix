@@ -28,6 +28,8 @@ namespace DataLayer.Models.Dto
         public string TellNo { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
+        [Display(Name="مرا بخاطر بسپار")]
+        public bool RememberMe { get; set; }
         public string PostalCode { get; set; }
         [Display(Name = "نام کاربری")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]

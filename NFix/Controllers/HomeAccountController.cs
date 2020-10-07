@@ -29,9 +29,11 @@ namespace NFix.Controllers
             TblUserPass user= _userPass.SelectUserPassByUsernameAndPassword(client.UserName.ToLower(), hashPassword);
             if (user != null)
             {
+                user.IsActive = true;
                 if (user.IsActive)
                 {
-
+                    FormsAuthentication.SetAuthCookie(user.Username,client.RememberMe);
+                    return JavaScript("document.getElementById('LoginForm').disabled = true;UIkit.modal(document.getElementById('ModalLogin')).hide();location.reload(true)");
                 }
                 else
                 {
@@ -96,7 +98,7 @@ namespace NFix.Controllers
                         bool addClient = _client.AddClient(tblClient);
                         if (addClient)
                         {
-                            return JavaScript("alert('ثبت نام شما انجام شد');UIkit.modal(document.getElementById('ModalLogin')).show();");
+                            return JavaScript("document.getElementById('RegisterForm').reset();alert('ثبت نام شما انجام شد');UIkit.modal(document.getElementById('ModalLogin')).show();");
                             //return JavaScript("location.reload(true)");
                         };
                     };

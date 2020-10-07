@@ -118,7 +118,18 @@
             <ul class="uk-navbar-nav">
                 <li>
 
-                    @Html.Partial("_LoggedInUser")
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="nav-profile" href="/User/Profile/Index">
+                            @User.Identity.Name
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="nav-profile" href="#" uk-toggle="target: #ModalLogin" type="button">
+                            ورود
+                        </a>
+                    }
 
                     <!-- #region Register -->
                     <!--name-->

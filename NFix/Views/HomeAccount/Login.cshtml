@@ -3,31 +3,33 @@
 <div class="uk-modal-dialog uk-modal-body">
     <div class="alternate" onclick="">
         <img src="https://picsum.photos/400/600" alt="" />
-        @using (Ajax.BeginForm("Login", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ModalLogin" }))
+        @using (Ajax.BeginForm("Login", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ModalLogin" }, htmlAttributes: new { @id = "LoginForm" }))
         {
             @Html.AntiForgeryToken()
-            <div class="column">
-                <h3>
-                    ورود
-                </h3>
-                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2"})
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
-                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+    <div class="column">
+        <h3>
+            ورود
+        </h3>
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
 
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
+        @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "uk-margin-small-top" })
+        @Html.EditorFor(model => model.RememberMe)
+        @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
 
-
-                <div class="row uk-margin-medium-top">
-                    <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
-                       onclick="UIkit.modal(document.getElementById('ModalRegister')).show();">ثبت نام</a>
-                    <button class=" uk-margin-auto-bottom ">
-                        ورود
-                    </button>
-                </div>
-            </div>
+        <div class="row uk-margin-medium-top">
+            <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
+               onclick="UIkit.modal(document.getElementById('ModalRegister')).show();">ثبت نام</a>
+            <button class=" uk-margin-auto-bottom ">
+                ورود
+            </button>
+        </div>
+    </div>
         }
 
     </div>
