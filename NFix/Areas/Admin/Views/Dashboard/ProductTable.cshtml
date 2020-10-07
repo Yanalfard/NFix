@@ -3,32 +3,69 @@
     ViewBag.Title = "ProductTable";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 <!-- #region Table -->
 
-<table class="uk-table">
-    <caption>این ی جدول است</caption>
+<table class="uk-table" dir="rtl">
     <thead>
         <tr>
-            <th>این یک هدر است</th>
-            <th>این یک هدر است</th>
-            <th>این یک هدر است</th>
+            <th></th>
+            <th>نام</th>
+            <th>تاریخ ثبت</th>
+            <th>امتیاز</th>
+            <th>قیمت</th>
+            <th>توضیحات</th>
+            <th>دسته بندی</th>
+            <th>تعداد</th>
+            <th>پیشنهادی</th>
+            <th>تخفیف</th>
+            <th>وضعیت</th>
+            <th>کلمات کلیدی</th>
+            <th>عکس ها</th>
+            <th>مشخصات</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>این یک هدر استاین یک هدر است</td>
-            <td>این یک هدر استاین یک هدر است</td>
-            <td>این یک هدر استاین یک هدر است</td>
-        </tr>
-        <tr>
-            <td>این یک هدر استاین یک هدر است</td>
-            <td>این یک هدر استاین یک هدر است</td>
-            <td>این یک هدر استاین یک هدر است</td>
-        </tr>
-        <tr>
-            <td>این یک هدر استاین یک هدر است</td>
-            <td>این یک هدر استاین یک هدر است</td>
-            <td>این یک هدر استاین یک هدر است</td>
+            <td>1</td>
+            <td>کالا ورزشی</td>
+            <td>1400/08/08</td>
+            <td>2.6</td>
+            <td>136،000</td>
+            <td>
+                <a href="#Modal-Description" uk-toggle>توضیحات</a>
+                <div id="Modal-Description" uk-modal>
+                    <div class="uk-modal-dialog uk-modal-body">
+                        <h3>
+                            توضیحات کالا
+                        </h3>
+                        <p>
+                            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
+                        </p>
+                        <button class="uk-modal-close">
+                            بستن
+                        </button>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <a href="">ورزشی</a>
+            </td>
+            <td>50</td>
+            <td>
+                <input type="checkbox" class="uk-checkbox" onclick="return false;" readonly />
+            </td>
+            <td>12%</td>
+            <td>0</td>
+            <td>
+                <a href="" uk-icon="hashtag"></a>
+            </td>
+            <td>
+                <a href="" uk-icon="image"></a>
+            </td>
+            <td>
+                <a href="" uk-icon="thumbnails"></a>
+            </td>
         </tr>
     </tbody>
 </table>
