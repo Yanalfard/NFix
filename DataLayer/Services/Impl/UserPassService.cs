@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class UserPassService : IUserPassService
     {
-        public TblUserPass AddUserPass(TblUserPass userPass)
+        public bool AddUserPass(TblUserPass userPass)
         {
             return new UserPassRepo().Add(userPass);
         }

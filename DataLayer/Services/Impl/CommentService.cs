@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class CommentService : ICommentService
     {
-        public TblComment AddComment(TblComment comment)
+        public bool AddComment(TblComment comment)
         {
             return new CommentRepo().Add(comment);
         }

@@ -13,9 +13,9 @@ namespace DataLayer.Repositories.Impl
             _main = new MainProvider();
         }
 
-        public virtual T Add<T>(T table)
+        public virtual bool Add<T>(T table)
         {
-            return (T)_main.Add(table);
+            return Convert.ToBoolean(_main.Add(table));
         }
 
         public virtual bool Update<T>(T table, int logId)

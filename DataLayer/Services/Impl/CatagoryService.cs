@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class CatagoryService : ICatagoryService
     {
-        public TblCatagory AddCatagory(TblCatagory catagory)
+        public bool AddCatagory(TblCatagory catagory)
         {
             return new CatagoryRepo().Add(catagory);
         }

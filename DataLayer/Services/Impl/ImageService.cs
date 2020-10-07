@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class ImageService : IImageService
     {
-        public TblImage AddImage(TblImage image)
+        public bool AddImage(TblImage image)
         {
             return new ImageRepo().Add(image);
         }

@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class ClientService : IClientService
     {
-        public TblClient AddClient(TblClient client)
+        public bool AddClient(TblClient client)
         {
             return new ClientRepo().Add(client);
         }

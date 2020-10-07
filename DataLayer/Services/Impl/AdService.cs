@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class AdService : IAdService
     {
-        public TblAd AddAd(TblAd ad)
+        public bool AddAd(TblAd ad)
         {
             return new AdRepo().Add(ad);
         }

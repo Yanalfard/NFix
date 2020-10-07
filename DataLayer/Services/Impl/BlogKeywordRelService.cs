@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class BlogKeywordRelService : IBlogKeywordRelService
     {
-        public TblBlogKeywordRel AddBlogKeywordRel(TblBlogKeywordRel blogKeywordRel)
+        public bool AddBlogKeywordRel(TblBlogKeywordRel blogKeywordRel)
         {
             return new BlogKeywordRelRepo().Add(blogKeywordRel);
         }

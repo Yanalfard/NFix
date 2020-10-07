@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class TutorService : ITutorService
     {
-        public TblTutor AddTutor(TblTutor tutor)
+        public bool AddTutor(TblTutor tutor)
         {
             return new TutorRepo().Add(tutor);
         }

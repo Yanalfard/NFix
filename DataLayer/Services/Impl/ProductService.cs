@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class ProductService : IProductService
     {
-        public TblProduct AddProduct(TblProduct product)
+        public bool AddProduct(TblProduct product)
         {
             return new ProductRepo().Add(product);
         }

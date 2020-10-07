@@ -1,0 +1,12 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <a class="nav-profile" href="/User/Profile/Index">
+        پروفایل
+    </a>
+}
+else
+{
+    <a class="nav-profile" href="#" uk-toggle="target: #ModalLogin" type="button">
+        ورود
+    </a>
+}

@@ -8,7 +8,7 @@ namespace DataLayer.Services.Impl
 {
     public class TuotorVideoRelService : ITuotorVideoRelService
     {
-        public TblTuotorVideoRel AddTuotorVideoRel(TblTuotorVideoRel tuotorVideoRel)
+        public bool AddTuotorVideoRel(TblTuotorVideoRel tuotorVideoRel)
         {
             return new TuotorVideoRelRepo().Add(tuotorVideoRel);
         }
