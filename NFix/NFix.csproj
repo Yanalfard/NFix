@@ -390,6 +390,7 @@
     <Content Include="Views\HomeAccount\Login.cshtml" />
     <Content Include="Views\HomeAccount\Register.cshtml" />
     <Content Include="Views\Shared\_LoggedInUser.cshtml" />
+    <Content Include="Views\HomeVideo\VideoRecommendations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -45,5 +45,10 @@ namespace NFix.Controllers
             };
             return View(result);
         }
+
+        public ActionResult VideoRecommendations()
+        {
+            return PartialView();
+        }
     }
 }

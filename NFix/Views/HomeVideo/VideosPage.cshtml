@@ -15,16 +15,16 @@
             <div class="video column" dir="rtl">
                 <div class="vid column">
                     <img class="thumbnail" src="~/Resources/Videos/Image/@item.MainImage" alt="" />
-                    <a href="/Home/VideoView" class="uk-icon" uk-icon="icon: play; ratio:4"></a>
+                    <a href="/HomeVideo/VideoView/@item.id" class="uk-icon" uk-icon="icon: play; ratio:4"></a>
                 </div>
                 <div class="uk-margin-small-top row">
                     <div class="tutor uk-margin-remove-top row">
-                        <a href="/Home/VideoView">
+                        <a href="/HomeVideo/VideoView/@item.id">
                             <img class="profile-img uk-border-circle" src="~/Resources/User/@item.TuotorVideoRel.FirstOrDefault().TblTutor.MainImage" />
                         </a>
                     </div>
                     <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
-                        <a href="/Home/VideoView">
+                        <a href="/HomeVideo/VideoView/@item.id">
                             <h5 class="uk-margin-auto-left">
                                 @item.Title
                             </h5>
