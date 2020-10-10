@@ -185,143 +185,244 @@ namespace DataLayer.Utilities
             try
             {
                 object tableObj = table;
-            if (table.GetType() == typeof(TblAd))
-            {
-                TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                val = (TblAd)tableObj;
-            }
-            else if (table.GetType() == typeof(TblBlog))
-            {
-                TblBlog val = Heart.TblBlog.SingleOrDefault(i => i.id == logId);
-                val = (TblBlog)tableObj;
-            }
-            else if (table.GetType() == typeof(TblBlogCommentRel))
-            {
-                TblBlogCommentRel val = Heart.TblBlogCommentRel.SingleOrDefault(i => i.id == logId);
-                val = (TblBlogCommentRel)tableObj;
-            }
-            else if (table.GetType() == typeof(TblBlogKeywordRel))
-            {
-                TblBlogKeywordRel val = Heart.TblBlogKeywordRel.SingleOrDefault(i => i.id == logId);
-                val = (TblBlogKeywordRel)tableObj;
-            }
-            else if (table.GetType() == typeof(TblCatagory))
-            {
-                TblCatagory val = Heart.TblCatagory.SingleOrDefault(i => i.id == logId);
-                val = (TblCatagory)tableObj;
-            }
-            else if (table.GetType() == typeof(TblClientProductRel))
-            {
-                TblClientProductRel val = Heart.TblClientProductRel.SingleOrDefault(i => i.id == logId);
-                val = (TblClientProductRel)tableObj;
-            }
-            else if (table.GetType() == typeof(TblComment))
-            {
-                TblComment val = Heart.TblComment.SingleOrDefault(i => i.id == logId);
-                val = (TblComment)tableObj;
-            }
-            else if (table.GetType() == typeof(TblImage))
-            {
-                TblImage val = Heart.TblImage.SingleOrDefault(i => i.id == logId);
-                val = (TblImage)tableObj;
-            }
-            else if (table.GetType() == typeof(TblKeyword))
-            {
-                TblKeyword val = Heart.TblKeyword.SingleOrDefault(i => i.id == logId);
-                val = (TblKeyword)tableObj;
-            }
-            else if (table.GetType() == typeof(TblProduct))
-            {
-                TblProduct val = Heart.TblProduct.SingleOrDefault(i => i.id == logId);
-                val = (TblProduct)tableObj;
-            }
-            else if (table.GetType() == typeof(TblProductCommentRel))
-            {
-                TblProductCommentRel val = Heart.TblProductCommentRel.SingleOrDefault(i => i.id == logId);
-                val = (TblProductCommentRel)tableObj;
-            }
-            else if (table.GetType() == typeof(TblProductImageRel))
-            {
-                TblProductImageRel val = Heart.TblProductImageRel.SingleOrDefault(i => i.id == logId);
-                val = (TblProductImageRel)tableObj;
-            }
-            else if (table.GetType() == typeof(TblProductKeywordRel))
-            {
-                TblProductKeywordRel val = Heart.TblProductKeywordRel.SingleOrDefault(i => i.id == logId);
-                val = (TblProductKeywordRel)tableObj;
-            }
-            else if (table.GetType() == typeof(TblProductPropertyRel))
-            {
-                TblProductPropertyRel val = Heart.TblProductPropertyRel.SingleOrDefault(i => i.id == logId);
-                val = (TblProductPropertyRel)tableObj;
-            }
-            else if (table.GetType() == typeof(TblProperty))
-            {
-                TblProperty val = Heart.TblProperty.SingleOrDefault(i => i.id == logId);
-                val = (TblProperty)tableObj;
-            }
-            else if (table.GetType() == typeof(TblTutor))
-            {
-                TblTutor val = Heart.TblTutor.SingleOrDefault(i => i.id == logId);
-                val = (TblTutor)tableObj;
-            }
-            else if (table.GetType() == typeof(TblVideo))
-            {
-                TblVideo val = Heart.TblVideo.SingleOrDefault(i => i.id == logId);
-                TblVideo videoUpdated = (TblVideo)tableObj;
-                val.DateSubmited = videoUpdated.DateSubmited;
-                val.Description = videoUpdated.Description;
-                val.DescriptionDemo = videoUpdated.DescriptionDemo;
-                val.id = videoUpdated.id;
-                val.IsHome = videoUpdated.IsHome;
-                val.IsOnline = videoUpdated.IsOnline;
-                val.MainImage = videoUpdated.MainImage;
-                val.Raiting = videoUpdated.Raiting;
-                val.ShareLink = videoUpdated.ShareLink;
-                val.Title = videoUpdated.Title;
-                val.VideoUrl = videoUpdated.VideoUrl;
-                val.VidioDemoUrl = videoUpdated.VidioDemoUrl;
-                val.ViewCount = videoUpdated.ViewCount;
-            }
-            else if (table.GetType() == typeof(TblDeal))
-            {
-                TblDeal val = Heart.TblDeal.SingleOrDefault(i => i.id == logId);
-                val = (TblDeal)tableObj;
-            }
-            else if (table.GetType() == typeof(TblDealPropertyRel))
-            {
-                TblDealPropertyRel val = Heart.TblDealPropertyRel.SingleOrDefault(i => i.id == logId);
-                val = (TblDealPropertyRel)tableObj;
-            }
-            else if (table.GetType() == typeof(TblUserPass))
-            {
-                TblUserPass val = Heart.TblUserPass.SingleOrDefault(i => i.id == logId);
-                val = (TblUserPass)tableObj;
-            }
-            else if (table.GetType() == typeof(TblDiscount))
-            {
-                TblDiscount val = Heart.TblDiscount.SingleOrDefault(i => i.id == logId);
-                val = (TblDiscount)tableObj;
-            }
-            else if (table.GetType() == typeof(TblClient))
-            {
-                TblClient val = Heart.TblClient.SingleOrDefault(i => i.id == logId);
-                val = (TblClient)tableObj;
-            }
-            else if (table.GetType() == typeof(TblTuotorVideoRel))
-            {
-                TblTuotorVideoRel val = Heart.TblTuotorVideoRel.SingleOrDefault(i => i.id == logId);
-                val = (TblTuotorVideoRel)tableObj;
-            }
-            else if (table.GetType() == typeof(TblLog))
-            {
-                TblLog val = Heart.TblLog.SingleOrDefault(i => i.id == logId);
-                val = (TblLog)tableObj;
-            }
+                if (table.GetType() == typeof(TblAd))
+                {
+                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
+                    TblAd update = (TblAd)tableObj;
+                    val.id = update.id;
+                    val.Image = update.Image;
+                    val.Link = update.Link;
+                }
+                else if (table.GetType() == typeof(TblBlog))
+                {
+                    TblBlog val = Heart.TblBlog.SingleOrDefault(i => i.id == logId);
+                    TblBlog update = (TblBlog)tableObj;
+                    val.id = update.id;
+                    val.LikeCount = update.LikeCount;
+                    val.MainImage = update.MainImage;
+                    val.Body = update.Body;
+                }
+                else if (table.GetType() == typeof(TblBlogCommentRel))
+                {
+                    TblBlogCommentRel val = Heart.TblBlogCommentRel.SingleOrDefault(i => i.id == logId);
+                    TblBlogCommentRel update = (TblBlogCommentRel)tableObj;
+                    val.BlogId = update.BlogId;
+                    val.id = update.id;
+                    val.CommentId = update.CommentId;
+                }
+                else if (table.GetType() == typeof(TblBlogKeywordRel))
+                {
+                    TblBlogKeywordRel val = Heart.TblBlogKeywordRel.SingleOrDefault(i => i.id == logId);
+                    TblBlogKeywordRel update = (TblBlogKeywordRel)tableObj;
+                    val.id = update.id;
+                    val.KeywordId = update.KeywordId;
+                    val.BlogId = update.BlogId;
+                }
+                else if (table.GetType() == typeof(TblCatagory))
+                {
+                    TblCatagory val = Heart.TblCatagory.SingleOrDefault(i => i.id == logId);
+                    TblCatagory update = (TblCatagory)tableObj;
+                    val.id = update.id;
+                    val.Name = update.Name;
+                    val.CatagoryId = update.CatagoryId;
+                }
+                else if (table.GetType() == typeof(TblClientProductRel))
+                {
+                    TblClientProductRel val = Heart.TblClientProductRel.SingleOrDefault(i => i.id == logId);
+                    TblClientProductRel update = (TblClientProductRel)tableObj;
+                    val.ClientId = update.ClientId;
+                    val.id = update.id;
+                    val.Count = update.Count;
+                    val.Date = update.Date;
+                    val.ProductId = update.ProductId;
+                }
+                else if (table.GetType() == typeof(TblComment))
+                {
+                    TblComment val = Heart.TblComment.SingleOrDefault(i => i.id == logId);
+                    TblComment update = (TblComment)tableObj;
+                    val.id = update.id;
+                    val.IsValid = update.IsValid;
+                    val.Body = update.Body;
+                    val.ClientId = update.ClientId;
+                    val.DateSubmited = update.DateSubmited;
 
-            Heart.SaveChanges();
-            return true;
-        }
+                }
+                else if (table.GetType() == typeof(TblImage))
+                {
+                    TblImage val = Heart.TblImage.SingleOrDefault(i => i.id == logId);
+                    TblImage update = (TblImage)tableObj;
+                    val.id = update.id;
+                    val.Image = update.Image;
+                }
+                else if (table.GetType() == typeof(TblKeyword))
+                {
+                    TblKeyword val = Heart.TblKeyword.SingleOrDefault(i => i.id == logId);
+                    TblKeyword update = (TblKeyword)tableObj;
+                    val.Name = update.Name;
+                    val.id = update.id;
+                }
+                else if (table.GetType() == typeof(TblProduct))
+                {
+                    TblProduct val = Heart.TblProduct.SingleOrDefault(i => i.id == logId);
+                    TblProduct update = (TblProduct)tableObj;
+                    val.CatagoryId = update.CatagoryId;
+                    val.Count = update.Count;
+                    val.DateSubmited = update.DateSubmited;
+                    val.DescriptionHtml = update.DescriptionHtml;
+                    val.Discount = update.Discount;
+                    val.id = update.id;
+                    val.IsSuggested = update.IsSuggested;
+                    val.Name = update.Name;
+                    val.Price = update.Price;
+                    val.Raiting = update.Raiting;
+                    val.Status = update.Status;
+                }
+                else if (table.GetType() == typeof(TblProductCommentRel))
+                {
+                    TblProductCommentRel val = Heart.TblProductCommentRel.SingleOrDefault(i => i.id == logId);
+                    TblProductCommentRel update = (TblProductCommentRel)tableObj;
+                    val.id = update.id;
+                    val.CommentId = update.CommentId;
+                    val.ProductId = update.ProductId;
+                }
+                else if (table.GetType() == typeof(TblProductImageRel))
+                {
+                    TblProductImageRel val = Heart.TblProductImageRel.SingleOrDefault(i => i.id == logId);
+                    TblProductImageRel update = (TblProductImageRel)tableObj;
+                    val.id = update.id;
+                    val.ImageId = update.ImageId;
+                    val.ProductId = update.ProductId;
+                }
+                else if (table.GetType() == typeof(TblProductKeywordRel))
+                {
+                    TblProductKeywordRel val = Heart.TblProductKeywordRel.SingleOrDefault(i => i.id == logId);
+                    TblProductKeywordRel update = (TblProductKeywordRel)tableObj;
+                    val.id = update.id;
+                    val.KeywordId = update.ProductId;
+                    val.ProductId = update.ProductId;
+                }
+                else if (table.GetType() == typeof(TblProductPropertyRel))
+                {
+                    TblProductPropertyRel val = Heart.TblProductPropertyRel.SingleOrDefault(i => i.id == logId);
+                    TblProductPropertyRel update = (TblProductPropertyRel)tableObj;
+                    val.id = update.id;
+                    val.ProductId = update.ProductId;
+                    val.PropertyId = update.PropertyId;
+                }
+                else if (table.GetType() == typeof(TblProperty))
+                {
+                    TblProperty val = Heart.TblProperty.SingleOrDefault(i => i.id == logId);
+                    TblProperty update = (TblProperty)tableObj;
+                    val.Name = update.Name;
+                    val.Description = update.Description;
+                    val.id = update.id;
+                }
+                else if (table.GetType() == typeof(TblTutor))
+                {
+                    TblTutor val = Heart.TblTutor.SingleOrDefault(i => i.id == logId);
+                    TblTutor update = (TblTutor)tableObj;
+                    val.IdentificationNo = update.IdentificationNo;
+                    val.MainImage = update.MainImage;
+                    val.Name = update.Name;
+                    val.TellNo = update.TellNo;
+                    val.id = update.id;
+                    val.UserPassId = update.UserPassId;
+                    val.Description = update.Description;
+                }
+                else if (table.GetType() == typeof(TblVideo))
+                {
+                    TblVideo val = Heart.TblVideo.SingleOrDefault(i => i.id == logId);
+                    TblVideo videoUpdated = (TblVideo)tableObj;
+                    val.DateSubmited = videoUpdated.DateSubmited;
+                    val.Description = videoUpdated.Description;
+                    val.DescriptionDemo = videoUpdated.DescriptionDemo;
+                    val.id = videoUpdated.id;
+                    val.IsHome = videoUpdated.IsHome;
+                    val.IsOnline = videoUpdated.IsOnline;
+                    val.MainImage = videoUpdated.MainImage;
+                    val.Raiting = videoUpdated.Raiting;
+                    val.ShareLink = videoUpdated.ShareLink;
+                    val.Title = videoUpdated.Title;
+                    val.VideoUrl = videoUpdated.VideoUrl;
+                    val.VidioDemoUrl = videoUpdated.VidioDemoUrl;
+                    val.ViewCount = videoUpdated.ViewCount;
+                }
+                else if (table.GetType() == typeof(TblDeal))
+                {
+                    TblDeal val = Heart.TblDeal.SingleOrDefault(i => i.id == logId);
+                    TblDeal update = (TblDeal)tableObj;
+                    val.Description = update.Description;
+                    val.id = update.id;
+                    val.IsValid = update.IsValid;
+                    val.Length = update.Length;
+                    val.Name = update.Name;
+                    val.Price = update.Price;
+                }
+                else if (table.GetType() == typeof(TblDealPropertyRel))
+                {
+                    TblDealPropertyRel val = Heart.TblDealPropertyRel.SingleOrDefault(i => i.id == logId);
+                    TblDealPropertyRel update = (TblDealPropertyRel)tableObj;
+                    val.PropertyId = update.PropertyId;
+                    val.DealId = update.DealId;
+                    val.id = update.id;
+                }
+                else if (table.GetType() == typeof(TblUserPass))
+                {
+                    TblUserPass val = Heart.TblUserPass.SingleOrDefault(i => i.id == logId);
+                    TblUserPass update = (TblUserPass)tableObj;
+                    val.id = update.id;
+                    val.Auth = update.Auth;
+                    val.IsActive = update.IsActive;
+                    val.Password = update.Password;
+                    val.Role = update.Role;
+                    val.Username = update.Username;
+                }
+                else if (table.GetType() == typeof(TblDiscount))
+                {
+                    TblDiscount val = Heart.TblDiscount.SingleOrDefault(i => i.id == logId);
+                    TblDiscount update = (TblDiscount)tableObj;
+                    val.id = update.id;
+                    val.Count = update.Count;
+                    val.Discount = update.Discount;
+                    val.Name = update.Name;
+                }
+                else if (table.GetType() == typeof(TblClient))
+                {
+                    TblClient val = Heart.TblClient.SingleOrDefault(i => i.id == logId);
+                    TblClient update = (TblClient)tableObj;
+                    val.id = update.id;
+                    val.Address = update.Address;
+                    val.Email = update.Email;
+                    val.IdentificationNo = update.IdentificationNo;
+                    val.InviteCode = update.InviteCode;
+                    val.IsPremium = update.IsPremium;
+                    val.Name = update.Name;
+                    val.PostalCode = update.PostalCode;
+                    val.PremiumTill = update.PremiumTill;
+                    val.Status = update.Status;
+                    val.TellNo = update.TellNo;
+                    val.UserPassId = update.UserPassId;
+                }
+                else if (table.GetType() == typeof(TblTuotorVideoRel))
+                {
+                    TblTuotorVideoRel val = Heart.TblTuotorVideoRel.SingleOrDefault(i => i.id == logId);
+                    TblTuotorVideoRel update = (TblTuotorVideoRel)tableObj;
+                    val.id = update.id;
+                    val.ToutorId = update.ToutorId;
+                    val.VideoId = update.VideoId;
+                }
+                else if (table.GetType() == typeof(TblLog))
+                {
+                    TblLog val = Heart.TblLog.SingleOrDefault(i => i.id == logId);
+                    TblLog update = (TblLog)tableObj;
+                    val.id = update.id;
+                    val.LogText = update.LogText;
+                    val.MoneyTransfered = update.MoneyTransfered;
+                }
+
+                Heart.SaveChanges();
+                return true;
+            }
             catch
             {
                 return false;
