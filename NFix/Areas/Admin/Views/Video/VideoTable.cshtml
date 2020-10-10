@@ -1,0 +1,136 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblVideo>
+@{
+    ViewBag.Title = "VideoTable";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<!-- #region Table -->
+
+<table class="uk-table" dir="rtl">
+    <thead>
+        <tr>
+            <th></th>
+            <th>تیتر</th>
+            <th>ویدیو</th>
+            <th>دمو</th>
+            <th>عکس</th>
+            <th>توضیحات</th>
+            <th>توضیحات دمو</th>
+            <th>تاریخ ثبت</th>
+            <th>تعداد بازدید</th>
+            <th>ریتینگ</th>
+            <th>لینک اشتراک</th>
+            <th>پیشنهادی</th>
+            <th>مرئی</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr  id="video_@(item.id)">
+                <td>1</td>
+                <td>@item.Title</td>
+                <td>
+                    <a href="">
+                        ویدیو
+                    </a>
+                </td>
+                <td>
+                    <a href="">
+                        دمو
+                    </a>
+                </td>
+                <td uk-lightbox>
+                    <a href="~/Resources/Videos/Image/@item.MainImage">
+                        <img src="~/Resources/Videos/Image/@item.MainImage" />
+                    </a>
+                </td>
+                <td>
+                    <a href="#Modal-Description" uk-toggle>توضیحات</a>
+                    <div id="Modal-Description" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h3>
+                                توضیحات ویدیو
+                            </h3>
+                            <p>
+                                @item.Description
+                            </p>
+                            <button class="uk-modal-close">
+                                بستن
+                            </button>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <a href="#Modal-Description-Demo" uk-toggle>توضیحات دمو</a>
+                    <div id="Modal-Description-Demo" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h3>
+                                این توضیحات دمو می باشد
+                            </h3>
+                            <p>
+                                @item.DescriptionDemo
+                            </p>
+                            <button class="uk-modal-close">
+                                بستن
+                            </button>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @item.DateSubmited
+                </td>
+                <td>
+                    @item.ViewCount
+                </td>
+                <td>
+                    @item.Raiting
+                </td>
+                <td>
+                    <a href="">
+                        @item.ShareLink
+                    </a>
+                </td>
+                <td>
+                    <input type="checkbox"  onclick="return false" class="uk-checkbox" @((item.IsHome) ? "checked" : "") />
+                </td>
+
+                <td>
+                    <input type="checkbox" onclick="return false" class="uk-checkbox" @((item.IsOnline) ? "checked" : "") />
+                </td>
+                <td>
+                    <a href="#" onclick="deleteVideo(@item.id)" uk-icon="icon:trash; ratio:2"></a>
+                </td>
+                <td>
+                    <a href="/Admin/Video/VideoEdit/@item.id" uk-icon="icon:file-edit; ratio:2"></a>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
+<!-- #endregion -->
+
+
+<script>
+    function deleteVideo(id) {
+
+        if (confirm("آیا از حذف ویدیو مطمئن هستید؟")) {
+            $.ajax({
+                url: "/Admin/Video/DeleteVideo/" + id,
+                type: "Get"
+            }).done(function () {
+                $("#video_" + id).addClass("uk-text-danger");
+                $("#video_" + id).hide('slow');
+            });
+
+        }
+
+    }
+
+
+</script>

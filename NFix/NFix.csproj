@@ -143,7 +143,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TutorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
     <Compile Include="Areas\User\Controllers\ProfileController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Controllers\AdController.cs" />
@@ -206,6 +211,22 @@
     <Content Include="Areas\Admin\Views\Dashboard\BlogKeyWords.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\VideoComments.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\VideoKeyWords.cshtml" />
+    <Content Include="Areas\Admin\Views\Video\VideoTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Video\VideoAdder.cshtml" />
+    <Content Include="Areas\Admin\Views\Video\VideoComments.cshtml" />
+    <Content Include="Areas\Admin\Views\Video\VideoKeyWords.cshtml" />
+    <Content Include="Areas\Admin\Views\User\UserTable.cshtml" />
+    <Content Include="Areas\Admin\Views\User\UserAdder.cshtml" />
+    <Content Include="Areas\Admin\Views\Tutor\TutorTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Tutor\TutorAdder.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ProductTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ProductAdder.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\OrderTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\BlogTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\BlogAdder.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\BlogComments.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\BlogKeyWords.cshtml" />
+    <Content Include="Areas\Admin\Views\Video\VideoEdit.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
