@@ -149,8 +149,10 @@
     <Compile Include="Areas\Admin\Controllers\TutorController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
+    <Compile Include="Areas\Tuotor\TuotorAreaRegistration.cs" />
     <Compile Include="Areas\User\Controllers\ProfileController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
+    <Compile Include="Clases\PersianCalender.cs" />
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\BlogCommentRelController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -227,6 +229,7 @@
     <Content Include="Areas\Admin\Views\Blog\BlogComments.cshtml" />
     <Content Include="Areas\Admin\Views\Blog\BlogKeyWords.cshtml" />
     <Content Include="Areas\Admin\Views\Video\VideoEdit.cshtml" />
+    <Content Include="Areas\Tuotor\Views\web.config" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -416,6 +419,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Tuotor\Controllers\" />
+    <Folder Include="Areas\Tuotor\Data\" />
+    <Folder Include="Areas\Tuotor\Views\Shared\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Views\Shared\" />
     <Folder Include="Resources\Blogs\" />

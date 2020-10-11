@@ -30,15 +30,15 @@
         {
 
             <tr  id="video_@(item.id)">
-                <td>1</td>
+                <td>@item.id</td>
                 <td>@item.Title</td>
                 <td>
-                    <a href="">
+                    <a href="~/Resources/Videos/@item.VideoUrl">
                         ویدیو
                     </a>
                 </td>
                 <td>
-                    <a href="">
+                    <a href="~/Resources/Videos/Demo/@item.VidioDemoUrl">
                         دمو
                     </a>
                 </td>
@@ -80,7 +80,7 @@
                     </div>
                 </td>
                 <td>
-                    @item.DateSubmited
+                    @Convert.ToDateTime(item.DateSubmited).ToShamsi()
                 </td>
                 <td>
                     @item.ViewCount
