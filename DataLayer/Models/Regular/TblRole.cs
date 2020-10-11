@@ -12,24 +12,19 @@ namespace DataLayer.Models.Regular
     using System;
     using System.Collections.Generic;
     
-    public partial class TblBlog
+    public partial class TblRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TblBlog()
+        public TblRole()
         {
-            this.TblBlogCommentRel = new HashSet<TblBlogCommentRel>();
-            this.TblBlogKeywordRel = new HashSet<TblBlogKeywordRel>();
+            this.TblUserPass = new HashSet<TblUserPass>();
         }
     
         public int id { get; set; }
-        public string MainImage { get; set; }
-        public string Body { get; set; }
-        public string Description { get; set; }
-        public int LikeCount { get; set; }
+        public string Title { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblBlogCommentRel> TblBlogCommentRel { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblBlogKeywordRel> TblBlogKeywordRel { get; set; }
+        public virtual ICollection<TblUserPass> TblUserPass { get; set; }
     }
 }

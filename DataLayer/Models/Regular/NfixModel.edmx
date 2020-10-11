@@ -30,6 +30,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MainImage" Type="nvarchar(max)" />
           <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
           <Property Name="LikeCount" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TblBlogCommentRel">
@@ -152,9 +153,10 @@
           <Property Name="DateSubmited" Type="nvarchar" MaxLength="20" />
           <Property Name="Raiting" Type="int" Nullable="false" />
           <Property Name="Price" Type="bigint" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
           <Property Name="DescriptionHtml" Type="nvarchar(max)" />
           <Property Name="CatagoryId" Type="int" />
-          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" />
           <Property Name="IsSuggested" Type="bit" Nullable="false" />
           <Property Name="Discount" Type="int" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
@@ -199,6 +201,14 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="TblRole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="300" Nullable="false" />
+        </EntityType>
         <EntityType Name="TblTuotorVideoRel">
           <Key>
             <PropertyRef Name="id" />
@@ -228,7 +238,7 @@
           <Property Name="Password" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="Auth" Type="nvarchar" MaxLength="256" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="Role" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TblVideo">
           <Key>
@@ -560,6 +570,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblUserPass_TblRole">
+          <End Role="TblRole" Type="Self.TblRole" Multiplicity="1" />
+          <End Role="TblUserPass" Type="Self.TblUserPass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblRole">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblUserPass">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="arvintav_NFixModelStoreContainer">
@@ -584,6 +606,7 @@
           <EntitySet Name="TblProductKeywordRel" EntityType="Self.TblProductKeywordRel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblProductPropertyRel" EntityType="Self.TblProductPropertyRel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblProperty" EntityType="Self.TblProperty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblRole" EntityType="Self.TblRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblTuotorVideoRel" EntityType="Self.TblTuotorVideoRel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblTutor" EntityType="Self.TblTutor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblUserPass" EntityType="Self.TblUserPass" Schema="dbo" store:Type="Tables" />
@@ -680,6 +703,10 @@
             <End Role="TblUserPass" EntitySet="TblUserPass" />
             <End Role="TblTutor" EntitySet="TblTutor" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblUserPass_TblRole" Association="Self.FK_TblUserPass_TblRole">
+            <End Role="TblRole" EntitySet="TblRole" />
+            <End Role="TblUserPass" EntitySet="TblUserPass" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -711,6 +738,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MainImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="LikeCount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TblBlogCommentRel" Relationship="Self.FK_TblBlogCommentRel_TblBlog" FromRole="TblBlog" ToRole="TblBlogCommentRel" />
           <NavigationProperty Name="TblBlogKeywordRel" Relationship="Self.FK_TblBlogKeywordRel_TblBlog" FromRole="TblBlog" ToRole="TblBlogKeywordRel" />
@@ -856,9 +884,10 @@
           <Property Name="DateSubmited" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Raiting" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int64" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="DescriptionHtml" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CatagoryId" Type="Int32" />
-          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" />
           <Property Name="IsSuggested" Type="Boolean" Nullable="false" />
           <Property Name="Discount" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
@@ -919,6 +948,15 @@
           <NavigationProperty Name="TblDealPropertyRel" Relationship="Self.FK_TblDealPropertyRel_TblProperty" FromRole="TblProperty" ToRole="TblDealPropertyRel" />
           <NavigationProperty Name="TblProductPropertyRel" Relationship="Self.FK_TblProductPropertyRel_TblProperty" FromRole="TblProperty" ToRole="TblProductPropertyRel" />
         </EntityType>
+        <EntityType Name="TblRole">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TblUserPass" Relationship="Self.FK_TblUserPass_TblRole" FromRole="TblRole" ToRole="TblUserPass" />
+        </EntityType>
         <EntityType Name="TblTuotorVideoRel">
           <Key>
             <PropertyRef Name="id" />
@@ -952,8 +990,9 @@
           <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Auth" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="Role" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TblClient" Relationship="Self.FK_TblClient_TblUserPass" FromRole="TblUserPass" ToRole="TblClient" />
+          <NavigationProperty Name="TblRole" Relationship="Self.FK_TblUserPass_TblRole" FromRole="TblUserPass" ToRole="TblRole" />
           <NavigationProperty Name="TblTutor" Relationship="Self.FK_TblTutor_TblUserPass" FromRole="TblUserPass" ToRole="TblTutor" />
         </EntityType>
         <EntityType Name="TblVideo">
@@ -1247,6 +1286,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblUserPass_TblRole">
+          <End Role="TblRole" Type="Self.TblRole" Multiplicity="1" />
+          <End Role="TblUserPass" Type="Self.TblUserPass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblRole">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblUserPass">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblTuotorVideoRel_TblTutor">
           <End Role="TblTutor" Type="Self.TblTutor" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1309,6 +1360,7 @@
           <EntitySet Name="TblProductKeywordRel" EntityType="Self.TblProductKeywordRel" />
           <EntitySet Name="TblProductPropertyRel" EntityType="Self.TblProductPropertyRel" />
           <EntitySet Name="TblProperty" EntityType="Self.TblProperty" />
+          <EntitySet Name="TblRole" EntityType="Self.TblRole" />
           <EntitySet Name="TblTuotorVideoRel" EntityType="Self.TblTuotorVideoRel" />
           <EntitySet Name="TblTutor" EntityType="Self.TblTutor" />
           <EntitySet Name="TblUserPass" EntityType="Self.TblUserPass" />
@@ -1393,6 +1445,10 @@
             <End Role="TblProperty" EntitySet="TblProperty" />
             <End Role="TblProductPropertyRel" EntitySet="TblProductPropertyRel" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblUserPass_TblRole" Association="Self.FK_TblUserPass_TblRole">
+            <End Role="TblRole" EntitySet="TblRole" />
+            <End Role="TblUserPass" EntitySet="TblUserPass" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblTuotorVideoRel_TblTutor" Association="Self.FK_TblTuotorVideoRel_TblTutor">
             <End Role="TblTutor" EntitySet="TblTutor" />
             <End Role="TblTuotorVideoRel" EntitySet="TblTuotorVideoRel" />
@@ -1439,6 +1495,7 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="MainImage" ColumnName="MainImage" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="LikeCount" ColumnName="LikeCount" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1574,6 +1631,7 @@
                 <ScalarProperty Name="DateSubmited" ColumnName="DateSubmited" />
                 <ScalarProperty Name="Raiting" ColumnName="Raiting" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DescriptionHtml" ColumnName="DescriptionHtml" />
                 <ScalarProperty Name="CatagoryId" ColumnName="CatagoryId" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
@@ -1628,6 +1686,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TblRole">
+            <EntityTypeMapping TypeName="arvintav_NFixModel.TblRole">
+              <MappingFragment StoreEntitySet="TblRole">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TblTuotorVideoRel">
             <EntityTypeMapping TypeName="arvintav_NFixModel.TblTuotorVideoRel">
               <MappingFragment StoreEntitySet="TblTuotorVideoRel">
@@ -1658,7 +1725,7 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Auth" ColumnName="Auth" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

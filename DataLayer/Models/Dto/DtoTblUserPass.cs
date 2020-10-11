@@ -15,7 +15,7 @@ namespace DataLayer.Models.Dto
             Password = userPass.Password;
             Auth = userPass.Auth;
             IsActive = userPass.IsActive;
-            Role = userPass.Role;
+            RoleId = userPass.RoleId;
 
             StatusEffect = HttpStatusCode.OK;
         }
@@ -27,7 +27,7 @@ namespace DataLayer.Models.Dto
             Password = userPass.Password;
             Auth = userPass.Auth;
             IsActive = userPass.IsActive;
-            Role = userPass.Role;
+            RoleId = userPass.RoleId;
 
             StatusEffect = statusEffect;
             ErrorStr = errorStr;

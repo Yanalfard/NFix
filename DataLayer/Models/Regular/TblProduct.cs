@@ -29,9 +29,10 @@ namespace DataLayer.Models.Regular
         public string DateSubmited { get; set; }
         public int Raiting { get; set; }
         public long Price { get; set; }
+        public string Description { get; set; }
         public string DescriptionHtml { get; set; }
         public Nullable<int> CatagoryId { get; set; }
-        public int Count { get; set; }
+        public Nullable<int> Count { get; set; }
         public bool IsSuggested { get; set; }
         public int Discount { get; set; }
         public int Status { get; set; }

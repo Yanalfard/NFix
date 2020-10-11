@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -187,122 +188,236 @@ namespace DataLayer.Utilities
                 if (table.GetType() == typeof(TblAd))
                 {
                     TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblAd update = (TblAd)tableObj;
+                    val.id = update.id;
+                    val.Image = update.Image;
+                    val.Link = update.Link;
                 }
                 else if (table.GetType() == typeof(TblBlog))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblBlog val = Heart.TblBlog.SingleOrDefault(i => i.id == logId);
+                    TblBlog update = (TblBlog)tableObj;
+                    val.id = update.id;
+                    val.LikeCount = update.LikeCount;
+                    val.MainImage = update.MainImage;
+                    val.Body = update.Body;
                 }
                 else if (table.GetType() == typeof(TblBlogCommentRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblBlogCommentRel val = Heart.TblBlogCommentRel.SingleOrDefault(i => i.id == logId);
+                    TblBlogCommentRel update = (TblBlogCommentRel)tableObj;
+                    val.BlogId = update.BlogId;
+                    val.id = update.id;
+                    val.CommentId = update.CommentId;
                 }
                 else if (table.GetType() == typeof(TblBlogKeywordRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblBlogKeywordRel val = Heart.TblBlogKeywordRel.SingleOrDefault(i => i.id == logId);
+                    TblBlogKeywordRel update = (TblBlogKeywordRel)tableObj;
+                    val.id = update.id;
+                    val.KeywordId = update.KeywordId;
+                    val.BlogId = update.BlogId;
                 }
                 else if (table.GetType() == typeof(TblCatagory))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblCatagory val = Heart.TblCatagory.SingleOrDefault(i => i.id == logId);
+                    TblCatagory update = (TblCatagory)tableObj;
+                    val.id = update.id;
+                    val.Name = update.Name;
+                    val.CatagoryId = update.CatagoryId;
                 }
                 else if (table.GetType() == typeof(TblClientProductRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblClientProductRel val = Heart.TblClientProductRel.SingleOrDefault(i => i.id == logId);
+                    TblClientProductRel update = (TblClientProductRel)tableObj;
+                    val.ClientId = update.ClientId;
+                    val.id = update.id;
+                    val.Count = update.Count;
+                    val.Date = update.Date;
+                    val.ProductId = update.ProductId;
                 }
                 else if (table.GetType() == typeof(TblComment))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblComment val = Heart.TblComment.SingleOrDefault(i => i.id == logId);
+                    TblComment update = (TblComment)tableObj;
+                    val.id = update.id;
+                    val.IsValid = update.IsValid;
+                    val.Body = update.Body;
+                    val.ClientId = update.ClientId;
+                    val.DateSubmited = update.DateSubmited;
+
                 }
                 else if (table.GetType() == typeof(TblImage))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblImage val = Heart.TblImage.SingleOrDefault(i => i.id == logId);
+                    TblImage update = (TblImage)tableObj;
+                    val.id = update.id;
+                    val.Image = update.Image;
                 }
                 else if (table.GetType() == typeof(TblKeyword))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblKeyword val = Heart.TblKeyword.SingleOrDefault(i => i.id == logId);
+                    TblKeyword update = (TblKeyword)tableObj;
+                    val.Name = update.Name;
+                    val.id = update.id;
                 }
                 else if (table.GetType() == typeof(TblProduct))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblProduct val = Heart.TblProduct.SingleOrDefault(i => i.id == logId);
+                    TblProduct update = (TblProduct)tableObj;
+                    val.CatagoryId = update.CatagoryId;
+                    val.Count = update.Count;
+                    val.DateSubmited = update.DateSubmited;
+                    val.DescriptionHtml = update.DescriptionHtml;
+                    val.Discount = update.Discount;
+                    val.id = update.id;
+                    val.IsSuggested = update.IsSuggested;
+                    val.Name = update.Name;
+                    val.Price = update.Price;
+                    val.Raiting = update.Raiting;
+                    val.Status = update.Status;
                 }
                 else if (table.GetType() == typeof(TblProductCommentRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblProductCommentRel val = Heart.TblProductCommentRel.SingleOrDefault(i => i.id == logId);
+                    TblProductCommentRel update = (TblProductCommentRel)tableObj;
+                    val.id = update.id;
+                    val.CommentId = update.CommentId;
+                    val.ProductId = update.ProductId;
                 }
                 else if (table.GetType() == typeof(TblProductImageRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblProductImageRel val = Heart.TblProductImageRel.SingleOrDefault(i => i.id == logId);
+                    TblProductImageRel update = (TblProductImageRel)tableObj;
+                    val.id = update.id;
+                    val.ImageId = update.ImageId;
+                    val.ProductId = update.ProductId;
                 }
                 else if (table.GetType() == typeof(TblProductKeywordRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblProductKeywordRel val = Heart.TblProductKeywordRel.SingleOrDefault(i => i.id == logId);
+                    TblProductKeywordRel update = (TblProductKeywordRel)tableObj;
+                    val.id = update.id;
+                    val.KeywordId = update.ProductId;
+                    val.ProductId = update.ProductId;
                 }
                 else if (table.GetType() == typeof(TblProductPropertyRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblProductPropertyRel val = Heart.TblProductPropertyRel.SingleOrDefault(i => i.id == logId);
+                    TblProductPropertyRel update = (TblProductPropertyRel)tableObj;
+                    val.id = update.id;
+                    val.ProductId = update.ProductId;
+                    val.PropertyId = update.PropertyId;
                 }
                 else if (table.GetType() == typeof(TblProperty))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblProperty val = Heart.TblProperty.SingleOrDefault(i => i.id == logId);
+                    TblProperty update = (TblProperty)tableObj;
+                    val.Name = update.Name;
+                    val.Description = update.Description;
+                    val.id = update.id;
                 }
                 else if (table.GetType() == typeof(TblTutor))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblTutor val = Heart.TblTutor.SingleOrDefault(i => i.id == logId);
+                    TblTutor update = (TblTutor)tableObj;
+                    val.IdentificationNo = update.IdentificationNo;
+                    val.MainImage = update.MainImage;
+                    val.Name = update.Name;
+                    val.TellNo = update.TellNo;
+                    val.id = update.id;
+                    val.UserPassId = update.UserPassId;
+                    val.Description = update.Description;
                 }
                 else if (table.GetType() == typeof(TblVideo))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblVideo val = Heart.TblVideo.SingleOrDefault(i => i.id == logId);
+                    TblVideo videoUpdated = (TblVideo)tableObj;
+                    val.DateSubmited = videoUpdated.DateSubmited;
+                    val.Description = videoUpdated.Description;
+                    val.DescriptionDemo = videoUpdated.DescriptionDemo;
+                    val.id = videoUpdated.id;
+                    val.IsHome = videoUpdated.IsHome;
+                    val.IsOnline = videoUpdated.IsOnline;
+                    val.MainImage = videoUpdated.MainImage;
+                    val.Raiting = videoUpdated.Raiting;
+                    val.ShareLink = videoUpdated.ShareLink;
+                    val.Title = videoUpdated.Title;
+                    val.VideoUrl = videoUpdated.VideoUrl;
+                    val.VidioDemoUrl = videoUpdated.VidioDemoUrl;
+                    val.ViewCount = videoUpdated.ViewCount;
                 }
                 else if (table.GetType() == typeof(TblDeal))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblDeal val = Heart.TblDeal.SingleOrDefault(i => i.id == logId);
+                    TblDeal update = (TblDeal)tableObj;
+                    val.Description = update.Description;
+                    val.id = update.id;
+                    val.IsValid = update.IsValid;
+                    val.Length = update.Length;
+                    val.Name = update.Name;
+                    val.Price = update.Price;
                 }
                 else if (table.GetType() == typeof(TblDealPropertyRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblDealPropertyRel val = Heart.TblDealPropertyRel.SingleOrDefault(i => i.id == logId);
+                    TblDealPropertyRel update = (TblDealPropertyRel)tableObj;
+                    val.PropertyId = update.PropertyId;
+                    val.DealId = update.DealId;
+                    val.id = update.id;
                 }
                 else if (table.GetType() == typeof(TblUserPass))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblUserPass val = Heart.TblUserPass.SingleOrDefault(i => i.id == logId);
+                    TblUserPass update = (TblUserPass)tableObj;
+                    val.id = update.id;
+                    val.Auth = update.Auth;
+                    val.IsActive = update.IsActive;
+                    val.Password = update.Password;
+                    val.RoleId = update.RoleId;
+                    val.Username = update.Username;
                 }
                 else if (table.GetType() == typeof(TblDiscount))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblDiscount val = Heart.TblDiscount.SingleOrDefault(i => i.id == logId);
+                    TblDiscount update = (TblDiscount)tableObj;
+                    val.id = update.id;
+                    val.Count = update.Count;
+                    val.Discount = update.Discount;
+                    val.Name = update.Name;
                 }
                 else if (table.GetType() == typeof(TblClient))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblClient val = Heart.TblClient.SingleOrDefault(i => i.id == logId);
+                    TblClient update = (TblClient)tableObj;
+                    val.id = update.id;
+                    val.Address = update.Address;
+                    val.Email = update.Email;
+                    val.IdentificationNo = update.IdentificationNo;
+                    val.InviteCode = update.InviteCode;
+                    val.IsPremium = update.IsPremium;
+                    val.Name = update.Name;
+                    val.PostalCode = update.PostalCode;
+                    val.PremiumTill = update.PremiumTill;
+                    val.Status = update.Status;
+                    val.TellNo = update.TellNo;
+                    val.UserPassId = update.UserPassId;
                 }
                 else if (table.GetType() == typeof(TblTuotorVideoRel))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblTuotorVideoRel val = Heart.TblTuotorVideoRel.SingleOrDefault(i => i.id == logId);
+                    TblTuotorVideoRel update = (TblTuotorVideoRel)tableObj;
+                    val.id = update.id;
+                    val.ToutorId = update.ToutorId;
+                    val.VideoId = update.VideoId;
                 }
                 else if (table.GetType() == typeof(TblLog))
                 {
-                    TblAd val = Heart.TblAd.SingleOrDefault(i => i.id == logId);
-                    val = (TblAd)tableObj;
+                    TblLog val = Heart.TblLog.SingleOrDefault(i => i.id == logId);
+                    TblLog update = (TblLog)tableObj;
+                    val.id = update.id;
+                    val.LogText = update.LogText;
+                    val.MoneyTransfered = update.MoneyTransfered;
                 }
 
                 Heart.SaveChanges();
@@ -321,76 +436,76 @@ namespace DataLayer.Utilities
                 switch (tableType)
                 {
                     case EnumRepo.Tables.TblAd:
-                        Heart.TblAd.Remove(new TblAd { id = id });
+                        Heart.TblAd.Remove((TblAd)SelectById(EnumRepo.Tables.TblAd, id));
                         break;
                     case EnumRepo.Tables.TblBlog:
-                        Heart.TblBlog.Remove(new TblBlog { id = id });
+                        Heart.TblBlog.Remove((TblBlog)SelectById(EnumRepo.Tables.TblBlog, id));
                         break;
                     case EnumRepo.Tables.TblBlogCommentRel:
-                        Heart.TblBlogCommentRel.Remove(new TblBlogCommentRel { id = id });
+                        Heart.TblBlogCommentRel.Remove((TblBlogCommentRel)SelectById(EnumRepo.Tables.TblBlogCommentRel, id));
                         break;
                     case EnumRepo.Tables.TblBlogKeywordRel:
-                        Heart.TblBlogKeywordRel.Remove(new TblBlogKeywordRel { id = id });
+                        Heart.TblBlogKeywordRel.Remove((TblBlogKeywordRel)SelectById(EnumRepo.Tables.TblBlogKeywordRel, id));
                         break;
                     case EnumRepo.Tables.TblCatagory:
-                        Heart.TblCatagory.Remove(new TblCatagory { id = id });
+                        Heart.TblCatagory.Remove((TblCatagory)SelectById(EnumRepo.Tables.TblCatagory, id));
                         break;
                     case EnumRepo.Tables.TblClientProductRel:
-                        Heart.TblClientProductRel.Remove(new TblClientProductRel { id = id });
+                        Heart.TblClientProductRel.Remove((TblClientProductRel)SelectById(EnumRepo.Tables.TblClientProductRel, id));
                         break;
                     case EnumRepo.Tables.TblComment:
-                        Heart.TblComment.Remove(new TblComment { id = id });
+                        Heart.TblComment.Remove((TblComment)SelectById(EnumRepo.Tables.TblComment, id));
                         break;
                     case EnumRepo.Tables.TblImage:
-                        Heart.TblImage.Remove(new TblImage { id = id });
+                        Heart.TblImage.Remove((TblImage)SelectById(EnumRepo.Tables.TblImage, id));
                         break;
                     case EnumRepo.Tables.TblKeyword:
-                        Heart.TblKeyword.Remove(new TblKeyword { id = id });
+                        Heart.TblKeyword.Remove((TblKeyword)SelectById(EnumRepo.Tables.TblKeyword, id));
                         break;
                     case EnumRepo.Tables.TblProduct:
-                        Heart.TblProduct.Remove(new TblProduct { id = id });
+                        Heart.TblProduct.Remove((TblProduct)SelectById(EnumRepo.Tables.TblProduct, id));
                         break;
                     case EnumRepo.Tables.TblProductCommentRel:
-                        Heart.TblProductCommentRel.Remove(new TblProductCommentRel { id = id });
+                        Heart.TblProductCommentRel.Remove((TblProductCommentRel)SelectById(EnumRepo.Tables.TblProductCommentRel, id));
                         break;
                     case EnumRepo.Tables.TblProductImageRel:
-                        Heart.TblProductImageRel.Remove(new TblProductImageRel { id = id });
+                        Heart.TblProductImageRel.Remove((TblProductImageRel)SelectById(EnumRepo.Tables.TblProductImageRel, id));
                         break;
                     case EnumRepo.Tables.TblProductKeywordRel:
-                        Heart.TblProductKeywordRel.Remove(new TblProductKeywordRel { id = id });
+                        Heart.TblProductKeywordRel.Remove((TblProductKeywordRel)SelectById(EnumRepo.Tables.TblProductKeywordRel, id));
                         break;
                     case EnumRepo.Tables.TblProductPropertyRel:
-                        Heart.TblProductPropertyRel.Remove(new TblProductPropertyRel { id = id });
+                        Heart.TblProductPropertyRel.Remove((TblProductPropertyRel)SelectById(EnumRepo.Tables.TblProductPropertyRel, id));
                         break;
                     case EnumRepo.Tables.TblProperty:
-                        Heart.TblProperty.Remove(new TblProperty { id = id });
+                        Heart.TblProperty.Remove((TblProperty)SelectById(EnumRepo.Tables.TblProperty, id));
                         break;
                     case EnumRepo.Tables.TblTutor:
-                        Heart.TblTutor.Remove(new TblTutor { id = id });
+                        Heart.TblTutor.Remove((TblTutor)SelectById(EnumRepo.Tables.TblTutor, id)); ;
                         break;
                     case EnumRepo.Tables.TblVideo:
-                        Heart.TblVideo.Remove(new TblVideo { id = id });
+                        Heart.TblVideo.Remove((TblVideo)SelectById(EnumRepo.Tables.TblVideo, id));
                         break;
                     case EnumRepo.Tables.TblDeal:
-                        Heart.TblDeal.Remove(new TblDeal { id = id });
+                        Heart.TblDeal.Remove((TblDeal)SelectById(EnumRepo.Tables.TblDeal, id));
                         break;
                     case EnumRepo.Tables.TblDealPropertyRel:
-                        Heart.TblDealPropertyRel.Remove(new TblDealPropertyRel { id = id });
+                        Heart.TblDealPropertyRel.Remove((TblDealPropertyRel)SelectById(EnumRepo.Tables.TblDealPropertyRel, id));
                         break;
                     case EnumRepo.Tables.TblUserPass:
-                        Heart.TblUserPass.Remove(new TblUserPass { id = id });
+                        Heart.TblUserPass.Remove((TblUserPass)SelectById(EnumRepo.Tables.TblUserPass, id));
                         break;
                     case EnumRepo.Tables.TblDiscount:
-                        Heart.TblDiscount.Remove(new TblDiscount { id = id });
+                        Heart.TblDiscount.Remove((TblDiscount)SelectById(EnumRepo.Tables.TblDiscount, id));
                         break;
                     case EnumRepo.Tables.TblClient:
-                        Heart.TblClient.Remove(new TblClient { id = id });
+                        Heart.TblClient.Remove((TblClient)SelectById(EnumRepo.Tables.TblClient, id));
                         break;
                     case EnumRepo.Tables.TblTuotorVideoRel:
-                        Heart.TblTuotorVideoRel.Remove(new TblTuotorVideoRel { id = id });
+                        Heart.TblTuotorVideoRel.Remove((TblTuotorVideoRel)SelectById(EnumRepo.Tables.TblTuotorVideoRel, id));
                         break;
                     case EnumRepo.Tables.TblLog:
-                        Heart.TblLog.Remove(new TblLog { id = id });
+                        Heart.TblLog.Remove((TblLog)SelectById(EnumRepo.Tables.TblLog, id));
                         break;
                     default:
                         return false;

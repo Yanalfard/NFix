@@ -1,0 +1,54 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblBlog>
+@{
+    ViewBag.Title = "BlogTable";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- #region Table -->
+
+<table class="uk-table" dir="rtl">
+    <thead>
+        <tr>
+            <th></th>
+            <th>تیتر</th>
+            <th>توضیحات</th>
+            <th>عکس</th>
+            <th>محتوا</th>
+            <th>تعداد لایک</th>
+            <th>کلمات کلیدی</th>
+            <th>نظرات</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <!-- #region Foreach -->
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>1</td>
+                <td>این یک تیتر است</td>
+                <td>@item.Body</td>
+                <td uk-lightbox>
+                    <a href="~/Resources/Blogs/@item.MainImage">
+                        <img src="~/Resources/Blogs/@item.MainImage" />
+                    </a>
+                </td>
+                <td>
+                    ...
+                </td>
+                <td>@item.LikeCount</td>
+                <td>
+                    <a href="" uk-icon="hashtag"></a>
+                </td>
+                <td>
+                    <a href="" uk-icon="comments"></a>
+                </td>
+            </tr>
+        }
+        <!-- #endregion -->
+
+    </tbody>
+</table>
+
+<!-- #endregion -->

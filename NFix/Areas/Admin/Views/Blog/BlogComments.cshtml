@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "BlogComments";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- #region Table -->
+
+<table class="uk-table" dir="rtl">
+    <thead>
+        <tr>
+            <th></th>
+            <th>وبلاگ</th>
+            <th>نام کاربر</th>
+            <th>متن</th>
+            <th>تاریخ</th>
+            <th>تایید شده</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- #region Foreach -->
+        <tr>
+            <td>1</td>
+            <td>
+                <a href="">
+                    نام وبلاگ
+                </a>
+            </td>
+            <td>
+                <a href="">
+                    نام کاربر
+                </a>
+            </td>
+            <td>
+                این متن یک کامنت می باشد
+            </td>
+            <td>
+                1399/08/08
+            </td>
+            <td>
+                <input type="checkbox" class="uk-checkbox" onchange="" />
+            </td>
+        </tr>
+        <!-- #endregion -->
+    </tbody>
+</table>
+
+<!-- #endregion -->

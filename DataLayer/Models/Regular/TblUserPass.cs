@@ -26,10 +26,11 @@ namespace DataLayer.Models.Regular
         public string Password { get; set; }
         public string Auth { get; set; }
         public bool IsActive { get; set; }
-        public int Role { get; set; }
+        public int RoleId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblClient> TblClient { get; set; }
+        public virtual TblRole TblRole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblTutor> TblTutor { get; set; }
     }
