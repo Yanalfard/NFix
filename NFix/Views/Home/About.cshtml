@@ -7,12 +7,200 @@
 <link href="~/Styles/about.min.css" rel="stylesheet" />
 
 <!-- #endregion -->
+<!-- This is the modal -->
+<div id="ModalProduct" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body column">
+        <section class="modal-product">
+            <!-- #region Image -->
+            <aside class="image column">
+                <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
+
+                    <ul class="uk-slideshow-items">
+                        <li>
+                            <img src="https://picsum.photos/id/10/600/400" alt="" uk-cover>
+                        </li>
+                        <li>
+                            <img src="https://picsum.photos/id/11/600/400" alt="" uk-cover>
+                        </li>
+                        <li>
+                            <img src="https://picsum.photos/id/12/600" alt="" uk-cover>
+                        </li>
+                    </ul>
+
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+                    <ul class="uk-thumbnav uk-margin-small-top" uk-margin>
+                        <li uk-slideshow-item="0" class="uk-active">
+                            <a href="#">
+                                <img src="https://picsum.photos/id/10/600/400" width="64" height="64" alt="">
+                            </a>
+                        </li>
+                        <li uk-slideshow-item="1">
+                            <a href="#">
+                                <img src="https://picsum.photos/id/11/600/400" width="64" height="64" alt="">
+                            </a>
+                        </li>
+                        <li uk-slideshow-item="2">
+                            <a href="#">
+                                <img src="https://picsum.photos/id/12/600" width="64" height="64" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <!-- #endregion -->
+            <!-- #region General -->
+            <article class="content column">
+                <span class="uk-button uk-margin-auto-left uk-padding-remove"
+                      onclick="UIkit.modal(document.getElementById('ModalProduct')).hide();"
+                      uk-icon="close">
+                </span>
+
+                <h2 class="uk-margin-small-top uk-margin-small-bottom">
+                    Vel sapien elit in malesuada semper mi, id sollicitudin.
+                </h2>
+                <a href="">دسته بندی</a>
+                <label>#1365</label>
+                <div class="row uk-margin-small-top" dir="rtl">
+                    <div class="column uk-margin-auto-left" dir="ltr">
+                        <h3 class="uk-margin-remove not">
+                            160,000
+                        </h3>
+                        <div class="row" dir="ltr">
+                            <span class="uk-margin-small-top">
+                                تومان
+                            </span>
+                            <h2 class="uk-margin-remove">
+                                160,000
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="row star-container uk-margin-auto-top" dir="rtl">
+                        <div class="Stars" style="--rating: 2.6;"
+                             uk-tooltip="2.6"
+                             aria-label="Rating of this product is 2.3 out of 5."></div>
+                    </div>
+                </div>
+                <button class="uk-margin-auto-left uk-margin-top">
+                    افزودن به سبد خرید
+                    <span uk-icon="cart"></span>
+                </button>
+            </article>
+            <!-- #endregion -->
+        </section>
+        <div class="details">
+            <hr class="uk-margin-top" />
+            <label>توضیحات</label>
+            <p class="uk-margin-remove-bottom uk-text-justify">
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+            </p>
+            <details dir="rtl" class="uk-margin-bottom uk-text-justify">
+                <summary>بیشتر</summary>
+                Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
+            </details>
+
+            <label>واژه های کلیدی</label>
+            <ul class="uk-flex uk-flex-wrap" dir="rtl">
+                <li>
+                    <a href="" class="keyword ">
+                        Dolor sit.
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="keyword ">
+                        Sit amet, consectetur.
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="keyword ">
+                        Ipsum.
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="keyword ">
+                        Amet, consectetur adipiscing elit.
+                    </a>
+                </li>
+            </ul>
+
+            <label>مشخصات</label>
+            <table class="uk-margin-small-top uk-margin-remove-bottom uk-table" cellspacing="0" dir="rtl">
+                <thead>
+                    <tr>
+                        <th>
+                            مشخصات
+                        </th>
+                        <th>
+                            توضیحات
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            باتری
+                        </td>
+                        <td>
+                            1.6
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            باتری
+                        </td>
+                        <td>
+                            1.6
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            باتری
+                        </td>
+                        <td>
+                            1.6
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            باتری
+                        </td>
+                        <td>
+                            1.6
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            باتری
+                        </td>
+                        <td>
+                            1.6
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row  uk-margin-top" dir="rtl">
+                <button class="uk-margin-small-left">
+                    <span uk-icon="cart"></span>
+                    افزودن به سبد خرید
+                </button>
+                <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
+                   onclick="UIkit.modal(document.getElementById('ModalProduct')).hide();">بازگشت</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="abouthead uk-height-large uk-background-cover uk-light uk-flex" uk-parallax="bgy: 0" style="background-image: url('../Resources/Png/CalculatorBackground.png');">
     <h2 class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical">درباره ما</h2>
 </div>
 <div class="about mat column clipped center">
     <div class="uk-padding" role="document">
+        <!-- This is a button toggling the modal -->
+        <button uk-toggle="target: #ModalProduct" type="button"></button>
+
         <h2 class="uk-margin-remove-bottom">
             درباره ما
         </h2>
