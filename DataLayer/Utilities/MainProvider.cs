@@ -374,7 +374,7 @@ namespace DataLayer.Utilities
                     val.Auth = update.Auth;
                     val.IsActive = update.IsActive;
                     val.Password = update.Password;
-                    val.Role = update.Role;
+                    val.RoleId = update.RoleId;
                     val.Username = update.Username;
                 }
                 else if (table.GetType() == typeof(TblDiscount))

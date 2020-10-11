@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataLayer.Services.Impl;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +9,13 @@ namespace NFix.Areas.Admin.Controllers
 {
     public class BlogController : Controller
     {
+        private BlogService _blog = new BlogService();
         // GET: Admin/Blog
         #region Blog
 
         public ActionResult BlogTable()
         {
-            return View();
+            return View(_blog.SelectAllBlogs());
         }
 
         public ActionResult BlogAdder()

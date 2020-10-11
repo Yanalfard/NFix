@@ -48,6 +48,7 @@ namespace DataLayer.Models.Regular
         public virtual DbSet<TblProductKeywordRel> TblProductKeywordRel { get; set; }
         public virtual DbSet<TblProductPropertyRel> TblProductPropertyRel { get; set; }
         public virtual DbSet<TblProperty> TblProperty { get; set; }
+        public virtual DbSet<TblRole> TblRole { get; set; }
         public virtual DbSet<TblTuotorVideoRel> TblTuotorVideoRel { get; set; }
         public virtual DbSet<TblTutor> TblTutor { get; set; }
         public virtual DbSet<TblUserPass> TblUserPass { get; set; }

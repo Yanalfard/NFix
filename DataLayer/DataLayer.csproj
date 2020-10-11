@@ -183,6 +183,9 @@
     <Compile Include="Models\Regular\TblProperty.cs">
       <DependentUpon>NfixModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Regular\TblRole.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Regular\TblTuotorVideoRel.cs">
       <DependentUpon>NfixModel.tt</DependentUpon>
     </Compile>
@@ -300,32 +303,30 @@
     <Compile Include="Utilities\MethodRepo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="Models\Regular\NfixModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NfixModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="Models\Regular\NfixModel.edmx.diagram">
       <DependentUpon>NfixModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Models\Regular\NfixModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>NfixModel.Context.cs</LastGenOutput>
       <DependentUpon>NfixModel.edmx</DependentUpon>
+      <LastGenOutput>NfixModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Regular\NfixModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NfixModel.edmx</DependentUpon>
       <LastGenOutput>NfixModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

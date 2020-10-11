@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<DataLayer.Models.Regular.TblBlog>
 @{
     ViewBag.Title = "BlogTable";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -20,88 +20,34 @@
         </tr>
     </thead>
     <tbody>
+
         <!-- #region Foreach -->
-        <tr>
-            <td>1</td>
-            <td>این یک تیتر است</td>
-            <td>توضیحات وبلاگ</td>
-            <td uk-lightbox>
-                <a href="~/Resources/Png/CalculatorBackground.png">
-                    <img src="~/Resources/Png/CalculatorBackground.png" />
-                </a>
-            </td>
-            <td>
-                ...
-            </td>
-            <td>160</td>
-            <td>
-                <a href="" uk-icon="hashtag"></a>
-            </td>
-            <td>
-                <a href="" uk-icon="comments"></a>
-            </td>
-        </tr>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>1</td>
+                <td>این یک تیتر است</td>
+                <td>@item.Body</td>
+                <td uk-lightbox>
+                    <a href="~/Resources/Blogs/@item.MainImage">
+                        <img src="~/Resources/Blogs/@item.MainImage" />
+                    </a>
+                </td>
+                <td>
+                    ...
+                </td>
+                <td>@item.LikeCount</td>
+                <td>
+                    <a href="" uk-icon="hashtag"></a>
+                </td>
+                <td>
+                    <a href="" uk-icon="comments"></a>
+                </td>
+            </tr>
+        }
         <!-- #endregion -->
-        <tr>
-            <td>1</td>
-            <td>این یک تیتر است</td>
-            <td>توضیحات وبلاگ</td>
-            <td uk-lightbox>
-                <a href="~/Resources/Png/CalculatorBackground.png">
-                    <img src="~/Resources/Png/CalculatorBackground.png" />
-                </a>
-            </td>
-            <td>
-                ...
-            </td>
-            <td>160</td>
-            <td>
-                <a href="" uk-icon="hashtag"></a>
-            </td>
-            <td>
-                <a href="" uk-icon="comments"></a>
-            </td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>این یک تیتر است</td>
-            <td>توضیحات وبلاگ</td>
-            <td uk-lightbox>
-                <a href="~/Resources/Png/CalculatorBackground.png">
-                    <img src="~/Resources/Png/CalculatorBackground.png" />
-                </a>
-            </td>
-            <td>
-                ...
-            </td>
-            <td>160</td>
-            <td>
-                <a href="" uk-icon="hashtag"></a>
-            </td>
-            <td>
-                <a href="" uk-icon="comments"></a>
-            </td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>این یک تیتر است</td>
-            <td>توضیحات وبلاگ</td>
-            <td uk-lightbox>
-                <a href="~/Resources/Png/CalculatorBackground.png">
-                    <img src="~/Resources/Png/CalculatorBackground.png" />
-                </a>
-            </td>
-            <td>
-                ...
-            </td>
-            <td>160</td>
-            <td>
-                <a href="" uk-icon="hashtag"></a>
-            </td>
-            <td>
-                <a href="" uk-icon="comments"></a>
-            </td>
-        </tr>
+
     </tbody>
 </table>
 
