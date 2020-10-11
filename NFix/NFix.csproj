@@ -267,6 +267,7 @@
     <Content Include="Resources\Svg\Union.svg" />
     <Content Include="Resources\User\3475674567.jpg" />
     <Content Include="Resources\Videos\Image\3475674567.jpg" />
+    <Content Include="Scripts\UIScripts\CommentSection.js" />
     <Content Include="Scripts\Jquery\bootstrap.min.js" />
     <Content Include="Scripts\Jquery\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\Jquery\jquery-3.5.1.js" />

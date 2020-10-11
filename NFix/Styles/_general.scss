@@ -7,7 +7,7 @@
     float: none;
     /*font-family: 'A Iranian Sans', 'numbers','Segoe UI';*/
     font-family: 'Segoe UI';
-    list-style: none!important;
+    list-style: none !important;
     text-decoration: none;
     text-align: right;
     outline: none;
@@ -119,4 +119,28 @@ img {
 
 h1, h2, h3, h4, h5, h6 {
     padding-bottom: 1px;
+}
+
+.white {
+    background: $white;
+}
+
+.white-mid {
+    background: $white-mid;
+}
+
+.white-dark {
+    background: $white-dark;
+}
+
+.black {
+    background: $black;
+}
+
+.black-mid {
+    background: $black-mid;
+}
+
+.black-light {
+    background: $black-light;
 }

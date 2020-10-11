@@ -157,7 +157,8 @@ backdrop-filter: saturate(80%);
 .clipped {
   margin-left: auto;
   margin-right: auto;
-  width: 92vw; }
+  width: 92vw;
+  max-width: 1600px; }
 
 .full-width {
   width: 100vw; }
@@ -278,6 +279,24 @@ img {
 h1, h2, h3, h4, h5, h6 {
   padding-bottom: 1px; }
 
+.white {
+  background: #fff; }
+
+.white-mid {
+  background: #EBEBEB; }
+
+.white-dark {
+  background: #D1D1D1; }
+
+.black {
+  background: #404040; }
+
+.black-mid {
+  background: #5B5B5B; }
+
+.black-light {
+  background: #848484; }
+
 /*#region name*/
 /*#endregion */
 /*#region Global */
@@ -379,7 +398,8 @@ backdrop-filter: saturate(80%);
 .clipped {
   margin-left: auto;
   margin-right: auto;
-  width: 92vw; }
+  width: 92vw;
+  max-width: 1600px; }
 
 .full-width {
   width: 100vw; }

@@ -157,7 +157,8 @@ backdrop-filter: saturate(80%);
 .clipped {
   margin-left: auto;
   margin-right: auto;
-  width: 92vw; }
+  width: 92vw;
+  max-width: 1600px; }
 
 .full-width {
   width: 100vw; }
@@ -278,6 +279,24 @@ img {
 h1, h2, h3, h4, h5, h6 {
   padding-bottom: 1px; }
 
+.white {
+  background: #fff; }
+
+.white-mid {
+  background: #EBEBEB; }
+
+.white-dark {
+  background: #D1D1D1; }
+
+.black {
+  background: #404040; }
+
+.black-mid {
+  background: #5B5B5B; }
+
+.black-light {
+  background: #848484; }
+
 /*#region name*/
 /*#endregion */
 /*#region Global */
@@ -379,7 +398,8 @@ backdrop-filter: saturate(80%);
 .clipped {
   margin-left: auto;
   margin-right: auto;
-  width: 92vw; }
+  width: 92vw;
+  max-width: 1600px; }
 
 .full-width {
   width: 100vw; }
@@ -399,11 +419,20 @@ backdrop-filter: saturate(80%);
 .about {
   margin-top: -100px;
   margin-bottom: 20px;
-  width: 80vw;
-  padding: 30px; }
+  width: 88vw;
+  max-width: 1600px;
+  padding: 0; }
   .about a {
     margin-top: 10px;
     margin-bottom: 20px; }
+
+.commies {
+  margin-bottom: 20px;
+  width: 88vw;
+  max-width: 1600px;
+  overflow: hidden; }
+  .commies * {
+    overflow: hidden; }
 
 .abouthead {
   width: 100%;
@@ -412,21 +441,3 @@ backdrop-filter: saturate(80%);
     font-weight: 500;
     font-size: 50px;
     padding: 10px; }
-
-@media only screen and (max-device-width: 480px) {
-  .about {
-    margin-top: -120px;
-    margin-bottom: 20px;
-    width: 80vw;
-    padding: 30px; }
-    .about a {
-      margin-top: 10px;
-      margin-bottom: 20px; }
-  .abouthead {
-    width: 100%;
-    height: 300px !important; }
-    .abouthead h2 {
-      font-weight: 500;
-      font-size: 50px;
-      padding: 10px;
-      padding-bottom: 60px; } }

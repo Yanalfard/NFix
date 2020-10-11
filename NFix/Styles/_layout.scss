@@ -114,10 +114,14 @@
     grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
 }
 
+$clipped-width: 92vw;
+$clipped-max-width: 1600px;
+
 .clipped {
     margin-left: auto;
     margin-right: auto;
-    width: 92vw;
+    width: $clipped-width;
+    max-width: $clipped-max-width;
 }
 
 .full-width {
