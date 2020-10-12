@@ -432,6 +432,54 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
     flex: 0; } }
 
+#ModalProduct > .uk-modal-dialog {
+  width: 100vw; }
+
+#ModalProduct .modal-product {
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -ms-align-content: center;
+  -webkit-align-content: center;
+  align-content: center; }
+  #ModalProduct .modal-product > .image {
+    flex: 2;
+    margin-right: 40px; }
+  #ModalProduct .modal-product > .content {
+    flex: 3.5; }
+
+#ModalProduct .keyword {
+  padding: 8px;
+  background: #d52929;
+  -moz-border-radius: 24px 24px 24px 24px;
+  -webkit-border-radius: 24px 24px 24px 24px;
+  border-radius: 24px 24px 24px 24px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+  margin-left: 12px;
+  color: white !important; }
+
+#ModalProduct .keyword:hover {
+  background: #d34a4a; }
+
+@media only screen and (max-device-width: 670px) {
+  #ModalProduct .modal-product {
+    -ms-flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse; }
+    #ModalProduct .modal-product > .image {
+      margin: 20px 0 0 0; } }
+
+@media only screen and (max-width: 670px) {
+  #ModalProduct .modal-product {
+    -ms-flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse; }
+    #ModalProduct .modal-product > .image {
+      margin: 20px 0 0 0; } }
+
 .uk-comment {
   padding: 16px;
   background: #1C1C1C;
@@ -704,6 +752,10 @@ footer {
       padding: 0; } }
 
 /*#endregion */
+.not {
+  text-decoration: line-through;
+  color: GrayText; }
+
 table {
   border: 1px solid #0D0D0D; }
   table thead, table tfoot {

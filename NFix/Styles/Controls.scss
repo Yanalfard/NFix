@@ -86,6 +86,65 @@ $Modal-width: 824px;
     }
 }
 
+#ModalProduct {
+    > .uk-modal-dialog {
+        width: 100vw;
+    }
+
+    .modal-product {
+        @include row();
+
+        > .image {
+            flex: 2;
+            margin-right: 40px;
+        }
+
+        > .content {
+            flex: 3.5;
+        }
+    }
+
+    .keyword {
+        padding: 8px;
+        background: #d52929;
+        @include border-radius(24px,24px,24px,24px);
+        margin-left: 12px;
+        color: white !important;
+    }
+
+    .keyword:hover {
+        background: lighten(#CF3A3A,4%);
+    }
+}
+
+@media only screen and (max-device-width : 670px) {
+    #ModalProduct {
+        .modal-product {
+            -ms-flex-direction: column-reverse;
+            -webkit-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+
+            > .image {
+                margin: 20px 0 0 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width : 670px) {
+    #ModalProduct {
+        .modal-product {
+            -ms-flex-direction: column-reverse;
+            -webkit-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+
+            > .image {
+                margin: 20px 0 0 0;
+            }
+        }
+    }
+}
+
 .uk-comment {
     padding: 16px;
     background: $CommentBackground;
@@ -189,7 +248,6 @@ $Modal-width: 824px;
     min-height: 50px;
     min-width: 50px;
 }
-
 
 /*#region Video */
 
@@ -403,6 +461,11 @@ footer {
 }
 
 /*#endregion */
+
+.not {
+    text-decoration: line-through;
+    color: GrayText;
+}
 
 table {
     border: 1px solid #0D0D0D;
