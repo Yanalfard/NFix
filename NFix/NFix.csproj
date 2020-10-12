@@ -284,6 +284,7 @@
     <Content Include="Resources\Svg\asdfwe03.svg" />
     <Content Include="Resources\Svg\asdfwe04.svg" />
     <Content Include="Resources\Svg\Biscuits\Poly_1.svg" />
+    <Content Include="Resources\Svg\Biscuits\Poly_2.svg" />
     <Content Include="Resources\Svg\Formula.svg" />
     <Content Include="Resources\Svg\NFIX.svg" />
     <Content Include="Resources\Svg\NFixAnimated.svg" />
@@ -356,9 +357,6 @@
     <Content Include="Styles\Profile.min.css">
       <DependentUpon>Profile.css</DependentUpon>
     </Content>
-    <Content Include="Styles\UIKit\uikit-rtl.css" />
-    <Content Include="Styles\UIKit\uikit-rtl.min.css" />
-    <Content Include="Styles\UIKit\uikit.css" />
     <Content Include="Styles\UIKit\uikit.min.css" />
     <Content Include="Styles\Video.css">
       <DependentUpon>Video.scss</DependentUpon>
@@ -416,6 +414,7 @@
     <Content Include="Views\HomeAccount\Register.cshtml" />
     <Content Include="Views\Shared\_LoggedInUser.cshtml" />
     <Content Include="Views\HomeVideo\VideoRecommendations.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

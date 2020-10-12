@@ -946,3 +946,11 @@ textarea {
   -moz-box-shadow: rgba(0, 0, 0, 0.38) 0 0px 0.4vw;
   -webkit-box-shadow: rgba(0, 0, 0, 0.38) 0 0px 0.4vw;
   box-shadow: rgba(0, 0, 0, 0.38) 0 0px 0.4vw; }
+
+.invisible-input {
+  background: transparent !important;
+  border: none !important;
+  font-size: 18px !important; }
+
+.invisible-input:hover {
+  background: transparent !important; }

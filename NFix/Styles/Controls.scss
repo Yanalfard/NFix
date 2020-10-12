@@ -663,3 +663,13 @@ textarea {
     background: darken($black,12%) !important;
     @include shadow-mild;
 }
+
+.invisible-input {
+    background: transparent !important;
+    border: none !important;
+    font-size: 18px!important;
+}
+
+.invisible-input:hover {
+    background: transparent !important;
+}
