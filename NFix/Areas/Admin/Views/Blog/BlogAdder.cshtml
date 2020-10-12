@@ -1,11 +1,24 @@
-﻿@{
+﻿@model DataLayer.ViewModel.BlogViewModel
+@{
     ViewBag.Title = "BlogAdder";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <!-- #region Card -->
 
-<form action="/Admin/Video/VideoAdder" method="post" enctype="multipart/form-data" class="mat uk-margin-large-top uk-padding-small column clipped">
+<style>
+    table tbody tr:nth-child(odd), table tbody tr:nth-child(even) {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    .cke_dialog ::-webkit-scrollbar-track {
+        background: #fff !important;
+    }
+</style>
+
+
+<form action="/Admin/Blog/BlogAdder" method="post" enctype="multipart/form-data" class="mat uk-margin-large-top uk-padding-small column clipped">
     <h4 class="uk-margin-remove-bottom">
         وبلاگ جدید
     </h4>
@@ -21,7 +34,7 @@
         محتوای وبلاگ
     </label>
     @* CK Editor *@
-    <textarea id="Body" name="Body" required></textarea>
+    <textarea style="background-color:white" id="Body" name="Body" required></textarea>
 
     <!-- #region Upload Image -->
     <label class="uk-margin-small-bottom uk-margin-top">
@@ -38,15 +51,7 @@
 
     <!-- #endregion -->
 
-    <div class="row uk-margin-auto-left">
-        <label for="IsOnline" class="uk-margin-small-right">مرئی می باشد</label>
-        <input type="checkbox" id="IsOnline" value="true" name="IsOnline" class="uk-checkbox uk-margin-auto-top uk-margin-auto-bottom" />
-    </div>
 
-    <div class="row uk-margin-auto-left uk-margin-small-top">
-        <label for="IsHome" class="uk-margin-small-right">در صفحه اصلی قرار دارد</label>
-        <input type="checkbox" id="IsHome" name="IsHome" value="true" class="uk-checkbox  uk-margin-auto-top uk-margin-auto-bottom" />
-    </div>
 
     <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
     <button type="submit" class="see uk-margin-medium-top uk-margin-auto-left">ذخیره</button>
@@ -55,8 +60,11 @@
 <div class="space"></div>
 
 <!-- #endregion -->
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckeditor/adapters/jquery.js"></script>
 
 <script>
+    $('#Body').ckeditor();ن
         var bar = document.getElementById('js-progressbar');
 
         UIkit.upload('.js-upload', {

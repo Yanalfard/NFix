@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="arvintav_NFixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="arvintav_NFixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -28,6 +28,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MainImage" Type="nvarchar(max)" />
           <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="300" />
@@ -708,8 +709,7 @@
             <End Role="TblUserPass" EntitySet="TblUserPass" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="arvintav_NFixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -742,6 +742,7 @@
           <Property Name="LikeCount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TblBlogCommentRel" Relationship="Self.FK_TblBlogCommentRel_TblBlog" FromRole="TblBlog" ToRole="TblBlogCommentRel" />
           <NavigationProperty Name="TblBlogKeywordRel" Relationship="Self.FK_TblBlogKeywordRel_TblBlog" FromRole="TblBlog" ToRole="TblBlogKeywordRel" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TblBlogCommentRel">
           <Key>
@@ -1492,6 +1493,7 @@
           <EntitySetMapping Name="TblBlog">
             <EntityTypeMapping TypeName="arvintav_NFixModel.TblBlog">
               <MappingFragment StoreEntitySet="TblBlog">
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="MainImage" ColumnName="MainImage" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
