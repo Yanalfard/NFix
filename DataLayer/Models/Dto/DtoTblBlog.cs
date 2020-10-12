@@ -21,7 +21,6 @@ namespace DataLayer.Models.Dto
             LikeCount = blog.LikeCount;
             Comments = MethodRepo.ConvertToDto<TblComment, DtoTblComment>(new BlogService().SelectCommentsByBlogId(id));
             Keywords = MethodRepo.ConvertToDto<TblKeyword, DtoTblKeyword>(new BlogService().SelectKeywordsByBlogId(id));
-
             StatusEffect = HttpStatusCode.OK;
         }
 
