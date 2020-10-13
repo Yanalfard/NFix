@@ -150,6 +150,7 @@
     <Compile Include="Areas\Admin\Controllers\UploadImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
+    <Compile Include="Areas\Tuotor\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Tuotor\TuotorAreaRegistration.cs" />
     <Compile Include="Areas\User\Controllers\ProfileController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
@@ -231,6 +232,7 @@
     <Content Include="Areas\Admin\Views\Blog\BlogKeyWords.cshtml" />
     <Content Include="Areas\Admin\Views\Video\VideoEdit.cshtml" />
     <Content Include="Areas\Tuotor\Views\web.config" />
+    <Content Include="Areas\Tuotor\Views\Profile\Index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1581,7 +1583,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\UploadImage\" />
-    <Folder Include="Areas\Tuotor\Controllers\" />
     <Folder Include="Areas\Tuotor\Data\" />
     <Folder Include="Areas\Tuotor\Views\Shared\" />
     <Folder Include="Areas\User\Data\" />
