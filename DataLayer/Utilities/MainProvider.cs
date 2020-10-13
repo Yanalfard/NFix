@@ -201,6 +201,8 @@ namespace DataLayer.Utilities
                     val.LikeCount = update.LikeCount;
                     val.MainImage = update.MainImage;
                     val.Body = update.Body;
+                    val.Description= update.Description;
+                    val.Title = update.Title;
                 }
                 else if (table.GetType() == typeof(TblBlogCommentRel))
                 {

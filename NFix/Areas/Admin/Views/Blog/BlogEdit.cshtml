@@ -1,6 +1,6 @@
 ﻿@model DataLayer.ViewModel.BlogViewModel
 @{
-    ViewBag.Title = "BlogAdder";
+    ViewBag.Title = "ویرایش مقاله";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -18,11 +18,13 @@
 </style>
 
 
-@using (Html.BeginForm("BlogAdder", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("BlogEdit", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
     @Html.AntiForgeryToken()
-
+    @Html.HiddenFor(m => m.id)
+    @Html.HiddenFor(m => m.LikeCount)
+    @Html.HiddenFor(m => m.MainImage)
     <div class="mat uk-margin-large-top uk-padding-small column clipped">
         <h4 class="uk-margin-remove-bottom">
             وبلاگ جدید
@@ -30,7 +32,7 @@
         <label for="Title" class="uk-margin-small-bottom uk-margin-top">
             تیتر وبلاگ
         </label>
-        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required= "required" } })
+        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
         @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
         <label for="Title" class="uk-margin-small-bottom uk-margin-top">
             کلمات کلیدی
@@ -55,11 +57,14 @@
         <label class="uk-margin-small-bottom uk-margin-top">
             عکس
         </label>
+        <div style="margin:0 auto">
+            <img src="~/Resources/Blogs/@Model.MainImage" class="thumbnail" style="width:300px" alt="Alternate Text" />
+        </div>
         <div class="uk-placeholder uk-margin-remove-top uk-text-center" dir="rtl">
             <span uk-icon="icon: cloud-upload"></span>
             <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
             <div uk-form-custom>
-                <input type="file" name="MainImage" multiple required>
+                <input type="file" name="MainImage" multiple>
                 <span class="uk-link">انتخاب کتید</span>
             </div>
         </div>

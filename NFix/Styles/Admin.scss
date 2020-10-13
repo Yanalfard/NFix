@@ -103,3 +103,21 @@ a.uk-accordion-title:hover {
         color: #eb5251 !important;
     }
 }
+
+.inner-ul {
+    padding: 0;
+    border: solid 1px #151515;
+
+    li {
+        padding: 16px;
+        margin: 0 !important;
+    }
+
+    li:nth-child(even) {
+        background: #1f1f1f !important;
+    }
+
+    li:nth-child(odd) {
+        background: #2c2c2c !important;
+    }
+}

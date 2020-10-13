@@ -17,18 +17,20 @@
             <th>تعداد لایک</th>
             <th>کلمات کلیدی</th>
             <th>نظرات</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
 
         <!-- #region Foreach -->
-        @foreach (var item in Model)
+        @foreach (var item in   Model)
         {
 
-            <tr>
-                <td>1</td>
-                <td>این یک تیتر است</td>
-                <td>@item.Body</td>
+            <tr id="blog_@item.id">
+                <td>@(Model.ToList().IndexOf(item) + 1)</td>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
                 <td uk-lightbox>
                     <a href="~/Resources/Blogs/@item.MainImage">
                         <img src="~/Resources/Blogs/@item.MainImage" />
@@ -42,7 +44,13 @@
                     <a href="" uk-icon="hashtag"></a>
                 </td>
                 <td>
-                    <a href="" uk-icon="comments"></a>
+                    <a href="/Admin/Blog/BlogComments/@item.id"  uk-icon="comments" ></a>
+                </td>
+                <td>
+                    <a href="#" onclick="deleteBlog(@item.id)" uk-icon="icon:trash; ratio:1"></a>
+                </td>
+                <td>
+                    <a href="/Admin/Blog/BlogEdit/@item.id" uk-icon="icon:file-edit; ratio:1"></a>
                 </td>
             </tr>
         }
@@ -52,3 +60,18 @@
 </table>
 
 <!-- #endregion -->
+<script>
+    function deleteBlog(id) {
+
+        if (confirm("آیا از حذف ویدیو مطمئن هستید؟")) {
+            $.ajax({
+                url: "/Admin/Blog/DeleteBlog/" + id,
+                type: "Get"
+            }).done(function () {
+                $("#blog_" + id).addClass("uk-text-danger");
+                $("#blog_" + id).hide('slow');
+            });
+
+        };
+    };
+</script>

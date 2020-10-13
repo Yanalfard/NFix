@@ -1,0 +1,97 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblCatagory>
+@{
+    ViewBag.Title = "BlogAdder";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<!-- #region Table -->
+
+<table class="uk-table" dir="rtl">
+    <caption>
+
+    </caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th>سرگروه</th>
+            <th>زیر گروه ها</th>
+            <th>
+                <button  onclick="Create()">
+                    سرگروه جدید
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>لوازم ورزشی</td>
+            <td>
+                <ul class="column inner-ul">
+                    <li class="row uk-margin-small-top">
+                        <span class="uk-margin-small-left">رم</span>
+                        <div class="row uk-margin-auto-right">
+                            <a href="#" uk-icon="icon:file-edit"></a>
+                            <a href="#" uk-icon="icon:trash"></a>
+                        </div>
+                    </li>
+                    <li class="row uk-margin-small-top">
+                        <span class="uk-margin-small-left">رم</span>
+                        <div class="row uk-margin-auto-right">
+                            <a href="#" uk-icon="icon:file-edit"></a>
+                            <a href="#" uk-icon="icon:trash"></a>
+                        </div>
+                    </li>
+                    <li class="row uk-margin-small-top">
+                        <span class="uk-margin-small-left">رم</span>
+                        <div class="row uk-margin-auto-right">
+                            <a href="#" uk-icon="icon:file-edit"></a>
+                            <a href="#" uk-icon="icon:trash"></a>
+                        </div>
+                    </li>
+                </ul>
+            </td>
+            <td class="row">
+                <a href="#" uk-icon="icon:plus"></a>
+                <a href="#" uk-icon="icon:file-edit"></a>
+                <a href="#" uk-icon="icon:trash"></a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>لوازم ورزشی</td>
+            <td>
+                <ul class="column inner-ul">
+                    <li class="row uk-margin-small-top">
+                        <span class="uk-margin-small-left">رم</span>
+                        <div class="row uk-margin-auto-right">
+                            <a href="#" uk-icon="icon:file-edit"></a>
+                            <a href="#" uk-icon="icon:trash"></a>
+                        </div>
+                    </li>
+                    <li class="row uk-margin-small-top">
+                        <span class="uk-margin-small-left">رم</span>
+                        <div class="row uk-margin-auto-right">
+                            <a href="#" uk-icon="icon:file-edit"></a>
+                            <a href="#" uk-icon="icon:trash"></a>
+                        </div>
+                    </li>
+                    <li class="row uk-margin-small-top">
+                        <span class="uk-margin-small-left">رم</span>
+                        <div class="row uk-margin-auto-right">
+                            <a href="#" uk-icon="icon:file-edit"></a>
+                            <a href="#" uk-icon="icon:trash"></a>
+                        </div>
+                    </li>
+                </ul>
+            </td>
+            <td class="row">
+                <a href="#" uk-icon="icon:plus"></a>
+                <a href="#" uk-icon="icon:file-edit"></a>
+                <a href="#" uk-icon="icon:trash"></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- #endregion -->

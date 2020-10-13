@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="arvintav_NFixModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="arvintav_NFixModel.TblAd" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="arvintav_NFixModel.TblBlog" Width="1.5" PointX="3.75" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="arvintav_NFixModel.TblBlogCommentRel" Width="1.5" PointX="6" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="arvintav_NFixModel.TblBlogCommentRel" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="arvintav_NFixModel.TblBlogKeywordRel" Width="1.5" PointX="6" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="arvintav_NFixModel.TblCatagory" Width="1.5" PointX="1.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="arvintav_NFixModel.TblClient" Width="1.5" PointX="1.5" PointY="15.125" IsExpanded="true" />

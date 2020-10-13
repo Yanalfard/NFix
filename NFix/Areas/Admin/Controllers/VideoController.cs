@@ -82,7 +82,7 @@ namespace NFix.Areas.Admin.Controllers
             {
                 if (video.VidioDemoUrl != null)
                 {
-                    System.IO.File.Delete(Server.MapPath("/Resources/Videos/Demo/" + video.VidioDemoUrl));
+                    System.IO.File.Delete(Server.MapPath("/Reso urces/Videos/Demo/" + video.VidioDemoUrl));
                 }
                 video.VidioDemoUrl = Guid.NewGuid().ToString() + Path.GetExtension(VidioDemoUrl.FileName);
                 VidioDemoUrl.SaveAs(Server.MapPath("/Resources/Videos/Demo/" + video.VidioDemoUrl));
