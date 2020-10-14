@@ -106,5 +106,20 @@ namespace NFix.Controllers
             };
             return PartialView("Register", client);
         }
+
+
+        public ActionResult LogOff()
+        {
+            try
+            {
+                FormsAuthentication.SignOut();
+                return Redirect("/");
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+        }
+
     }
 }

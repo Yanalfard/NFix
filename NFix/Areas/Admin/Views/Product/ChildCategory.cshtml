@@ -1,0 +1,17 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblCatagory>
+
+<select id="catrgoryChild" class="uk-select uk-input uk-width-2-3 @("uk-width-1-3@m") uk-margin-auto-right" dir="rtl" required>
+    <option value="0">انتخاب کنید</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.id">@item.Name</option>
+    }
+</select>
+
+<script>
+
+    $('#catrgoryChild').change(function () {
+        $('#CatagoryId').val($('#catrgoryChild option:selected').val());
+    });
+
+</script>

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "گروه ها";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <div id="listGroup">
@@ -29,13 +30,16 @@
 
 
 @section Scripts{
+    <script src="~/Scripts/Jquery/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
 
     <script>
 
 
 
-        function Create(parentId) {
-            $.get("/Admin/ProductCatagory/Create/" + parentId,
+        function Create(catagoryId) {
+            $.get("/Admin/ProductCatagory/Create/" + catagoryId,
                 function (result) {
                     UIkit.modal(document.getElementById('modal-example')).show();
                     $(".uk-modal-body").html(result);
@@ -43,45 +47,28 @@
         }
 
         function Edit(id) {
-            $.get("/Admin/Product_Groups/Edit/" + id,
+            $.get("/Admin/ProductCatagory/Edit/" + id,
                 function (result) {
-                    $("#myModal").modal('show');
-                    $("#myModalLabel").html("ویرایش گروه");
-                    $("#myModalBody").html(result);
+                    UIkit.modal(document.getElementById('modal-example')).show();
+                    $(".uk-modal-body").html(result);
                 });
         }
 
         function Delete(id) {
             if (confirm("آیا از حذف مطمئن هستید ؟")) {
-                $.get("/Admin/Product_Groups/Delete/" + id,
+                $.get("/Admin/ProductCatagory/Delete/" + id,
                     function (result) {
                         if (result.success) {
                             $("#group_" + id).hide('slow');
-                            $("#overlay").fadeOut();
                             alert(result.responseText);
                         } else {
-                            $("#overlay").fadeOut();
                             alert(result.responseText);
                         }
                     });
             }
         }
-
-        function success() {
-            $("#myModal").modal('hide');
-        }
     </script>
 
-
-    <script>
-        function viewClientInfo(id) {
-            $.get("/Admin/Blog/ViewClientInfo/" + id, function (result) {
-                UIkit.modal(document.getElementById('modal-example')).show();
-                $(".uk-modal-body").html(result);
-            });
-        };
-
-    </script>
 
 
 }

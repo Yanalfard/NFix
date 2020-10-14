@@ -305,6 +305,7 @@
     <Compile Include="Utilities\MainProvider.cs" />
     <Compile Include="Utilities\MethodRepo.cs" />
     <Compile Include="ViewModel\Blog.cs" />
+    <Compile Include="ViewModel\Product.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

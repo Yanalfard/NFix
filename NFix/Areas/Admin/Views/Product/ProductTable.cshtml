@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<DataLayer.Models.Regular.TblProduct>
 @{
     ViewBag.Title = "ProductTable";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -26,47 +26,53 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>کالا ورزشی</td>
-            <td>1400/08/08</td>
-            <td>2.6</td>
-            <td>136،000</td>
-            <td>
-                <a href="#Modal-Description" uk-toggle>توضیحات</a>
-                <div id="Modal-Description" uk-modal>
-                    <div class="uk-modal-dialog uk-modal-body">
-                        <h3>
-                            توضیحات کالا
-                        </h3>
-                        <p>
-                            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
-                        </p>
-                        <button class="uk-modal-close">
-                            بستن
-                        </button>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(Model.ToList().IndexOf(item)+1)</td>
+                <td>@item.TblCatagory.Name</td>
+                <td>@item.DateSubmited</td>
+                <td>@item.Raiting</td>
+                <td>@item.Price</td>
+                <td>
+                    <a href="#Modal-Description" uk-toggle>توضیحات</a>
+                    <div id="Modal-Description" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h3>
+                                توضیحات کالا
+                            </h3>
+                            <p>
+                                @item.Description
+                            </p>
+                            <button class="uk-modal-close">
+                                بستن
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </td>
-            <td>
-                <a href="">ورزشی</a>
-            </td>
-            <td>50</td>
-            <td>
-                <input type="checkbox" class="uk-checkbox" onclick="return false;" readonly />
-            </td>
-            <td>12%</td>
-            <td>0</td>
-            <td>
-                <a href="" uk-icon="hashtag"></a>
-            </td>
-            <td>
-                <a href="" uk-icon="image"></a>
-            </td>
-            <td>
-                <a href="" uk-icon="thumbnails"></a>
-            </td>
-        </tr>
+                </td>
+                <td>
+                    <a href="/Admin/Product/ProductTable/@item.CatagoryId">@item.TblCatagory.Name</a>
+                </td>
+                <td>@item.Count</td>
+                <td>
+                    <input type="checkbox" class="uk-checkbox" onclick="return false;" readonly />
+                </td>
+                <td>@item.Discount%</td>
+                <td>@item.Status</td>
+                <td>
+                    <a href="" uk-icon="hashtag"></a>
+                </td>
+
+                <td uk-lightbox>
+                    <a href="~/Resources/Product/@item.TblProductImageRel.SingleOrDefault().TblImage.Image">
+                        <img src="~/Resources/Product/@item.TblProductImageRel.SingleOrDefault().TblImage.Image" />
+                    </a>
+                </td>
+                <td>
+                    <a href="" uk-icon="thumbnails"></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 

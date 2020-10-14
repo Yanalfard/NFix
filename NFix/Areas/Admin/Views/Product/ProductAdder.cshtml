@@ -1,4 +1,4 @@
-﻿
+﻿@model DataLayer.ViewModel.ProductViewModel
 @{
     ViewBag.Title = "ProductAdder";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -6,86 +6,151 @@
 <link href="~/Styles/StyleSheet1.min.css" rel="stylesheet" />
 <!-- #region Card -->
 
-<form action="/Admin/Video/VideoAdder" method="post" enctype="multipart/form-data" class="mat uk-margin-large-top uk-padding-small column clipped">
-    <h4 class="uk-margin-remove-bottom">
-        کالا جدید
-    </h4>
-    <label for="Title" class="uk-margin-small-bottom uk-margin-top">
-        نام کالا
-    </label>
-    <input type="text" id="Title" name="Title" class="uk-input uk-width-2-3 @("uk-width-1-3@m")  uk-margin-auto-left" required />
+@using (Html.BeginForm("ProductAdder", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
 
-    <label for="Price" class="uk-margin-small-bottom uk-margin-top">
-        قیمت کالا
-    </label>
-    <input type="number" id="Price" name="Price"
-           class="uk-input uk-width-2-3 @("uk-width-1-3@m")  uk-margin-auto-left" required />
+    @Html.AntiForgeryToken()
 
-    <label for="Discount" class="uk-margin-small-bottom uk-margin-top">
-        تخفیف
-    </label>
-    <input type="number" id="Discount" name="Discount"
-           class="uk-input uk-width-2-3 @("uk-width-1-3@m")  uk-margin-auto-left" required />
+    <div class="mat uk-margin-large-top uk-padding-small column clipped">
+        <h4 class="uk-margin-remove-bottom">
+            کالا جدید
+        </h4>
+        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+            نام کالا
+        </label>
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
 
-    <label for="Category" class="uk-margin-small-bottom uk-margin-top">
-        دسته بندی
-    </label>
-    <select class="uk-select uk-input uk-width-2-3 @("uk-width-1-3@m") uk-margin-auto-right" dir="rtl" required>
-        <option>دسته بندی اول</option>
-        <option>دسته بندی دوم</option>
-        <option>دسته بندی سوم</option>
-    </select>
+        <label for="Price" class="uk-margin-small-bottom uk-margin-top">
+            قیمت کالا
+        </label>
+        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+        <label for="Discount" class="uk-margin-small-bottom uk-margin-top">
+            تخفیف
+        </label>
+        @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
 
-    <label for="Count" class="uk-margin-small-bottom uk-margin-top">
-        تعداد
-    </label>
-    <input type="number" id="Count" name="Count"
-           class="uk-input uk-width-1-3 @("uk-width-1-4@m") uk-margin-auto-left" required />
+        <label for="Category" class="uk-margin-small-bottom uk-margin-top">
+            دسته بندی
+        </label>
 
-    <label for="Description" class="uk-margin-small-bottom uk-margin-top">
-        توضیح مختصر
-    </label>
-    <textarea id="Description" name="Description" required></textarea>
 
-    <label for="Body" class="uk-margin-small-bottom uk-margin-top">
-        محتوای وبلاگ
-    </label>
-    @* CK Editor *@
-    <textarea id="Body" name="Body" required></textarea>
 
-    <!-- #region Upload Image -->
-    <label class="uk-margin-small-bottom uk-margin-top">
-        عکس
-    </label>
-    <div class="uk-placeholder uk-margin-remove-top uk-text-center" dir="rtl">
-        <span uk-icon="icon: cloud-upload"></span>
-        <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
-        <div uk-form-custom>
-            <input type="file" name="MainImage" multiple required>
-            <span class="uk-link">انتخاب کتید</span>
+
+
+        @Html.DropDownListFor(model => model.CatagoryMain, (IEnumerable<SelectListItem>)ViewBag.id, "سر دسته", htmlAttributes: new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-left", onchange = "GetProduct(this.value, 123)" })
+
+
+        @Html.DropDownListFor(model => model.CatagoryId, (IEnumerable<SelectListItem>)ViewBag.listproduct, "زیر دسته", new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-left" })
+
+
+
+
+        @*<select id="catrgoryMain" class="uk-select uk-input uk-width-2-3 @("uk-width-1-3@m") uk-margin-auto-right" dir="rtl" required>
+                <option value="0">انتخاب کنید</option>
+                @foreach (var item in Model.AllCatagory)
+                {
+                    <option value="@item.id">@item.Name</option>
+                }
+            </select>
+            <div id="categoryChild">
+
+            </div>*@
+        @Html.ValidationMessageFor(model => model.CatagoryId, "", new { @class = "text-danger" })
+
+        <input type="hidden" name="CatagoryId" id="CatagoryId" value="0" />
+        <label for="Count" class="uk-margin-small-bottom uk-margin-top">
+            تعداد
+        </label>
+        @Html.EditorFor(model => model.Count, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Count, "", new { @class = "text-danger" })
+        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+            کلمات کلیدی
+        </label>
+        @Html.EditorFor(model => model.Keywords, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left ", placeholder = "کلمات کلیدی را با ، جدا کنید", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Keywords, "", new { @class = "text-danger" })
+        <label for="Description" class="uk-margin-small-bottom uk-margin-top">
+            توضیح مختصر
+        </label>
+        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        <label for="DescriptionHtml" class="uk-margin-small-bottom uk-margin-top">
+            محتوای وبلاگ
+        </label>
+        @* CK Editor *@
+
+
+        @Html.EditorFor(model => model.DescriptionHtml, new { htmlAttributes = new { @class = "form-control ", required = "required" } })
+        @Html.ValidationMessageFor(model => model.DescriptionHtml, "", new { @class = "text-danger" })
+        <!-- #region Upload Image -->
+        <label class="uk-margin-small-bottom uk-margin-top">
+            عکس
+        </label>
+        <div class="uk-placeholder uk-margin-remove-top uk-text-center" dir="rtl">
+            <span uk-icon="icon: cloud-upload"></span>
+            <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
+            <div uk-form-custom>
+                <input type="file" name="Image" multiple required>
+                <span class="uk-link">انتخاب کتید</span>
+            </div>
         </div>
-    </div>
-    <!-- #endregion -->
+        <!-- #endregion -->
 
-    <div class="row uk-margin-auto-left">
-        <label for="IsOnline" class="uk-margin-small-right">مرئی می باشد</label>
-        <input type="checkbox" id="IsOnline" value="true" name="IsOnline" class="uk-checkbox uk-margin-auto-top uk-margin-auto-bottom" />
-    </div>
+        <div class="row uk-margin-auto-left">
+            <label for="IsSuggested" class="uk-margin-small-right">مرئی می باشد</label>
+            <input type="checkbox" id="IsSuggested" value="true" name="IsSuggested" class="uk-checkbox uk-margin-auto-top uk-margin-auto-bottom" />
+        </div>
 
-    <div class="row uk-margin-auto-left uk-margin-small-top">
-        <label for="IsHome" class="uk-margin-small-right">در صفحه اصلی قرار دارد</label>
-        <input type="checkbox" id="IsHome" name="IsHome" value="true" class="uk-checkbox  uk-margin-auto-top uk-margin-auto-bottom" />
-    </div>
 
-    <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
-    <button type="submit" class="see uk-margin-medium-top uk-margin-auto-left">ذخیره</button>
-</form>
+
+        <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+        <button type="submit" class="see uk-margin-medium-top uk-margin-auto-left">ذخیره</button>
+    </div>
+}
 
 <div class="space"></div>
 
 <!-- #endregion -->
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckeditor/adapters/jquery.js"></script>
+
 
 <script>
+    $('#CatagoryMain').change(function () {
+        var url = '@Url.Action("ListCategory", "Product")';
+        //$.get(url, { id: $(this).val() }, function (response) {
+        //    console.log(response.responseText);
+        //    $('#CatagoryId').html(response);
+        //});
+        $.ajax({
+            url: url,
+            data: { id: $(this).val() },
+        }).done(function (response) {
+            var c = JSON.parse(response);
+            $('#CatagoryId').find('option').remove();
+            for (var i = 0; i < c.length; i++) {
+                $('#CatagoryId').append('<option value="' + c[i].id + '">' + c[i].Name + '</option>');
+            }
+        });
+    });
+    //var url = '@Url.Action("GetLanguageLabels", "yourControllerName")';
+  //  $('#allCatagoryId').change(function () {
+  //      $.getJSON(url, { ID: $(this).val() }, function (response) {
+  //          $('#allCatagoryId').html(response);
+  //      });
+  //});
+
+    //$('#catrgoryMain').change(function (id) {
+    //    $.get('/Admin/Product/ChildCategory?id=' + $("#catrgoryMain option:selected").val(), function (result) {
+    //        $('#categoryChild').html(result);
+    //    });
+    //});
+
+    $('#DescriptionHtml').ckeditor();
+
+
         var bar = document.getElementById('js-progressbar');
 
         UIkit.upload('.js-upload', {
