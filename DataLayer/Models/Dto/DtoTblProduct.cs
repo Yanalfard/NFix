@@ -34,7 +34,6 @@ namespace DataLayer.Models.Dto
             Keywords = MethodRepo.ConvertToDto<TblKeyword, DtoTblKeyword>(new ProductService().SelectKeywordsByProductId(id));
             Propertys = MethodRepo.ConvertToDto<TblProperty, DtoTblProperty>(new ProductService().SelectPropertysByProductId(id));
             Catagory = new CatagoryService().SelectCatagoryById(id);
-
             StatusEffect = HttpStatusCode.OK;
         }
 
