@@ -145,12 +145,12 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProductCatagoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\TutorController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
+    <Compile Include="Areas\Tuotor\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Tuotor\TuotorAreaRegistration.cs" />
     <Compile Include="Areas\User\Controllers\ProfileController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
@@ -232,13 +232,7 @@
     <Content Include="Areas\Admin\Views\Blog\BlogKeyWords.cshtml" />
     <Content Include="Areas\Admin\Views\Video\VideoEdit.cshtml" />
     <Content Include="Areas\Tuotor\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Blog\BlogEdit.cshtml" />
-    <Content Include="Areas\Admin\Views\Blog\ViewClientInfo.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductCatagory\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductCatagory\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductCatagory\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductCatagory\ListGroups.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\ChildCategory.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\Index.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1589,13 +1583,11 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\UploadImage\" />
-    <Folder Include="Areas\Tuotor\Controllers\" />
     <Folder Include="Areas\Tuotor\Data\" />
     <Folder Include="Areas\Tuotor\Views\Shared\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Views\Shared\" />
     <Folder Include="Resources\Blogs\" />
-    <Folder Include="Resources\Product\" />
     <Folder Include="Resources\UploadEditor\" />
     <Folder Include="Resources\Videos\Demo\" />
   </ItemGroup>
