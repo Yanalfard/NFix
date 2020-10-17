@@ -145,6 +145,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductCatagoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\TutorController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadImageController.cs" />
@@ -233,6 +234,14 @@
     <Content Include="Areas\Admin\Views\Video\VideoEdit.cshtml" />
     <Content Include="Areas\Tuotor\Views\web.config" />
     <Content Include="Areas\Tuotor\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCatagory\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCatagory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCatagory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCatagory\ListGroups.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ChildCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ProductEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\BlogEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\ViewClientInfo.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

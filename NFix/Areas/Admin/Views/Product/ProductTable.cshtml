@@ -23,6 +23,8 @@
             <th>کلمات کلیدی</th>
             <th>عکس ها</th>
             <th>مشخصات</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -70,6 +72,12 @@
                 </td>
                 <td>
                     <a href="" uk-icon="thumbnails"></a>
+                </td>
+                <td>
+                    <a href="#" onclick="deleteBlog(@item.id)" uk-icon="icon:trash; ratio:1"></a>
+                </td>
+                <td>
+                    <a href="/Admin/Product/ProductEdit/@item.id" uk-icon="icon:file-edit; ratio:1"></a>
                 </td>
             </tr>
         }
