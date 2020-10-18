@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="arvintav_NFixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="NFixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -584,8 +584,37 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="arvintav_NFixModelStoreContainer">
+        <EntityContainer Name="NFixModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblAd" EntityType="Self.TblAd" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBlog" EntityType="Self.TblBlog" Schema="dbo" store:Type="Tables" />
@@ -709,10 +738,11 @@
             <End Role="TblUserPass" EntitySet="TblUserPass" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="arvintav_NFixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="NFixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -736,13 +766,13 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MainImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="LikeCount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TblBlogCommentRel" Relationship="Self.FK_TblBlogCommentRel_TblBlog" FromRole="TblBlog" ToRole="TblBlogCommentRel" />
           <NavigationProperty Name="TblBlogKeywordRel" Relationship="Self.FK_TblBlogKeywordRel_TblBlog" FromRole="TblBlog" ToRole="TblBlogKeywordRel" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TblBlogCommentRel">
           <Key>
@@ -1462,6 +1492,35 @@
             <End Role="TblUserPass" EntitySet="TblUserPass" />
             <End Role="TblTutor" EntitySet="TblTutor" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
       </Schema>
@@ -1469,9 +1528,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="arvintav_NFixModelStoreContainer" CdmEntityContainer="NFixEntities">
+        <EntityContainerMapping StorageEntityContainer="NFixModelStoreContainer" CdmEntityContainer="NFixEntities">
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.sysdiagrams">
+            <EntityTypeMapping TypeName="NFixModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1482,7 +1541,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblAd">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblAd">
+            <EntityTypeMapping TypeName="NFixModel.TblAd">
               <MappingFragment StoreEntitySet="TblAd">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Link" ColumnName="Link" />
@@ -1491,10 +1550,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblBlog">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblBlog">
+            <EntityTypeMapping TypeName="NFixModel.TblBlog">
               <MappingFragment StoreEntitySet="TblBlog">
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="MainImage" ColumnName="MainImage" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -1503,7 +1562,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblBlogCommentRel">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblBlogCommentRel">
+            <EntityTypeMapping TypeName="NFixModel.TblBlogCommentRel">
               <MappingFragment StoreEntitySet="TblBlogCommentRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="BlogId" ColumnName="BlogId" />
@@ -1512,7 +1571,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblBlogKeywordRel">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblBlogKeywordRel">
+            <EntityTypeMapping TypeName="NFixModel.TblBlogKeywordRel">
               <MappingFragment StoreEntitySet="TblBlogKeywordRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="BlogId" ColumnName="BlogId" />
@@ -1521,7 +1580,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblCatagory">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblCatagory">
+            <EntityTypeMapping TypeName="NFixModel.TblCatagory">
               <MappingFragment StoreEntitySet="TblCatagory">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1530,7 +1589,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblClient">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblClient">
+            <EntityTypeMapping TypeName="NFixModel.TblClient">
               <MappingFragment StoreEntitySet="TblClient">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1548,7 +1607,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblClientProductRel">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblClientProductRel">
+            <EntityTypeMapping TypeName="NFixModel.TblClientProductRel">
               <MappingFragment StoreEntitySet="TblClientProductRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
@@ -1559,7 +1618,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblComment">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblComment">
+            <EntityTypeMapping TypeName="NFixModel.TblComment">
               <MappingFragment StoreEntitySet="TblComment">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
@@ -1570,7 +1629,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblDeal">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblDeal">
+            <EntityTypeMapping TypeName="NFixModel.TblDeal">
               <MappingFragment StoreEntitySet="TblDeal">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1582,7 +1641,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblDealPropertyRel">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblDealPropertyRel">
+            <EntityTypeMapping TypeName="NFixModel.TblDealPropertyRel">
               <MappingFragment StoreEntitySet="TblDealPropertyRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="DealId" ColumnName="DealId" />
@@ -1591,7 +1650,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblDiscount">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblDiscount">
+            <EntityTypeMapping TypeName="NFixModel.TblDiscount">
               <MappingFragment StoreEntitySet="TblDiscount">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1601,7 +1660,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblImage">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblImage">
+            <EntityTypeMapping TypeName="NFixModel.TblImage">
               <MappingFragment StoreEntitySet="TblImage">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -1609,7 +1668,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblKeyword">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblKeyword">
+            <EntityTypeMapping TypeName="NFixModel.TblKeyword">
               <MappingFragment StoreEntitySet="TblKeyword">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1617,7 +1676,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblLog">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblLog">
+            <EntityTypeMapping TypeName="NFixModel.TblLog">
               <MappingFragment StoreEntitySet="TblLog">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="LogText" ColumnName="LogText" />
@@ -1626,7 +1685,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProduct">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblProduct">
+            <EntityTypeMapping TypeName="NFixModel.TblProduct">
               <MappingFragment StoreEntitySet="TblProduct">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1644,7 +1703,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProductCommentRel">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblProductCommentRel">
+            <EntityTypeMapping TypeName="NFixModel.TblProductCommentRel">
               <MappingFragment StoreEntitySet="TblProductCommentRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -1653,7 +1712,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProductImageRel">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblProductImageRel">
+            <EntityTypeMapping TypeName="NFixModel.TblProductImageRel">
               <MappingFragment StoreEntitySet="TblProductImageRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -1662,7 +1721,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProductKeywordRel">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblProductKeywordRel">
+            <EntityTypeMapping TypeName="NFixModel.TblProductKeywordRel">
               <MappingFragment StoreEntitySet="TblProductKeywordRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -1671,7 +1730,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProductPropertyRel">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblProductPropertyRel">
+            <EntityTypeMapping TypeName="NFixModel.TblProductPropertyRel">
               <MappingFragment StoreEntitySet="TblProductPropertyRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -1680,7 +1739,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProperty">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblProperty">
+            <EntityTypeMapping TypeName="NFixModel.TblProperty">
               <MappingFragment StoreEntitySet="TblProperty">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1689,7 +1748,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblRole">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblRole">
+            <EntityTypeMapping TypeName="NFixModel.TblRole">
               <MappingFragment StoreEntitySet="TblRole">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -1698,7 +1757,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblTuotorVideoRel">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblTuotorVideoRel">
+            <EntityTypeMapping TypeName="NFixModel.TblTuotorVideoRel">
               <MappingFragment StoreEntitySet="TblTuotorVideoRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ToutorId" ColumnName="ToutorId" />
@@ -1707,7 +1766,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblTutor">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblTutor">
+            <EntityTypeMapping TypeName="NFixModel.TblTutor">
               <MappingFragment StoreEntitySet="TblTutor">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1720,7 +1779,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblUserPass">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblUserPass">
+            <EntityTypeMapping TypeName="NFixModel.TblUserPass">
               <MappingFragment StoreEntitySet="TblUserPass">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -1732,7 +1791,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblVideo">
-            <EntityTypeMapping TypeName="arvintav_NFixModel.TblVideo">
+            <EntityTypeMapping TypeName="NFixModel.TblVideo">
               <MappingFragment StoreEntitySet="TblVideo">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
@@ -1750,7 +1809,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="arvintav_NFixModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="NFixModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="NFixModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="NFixModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="NFixModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="NFixModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="NFixModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="NFixModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -22,11 +22,11 @@ namespace DataLayer.Models.Regular
         }
     
         public int id { get; set; }
+        public string Title { get; set; }
         public string MainImage { get; set; }
         public string Body { get; set; }
         public string Description { get; set; }
         public int LikeCount { get; set; }
-        public string Title { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblBlogCommentRel> TblBlogCommentRel { get; set; }

@@ -50,8 +50,8 @@ namespace NFix.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult ProductAdder(ProductViewModel product, HttpPostedFileBase Image)
         {
-            ViewBag.id = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name", product.CatagoryMain);
-            ViewBag.listproduct = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == product.CatagoryMain), "id", "Name", product.CatagoryId);
+            ViewBag.CatagoryMain = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name", product.CatagoryMain);
+            ViewBag.CatagoryId = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == product.CatagoryMain), "id", "Name", product.CatagoryId);
             if (product.DescriptionHtml == "" || product.DescriptionHtml == null)
             {
                 ProductViewModel productViewModel = new ProductViewModel()
@@ -148,18 +148,17 @@ namespace NFix.Areas.Admin.Controllers
             productViewModel.Raiting = selectProduct.Raiting;
             productViewModel.Description = selectProduct.Description;
             productViewModel.DescriptionHtml = selectProduct.DescriptionHtml;
-            int x = Convert.ToInt32(selectProduct.CatagoryId);
-            var catagory= _catagory.SelectCatagoryById(x).CatagoryId;
-            productViewModel.CatagoryMain = x;
-            ViewBag.id = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name");
-            ViewBag.listproduct = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId != null), "id", "Name", selectProduct.CatagoryId);
+            var catagory= _catagory.SelectCatagoryById(Convert.ToInt32(selectProduct.CatagoryId)).CatagoryId;
+            productViewModel.CatagoryMain = Convert.ToInt32(catagory);
+            ViewBag.CatagoryMain = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name", productViewModel.CatagoryMain);
+            ViewBag.CatagoryId = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == productViewModel.CatagoryMain), "id", "Name", productViewModel.CatagoryId);
             return View(productViewModel);
         }
         [HttpPost]
         public ActionResult ProductEdit(ProductViewModel product, HttpPostedFileBase Image)
         {
-            ViewBag.id = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name", product.CatagoryMain);
-            ViewBag.listproduct = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == product.CatagoryMain), "id", "Name", product.CatagoryId);
+            ViewBag.CatagoryMain = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name", product.CatagoryMain);
+            ViewBag.CatagoryId = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == product.CatagoryMain), "id", "Name", product.CatagoryId);
             if (product.DescriptionHtml == "" || product.DescriptionHtml == null)
             {
                 ProductViewModel productViewModel = new ProductViewModel()
