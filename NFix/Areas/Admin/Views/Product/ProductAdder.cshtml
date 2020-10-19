@@ -40,10 +40,10 @@
 
 
 
-        @Html.DropDownListFor(model => model.CatagoryMain, (IEnumerable<SelectListItem>)ViewBag.id, "سر دسته", htmlAttributes: new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-left", onchange = "GetProduct(this.value, 123)" })
+        @Html.DropDownListFor(model => model.CatagoryMain, (IEnumerable<SelectListItem>)ViewBag.CatagoryMain, "سر دسته", htmlAttributes: new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-left", onchange = "GetProduct(this.value, 123)" })
 
 
-        @Html.DropDownListFor(model => model.CatagoryId, (IEnumerable<SelectListItem>)ViewBag.listproduct, "زیر دسته", new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-left" })
+        @Html.DropDownListFor(model => model.CatagoryId, (IEnumerable<SelectListItem>)ViewBag.CatagoryId, "زیر دسته", new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-left" })
 
 
 

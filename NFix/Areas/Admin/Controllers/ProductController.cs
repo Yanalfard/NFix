@@ -43,15 +43,15 @@ namespace NFix.Areas.Admin.Controllers
 
             };
 
-            ViewBag.id = new SelectList(_catagory.SelectAllCatagorys().Where(i=>i.CatagoryId==null), "id", "Name");
-            ViewBag.listproduct = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId != null), "id", "Name");
+            ViewBag.CatagoryMain = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name");
+            ViewBag.CatagoryId = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId != null), "id", "Name");
             return View(productViewModel);
         }
         [HttpPost]
         public ActionResult ProductAdder(ProductViewModel product, HttpPostedFileBase Image)
         {
-            ViewBag.id = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name", product.CatagoryMain);
-            ViewBag.listproduct = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == product.CatagoryMain), "id", "Name", product.CatagoryId);
+            ViewBag.CatagoryMain = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name", product.CatagoryMain);
+            ViewBag.CatagoryId = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == product.CatagoryMain), "id", "Name", product.CatagoryId);
             if (product.DescriptionHtml == "" || product.DescriptionHtml == null)
             {
                 ProductViewModel productViewModel = new ProductViewModel()
@@ -85,7 +85,114 @@ namespace NFix.Areas.Admin.Controllers
                 Description = product.Description,
                 DescriptionHtml = product.DescriptionHtml,
                 DateSubmited = DateTime.Now.ToShortDateString(),
-                CatagoryId=product.CatagoryId
+                CatagoryId = product.CatagoryId
+
+            };
+            _product.AddProduct(addProduct);
+            TblImage addImage = new TblImage();
+            if (Image != null)
+            {
+                addImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
+                Image.SaveAs(Server.MapPath("/Resources/Product/" + addImage.Image));
+                _image.AddImage(addImage);
+                _productImage.AddProductImageRel(new TblProductImageRel()
+                {
+                    ImageId = addImage.id,
+                    ProductId = addImage.id,
+                });
+            }
+
+            string tags = product.Keywords;
+            if (!string.IsNullOrEmpty(tags))
+            {
+                if (tags[tags.Length - 1] == '،')
+                {
+                    tags = tags.Remove(tags.Length - 1);
+                }
+                List<TblKeyword> idKeywords = new List<TblKeyword>();
+                string[] tag = tags.Split('،');
+                foreach (string t in tag)
+                {
+                    TblKeyword addKeywords = new TblKeyword()
+                    {
+                        Name = t.Trim(),
+                    };
+                    _keyword.AddKeyword(addKeywords);
+                    idKeywords.Add(addKeywords);
+
+                }
+                foreach (var item in idKeywords)
+                {
+                    _productKeyword.AddProductKeywordRel(new TblProductKeywordRel()
+                    {
+                        KeywordId = item.id,
+                        ProductId = addImage.id,
+                    });
+                }
+            }
+            return RedirectToAction("ProductTable");
+        }
+        public ActionResult ProductEdit(int id)
+        {
+            
+            var selectProduct = _product.SelectProductById(id);
+            ProductViewModel productViewModel = new ProductViewModel();
+            productViewModel.id = selectProduct.id;
+            productViewModel.CatagoryId = selectProduct.CatagoryId;
+            productViewModel.Count = selectProduct.Count;
+            productViewModel.DateSubmited = selectProduct.DateSubmited;
+            productViewModel.Discount = selectProduct.Discount;
+            productViewModel.IsSuggested = selectProduct.IsSuggested;
+            productViewModel.Name = selectProduct.Name;
+            productViewModel.Price = selectProduct.Price;
+            productViewModel.Raiting = selectProduct.Raiting;
+            productViewModel.Description = selectProduct.Description;
+            productViewModel.DescriptionHtml = selectProduct.DescriptionHtml;
+            var catagory= _catagory.SelectCatagoryById(Convert.ToInt32(selectProduct.CatagoryId)).CatagoryId;
+            productViewModel.CatagoryMain = Convert.ToInt32(catagory);
+            ViewBag.CatagoryMain = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name", productViewModel.CatagoryMain);
+            ViewBag.CatagoryId = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == productViewModel.CatagoryMain), "id", "Name", productViewModel.CatagoryId);
+            return View(productViewModel);
+        }
+        [HttpPost]
+        public ActionResult ProductEdit(ProductViewModel product, HttpPostedFileBase Image)
+        {
+            ViewBag.CatagoryMain = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name", product.CatagoryMain);
+            ViewBag.CatagoryId = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == product.CatagoryMain), "id", "Name", product.CatagoryId);
+            if (product.DescriptionHtml == "" || product.DescriptionHtml == null)
+            {
+                ProductViewModel productViewModel = new ProductViewModel()
+                {
+                    AllCatagory = _catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null).ToList()
+
+                };
+                ModelState.AddModelError("DescriptionHtml", "لطفا متن را وارد کنید");
+                return View(productViewModel);
+            }
+            if (product.CatagoryId == 0 || product.CatagoryId == null)
+            {
+                ProductViewModel productViewModel = new ProductViewModel()
+                {
+                    AllCatagory = _catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null).ToList()
+
+                };
+                ModelState.AddModelError("CatagoryId", "لطفا دسته را انتخاب کنید");
+                return View(productViewModel);
+            }
+
+            TblProduct addProduct = new TblProduct()
+            {
+                Price = product.Price,
+                Name = product.Name,
+                Status = 1,
+                Raiting = 0,
+                IsSuggested = product.IsSuggested,
+                Count = product.Count,
+                Discount = product.Discount,
+                Description = product.Description,
+                DescriptionHtml = product.DescriptionHtml,
+                DateSubmited = DateTime.Now.ToShortDateString(),
+                CatagoryId = product.CatagoryId
 
             };
             _product.AddProduct(addProduct);
@@ -135,7 +242,7 @@ namespace NFix.Areas.Admin.Controllers
         public ActionResult OrderTable()
         {
             return View();
-        } 
+        }
         public string ListCategory(int id)
         {
             List<TblCatagory> searchIdCatagory = _catagory.SelectCatagoryByCatagoryId(id).ToList();

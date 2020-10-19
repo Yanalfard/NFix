@@ -1,0 +1,200 @@
+﻿@model DataLayer.ViewModel.ProductViewModel
+@{
+    ViewBag.Title = "ProductEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Styles/StyleSheet1.min.css" rel="stylesheet" />
+<!-- #region Card -->
+
+@using (Html.BeginForm("ProductEdit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+
+<div class="mat uk-margin-large-top uk-padding-small column clipped">
+    <h4 class="uk-margin-remove-bottom">
+        کالا جدید
+    </h4>
+    <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+        نام کالا
+    </label>
+    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+    <label for="Price" class="uk-margin-small-bottom uk-margin-top">
+        قیمت کالا
+    </label>
+    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+    <label for="Discount" class="uk-margin-small-bottom uk-margin-top">
+        تخفیف
+    </label>
+    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+    @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
+
+    <label for="Category" class="uk-margin-small-bottom uk-margin-top">
+        دسته بندی
+    </label>
+
+    @Html.DropDownListFor(model => model.CatagoryMain, (IEnumerable<SelectListItem>)ViewBag.CatagoryMain, "سر دسته", htmlAttributes: new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-left",  = "GetProduct(this.value, 123)" })
+
+
+    @Html.DropDownListFor(model => model.CatagoryId, (IEnumerable<SelectListItem>)ViewBag.CatagoryId, "زیر دسته", new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-left" })
+
+
+
+    @Html.ValidationMessageFor(model => model.CatagoryId, "", new { @class = "text-danger" })
+
+    <input type="hidden" name="CatagoryId" id="CatagoryId" value="0" />
+    <label for="Count" class="uk-margin-small-bottom uk-margin-top">
+        تعداد
+    </label>
+    @Html.EditorFor(model => model.Count, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+    @Html.ValidationMessageFor(model => model.Count, "", new { @class = "text-danger" })
+    <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+        کلمات کلیدی
+    </label>
+    @Html.EditorFor(model => model.Keywords, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left ", placeholder = "کلمات کلیدی را با ، جدا کنید", required = "required" } })
+    @Html.ValidationMessageFor(model => model.Keywords, "", new { @class = "text-danger" })
+    <label for="Description" class="uk-margin-small-bottom uk-margin-top">
+        توضیح مختصر
+    </label>
+    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    <label for="DescriptionHtml" class="uk-margin-small-bottom uk-margin-top">
+        محتوای وبلاگ
+    </label>
+    @* CK Editor *@
+
+
+    @Html.EditorFor(model => model.DescriptionHtml, new { htmlAttributes = new { @class = "form-control ", required = "required" } })
+    @Html.ValidationMessageFor(model => model.DescriptionHtml, "", new { @class = "text-danger" })
+    <!-- #region Upload Image -->
+    <label class="uk-margin-small-bottom uk-margin-top">
+        عکس
+    </label>
+    <div class="uk-placeholder uk-margin-remove-top uk-text-center" dir="rtl">
+        <span uk-icon="icon: cloud-upload"></span>
+        <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
+        <div uk-form-custom>
+            <input type="file" name="Image" multiple required>
+            <span class="uk-link">انتخاب کتید</span>
+        </div>
+    </div>
+    <!-- #endregion -->
+
+    <div class="row uk-margin-auto-left">
+        <label for="IsSuggested" class="uk-margin-small-right">مرئی می باشد</label>
+        <input type="checkbox" id="IsSuggested" value="true" name="IsSuggested" class="uk-checkbox uk-margin-auto-top uk-margin-auto-bottom" />
+    </div>
+
+
+
+    <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+    <button type="submit" class="see uk-margin-medium-top uk-margin-auto-left">ذخیره</button>
+</div>
+}
+
+<div class="space"></div>
+
+<!-- #endregion -->
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckeditor/adapters/jquery.js"></script>
+
+
+<script>
+    $('#CatagoryMain').change(function () {
+        var url = '@Url.Action("ListCategory", "Product")';
+        //$.get(url, { id: $(this).val() }, function (response) {
+        //    console.log(response.responseText);
+        //    $('#CatagoryId').html(response);
+        //});
+        $.ajax({
+            url: url,
+            data: { id: $(this).val() },
+        }).done(function (response) {
+            var c = JSON.parse(response);
+            $('#CatagoryId').find('option').remove();
+            for (var i = 0; i < c.length; i++) {
+                $('#CatagoryId').append('<option value="' + c[i].id + '">' + c[i].Name + '</option>');
+            }
+        });
+    });
+    //var url = '@Url.Action("GetLanguageLabels", "yourControllerName")';
+  //  $('#allCatagoryId').change(function () {
+  //      $.getJSON(url, { ID: $(this).val() }, function (response) {
+  //          $('#allCatagoryId').html(response);
+  //      });
+  //});
+
+    //$('#catrgoryMain').change(function (id) {
+    //    $.get('/Admin/Product/ChildCategory?id=' + $("#catrgoryMain option:selected").val(), function (result) {
+    //        $('#categoryChild').html(result);
+    //    });
+    //});
+
+    $('#DescriptionHtml').ckeditor();
+
+
+        var bar = document.getElementById('js-progressbar');
+
+        UIkit.upload('.js-upload', {
+
+            //------------------------------------------------------ {{ U R L }}
+            url: '',
+            multiple: false,
+
+            beforeSend: function () {
+                console.log('beforeSend', arguments);
+                alert('قبل از شروع آپلود');
+            },
+            beforeAll: function () {
+                console.log('beforeAll', arguments);
+            },
+            load: function () {
+                console.log('load', arguments);
+            },
+            error: function () {
+                console.log('error', arguments);
+            },
+            complete: function () {
+                console.log('complete', arguments);
+            },
+
+            loadStart: function (e) {
+                console.log('loadStart', arguments);
+
+                bar.removeAttribute('hidden');
+                bar.max = e.total;
+                bar.value = e.loaded;
+            },
+
+            progress: function (e) {
+                console.log('progress', arguments);
+
+                bar.max = e.total;
+                bar.value = e.loaded;
+            },
+
+            loadEnd: function (e) {
+                console.log('loadEnd', arguments);
+
+                bar.max = e.total;
+                bar.value = e.loaded;
+            },
+
+            completeAll: function () {
+                console.log('completeAll', arguments);
+
+                setTimeout(function () {
+                    bar.setAttribute('hidden', 'hidden');
+                }, 1000);
+
+                alert('آپلود شد');
+            }
+
+        });
+</script>
+
+
+
