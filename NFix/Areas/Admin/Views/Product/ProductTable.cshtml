@@ -66,9 +66,13 @@
                 </td>
 
                 <td uk-lightbox>
-                    <a href="~/Resources/Product/@item.TblProductImageRel.SingleOrDefault().TblImage.Image">
-                        <img src="~/Resources/Product/@item.TblProductImageRel.SingleOrDefault().TblImage.Image" />
-                    </a>
+                    @foreach (var j in item.TblProductImageRel)
+                    {
+                        <a href="~/Resources/Product/@j.TblImage.Image">
+                            <img src="~/Resources/Product/@j.TblImage.Image" />
+                        </a>
+                    }
+
                 </td>
                 <td>
                     <a href="" uk-icon="thumbnails"></a>

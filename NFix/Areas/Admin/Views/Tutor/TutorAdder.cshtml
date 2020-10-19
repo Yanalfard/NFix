@@ -1,127 +1,61 @@
-﻿
+﻿@model DataLayer.ViewModel.TutorViewModel
 @{
     ViewBag.Title = "TutorAdder";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <!-- #region Card -->
+@using (Html.BeginForm("TutorAdder", "Tutor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+<div class="mat uk-margin-large-top uk-padding-small column clipped">
+    <h4 class="uk-margin-remove-bottom">
+        مربی جدید
+    </h4>
 
-    <form action="/Admin/Video/VideoAdder" method="post" enctype="multipart/form-data" class="mat uk-margin-large-top uk-padding-small column clipped">
-        <h4 class="uk-margin-remove-bottom">
-            مربی جدید
-        </h4>
-
-        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
-            نام مربی
-        </label>
-        <input type="text" id="IdentificationNo" name="IdentificationNo" class="uk-input uk-width-2-3 @("uk-width-1-3@m")  uk-margin-auto-left" required />
-
-        <label for="IdentificationNo" class="uk-margin-small-bottom uk-margin-top">
-            کد ملی
-        </label>
-        <input type="number" id="IdentificationNo" name="Title" class="uk-input uk-width-2-3 @("uk-width-1-3@m")  uk-margin-auto-left" required />
-
-        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
-            شماره تلفن
-        </label>
-        <input type="number" id="Title" name="Title" class="uk-input uk-width-2-3 @("uk-width-1-3@m")  uk-margin-auto-left" required />
-
-        <!-- #region Upload Image -->
-        <label class="uk-margin-small-bottom uk-margin-top">
-            عکس
-        </label>
-        <div class="uk-placeholder uk-margin-remove-top uk-text-center" dir="rtl">
-            <span uk-icon="icon: cloud-upload"></span>
-            <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
-            <div uk-form-custom>
-                <input type="file" name="MainImage" multiple required>
-                <span class="uk-link">انتخاب کتید</span>
-            </div>
+    <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+        نام مربی
+    </label>
+    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    <label for="IdentificationNo" class="uk-margin-small-bottom uk-margin-top">
+        کد ملی
+    </label>
+    <input type="number" id="IdentificationNo" name="Title" class="uk-input uk-width-2-3 @("uk-width-1-3@m")  uk-margin-auto-left" required />
+    @Html.EditorFor(model => model.IdentificationNo, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+    @Html.ValidationMessageFor(model => model.IdentificationNo, "", new { @class = "text-danger" })
+    <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+        شماره تلفن
+    </label>
+    @Html.EditorFor(model => model.TellNo, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+    @Html.ValidationMessageFor(model => model.TellNo, "", new { @class = "text-danger" })
+    <!-- #region Upload Image -->
+    <label class="uk-margin-small-bottom uk-margin-top">
+        عکس
+    </label>
+    <div class="uk-placeholder uk-margin-remove-top uk-text-center" dir="rtl">
+        <span uk-icon="icon: cloud-upload"></span>
+        <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
+        <div uk-form-custom>
+            <input type="file" name="Image" multiple required>
+            <span class="uk-link">انتخاب کتید</span>
         </div>
-        <!-- #endregion -->
+    </div>
+    <!-- #endregion -->
 
-        <label for="Description" class="uk-margin-small-bottom uk-margin-top">
-            توضیحات
-        </label>
-        <textarea id="Description" name="Description" required></textarea>
+    <label for="Description" class="uk-margin-small-bottom uk-margin-top">
+        توضیحات
+    </label>
+    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
 
-        <div class="row uk-margin-auto-left">
-            <label for="IsOnline" class="uk-margin-small-right">مرئی می باشد</label>
-            <input type="checkbox" id="IsOnline" value="true" name="IsOnline" class="uk-checkbox uk-margin-auto-top uk-margin-auto-bottom" />
-        </div>
-
-        <div class="row uk-margin-auto-left uk-margin-small-top">
-            <label for="IsHome" class="uk-margin-small-right">در صفحه اصلی قرار دارد</label>
-            <input type="checkbox" id="IsHome" name="IsHome" value="true" class="uk-checkbox  uk-margin-auto-top uk-margin-auto-bottom" />
-        </div>
-
-        <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
-        <button type="submit" class="see uk-margin-medium-top uk-margin-auto-left">ذخیره</button>
-    </form>
+    <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+    <button type="submit" class="see uk-margin-medium-top uk-margin-auto-left">ذخیره</button>
+</div>
+}
 
 <div class="space"></div>
 
 <!-- #endregion -->
-
-<script>
-        var bar = document.getElementById('js-progressbar');
-
-        UIkit.upload('.js-upload', {
-
-            //------------------------------------------------------ {{ U R L }}
-            url: '',
-            multiple: false,
-
-            beforeSend: function () {
-                console.log('beforeSend', arguments);
-                alert('قبل از شروع آپلود');
-            },
-            beforeAll: function () {
-                console.log('beforeAll', arguments);
-            },
-            load: function () {
-                console.log('load', arguments);
-            },
-            error: function () {
-                console.log('error', arguments);
-            },
-            complete: function () {
-                console.log('complete', arguments);
-            },
-
-            loadStart: function (e) {
-                console.log('loadStart', arguments);
-
-                bar.removeAttribute('hidden');
-                bar.max = e.total;
-                bar.value = e.loaded;
-            },
-
-            progress: function (e) {
-                console.log('progress', arguments);
-
-                bar.max = e.total;
-                bar.value = e.loaded;
-            },
-
-            loadEnd: function (e) {
-                console.log('loadEnd', arguments);
-
-                bar.max = e.total;
-                bar.value = e.loaded;
-            },
-
-            completeAll: function () {
-                console.log('completeAll', arguments);
-
-                setTimeout(function () {
-                    bar.setAttribute('hidden', 'hidden');
-                }, 1000);
-
-                alert('آپلود شد');
-            }
-
-        });
-</script>
 
 

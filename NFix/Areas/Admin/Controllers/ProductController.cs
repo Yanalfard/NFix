@@ -26,7 +26,8 @@ namespace NFix.Areas.Admin.Controllers
         {
             if (id == null)
             {
-                return View(_product.SelectAllProducts());
+                List<TblProduct> products = _product.SelectAllProducts();
+                return View(products);
             }
 
             return View(_product.SelectProductByCatagoryId(id.Value));
@@ -95,20 +96,26 @@ namespace NFix.Areas.Admin.Controllers
                 addImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
                 Image.SaveAs(Server.MapPath("/Resources/Product/" + addImage.Image));
                 _image.AddImage(addImage);
-                _productImage.AddProductImageRel(new TblProductImageRel()
+                TblProductImageRel tblProductImageRel = new TblProductImageRel()
                 {
                     ImageId = addImage.id,
-                    ProductId = addImage.id,
-                });
+                    ProductId = addProduct.id,
+
+                };
+                bool x = _productImage.AddProductImageRel(tblProductImageRel);
             }
 
             string tags = product.Keywords;
             if (!string.IsNullOrEmpty(tags))
             {
-                if (tags[tags.Length - 1] == '،')
+                foreach (var item in tags.Split('،'))
                 {
-                    tags = tags.Remove(tags.Length - 1);
+                    if (tags[tags.Length - 1] == '،')
+                    {
+                        tags = tags.Remove(tags.Length - 1);
+                    }
                 }
+                
                 List<TblKeyword> idKeywords = new List<TblKeyword>();
                 string[] tag = tags.Split('،');
                 foreach (string t in tag)
@@ -126,7 +133,7 @@ namespace NFix.Areas.Admin.Controllers
                     _productKeyword.AddProductKeywordRel(new TblProductKeywordRel()
                     {
                         KeywordId = item.id,
-                        ProductId = addImage.id,
+                        ProductId = addProduct.id,
                     });
                 }
             }
@@ -134,7 +141,7 @@ namespace NFix.Areas.Admin.Controllers
         }
         public ActionResult ProductEdit(int id)
         {
-            
+
             var selectProduct = _product.SelectProductById(id);
             ProductViewModel productViewModel = new ProductViewModel();
             productViewModel.id = selectProduct.id;
@@ -148,10 +155,15 @@ namespace NFix.Areas.Admin.Controllers
             productViewModel.Raiting = selectProduct.Raiting;
             productViewModel.Description = selectProduct.Description;
             productViewModel.DescriptionHtml = selectProduct.DescriptionHtml;
-            var catagory= _catagory.SelectCatagoryById(Convert.ToInt32(selectProduct.CatagoryId)).CatagoryId;
+            var catagory = _catagory.SelectCatagoryById(Convert.ToInt32(selectProduct.CatagoryId)).CatagoryId;
             productViewModel.CatagoryMain = Convert.ToInt32(catagory);
             ViewBag.CatagoryMain = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name", productViewModel.CatagoryMain);
-            ViewBag.CatagoryId = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == productViewModel.CatagoryMain), "id", "Name", productViewModel.CatagoryId);
+            ViewBag.CatagoryId = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == productViewModel.CatagoryMain), "id", "Name", selectProduct.CatagoryId);
+            List<TblKeyword> tblkKeyword = _product.SelectKeywordsByProductId(selectProduct.id);
+            foreach (var item in tblkKeyword)
+            {
+                productViewModel.Keywords = productViewModel.Keywords + item.Name + "،";
+            }
             return View(productViewModel);
         }
         [HttpPost]
@@ -182,6 +194,7 @@ namespace NFix.Areas.Admin.Controllers
 
             TblProduct addProduct = new TblProduct()
             {
+                id = product.id,
                 Price = product.Price,
                 Name = product.Name,
                 Status = 1,
@@ -195,26 +208,45 @@ namespace NFix.Areas.Admin.Controllers
                 CatagoryId = product.CatagoryId
 
             };
-            _product.AddProduct(addProduct);
+            _product.UpdateProduct(addProduct, product.id);
+
             TblImage addImage = new TblImage();
             if (Image != null)
             {
+                List<TblProductImageRel> TblImage = _productImage.SelectProductImageRelByProductId(product.id);
+                foreach (var j in TblImage)
+                {
+                    string fullPathLogo = Request.MapPath("/Resources/Product/" + j.TblImage.Image);
+                    if (System.IO.File.Exists(fullPathLogo))
+                    {
+                        System.IO.File.Delete(fullPathLogo);
+                    }
+                    bool h = _image.DeleteImage(j.ImageId);
+                }
                 addImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
                 Image.SaveAs(Server.MapPath("/Resources/Product/" + addImage.Image));
                 _image.AddImage(addImage);
-                _productImage.AddProductImageRel(new TblProductImageRel()
+                TblProductImageRel tblProductImageRel = new TblProductImageRel()
                 {
                     ImageId = addImage.id,
-                    ProductId = addImage.id,
-                });
+                    ProductId = addProduct.id,
+                };
+                _productImage.AddProductImageRel(tblProductImageRel);
             }
-
+            List<TblProductKeywordRel> TblKeywords = _productKeyword.SelectProductKeywordRelByProductId(product.id);
+            foreach (var item in TblKeywords)
+            {
+                _keyword.DeleteKeyword(item.KeywordId);
+            }
             string tags = product.Keywords;
             if (!string.IsNullOrEmpty(tags))
             {
-                if (tags[tags.Length - 1] == '،')
+                foreach (var item in tags.Split('،'))
                 {
-                    tags = tags.Remove(tags.Length - 1);
+                    if (tags[tags.Length - 1] == '،')
+                    {
+                        tags = tags.Remove(tags.Length - 1);
+                    }
                 }
                 List<TblKeyword> idKeywords = new List<TblKeyword>();
                 string[] tag = tags.Split('،');
@@ -233,7 +265,7 @@ namespace NFix.Areas.Admin.Controllers
                     _productKeyword.AddProductKeywordRel(new TblProductKeywordRel()
                     {
                         KeywordId = item.id,
-                        ProductId = addImage.id,
+                        ProductId = addProduct.id,
                     });
                 }
             }

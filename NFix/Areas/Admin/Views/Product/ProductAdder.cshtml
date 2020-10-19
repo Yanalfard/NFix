@@ -5,6 +5,16 @@
 }
 <link href="~/Styles/StyleSheet1.min.css" rel="stylesheet" />
 <!-- #region Card -->
+<style>
+    table tbody tr:nth-child(odd), table tbody tr:nth-child(even) {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    .cke_dialog ::-webkit-scrollbar-track {
+        background: #fff !important;
+    }
+</style>
 
 @using (Html.BeginForm("ProductAdder", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -45,19 +55,6 @@
 
         @Html.DropDownListFor(model => model.CatagoryId, (IEnumerable<SelectListItem>)ViewBag.CatagoryId, "زیر دسته", new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-left" })
 
-
-
-
-        @*<select id="catrgoryMain" class="uk-select uk-input uk-width-2-3 @("uk-width-1-3@m") uk-margin-auto-right" dir="rtl" required>
-                <option value="0">انتخاب کنید</option>
-                @foreach (var item in Model.AllCatagory)
-                {
-                    <option value="@item.id">@item.Name</option>
-                }
-            </select>
-            <div id="categoryChild">
-
-            </div>*@
         @Html.ValidationMessageFor(model => model.CatagoryId, "", new { @class = "text-danger" })
 
         <input type="hidden" name="CatagoryId" id="CatagoryId" value="0" />
@@ -100,7 +97,7 @@
 
         <div class="row uk-margin-auto-left">
             <label for="IsSuggested" class="uk-margin-small-right">مرئی می باشد</label>
-            <input type="checkbox" id="IsSuggested" value="true" name="IsSuggested" class="uk-checkbox uk-margin-auto-top uk-margin-auto-bottom" />
+            @Html.EditorFor(model => model.IsSuggested, new { htmlAttributes = new { @class = "uk-checkbox uk-margin-auto-top uk-margin-auto-bottom" } })
         </div>
 
 
@@ -135,18 +132,6 @@
             }
         });
     });
-    //var url = '@Url.Action("GetLanguageLabels", "yourControllerName")';
-  //  $('#allCatagoryId').change(function () {
-  //      $.getJSON(url, { ID: $(this).val() }, function (response) {
-  //          $('#allCatagoryId').html(response);
-  //      });
-  //});
-
-    //$('#catrgoryMain').change(function (id) {
-    //    $.get('/Admin/Product/ChildCategory?id=' + $("#catrgoryMain option:selected").val(), function (result) {
-    //        $('#categoryChild').html(result);
-    //    });
-    //});
 
     $('#DescriptionHtml').ckeditor();
 

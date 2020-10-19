@@ -170,7 +170,10 @@ namespace DataLayer.Utilities
                 {
                     Heart.TblLog.Add((TblLog)tableObj);
                 }
-
+                else if (table.GetType() == typeof(TblProductKeywordRel))
+                {
+                    Heart.TblProductKeywordRel.Add((TblProductKeywordRel)tableObj);
+                }
                 Heart.SaveChanges();
                 return true;
             }

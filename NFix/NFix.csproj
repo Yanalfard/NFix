@@ -1597,6 +1597,9 @@
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Views\Shared\" />
     <Folder Include="Resources\Blogs\" />
+    <Folder Include="Resources\NewFolder1\" />
+    <Folder Include="Resources\Product\" />
+    <Folder Include="Resources\Tutor\" />
     <Folder Include="Resources\UploadEditor\" />
     <Folder Include="Resources\Videos\Demo\" />
   </ItemGroup>
