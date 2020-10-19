@@ -233,6 +233,11 @@
     <Content Include="Areas\Admin\Views\Blog\BlogKeyWords.cshtml" />
     <Content Include="Areas\Admin\Views\Video\VideoEdit.cshtml" />
     <Content Include="Areas\Tuotor\Views\web.config" />
+    <Content Include="Areas\Admin\Views\ProductCatagory\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCatagory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCatagory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCatagory\ListGroups.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ChildCategory.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
