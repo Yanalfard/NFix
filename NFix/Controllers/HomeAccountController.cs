@@ -78,7 +78,7 @@ namespace NFix.Controllers
                         Auth = Guid.NewGuid().ToString(),
                         Username = client.UserName.ToLower(),
                         Password = FormsAuthentication.HashPasswordForStoringInConfigFile(client.Password, "SHA256"),
-                        RoleId = 12
+                        RoleId = 1
                     };
                     bool add = _userPass.AddUserPass(addUserPass);
                     if (add)

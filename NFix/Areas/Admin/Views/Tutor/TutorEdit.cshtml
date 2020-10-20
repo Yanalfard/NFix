@@ -1,12 +1,15 @@
 ﻿@model DataLayer.ViewModel.TutorViewModel
 @{
-    ViewBag.Title = "TutorAdder";
+    ViewBag.Title = "ویزایش مربی";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <!-- #region Card -->
-@using (Html.BeginForm("TutorAdder", "Tutor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("TutorEdit", "Tutor", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    @Html.HiddenFor(m => m.id)
+    @Html.HiddenFor(m => m.UserPassId)
+    @Html.HiddenFor(m => m.MainImage)
     @Html.AntiForgeryToken()
     <div class="mat uk-margin-large-top uk-padding-small column clipped">
         <h4 class="uk-margin-remove-bottom">
@@ -32,11 +35,6 @@
         </label>
         @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
         @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
-            رمز
-        </label>
-        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
-        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         <!-- #region Upload Image -->
         <label class="uk-margin-small-bottom uk-margin-top">
             عکس
@@ -45,7 +43,7 @@
             <span uk-icon="icon: cloud-upload"></span>
             <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
             <div uk-form-custom>
-                <input type="file" name="Image" multiple required>
+                <input type="file" name="Image" multiple>
                 <span class="uk-link">انتخاب کتید</span>
             </div>
         </div>
@@ -57,7 +55,7 @@
         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
 
         <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
-        <button type="submit" class="see uk-margin-medium-top uk-margin-auto-left">ذخیره</button>
+        <button type="submit" class="see uk-margin-medium-top uk-margin-auto-left">ویرایش</button>
     </div>
 }
 

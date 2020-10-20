@@ -242,6 +242,7 @@
     <Content Include="Areas\Admin\Views\Product\ProductEdit.cshtml" />
     <Content Include="Areas\Admin\Views\Blog\BlogEdit.cshtml" />
     <Content Include="Areas\Admin\Views\Blog\ViewClientInfo.cshtml" />
+    <Content Include="Areas\Admin\Views\Tutor\TutorEdit.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

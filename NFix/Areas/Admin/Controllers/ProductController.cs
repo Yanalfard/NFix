@@ -284,7 +284,17 @@ namespace NFix.Areas.Admin.Controllers
             //return Json(new { success = true, responseText = _catagory.SelectCatagoryByCatagoryId(id).ToList() }, JsonRequestBehavior.AllowGet);
         }
 
-
+        public ActionResult deleteProduct(int id)
+        {
+            var getBlogId = _product.SelectImagesByProductId(id);
+            _product.DeleteProduct(id);
+            string fullPathLogo = Request.MapPath("/Resources/Product/" + getBlogId.SingleOrDefault().Image);
+            if (System.IO.File.Exists(fullPathLogo))
+            {
+                System.IO.File.Delete(fullPathLogo);
+            }
+            return JavaScript("");
+        }
         #endregion
 
     }
