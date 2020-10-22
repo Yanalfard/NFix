@@ -11,6 +11,7 @@ namespace DataLayer.ViewModel
     public class TutorViewModel
     {
         public int id { get; set; }
+        public bool IsActive { get; set; }
         [Required(ErrorMessage ="لطفا {0} را وارد کنید")]
         [Display(Name ="نام")]
         [MaxLength(100,ErrorMessage ="تعداد کاراکتر بیشتر است")]

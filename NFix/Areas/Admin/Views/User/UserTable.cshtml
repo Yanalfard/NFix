@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<DataLayer.Models.Regular.TblClient>
 @{
     ViewBag.Title = "UserTable";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -16,55 +16,73 @@
             <th>ایمیل</th>
             <th>آدرس</th>
             <th>کد پستی</th>
-            <th>وضعیت</th>
             <th>پریمیوم</th>
-            <th>تاریخ اشتراک</th>
             <th>کد دعوت</th>
-
             <th>نام کاربری</th>
-            <th>گذرواژه</th>
             <th>فعال</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>نام مربی</td>
-            <td>136 319 95 95</td>
-            <td>0935 593 29 30</td>
-            <td>User@Email.com</td>
-            <td>
-                <a href="#Modal-Address" uk-toggle>آدرس</a>
-                <div id="Modal-Address" uk-modal>
-                    <div class="uk-modal-dialog uk-modal-body">
-                        <h3>
-                            آدرس
-                        </h3>
-                        <p>
-                            Laoreet ac, aliquam sit amet justo nunc tempor, metus vel placerat suscipit, orci nisl iaculis eros, a tincidunt nisi odio eget lorem nulla condimentum tempor mattis ut vitae feugiat augue cras ut metus a risus iaculis scelerisque eu ac ante fusce non varius purus aenean nec magna felis fusce vestibulum.
-                        </p>
-                        <button class="uk-modal-close">
-                            بستن
-                        </button>
+        @foreach (var item in Model)
+        {
+            <tr id="User_@item.id">
+                <td>@(Model.ToList().IndexOf(item)+1)</td>
+                <td>@item.Name</td>
+                <td>@item.IdentificationNo</td>
+                <td>@item.TellNo</td>
+                <td>@item.Email</td>
+                <td>
+                    <a href="#Modal-Address" uk-toggle>آدرس</a>
+                    <div id="Modal-Address" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h3>
+                                آدرس
+                            </h3>
+                            <p>
+                                @item.Address
+                            </p>
+
+                            <button class="uk-modal-close">
+                                بستن
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </td>
-            <td>
-                555 222 333
-            </td>
-            <td>0</td>
-            <td>
-                <input type="checkbox" class="uk-checkbox" onclick="return false;" readonly />
-            </td>
-            <td>1400/08/08</td>
-            <td>#ee3</td>
-            <td>نام کاربری</td>
-            <td>12345678</td>
-            <td>
-                <input type="checkbox" class="uk-checkbox" onclick="return false;" readonly />
-            </td>
-        </tr>
+                </td>
+                <td>
+                    @item.PostalCode
+                </td>
+                <td>
+                    <input type="checkbox" class="uk-checkbox" @((item.IsPremium) ? "checked" : "") onclick="return false;" readonly />
+                </td>
+                <td>@item.InviteCode</td>
+                <td>@item.TblUserPass.Username</td>
+                <td>
+                    <input type="checkbox" class="uk-checkbox" @((item.TblUserPass.IsActive) ? "checked" : "") onclick="return false;" readonly />
+                </td>
+                <td>
+                    <a href="#" onclick="deleteUser(@item.id)" uk-icon="icon:trash; ratio:1"></a>
+                </td>
+                <td>
+                    <a href="/Admin/User/UserEdit/@item.id" uk-icon="icon:file-edit; ratio:1"></a>
+                </td>
+            </tr>
+        }
+
     </tbody>
 </table>
 
+
 <!-- #endregion -->
+<script>
+    function deleteUser(id) {
+        if (confirm("آیا از حذف ویدیو مطمئن هستید؟")) {
+            $.ajax({
+                url: "/Admin/User/DeleteUser/" + id,
+                type: "Get"
+            }).done(function () {
+                $("#User_" + id).addClass("uk-text-danger");
+                $("#User_" + id).hide('slow');
+            });
+        };
+    };
+</script>

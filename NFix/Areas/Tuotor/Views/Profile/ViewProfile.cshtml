@@ -1,0 +1,52 @@
+﻿@model DataLayer.Models.Regular.TblTutor
+
+
+<div class="uk-modal-dialog uk-modal-body full-width column" dir="rtl">
+    @*@using (Ajax.BeginForm("ViewProfile", "Profile", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ModalProfile" }, htmlAttributes: new { @id = "LoginForm", enctype = "multipart/form-data" }))*@
+
+    @using (Html.BeginForm("ViewProfile", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.id)
+        <h2 class="uk-modal-title">اطلاعات کاربری</h2>
+        <div class="row">
+            <div class="column">
+                <label class="uk-margin-top uk-margin-small-bottom">
+                    نام
+                </label>
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required", @readonly = "readonly" } })
+            </div>
+            <div class="column uk-margin-right">
+                <label class="uk-margin-top uk-margin-small-bottom">
+                    نام کاربری
+                </label>
+                @Html.EditorFor(model => model.TblUserPass.Username, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required", @readonly = "readonly" } })
+            </div>
+        </div>
+
+        <!-- #region Upload Image -->
+        <label class="uk-margin-small-bottom uk-margin-top">
+            عکس
+        </label>
+        <div class="uk-placeholder uk-margin-remove-top uk-text-center" dir="rtl">
+            <span uk-icon="icon: cloud-upload"></span>
+            <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
+            <div uk-form-custom>
+                <input type="file" name="Image" multiple required>
+                <span class="uk-link">انتخاب کتید</span>
+            </div>
+        </div>
+
+        <!-- #endregion -->
+
+        <div class="row uk-margin-medium-top" dir="rtl">
+            <button type="submit" class="see">آپلود عکس</button>
+            <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
+               onclick="UIkit.modal(document.getElementById('ModalProfile')).hide();">بازگشت</a>
+        </div>
+
+    }
+</div>
+
+

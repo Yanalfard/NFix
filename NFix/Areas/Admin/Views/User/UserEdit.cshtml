@@ -1,0 +1,45 @@
+﻿@model DataLayer.ViewModel.UserViewModel
+@{
+    ViewBag.Title = "UserEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- #region Card -->
+@using (Html.BeginForm("UserEdit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(m => m.id)
+    @Html.HiddenFor(m => m.UserPassId)
+    @Html.AntiForgeryToken()
+    <div class="mat uk-margin-large-top uk-padding-small column clipped">
+        <h4 class="uk-margin-remove-bottom">
+            کاربر جدید
+        </h4>
+        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+            نام
+        </label>
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+            شماره تلفن
+        </label>
+        @Html.EditorFor(model => model.TellNo, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.TellNo, "", new { @class = "text-danger" })
+        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+            نام کاربری
+        </label>
+        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+
+        <div class="row uk-margin-auto-left">
+            <label for="IsSuggested" class="uk-margin-small-right">فعال باشد</label>
+            @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { @class = "uk-checkbox uk-margin-auto-top uk-margin-auto-bottom" } })
+        </div>
+        <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+        <button type="submit" class="see uk-margin-medium-top uk-margin-auto-left">ذخیره</button>
+    </div>
+}
+
+<div class="space"></div>
+
+<!-- #endregion -->

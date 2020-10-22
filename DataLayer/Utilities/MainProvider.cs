@@ -204,7 +204,7 @@ namespace DataLayer.Utilities
                     val.LikeCount = update.LikeCount;
                     val.MainImage = update.MainImage;
                     val.Body = update.Body;
-                    val.Description= update.Description;
+                    val.Description = update.Description;
                     val.Title = update.Title;
                 }
                 else if (table.GetType() == typeof(TblBlogCommentRel))
@@ -424,6 +424,18 @@ namespace DataLayer.Utilities
                     val.LogText = update.LogText;
                     val.MoneyTransfered = update.MoneyTransfered;
                 }
+                //else if (table.GetType() == typeof(TblTutor))
+                //{
+                //    TblTutor val = Heart.TblTutor.SingleOrDefault(i => i.id == logId);
+                //    TblTutor update = (TblTutor)tableObj;
+                //    val.id = update.id;
+                //    val.Description = update.Description;
+                //    val.IdentificationNo = update.IdentificationNo;
+                //    val.MainImage = update.MainImage;
+                //    val.Name = update.Name;
+                //    val.TellNo = update.TellNo;
+                //    val.UserPassId = update.UserPassId;
+                //}
 
                 Heart.SaveChanges();
                 return true;

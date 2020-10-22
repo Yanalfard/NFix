@@ -193,7 +193,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\User\Views\web.config" />
@@ -232,8 +238,6 @@
     <Content Include="Areas\Admin\Views\Blog\BlogComments.cshtml" />
     <Content Include="Areas\Admin\Views\Blog\BlogKeyWords.cshtml" />
     <Content Include="Areas\Admin\Views\Video\VideoEdit.cshtml" />
-    <Content Include="Areas\Tuotor\Views\web.config" />
-    <Content Include="Areas\Tuotor\Views\Profile\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCatagory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCatagory\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCatagory\Index.cshtml" />
@@ -243,11 +247,22 @@
     <Content Include="Areas\Admin\Views\Blog\BlogEdit.cshtml" />
     <Content Include="Areas\Admin\Views\Blog\ViewClientInfo.cshtml" />
     <Content Include="Areas\Admin\Views\Tutor\TutorEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\UserEdit.cshtml" />
+    <Content Include="Areas\Tuotor\Views\web.config" />
+    <Content Include="Areas\Tuotor\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\VideoTable.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\UploadVideo.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\ViewProfile.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\VideoBlock.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\Info.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\EditVideo.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <Content Include="HtmlPage1.html" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\ckeditor\.htaccess" />
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
@@ -288,6 +303,14 @@
     <Content Include="Scripts\ckeditor\_samples\adobeair\run.sh" />
     <Content Include="Scripts\ckeditor\_samples\assets\output_for_flash.fla" />
     <Content Include="Scripts\ckeditor\skins\moono-dark\readme.md" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\Jquery\jquery-3.5.1.intellisense.js" />
     <Content Include="Mocks\about.html" />
     <Content Include="Mocks\Admin\BlogAdder.html" />
@@ -1563,7 +1586,6 @@
     <Content Include="Styles\blogs.scss" />
     <Content Include="Styles\Video.scss" />
     <Content Include="Styles\Profile.scss" />
-    <Content Include="Views\Shared\_VideoBlock.cshtml" />
     <Content Include="Views\Shared\_ProductBlock.cshtml" />
     <Content Include="Views\Shared\_BlogBlock.cshtml" />
     <Content Include="Views\Home\VideoView.cshtml" />
@@ -1588,6 +1610,7 @@
     <Content Include="Views\Shared\_LoggedInUser.cshtml" />
     <Content Include="Views\HomeVideo\VideoRecommendations.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Shared\_VideoBlock.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

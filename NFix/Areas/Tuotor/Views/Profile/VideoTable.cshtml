@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblVideo>
+<div id="ModalTable" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body full-width column" dir="rtl">
+        <h2 class="uk-modal-title">ویدیو های آپلودی</h2>
+
+        <table class="uk-table" dir="rtl">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>تیتر</th>
+                    <th>تاریخ ثبت</th>
+                    <th>تعداد بازدید</th>
+                    <th>ریتینگ</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="video_@(item.id)">
+                        <td>@(Model.ToList().IndexOf(item)+1)</td>
+                        <td>@item.Title</td>
+                        <td> @Convert.ToDateTime(item.DateSubmited).ToShamsi()</td>
+                        <td>@item.ViewCount</td>
+                        <td>@item.Raiting</td>
+                        <td>
+                            <a href="#" onclick="deleteVideo(@item.id)" uk-icon="icon:trash; ratio:2"></a>
+                        </td>
+                        <td>
+                            <a onclick="edit(@item.id)" uk-icon="icon:file-edit; ratio:2"></a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left"
+           onclick="UIkit.modal(document.getElementById('ModalTable')).hide();">بازگشت</a>
+    </div>
+</div>
+
+

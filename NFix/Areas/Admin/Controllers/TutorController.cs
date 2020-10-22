@@ -53,8 +53,8 @@ namespace NFix.Areas.Admin.Controllers
                         Username = tutor.Username.ToLower(),
                         Password = FormsAuthentication.HashPasswordForStoringInConfigFile(tutor.Password, "SHA256"),
                         Auth = Guid.NewGuid().ToString(),
-                        IsActive = true,
-                        RoleId = 1,
+                        IsActive = tutor.IsActive,
+                        RoleId = 2,
                     };
                     bool addUser = _userPass.AddUserPass(userPass);
                     if (addUser)
@@ -98,7 +98,8 @@ namespace NFix.Areas.Admin.Controllers
                 MainImage = tutor.MainImage,
                 Username = tutor.TblUserPass.Username,
                 UserPassId = tutor.UserPassId,
-                Password = tutor.TblUserPass.Password
+                Password = tutor.TblUserPass.Password,
+                IsActive=tutor.TblUserPass.IsActive,
             };
             return View(tutorViewModel);
         }
@@ -148,8 +149,8 @@ namespace NFix.Areas.Admin.Controllers
                     id = tutor.UserPassId,
                     Username = tutor.Username.ToLower(),
                     Auth = Guid.NewGuid().ToString(),
-                    IsActive = true,
-                    RoleId = 1,
+                    IsActive = tutor.IsActive,
+                    RoleId = 2,
                     Password= selectimage.TblUserPass.Password
                 };
                 bool y= _userPass.UpdateUserPass(userPass, tutor.UserPassId);

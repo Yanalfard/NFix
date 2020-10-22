@@ -49,10 +49,15 @@
                 <span class="uk-link">انتخاب کتید</span>
             </div>
         </div>
+        <div class="row uk-margin-auto-left">
+            <label for="IsSuggested" class="uk-margin-small-right">فعال باشد</label>
+            @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { @class = "uk-checkbox uk-margin-auto-top uk-margin-auto-bottom" } })
+        </div>
         <!-- #endregion -->
         <label for="Description" class="uk-margin-small-bottom uk-margin-top">
             توضیحات
         </label>
+
         @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
 

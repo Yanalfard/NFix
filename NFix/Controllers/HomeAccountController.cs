@@ -62,10 +62,6 @@ namespace NFix.Controllers
                 {
                     ModelState.AddModelError("UserName", "نام کاربری تکراریست");
                 }
-                else if (_client.SelectAllClients().Any(u => u.Email == client.Email))
-                {
-                    ModelState.AddModelError("Email", "ایمیل وارد شده تکراری است");
-                }
                 else if (_client.SelectAllClients().Any(u => u.TellNo == client.TellNo))
                 {
                     ModelState.AddModelError("TellNo", "تلفن  وارد شده تکراری است");
