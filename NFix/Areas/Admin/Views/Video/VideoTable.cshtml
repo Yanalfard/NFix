@@ -30,18 +30,20 @@
         @foreach (var item in Model)
         {
 
-            <tr  id="video_@(item.id)">
+            <tr id="video_@(item.id)">
                 <td>@item.id</td>
                 <td>@item.Title</td>
                 <td>
-                    <a href="~/Resources/Videos/@item.VideoUrl">
-                        ویدیو
-                    </a>
+                    <div uk-lightbox>
+                        <a href="~/Resources/Videos/@item.VideoUrl">ویدیو</a>
+                    </div>
                 </td>
                 <td>
-                    <a href="~/Resources/Videos/Demo/@item.VidioDemoUrl">
-                        دمو
-                    </a>
+                    <div uk-lightbox>
+                        <a href="~/Resources/Videos/Demo/@item.VidioDemoUrl">
+                            دمو
+                        </a>
+                    </div>
                 </td>
                 <td uk-lightbox>
                     <a href="~/Resources/Videos/Image/@item.MainImage">
@@ -95,7 +97,7 @@
                     </a>
                 </td>
                 <td>
-                    <input type="checkbox"  onclick="return false" class="uk-checkbox" @((item.IsHome) ? "checked" : "") />
+                    <input type="checkbox" onclick="return false" class="uk-checkbox" @((item.IsHome) ? "checked" : "") />
                 </td>
 
                 <td>

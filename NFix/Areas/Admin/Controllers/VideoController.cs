@@ -17,10 +17,16 @@ namespace NFix.Areas.Admin.Controllers
         // GET: Admin/Video
         #region Video
         private VideoService _video = new VideoService();
-        public ActionResult VideoTable()
+        private TuotorVideoRelService _tuotorVideoRel = new TuotorVideoRelService();
+        public ActionResult VideoTable(int? id)
         {
+            if (id != null)
+            {
+                List<TblVideo> tblVideo = new List<TblVideo>();
+                _tuotorVideoRel.SelectTuotorVideoRelByToutorId(id.Value).ForEach(i => tblVideo.Add(_video.SelectVideoById(i.VideoId)));
+                return View(tblVideo);
+            }
             var allVideo = _video.SelectAllVideos();
-            //List<DtoTblVideo> result = MethodRepo.ConvertToDto<TblVideo, DtoTblVideo>(allVideo);
             return View(allVideo);
         }
         public ActionResult VideoAdder()
@@ -30,7 +36,6 @@ namespace NFix.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult VideoAdder(TblVideo video, HttpPostedFileBase VideoUrl, HttpPostedFileBase VidioDemoUrl, HttpPostedFileBase MainImage)
         {
-
             if (MainImage != null)
             {
                 video.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(MainImage.FileName);
@@ -48,7 +53,7 @@ namespace NFix.Areas.Admin.Controllers
             }
 
             video.DateSubmited = DateTime.Now.ToShortDateString();
-            bool b1= _video.AddVideo(video);
+            bool b1 = _video.AddVideo(video);
             return RedirectToAction("VideoTable");
         }
         public ActionResult VideoEdit(int id)
@@ -87,7 +92,7 @@ namespace NFix.Areas.Admin.Controllers
                 video.VidioDemoUrl = Guid.NewGuid().ToString() + Path.GetExtension(VidioDemoUrl.FileName);
                 VidioDemoUrl.SaveAs(Server.MapPath("/Resources/Videos/Demo/" + video.VidioDemoUrl));
             }
-            bool b1= _video.UpdateVideo(video, video.id);
+            bool b1 = _video.UpdateVideo(video, video.id);
             return RedirectToAction("VideoTable");
         }
         public ActionResult DeleteVideo(int id)

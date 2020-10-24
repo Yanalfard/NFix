@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<DataLayer.Models.Regular.TblBlog>
 @{
-    ViewBag.Title = "BlogTable";
+    ViewBag.Title = "مقاله ها";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,9 +13,7 @@
             <th>تیتر</th>
             <th>توضیحات</th>
             <th>عکس</th>
-            <th>محتوا</th>
             <th>تعداد لایک</th>
-            <th>کلمات کلیدی</th>
             <th>نظرات</th>
             <th></th>
             <th></th>
@@ -30,19 +28,31 @@
             <tr id="blog_@item.id">
                 <td>@(Model.ToList().IndexOf(item) + 1)</td>
                 <td>@item.Title</td>
-                <td>@item.Description</td>
+                <td>
+                    <a href="#Modal-Description@(item.id)" uk-toggle>توضیحات</a>
+                    <div id="Modal-Description@(item.id)" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h3>
+                                توضیحات 
+                            </h3>
+                            <p>
+                                @item.Description
+                            </p>
+                            <button class="uk-modal-close">
+                                بستن
+                            </button>
+                        </div>
+                    </div>
+
+                </td>
                 <td uk-lightbox>
                     <a href="~/Resources/Blogs/@item.MainImage">
                         <img src="~/Resources/Blogs/@item.MainImage" />
                     </a>
                 </td>
-                <td>
-                    ...
-                </td>
+
                 <td>@item.LikeCount</td>
-                <td>
-                    <a href="" uk-icon="hashtag"></a>
-                </td>
+
                 <td>
                     <a href="/Admin/Blog/BlogComments/@item.id"  uk-icon="comments" ></a>
                 </td>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DataLayer.Models.Dto.DtoTblVideo>
+﻿@model IEnumerable<DataLayer.Models.Regular.TblVideo>
 <section class="videos ">
     <div class="space-half"></div>
     <h3 class="clipped text-center">ویدیو های اخیر</h3>
@@ -15,9 +15,13 @@
                 </div>
                 <div class="uk-margin-small-top row">
                     <div class="tutor uk-margin-remove-top row">
-                        <a href="/HomeVideo/VideoView/@item.id">
-                            <img class="profile-img uk-border-circle" src="~/Resources/User/@item.TuotorVideoRel.FirstOrDefault().TblTutor.MainImage" />
-                        </a>
+                        @foreach (var j in item.TblTuotorVideoRel)
+                        {
+                            <a href="/HomeVideo/VideoView/@j.id">
+                                <img class="profile-img uk-border-circle" src="~/Resources/User/@j.TblTutor.MainImage" />
+                            </a>
+                        }
+
                     </div>
                     <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
                         <a href="/HomeVideo/VideoView/@item.id">
@@ -27,7 +31,10 @@
                         </a>
                         <div class="row">
                             <a href="#" class="tutor-link uk-margin-auto-left">
-                                @item.TuotorName
+                                @foreach (var j in item.TblTuotorVideoRel)
+                                {
+                                    @j.TblTutor.Name
+                                }
                             </a>
                             <span class="row">
                                 <span>@item.ViewCount</span>

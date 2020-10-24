@@ -22,8 +22,7 @@ namespace NFix.Controllers
         public ActionResult VideosPage()
         {
             var allVideo = _video.SelectAllVideos();
-            List<DtoTblVideo> result = MethodRepo.ConvertToDto<TblVideo, DtoTblVideo>(allVideo);
-            return PartialView(result);
+            return PartialView(allVideo);
         }
         public ActionResult VideoView(int id)
         {

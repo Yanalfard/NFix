@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,287 +7,24 @@
 <link href="/Styles/Profile.min.css" rel="stylesheet" />
 
 <!-- #region EditModal -->
-
-<div id="Modal-Edit" uk-modal>
-    <div class="card column">
-        <h2 class="uk-modal-title">
-            ویرایش پروفایل
-        </h2>
-        <div class="row">
-            <div class="column uk-margin-auto-left">
-                <label>
-                    نام و نام خانوادگی
-                </label>
-                <input type="text" value="صدرا محمدی" />
-                <label>
-                    گذرواژه
-                </label>
-                <input type="password" value="ThisIsMyPassword" />
-            </div>
-            <div class="column uk-margin-auto-left">
-                <label>
-                    نام کاربری
-                </label>
-                <input type="text" value="ShockyLemi" />
-                <label>
-                    رایانامه
-                </label>
-                <input type="email" value="Shockylemi@gmail.com" />
-                <label>
-                    شماره تلفن
-                </label>
-                <input type="tel" value="09355932930" />
-            </div>
-        </div>
-        <label>
-            آدرس
-        </label>
-        <textarea>
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز
-            </textarea>
-        <label>
-            کد پستی
-        </label>
-        <input type="text" value="1900 - 8970 4 822" />
-        <div class="row uk-margin-top">
-            <button class="uk-modal-close uk-button-default uk-margin-auto-left uk-margin-right" type="button">
-                بازگشت
-            </button>
-            <button class="uk-modal-close" type="button">
-                ویرایش
-            </button>
-        </div>
-    </div>
-</div>
-
+@Html.Action("EditInfo", "Profile")
 <!-- #endregion -->
 
 <div class="space-nav-bottom"></div>
 
 <content class="column clipped">
 
-    <div class="alternate">
-        <!-- #region Plan -->
-
-        <section class="plan mat column uk-padding ">
-            <h4 class="center uk-margin-bottom">
-                اشتراک شما
-            </h4>
-            <label class="uk-margin-small-bottom center">
-                اشتراک 6 ماهه
-            </label>
-            <div class="row uk-margin-bottom center">
-                <!--<label class="uk-margin-small-right uk-margin-auto-top uk-margin-small-bottom">
-                    روز
-                </label>
-                <h1 id="Days" class="uk-margin-remove overflow-hidden">
-                    30
-                </h1>-->
-                <div class="progress-ring-container" percentage="64">
-                    <svg class="progress-ring"
-                         width="120"
-                         height="120">
-                        <circle class="progress-ring__circle"
-                                stroke="white"
-                                stroke-width="4"
-                                fill="transparent"
-                                r="56"
-                                cx="60"
-                                cy="60" />
-                    </svg>
-                    <div class="text">
-                        <div class="column">
-                            <p>
-                                31
-                            </p>
-                            <label>
-                                روز
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="uk-margin-auto-top center">
-                تمدید
-            </button>
-        </section>
-
-        <!-- #endregion -->
-        <div class="gap"></div>
-        <!-- #region Profile -->
-
-        <section class="profile mat column uk-padding">
-            <h4>
-                اطلاعات حساب
-            </h4>
-            <div class="row">
-                <div class="column uk-margin-auto-left">
-                    <label>
-                        نام کاربری
-                    </label>
-                    <h5>
-                        ShockyLemi
-                    </h5>
-
-                </div>
-                <div class="column uk-margin-auto-left">
-                    <label>
-                        رایانامه
-                    </label>
-                    <h5>
-                        Shockylemi@gmail.com
-                    </h5>
-                    <label>
-                        کد دعوت شما
-                    </label>
-                    <h5>
-                        166cEd85
-                    </h5>
-                </div>
-            </div>
-            <button class="uk-margin-auto-left uk-margin-auto-top" type="button" uk-toggle="target: #Modal-Edit">
-                ویرایش
-            </button>
-        </section>
-
-        <!-- #endregion -->
-    </div>
+    @Html.Action("Info", "Profile")
 
     <!-- #region Cart -->
 
-    <h4 class="uk-margin-remove-bottom">
-        سبد خرید
-    </h4>
-
-    <table class="uk-table uk-table-divider" dir="rtl">
-        <thead>
-            <tr>
-                <th>کد</th>
-                <th>نام</th>
-                <th>فی</th>
-                <th>دسته بندی</th>
-                <th>تعداد</th>
-                <th>تخفیف</th>
-                <th>مجموع</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>اسلش ورزشی</td>
-                <td>10000</td>
-                <td>لوازم ورزشی</td>
-                <td>5</td>
-                <td>12%</td>
-                <td>50000</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>اسلش ورزشی</td>
-                <td>10000</td>
-                <td>لوازم ورزشی</td>
-                <td>5</td>
-                <td>12%</td>
-                <td>50000</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>اسلش ورزشی</td>
-                <td>10000</td>
-                <td>لوازم ورزشی</td>
-                <td>5</td>
-                <td>12%</td>
-                <td>50000</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>اسلش ورزشی</td>
-                <td>10000</td>
-                <td>لوازم ورزشی</td>
-                <td>5</td>
-                <td>12%</td>
-                <td>50000</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>8</td>
-                <td>16%</td>
-                <td>
-                    100000
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-
-    <button class="uk-margin-auto-left">
-        اتمام خرید
-    </button>
+    @Html.Action("ShopCart", "Profile")
 
     <!-- #endregion -->
     <!-- #region History -->
 
-    <h4 class="uk-margin-remove-bottom">
-        سابقه خرید
-    </h4>
+    @Html.Action("History", "Profile")
 
-    <table class="uk-table uk-table-divider" dir="rtl">
-        <thead>
-            <tr>
-                <th>کد</th>
-                <th>نام</th>
-                <th>فی</th>
-                <th>دسته بندی</th>
-                <th>تعداد</th>
-                <th>تخفیف</th>
-                <th>مجموع</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>بسته 31 روزه</td>
-                <td>60000</td>
-                <td>بسته ها</td>
-                <td>1</td>
-                <td>12%</td>
-                <td>60000</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>اسلش ورزشی</td>
-                <td>10000</td>
-                <td>لوازم ورزشی</td>
-                <td>5</td>
-                <td>12%</td>
-                <td>50000</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>اسلش ورزشی</td>
-                <td>10000</td>
-                <td>لوازم ورزشی</td>
-                <td>5</td>
-                <td>12%</td>
-                <td>50000</td>
-            </tr>
-        </tbody>
-        <!--<tfoot>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>8</td>
-                <td>16%</td>
-                <td>100000</td>
-            </tr>
-        </tfoot>-->
-    </table>
 
     <!-- #endregion -->
 
