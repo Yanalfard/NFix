@@ -80,7 +80,7 @@ namespace NFix.Areas.Admin.Controllers
             {
                 product_Groups.id = 0;
                 _catagory.AddCatagory(product_Groups);
-                return JavaScript("location.reload(true)");
+                return PartialView("ListGroups", _catagory.SelectAllCatagorys().Where(g => g.CatagoryId == null));
             }
             catch
             {
@@ -122,7 +122,7 @@ namespace NFix.Areas.Admin.Controllers
             try
             {
                 _catagory.UpdateCatagory(product_Groups, product_Groups.id);
-                return JavaScript("location.reload(true)");
+                return PartialView("ListGroups", _catagory.SelectAllCatagorys().Where(g => g.CatagoryId == null));
             }
             catch
             {
