@@ -14,29 +14,58 @@
             <th>متن</th>
             <th>تاریخ</th>
             <th>تایید شده</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         <!-- #region Foreach -->
         @foreach (var item in Model)
         {
-
-            <tr>
+            <tr id="comment_@item.id">
                 <td>@(Model.ToList().IndexOf(item) + 1)</td>
                 <td>
-                    <a href="#" onclick="viewClientInfo(@item.id);">
+                    <a href="#" onclick="viewClientInfo(@item.TblClient.id);">
                         @item.TblClient.Name
                     </a>
                 </td>
                 <td>
-                    @item.Body
+                    <a href="#Modal-Body@(item.id)" uk-toggle>متن </a>
+                    <div id="Modal-Body@(item.id)" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h3>
+                                متن
+                            </h3>
+                            <p>
+                                @item.Body
+                            </p>
+                            <button class="uk-modal-close">
+                                بستن
+                            </button>
+                        </div>
+                    </div>
                 </td>
                 <td>
-                    @item.DateSubmited
-
+                    @Convert.ToDateTime(item.DateSubmited).ToShamsi()
                 </td>
                 <td>
                     <input type="checkbox" class="uk-checkbox" onchange="" @((item.IsValid) ? "checked" : "") />
+                </td>
+                @if (item.IsValid)
+                {
+                    <td>
+                        <a href="/Admin/Blog/ShowHideComments?id=@item.id&blogId=@item.TblBlogCommentRel.Single().BlogId">مخفی</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a href="/Admin/Blog/ShowHideComments?id=@item.id&blogId=@item.TblBlogCommentRel.Single().BlogId">نمایش</a>
+                    </td>
+                }
+
+                <td>
+                    <a href="#" onclick="deleteComment(@item.id)" uk-icon="icon:trash; ratio:1"></a>
                 </td>
             </tr>
         }
@@ -70,13 +99,27 @@
 <!-- #endregion -->
 <!-- #endregion -->
 
-
 <script>
     function viewClientInfo(id) {
         $.get("/Admin/Blog/ViewClientInfo/" + id, function (result) {
             UIkit.modal(document.getElementById('modal-example')).show();
             $(".uk-modal-body").html(result);
         });
+    };
+
+
+    function deleteComment(id) {
+
+        if (confirm("آیا از حذف ویدیو مطمئن هستید؟")) {
+            $.ajax({
+                url: "/Admin/Blog/DeleteComment/" + id,
+                type: "Get"
+            }).done(function () {
+                $("#comment_" + id).addClass("uk-text-danger");
+                $("#comment_" + id).hide('slow');
+            });
+
+        };
     };
 
 </script>

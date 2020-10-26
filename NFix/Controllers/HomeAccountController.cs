@@ -29,7 +29,6 @@ namespace NFix.Controllers
             TblUserPass user= _userPass.SelectUserPassByUsernameAndPassword(client.UserName.ToLower(), hashPassword);
             if (user != null)
             {
-                user.IsActive = true;
                 if (user.IsActive)
                 {
                     FormsAuthentication.SetAuthCookie(user.Username,client.RememberMe);
@@ -56,18 +55,17 @@ namespace NFix.Controllers
         [HandleError]
         public ActionResult Register(DtoTblClient client)
         {
+            client.UserName = client.Email;
             if (ModelState.IsValid)
             {
-                if (_userPass.SelectAllUserPasss().Any(u => u.Username == client.UserName.ToLower()))
+
+                if (_client.SelectAllClients().Any(u => u.Email == client.Email))
                 {
-                    ModelState.AddModelError("UserName", "نام کاربری تکراریست");
-                }
-                else if (_client.SelectAllClients().Any(u => u.TellNo == client.TellNo))
-                {
-                    ModelState.AddModelError("TellNo", "تلفن  وارد شده تکراری است");
+                    ModelState.AddModelError("Email", "ایمیل  وارد شده تکراری است");
                 }
                 else
                 {
+                    
                     TblUserPass addUserPass = new TblUserPass()
                     {
                         IsActive = false,
@@ -82,19 +80,19 @@ namespace NFix.Controllers
                         TblClient tblClient = new TblClient()
                         {
                             UserPassId = _userPass.SelectUserPassByUsername(client.UserName).id,
-                            TellNo = client.TellNo,
+                            TellNo = "",
                             Name = client.Name,
                             InviteCode = "",
                             PremiumTill = "",
                             Status = 1,
                             Address = "",
-                            Email = "",
+                            Email = client.Email,
                             IdentificationNo = "",
                         };
                         bool addClient = _client.AddClient(tblClient);
                         if (addClient)
                         {
-                            return JavaScript("document.getElementById('RegisterForm').reset();alert('ثبت نام شما انجام شد');UIkit.modal(document.getElementById('ModalLogin')).show();");
+                            return JavaScript("document.getElementById('RegisterForm').reset();alert('ثبت نام شما انجام شد و لینک فعال سازی به ایمیل شما ارسال شد');UIkit.modal(document.getElementById('ModalLogin')).show();");
                             //return JavaScript("location.reload(true)");
                         };
                     };

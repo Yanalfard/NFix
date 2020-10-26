@@ -22,16 +22,18 @@ namespace DataLayer.Models.Dto
         [Display(Name="کد ملی")]
         public string IdentificationNo { get; set; }
         [Display(Name="شماره تلفن")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MinLength(4, ErrorMessage = "تعداد کاراکتر کم است")]
         [DataType(DataType.PhoneNumber)]
         public string TellNo { get; set; }
+        [Display(Name = "ایمیل")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [EmailAddress(ErrorMessage ="ایمیل وارد شده صحیح نیست")]
         public string Email { get; set; }
         public string Address { get; set; }
         [Display(Name="مرا بخاطر بسپار")]
         public bool RememberMe { get; set; }
         public string PostalCode { get; set; }
-        [Display(Name = "نام کاربری")]
+        [Display(Name = "ایمیل ")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MinLength(4, ErrorMessage = "تعداد کاراکتر کم است")]
         public string UserName { get; set; }

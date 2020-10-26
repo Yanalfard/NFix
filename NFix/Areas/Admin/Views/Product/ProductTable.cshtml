@@ -20,9 +20,7 @@
             <th>پیشنهادی</th>
             <th>تخفیف</th>
             <th>وضعیت</th>
-            <th>کلمات کلیدی</th>
             <th>عکس ها</th>
-            <th>مشخصات</th>
             <th></th>
             <th></th>
         </tr>
@@ -57,13 +55,11 @@
                 </td>
                 <td>@item.Count</td>
                 <td>
-                    <input type="checkbox" class="uk-checkbox" onclick="return false;" readonly />
+                    <input type="checkbox" class="uk-checkbox" onclick="return false;" @((item.IsSuggested) ? "checked" : "")  readonly />
                 </td>
                 <td>@item.Discount%</td>
                 <td>@item.Status</td>
-                <td>
-                    <a href="" uk-icon="hashtag"></a>
-                </td>
+
 
                 <td uk-lightbox>
                     @foreach (var j in item.TblProductImageRel)
@@ -74,9 +70,7 @@
                     }
 
                 </td>
-                <td>
-                    <a href="" uk-icon="thumbnails"></a>
-                </td>
+
                 <td>
                     <a href="#" onclick="deleteProduct(@item.id)" uk-icon="icon:trash; ratio:1"></a>
                 </td>

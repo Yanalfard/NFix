@@ -6,43 +6,26 @@
         <h4 class="center uk-margin-bottom">
             اشتراک شما
         </h4>
-        @{
-            int daysTillFinished = ((DateTime.Parse(Model.PremiumTill) - DateTime.Now).Days);
-            int totalDays = 0;
-            int totalMonth = 0;
-            if (daysTillFinished <= 365 && daysTillFinished > 183)
-            {
-                totalDays = 365;
-                totalMonth = 12;
-            }
-            else if (daysTillFinished <= 183 && daysTillFinished > 91)
-            {
-                totalDays = 183;
-                totalMonth = 6;
-            }
-            else if (daysTillFinished <= 91 && daysTillFinished > 30)
-            {
-                totalDays = 91;
-                totalMonth = 3;
-            }
-            else if (daysTillFinished <= 30)
-            {
-                totalDays = 1;
-            }
 
+
+
+        @if (ViewBag.totalMonth != 0)
+        {
+            <label class="uk-margin-small-bottom center">
+                اشتراک @ViewBag.totalMonth ماهه
+            </label>
         }
-        <label class="uk-margin-small-bottom center">
-            اشتراک @totalMonth ماهه
-        </label>
+
+
         <div class="row uk-margin-bottom center">
             <!--<label class="uk-margin-small-right uk-margin-auto-top uk-margin-small-bottom">
-            روز
-        </label>
-        <h1 id="Days" class="uk-margin-remove overflow-hidden">
-            30
-        </h1>-->
+                روز
+            </label>
+            <h1 id="Days" class="uk-margin-remove overflow-hidden">
+                30
+            </h1>-->
 
-            <div class="progress-ring-container" percentage="@(Math.Floor(((double)daysTillFinished/totalDays)*100))">
+            <div class="progress-ring-container" percentage="@((ViewBag.totalDays != 0) ? (Math.Floor(((double)ViewBag.daysTillFinished/ViewBag.totalDays)*100)) : 0)">
                 <svg class="progress-ring"
                      width="120"
                      height="120">
@@ -57,7 +40,10 @@
                 <div class="text">
                     <div class="column">
                         <p>
-                            @((DateTime.Parse(Model.PremiumTill) - DateTime.Now).Days)
+                            @if (Model.PremiumTill != "")
+                            {
+                                @((DateTime.Parse(Model.PremiumTill) - DateTime.Now).Days)
+                            }
                         </p>
                         <label>
                             روز

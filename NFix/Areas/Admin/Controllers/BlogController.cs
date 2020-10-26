@@ -143,7 +143,7 @@ namespace NFix.Areas.Admin.Controllers
 
             TblBlog updateBlog = new TblBlog()
             {
-                id=blog.id,
+                id = blog.id,
                 Body = blog.Body,
                 Description = blog.Description,
                 LikeCount = blog.LikeCount,
@@ -152,7 +152,7 @@ namespace NFix.Areas.Admin.Controllers
             };
 
 
-            bool va= _blog.UpdateBlog(updateBlog, blog.id);
+            bool va = _blog.UpdateBlog(updateBlog, blog.id);
 
             _blogKeyword.SelectBlogKeywordRelByBlogId(blog.id).ToList().ForEach(t => _keyword.DeleteKeyword(t.KeywordId));
             string tags = blog.Keywords;
@@ -186,23 +186,23 @@ namespace NFix.Areas.Admin.Controllers
             }
             return RedirectToAction("BlogTable");
         }
-        public ActionResult BlogComments(int id)
+        public ActionResult BlogComments(int? id)
         {
-            var allBlogComment = _blogComment.SelectBlogCommentRelByBlogId(id).ToList();
             List<TblComment> allComments = new List<TblComment>();
-            foreach (var item in allBlogComment)
+            if (id == null)
             {
-                allComments.Add(_comment.SelectCommentById(item.CommentId));
-            };
+                _blogComment.SelectAllBlogCommentRels().ForEach(i => allComments.Add(_comment.SelectCommentById(i.CommentId)));
+            }
+            else
+            {
+                _blogComment.SelectBlogCommentRelByBlogId(id.Value).ForEach(i => allComments.Add(_comment.SelectCommentById(i.CommentId)));
+            }
             return View(allComments);
         }
 
-        public ActionResult BlogKeyWords()
-        {
-            return View();
-        }
         public ActionResult ViewClientInfo(int id)
         {
+            var c = _client.SelectClientById(id);
             return PartialView(_client.SelectClientById(id));
         }
 
@@ -220,5 +220,36 @@ namespace NFix.Areas.Admin.Controllers
         }
         #endregion
 
+        public ActionResult ShowHideComments(int id, int blogId)
+        {
+            TblComment selectCommentById = _comment.SelectCommentById(id);
+            if (selectCommentById.IsValid)
+            {
+                selectCommentById.IsValid = false;
+            }
+            else
+            {
+                selectCommentById.IsValid = true;
+            }
+            TblComment tblComment = new TblComment()
+            {
+                Body = selectCommentById.Body,
+                ClientId = selectCommentById.ClientId,
+                id = selectCommentById.id,
+                IsValid = selectCommentById.IsValid,
+                DateSubmited = selectCommentById.DateSubmited,
+
+            };
+
+            bool x = _comment.UpdateComment(tblComment, id);
+            return RedirectToAction("BlogComments/" + blogId);
+        }
+
+
+        public ActionResult DeleteComment(int id)
+        {
+            _comment.DeleteComment(id);
+            return JavaScript("");
+        }
     }
 }

@@ -29,7 +29,6 @@ namespace NFix.Areas.Admin.Controllers
                 List<TblProduct> products = _product.SelectAllProducts();
                 return View(products);
             }
-
             return View(_product.SelectProductByCatagoryId(id.Value));
         }
         public ActionResult ChildCategory(int id)

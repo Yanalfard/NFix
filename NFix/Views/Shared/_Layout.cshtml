@@ -114,9 +114,24 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <a class="nav-profile" href="/User/Profile/Index">
-                            @User.Identity.Name
-                        </a>
+                        if (User.IsInRole("admin"))
+                        {
+                            <a class="nav-profile" href="/Admin/Blog/BlogTable">
+                                پنل مدیریت
+                            </a>
+                        }
+                        if (User.IsInRole("tutor"))
+                        {
+                            <a class="nav-profile" href="/Tuotor/Profile/Index">
+                                پنل مربی
+                            </a>
+                        }
+                        if (User.IsInRole("user"))
+                        {
+                            <a class="nav-profile" href="/User/Profile/Index">
+                                پنل کاربری
+                            </a>
+                        }
                     }
                     else
                     {

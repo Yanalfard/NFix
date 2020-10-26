@@ -237,7 +237,6 @@
     <Content Include="Areas\Admin\Views\Blog\BlogTable.cshtml" />
     <Content Include="Areas\Admin\Views\Blog\BlogAdder.cshtml" />
     <Content Include="Areas\Admin\Views\Blog\BlogComments.cshtml" />
-    <Content Include="Areas\Admin\Views\Blog\BlogKeyWords.cshtml" />
     <Content Include="Areas\Admin\Views\Video\VideoEdit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCatagory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCatagory\Edit.cshtml" />
