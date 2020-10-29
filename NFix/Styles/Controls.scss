@@ -166,6 +166,10 @@ $Modal-width: 824px;
     background: transparent !important;
     @include trans(.5s);
 
+    .drop {
+        width: 180px;
+    }
+
     .uk-navbar-dropdown {
         background: red !important;
         z-index: 500;
@@ -667,7 +671,7 @@ textarea {
 .invisible-input {
     background: transparent !important;
     border: none !important;
-    font-size: 18px!important;
+    font-size: 18px !important;
 }
 
 .invisible-input:hover {
@@ -678,4 +682,8 @@ textarea {
     width: 200px;
     height: 200px;
     border-radius: 100%;
+}
+
+.display-none {
+    display: none;
 }

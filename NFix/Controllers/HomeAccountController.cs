@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using NFix.Utilities;
+using DataLayer.Utilities;
 
 namespace NFix.Controllers
 {
@@ -23,27 +25,32 @@ namespace NFix.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [HandleError]
-        public ActionResult Login(DtoTblClient client)
+        public ActionResult Login(DtoTblClient client, string ReturnUrl = "/")
         {
-            string hashPassword= FormsAuthentication.HashPasswordForStoringInConfigFile(client.Password, "SHA256");
-            TblUserPass user= _userPass.SelectUserPassByUsernameAndPassword(client.UserName.ToLower(), hashPassword);
+            //if (!MethodRepo.CheckRechapcha(form))
+            //{
+            //    ViewBag.Message = "لطفا گزینه من ربات نیستم را تکمیل کنید";
+            //    return PartialView("Login", client);
+            //}
+            string hashPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(client.Password, "SHA256");
+            TblUserPass user = _userPass.SelectUserPassByUsernameAndPassword(client.UserName.ToLower(), hashPassword);
             if (user != null)
             {
                 if (user.IsActive)
                 {
-                    FormsAuthentication.SetAuthCookie(user.Username,client.RememberMe);
+                    FormsAuthentication.SetAuthCookie(user.Username, client.RememberMe);
                     return JavaScript("document.getElementById('LoginForm').disabled = true;UIkit.modal(document.getElementById('ModalLogin')).hide();location.reload(true)");
                 }
                 else
                 {
-                    ModelState.AddModelError("UserName","حساب کاربری شما فعال نیست");
+                    ModelState.AddModelError("UserName", "حساب کاربری شما فعال نیست");
                 }
             }
             else
             {
                 ModelState.AddModelError("UserName", "کاربری با اطلاعات وارد شده یافت نشد");
             }
-            return PartialView("Login",client);
+            return PartialView("Login", client);
         }
 
         public ActionResult Register()
@@ -65,7 +72,7 @@ namespace NFix.Controllers
                 }
                 else
                 {
-                    
+
                     TblUserPass addUserPass = new TblUserPass()
                     {
                         IsActive = false,
@@ -101,6 +108,27 @@ namespace NFix.Controllers
             return PartialView("Register", client);
         }
 
+       
+        public ActionResult ActiveUser(string id)
+        {
+            try
+            {
+                var user = _userPass.SelectAllUserPasss().SingleOrDefault(u => u.Auth == id);
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+                user.IsActive = true;
+                user.Auth = Guid.NewGuid().ToString();
+                ViewBag.UserName = user.Username;
+                _userPass.UpdateUserPass(user, user.id);
+                return View();
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+        }
 
         public ActionResult LogOff()
         {
@@ -114,6 +142,9 @@ namespace NFix.Controllers
                 return RedirectToAction("/ErrorPage/NotFound");
             }
         }
+
+
+
 
     }
 }

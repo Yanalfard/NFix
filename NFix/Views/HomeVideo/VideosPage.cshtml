@@ -11,14 +11,14 @@
             <div class="video column" dir="rtl">
                 <div class="vid column">
                     <img class="thumbnail" src="~/Resources/Videos/Image/@item.MainImage" alt="" />
-                    <a href="/HomeVideo/VideoView/@item.id" class="uk-icon" uk-icon="icon: play; ratio:4"></a>
+                    <a href="/VideoView/@item.id/@item.Title" class="uk-icon" uk-icon="icon: play; ratio:4"></a>
                 </div>
                 <div class="uk-margin-small-top row">
                     <div class="tutor uk-margin-remove-top row">
                         @foreach (var j in item.TblTuotorVideoRel)
                         {
                             <a href="/HomeVideo/VideoView/@j.id">
-                                <img class="profile-img uk-border-circle" src="~/Resources/User/@j.TblTutor.MainImage" />
+                                <img class="profile-img uk-border-circle" src="~/Resources/Tutor/@j.TblTutor.MainImage" />
                             </a>
                         }
 

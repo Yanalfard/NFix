@@ -19,6 +19,7 @@ namespace DataLayer.Models.Regular
         {
             this.TblBlogCommentRel = new HashSet<TblBlogCommentRel>();
             this.TblProductCommentRel = new HashSet<TblProductCommentRel>();
+            this.TblVideoCommentRel = new HashSet<TblVideoCommentRel>();
         }
     
         public int id { get; set; }
@@ -32,5 +33,7 @@ namespace DataLayer.Models.Regular
         public virtual TblClient TblClient { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblProductCommentRel> TblProductCommentRel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblVideoCommentRel> TblVideoCommentRel { get; set; }
     }
 }

@@ -27,7 +27,8 @@ namespace DataLayer.Utilities
             TblDiscount,
             TblClient,
             TblTuotorVideoRel,
-            TblLog
+            TblLog,
+            TblVideoCommentRel
         }
     }
 }

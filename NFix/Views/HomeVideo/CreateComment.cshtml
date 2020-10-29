@@ -1,0 +1,38 @@
+﻿@model DataLayer.ViewModel.CommentViewModel
+
+@using (Ajax.BeginForm("CreateComment", "HomeVideo", FormMethod.Post, new AjaxOptions()
+{
+   
+
+    OnSuccess = "successComment",
+    UpdateTargetId = "comments"
+
+}))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.VideoId)
+    <div class="mat column">
+
+        <div class="column">
+            @Html.TextAreaFor(m => m.Body, new { @class = "textbox-bulk-txt", placeholder = "متن نظر خود را وارد کنید", required = "required" })
+            @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+        </div>
+        <div class="row uk-margin-top">
+            <div class="row star-container">
+                <span class="star-cb-group">
+                    <input type="radio" id="rating-5" name="Raiting" value="5" /><label for="rating-5">5</label>
+                    <input type="radio" id="rating-4" name="Raiting" value="4" checked="checked" /><label for="rating-4">4</label>
+                    <input type="radio" id="rating-3" name="Raiting" value="3" /><label for="rating-3">3</label>
+                    <input type="radio" id="rating-2" name="Raiting" value="2" /><label for="rating-2">2</label>
+                    <input type="radio" id="rating-1" name="Raiting" value="1" /><label for="rating-1">1</label>
+                    <input type="radio" id="rating-0" name="Raiting" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
+                </span>
+            </div>
+            <button class="uk-margin-auto-left">
+                ثبت
+            </button>
+        </div>
+    </div>
+
+}
+

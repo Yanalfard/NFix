@@ -15,7 +15,11 @@ namespace DataLayer.ViewModel
         [Required(ErrorMessage ="لطفا {0} را وارد کنید")]
         [Display(Name ="نام")]
         [MaxLength(100,ErrorMessage ="تعداد کاراکتر بیشتر است")]
-        public string Name { get; set; }
+        public string Name { get; set; } 
+        [Required(ErrorMessage ="لطفا {0} را وارد کنید")]
+        [Display(Name ="تخصص")]
+        [MaxLength(100,ErrorMessage ="تعداد کاراکتر بیشتر است")]
+        public string Specialty { get; set; }
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [Display(Name = "کد ملی")]
         [MaxLength(10, ErrorMessage = "تعداد کاراکتر بیشتر است")]

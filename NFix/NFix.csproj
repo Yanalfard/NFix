@@ -1615,6 +1615,8 @@
     <Content Include="Views\HomeVideo\VideoRecommendations.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Shared\_VideoBlock.cshtml" />
+    <Content Include="Views\HomeVideo\CreateComment.cshtml" />
+    <Content Include="Views\HomeVideo\ShowComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

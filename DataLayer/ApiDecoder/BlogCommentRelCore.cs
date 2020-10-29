@@ -7,98 +7,105 @@ using DataLayer.Models.Regular;
 
 namespace DataLayer.ApiDecoder
 {
-    public class BlogCommentRelCore
+    public class VideoCommentRelCore
     {
         private HttpClient _httpClient;
 
-        public BlogCommentRelCore()
+        public VideoCommentRelCore()
         {
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("api/BlogCommentRelCore"));
+            _httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("api/VideoCommentRelCore"));
             _httpClient.BaseAddress = new Uri(Config.Url);
 
         }
         /// <summary>
-        /// Adds a blogCommentRel to NFix.TblBlogCommentRel
+        /// Adds a VideoCommentRel to NFix.TblVideoCommentRel
         /// </summary>
-        /// <param name="blogCommentRel"></param>
+        /// <param name="VideoCommentRel"></param>
         /// <returns></returns>
-        public async Task<DtoTblBlogCommentRel> AddBlogCommentRel(TblBlogCommentRel blogCommentRel)
+        public async Task<DtoTblVideoCommentRel> AddVideoCommentRel(TblVideoCommentRel VideoCommentRel)
         {
-            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync("api/BlogCommentRelCore/AddBlogCommentRel", blogCommentRel);
-            DtoTblBlogCommentRel ans = await httpResponseMessage.Content.ReadAsAsync<DtoTblBlogCommentRel>();
+            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync("api/VideoCommentRelCore/AddVideoCommentRel", VideoCommentRel);
+            DtoTblVideoCommentRel ans = await httpResponseMessage.Content.ReadAsAsync<DtoTblVideoCommentRel>();
             return ans;
         }
-        /// <summary>
-        /// Deletes a blogCommentRel from NFix.TblBlogCommentRel using its id
+
+        /// <summary>
+        /// Deletes a VideoCommentRel from NFix.TblVideoCommentRel using its id
         /// </summary>
-        /// <param name="blogCommentRel"></param>
+        /// <param name="VideoCommentRel"></param>
         /// <returns></returns>
-        public async Task<bool> DeleteBlogCommentRel(int id)
+        public async Task<bool> DeleteVideoCommentRel(int id)
         {
-            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync($"api/BlogCommentRelCore/DeleteBlogCommentRel?id={id}", id);
+            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync($"api/VideoCommentRelCore/DeleteVideoCommentRel?id={id}", id);
             bool ans = await httpResponseMessage.Content.ReadAsAsync<bool>();
             return ans;
         }
-        /// <summary>
-        /// Updates a blogCommentRel at NFix.TblBlogCommentRel
+
+        /// <summary>
+        /// Updates a VideoCommentRel at NFix.TblVideoCommentRel
         /// </summary>
-        /// <param name="blogCommentRel"></param>
+        /// <param name="VideoCommentRel"></param>
         /// <param name="logId">Old doctors id</param>
         /// <returns></returns>
-        public async Task<bool> UpdateBlogCommentRel(TblBlogCommentRel blogCommentRel, int logId)
+        public async Task<bool> UpdateVideoCommentRel(TblVideoCommentRel VideoCommentRel, int logId)
         {
-            List<object> blogCommentRelAndLogId = new List<object>();
-            blogCommentRelAndLogId.Add(blogCommentRel);
-            blogCommentRelAndLogId.Add(logId);
-            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync("api/BlogCommentRelCore/UpdateBlogCommentRel", blogCommentRelAndLogId);
+            List<object> VideoCommentRelAndLogId = new List<object>();
+            VideoCommentRelAndLogId.Add(VideoCommentRel);
+            VideoCommentRelAndLogId.Add(logId);
+            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync("api/VideoCommentRelCore/UpdateVideoCommentRel", VideoCommentRelAndLogId);
             bool ans = await httpResponseMessage.Content.ReadAsAsync<bool>();
             return ans;
         }
-        /// <summary>
-        /// Selects all blogCommentRels from NFix.TblBlogCommentRel
+
+        /// <summary>
+        /// Selects all VideoCommentRels from NFix.TblVideoCommentRel
         /// </summary>
         /// <returns></returns>
-        public async Task<List<DtoTblBlogCommentRel>> SelectAllBlogCommentRels()
+        public async Task<List<DtoTblVideoCommentRel>> SelectAllVideoCommentRels()
         {
-            HttpResponseMessage httpResponseMessage = await _httpClient.GetAsync("api/BlogCommentRelCore/SelectAllBlogCommentRels");
-            List<DtoTblBlogCommentRel> ans = await httpResponseMessage.Content.ReadAsAsync<List<DtoTblBlogCommentRel>>();
+            HttpResponseMessage httpResponseMessage = await _httpClient.GetAsync("api/VideoCommentRelCore/SelectAllVideoCommentRels");
+            List<DtoTblVideoCommentRel> ans = await httpResponseMessage.Content.ReadAsAsync<List<DtoTblVideoCommentRel>>();
             return ans;
         }
-        /// <summary>
-        /// Selects a doctor from NFix.TblBlogCommentRel by its id
+
+        /// <summary>
+        /// Selects a doctor from NFix.TblVideoCommentRel by its id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<DtoTblBlogCommentRel> SelectBlogCommentRelById(int id)
+        public async Task<DtoTblVideoCommentRel> SelectVideoCommentRelById(int id)
         {
-            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync($"api/BlogCommentRelCore/SelectBlogCommentRelById?id={id}", id);
-            DtoTblBlogCommentRel ans = await httpResponseMessage.Content.ReadAsAsync<DtoTblBlogCommentRel>();
+            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync($"api/VideoCommentRelCore/SelectVideoCommentRelById?id={id}", id);
+            DtoTblVideoCommentRel ans = await httpResponseMessage.Content.ReadAsAsync<DtoTblVideoCommentRel>();
             return ans;
         }
-        /// <summary>
-        /// Select BlogCommentRels from NFix.TblBlogCommentRel by blogId
+
+        /// <summary>
+        /// Select VideoCommentRels from NFix.TblVideoCommentRel by blogId
         /// </summary>
         /// <param name="blogId"></param>
         /// <returns></returns>
-        public async Task<List<DtoTblBlogCommentRel>> SelectBlogCommentRelByBlogId(int blogId)
+        public async Task<List<DtoTblVideoCommentRel>> SelectVideoCommentRelByBlogId(int blogId)
         {
-            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync($"api/BlogCommentRelCore/SelectBlogCommentRelByBlogId?blogId={blogId}", blogId);
-            List<DtoTblBlogCommentRel> ans = await httpResponseMessage.Content.ReadAsAsync<List<DtoTblBlogCommentRel>>();
+            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync($"api/VideoCommentRelCore/SelectVideoCommentRelByBlogId?blogId={blogId}", blogId);
+            List<DtoTblVideoCommentRel> ans = await httpResponseMessage.Content.ReadAsAsync<List<DtoTblVideoCommentRel>>();
             return ans;
         }
-        /// <summary>
-        /// Select BlogCommentRels from NFix.TblBlogCommentRel by commentId
+
+        /// <summary>
+        /// Select VideoCommentRels from NFix.TblVideoCommentRel by commentId
         /// </summary>
         /// <param name="commentId"></param>
         /// <returns></returns>
-        public async Task<List<DtoTblBlogCommentRel>> SelectBlogCommentRelByCommentId(int commentId)
+        public async Task<List<DtoTblVideoCommentRel>> SelectVideoCommentRelByCommentId(int commentId)
         {
-            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync($"api/BlogCommentRelCore/SelectBlogCommentRelByCommentId?commentId={commentId}", commentId);
-            List<DtoTblBlogCommentRel> ans = await httpResponseMessage.Content.ReadAsAsync<List<DtoTblBlogCommentRel>>();
+            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync($"api/VideoCommentRelCore/SelectVideoCommentRelByCommentId?commentId={commentId}", commentId);
+            List<DtoTblVideoCommentRel> ans = await httpResponseMessage.Content.ReadAsAsync<List<DtoTblVideoCommentRel>>();
             return ans;
         }
-
+
+
     }
 }

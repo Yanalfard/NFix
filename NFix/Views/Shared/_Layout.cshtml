@@ -34,6 +34,10 @@
     <script src="~/Scripts/Jquery/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
 
+    <!-- #region recaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
+    <!-- #endregion -->
+
 </head>
 <body>
 
@@ -49,19 +53,46 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
+                    if (User.IsInRole("admin"))
+                    {
+                        <li>
+                            <a href="/Admin/Blog/BlogTable">
+                                <span uk-icon="user"></span>
+                                پنل مدیریت
+                            </a>
+                        </li>
+                    }
+                    if (User.IsInRole("tutor"))
+                    {
+                        <li>
+                            <a href="/Tuotor/Profile/Index">
+                                <span uk-icon="user"></span>
+                                پنل مربی
+                            </a>
+                        </li>
+                    }
+                    if (User.IsInRole("user"))
+                    {
+                        <li>
+                            <a href="/User/Profile/Index">
+                                <span uk-icon="user"></span>
+                                پروفایل
+                            </a>
+                        </li>
+                    }
                     <li>
-                        <a href="#" uk-toggle="target: #ModalLogin">
-                            <span uk-icon="user"></span>
-                            ورود / ثبت نام
+                        <a href="/HomeAccount/LogOff">
+                            <span uk-icon="sign-out"></span>
+                            خروج
                         </a>
                     </li>
                 }
                 else
                 {
                     <li>
-                        <a href="#">
+                        <a href="#" uk-toggle="target: #ModalLogin">
                             <span uk-icon="user"></span>
-                            پروفایل
+                            ورود / ثبت نام
                         </a>
                     </li>
                 }
@@ -114,24 +145,38 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        if (User.IsInRole("admin"))
-                        {
-                            <a class="nav-profile" href="/Admin/Blog/BlogTable">
-                                پنل مدیریت
-                            </a>
-                        }
-                        if (User.IsInRole("tutor"))
-                        {
-                            <a class="nav-profile" href="/Tuotor/Profile/Index">
-                                پنل مربی
-                            </a>
-                        }
-                        if (User.IsInRole("user"))
-                        {
-                            <a class="nav-profile" href="/User/Profile/Index">
-                                پنل کاربری
-                            </a>
-                        }
+                        <a class="nav-profile" type="button" href="#">
+                            پروفایل
+                        </a>
+                        <div uk-drop="offset: -10" class="drop" dir="rtl">
+                            <div class="mat uk-padding column">
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <a class="nav-profile" uk-icon="user" type="button" href="/Admin/Blog/BlogTable">
+                                        پنل مدیریت
+                                    </a>
+                                }
+                                @if (User.IsInRole("tutor"))
+                                {
+                                    <a class="nav-profile" uk-icon="user" type="button" href="/Tuotor/Profile/Index">
+                                        پنل مربی
+                                    </a>
+                                }
+                                @if (User.IsInRole("user"))
+                                {
+                                    <a class="nav-profile row" type="button" href="/User/Profile/Index">
+                                        <span uk-icon="user"></span>
+                                        <span class="uk-margin-small-right">پروفایل</span>
+                                    </a>
+                                }
+                                <a class="nav-profile  uk-margin-top" href="/HomeAccount/LogOff">
+                                    <span uk-icon="sign-out"></span>
+                                    <span class="uk-margin-small-right">خروج</span>
+                                </a>
+                            </div>
+                        </div>
+
+
                     }
                     else
                     {
@@ -157,13 +202,10 @@
                         @Html.Action("Login", "HomeAccount", new { area = "" })
                     </div>
 
-
-
-
-
                     <!--#endregion-->
 
                 </li>
+
                 <li>
                     <form class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left ">
                         <a href="" uk-search-icon></a>
@@ -300,5 +342,27 @@
 
     <!-- #endregion -->
 
+    
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+            async defer>
+    </script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("demo-form").submit();
+        }
+    </script>
+
+    <script>
+        var onSubmit = function (token) {
+            console.log('success!');
+        };
+
+        var onloadCallback = function () {
+            grecaptcha.render('submit', {
+                'sitekey': 'your_site_key',
+                'callback': onSubmit
+            });
+        };
+    </script>
 </body>
 </html>

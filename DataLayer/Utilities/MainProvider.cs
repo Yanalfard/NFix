@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text.RegularExpressions;
 using DataLayer.Models.Regular;
+using DataLayer.Repositories.Api;
 
 namespace DataLayer.Utilities
 {
@@ -70,6 +71,12 @@ namespace DataLayer.Utilities
         public enum TuotorVideoRel
         {
             ToutorId,
+            VideoId
+        }
+        
+        public enum VideoCommentRel
+        {
+            CommentId,
             VideoId
         }
 
@@ -174,6 +181,11 @@ namespace DataLayer.Utilities
                 {
                     Heart.TblProductKeywordRel.Add((TblProductKeywordRel)tableObj);
                 }
+                else if (table.GetType() == typeof(TblVideoCommentRel))
+                {
+                    Heart.TblVideoCommentRel.Add((TblVideoCommentRel)tableObj);
+                }
+                
                 Heart.SaveChanges();
                 return true;
             }
@@ -424,18 +436,14 @@ namespace DataLayer.Utilities
                     val.LogText = update.LogText;
                     val.MoneyTransfered = update.MoneyTransfered;
                 }
-                //else if (table.GetType() == typeof(TblTutor))
-                //{
-                //    TblTutor val = Heart.TblTutor.SingleOrDefault(i => i.id == logId);
-                //    TblTutor update = (TblTutor)tableObj;
-                //    val.id = update.id;
-                //    val.Description = update.Description;
-                //    val.IdentificationNo = update.IdentificationNo;
-                //    val.MainImage = update.MainImage;
-                //    val.Name = update.Name;
-                //    val.TellNo = update.TellNo;
-                //    val.UserPassId = update.UserPassId;
-                //}
+                else if (table.GetType() == typeof(TblVideoCommentRel))
+                {
+                    TblVideoCommentRel val = Heart.TblVideoCommentRel.SingleOrDefault(i => i.id == logId);
+                    TblVideoCommentRel update = (TblVideoCommentRel)tableObj;
+                    val.id = update.id;
+                    val.CommentId = update.CommentId;
+                    val.VideoId = update.VideoId;
+                }
 
                 Heart.SaveChanges();
                 return true;
@@ -523,6 +531,9 @@ namespace DataLayer.Utilities
                         break;
                     case EnumRepo.Tables.TblLog:
                         Heart.TblLog.Remove((TblLog)SelectById(EnumRepo.Tables.TblLog, id));
+                        break;
+                    case EnumRepo.Tables.TblVideoCommentRel:
+                        Heart.TblVideoCommentRel.Remove((TblVideoCommentRel)SelectById(EnumRepo.Tables.TblVideoCommentRel, id));
                         break;
                     default:
                         return false;
@@ -616,6 +627,9 @@ namespace DataLayer.Utilities
                 case EnumRepo.Tables.TblLog:
                     return Heart.TblLog.ToList();
 
+                case EnumRepo.Tables.TblVideoCommentRel:
+                    return Heart.TblVideoCommentRel.ToList();
+
                 default:
                     return new List<bool>();
             }
@@ -678,6 +692,8 @@ namespace DataLayer.Utilities
                     return Heart.TblTuotorVideoRel.SingleOrDefault(i => i.id == id);
                 else if (table == EnumRepo.Tables.TblLog)
                     return Heart.TblLog.SingleOrDefault(i => i.id == id);
+                else if (table == EnumRepo.Tables.TblVideoCommentRel)
+                    return Heart.TblVideoCommentRel.SingleOrDefault(i => i.id == id);
 
                 return null;
             }
@@ -1275,9 +1291,30 @@ namespace DataLayer.Utilities
                 return new List<TblTuotorVideoRel>();
             }
         }
-        #endregion
-        #region TblLog
-        #endregion
-
+
+        #endregion
+
+        #region TblLog
+
+        #endregion
+
+        #region TblVideoCommentRel
+        public List<TblVideoCommentRel> SelectVideoCommentRel(int entry, VideoCommentRel entryType)
+        {
+            try
+            {
+                if (entryType == VideoCommentRel.CommentId)
+                    return Heart.TblVideoCommentRel.Where(i => i.CommentId == entry).ToList();
+                else if (entryType == VideoCommentRel.VideoId)
+                    return Heart.TblVideoCommentRel.Where(i => i.VideoId == entry).ToList();
+                return null;
+            }
+            catch
+            {
+                return new List<TblVideoCommentRel>();
+            }
+        }
+
+        #endregion
     }
 }

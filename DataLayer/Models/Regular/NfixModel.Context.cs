@@ -53,6 +53,7 @@ namespace DataLayer.Models.Regular
         public virtual DbSet<TblTutor> TblTutor { get; set; }
         public virtual DbSet<TblUserPass> TblUserPass { get; set; }
         public virtual DbSet<TblVideo> TblVideo { get; set; }
+        public virtual DbSet<TblVideoCommentRel> TblVideoCommentRel { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

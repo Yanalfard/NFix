@@ -501,6 +501,8 @@ h1, h2, h3, h4, h5, h6 {
   -o-transition: all ease 0.5s;
   -webkit-transition: all ease 0.5s;
   transition: all ease 0.5s; }
+  .uk-navbar-container .drop {
+    width: 180px; }
   .uk-navbar-container .uk-navbar-dropdown {
     background: red !important;
     z-index: 500;
@@ -959,3 +961,6 @@ textarea {
   width: 200px;
   height: 200px;
   border-radius: 100%; }
+
+.display-none {
+  display: none; }

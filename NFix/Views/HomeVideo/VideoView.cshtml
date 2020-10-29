@@ -1,7 +1,7 @@
-﻿@model DataLayer.Models.Dto.DtoTblVideo
+﻿@model DataLayer.ViewModel.VideoViewViewModel
 
 @{
-    ViewBag.Title = "VideoView";
+    ViewBag.Title = ViewBag.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -20,7 +20,7 @@
             پیشنهادات
         </h4>
         <hr />
-        @Html.Action("VideoRecommendations", "HomeVideo")
+        @Html.Action("VideoRecommendations", "HomeVideo",Model.Title)
 
 
     </aside>
@@ -30,38 +30,77 @@
     <content class="column">
 
         <!--<img class="video-playback" src="https://picsum.photos/800/400" />-->
-        <video class="video-playback" controls controlsList="nodownload">
-            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-            مرورگر شما پخش ویدیو را پشتیبانی نمی کند.
-        </video>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium)
+        {
+            <video class="video-playback" controls controlsList="nodownload">
+                <source src="~/Resources/Videos/@Model.VideoUrl" type="video/mp4">
+            </video>
+        }
+        else
+        {
+            <video class="video-playback" controls controlsList="nodownload">
+                <source src="~/Resources/Videos/Demo/@Model.VidioDemoUrl" type="video/mp4">
+            </video>
+        }
+
         <h4 class="video-title">
-            تیتر ویدیو اینجا قرار می گیرد
-            تیتر ویدیو اینجا قرار می گیرد
-            تیتر ویدیو اینجا قرار می گیرد
-            تیتر ویدیو اینجا قرار می گیرد
+            @Model.Title
         </h4>
         <div class="profile-media-container">
             <section class="media row uk-padding-small">
                 <label class="view-count" uk-tooltip="تعداد بازدید">
-                    <span>1228</span>
+                    <span>@Model.ViewCount</span>
                 </label>
-                <a uk-icon="link" uk-tooltip="اشتراک گذاری"></a>
+                <input type="text" style="width:0.1px;height:0.1px;opacity:0" id="dummyInput" value="" />
+                <a uk-icon="link" onclick="copyToClipboard()" uk-tooltip="اشتراک گذاری"></a>
+
+
+                <script>
+                    function copyToClipboard() {
+                        const dummyInput = document.getElementById('dummyInput');
+                        dummyInput.value = window.location.href;
+
+                        /* Select the text field */
+                        dummyInput.select();
+                        dummyInput.setSelectionRange(0, 99999); /*For mobile devices*/
+
+                        /* Copy the text inside the text field */
+                        document.execCommand("copy");
+
+                        UIkit.notification("لینک ویدیو کپی شد")
+                    }
+                </script>
+
+
                 <!--<a class="uk-animation-slide-top-small" uk-tooltip="title:لایک" uk-icon="heart"></a>-->
-                <div class="row star-container uk-margin-small-left" uk-tooltip="2.6" dir="rtl">
-                    <div class="Stars" style="--rating: 2.6;" aria-label="Rating of this product is 2.3 out of 5."></div>
+                <div class="row star-container uk-margin-small-left" uk-tooltip="@((float)Model.Raiting / 20)" dir="rtl">
+                    <div class="Stars" style="--rating:  (@Model.Raiting/20);" aria-label="Rating of this product is 2.3 out of 5."></div>
                 </div>
             </section>
             <a href="" class="tutor row uk-margin-auto-left">
+
                 <div class="column uk-margin-auto-top uk-margin-auto-bottom">
-                    <h6>نام و نام خانوادگی</h6>
-                    <p>تخصص ورزشی</p>
+                    <h6>@Model.TutorName</h6>
+                    <p>@Model.TutorSpecialty</p>
                 </div>
-                <img class="tutor-img uk-margin-small-left" src="https://picsum.photos/64" />
+                <img class="tutor-img uk-margin-small-left" src="~/Resources/Tutor/@Model.TutorMainImage" />
+
+
             </a>
         </div>
-        <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
-        </p>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium)
+        {
+
+            <p>
+                @Model.Description
+            </p>
+        }
+        else
+        {
+            <p>
+                @Model.DescriptionDemo
+            </p>
+        }
 
         <hr />
 
@@ -80,101 +119,21 @@
 
 
         <section id="makeComment" class="make-comment uk-margin-bottom">
-            <div class="mat column">
-                <div class="column">
-                    <textarea class="textbox-bulk-txt" type="text" placeholder="..."></textarea>
-                </div>
-                <div class="row uk-margin-top">
-                    <div class="row star-container">
-                        <span class="star-cb-group">
-                            <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
-                            <input type="radio" id="rating-4" name="rating" value="4" checked="checked" /><label for="rating-4">4</label>
-                            <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
-                            <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
-                            <input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
-                            <input type="radio" id="rating-0" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
-                        </span>
-                    </div>
-                    <button class="uk-margin-auto-left">
-                        ثبت
-                    </button>
-                </div>
-            </div>
+
+            @Html.Action("CreateComment", Model.id)
+
+
         </section>
 
         <section id="comments" class="comments">
+
+
             <!-- #region Comment -->
-            <article class="uk-comment">
-                <header class="row uk-margin-small-bottom ">
-                    <span class="uk-margin-auto-right" dir="rtl">
-                        6 روز پیش
-                    </span>
-                    <h4 class="uk-comment-title uk-margin-remove">
-                        بهنام بانی
-                    </h4>
-                </header>
-                <div class="uk-comment-body">
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
-                    </p>
-                </div>
-            </article>
+            @Html.Action("ShowComments", "HomeVideo", Model.id)
+
 
             <!-- #endregion -->
-            <!-- #region Comment -->
-            <article class="uk-comment">
-                <header class="row uk-margin-small-bottom ">
-                    <span class="uk-margin-auto-right" dir="rtl">
-                        6 روز پیش
-                    </span>
-                    <h4 class="uk-comment-title uk-margin-remove">
-                        بهنام بانی
-                    </h4>
-                </header>
-                <div class="uk-comment-body">
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
-                    </p>
-                </div>
-            </article>
 
-            <!-- #endregion -->
-            <!-- #region Comment -->
-            <article class="uk-comment">
-                <header class="row uk-margin-small-bottom ">
-                    <span class="uk-margin-auto-right" dir="rtl">
-                        6 روز پیش
-                    </span>
-                    <h4 class="uk-comment-title uk-margin-remove">
-                        بهنام بانی
-                    </h4>
-                </header>
-                <div class="uk-comment-body">
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
-                    </p>
-                </div>
-            </article>
-
-            <!-- #endregion -->
-            <!-- #region Comment -->
-            <article class="uk-comment">
-                <header class="row uk-margin-small-bottom ">
-                    <span class="uk-margin-auto-right" dir="rtl">
-                        6 روز پیش
-                    </span>
-                    <h4 class="uk-comment-title uk-margin-remove">
-                        بهنام بانی
-                    </h4>
-                </header>
-                <div class="uk-comment-body">
-                    <p>
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
-                    </p>
-                </div>
-            </article>
-
-            <!-- #endregion -->
 
         </section>
 
@@ -184,3 +143,10 @@
 <div class="space"></div>
 
 <script src="~/Scripts/UIScripts/CommentSection.js"></script>
+
+<script>
+    function successComment() {
+        $("#Body").val("");
+
+    }
+</script>

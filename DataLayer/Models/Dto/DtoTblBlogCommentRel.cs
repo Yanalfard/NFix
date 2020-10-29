@@ -10,19 +10,19 @@ namespace DataLayer.Models.Dto
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
 
-        public TblBlogCommentRel ToRegular()
+        public TblVideoCommentRel ToRegular()
         {
-            return new TblBlogCommentRel();
+            return new TblVideoCommentRel();
         }
 
-        public DtoTblBlogCommentRel(TblBlogCommentRel blogCommentRel)
+        public DtoTblBlogCommentRel(TblBlogCommentRel VideoCommentRel)
         {
-            Blog = blogCommentRel.TblBlog;
-            Comment = blogCommentRel.TblComment;
+            Blog = VideoCommentRel.TblBlog;
+            Comment = VideoCommentRel.TblComment;
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblBlogCommentRel(TblBlogCommentRel blogCommentRel, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblBlogCommentRel(DtoTblBlogCommentRel VideoCommentRel, HttpStatusCode statusEffect, string errorStr)
         {
 
             StatusEffect = statusEffect;

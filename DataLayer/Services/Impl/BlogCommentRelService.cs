@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DataLayer.Models.Regular;
+using DataLayer.Repositories.Api;
 using DataLayer.Repositories.Impl;
 using DataLayer.Services.Api;
 
@@ -37,5 +38,14 @@ namespace DataLayer.Services.Impl
             return new BlogCommentRelRepo().SelectBlogCommentRelByCommentId(commentId);
         }
 
+        List<TblBlogCommentRel> IBlogCommentRelRepo.SelectBlogCommentRelByBlogId(int blogId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        List<TblBlogCommentRel> IBlogCommentRelRepo.SelectBlogCommentRelByCommentId(int commentId)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -108,6 +108,7 @@
     <Compile Include="Models\Dto\DtoTblTutor.cs" />
     <Compile Include="Models\Dto\DtoTblUserPass.cs" />
     <Compile Include="Models\Dto\DtoTblVideo.cs" />
+    <Compile Include="Models\Dto\DtoTblVideoCommentRel.cs" />
     <Compile Include="Models\Regular\NfixModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,6 +202,9 @@
     <Compile Include="Models\Regular\TblVideo.cs">
       <DependentUpon>NfixModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Regular\TblVideoCommentRel.cs">
+      <DependentUpon>NfixModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Api\IAdRepo.cs" />
     <Compile Include="Repositories\Api\IBlogCommentRelRepo.cs" />
@@ -226,6 +230,7 @@
     <Compile Include="Repositories\Api\ITuotorVideoRelRepo.cs" />
     <Compile Include="Repositories\Api\ITutorRepo.cs" />
     <Compile Include="Repositories\Api\IUserPassRepo.cs" />
+    <Compile Include="Repositories\Api\IVideoCommentRelRepo.cs" />
     <Compile Include="Repositories\Api\IVideoRepo.cs" />
     <Compile Include="Repositories\Impl\AdRepo.cs" />
     <Compile Include="Repositories\Impl\BlogCommentRelRepo.cs" />
@@ -251,6 +256,7 @@
     <Compile Include="Repositories\Impl\TuotorVideoRelRepo.cs" />
     <Compile Include="Repositories\Impl\TutorRepo.cs" />
     <Compile Include="Repositories\Impl\UserPassRepo.cs" />
+    <Compile Include="Repositories\Impl\VideoCommentRelRepo.cs" />
     <Compile Include="Repositories\Impl\VideoRepo.cs" />
     <Compile Include="Services\Api\IAdService.cs" />
     <Compile Include="Services\Api\IBlogCommentRelService.cs" />
@@ -275,6 +281,7 @@
     <Compile Include="Services\Api\ITuotorVideoRelService.cs" />
     <Compile Include="Services\Api\ITutorService.cs" />
     <Compile Include="Services\Api\IUserPassService.cs" />
+    <Compile Include="Services\Api\IVideoCommentRelService.cs" />
     <Compile Include="Services\Api\IVideoService.cs" />
     <Compile Include="Services\Impl\AdService.cs" />
     <Compile Include="Services\Impl\BlogCommentRelService.cs" />
@@ -299,15 +306,19 @@
     <Compile Include="Services\Impl\TuotorVideoRelService.cs" />
     <Compile Include="Services\Impl\TutorService.cs" />
     <Compile Include="Services\Impl\UserPassService.cs" />
+    <Compile Include="Services\Impl\VideoCommentRelService.cs" />
     <Compile Include="Services\Impl\VideoService.cs" />
     <Compile Include="Utilities\Config.cs" />
     <Compile Include="Utilities\EnumRepo.cs" />
     <Compile Include="Utilities\MainProvider.cs" />
     <Compile Include="Utilities\MethodRepo.cs" />
     <Compile Include="ViewModel\Blog.cs" />
+    <Compile Include="ViewModel\CommentViewModel.cs" />
     <Compile Include="ViewModel\Product.cs" />
+    <Compile Include="ViewModel\reCaptchaResponse.cs" />
     <Compile Include="ViewModel\Tutor.cs" />
     <Compile Include="ViewModel\User.cs" />
+    <Compile Include="ViewModel\VideoView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
