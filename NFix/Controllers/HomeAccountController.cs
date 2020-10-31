@@ -16,6 +16,8 @@ namespace NFix.Controllers
     {
         private ClientService _client = new ClientService();
         private UserPassService _userPass = new UserPassService();
+        private CatagoryService _catagory = new CatagoryService();
+
         // GET: HomeAccount
         public ActionResult Login()
         {
@@ -108,7 +110,7 @@ namespace NFix.Controllers
             return PartialView("Register", client);
         }
 
-       
+
         public ActionResult ActiveUser(string id)
         {
             try
@@ -145,6 +147,19 @@ namespace NFix.Controllers
 
 
 
+
+        public ActionResult Category()
+        {
+            var product_Groups = _catagory.SelectAllCatagorys().Where(g => g.CatagoryId == null);
+            return PartialView(product_Groups.ToList());
+        }
+
+
+        public ActionResult Category2()
+        {
+            var product_Groups = _catagory.SelectAllCatagorys().Where(g => g.CatagoryId == null);
+            return PartialView(product_Groups.ToList());
+        }
 
     }
 }

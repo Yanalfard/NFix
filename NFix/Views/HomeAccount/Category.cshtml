@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblCatagory>
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div style="height:1000px;margin-top:200px;margin-right:100px;">
+
+    @foreach (var item in Model)
+    {
+
+        if (item.TblCatagory1.Any())
+        {
+            <ul style="margin-right:50px;">
+                @foreach (var j in item.TblCatagory1)
+                {
+                    @Html.Partial("_category", item);
+                }
+            </ul>
+        }
+
+
+
+    }
+
+</div>

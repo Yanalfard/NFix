@@ -1,0 +1,34 @@
+﻿@model DataLayer.Models.Regular.TblCatagory
+
+@*<li>@Model.Name </li>
+    @if (Model.TblCatagory1.Any())
+    {
+        <ul style="margin-right:50px;">
+            @foreach (var j in Model.TblCatagory1)
+            {
+                @Html.Partial("_category", j);
+            }
+        </ul>
+    }*@
+
+
+<li>
+    <a href="#">@Model.Name</a>
+    <!-- First Tier Drop Down -->
+    @if (Model.TblCatagory1.Any())
+    {
+        <ul>
+            @foreach (var j in Model.TblCatagory1)
+            {
+                <li>
+                    @Html.Partial("_category", j)
+                </li>
+            }
+        </ul>
+
+    }
+
+</li>
+
+
+
