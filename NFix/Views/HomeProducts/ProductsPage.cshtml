@@ -1,22 +1,42 @@
-﻿@model IEnumerable<DataLayer.Models.Dto.DtoTblProduct>
+﻿@model IEnumerable<DataLayer.Models.Regular.TblProduct>
 
-<div id="product" dir="ltr" class="clipped uk-margin-auto owl-carousel uk-margin-small-top">
-    <div class="product-block column card uk-padding-remove">
-        <!-- 342 * 280 -->
-        <img src="https://picsum.photos/342/280" alt="" />
-        <content class="uk-padding">
-            <h4>اسلش ورزشی</h4>
-            <div class="row star-container" dir="rtl">
-                <div class="Stars" style="--rating: 2.6;" aria-label="Rating of this product is 2.3 out of 5."></div>
-                <label class="uk-margin-small-right">2.6</label>
-            </div>
-            <div class="row uk-margin-small-top uk-margin-left">
-                <div class="column">
-                    <span class="discount">85000</span>
-                    <span class="price">79000</span>
+@foreach (var item in Model)
+{
+    <div id="product" dir="ltr" class="clipped uk-margin-auto owl-carousel uk-margin-small-top">
+        <div class="product-block column card uk-padding-remove">
+            <!-- 342 * 280 -->
+            @foreach (var j in item.TblProductImageRel)
+            {
+                <img src="~/Resources/Product/@j.TblImage.Image" alt="" />
+
+            }
+            <content class="uk-padding">
+                <h4>@item.Name</h4>
+                <div class="row star-container" dir="rtl">
+                    <div class="Stars" style="--rating: @((float)item.Raiting / 20)" aria-label="Rating of this product is 2.3 out of 5."></div>
+                    <label class="uk-margin-small-right">@((float)item.Raiting/20)</label>
                 </div>
-                <button class="uk-margin-auto-left uk-margin-auto-top">خرید</button>
-            </div>
-        </content>
+
+                <div class="row uk-margin-small-top uk-margin-left">
+                    <div class="column">
+                        @if (item.Discount > 0)
+                        {
+                            <span class="discount">@item.Price.ToString("#,0")</span>
+                            @Math.Floor(item.Price - (double)((double)(item.Price * item.Discount) / 100)).ToString("#,0")
+                        }
+                        else
+                        {
+                            <span class="price">@item.Price.ToString("#,0")</span>
+                        }
+
+                    </div>
+                    <button class="uk-margin-auto-left uk-margin-auto-top"  onclick="ModalProduct(@item.id)">خرید</button>
+                    @*<button class="uk-margin-auto-left uk-margin-auto-top">خرید</button>*@
+                </div>
+            </content>
+        </div>
     </div>
-</div>
+}
+
+
+

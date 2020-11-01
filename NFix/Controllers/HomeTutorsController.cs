@@ -18,8 +18,8 @@ namespace NFix.Controllers
         public ActionResult TutorsPage()
         {
             var allTutors = _tutor.SelectAllTutors();
-            List<DtoTblTutor> result = MethodRepo.ConvertToDto<TblTutor, DtoTblTutor>(allTutors);
-            return PartialView(result);
+            //List<DtoTblTutor> result = MethodRepo.ConvertToDto<TblTutor, DtoTblTutor>(allTutors);
+            return PartialView(allTutors);
         }
         public ActionResult TutorView(int id)
         {
@@ -35,7 +35,7 @@ namespace NFix.Controllers
                 UserPassId = selectTutorById.UserPassId,
 
             };
-            return View(result);
+            return View(selectTutorById);
         }
     }
 }

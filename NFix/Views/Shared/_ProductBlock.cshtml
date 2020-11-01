@@ -1,22 +1,24 @@
-﻿ <!-- #region Product -->
+﻿@model DataLayer.Models.Regular.TblProduct
 
-    <div class="product-block column card uk-padding-remove">
-        <!-- 342 * 280 -->
-        <img src="https://picsum.photos/342/280" alt="" />
-        <content class="uk-padding">
-            <h4>اسلش ورزشی</h4>
-            <div class="row star-container" dir="rtl">
-                <div class="Stars" style="--rating: 2.6;" aria-label="Rating of this product is 2.3 out of 5."></div>
-                <label class="uk-margin-small-right">2.6</label>
+<!-- #region Product -->
+
+<div class="product-block column card uk-padding-remove">
+    <!-- 342 * 280 -->
+    <img src="https://picsum.photos/342/280" alt="" />
+    <content class="uk-padding">
+        <h4>اسلش ورزشی</h4>
+        <div class="row star-container" dir="rtl">
+            <div class="Stars" style="--rating: 2.6;" aria-label="Rating of this product is 2.3 out of 5."></div>
+            <label class="uk-margin-small-right">2.6</label>
+        </div>
+        <div class="row uk-margin-small-top uk-margin-left">
+            <div class="column">
+                <span class="discount">85000</span>
+                <span class="price">79000</span>
             </div>
-            <div class="row uk-margin-small-top uk-margin-left">
-                <div class="column">
-                    <span class="discount">85000</span>
-                    <span class="price">79000</span>
-                </div>
-                <button class="uk-margin-auto-left uk-margin-auto-top" uk-toggle="target: #ModalProduct">خرید</button>
-            </div>
-        </content>
-    </div>
+            <button class="uk-margin-auto-left uk-margin-auto-top" uk-toggle="target: #ModalProduct">خرید</button>
+        </div>
+    </content>
+</div>
 
 <!-- #endregion -->

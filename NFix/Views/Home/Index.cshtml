@@ -53,8 +53,7 @@
 
 <!-- #region Categories -->
 <!-- #Dynamic Categories -->
-
-@Html.Action("CategoriesPage", "HomeCategories")
+@*@Html.Action("CategoriesPage", "HomeCategories")*@
 
 <!-- #endregion -->
 
@@ -78,7 +77,7 @@
         <p>
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها
         </p>
-        <button dir="rtl" class="uk-margin-auto-right">بیشتر...</button>
+        <button onclick="window.location='/Home/About'" dir="rtl" class="uk-margin-auto-right">بیشتر...</button>
     </content>
     <img src="../Resources/Png/BodyBuilding.png" class="" alt="" />
 </section>
@@ -89,9 +88,8 @@
 
 <!-- #region  Tutors -->
 <!-- #Dynamic Tutors -->
-
-
 @Html.Action("TutorsPage", "HomeTutors")
+
 
 <!-- #endregion -->
 
@@ -192,101 +190,121 @@
 <div class="space"></div>
 
 
-<script>
 
-    let duration = 1400;
-    window.sr = ScrollReveal();
-    sr.reveal('.man', {
-        duration: duration,
-        origin: 'bottom',
-        distance: '72px',
-        opacity: 1,
-    });
-    sr.reveal('#stickies', {
-        duration: duration,
-        origin: 'right',
-        distance: '72px',
-        opacity: 1,
-    });
 
-    $('#product').owlCarousel({
-        loop: true,
-        margin: 20,
-        autoplay: false,
-        autoplayTimeout: 3500,
-        autoplayHoverPause: true,
-        nav: true,
-        responsive: {
-            1: {
-                items: 1
-            },
-            800: {
-                items: 2
-            },
-            1200: {
-                items: 3
-            },
-            1600: {
-                items: 3
-            },
-            1700: {
-                items: 4
-            }
+<div id="ModalProduct" uk-modal>
+
+</div>
+
+
+@section Scripts{
+
+
+    <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
+    <script>
+        function ModalProduct(id) {
+            $.get("/HomeProducts/ModalProduct/" + id, function (result) {
+                UIkit.modal(document.getElementById('ModalProduct')).show();
+                $("#ModalProduct").html(result);
+            });
         }
-    })
+    </script>
 
-    $('#blogs').owlCarousel({
-        loop: true,
-        margin: 20,
-        autoplay: false,
-        autoplayTimeout: 3500,
-        autoplayHoverPause: true,
-        nav: true,
-        responsive: {
-            1: {
-                items: 1
-            },
-            750: {
-                items: 2
-            },
-            1100: {
-                items: 3
-            },
-            1600: {
-                items: 3
-            },
-            1900: {
-                items: 4
+    <script>
+
+        let duration = 1400;
+        window.sr = ScrollReveal();
+        sr.reveal('.man', {
+            duration: duration,
+            origin: 'bottom',
+            distance: '72px',
+            opacity: 1,
+        });
+        sr.reveal('#stickies', {
+            duration: duration,
+            origin: 'right',
+            distance: '72px',
+            opacity: 1,
+        });
+
+        $('#product').owlCarousel({
+            loop: true,
+            margin: 20,
+            autoplay: false,
+            autoplayTimeout: 3500,
+            autoplayHoverPause: true,
+            nav: true,
+            responsive: {
+                1: {
+                    items: 1
+                },
+                800: {
+                    items: 2
+                },
+                1200: {
+                    items: 3
+                },
+                1600: {
+                    items: 3
+                },
+                1700: {
+                    items: 4
+                }
             }
-        }
-    })
+        })
 
-    $('#tutors').owlCarousel({
-        loop: true,
-        margin: 0,
-        autoplay: true,
-        autoplayTimeout: 3500,
-        autoplayHoverPause: true,
-        nav: true,
-        responsive: {
-            1: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            950: {
-                items: 3
-            },
-            1200: {
-                items: 4
-            },
-            1500: {
-                items: 5
+        $('#blogs').owlCarousel({
+            loop: true,
+            margin: 20,
+            autoplay: false,
+            autoplayTimeout: 3500,
+            autoplayHoverPause: true,
+            nav: true,
+            responsive: {
+                1: {
+                    items: 1
+                },
+                750: {
+                    items: 2
+                },
+                1100: {
+                    items: 3
+                },
+                1600: {
+                    items: 3
+                },
+                1900: {
+                    items: 4
+                }
             }
-        }
-    })
+        });
 
-</script>
+        $('#tutors').owlCarousel({
+            loop: true,
+            margin: 0,
+            autoplay: true,
+            autoplayTimeout: 3500,
+            autoplayHoverPause: true,
+            nav: true,
+            responsive: {
+                1: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                950: {
+                    items: 3
+                },
+                1200: {
+                    items: 4
+                },
+                1500: {
+                    items: 5
+                }
+            }
+        })
 
-<script src="../Scripts/UIScripts/BMICalculator.js"></script>
+    </script>
+
+}

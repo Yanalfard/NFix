@@ -183,6 +183,7 @@
     <Compile Include="Controllers\ProductKeywordRelController.cs" />
     <Compile Include="Controllers\ProductPropertyRelController.cs" />
     <Compile Include="Controllers\PropertyController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\TuotorVideoRelController.cs" />
     <Compile Include="Controllers\TutorController.cs" />
     <Compile Include="Controllers\UserPassController.cs" />
@@ -1620,6 +1621,9 @@
     <Content Include="Views\HomeVideo\ShowComments.cshtml" />
     <Content Include="Views\HomeAccount\Category.cshtml" />
     <Content Include="Views\HomeAccount\Category2.cshtml" />
+    <Content Include="Views\HomeProducts\ModalProduct.cshtml" />
+    <Content Include="Views\HomeBlogs\CreateComment.cshtml" />
+    <Content Include="Views\HomeBlogs\ShowComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

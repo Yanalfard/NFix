@@ -1,113 +1,23 @@
-﻿@model IEnumerable<DataLayer.Models.Dto.DtoTblTutor>
-<ul id="tutors" class="owl-carousel uk-margin-small-top">
-    <li>
-        <a href="" class=" card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-    <li>
-        <a href="" class="card uk-padding row">
-            <content>
-                <h3>مربی4</h3>
-                <h5>
-                    لورم ایپسوم متن
-                </h5>
-            </content>
-            <img src="../Resources/Png/Categories/Box.png" alt="" />
-        </a>
-    </li>
-</ul>
+﻿@model IEnumerable<DataLayer.Models.Regular.TblTutor>
+@if (Model.Any())
+{
+    <ul id="tutors" class="owl-carousel uk-margin-small-top">
+
+        @foreach (var item in Model)
+        {
+
+            <li>
+                <a href="/HomeTutors/TutorView/@item.id" class=" card uk-padding row">
+                    <content>
+                        <h3>@item.Name</h3>
+                        <h5>
+                            @item.Specialty
+                        </h5>
+                    </content>
+                    <img src="~/Resources/Tutor/@item.MainImage" alt="@item.Name" />
+                </a>
+            </li>
+        }
+
+    </ul>
+}

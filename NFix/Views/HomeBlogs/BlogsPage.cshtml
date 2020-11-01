@@ -1,18 +1,19 @@
-﻿@model IEnumerable<DataLayer.Models.Dto.DtoTblBlog>
-<div id="blogs" class="clipped row uk-margin-auto owl-carousel uk-margin-remove-top">
-    <!-- #region Blog -->
-    @foreach (var item in Model)
-    {
-        <div class="column card blog uk-padding-remove ">
-            <img src="~/Resources/Blogs/@item.MainImage" class="uk-flex-1" alt="" />
-            <content class="uk-padding uk-padding-remove-top uk-flex-1">
-                <h3>@item.Body</h3>
-                <p class="uk-margin-remove-bottom uk-margin-small-top">
-                    @Html.Raw(item.Body)
-                </p>
-                <a class="uk-margin-auto-top" href="/HomeBlogs/BlogView/@item.id">...بیشتر</a>
-            </content>
-        </div>
-    }
-    <!-- #endregion -->
-</div>
+﻿@model IEnumerable<DataLayer.Models.Regular.TblBlog>
+@if (Model.Any())
+{
+    <div id="blogs" class="clipped row uk-margin-auto owl-carousel uk-margin-remove-top">
+        <!-- #region Blog -->
+        @foreach (var item in Model)
+        {
+            <div class="column card blog uk-padding-remove ">
+                <img src="~/Resources/Blogs/@item.MainImage" class="uk-flex-1" alt="" />
+                <content class="uk-padding uk-padding-remove-top uk-flex-1">
+                    <h3>@item.Title</h3>
+
+                    <a class="uk-margin-auto-top" href="/BlogView/@item.id/@item.Description">...بیشتر</a>
+                </content>
+            </div>
+        }
+        <!-- #endregion -->
+    </div>
+}

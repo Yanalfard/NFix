@@ -316,6 +316,7 @@
     <Compile Include="ViewModel\CommentViewModel.cs" />
     <Compile Include="ViewModel\Product.cs" />
     <Compile Include="ViewModel\reCaptchaResponse.cs" />
+    <Compile Include="ViewModel\ShopCartViewModel.cs" />
     <Compile Include="ViewModel\Tutor.cs" />
     <Compile Include="ViewModel\User.cs" />
     <Compile Include="ViewModel\VideoView.cs" />

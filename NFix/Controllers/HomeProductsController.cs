@@ -21,8 +21,8 @@ namespace NFix.Controllers
         public ActionResult ProductsPage()
         {
             var allProducts = _product.SelectAllProducts();
-            List<DtoTblProduct> result = MethodRepo.ConvertToDto<TblProduct, DtoTblProduct>(allProducts);
-            return PartialView(result);
+            //List<DtoTblProduct> result = MethodRepo.ConvertToDto<TblProduct, DtoTblProduct>(allProducts);
+            return PartialView(allProducts);
         }
         public ActionResult ProductView(int id)
         {
@@ -42,6 +42,12 @@ namespace NFix.Controllers
                 Status = selectVideoById.Status,
             };
             return View(result);
+        }
+
+        public ActionResult ModalProduct(int id)
+        {
+            TblProduct selectVideoById = _product.SelectProductById(id);
+            return PartialView(selectVideoById);
         }
     }
 }

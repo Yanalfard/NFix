@@ -19,24 +19,7 @@
     <link href="/Styles/OwlCarousel/owl.theme.default.min.css" rel="stylesheet" />
 
     <!-- UIkit JS -->
-    <script src="/Scripts/UIKit/uikit.min.js"></script>
-    <script src="/Scripts/UIKit/uikit-icons.js"></script>
-
-    <!--Owl Carousel Scripts-->
-    <script src="/Scripts/OwlCarousel/owl.carousel.min.js"></script>
-
-    <!--Scroll Reveal-->
-    <script src="https://unpkg.com/scrollreveal"></script>
-
-    <!--Jquery-->
-    <script src="~/Scripts/Jquery/jquery-3.5.1.min.js"></script>
-    <script src="~/Scripts/Jquery/jquery.validate.min.js"></script>
-    <script src="~/Scripts/Jquery/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
-
-    <!-- #region recaptcha -->
-    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
-    <!-- #endregion -->
+    
 
 </head>
 <body>
@@ -342,7 +325,7 @@
 
     <!-- #endregion -->
 
-    
+
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
             async defer>
     </script>
@@ -364,5 +347,23 @@
             });
         };
     </script>
+    <script src="~/Scripts/UIKit/uikit.min.js"></script>
+    <script src="~/Scripts/UIKit/uikit-icons.js"></script>
+
+    <!--Owl Carousel Scripts-->
+    <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
+    <!--Scroll Reveal-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--Jquery-->
+    <script src="~/Scripts/Jquery/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
+
+    <!-- #region recaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
+    <!-- #endregion -->
+    @RenderSection("Scripts", false)
 </body>
 </html>

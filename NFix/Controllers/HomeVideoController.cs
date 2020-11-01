@@ -90,12 +90,16 @@ namespace NFix.Controllers
         {
             try
             {
+                if (!User.Identity.IsAuthenticated)
+                {
+                    return JavaScript("UIkit.modal(document.getElementById('ModalLogin')).show();");
+                }
+                if (!User.IsInRole("user"))
+                {
+                    return JavaScript("alert('شما مجاز به ثبت پیام نیستید')");
+                }
                 TblUserPass tblUserPass = _userPass.SelectUserPassByUsername(User.Identity.Name);
                 TblClient tblClient = _client.SelectClientByUserPassId(tblUserPass.id);
-                if (tblClient == null)
-                {
-                    return JavaScript("alert('لطفا وارد شوید')");
-                }
                 TblComment tblComment = new TblComment();
 
                 tblComment.Body = comment.Body;
@@ -124,19 +128,19 @@ namespace NFix.Controllers
                 }
                 TblVideo updateVideo = new TblVideo()
                 {
-                    id= video.id,
-                    DateSubmited= video.DateSubmited,
-                    Description= video.Description,
-                    DescriptionDemo= video.DescriptionDemo,
-                    IsHome= video.IsHome,
-                    IsOnline= video.IsOnline,
-                    MainImage= video.MainImage,
-                    Raiting= video.Raiting,
-                    ShareLink= video.ShareLink,
-                    Title= video.Title,
-                    VideoUrl= video.VideoUrl,
-                    VidioDemoUrl= video.VidioDemoUrl,
-                    ViewCount= video.ViewCount,
+                    id = video.id,
+                    DateSubmited = video.DateSubmited,
+                    Description = video.Description,
+                    DescriptionDemo = video.DescriptionDemo,
+                    IsHome = video.IsHome,
+                    IsOnline = video.IsOnline,
+                    MainImage = video.MainImage,
+                    Raiting = video.Raiting,
+                    ShareLink = video.ShareLink,
+                    Title = video.Title,
+                    VideoUrl = video.VideoUrl,
+                    VidioDemoUrl = video.VidioDemoUrl,
+                    ViewCount = video.ViewCount,
                 };
 
                 bool dd = _video.UpdateVideo(updateVideo, video.id);

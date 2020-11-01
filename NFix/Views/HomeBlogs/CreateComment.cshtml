@@ -1,0 +1,30 @@
+﻿
+@model DataLayer.ViewModel.CommentViewModel
+
+@using (Ajax.BeginForm("CreateComment", "HomeBlogs", FormMethod.Post, new AjaxOptions()
+{
+
+
+    OnSuccess = "successComment",
+    UpdateTargetId = "comments"
+
+}))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.BlogId)
+    <div class="mat column">
+
+        <div class="column">
+            @Html.TextAreaFor(m => m.Body, new { @class = "textbox-bulk-txt", placeholder = "متن نظر خود را وارد کنید", required = "required" })
+            @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+        </div>
+        <div class="row uk-margin-top">
+            
+            <button class="uk-margin-auto-left">
+                ثبت
+            </button>
+        </div>
+    </div>
+
+}
+

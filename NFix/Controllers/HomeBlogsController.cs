@@ -11,12 +11,17 @@ using DataLayer.Services.Impl;
 using DataLayer.Models.Dto;
 using DataLayer.Utilities;
 using DataLayer.Models.Regular;
+using DataLayer.ViewModel;
 
 namespace NFix.Controllers
 {
     public class HomeBlogsController : Controller
     {
         private BlogService _blog;
+        private ClientService _client = new ClientService();
+        private UserPassService _userPass = new UserPassService();
+        private CommentService _comment = new CommentService();
+        private BlogCommentRelService _blogComment = new BlogCommentRelService();
         public HomeBlogsController()
         {
             _blog = new BlogService();
@@ -26,21 +31,101 @@ namespace NFix.Controllers
         public ActionResult BlogsPage()
         {
             var allBlog = _blog.SelectAllBlogs();
-            List<DtoTblBlog> result = MethodRepo.ConvertToDto<TblBlog, DtoTblBlog>(allBlog);
-            return PartialView(result);
+            return PartialView(allBlog);
+        }
+        [Route("BlogView/{id}/{Description}")]
+        public ActionResult BlogView(int id, string Description)
+        {
+            ViewBag.Description = Description;
+            TblBlog selectBlogById = _blog.SelectBlogById(id);
+            return View(selectBlogById);
+        }
+        public ActionResult CreateComment(int id)
+        {
+            try
+            {
+                return PartialView(new CommentViewModel()
+                {
+                    BlogId = id,
+                });
+            }
+            catch
+            {
+                return HttpNotFound();
+            }
+        }
+        [HttpPost]
+        public ActionResult CreateComment(CommentViewModel comment)
+        {
+            try
+            {
+                if (!User.Identity.IsAuthenticated)
+                {
+                    return JavaScript("UIkit.modal(document.getElementById('ModalLogin')).show();");
+                }
+                if (!User.IsInRole("user"))
+                {
+                    return JavaScript("alert('شما مجاز به ثبت پیام نیستید')");
+                }
+                TblUserPass tblUserPass = _userPass.SelectUserPassByUsername(User.Identity.Name);
+                TblClient tblClient = _client.SelectClientByUserPassId(tblUserPass.id);
+                TblComment tblComment = new TblComment();
+
+                tblComment.Body = comment.Body;
+                tblComment.ClientId = tblClient.id;
+                tblComment.IsValid = false;
+                tblComment.DateSubmited = DateTime.Now.ToString();
+
+                bool x = _comment.AddComment(tblComment);
+                TblBlogCommentRel tblBlogCommentRel = new TblBlogCommentRel()
+                {
+                    CommentId = tblComment.id,
+                    BlogId = comment.BlogId,
+                };
+                bool y = _blogComment.AddBlogCommentRel(tblBlogCommentRel);
+                List<TblComment> List = new List<TblComment>();
+                _blogComment.SelectBlogCommentRelByBlogId(comment.BlogId).ForEach(i => List.Add(_comment.SelectCommentById(i.CommentId)));
+                return PartialView("ShowComments", List.Where(i => i.IsValid == true).OrderByDescending(i => i.DateSubmited));
+
+            }
+            catch (Exception)
+            {
+                return HttpNotFound();
+            }
+        }
+        public ActionResult ShowComments(int id)
+        {
+            try
+            {
+                List<TblComment> List = new List<TblComment>();
+                _blogComment.SelectBlogCommentRelByBlogId(id).ForEach(i => List.Add(_comment.SelectCommentById(i.CommentId)));
+                return PartialView(List.Where(i => i.IsValid == true).OrderByDescending(i => i.DateSubmited));
+            }
+            catch
+            {
+                return HttpNotFound();
+            }
+
         }
 
-        public ActionResult BlogView(int id)
+
+        public ActionResult AddLikeBlog(int id)
         {
             TblBlog selectBlogById = _blog.SelectBlogById(id);
-            DtoTblBlog result = new DtoTblBlog
+            selectBlogById.LikeCount += 1;
+            TblBlog tblBlog = new TblBlog()
             {
-                id = selectBlogById.id,
-                Body = selectBlogById.Body,
-                MainImage = selectBlogById.MainImage,
-                LikeCount = selectBlogById.LikeCount
+                Body= selectBlogById.Body,
+                Description= selectBlogById.Description,
+                id= selectBlogById.id,
+                LikeCount=selectBlogById.LikeCount,
+                MainImage=selectBlogById.MainImage,
+                Title=selectBlogById.Title
             };
-            return View(result);
+
+            bool s = _blog.UpdateBlog(tblBlog, id);
+            return PartialView("BlogView", _blog.SelectBlogById(id));
+
         }
     }
 }
