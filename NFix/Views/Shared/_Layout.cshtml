@@ -186,7 +186,12 @@
                     </div>
 
                     <!--#endregion-->
+                    <!-- #region Login -->
+                    <div id="ModalForget" uk-modal>
+                        @Html.Action("ForgotPassword", "HomeAccount", new { area = "" })
+                    </div>
 
+                    <!--#endregion-->
                 </li>
 
                 <li>

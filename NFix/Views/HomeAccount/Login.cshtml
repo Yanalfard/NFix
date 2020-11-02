@@ -10,7 +10,7 @@
                 <h3>
                     ورود
                 </h3>
-                @Html.LabelFor(model => model.UserName, "ایمیل ", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
                 @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
 
@@ -19,23 +19,28 @@
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
                 @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "uk-margin-small-top" })
-                @Html.EditorFor(model => model.RememberMe)
+                @Html.EditorFor(model => model.RememberMe, new { @class = "uk-margin-small-top uk-margin-right" })
                 @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
 
                 <!-- #region     -->
                 <!--<div class="center uk-margin-medium-top">
                     <div dir="rtl">-->
-                        <!-- Site -->
-                        <!-- localhost -->
-                        <!--<div class="g-recaptcha" data-sitekey="6Ld_XsIZAAAAAD5pg4pDXJWD93von5OYhbai1zma"></div>
+                <!-- Site -->
+                <!-- localhost -->
+                <!--<div class="g-recaptcha" data-sitekey="6Ld_XsIZAAAAAD5pg4pDXJWD93von5OYhbai1zma"></div>
 
                         <span class=" uk-text-danger">@ViewBag.Message</span>
                     </div>
                 </div>-->
                 <!-- #endregion -->
+                <div>
+                     <a class=""
+                       onclick="UIkit.modal(document.getElementById('ModalForget')).show();"> فراموش کردن رمز</a>
+                </div>
                 <div class="row uk-margin-medium-top">
                     <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
                        onclick="UIkit.modal(document.getElementById('ModalRegister')).show();">ثبت نام</a>
+
                     <button class=" uk-margin-auto-bottom ">
                         ورود
                     </button>

@@ -19,6 +19,7 @@ namespace DataLayer.Models.Regular
         {
             this.TblTuotorVideoRel = new HashSet<TblTuotorVideoRel>();
             this.TblVideoCommentRel = new HashSet<TblVideoCommentRel>();
+            this.TblVideoKeyword = new HashSet<TblVideoKeyword>();
         }
     
         public int id { get; set; }
@@ -34,10 +35,14 @@ namespace DataLayer.Models.Regular
         public bool IsHome { get; set; }
         public int Raiting { get; set; }
         public string ShareLink { get; set; }
+        public int CatagoryId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblTuotorVideoRel> TblTuotorVideoRel { get; set; }
+        public virtual TblVideoCatagory TblVideoCatagory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblVideoCommentRel> TblVideoCommentRel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblVideoKeyword> TblVideoKeyword { get; set; }
     }
 }

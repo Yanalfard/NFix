@@ -12,20 +12,22 @@ namespace DataLayer.Models.Regular
     using System;
     using System.Collections.Generic;
     
-    public partial class TblDiscount
+    public partial class TblOrder
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TblDiscount()
+        public TblOrder()
         {
-            this.TblOrder = new HashSet<TblOrder>();
+            this.TblClientProductRel = new HashSet<TblClientProductRel>();
         }
     
         public int id { get; set; }
-        public string Name { get; set; }
-        public int Discount { get; set; }
-        public int Count { get; set; }
+        public long Sum { get; set; }
+        public bool IsFInaly { get; set; }
+        public System.DateTime Date { get; set; }
+        public Nullable<int> DiscountId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblOrder> TblOrder { get; set; }
+        public virtual ICollection<TblClientProductRel> TblClientProductRel { get; set; }
+        public virtual TblDiscount TblDiscount { get; set; }
     }
 }

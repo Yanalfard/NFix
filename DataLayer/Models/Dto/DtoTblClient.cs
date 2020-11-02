@@ -16,7 +16,6 @@ namespace DataLayer.Models.Dto
 
         public int id { get; set; }
         [Display(Name = "نام")]
-        [Required(ErrorMessage ="لطفا {0} را وارد کنید")]
         [MinLength(4,ErrorMessage ="تعداد کاراکتر کم است")]
         public string Name { get; set; }
         [Display(Name="کد ملی")]
@@ -33,7 +32,7 @@ namespace DataLayer.Models.Dto
         [Display(Name="مرا بخاطر بسپار")]
         public bool RememberMe { get; set; }
         public string PostalCode { get; set; }
-        [Display(Name = "ایمیل ")]
+        [Display(Name = "نام کاربری ")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MinLength(4, ErrorMessage = "تعداد کاراکتر کم است")]
         public string UserName { get; set; }

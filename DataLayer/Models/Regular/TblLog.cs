@@ -17,5 +17,6 @@ namespace DataLayer.Models.Regular
         public int id { get; set; }
         public string LogText { get; set; }
         public long MoneyTransfered { get; set; }
+        public System.DateTime Date { get; set; }
     }
 }

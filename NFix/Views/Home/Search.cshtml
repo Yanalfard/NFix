@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<DataLayer.Models.Regular.TblVideo>
 @{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,14 +13,16 @@
     </form>
 </section>
 <img src="~/Resources/Svg/Biscuits/Poly_2.svg" />
+@if (Model.Any())
+{
+    <section class="videos column">
+        @*<h4 class="clipped uk-margin-medium-top">پیشنهادی</h4>*@
+        <content class="grid uk-margin-medium-bottom" dir="rtl">
+            @foreach (var item in Model)
+            {
+                @Html.Partial("_VideoBlock", item)
+            }
 
-<section class="videos column">
-    @*<h4 class="clipped uk-margin-medium-top">پیشنهادی</h4>*@
-    <content class="grid uk-margin-medium-bottom" dir="rtl">
-        @Html.Partial("_VideoBlock")
-        @Html.Partial("_VideoBlock")
-        @Html.Partial("_VideoBlock")
-        @Html.Partial("_VideoBlock")
-        @Html.Partial("_VideoBlock")
-    </content>
-</section>
+        </content>
+    </section>
+}

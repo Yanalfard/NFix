@@ -17,10 +17,11 @@ namespace DataLayer.Models.Regular
         public int id { get; set; }
         public int ClientId { get; set; }
         public int ProductId { get; set; }
-        public string Date { get; set; }
         public int Count { get; set; }
+        public int OrderId { get; set; }
     
         public virtual TblClient TblClient { get; set; }
+        public virtual TblOrder TblOrder { get; set; }
         public virtual TblProduct TblProduct { get; set; }
     }
 }

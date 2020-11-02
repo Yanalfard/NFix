@@ -5,38 +5,38 @@
         @using (Ajax.BeginForm("Register", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ModalRegister" }, htmlAttributes: new { @id = "RegisterForm" }))
         {
             @Html.AntiForgeryToken()
-    <div class="column uk-padding-remove-bottom">
-        <h3>
-            ثبت نام
-        </h3>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = " uk-margin-small-top" } })
-        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            <div class="column uk-padding-remove-bottom">
+                <h3>
+                    ثبت نام
+                </h3>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = " uk-margin-small-top" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
 
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = " uk-margin-small-top" } })
-        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = " uk-margin-small-top" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
-        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = " uk-margin-small-top" } })
-        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = " uk-margin-small-top" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
-        @Html.LabelFor(model => model.RePassword, htmlAttributes: new { @class = "control-label col-md-2" })
-        @Html.EditorFor(model => model.RePassword, new { htmlAttributes = new { @class = " uk-margin-small-top" } })
-        @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger" })
-        <div class="row uk-margin-medium-top">
-            <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
-               onclick="UIkit.modal(document.getElementById('ModalLogin')).show();">ورود</a>
-            <button class="uk-margin-remove-bottom">
-                ثبت نام
-            </button>
-        </div>
-    </div>
-          
+                @Html.LabelFor(model => model.RePassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.RePassword, new { htmlAttributes = new { @class = " uk-margin-small-top" } })
+                @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger" })
+                <div class="row uk-margin-medium-top">
+                    <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
+                       onclick="UIkit.modal(document.getElementById('ModalLogin')).show();">ورود</a>
+                    <button class="uk-margin-remove-bottom">
+                        ثبت نام
+                    </button>
+                </div>
+            </div>
+
         }
 
-        
+
     </div>
 </div>

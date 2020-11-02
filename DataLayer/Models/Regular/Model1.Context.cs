@@ -42,6 +42,7 @@ namespace DataLayer.Models.Regular
         public virtual DbSet<TblImage> TblImage { get; set; }
         public virtual DbSet<TblKeyword> TblKeyword { get; set; }
         public virtual DbSet<TblLog> TblLog { get; set; }
+        public virtual DbSet<TblOrder> TblOrder { get; set; }
         public virtual DbSet<TblProduct> TblProduct { get; set; }
         public virtual DbSet<TblProductCommentRel> TblProductCommentRel { get; set; }
         public virtual DbSet<TblProductImageRel> TblProductImageRel { get; set; }
@@ -53,7 +54,9 @@ namespace DataLayer.Models.Regular
         public virtual DbSet<TblTutor> TblTutor { get; set; }
         public virtual DbSet<TblUserPass> TblUserPass { get; set; }
         public virtual DbSet<TblVideo> TblVideo { get; set; }
+        public virtual DbSet<TblVideoCatagory> TblVideoCatagory { get; set; }
         public virtual DbSet<TblVideoCommentRel> TblVideoCommentRel { get; set; }
+        public virtual DbSet<TblVideoKeyword> TblVideoKeyword { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

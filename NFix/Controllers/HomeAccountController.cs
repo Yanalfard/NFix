@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using NFix.Utilities;
 using DataLayer.Utilities;
+using DataLayer.ViewModel;
 
 namespace NFix.Controllers
 {
@@ -35,7 +36,7 @@ namespace NFix.Controllers
             //    return PartialView("Login", client);
             //}
             string hashPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(client.Password, "SHA256");
-            TblUserPass user = _userPass.SelectUserPassByUsernameAndPassword(client.UserName.ToLower(), hashPassword);
+            TblUserPass user = _userPass.SelectUserPassByUsernameAndPassword(client.UserName.Trim().ToLower(), hashPassword);
             if (user != null)
             {
                 if (user.IsActive)
@@ -64,22 +65,24 @@ namespace NFix.Controllers
         [HandleError]
         public ActionResult Register(DtoTblClient client)
         {
-            client.UserName = client.Email;
+            client.Name = client.UserName;
             if (ModelState.IsValid)
             {
-
+                if (_userPass.SelectAllUserPasss().Any(u => u.Username == client.UserName))
+                {
+                    ModelState.AddModelError("Username", "نام کاربری  وارد شده تکراری است");
+                }
                 if (_client.SelectAllClients().Any(u => u.Email == client.Email))
                 {
                     ModelState.AddModelError("Email", "ایمیل  وارد شده تکراری است");
                 }
                 else
                 {
-
                     TblUserPass addUserPass = new TblUserPass()
                     {
                         IsActive = false,
                         Auth = Guid.NewGuid().ToString(),
-                        Username = client.UserName.ToLower(),
+                        Username = client.UserName.Trim().ToLower(),
                         Password = FormsAuthentication.HashPasswordForStoringInConfigFile(client.Password, "SHA256"),
                         RoleId = 1
                     };
@@ -88,7 +91,7 @@ namespace NFix.Controllers
                     {
                         TblClient tblClient = new TblClient()
                         {
-                            UserPassId = _userPass.SelectUserPassByUsername(client.UserName).id,
+                            UserPassId = addUserPass.id,
                             TellNo = "",
                             Name = client.Name,
                             InviteCode = "",
@@ -101,6 +104,8 @@ namespace NFix.Controllers
                         bool addClient = _client.AddClient(tblClient);
                         if (addClient)
                         {
+                            string body = PartialToStringClass.RenderPartialView("HomeAccount", "ActiviationEmail", client);
+                            SendEmail.Send(client.Email, "ایمیل فعالسازی", body);
                             return JavaScript("document.getElementById('RegisterForm').reset();alert('ثبت نام شما انجام شد و لینک فعال سازی به ایمیل شما ارسال شد');UIkit.modal(document.getElementById('ModalLogin')).show();");
                             //return JavaScript("location.reload(true)");
                         };
@@ -144,6 +149,127 @@ namespace NFix.Controllers
                 return RedirectToAction("/ErrorPage/NotFound");
             }
         }
+
+
+
+
+        public ActionResult ForgotPassword()
+        {
+            try
+            {
+                return PartialView();
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult ForgotPassword(ForgotPasswordViewModel forgot, FormCollection form)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //if (!MethodRepo.CheckRechapcha(form))
+                    //{
+                    //    ViewBag.Message = "لطفا گزینه من ربات نیستم را تکمیل کنید";
+                    //    return View(forgot);
+                    //}
+                    var user = _userPass.SelectAllUserPasss().SingleOrDefault(u => u.Username == forgot.UserName);
+                    if (user != null)
+                    {
+                        if (user.IsActive)
+                        {
+                            string bodyEmail =
+                                PartialToStringClass.RenderPartialView("HomeAccount", "RecoveryPass", user);
+                            SendEmail.Send(_client.SelectClientByUserPassId(user.id).Email, "بازیابی کلمه عبور", bodyEmail);
+                            return View("SuccesForgotPassword", user);
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("UserName", "حساب کاربری شما فعال نیست");
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("UserName", "کاربری یافت نشد");
+                    }
+                }
+                return PartialView("ForgotPassword", forgot);
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+        }
+
+        public ActionResult RecoveryPassword(string id)
+        {
+            try
+            {
+                return PartialView();
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult RecoveryPassword(string id, RecoveryPasswordViewModel recovery)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var user = _userPass.SelectAllUserPasss().SingleOrDefault(u => u.Auth == id);
+                    if (user == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    user.Password = FormsAuthentication.HashPasswordForStoringInConfigFile(recovery.Password, "SHA256");
+                    user.Auth = Guid.NewGuid().ToString();
+                    return Redirect("/Login?recovery=true");
+                }
+                return View();
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+        }
+
+
+
+
+
+        public ActionResult ActiviationEmail()
+        {
+            try
+            {
+                return PartialView();
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+        }
+
+        public ActionResult RecoveryPass()
+        {
+            try
+            {
+                return PartialView();
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+        }
+
 
 
 

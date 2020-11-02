@@ -1,0 +1,11 @@
+﻿
+@using System.Configuration
+@model DataLayer.Models.Regular.TblUserPass
+<div style="direction: rtl; padding: 20px">
+    <h2>@Model.Username عزیز !</h2>
+    <p>جهت بازیابی کلمه عبور خود روی لینک زیر کلیک کنید .</p>
+    <p>
+        <a href="@ConfigurationManager.AppSettings["MyDomain"]/Account/RecoveryPassword/@Model.Auth">لینک بازیابی کلمه عبور</a>
+    </p>
+</div>
+

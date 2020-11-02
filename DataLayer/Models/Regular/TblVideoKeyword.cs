@@ -12,20 +12,12 @@ namespace DataLayer.Models.Regular
     using System;
     using System.Collections.Generic;
     
-    public partial class TblDiscount
+    public partial class TblVideoKeyword
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TblDiscount()
-        {
-            this.TblOrder = new HashSet<TblOrder>();
-        }
-    
         public int id { get; set; }
+        public int VideoId { get; set; }
         public string Name { get; set; }
-        public int Discount { get; set; }
-        public int Count { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblOrder> TblOrder { get; set; }
+        public virtual TblVideo TblVideo { get; set; }
     }
 }

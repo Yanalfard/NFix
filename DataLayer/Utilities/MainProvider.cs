@@ -250,7 +250,6 @@ namespace DataLayer.Utilities
                     val.ClientId = update.ClientId;
                     val.id = update.id;
                     val.Count = update.Count;
-                    val.Date = update.Date;
                     val.ProductId = update.ProductId;
                 }
                 else if (table.GetType() == typeof(TblComment))
@@ -443,6 +442,16 @@ namespace DataLayer.Utilities
                     val.id = update.id;
                     val.CommentId = update.CommentId;
                     val.VideoId = update.VideoId;
+                }
+                else if (table.GetType() == typeof(TblOrder))
+                {
+                    TblOrder val = Heart.TblOrder.SingleOrDefault(i => i.id == logId);
+                    TblOrder update = (TblOrder)tableObj;
+                    val.id = update.id;
+                    val.Date = update.Date;
+                    val.DiscountId = update.DiscountId;
+                    val.IsFInaly = update.IsFInaly;
+                    val.Sum = update.Sum;
                 }
 
                 Heart.SaveChanges();

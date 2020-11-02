@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="NFixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="NFixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -82,8 +82,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ClientId" Type="int" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
-          <Property Name="Date" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TblComment">
           <Key>
@@ -92,7 +92,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ClientId" Type="int" Nullable="false" />
           <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="DateSubmited" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="DateSubmited" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="IsValid" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TblDeal">
@@ -144,6 +144,17 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LogText" Type="nvarchar(max)" Nullable="false" />
           <Property Name="MoneyTransfered" Type="bigint" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sum" Type="bigint" Nullable="false" />
+          <Property Name="IsFInaly" Type="bit" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="DiscountId" Type="int" />
         </EntityType>
         <EntityType Name="TblProduct">
           <Key>
@@ -151,7 +162,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="DateSubmited" Type="nvarchar" MaxLength="25" />
+          <Property Name="DateSubmited" Type="nvarchar" MaxLength="20" />
           <Property Name="Raiting" Type="int" Nullable="false" />
           <Property Name="Price" Type="bigint" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="300" />
@@ -206,7 +217,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="300" Nullable="false" />
         </EntityType>
@@ -253,12 +264,21 @@
           <Property Name="Title" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="DescriptionDemo" Type="nvarchar(max)" />
-          <Property Name="DateSubmited" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="DateSubmited" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="IsOnline" Type="bit" Nullable="false" />
           <Property Name="ViewCount" Type="int" Nullable="false" />
           <Property Name="IsHome" Type="bit" Nullable="false" />
           <Property Name="Raiting" Type="int" Nullable="false" />
           <Property Name="ShareLink" Type="nvarchar(max)" />
+          <Property Name="CatagoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblVideoCatagory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="TblVideoCommentRel">
           <Key>
@@ -267,6 +287,14 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VideoId" Type="int" Nullable="false" />
           <Property Name="CommentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblVideoKeyword">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VideoId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK_TblBlogCommentRel_TblBlog">
           <End Role="TblBlog" Type="Self.TblBlog" Multiplicity="1">
@@ -362,6 +390,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblClientProductRel_TblOrder">
+          <End Role="TblOrder" Type="Self.TblOrder" Multiplicity="1" />
+          <End Role="TblClientProductRel" Type="Self.TblClientProductRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblOrder">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblClientProductRel">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblClientProductRel_TblProduct">
           <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -413,6 +453,18 @@
             </Principal>
             <Dependent Role="TblDealPropertyRel">
               <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOrder_TblDiscount">
+          <End Role="TblDiscount" Type="Self.TblDiscount" Multiplicity="0..1" />
+          <End Role="TblOrder" Type="Self.TblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblDiscount">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblOrder">
+              <PropertyRef Name="DiscountId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -592,6 +644,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblVideo_TblVideoCatagory">
+          <End Role="TblVideoCatagory" Type="Self.TblVideoCatagory" Multiplicity="1" />
+          <End Role="TblVideo" Type="Self.TblVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblVideoCatagory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblVideo">
+              <PropertyRef Name="CatagoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblVideoCommentRel_TblComment">
           <End Role="TblComment" Type="Self.TblComment" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -616,6 +680,20 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="TblVideoCommentRel">
+              <PropertyRef Name="VideoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblVideoKeyword_TblVideo">
+          <End Role="TblVideo" Type="Self.TblVideo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblVideoKeyword" Type="Self.TblVideoKeyword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblVideo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblVideoKeyword">
               <PropertyRef Name="VideoId" />
             </Dependent>
           </ReferentialConstraint>
@@ -667,6 +745,7 @@
           <EntitySet Name="TblImage" EntityType="Self.TblImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblKeyword" EntityType="Self.TblKeyword" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblLog" EntityType="Self.TblLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblOrder" EntityType="Self.TblOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblProduct" EntityType="Self.TblProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblProductCommentRel" EntityType="Self.TblProductCommentRel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblProductImageRel" EntityType="Self.TblProductImageRel" Schema="dbo" store:Type="Tables" />
@@ -678,7 +757,9 @@
           <EntitySet Name="TblTutor" EntityType="Self.TblTutor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblUserPass" EntityType="Self.TblUserPass" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblVideo" EntityType="Self.TblVideo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblVideoCatagory" EntityType="Self.TblVideoCatagory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblVideoCommentRel" EntityType="Self.TblVideoCommentRel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblVideoKeyword" EntityType="Self.TblVideoKeyword" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_TblBlogCommentRel_TblBlog" Association="Self.FK_TblBlogCommentRel_TblBlog">
             <End Role="TblBlog" EntitySet="TblBlog" />
             <End Role="TblBlogCommentRel" EntitySet="TblBlogCommentRel" />
@@ -707,6 +788,10 @@
             <End Role="TblClient" EntitySet="TblClient" />
             <End Role="TblClientProductRel" EntitySet="TblClientProductRel" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblClientProductRel_TblOrder" Association="Self.FK_TblClientProductRel_TblOrder">
+            <End Role="TblOrder" EntitySet="TblOrder" />
+            <End Role="TblClientProductRel" EntitySet="TblClientProductRel" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblClientProductRel_TblProduct" Association="Self.FK_TblClientProductRel_TblProduct">
             <End Role="TblProduct" EntitySet="TblProduct" />
             <End Role="TblClientProductRel" EntitySet="TblClientProductRel" />
@@ -722,6 +807,10 @@
           <AssociationSet Name="FK_TblDealPropertyRel_TblProperty" Association="Self.FK_TblDealPropertyRel_TblProperty">
             <End Role="TblProperty" EntitySet="TblProperty" />
             <End Role="TblDealPropertyRel" EntitySet="TblDealPropertyRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOrder_TblDiscount" Association="Self.FK_TblOrder_TblDiscount">
+            <End Role="TblDiscount" EntitySet="TblDiscount" />
+            <End Role="TblOrder" EntitySet="TblOrder" />
           </AssociationSet>
           <AssociationSet Name="FK_TblProduct_TblCatagory" Association="Self.FK_TblProduct_TblCatagory">
             <End Role="TblCatagory" EntitySet="TblCatagory" />
@@ -775,6 +864,10 @@
             <End Role="TblRole" EntitySet="TblRole" />
             <End Role="TblUserPass" EntitySet="TblUserPass" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblVideo_TblVideoCatagory" Association="Self.FK_TblVideo_TblVideoCatagory">
+            <End Role="TblVideoCatagory" EntitySet="TblVideoCatagory" />
+            <End Role="TblVideo" EntitySet="TblVideo" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblVideoCommentRel_TblComment" Association="Self.FK_TblVideoCommentRel_TblComment">
             <End Role="TblComment" EntitySet="TblComment" />
             <End Role="TblVideoCommentRel" EntitySet="TblVideoCommentRel" />
@@ -783,8 +876,13 @@
             <End Role="TblVideo" EntitySet="TblVideo" />
             <End Role="TblVideoCommentRel" EntitySet="TblVideoCommentRel" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblVideoKeyword_TblVideo" Association="Self.FK_TblVideoKeyword_TblVideo">
+            <End Role="TblVideo" EntitySet="TblVideo" />
+            <End Role="TblVideoKeyword" EntitySet="TblVideoKeyword" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NFixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -877,9 +975,10 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClientId" Type="Int32" Nullable="false" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TblClient" Relationship="Self.FK_TblClientProductRel_TblClient" FromRole="TblClientProductRel" ToRole="TblClient" />
+          <NavigationProperty Name="TblOrder" Relationship="Self.FK_TblClientProductRel_TblOrder" FromRole="TblClientProductRel" ToRole="TblOrder" />
           <NavigationProperty Name="TblProduct" Relationship="Self.FK_TblClientProductRel_TblProduct" FromRole="TblClientProductRel" ToRole="TblProduct" />
         </EntityType>
         <EntityType Name="TblComment">
@@ -889,7 +988,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClientId" Type="Int32" Nullable="false" />
           <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateSubmited" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateSubmited" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsValid" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TblBlogCommentRel" Relationship="Self.FK_TblBlogCommentRel_TblComment" FromRole="TblComment" ToRole="TblBlogCommentRel" />
           <NavigationProperty Name="TblClient" Relationship="Self.FK_TblComment_TblClient" FromRole="TblComment" ToRole="TblClient" />
@@ -926,6 +1025,7 @@
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Discount" Type="Int32" Nullable="false" />
           <Property Name="Count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TblOrder" Relationship="Self.FK_TblOrder_TblDiscount" FromRole="TblDiscount" ToRole="TblOrder" />
         </EntityType>
         <EntityType Name="TblImage">
           <Key>
@@ -951,6 +1051,19 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LogText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MoneyTransfered" Type="Int64" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TblOrder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sum" Type="Int64" Nullable="false" />
+          <Property Name="IsFInaly" Type="Boolean" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DiscountId" Type="Int32" />
+          <NavigationProperty Name="TblClientProductRel" Relationship="Self.FK_TblClientProductRel_TblOrder" FromRole="TblOrder" ToRole="TblClientProductRel" />
+          <NavigationProperty Name="TblDiscount" Relationship="Self.FK_TblOrder_TblDiscount" FromRole="TblOrder" ToRole="TblDiscount" />
         </EntityType>
         <EntityType Name="TblProduct">
           <Key>
@@ -958,7 +1071,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateSubmited" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="DateSubmited" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Raiting" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int64" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
@@ -1084,14 +1197,26 @@
           <Property Name="Title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DescriptionDemo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DateSubmited" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateSubmited" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsOnline" Type="Boolean" Nullable="false" />
           <Property Name="ViewCount" Type="Int32" Nullable="false" />
           <Property Name="IsHome" Type="Boolean" Nullable="false" />
           <Property Name="Raiting" Type="Int32" Nullable="false" />
           <Property Name="ShareLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CatagoryId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TblTuotorVideoRel" Relationship="Self.FK_TblTuotorVideoRel_TblVideo" FromRole="TblVideo" ToRole="TblTuotorVideoRel" />
+          <NavigationProperty Name="TblVideoCatagory" Relationship="Self.FK_TblVideo_TblVideoCatagory" FromRole="TblVideo" ToRole="TblVideoCatagory" />
           <NavigationProperty Name="TblVideoCommentRel" Relationship="Self.FK_TblVideoCommentRel_TblVideo" FromRole="TblVideo" ToRole="TblVideoCommentRel" />
+          <NavigationProperty Name="TblVideoKeyword" Relationship="Self.FK_TblVideoKeyword_TblVideo" FromRole="TblVideo" ToRole="TblVideoKeyword" />
+        </EntityType>
+        <EntityType Name="TblVideoCatagory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblVideo" Relationship="Self.FK_TblVideo_TblVideoCatagory" FromRole="TblVideoCatagory" ToRole="TblVideo" />
         </EntityType>
         <EntityType Name="TblVideoCommentRel">
           <Key>
@@ -1102,6 +1227,15 @@
           <Property Name="CommentId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TblComment" Relationship="Self.FK_TblVideoCommentRel_TblComment" FromRole="TblVideoCommentRel" ToRole="TblComment" />
           <NavigationProperty Name="TblVideo" Relationship="Self.FK_TblVideoCommentRel_TblVideo" FromRole="TblVideoCommentRel" ToRole="TblVideo" />
+        </EntityType>
+        <EntityType Name="TblVideoKeyword">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VideoId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblVideo" Relationship="Self.FK_TblVideoKeyword_TblVideo" FromRole="TblVideoKeyword" ToRole="TblVideo" />
         </EntityType>
         <Association Name="FK_TblBlogCommentRel_TblBlog">
           <End Role="TblBlog" Type="Self.TblBlog" Multiplicity="1">
@@ -1221,6 +1355,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblClientProductRel_TblOrder">
+          <End Role="TblOrder" Type="Self.TblOrder" Multiplicity="1" />
+          <End Role="TblClientProductRel" Type="Self.TblClientProductRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblOrder">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblClientProductRel">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblClientProductRel_TblProduct">
           <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1288,6 +1434,18 @@
             </Principal>
             <Dependent Role="TblDealPropertyRel">
               <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOrder_TblDiscount">
+          <End Role="TblDiscount" Type="Self.TblDiscount" Multiplicity="0..1" />
+          <End Role="TblOrder" Type="Self.TblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblDiscount">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblOrder">
+              <PropertyRef Name="DiscountId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1441,6 +1599,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblVideo_TblVideoCatagory">
+          <End Role="TblVideoCatagory" Type="Self.TblVideoCatagory" Multiplicity="1" />
+          <End Role="TblVideo" Type="Self.TblVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblVideoCatagory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblVideo">
+              <PropertyRef Name="CatagoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblVideoCommentRel_TblVideo">
           <End Role="TblVideo" Type="Self.TblVideo" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1451,6 +1621,20 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="TblVideoCommentRel">
+              <PropertyRef Name="VideoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblVideoKeyword_TblVideo">
+          <End Role="TblVideo" Type="Self.TblVideo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TblVideoKeyword" Type="Self.TblVideoKeyword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblVideo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblVideoKeyword">
               <PropertyRef Name="VideoId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1471,6 +1655,7 @@
           <EntitySet Name="TblImage" EntityType="Self.TblImage" />
           <EntitySet Name="TblKeyword" EntityType="Self.TblKeyword" />
           <EntitySet Name="TblLog" EntityType="Self.TblLog" />
+          <EntitySet Name="TblOrder" EntityType="Self.TblOrder" />
           <EntitySet Name="TblProduct" EntityType="Self.TblProduct" />
           <EntitySet Name="TblProductCommentRel" EntityType="Self.TblProductCommentRel" />
           <EntitySet Name="TblProductImageRel" EntityType="Self.TblProductImageRel" />
@@ -1482,7 +1667,9 @@
           <EntitySet Name="TblTutor" EntityType="Self.TblTutor" />
           <EntitySet Name="TblUserPass" EntityType="Self.TblUserPass" />
           <EntitySet Name="TblVideo" EntityType="Self.TblVideo" />
+          <EntitySet Name="TblVideoCatagory" EntityType="Self.TblVideoCatagory" />
           <EntitySet Name="TblVideoCommentRel" EntityType="Self.TblVideoCommentRel" />
+          <EntitySet Name="TblVideoKeyword" EntityType="Self.TblVideoKeyword" />
           <AssociationSet Name="FK_TblBlogCommentRel_TblBlog" Association="Self.FK_TblBlogCommentRel_TblBlog">
             <End Role="TblBlog" EntitySet="TblBlog" />
             <End Role="TblBlogCommentRel" EntitySet="TblBlogCommentRel" />
@@ -1519,6 +1706,10 @@
             <End Role="TblClient" EntitySet="TblClient" />
             <End Role="TblComment" EntitySet="TblComment" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblClientProductRel_TblOrder" Association="Self.FK_TblClientProductRel_TblOrder">
+            <End Role="TblOrder" EntitySet="TblOrder" />
+            <End Role="TblClientProductRel" EntitySet="TblClientProductRel" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblClientProductRel_TblProduct" Association="Self.FK_TblClientProductRel_TblProduct">
             <End Role="TblProduct" EntitySet="TblProduct" />
             <End Role="TblClientProductRel" EntitySet="TblClientProductRel" />
@@ -1538,6 +1729,10 @@
           <AssociationSet Name="FK_TblDealPropertyRel_TblProperty" Association="Self.FK_TblDealPropertyRel_TblProperty">
             <End Role="TblProperty" EntitySet="TblProperty" />
             <End Role="TblDealPropertyRel" EntitySet="TblDealPropertyRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOrder_TblDiscount" Association="Self.FK_TblOrder_TblDiscount">
+            <End Role="TblDiscount" EntitySet="TblDiscount" />
+            <End Role="TblOrder" EntitySet="TblOrder" />
           </AssociationSet>
           <AssociationSet Name="FK_TblProductImageRel_TblImage" Association="Self.FK_TblProductImageRel_TblImage">
             <End Role="TblImage" EntitySet="TblImage" />
@@ -1583,9 +1778,17 @@
             <End Role="TblUserPass" EntitySet="TblUserPass" />
             <End Role="TblTutor" EntitySet="TblTutor" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblVideo_TblVideoCatagory" Association="Self.FK_TblVideo_TblVideoCatagory">
+            <End Role="TblVideoCatagory" EntitySet="TblVideoCatagory" />
+            <End Role="TblVideo" EntitySet="TblVideo" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblVideoCommentRel_TblVideo" Association="Self.FK_TblVideoCommentRel_TblVideo">
             <End Role="TblVideo" EntitySet="TblVideo" />
             <End Role="TblVideoCommentRel" EntitySet="TblVideoCommentRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblVideoKeyword_TblVideo" Association="Self.FK_TblVideoKeyword_TblVideo">
+            <End Role="TblVideo" EntitySet="TblVideo" />
+            <End Role="TblVideoKeyword" EntitySet="TblVideoKeyword" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1707,8 +1910,8 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1776,6 +1979,18 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="LogText" ColumnName="LogText" />
                 <ScalarProperty Name="MoneyTransfered" ColumnName="MoneyTransfered" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOrder">
+            <EntityTypeMapping TypeName="NFixModel.TblOrder">
+              <MappingFragment StoreEntitySet="TblOrder">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="IsFInaly" ColumnName="IsFInaly" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DiscountId" ColumnName="DiscountId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1902,6 +2117,16 @@
                 <ScalarProperty Name="IsHome" ColumnName="IsHome" />
                 <ScalarProperty Name="Raiting" ColumnName="Raiting" />
                 <ScalarProperty Name="ShareLink" ColumnName="ShareLink" />
+                <ScalarProperty Name="CatagoryId" ColumnName="CatagoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblVideoCatagory">
+            <EntityTypeMapping TypeName="NFixModel.TblVideoCatagory">
+              <MappingFragment StoreEntitySet="TblVideoCatagory">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1911,6 +2136,15 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="VideoId" ColumnName="VideoId" />
                 <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblVideoKeyword">
+            <EntityTypeMapping TypeName="NFixModel.TblVideoKeyword">
+              <MappingFragment StoreEntitySet="TblVideoKeyword">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="VideoId" ColumnName="VideoId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

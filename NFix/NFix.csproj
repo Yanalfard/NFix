@@ -193,6 +193,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\MyEshopRoleProvider.cs" />
+    <Compile Include="Utilities\PartialToStringClass.cs" />
+    <Compile Include="Utilities\SendEmail.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -1624,6 +1626,12 @@
     <Content Include="Views\HomeProducts\ModalProduct.cshtml" />
     <Content Include="Views\HomeBlogs\CreateComment.cshtml" />
     <Content Include="Views\HomeBlogs\ShowComments.cshtml" />
+    <Content Include="Views\HomeAccount\ActiviationEmail.cshtml" />
+    <Content Include="Views\HomeAccount\RecoveryPassword.cshtml" />
+    <Content Include="Views\HomeAccount\SuccesForgotPassword.cshtml" />
+    <Content Include="Views\HomeAccount\SuccessRegister.cshtml" />
+    <Content Include="Views\HomeAccount\ForgotPassword.cshtml" />
+    <Content Include="Views\HomeAccount\RecoveryPass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
