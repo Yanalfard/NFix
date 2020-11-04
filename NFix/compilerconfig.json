@@ -34,5 +34,9 @@
   {
     "outputFile": "Styles/Controls.css",
     "inputFile": "Styles/Controls.scss"
+  },
+  {
+    "outputFile": "Styles/Plans.css",
+    "inputFile": "Styles/Plans.scss"
   }
 ]

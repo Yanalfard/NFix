@@ -1,100 +1,126 @@
 ﻿@model DataLayer.Models.Regular.TblClient
-<div class="alternate">
-    <!-- #region Plan -->
+    <div class="alternate">
+        <!-- #region Plan -->
 
-    <section class="plan mat column uk-padding ">
-        <h4 class="center uk-margin-bottom">
-            اشتراک شما
-        </h4>
-
-
-
-        @if (ViewBag.totalMonth != 0)
-        {
-            <label class="uk-margin-small-bottom center">
-                اشتراک @ViewBag.totalMonth ماهه
-            </label>
-        }
+        <section class="plan mat column uk-padding ">
+            <h4 class="center uk-margin-bottom">
+                اشتراک شما
+            </h4>
 
 
-        <div class="row uk-margin-bottom center">
-            <!--<label class="uk-margin-small-right uk-margin-auto-top uk-margin-small-bottom">
+            @if (ViewBag.totalMonth != 0)
+            {
+                <label class="uk-margin-small-bottom center">
+                    اشتراک @ViewBag.totalMonth ماهه
+                </label>
+            }
+
+
+            <div class="row uk-margin-bottom center">
+                <!--<label class="uk-margin-small-right uk-margin-auto-top uk-margin-small-bottom">
                 روز
             </label>
             <h1 id="Days" class="uk-margin-remove overflow-hidden">
                 30
             </h1>-->
-
-            <div class="progress-ring-container" percentage="@((ViewBag.totalDays != 0) ? (Math.Floor(((double)ViewBag.daysTillFinished/ViewBag.totalDays)*100)) : 0)">
-                <svg class="progress-ring"
-                     width="120"
-                     height="120">
-                    <circle class="progress-ring__circle"
-                            stroke="white"
-                            stroke-width="4"
-                            fill="transparent"
-                            r="56"
-                            cx="60"
-                            cy="60" />
-                </svg>
-                <div class="text">
-                    <div class="column">
-                        <p>
-                            @if (Model.PremiumTill != "")
-                            {
-                                @((DateTime.Parse(Model.PremiumTill) - DateTime.Now).Days)
-                            }
-                        </p>
-                        <label>
-                            روز
-                        </label>
+                @{
+                    float percentage = (ViewBag.totalDays != 0) ? (Math.Floor(((double)ViewBag.daysTillFinished / ViewBag.totalDays) * 100)) : 0;
+                }
+                <div class="progress-ring-container" percentage="@(percentage)">
+                    <svg class="progress-ring"
+                         width="120"
+                         height="120">
+                        <circle class="progress-ring__circle"
+                                stroke="white"
+                                stroke-width="4"
+                                fill="transparent"
+                                r="56"
+                                cx="60"
+                                cy="60" />
+                    </svg>
+                    <div class="text">
+                        <div class="column">
+                            <p>
+                                @if (Model.PremiumTill != "")
+                                {
+                                    @((DateTime.Parse(Model.PremiumTill) - DateTime.Now).Days)
+                                }
+                            </p>
+                            <label>
+                                @((percentage == 0) ? "بدون اشتراک" : "روز")
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <button class="uk-margin-auto-top center">
-            تمدید
-        </button>
-    </section>
+            <a href="/HomeAccount/Plans" class="button-primary uk-margin-auto-top center ">
+                تمدید
+            </a>
+        </section>
 
-    <!-- #endregion -->
-    <div class="gap"></div>
-    <!-- #region Profile -->
+        <!-- #endregion -->
+        <div class="gap"></div>
+        <!-- #region Profile -->
 
-    <section class="profile mat column uk-padding">
-        <h4>
-            اطلاعات حساب
-        </h4>
-        <div class="row">
-            <div class="column uk-margin-auto-left">
-                <label>
-                    نام کاربری
-                </label>
-                <h5>
-                    @Model.TblUserPass.Username
-                </h5>
+        <section class="profile mat column uk-padding">
+            <h4>
+                اطلاعات حساب
+            </h4>
+            <div class="row">
+                <div class="column uk-margin-auto-left">
+                    <label>
+                        نام کاربری
+                    </label>
+                    <h5>
+                        @Model.TblUserPass.Username
+                    </h5>
 
+                </div>
+                <div class="column uk-margin-auto-left">
+                    <label>
+                        رایانامه
+                    </label>
+                    <h5>
+                        @Model.Email
+                    </h5>
+                    @if (!string.IsNullOrEmpty(Model.InviteCode))
+                    {
+                        <label>
+                            کد دعوت شما
+                        </label>
+                        <h5>
+                            @Model.InviteCode
+                        </h5>
+                    }
+                </div>
             </div>
-            <div class="column uk-margin-auto-left">
-                <label>
-                    رایانامه
-                </label>
-                <h5>
-                    @Model.Email
-                </h5>
-                <label>
-                    کد دعوت شما
-                </label>
-                <h5>
-                    @Model.InviteCode
-                </h5>
+            <div class="row uk-margin-auto-top uk-margin-auto-left ">
+                <button uk-toggle="target: #Modal-Change-Password"
+                        class="uk-button uk-button-default uk-margin-right">
+                    تغییر گذرواژه
+                </button>
+                <button class="uk-margin-auto-top" type="button" uk-toggle="target: #Modal-Edit">
+                    ویرایش
+                </button>
+            </div>
+        </section>
+
+        <!-- Modal-Change-Password -->
+        <div id="Modal-Change-Password" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body column">
+                <h2 class="ویرایش رمز عبور"></h2>
+                <label for="password">رمز عبور جدید</label>
+                <input type="text" class="uk-input uk-margin-bottom uk-margin-small-top" name="password" value="" />
+
+                <label for="passwordRepeat">تکرار رمز عبور</label>
+                <input type="text" class="uk-input uk-margin-bottom uk-margin-small-top" name="passwordRepeat" value="" />
+
+                <button class="uk-margin-top uk-margin-auto-left" type="button">
+                    ویرایش
+                </button>
             </div>
         </div>
-        <button class="uk-margin-auto-left uk-margin-auto-top" type="button" uk-toggle="target: #Modal-Edit">
-            ویرایش
-        </button>
-    </section>
 
-    <!-- #endregion -->
-</div>
+        <!-- #endregion -->
+    </div>
 

@@ -1,0 +1,93 @@
+﻿@import "_colors.scss";
+@import "_general.scss";
+@import "_layout.scss";
+
+$card-width: 280px;
+
+.plans {
+    @include row;
+
+    .plan-card {
+        @include mat;
+        @include column;
+        width: $card-width;
+        padding: 16px;
+        margin: auto;
+
+        $shadowColor: rgba(0, 0, 0, 0.54);
+        -moz-box-shadow: $shadowColor 0 0px .6vw, inset $shadowColor 0 0px 8px;
+        -webkit-box-shadow: $shadowColor 0 0px .6vw, inset $shadowColor 0 0px 8px;
+        box-shadow: $shadowColor 0 0px .6vw, inset $shadowColor 0 0px 8px;
+
+
+        img {
+            margin-right: -16px;
+            filter: drop-shadow(-8px 0 8px rgba(0,0,0,.24));
+        }
+
+        .row.plan-time {
+            > h3 {
+                font-size: 58px;
+                margin: 0;
+                text-shadow: 0 0 6px rgba(0, 0, 0, 0.48)
+            }
+
+            > span {
+                margin-top: 42px;
+                margin-right: 4px;
+            }
+        }
+
+        .row.plan-price {
+            > h4 {
+                margin: 0;
+                font-size: 28px;
+            }
+
+            > span {
+                margin-right: 6px;
+                margin-top: 12px;
+            }
+        }
+
+
+        ul {
+            list-style: disc !important;
+            padding-right: 20px;
+            padding-left: 0;
+
+            li {
+                list-style: disc !important;
+                margin-bottom: 8px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1080px) {
+    $card-width: 260px;
+
+    .plans {
+        @include column;
+
+        .plan-card {
+            width: $card-width;
+            margin: 16px auto;
+        }
+    }
+}
+
+.plan-card.silver {
+    background: #313131;
+    border: 8px #8FA6BA solid;
+}
+
+.plan-card.gold {
+    background: #3A3A3A;
+    border: 8px #F9B53B solid;
+}
+
+.plan-card.platinum {
+    background: #303030;
+    border: 8px #2F3F54 solid;
+}

@@ -263,6 +263,15 @@
     <Content Include="Areas\User\Views\Profile\ShopCart.cshtml" />
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
+    <Content Include="Resources\Svg\Gold.svg" />
+    <Content Include="Resources\Svg\Plat.svg" />
+    <Content Include="Resources\Svg\Sliver.svg" />
+    <Content Include="Styles\Plans.css">
+      <DependentUpon>Plans.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\Plans.min.css">
+      <DependentUpon>Plans.css</DependentUpon>
+    </Content>
     <Content Include="Views\Shared\_category.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -1632,6 +1641,8 @@
     <Content Include="Views\HomeAccount\SuccessRegister.cshtml" />
     <Content Include="Views\HomeAccount\ForgotPassword.cshtml" />
     <Content Include="Views\HomeAccount\RecoveryPass.cshtml" />
+    <Content Include="Views\HomeAccount\Plans.cshtml" />
+    <Content Include="Styles\Plans.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

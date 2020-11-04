@@ -721,6 +721,8 @@ footer {
         margin: 0; }
         footer .footer-container > * > ul > li {
           margin-top: 4px; }
+    footer .footer-container .contacts, footer .footer-container .links, footer .footer-container .header {
+      width: 100%; }
     footer .footer-container .map {
       padding: 0 0 20px 20px; }
       footer .footer-container .map > iframe {
@@ -751,7 +753,9 @@ footer {
       margin: auto; }
     footer .footer-container .map {
       margin: 0;
-      padding: 0; } }
+      padding: 0; }
+    footer .footer-container .contacts, footer .footer-container .links, footer .footer-container .header {
+      width: 100%; } }
 
 /*#endregion */
 .not {
@@ -816,7 +820,7 @@ table {
       width: 80vw; } }
 
 /*#region Button */
-button {
+button, .button-primary {
   background: #e41d1d;
   padding: 10px 26px 11px 26px;
   font-size: 16px;
@@ -826,7 +830,13 @@ button {
   -o-transition: all ease 0.5s;
   -webkit-transition: all ease 0.5s;
   transition: all ease 0.5s;
-  cursor: pointer; }
+  cursor: pointer;
+  -moz-border-radius: 0 0 0 0;
+  -webkit-border-radius: 0 0 0 0;
+  border-radius: 0 0 0 0;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/ }
 
 .uk-button-default {
   color: #fff !important;
@@ -873,14 +883,15 @@ button {
   -webkit-transition: all ease 0.2s;
   transition: all ease 0.2s; }
 
-button:hover {
+button:hover, .button-primary:hover {
   -moz-box-shadow: rgba(221, 28, 28, 0.64) 0 6px 16px;
   -webkit-box-shadow: rgba(221, 28, 28, 0.64) 0 6px 16px;
   box-shadow: rgba(221, 28, 28, 0.64) 0 6px 16px;
   -moz-transition: all ease 0.2s;
   -o-transition: all ease 0.2s;
   -webkit-transition: all ease 0.2s;
-  transition: all ease 0.2s; }
+  transition: all ease 0.2s;
+  color: white; }
 
 button:active {
   background: #e83d3d;
