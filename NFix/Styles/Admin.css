@@ -416,6 +416,18 @@ backdrop-filter: saturate(80%);
 .text-center {
   text-align: center !important; }
 
+body, html {
+  overflow: visible !important; }
+
+.uk-table {
+  overflow: visible !important; }
+  .uk-table thead {
+    white-space: nowrap !important; }
+
+.uk-icon {
+  width: 48px;
+  height: 48px; }
+
 .construction {
   width: 100vw;
   height: 100vh;
