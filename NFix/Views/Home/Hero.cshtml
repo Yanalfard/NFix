@@ -1,6 +1,6 @@
 ﻿
 <section class="hero column">
-    <header class="column uk-margin-auto-right">
+    <header id="header" class="column uk-margin-auto-right">
         <h1 class="uk-margin-remove-bottom"><span>N</span>FIX</h1>
         <hr class="uk-margin-remove" />
         <p class="uk-margin-small-top">
@@ -28,9 +28,57 @@
         </a>
     </div>
     <!---->
+    @*<video controls="controls">
+            <source src="~/Resources/Svg/VID-20201104-WA0001.mp4" type="video/mp4" />
+        </video>*@
+
     <a href="#videos" uk-icon="icon:chevron-down; ratio:2.5"
        class="uk-icon center"></a>
-    <a href="../Resources/Png/Man.png" uk-icon="icon: play-circle; ratio: 2"
+
+    <a onclick="slideInVideo()" uk-toggle uk-icon="icon: play-circle; ratio: 2"
        class="player uk-icon uk-margin-small-right"></a>
+
+    <div id="darnVideo">
+        <video id="video">
+            <source src="~/Resources/Svg/VID-20201104-WA0001.mp4" type="video/mp4" />
+        </video>
+    </div>
+
 </section>
 <div class="man"></div>
+
+<style>
+    #darnVideo {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left:100vw;
+        opacity: 0;
+    }
+</style>
+
+<script>
+    function slideInVideo() {
+        const darn = document.getElementById('darnVideo');
+        const video = document.getElementById('video');
+        const header = document.getElementById('header');
+        const man = document.getElementsByClassName('man')[0];
+
+        darn.style.transition = "all ease .5s";
+        darn.style.opacity = "1";
+        darn.style.left = "0";
+
+        header.style.transition = "all ease .5s";
+        header.style.opacity = "0";
+
+        man.style.transition = "all ease .5s";
+        man.style.opacity = "0";
+
+        setTimeout(function () {
+            video.play();
+        }, 500)
+
+    }
+</script>
+

@@ -263,9 +263,17 @@
     <Content Include="Areas\User\Views\Profile\ShopCart.cshtml" />
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
+    <Content Include="Resources\Png\Tutors\Doctor.jpg" />
+    <Content Include="Resources\Png\Tutors\Tutor_1.jpg" />
+    <Content Include="Resources\Png\Tutors\Tutor_2.jpg" />
+    <Content Include="Resources\Svg\Footer\maestro.svg" />
+    <Content Include="Resources\Svg\Footer\master.svg" />
+    <Content Include="Resources\Svg\Footer\paypal.svg" />
+    <Content Include="Resources\Svg\Footer\visa.svg" />
     <Content Include="Resources\Svg\Gold.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
     <Content Include="Resources\Svg\Sliver.svg" />
+    <Content Include="Resources\Svg\VID-20201104-WA0001.mp4" />
     <Content Include="Styles\Plans.css">
       <DependentUpon>Plans.scss</DependentUpon>
     </Content>

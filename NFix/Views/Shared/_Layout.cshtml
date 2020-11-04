@@ -38,7 +38,7 @@
                     if (User.IsInRole("admin"))
                     {
                         <li>
-                            <a href="/Admin/Blog/BlogTable">
+                            <a href="/Admin/Blog/BlogTable" class="row">
                                 <span uk-icon="user"></span>
                                 پنل مدیریت
                             </a>
@@ -47,7 +47,7 @@
                     if (User.IsInRole("tutor"))
                     {
                         <li>
-                            <a href="/Tuotor/Profile/Index">
+                            <a href="/Tuotor/Profile/Index" class="row">
                                 <span uk-icon="user"></span>
                                 پنل مربی
                             </a>
@@ -56,14 +56,14 @@
                     if (User.IsInRole("user"))
                     {
                         <li>
-                            <a href="/User/Profile/Index">
+                            <a href="/User/Profile/Index" class="row">
                                 <span uk-icon="user"></span>
                                 پروفایل
                             </a>
                         </li>
                     }
                     <li>
-                        <a href="/HomeAccount/LogOff">
+                        <a href="/HomeAccount/LogOff" class="row">
                             <span uk-icon="sign-out"></span>
                             خروج
                         </a>
@@ -133,25 +133,31 @@
                             <div class="mat uk-padding column">
                                 @if (User.IsInRole("user"))
                                 {
-                                    <a class="nav-profile row" type="button" href="/User/Profile/Index">
+                                    <a class="nav-profile row" dir="rtl" type="button" href="/User/Profile/Index">
                                         <span uk-icon="user"></span>
                                         <span class="uk-margin-small-right">پروفایل</span>
                                     </a>
-                                    <a class="nav-profile row" type="button" href="/User/Profile/Index">
+                                    <a class="nav-profile row" dir="rtl" type="button" href="/User/Profile/Index">
                                         <span uk-icon="cart"></span>
                                         <span class="uk-margin-small-right">سبد خرید</span>
                                     </a>
                                 }
                                 else if (User.IsInRole("admin"))
                                 {
-                                    <a class="nav-profile" uk-icon="user" type="button" href="/Admin/Blog/BlogTable">
-                                        پنل مدیریت
+                                    <a class="nav-profile" type="button" href="/Admin/Blog/BlogTable">
+                                        <span uk-icon="user"></span>
+                                        <span class="uk-margin-small-right">
+                                            پنل مدیریت
+                                        </span>
                                     </a>
                                 }
                                 else if (User.IsInRole("tutor"))
                                 {
-                                    <a class="nav-profile" uk-icon="user" type="button" href="/Tuotor/Profile/Index">
-                                        پنل مربی
+                                    <a class="nav-profile row" type="button" href="/Tuotor/Profile/Index">
+                                        <span uk-icon="user"></span>
+                                        <span class="uk-margin-small-right">
+                                            پنل مربی
+                                        </span>
                                     </a>
                                 }
                                 <a class="nav-profile" href="/HomeAccount/LogOff">
@@ -245,88 +251,100 @@
             <span uk-icon="icon:chevron-up ; ratio:2"></span>
         </a>
         <div class="footer-container">
-            <div class="contacts">
-                <h3 class="header">
-                    دسته ای از لینک ها
-                </h3>
-                <ul>
-                    <li>
-                        <a href="#">این یک لینک می باشد</a>
-                    </li>
-                    <li>
-                        <a href="#">این یک لینکلینک میمی باشد</a>
-                    </li>
-                    <li>
-                        <a href="#">ایناین یکیک   باشد</a>
-                    </li>
-                    <li>
-                        <a href="#">این یمیدمید</a>
-                    </li>
-                    <li>
-                        <a href="#">این یک لینکلینک مید</a>
-                    </li>
-                    <li>
-                        <a href="#">این یک ل یک لینکلینک مید</a>
-                    </li>
-                </ul>
-            </div>
             <div class="links">
                 <h3 class="header">
-                    دسته ای دیگر از لینک ها
+                    دسترسی سریع
                 </h3>
-                <ul>
+                <ul class="uk-padding-remove">
                     <li>
-                        <a href="#">این یک لینک می باشد</a>
+                        <a href="#">ویدیو ها</a>
                     </li>
                     <li>
-                        <a href="#">این یک لینکلینک میمی باشد</a>
+                        <a href="#">وبلاگ ها</a>
                     </li>
                     <li>
-                        <a href="#">ایناین یکیک   باشد</a>
+                        <a href="#">درباره ما</a>
                     </li>
                     <li>
-                        <a href="#">این یمیدمید</a>
+                        <a href="#">حساب کاربری</a>
                     </li>
                     <li>
-                        <a href="#">این یک لینکلینک مید</a>
+                        <a href="#">خانه</a>
                     </li>
                     <li>
-                        <a href="#">این یک ل یک لینکلینک مید</a>
+                        <a href="#">جستجو</a>
                     </li>
                 </ul>
             </div>
             <div class="map">
                 <h3 class="header">
-                    باز هم لینک
+                    اطلاعات
                 </h3>
-                <ul>
+                <ul class="uk-padding-remove">
                     <li>
-                        <a href="#">این یک لینک می باشد</a>
+                        <a href="#">
+                            <address>
+                                تبریز، میدان جهاد، مجتمع ورزشی، کشاورزی
+                            </address>
+                        </a>
                     </li>
                     <li>
-                        <a href="#">این یک لینکلینک میمی باشد</a>
+                        <a href="#" uk-icon="receiver">
+                            0914 - 315 - 20 - 62
+                        </a>
                     </li>
                     <li>
-                        <a href="#">ایناین یکیک   باشد</a>
+                        <a href="#" uk-icon="receiver">
+                            0936 - 571 - 06 - 16
+                        </a>
                     </li>
                     <li>
-                        <a href="#">این یمیدمید</a>
-                    </li>
-                    <li>
-                        <a href="#">این یک لینکلینک مید</a>
-                    </li>
-                    <li>
-                        <a href="#">این یک ل یک لینکلینک مید</a>
+                        <a href="#" uk-icon="google">
+                            nfix2021gb@gmail.com
+                        </a>
                     </li>
                 </ul>
                 @*<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d970159.3812952577!2d-77.7300233174102!3d18.22438981474459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eda2a1bc6cf719d%3A0x59a0d1c0b5120efa!2sJamaica!5e0!3m2!1sen!2sae!4v1602401433905!5m2!1sen!2sae"
                     frameborder="0" allowfullscreen aria-hidden="false" tabindex="0"></iframe>*@
             </div>
+            <div class="contacts">
+                <h3 class="header">
+                    پرداخت با
+                </h3>
+                <ul class="uk-padding-remove">
+                    <li>
+                        <a href="">
+                            <img width="64" src="~/Resources/Svg/Footer/maestro.svg" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img width="64" src="~/Resources/Svg/Footer/master.svg" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img width="64" src="~/Resources/Svg/Footer/paypal.svg" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img width="64" src="~/Resources/Svg/Footer/visa.svg" alt="" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <a href="" class="uk-margin-right uk-margin-bottom">طراحی و توسعه توسط شرکت ایده پرداز آروین تاو</a>
+        <a href="" class="uk-margin-right uk-margin-bottom uk-margin-top center uk-margin-auto" dir="rtl">
+            Ⓒ تمام حقوق مادی ومعنوی این سایت متعلق به شرکت یاقون وب ایرانیان می باشد.
+            <br />
+            طراحی و توسعه توسط شرکت ایده پرداز آروین تاو.
+        </a>
+        @*<a href="" class="uk-margin-right uk-margin-bottom">طراحی و توسعه توسط شرکت ایده پرداز آروین تاو</a>*@
     </footer>
 
     <div class="footer-stripe"></div>
+
 
     <!-- #endregion -->
 
