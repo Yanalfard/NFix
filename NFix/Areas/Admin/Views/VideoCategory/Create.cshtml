@@ -1,0 +1,37 @@
+﻿@model DataLayer.Models.Regular.TblVideoCatagory
+
+
+@using (Html.BeginForm("Create", "VideoCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "uk-text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, "اسم گروه", htmlAttributes: new { @class = "uk-margin-small-bottom" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "uk-margin-bottom uk-margin-small-top uk-input", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "uk-text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, "عکس", htmlAttributes: new { @class = "uk-margin-small-bottom" })
+            <div class="col-md-10">
+                <input type="file" name="Image" value="آپلود عکس" />
+                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "uk-text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-success">
+                    ثبت گروه
+                </button>
+            </div>
+        </div>
+
+    </div>
+}
+
+

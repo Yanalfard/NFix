@@ -150,6 +150,7 @@
     <Compile Include="Areas\Admin\Controllers\TutorController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VideoCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
     <Compile Include="Areas\Tuotor\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Tuotor\TuotorAreaRegistration.cs" />
@@ -192,6 +193,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\CheckContentImage.cs" />
+    <Compile Include="Utilities\ImageResizer.cs" />
     <Compile Include="Utilities\MyEshopRoleProvider.cs" />
     <Compile Include="Utilities\PartialToStringClass.cs" />
     <Compile Include="Utilities\SendEmail.cs" />
@@ -264,6 +267,10 @@
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
     <Content Include="Views\Shared\_category.cshtml" />
+    <Content Include="Areas\Admin\Views\VideoCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VideoCategory\ListGroups.cshtml" />
+    <Content Include="Areas\Admin\Views\VideoCategory\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\VideoCategory\Edit.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1646,6 +1653,7 @@
     <Folder Include="Resources\Product\" />
     <Folder Include="Resources\Tutor\" />
     <Folder Include="Resources\UploadEditor\" />
+    <Folder Include="Resources\VideoCatagory\Thumb\" />
     <Folder Include="Resources\Videos\Demo\" />
   </ItemGroup>
   <ItemGroup>

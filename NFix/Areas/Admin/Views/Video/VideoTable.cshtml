@@ -12,6 +12,7 @@
             <th></th>
             <th>تیتر</th>
             <th>ویدیو</th>
+            <th>دسته</th>
             <th>دمو</th>
             <th>عکس</th>
             <th>توضیحات</th>
@@ -33,6 +34,7 @@
             <tr id="video_@(item.id)">
                 <td>@item.id</td>
                 <td>@item.Title</td>
+                <td>@item.TblVideoCatagory.Name</td>
                 <td>
                     <div uk-lightbox>
                         <a href="~/Resources/Videos/@item.VideoUrl">ویدیو</a>

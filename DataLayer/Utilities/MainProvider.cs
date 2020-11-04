@@ -185,6 +185,10 @@ namespace DataLayer.Utilities
                 {
                     Heart.TblVideoCommentRel.Add((TblVideoCommentRel)tableObj);
                 }
+                else if (table.GetType() == typeof(TblVideoCatagory))
+                {
+                    Heart.TblVideoCatagory.Add((TblVideoCatagory)tableObj);
+                }
                 
                 Heart.SaveChanges();
                 return true;
@@ -453,6 +457,14 @@ namespace DataLayer.Utilities
                     val.IsFInaly = update.IsFInaly;
                     val.Sum = update.Sum;
                 }
+                else if (table.GetType() == typeof(TblVideoCatagory))
+                {
+                    TblVideoCatagory val = Heart.TblVideoCatagory.SingleOrDefault(i => i.id == logId);
+                    TblVideoCatagory update = (TblVideoCatagory)tableObj;
+                    val.id = update.id;
+                    val.Name = update.Name;
+                    val.Image = update.Image;
+                }
 
                 Heart.SaveChanges();
                 return true;
@@ -543,6 +555,9 @@ namespace DataLayer.Utilities
                         break;
                     case EnumRepo.Tables.TblVideoCommentRel:
                         Heart.TblVideoCommentRel.Remove((TblVideoCommentRel)SelectById(EnumRepo.Tables.TblVideoCommentRel, id));
+                        break;
+                    case EnumRepo.Tables.TblVideoCatagory:
+                        Heart.TblVideoCatagory.Remove((TblVideoCatagory)SelectById(EnumRepo.Tables.TblVideoCatagory, id));
                         break;
                     default:
                         return false;
@@ -639,6 +654,9 @@ namespace DataLayer.Utilities
                 case EnumRepo.Tables.TblVideoCommentRel:
                     return Heart.TblVideoCommentRel.ToList();
 
+                case EnumRepo.Tables.TblVideoCatagory:
+                    return Heart.TblVideoCatagory.ToList();
+
                 default:
                     return new List<bool>();
             }
@@ -703,6 +721,8 @@ namespace DataLayer.Utilities
                     return Heart.TblLog.SingleOrDefault(i => i.id == id);
                 else if (table == EnumRepo.Tables.TblVideoCommentRel)
                     return Heart.TblVideoCommentRel.SingleOrDefault(i => i.id == id);
+                else if (table == EnumRepo.Tables.TblVideoCatagory)
+                    return Heart.TblVideoCatagory.SingleOrDefault(i => i.id == id);
 
                 return null;
             }
@@ -1324,6 +1344,20 @@ namespace DataLayer.Utilities
             }
         }
 
+        #endregion
+
+        #region VideoCatagory
+        public TblVideoCatagory SelectVideoCatagoryByName(string name)
+        {
+            try
+            {
+                return Heart.TblVideoCatagory.SingleOrDefault(i => i.Name == name);
+            }
+            catch
+            {
+                return null;
+            }
+        }
         #endregion
     }
 }

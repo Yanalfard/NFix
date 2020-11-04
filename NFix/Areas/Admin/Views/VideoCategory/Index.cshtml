@@ -1,11 +1,10 @@
 ﻿
-
 @{
     ViewBag.Title = "گروه ها";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div id="listGroup">
+<div id="listGrioup">
     @Html.Action("ListGroups")
 </div>
 
@@ -19,8 +18,6 @@
 </div>
 
 <!-- #endregion -->
-<!-- #endregion -->
-
 
 
 @section Scripts{
@@ -31,17 +28,15 @@
     <script>
 
 
-
         function Create(catagoryId) {
-            $.get("/Admin/ProductCatagory/Create/" + catagoryId,
+            $.get("/Admin/VideoCategory/Create/",
                 function (result) {
                     UIkit.modal(document.getElementById('modal-example')).show();
                     $(".uk-modal-body").html(result);
                 });
         }
-
         function Edit(id) {
-            $.get("/Admin/ProductCatagory/Edit/" + id,
+            $.get("/Admin/VideoCategory/Edit/" + id,
                 function (result) {
                     UIkit.modal(document.getElementById('modal-example')).show();
                     $(".uk-modal-body").html(result);
@@ -50,11 +45,10 @@
 
         function Delete(id) {
             if (confirm("آیا از حذف مطمئن هستید ؟")) {
-                $.get("/Admin/ProductCatagory/Delete/" + id,
+                $.get("/Admin/VideoCategory/Delete/" + id,
                     function (result) {
                         if (result.success) {
                             $("#group_" + id).hide('slow');
-                            alert(result.responseText);
                         } else {
                             alert(result.responseText);
                         }
@@ -71,7 +65,4 @@
 
 
 }
-
-
-
 

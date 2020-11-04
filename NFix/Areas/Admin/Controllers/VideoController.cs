@@ -18,6 +18,8 @@ namespace NFix.Areas.Admin.Controllers
         #region Video
         private VideoService _video = new VideoService();
         private TuotorVideoRelService _tuotorVideoRel = new TuotorVideoRelService();
+        private VideoCatagoryService _videoCatagory = new VideoCatagoryService();
+
         public ActionResult VideoTable(int? id)
         {
             if (id != null)

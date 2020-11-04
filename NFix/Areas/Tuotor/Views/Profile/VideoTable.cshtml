@@ -8,6 +8,7 @@
                 <tr>
                     <th></th>
                     <th>تیتر</th>
+                    <th> دسته</th>
                     <th>تاریخ ثبت</th>
                     <th>تعداد بازدید</th>
                     <th>ریتینگ</th>
@@ -21,6 +22,7 @@
                     <tr class="video_@(item.id)">
                         <td>@(Model.ToList().IndexOf(item)+1)</td>
                         <td>@item.Title</td>
+                        <td>@item.TblVideoCatagory.Name</td>
                         <td> @Convert.ToDateTime(item.DateSubmited).ToShamsi()</td>
                         <td>@item.ViewCount</td>
                         <td>@item.Raiting</td>
