@@ -32,19 +32,7 @@
 
 </div>
 
-<div id="ModalChangePassword" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body column" dir="rtl">
-        <h2 class="ویرایش رمز عبور"></h2>
-        <label for="password">رمز عبور جدید</label>
-        <input type="text" class="uk-input uk-margin-bottom uk-margin-small-top" name="password" value="" />
-
-        <label for="passwordRepeat">تکرار رمز عبور</label>
-        <input type="text" class="uk-input uk-margin-bottom uk-margin-small-top" name="passwordRepeat" value="" />
-
-        <button class="uk-margin-top uk-margin-auto-left" type="button">
-            ویرایش
-        </button>
-    </div>
+<div id="ModalChangePassword">
 </div>
 
 <section class="videos uk-margin-medium-top column">
@@ -54,8 +42,17 @@
     </content>
 </section>
 
-
 <script>
+
+    function editPass() {
+        $.get("/Tuotor/Profile/EditPass",
+            function (result) {
+                UIkit.modal(document.getElementById('ModalChangePassword')).show();
+                $("#ModalChangePassword").html(result);
+            });
+    }
+
+
     function deleteVideo(id) {
         if (confirm("آیا از حذف ویدیو مطمئن هستید؟")) {
             $.ajax({

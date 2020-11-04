@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Image, "عکس", htmlAttributes: new { @class = "uk-margin-small-bottom" })
             <div class="col-md-10">
-                <input type="file" name="Image" value="آپلود عکس" />
+                <input type="file" name="Image" value="آپلود عکس" required/>
                 @Html.ValidationMessageFor(model => model.Image, "", new { @class = "uk-text-danger" })
             </div>
         </div>

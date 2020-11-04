@@ -5,46 +5,5 @@
 @foreach (var item in Model)
 {
     @Html.Partial("_VideoBlock", item)
-
-    @*<div class="video column video_@(item.id)" dir="rtl" >
-            <div class="vid column">
-                <img class="thumbnail" src="~/Resources/Videos/Image/@item.MainImage" alt="" />
-                <a href="/VideoView/@item.id/@item.Title" class="uk-icon" uk-icon="icon: play; ratio:4"></a>
-            </div>
-            <div class="uk-margin-small-top row">
-                <div class="tutor uk-margin-remove-top row">
-                    <a href="/VideoView/@item.id/@item.Title">
-                        @foreach (var j in item.TblTuotorVideoRel)
-                        {
-                            <img class="profile-img uk-border-circle" src="~/Resources/Tutor/@j.TblTutor.MainImage" />
-
-                        }
-                    </a>
-                </div>
-                <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
-                    <a href="/VideoView/@item.id/@item.Title">
-                        <h5 class="uk-margin-auto-left">
-                            @item.Title
-                        </h5>
-                    </a>
-                    <div class="row">
-                        <a href="#" class="tutor-link uk-margin-auto-left">
-                            @foreach (var j in item.TblTuotorVideoRel)
-                            {
-                                @j.TblTutor.Name
-
-                            }
-
-                        </a>
-                        <span class="row">
-                            <span>@item.ViewCount</span>
-                            <span uk-icon="icon: play"></span>
-                        </span>
-
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
 }
 <!-- #endregion -->

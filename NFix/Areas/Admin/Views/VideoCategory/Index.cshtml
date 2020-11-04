@@ -25,9 +25,13 @@
     <script src="~/Scripts/Jquery/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
 
+
+
     <script>
 
-
+        function loadCategory() {
+            $('#listGrioup').load("/Admin/VideoCategory/ListGroups");
+        }
         function Create(catagoryId) {
             $.get("/Admin/VideoCategory/Create/",
                 function (result) {
@@ -45,12 +49,16 @@
 
         function Delete(id) {
             if (confirm("آیا از حذف مطمئن هستید ؟")) {
+                $("#overlay").fadeIn();
                 $.get("/Admin/VideoCategory/Delete/" + id,
                     function (result) {
                         if (result.success) {
                             $("#group_" + id).hide('slow');
+                            $("#overlay").fadeOut();
                         } else {
                             alert(result.responseText);
+                            $("#overlay").fadeOut();
+
                         }
                     });
             }

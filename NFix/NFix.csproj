@@ -269,6 +269,10 @@
     <Content Include="Resources\Svg\Gold.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
     <Content Include="Resources\Svg\Sliver.svg" />
+    <Content Include="Scripts\Jquery\modal.js" />
+    <Content Include="Scripts\Jquery\Model.js" />
+    <Content Include="Scripts\Loading\Loading.js" />
+    <Content Include="Styles\Loading\Loading.css" />
     <Content Include="Styles\Plans.css">
       <DependentUpon>Plans.scss</DependentUpon>
     </Content>
@@ -280,6 +284,9 @@
     <Content Include="Areas\Admin\Views\VideoCategory\ListGroups.cshtml" />
     <Content Include="Areas\Admin\Views\VideoCategory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\VideoCategory\Edit.cshtml" />
+    <Content Include="Areas\Tuotor\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\EditPass.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1656,7 +1663,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\UploadImage\" />
     <Folder Include="Areas\Tuotor\Data\" />
-    <Folder Include="Areas\Tuotor\Views\Shared\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Views\Shared\" />
     <Folder Include="Resources\Blogs\" />

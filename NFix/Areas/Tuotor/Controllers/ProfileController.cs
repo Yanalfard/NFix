@@ -180,5 +180,11 @@ namespace NFix.Areas.Tuotor.Controllers
             bool b1 = _video.UpdateVideo(video, video.id);
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult EditPass()
+        {
+            return PartialView();
+        }
     }
 }
