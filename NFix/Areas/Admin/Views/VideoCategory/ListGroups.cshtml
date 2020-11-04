@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblVideoCatagory>
+@{
+    ViewBag.Title = "BlogAdder";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<!-- #region Table -->
+
+<table class="uk-table" dir="rtl">
+    <caption>
+
+    </caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th>گروه</th>
+            <th>عکس</th>
+            <th>
+                <button onclick="Create()">
+                    سرگروه جدید
+                </button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model)
+        {
+            <tr id="group_@(item.id)">
+                <td>
+                    @(Model.ToList().IndexOf(item)+1)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <img src="~/Resources/VideoCatagory/@item.Image" alt="@item.Name" class="thumbnail" style="width:100px;" />
+                </td>
+                <td class="row">
+                    <a href="#" uk-icon="icon:file-edit" onclick="Edit(@item.id)"></a>
+                    <a href="#" uk-icon="icon:trash" onclick="Delete(@item.id)"></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- #endregion -->

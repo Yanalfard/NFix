@@ -12,28 +12,24 @@ namespace NFix.Controllers
 {
     public class HomeCategoriesController : Controller
     {
-        private CatagoryService _catagory;
-        public HomeCategoriesController()
-        {
-            _catagory = new CatagoryService();
-        }
+        private VideoCatagoryService _videoCatagory = new VideoCatagoryService();
+        private VideoService _video = new VideoService();
+
         // GET: HomeCategories
         public ActionResult CategoriesPage()
         {
-            var AllCategori = _catagory.SelectAllCatagorys();
-            List<DtoTblCatagory> result = MethodRepo.ConvertToDto<TblCatagory, DtoTblCatagory>(AllCategori);
-            return PartialView(result);
+            var AllCategori = _videoCatagory.SelectAllVideoCatagorys();
+            return PartialView(AllCategori);
         }
-        public ActionResult CategoryView(int id)
+        [Route("CategoryView/{id}/{name}")]
+        public ActionResult CategoryView(int id, string name)
         {
-            TblCatagory selectCategoryById = _catagory.SelectCatagoryById(id);
-            DtoTblCatagory result = new DtoTblCatagory()
-            {
-                id = selectCategoryById.id,
-                Name = selectCategoryById.Name,
-                CatagoryId = selectCategoryById.CatagoryId,
-            };
-            return View();
+            TblVideoCatagory selectCategoryById = _videoCatagory.SelectVideoCatagoryById(id);
+
+            ViewBag.CatagoryName = name;
+            ViewBag.ImageName = selectCategoryById.Image;
+            List<TblVideo> selectAllVideo = _video.SelectAllVideos().Where(i => i.CatagoryId == id).ToList();
+            return View(selectAllVideo);
         }
     }
 }

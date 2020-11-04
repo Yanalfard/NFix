@@ -3,7 +3,7 @@
     <img class="uk-margin-auto uk-border-circle" id="tutorProfileImage" src="~/Resources/Tutor/@Model.MainImage" />
     <h4 class="uk-margin-auto uk-margin-small-top uk-margin-remove-bottom">@Model.Name</h4>
 
-    <h6 class="uk-margin-auto uk-margin-small-top">تخصص ورزشی</h6>
+    <h6 class="uk-margin-auto uk-margin-small-top">@Model.Specialty</h6>
     <div class="row uk-margin-auto">
         <a href="#ModalUpload" uk-toggle uk-tooltip="آپلود ویدیوئ جدید" uk-icon="icon:cloud-upload;ratio:1.2"></a>
         <span class="unselectable uk-margin-small-left uk-margin-small-right">•</span>
@@ -11,6 +11,6 @@
         <span class="unselectable uk-margin-small-left uk-margin-small-right">•</span>
         <a href="#ModalTable" uk-toggle uk-tooltip="مشاهده ویدیو های آپلودی" uk-icon="icon:menu;ratio:1.2"></a>
         <span class="unselectable uk-margin-small-left uk-margin-small-right">•</span>
-        <a href="#ModalChangePassword" uk-toggle uk-tooltip="تغییر گذرواژه" uk-icon="icon:lock;ratio:1.2"></a>
+        <a href="#"  uk-tooltip="تغییر گذرواژه" onclick="editPass()" uk-icon="icon:lock;ratio:1.2"></a>
     </div>
 </div>

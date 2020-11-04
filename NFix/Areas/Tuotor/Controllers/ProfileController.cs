@@ -15,9 +15,12 @@ namespace NFix.Areas.Tuotor.Controllers
         private TutorService _tutor = new TutorService();
         private VideoService _video = new VideoService();
         private TuotorVideoRelService _tuotorVideoRelService = new TuotorVideoRelService();
+        private VideoCatagoryService _videoCatagory = new VideoCatagoryService();
+
         // GET: Tuotor/Profile
         public ActionResult Index()
         {
+
             return View();
         }
         public ActionResult Info()
@@ -38,6 +41,7 @@ namespace NFix.Areas.Tuotor.Controllers
         }
         public ActionResult UploadVideo()
         {
+            ViewBag.CatagoryId = new SelectList(_videoCatagory.SelectAllVideoCatagorys(), "id", "Name");
             return PartialView();
         }
         [HttpPost]
@@ -138,7 +142,10 @@ namespace NFix.Areas.Tuotor.Controllers
 
         public ActionResult EditVideo(int id)
         {
-            return PartialView(_video.SelectVideoById(id));
+            TblVideo tblVideo = _video.SelectVideoById(id);
+            ViewBag.CatagoryId = new SelectList(_videoCatagory.SelectAllVideoCatagorys(), "id", "Name", tblVideo.CatagoryId);
+
+            return PartialView(tblVideo);
         }
         [HttpPost]
         public ActionResult EditVideo(TblVideo video, HttpPostedFileBase VideoUrl, HttpPostedFileBase VidioDemoUrl, HttpPostedFileBase MainImage)
@@ -172,6 +179,12 @@ namespace NFix.Areas.Tuotor.Controllers
             }
             bool b1 = _video.UpdateVideo(video, video.id);
             return RedirectToAction("Index");
+        }
+
+
+        public ActionResult EditPass()
+        {
+            return PartialView();
         }
     }
 }

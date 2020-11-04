@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "گروه ها";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div id="listGrioup">
+    @Html.Action("ListGroups")
+</div>
+
+<!-- Modal -->
+<!-- This is the modal -->
+<div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+
+
+    </div>
+</div>
+
+<!-- #endregion -->
+
+
+@section Scripts{
+    <script src="~/Scripts/Jquery/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
+
+
+
+    <script>
+
+        function loadCategory() {
+            $('#listGrioup').load("/Admin/VideoCategory/ListGroups");
+        }
+        function Create(catagoryId) {
+            $.get("/Admin/VideoCategory/Create/",
+                function (result) {
+                    UIkit.modal(document.getElementById('modal-example')).show();
+                    $(".uk-modal-body").html(result);
+                });
+        }
+        function Edit(id) {
+            $.get("/Admin/VideoCategory/Edit/" + id,
+                function (result) {
+                    UIkit.modal(document.getElementById('modal-example')).show();
+                    $(".uk-modal-body").html(result);
+                });
+        }
+
+        function Delete(id) {
+            if (confirm("آیا از حذف مطمئن هستید ؟")) {
+                $("#overlay").fadeIn();
+                $.get("/Admin/VideoCategory/Delete/" + id,
+                    function (result) {
+                        if (result.success) {
+                            $("#group_" + id).hide('slow');
+                            $("#overlay").fadeOut();
+                        } else {
+                            alert(result.responseText);
+                            $("#overlay").fadeOut();
+
+                        }
+                    });
+            }
+        }
+
+        function success() {
+
+            UIkit.modal(document.getElementById('modal-example')).hide();
+        }
+    </script>
+
+
+
+}
+

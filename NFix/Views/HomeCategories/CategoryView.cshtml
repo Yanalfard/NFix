@@ -1,6 +1,27 @@
-﻿@model DataLayer.Models.Dto.DtoTblCatagory
+﻿@model IEnumerable<DataLayer.Models.Regular.TblVideo>
 @{
-    ViewBag.Title = "CategoryView";
+    ViewBag.Title = ViewBag.CatagoryName;
 }
 
+
+<link href="~/Styles/Category.min.css" rel="stylesheet" />
+
+    <div class="parallax uk-flex" style=" background: url(/Resources/VideoCatagory/@ViewBag.ImageName);"
+         uk-parallax="bgy: +400">
+        <h1 class="uk-light">
+            @ViewBag.CatagoryName
+        </h1>
+    </div>
+
+<section class="videos">
+    <div class="space"></div>
+
+    <content class="grid uk-margin-large-bottom uk-padding-remove" dir="rtl">
+        @foreach (var item in Model)
+        {
+            @Html.Partial("_VideoBlock", item)
+        }
+    </content>
+    <div class="space"></div>
+</section>
 

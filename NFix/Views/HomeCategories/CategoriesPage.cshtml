@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DataLayer.Models.Dto.DtoTblCatagory>
+﻿@model IEnumerable<DataLayer.Models.Regular.TblVideoCatagory>
 @{
     ViewBag.Title = "CategoriesPage";
 }
@@ -6,34 +6,11 @@
 <h3 class="clipped uk-margin-medium-top text-center">دسته بندی ها</h3>
 
 <section class="categories clipped uk-margin-auto uk-margin-medium-bottom">
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
-    <a href="" class="category">
-        <img src="https://picsum.photos/220" alt="" />
-    </a>
+
+    @foreach (var item in Model)
+    {
+        <a href="/CategoryView/@item.id/@item.Name" class="category">
+            <img src="~/Resources/VideoCatagory/@item.Image" alt="" />
+        </a>
+    }
 </section>

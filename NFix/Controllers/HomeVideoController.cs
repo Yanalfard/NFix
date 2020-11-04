@@ -39,6 +39,22 @@ namespace NFix.Controllers
         {
             ViewBag.Title = title;
             TblVideo selectVideoById = _video.SelectVideoById(id);
+            TblVideo tblVideo = new TblVideo();
+
+            tblVideo.ViewCount = selectVideoById.ViewCount + 1;
+            tblVideo.DateSubmited = selectVideoById.DateSubmited;
+            tblVideo.Description = selectVideoById.Description;
+            tblVideo.DescriptionDemo = selectVideoById.DescriptionDemo;
+            tblVideo.id = selectVideoById.id;
+            tblVideo.IsHome = selectVideoById.IsHome;
+            tblVideo.IsOnline = selectVideoById.IsOnline;
+            tblVideo.MainImage = selectVideoById.MainImage;
+            tblVideo.Raiting = selectVideoById.Raiting;
+            tblVideo.ShareLink = selectVideoById.ShareLink;
+            tblVideo.Title = selectVideoById.Title;
+            tblVideo.VideoUrl = selectVideoById.VideoUrl;
+            tblVideo.VidioDemoUrl = selectVideoById.VidioDemoUrl;
+            bool x= _video.UpdateVideo(tblVideo, selectVideoById.id);
             VideoViewViewModel result = new VideoViewViewModel()
             {
                 VideoUrl = selectVideoById.VideoUrl,

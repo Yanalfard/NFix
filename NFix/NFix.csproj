@@ -150,6 +150,7 @@
     <Compile Include="Areas\Admin\Controllers\TutorController.cs" />
     <Compile Include="Areas\Admin\Controllers\UploadImageController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VideoCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
     <Compile Include="Areas\Tuotor\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Tuotor\TuotorAreaRegistration.cs" />
@@ -192,6 +193,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\CheckContentImage.cs" />
+    <Compile Include="Utilities\ImageResizer.cs" />
     <Compile Include="Utilities\MyEshopRoleProvider.cs" />
     <Compile Include="Utilities\PartialToStringClass.cs" />
     <Compile Include="Utilities\SendEmail.cs" />
@@ -263,17 +266,13 @@
     <Content Include="Areas\User\Views\Profile\ShopCart.cshtml" />
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
-    <Content Include="Resources\Png\Tutors\Doctor.jpg" />
-    <Content Include="Resources\Png\Tutors\Tutor_1.jpg" />
-    <Content Include="Resources\Png\Tutors\Tutor_2.jpg" />
-    <Content Include="Resources\Svg\Footer\maestro.svg" />
-    <Content Include="Resources\Svg\Footer\master.svg" />
-    <Content Include="Resources\Svg\Footer\paypal.svg" />
-    <Content Include="Resources\Svg\Footer\visa.svg" />
     <Content Include="Resources\Svg\Gold.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
     <Content Include="Resources\Svg\Sliver.svg" />
-    <Content Include="Resources\Svg\VID-20201104-WA0001.mp4" />
+    <Content Include="Scripts\Jquery\modal.js" />
+    <Content Include="Scripts\Jquery\Model.js" />
+    <Content Include="Scripts\Loading\Loading.js" />
+    <Content Include="Styles\Loading\Loading.css" />
     <Content Include="Styles\Plans.css">
       <DependentUpon>Plans.scss</DependentUpon>
     </Content>
@@ -281,6 +280,13 @@
       <DependentUpon>Plans.css</DependentUpon>
     </Content>
     <Content Include="Views\Shared\_category.cshtml" />
+    <Content Include="Areas\Admin\Views\VideoCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VideoCategory\ListGroups.cshtml" />
+    <Content Include="Areas\Admin\Views\VideoCategory\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\VideoCategory\Edit.cshtml" />
+    <Content Include="Areas\Tuotor\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\EditPass.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1657,7 +1663,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\UploadImage\" />
     <Folder Include="Areas\Tuotor\Data\" />
-    <Folder Include="Areas\Tuotor\Views\Shared\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Views\Shared\" />
     <Folder Include="Resources\Blogs\" />
@@ -1665,6 +1670,7 @@
     <Folder Include="Resources\Product\" />
     <Folder Include="Resources\Tutor\" />
     <Folder Include="Resources\UploadEditor\" />
+    <Folder Include="Resources\VideoCatagory\Thumb\" />
     <Folder Include="Resources\Videos\Demo\" />
   </ItemGroup>
   <ItemGroup>

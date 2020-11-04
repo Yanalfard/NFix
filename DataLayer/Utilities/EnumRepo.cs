@@ -28,7 +28,8 @@ namespace DataLayer.Utilities
             TblClient,
             TblTuotorVideoRel,
             TblLog,
-            TblVideoCommentRel
+            TblVideoCommentRel,
+            TblVideoCatagory
         }
     }
 }

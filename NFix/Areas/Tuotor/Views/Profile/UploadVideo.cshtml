@@ -1,4 +1,4 @@
-﻿
+﻿@model DataLayer.Models.Regular.TblVideo
 <div id="ModalUpload" uk-modal>
     <div class="uk-modal-dialog uk-modal-body full-width">
         <h2 class="uk-modal-title">آپلود ویدیوی جدید</h2>
@@ -6,6 +6,11 @@
             <h4 class="uk-margin-remove-bottom">
                 ویدیو جدید
             </h4>
+            <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+                دسته ویدیو
+            </label>
+            @Html.DropDownListFor(model => model.CatagoryId, (IEnumerable<SelectListItem>)ViewBag.CatagoryId, "دسته ویدیو را انتخاب کنید", new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-left", required = "required" })
+
             <label for="Title" class="uk-margin-small-bottom uk-margin-top">
                 تیتر ویدیو
             </label>
@@ -43,7 +48,7 @@
                 </div>
             </div>
 
-  
+
 
             <h5 class="uk-margin-remove-bottom">
                 بخش دمو
