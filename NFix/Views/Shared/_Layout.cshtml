@@ -19,11 +19,10 @@
     <link href="/Styles/OwlCarousel/owl.theme.default.min.css" rel="stylesheet" />
 
     <!-- UIkit JS -->
-    
+
 
 </head>
 <body>
-
     <div id="MobileNavigation" dir="rtl" uk-offcanvas="overlay: true ;flip: true">
         <div class="uk-offcanvas-bar column">
 
@@ -125,7 +124,6 @@
         <div class="uk-navbar-left uk-margin-small-left">
             <ul class="uk-navbar-nav">
                 <li>
-
                     @if (User.Identity.IsAuthenticated)
                     {
                         <a class="nav-profile" type="button" href="#">
@@ -133,33 +131,35 @@
                         </a>
                         <div uk-drop="offset: -10" class="drop" dir="rtl">
                             <div class="mat uk-padding column">
-                                @if (User.IsInRole("admin"))
-                                {
-                                    <a class="nav-profile" uk-icon="user" type="button" href="/Admin/Blog/BlogTable">
-                                        پنل مدیریت
-                                    </a>
-                                }
-                                @if (User.IsInRole("tutor"))
-                                {
-                                    <a class="nav-profile" uk-icon="user" type="button" href="/Tuotor/Profile/Index">
-                                        پنل مربی
-                                    </a>
-                                }
                                 @if (User.IsInRole("user"))
                                 {
                                     <a class="nav-profile row" type="button" href="/User/Profile/Index">
                                         <span uk-icon="user"></span>
                                         <span class="uk-margin-small-right">پروفایل</span>
                                     </a>
+                                    <a class="nav-profile row" type="button" href="/User/Profile/Index">
+                                        <span uk-icon="cart"></span>
+                                        <span class="uk-margin-small-right">سبد خرید</span>
+                                    </a>
                                 }
-                                <a class="nav-profile  uk-margin-top" href="/HomeAccount/LogOff">
+                                else if (User.IsInRole("admin"))
+                                {
+                                    <a class="nav-profile" uk-icon="user" type="button" href="/Admin/Blog/BlogTable">
+                                        پنل مدیریت
+                                    </a>
+                                }
+                                else if (User.IsInRole("tutor"))
+                                {
+                                    <a class="nav-profile" uk-icon="user" type="button" href="/Tuotor/Profile/Index">
+                                        پنل مربی
+                                    </a>
+                                }
+                                <a class="nav-profile" href="/HomeAccount/LogOff">
                                     <span uk-icon="sign-out"></span>
                                     <span class="uk-margin-small-right">خروج</span>
                                 </a>
                             </div>
                         </div>
-
-
                     }
                     else
                     {

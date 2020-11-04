@@ -10,9 +10,6 @@
 
 <div class="space-nav-bottom"></div>
 
-
-
-
 @Html.Action("Info", "Profile")
 
 <!-- #region Upload -->
@@ -35,6 +32,20 @@
 
 </div>
 
+<div id="ModalChangePassword" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body column" dir="rtl">
+        <h2 class="ویرایش رمز عبور"></h2>
+        <label for="password">رمز عبور جدید</label>
+        <input type="text" class="uk-input uk-margin-bottom uk-margin-small-top" name="password" value="" />
+
+        <label for="passwordRepeat">تکرار رمز عبور</label>
+        <input type="text" class="uk-input uk-margin-bottom uk-margin-small-top" name="passwordRepeat" value="" />
+
+        <button class="uk-margin-top uk-margin-auto-left" type="button">
+            ویرایش
+        </button>
+    </div>
+</div>
 
 <section class="videos uk-margin-medium-top column">
     <h3 class="clipped uk-margin-top uk-margin-small-bottom center">ویدیوهای <span class="simple">شما</span></h3>

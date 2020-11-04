@@ -416,104 +416,78 @@ backdrop-filter: saturate(80%);
 .text-center {
   text-align: center !important; }
 
-body, html {
-  overflow: visible !important; }
-
-.uk-table {
-  overflow: visible !important; }
-  .uk-table thead {
-    white-space: nowrap !important; }
-
-.uk-icon {
-  width: 48px;
-  height: 48px; }
-
-.construction {
-  width: 100vw;
-  height: 100vh;
-  -o-object-fit: cover;
-  object-fit: cover;
-  -o-object-position: center;
-  object-position: center;
-  z-index: -50; }
-
-.hamburger-button {
-  position: fixed;
-  padding: 10px !important;
-  right: 18px;
-  top: 18px;
-  color: white !important;
-  margin: auto;
-  width: 20px;
-  height: 20px;
-  -moz-border-radius: 50% !important;
-  -webkit-border-radius: 50% !important;
-  border-radius: 50% !important;
-  background: #2b2b2b !important;
-  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1vw;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1vw;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 0 1vw;
-  z-index: 500; }
-
-.uk-close {
-  padding: 10px !important; }
-
-.uk-close:hover {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none; }
-
-.menuComponent {
-  background: #2b2b2b;
-  left: 0;
-  right: 0;
-  padding: 10px;
-  margin-top: 12px;
-  overflow: hidden; }
-
-.uk-offcanvas-bar {
-  padding: 70px 0 !important; }
-
-a:hover {
-  color: #909090 !important; }
-
-a.plus {
-  margin-right: auto;
-  margin-left: 26px; }
-
-.uk-accordion {
-  margin-bottom: 0; }
-
-.uk-accordion-title {
-  font-size: 14px !important; }
-
-.uk-accordion-content {
-  padding-left: 0 !important;
-  margin-right: 57px;
-  font-size: 14px;
-  margin-top: 14px !important; }
-  .uk-accordion-content li {
-    margin-bottom: 8px; }
-
-.uk-table {
-  margin: 0 !important; }
-  .uk-table td > a > img {
-    height: 32px;
-    width: 32px;
-    -o-object-fit: cover;
-    object-fit: cover;
-    -o-object-position: center;
-    object-position: center; }
-  .uk-table a:hover {
-    color: #eb5251 !important; }
-
-.inner-ul {
-  padding: 0;
-  border: solid 1px #151515; }
-  .inner-ul li {
+.plans {
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -ms-align-content: center;
+  -webkit-align-content: center;
+  align-content: center; }
+  .plans .plan-card {
+    padding: 20px;
+    background: #252525;
+    -moz-box-shadow: rgba(0, 0, 0, 0.54) 0 0px 0.6vw;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.54) 0 0px 0.6vw;
+    box-shadow: rgba(0, 0, 0, 0.54) 0 0px 0.6vw;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+    width: 280px;
     padding: 16px;
-    margin: 0 !important; }
-  .inner-ul li:nth-child(even) {
-    background: #1f1f1f !important; }
-  .inner-ul li:nth-child(odd) {
-    background: #2c2c2c !important; }
+    margin: auto;
+    -moz-box-shadow: rgba(0, 0, 0, 0.54) 0 0px 0.6vw, inset rgba(0, 0, 0, 0.54) 0 0px 8px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.54) 0 0px 0.6vw, inset rgba(0, 0, 0, 0.54) 0 0px 8px;
+    box-shadow: rgba(0, 0, 0, 0.54) 0 0px 0.6vw, inset rgba(0, 0, 0, 0.54) 0 0px 8px; }
+    .plans .plan-card img {
+      margin-right: -16px;
+      filter: drop-shadow(-8px 0 8px rgba(0, 0, 0, 0.24)); }
+    .plans .plan-card .row.plan-time > h3 {
+      font-size: 58px;
+      margin: 0;
+      text-shadow: 0 0 6px rgba(0, 0, 0, 0.48); }
+    .plans .plan-card .row.plan-time > span {
+      margin-top: 42px;
+      margin-right: 4px; }
+    .plans .plan-card .row.plan-price > h4 {
+      margin: 0;
+      font-size: 28px; }
+    .plans .plan-card .row.plan-price > span {
+      margin-right: 6px;
+      margin-top: 12px; }
+    .plans .plan-card ul {
+      list-style: disc !important;
+      padding-right: 20px;
+      padding-left: 0; }
+      .plans .plan-card ul li {
+        list-style: disc !important;
+        margin-bottom: 8px; }
+
+@media only screen and (max-width: 1080px) {
+  .plans {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center; }
+    .plans .plan-card {
+      width: 260px;
+      margin: 16px auto; } }
+
+.plan-card.silver {
+  background: #313131;
+  border: 8px #8FA6BA solid; }
+
+.plan-card.gold {
+  background: #3A3A3A;
+  border: 8px #F9B53B solid; }
+
+.plan-card.platinum {
+  background: #303030;
+  border: 8px #2F3F54 solid; }

@@ -415,6 +415,10 @@ footer {
             }
         }
 
+        .contacts, .links, .header {
+            width: 100%;
+        }
+
         .contacts {
         }
 
@@ -459,6 +463,10 @@ footer {
             .map {
                 margin: 0;
                 padding: 0;
+            }
+
+            .contacts, .links, .header {
+                width: 100%;
             }
         }
     }
@@ -549,8 +557,9 @@ table {
         }
     }
 }
+
 /*#region Button */
-button {
+button, .button-primary {
     background: darken($primary-light, 5%);
     padding: 10px 26px 11px 26px;
     font-size: 16px;
@@ -558,6 +567,7 @@ button {
     border: 0;
     @include trans(.5s);
     cursor: pointer;
+    @include border-radius(0,0,0,0);
 }
 
 .uk-button-default {
@@ -599,9 +609,10 @@ button {
     @include trans(.2s);
 }
 
-button:hover {
+button:hover, .button-primary:hover {
     @include subtle-glow(rgba(221, 28, 28, 0.64));
     @include trans(.2s);
+    color: white;
 }
 
 button:active {

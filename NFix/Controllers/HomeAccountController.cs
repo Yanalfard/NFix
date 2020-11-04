@@ -287,5 +287,10 @@ namespace NFix.Controllers
             return PartialView(product_Groups.ToList());
         }
 
+        public ActionResult Plans()
+        {
+            return View();
+        }
+
     }
 }
