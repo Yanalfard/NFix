@@ -400,8 +400,6 @@
     <Content Include="Resources\Svg\NFixAnimated.svg" />
     <Content Include="Resources\Svg\Unio2n.svg" />
     <Content Include="Resources\Svg\Union.svg" />
-    <Content Include="Resources\User\3475674567.jpg" />
-    <Content Include="Resources\Videos\Image\3475674567.jpg" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
@@ -1670,12 +1668,13 @@
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Views\Shared\" />
     <Folder Include="Resources\Blogs\" />
-    <Folder Include="Resources\NewFolder1\" />
     <Folder Include="Resources\Product\" />
     <Folder Include="Resources\Tutor\" />
     <Folder Include="Resources\UploadEditor\" />
+    <Folder Include="Resources\User\" />
     <Folder Include="Resources\VideoCatagory\Thumb\" />
     <Folder Include="Resources\Videos\Demo\" />
+    <Folder Include="Resources\Videos\Image\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
