@@ -1,11 +1,17 @@
 ﻿using DataLayer.Models.Regular;
 using DataLayer.Services.Impl;
+using DataLayer.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Drawing.Design;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace NFix.Areas.Tuotor.Controllers
 {
@@ -86,26 +92,24 @@ namespace NFix.Areas.Tuotor.Controllers
         [HandleError]
         public ActionResult ViewProfile(TblTutor tutor, HttpPostedFileBase Image)
         {
-            if (Image != null)
-            {
-                TblTutor selectTutor = _tutor.SelectTutorById(tutor.id);
-                string fullPathLogo = Request.MapPath("/Resources/Tutor/" + selectTutor.MainImage);
-                if (System.IO.File.Exists(fullPathLogo))
-                {
-                    System.IO.File.Delete(fullPathLogo);
-                }
-                tutor.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
-                Image.SaveAs(Server.MapPath("/Resources/Tutor/" + tutor.MainImage));
 
-                tutor.Description = selectTutor.Description;
-                tutor.IdentificationNo = selectTutor.IdentificationNo;
-                tutor.Name = selectTutor.Name;
-                tutor.TellNo = selectTutor.TellNo;
-                tutor.UserPassId = selectTutor.UserPassId;
-                _tutor.UpdateTutor(tutor, tutor.id);
-                return RedirectToAction("Index");
-            }
-            return View(tutor);
+            TblTutor selectTutor = _tutor.SelectTutorById(tutor.id);
+
+            selectTutor.Description = tutor.Description;
+            selectTutor.IdentificationNo = tutor.IdentificationNo;
+            selectTutor.Name = tutor.Name;
+            selectTutor.id = tutor.id;
+            selectTutor.Specialty = tutor.Specialty;
+            selectTutor.TellNo = tutor.TellNo;
+            selectTutor.UserPassId = tutor.UserPassId;
+            selectTutor.MainImage = tutor.MainImage;
+            bool d=_tutor.UpdateTutor(tutor, tutor.id);
+            var isAjax = this.Request.IsAjaxRequest();
+
+            return Json(new { result = "ok", Id = selectTutor.id }, JsonRequestBehavior.AllowGet);
+
+
+            //return JavaScript("doneEdit();");
         }
         public ActionResult VideoBlock()
         {
@@ -185,6 +189,66 @@ namespace NFix.Areas.Tuotor.Controllers
         public ActionResult EditPass()
         {
             return PartialView();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPass(ChangePasswordViewModel changePass)
+        {
+            if (ModelState.IsValid)
+            {
+                string hassPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(changePass.OldPassword, "SHA256");
+                TblUserPass selectUser = _userPass.SelectUserPassByUsername(User.Identity.Name);
+                TblTutor selectTutor = _tutor.SelectTutorByUserPassId(selectUser.id);
+                TblUserPass chechUser = _userPass.SelectUserPassByUsernameAndPassword(selectUser.Username, hassPassword);
+                if (chechUser != null)
+                {
+                    TblUserPass tblUser = new TblUserPass()
+                    {
+                        id = selectUser.id,
+                        Password = FormsAuthentication.HashPasswordForStoringInConfigFile(changePass.Password, "SHA256"),
+                        Auth = selectUser.Auth,
+                        IsActive = selectUser.IsActive,
+                        RoleId = selectUser.RoleId,
+                        Username = selectUser.Username,
+                    };
+                    bool x = _userPass.UpdateUserPass(tblUser, selectUser.id);
+                    return JavaScript("UIkit.modal(document.getElementById('ModalChangePassword')).hide();doneEdit();");
+
+                }
+                else
+                {
+                    ModelState.AddModelError("OldPassword", "رمز قدیمی اشتباه می باشد");
+                }
+            }
+            return PartialView("EditPass", changePass);
+        }
+
+
+        [HttpPost]
+        public ActionResult UploadFiles(HttpPostedFileBase Image, int id)
+        {
+
+            if (Image != null)
+            {
+                var isAjax = this.Request.IsAjaxRequest();
+                // Thread.Sleep(3000); // simulating a long running process
+                TblTutor selectTutor = _tutor.SelectTutorById(id);
+                TblTutor tblTutor = new TblTutor();
+                selectTutor.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
+                Image.SaveAs(Server.MapPath("/Resources/Tutor/" + selectTutor.MainImage));
+                tblTutor.Description = selectTutor.Description;
+                tblTutor.IdentificationNo = selectTutor.IdentificationNo;
+                tblTutor.Name = selectTutor.Name;
+                tblTutor.id = selectTutor.id;
+                tblTutor.Specialty = selectTutor.Specialty;
+                tblTutor.TellNo = selectTutor.TellNo;
+                tblTutor.UserPassId = selectTutor.UserPassId;
+                tblTutor.MainImage = selectTutor.MainImage;
+                bool d = _tutor.UpdateTutor(tblTutor, selectTutor.id);
+            }
+            return RedirectToAction("Index");
+            //return JavaScript("location.reload(true)");
+          //  return Json(new { FileName = "/Uploads/filename.ext" }, "text/html", JsonRequestBehavior.AllowGet);
         }
     }
 }

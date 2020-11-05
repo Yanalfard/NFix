@@ -31,7 +31,12 @@ namespace NFix.Controllers
         public ActionResult BlogsPage()
         {
             var allBlog = _blog.SelectAllBlogs();
-            return PartialView(allBlog);
+            return PartialView(allBlog.OrderByDescending(i=>i.id).Take(20));
+        }
+        public ActionResult AllBlogs()
+        {
+            var allBlog = _blog.SelectAllBlogs();
+            return PartialView(allBlog.OrderByDescending(i => i.id));
         }
         [Route("BlogView/{id}/{Description}")]
         public ActionResult BlogView(int id, string Description)

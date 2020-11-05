@@ -32,8 +32,34 @@
 <!--#region Sticky icons-->
 <div id="stickies" class="column" uk-sticky="offset:250;">
     <img class="animated-bubble" src="../Resources/Svg/AnimatedBubble.svg" />
-    <a href="#" class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
-    <a href="#" class="stickIcon" uk-tooltip="title: اشتراک; pos:left"><img src="../Resources/Svg/asdfwe04.svg" /></a>
+    @if (User.Identity.IsAuthenticated)
+    {
+
+        if (User.IsInRole("user"))
+        {
+            <a href="/User/Profile/Index" class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
+
+        }
+        else if (User.IsInRole("admin"))
+        {
+            <a href="/Admin/Blog/BlogTable" class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
+
+        }
+        else if (User.IsInRole("tutor"))
+        {
+            <a href="/Tuotor/Profile/Index" class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
+
+        }
+    }
+    else
+    {
+        <a href="#" uk-toggle="target: #ModalLogin"  class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
+
+        @*<a class="nav-profile" href="#" uk-toggle="target: #ModalLogin" type="button">
+            ورود
+        </a>*@
+    }
+    <a href="#" class="stickIcon" uk-tooltip="title: اشتراک; pos:left" onclick="fallbackCopyTextToClipboard(window.location.href)"><img src="../Resources/Svg/asdfwe04.svg" /></a>
     <a href="#" class="stickIcon" uk-tooltip="title: فیس بوک; pos:left"><img src="../Resources/Svg/asdfwe03.svg" /></a>
     <a href="#" class="stickIcon" uk-tooltip="title: اینستاگرام; pos:left"><img src="../Resources/Svg/Unio2n.svg" /></a>
 </div>

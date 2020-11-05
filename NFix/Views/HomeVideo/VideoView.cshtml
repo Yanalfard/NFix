@@ -51,25 +51,8 @@
                 <label class="view-count" uk-tooltip="تعداد بازدید">
                     <span>@Model.ViewCount</span>
                 </label>
-                <input type="text" style="width:0.1px;height:0.1px;opacity:0" id="dummyInput" value="" />
-                <a uk-icon="link" onclick="copyToClipboard()" uk-tooltip="اشتراک گذاری"></a>
-
-
-                <script>
-                    function copyToClipboard() {
-                        const dummyInput = document.getElementById('dummyInput');
-                        dummyInput.value = window.location.href;
-
-                        /* Select the text field */
-                        dummyInput.select();
-                        dummyInput.setSelectionRange(0, 99999); /*For mobile devices*/
-
-                        /* Copy the text inside the text field */
-                        document.execCommand("copy");
-
-                        UIkit.notification("لینک ویدیو کپی شد")
-                    }
-                </script>
+                @*<input type="text" style="width:0.1px;height:0.1px;opacity:0" id="dummyInput" value="" />*@
+                <a uk-icon="link" onclick="fallbackCopyTextToClipboard(window.location.href)" uk-tooltip="اشتراک گذاری"></a>
 
 
                 <!--<a class="uk-animation-slide-top-small" uk-tooltip="title:لایک" uk-icon="heart"></a>-->

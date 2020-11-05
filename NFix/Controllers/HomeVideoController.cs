@@ -32,7 +32,12 @@ namespace NFix.Controllers
         public ActionResult VideosPage()
         {
             var allVideo = _video.SelectAllVideos();
-            return PartialView(allVideo);
+            return PartialView(allVideo.OrderByDescending(i => i.DateSubmited).Take(20));
+        }
+        public ActionResult AllVideos()
+        {
+            var allVideo = _video.SelectAllVideos();
+            return View(allVideo.OrderByDescending(i=>i.DateSubmited));
         }
         [Route("VideoView/{id}/{title}")]
         public ActionResult VideoView(int id, string title)
@@ -40,7 +45,6 @@ namespace NFix.Controllers
             ViewBag.Title = title;
             TblVideo selectVideoById = _video.SelectVideoById(id);
             TblVideo tblVideo = new TblVideo();
-
             tblVideo.ViewCount = selectVideoById.ViewCount + 1;
             tblVideo.DateSubmited = selectVideoById.DateSubmited;
             tblVideo.Description = selectVideoById.Description;

@@ -269,9 +269,11 @@
     <Content Include="Resources\Svg\Gold.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
     <Content Include="Resources\Svg\Sliver.svg" />
+    <Content Include="Scripts\ajaxfileupload.js" />
     <Content Include="Scripts\Jquery\modal.js" />
     <Content Include="Scripts\Jquery\Model.js" />
     <Content Include="Scripts\Loading\Loading.js" />
+    <Content Include="Scripts\UIScripts\Global.js" />
     <Content Include="Styles\Loading\Loading.css" />
     <Content Include="Styles\Plans.css">
       <DependentUpon>Plans.scss</DependentUpon>
@@ -1657,6 +1659,8 @@
     <Content Include="Views\HomeAccount\RecoveryPass.cshtml" />
     <Content Include="Views\HomeAccount\Plans.cshtml" />
     <Content Include="Styles\Plans.scss" />
+    <Content Include="Views\HomeVideo\AllVideos.cshtml" />
+    <Content Include="Views\HomeBlogs\AllBlogs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
