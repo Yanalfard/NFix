@@ -4,14 +4,14 @@ using DataLayer.Services.Impl;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblTutor : TblTutor
+    public class DtoTblTutor : Metadata.MdTutor
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
-        public TblUserPass UserPass { get; set; }
+        public Metadata.MdUserPass UserPass { get; set; }
 
 
-        public DtoTblTutor(TblTutor tutor)
+        public DtoTblTutor(Metadata.MdTutor tutor)
         {
             id = tutor.id;
             Name = tutor.Name;
@@ -25,7 +25,7 @@ namespace DataLayer.Models.Dto
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblTutor(TblTutor tutor, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblTutor(Metadata.MdTutor tutor, HttpStatusCode statusEffect, string errorStr)
         {
             id = tutor.id;
             Name = tutor.Name;

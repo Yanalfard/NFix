@@ -6,32 +6,32 @@ using DataLayer.Utilities;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblBlog : TblBlog
+    public class DtoTblBlog : Metadata.MdBlog
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
         public List<DtoTblComment> Comments { get; set; }
         public List<DtoTblKeyword> Keywords { get; set; }
 
-        public DtoTblBlog(TblBlog blog)
+        public DtoTblBlog(Metadata.MdBlog blog)
         {
             id = blog.id;
             MainImage = blog.MainImage;
             Body = blog.Body;
             LikeCount = blog.LikeCount;
-            Comments = MethodRepo.ConvertToDto<TblComment, DtoTblComment>(new BlogService().SelectCommentsByBlogId(id));
-            Keywords = MethodRepo.ConvertToDto<TblKeyword, DtoTblKeyword>(new BlogService().SelectKeywordsByBlogId(id));
+            Comments = MethodRepo.ConvertToDto<Metadata.MdComment, DtoTblComment>(new BlogService().SelectCommentsByBlogId(id));
+            Keywords = MethodRepo.ConvertToDto<Metadata.MdKeyword, DtoTblKeyword>(new BlogService().SelectKeywordsByBlogId(id));
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblBlog(TblBlog blog, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblBlog(Metadata.MdBlog blog, HttpStatusCode statusEffect, string errorStr)
         {
             id = blog.id;
             MainImage = blog.MainImage;
             Body = blog.Body;
             LikeCount = blog.LikeCount;
-            Comments = MethodRepo.ConvertToDto<TblComment, DtoTblComment>(new BlogService().SelectCommentsByBlogId(id));
-            Keywords = MethodRepo.ConvertToDto<TblKeyword, DtoTblKeyword>(new BlogService().SelectKeywordsByBlogId(id));
+            Comments = MethodRepo.ConvertToDto<Metadata.MdComment, DtoTblComment>(new BlogService().SelectCommentsByBlogId(id));
+            Keywords = MethodRepo.ConvertToDto<Metadata.MdKeyword, DtoTblKeyword>(new BlogService().SelectKeywordsByBlogId(id));
 
             StatusEffect = statusEffect;
             ErrorStr = errorStr;

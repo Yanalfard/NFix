@@ -3,19 +3,19 @@ using DataLayer.Models.Regular;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblBlogCommentRel : TblBlogCommentRel
+    public class DtoTblBlogCommentRel : Metadata.MdBlogCommentRel
     {
-        public virtual TblBlog Blog { get; set; }
-        public virtual TblComment Comment { get; set; }
+        public virtual Metadata.MdBlog Blog { get; set; }
+        public virtual Metadata.MdComment Comment { get; set; }
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
 
-        public TblVideoCommentRel ToRegular()
+        public Metadata.MdVideoCommentRel ToRegular()
         {
-            return new TblVideoCommentRel();
+            return new Metadata.MdVideoCommentRel();
         }
 
-        public DtoTblBlogCommentRel(TblBlogCommentRel VideoCommentRel)
+        public DtoTblBlogCommentRel(Metadata.MdBlogCommentRel VideoCommentRel)
         {
             Blog = VideoCommentRel.TblBlog;
             Comment = VideoCommentRel.TblComment;

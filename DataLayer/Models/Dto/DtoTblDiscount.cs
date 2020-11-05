@@ -3,11 +3,11 @@ using DataLayer.Models.Regular;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblDiscount : TblDiscount
+    public class DtoTblDiscount : Metadata.MdDiscount
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
-        public DtoTblDiscount(TblDiscount discount)
+        public DtoTblDiscount(Metadata.MdDiscount discount)
         {
             id = discount.id;
             Name = discount.Name;
@@ -17,7 +17,7 @@ namespace DataLayer.Models.Dto
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblDiscount(TblDiscount discount, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblDiscount(Metadata.MdDiscount discount, HttpStatusCode statusEffect, string errorStr)
         {
             id = discount.id;
             Name = discount.Name;

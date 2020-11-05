@@ -4,12 +4,12 @@ using DataLayer.Services.Impl;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblComment : TblComment
+    public class DtoTblComment : Metadata.MdComment
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
-        public TblClient Client { get; set; }
-        public DtoTblComment(TblComment comment)
+        public Metadata.MdClient Client { get; set; }
+        public DtoTblComment(Metadata.MdComment comment)
         {
             id = comment.id;
             ClientId = comment.ClientId;
@@ -21,7 +21,7 @@ namespace DataLayer.Models.Dto
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblComment(TblComment comment, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblComment(Metadata.MdComment comment, HttpStatusCode statusEffect, string errorStr)
         {
             id = comment.id;
             ClientId = comment.ClientId;

@@ -3,11 +3,11 @@ using DataLayer.Models.Regular;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblLog : TblLog
+    public class DtoTblLog : Metadata.MdLog
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
-        public DtoTblLog(TblLog log)
+        public DtoTblLog(Metadata.MdLog log)
         {
             id = log.id;
             LogText = log.LogText;
@@ -16,7 +16,7 @@ namespace DataLayer.Models.Dto
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblLog(TblLog log, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblLog(Metadata.MdLog log, HttpStatusCode statusEffect, string errorStr)
         {
             id = log.id;
             LogText = log.LogText;

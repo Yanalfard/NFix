@@ -6,7 +6,7 @@ using DataLayer.Utilities;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblProduct : TblProduct
+    public class DtoTblProduct : Metadata.MdProduct
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
@@ -16,7 +16,7 @@ namespace DataLayer.Models.Dto
         public List<DtoTblProperty> Propertys { get; set; }
         public TblCatagory Catagory { get; set; }
 
-        public DtoTblProduct(TblProduct product)
+        public DtoTblProduct(Metadata.MdProduct product)
         {
             id = product.id;
             Name = product.Name;
@@ -29,15 +29,15 @@ namespace DataLayer.Models.Dto
             IsSuggested = product.IsSuggested;
             Discount = product.Discount;
             Status = product.Status;
-            Comments = MethodRepo.ConvertToDto<TblComment, DtoTblComment>(new ProductService().SelectCommentsByProductId(id));
+            Comments = MethodRepo.ConvertToDto<Metadata.MdComment, DtoTblComment>(new ProductService().SelectCommentsByProductId(id));
             Images = MethodRepo.ConvertToDto<TblImage, DtoTblImage>(new ProductService().SelectImagesByProductId(id));
-            Keywords = MethodRepo.ConvertToDto<TblKeyword, DtoTblKeyword>(new ProductService().SelectKeywordsByProductId(id));
-            Propertys = MethodRepo.ConvertToDto<TblProperty, DtoTblProperty>(new ProductService().SelectPropertysByProductId(id));
+            Keywords = MethodRepo.ConvertToDto<Metadata.MdKeyword, DtoTblKeyword>(new ProductService().SelectKeywordsByProductId(id));
+            Propertys = MethodRepo.ConvertToDto<Metadata.MdProperty, DtoTblProperty>(new ProductService().SelectPropertysByProductId(id));
             Catagory = new CatagoryService().SelectCatagoryById(id);
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblProduct(TblProduct product, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblProduct(Metadata.MdProduct product, HttpStatusCode statusEffect, string errorStr)
         {
             id = product.id;
             Name = product.Name;
@@ -50,10 +50,10 @@ namespace DataLayer.Models.Dto
             IsSuggested = product.IsSuggested;
             Discount = product.Discount;
             Status = product.Status;
-            Comments = MethodRepo.ConvertToDto<TblComment, DtoTblComment>(new ProductService().SelectCommentsByProductId(id));
+            Comments = MethodRepo.ConvertToDto<Metadata.MdComment, DtoTblComment>(new ProductService().SelectCommentsByProductId(id));
             Images = MethodRepo.ConvertToDto<TblImage, DtoTblImage>(new ProductService().SelectImagesByProductId(id));
-            Keywords = MethodRepo.ConvertToDto<TblKeyword, DtoTblKeyword>(new ProductService().SelectKeywordsByProductId(id));
-            Propertys = MethodRepo.ConvertToDto<TblProperty, DtoTblProperty>(new ProductService().SelectPropertysByProductId(id));
+            Keywords = MethodRepo.ConvertToDto<Metadata.MdKeyword, DtoTblKeyword>(new ProductService().SelectKeywordsByProductId(id));
+            Propertys = MethodRepo.ConvertToDto<Metadata.MdProperty, DtoTblProperty>(new ProductService().SelectPropertysByProductId(id));
             Catagory = new CatagoryService().SelectCatagoryById(id);
 
             StatusEffect = statusEffect;

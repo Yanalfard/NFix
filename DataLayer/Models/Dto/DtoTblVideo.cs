@@ -5,19 +5,19 @@ using DataLayer.Models.Regular;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblVideo : TblVideo
+    public class DtoTblVideo : Metadata.MdVideo
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
-        public virtual List<TblTuotorVideoRel> TuotorVideoRel { get; set; }
+        public virtual List<Metadata.MdTuotorVideoRel> TuotorVideoRel { get; set; }
         public string TuotorName { get; set; }
 
-        public TblVideo ToRegular()
+        public Metadata.MdVideo ToRegular()
         {
-            return new TblVideo();
+            return new Metadata.MdVideo();
         }
 
-        public DtoTblVideo(TblVideo video)
+        public DtoTblVideo(Metadata.MdVideo video)
         {
             id = video.id;
             VideoUrl = video.VideoUrl;
@@ -44,7 +44,7 @@ namespace DataLayer.Models.Dto
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblVideo(TblVideo video, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblVideo(Metadata.MdVideo video, HttpStatusCode statusEffect, string errorStr)
         {
 
             StatusEffect = statusEffect;

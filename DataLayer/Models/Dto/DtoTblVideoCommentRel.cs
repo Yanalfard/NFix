@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblVideoCommentRel : TblVideoCommentRel
+    public class DtoTblVideoCommentRel : Metadata.MdVideoCommentRel
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
 
-        public TblVideoCommentRel ToRegular()
+        public Metadata.MdVideoCommentRel ToRegular()
         {
-            return new TblVideoCommentRel();
+            return new Metadata.MdVideoCommentRel();
         }
 
-        public DtoTblVideoCommentRel(TblVideoCommentRel rel)
+        public DtoTblVideoCommentRel(Metadata.MdVideoCommentRel rel)
         {
 
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblVideoCommentRel(TblVideoCommentRel rel, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblVideoCommentRel(Metadata.MdVideoCommentRel rel, HttpStatusCode statusEffect, string errorStr)
         {
 
             StatusEffect = statusEffect;

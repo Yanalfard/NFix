@@ -3,11 +3,11 @@ using DataLayer.Models.Regular;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblKeyword : TblKeyword
+    public class DtoTblKeyword : Metadata.MdKeyword
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
-        public DtoTblKeyword(TblKeyword keyword)
+        public DtoTblKeyword(Metadata.MdKeyword keyword)
         {
             id = keyword.id;
             Name = keyword.Name;
@@ -15,7 +15,7 @@ namespace DataLayer.Models.Dto
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblKeyword(TblKeyword keyword, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblKeyword(Metadata.MdKeyword keyword, HttpStatusCode statusEffect, string errorStr)
         {
             id = keyword.id;
             Name = keyword.Name;

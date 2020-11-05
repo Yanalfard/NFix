@@ -3,23 +3,23 @@ using DataLayer.Models.Regular;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblProductCommentRel : TblProductCommentRel
+    public class DtoTblProductCommentRel : Metadata.MdProductCommentRel
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
 
-        public TblProductCommentRel ToRegular()
+        public Metadata.MdProductCommentRel ToRegular()
         {
-            return new TblProductCommentRel();
+            return new Metadata.MdProductCommentRel();
         }
 
-        public DtoTblProductCommentRel(TblProductCommentRel productCommentRel)
+        public DtoTblProductCommentRel(Metadata.MdProductCommentRel productCommentRel)
         {
 
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblProductCommentRel(TblProductCommentRel productCommentRel, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblProductCommentRel(Metadata.MdProductCommentRel productCommentRel, HttpStatusCode statusEffect, string errorStr)
         {
 
             StatusEffect = statusEffect;

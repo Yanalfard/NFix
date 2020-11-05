@@ -12,7 +12,7 @@ namespace DataLayer.Models.Dto
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
         public List<DtoTblProduct> Products { get; set; }
-        public TblUserPass UserPass { get; set; }
+        public Metadata.MdUserPass UserPass { get; set; }
 
         public int id { get; set; }
         [Display(Name = "نام")]
@@ -52,7 +52,7 @@ namespace DataLayer.Models.Dto
         public bool IsPremium { get; set; }
         public string PremiumTill { get; set; }
         public string InviteCode { get; set; }
-        public DtoTblClient(TblClient client)
+        public DtoTblClient(Metadata.MdClient client)
         {
             id = client.id;
             Name = client.Name;
@@ -66,13 +66,13 @@ namespace DataLayer.Models.Dto
             IsPremium = client.IsPremium;
             PremiumTill = client.PremiumTill;
             InviteCode = client.InviteCode;
-            Products = MethodRepo.ConvertToDto<TblProduct, DtoTblProduct>(new ClientService().SelectProductsByClientId(id));
+            Products = MethodRepo.ConvertToDto<Metadata.MdProduct, DtoTblProduct>(new ClientService().SelectProductsByClientId(id));
             UserPass = new UserPassService().SelectUserPassById(id);
 
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblClient(TblClient client, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblClient(Metadata.MdClient client, HttpStatusCode statusEffect, string errorStr)
         {
             id = client.id;
             Name = client.Name;
@@ -86,7 +86,7 @@ namespace DataLayer.Models.Dto
             IsPremium = client.IsPremium;
             PremiumTill = client.PremiumTill;
             InviteCode = client.InviteCode;
-            Products = MethodRepo.ConvertToDto<TblProduct, DtoTblProduct>(new ClientService().SelectProductsByClientId(id));
+            Products = MethodRepo.ConvertToDto<Metadata.MdProduct, DtoTblProduct>(new ClientService().SelectProductsByClientId(id));
             UserPass = new UserPassService().SelectUserPassById(id);
 
             StatusEffect = statusEffect;

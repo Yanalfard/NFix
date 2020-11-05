@@ -3,26 +3,26 @@ using DataLayer.Models.Regular;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblBlogKeywordRel : TblBlogKeywordRel
+    public class DtoTblBlogKeywordRel : Metadata.MdBlogKeywordRel
     {
-        public virtual TblBlog Blog { get; set; }
-        public virtual TblKeyword Keyword { get; set; }
+        public virtual Metadata.MdBlog Blog { get; set; }
+        public virtual Metadata.MdKeyword Keyword { get; set; }
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
 
-        public TblBlogKeywordRel ToRegular()
+        public Metadata.MdBlogKeywordRel ToRegular()
         {
-            return new TblBlogKeywordRel();
+            return new Metadata.MdBlogKeywordRel();
         }
 
-        public DtoTblBlogKeywordRel(TblBlogKeywordRel blogKeywordRel)
+        public DtoTblBlogKeywordRel(Metadata.MdBlogKeywordRel blogKeywordRel)
         {
             Blog = blogKeywordRel.TblBlog;
             Keyword = blogKeywordRel.TblKeyword;
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblBlogKeywordRel(TblBlogKeywordRel blogKeywordRel, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblBlogKeywordRel(Metadata.MdBlogKeywordRel blogKeywordRel, HttpStatusCode statusEffect, string errorStr)
         {
 
             StatusEffect = statusEffect;

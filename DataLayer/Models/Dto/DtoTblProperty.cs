@@ -3,12 +3,12 @@ using DataLayer.Models.Regular;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblProperty : TblProperty
+    public class DtoTblProperty : Metadata.MdProperty
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
 
-        public DtoTblProperty(TblProperty property)
+        public DtoTblProperty(Metadata.MdProperty property)
         {
             id = property.id;
             Name = property.Name;
@@ -17,7 +17,7 @@ namespace DataLayer.Models.Dto
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblProperty(TblProperty property, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblProperty(Metadata.MdProperty property, HttpStatusCode statusEffect, string errorStr)
         {
             id = property.id;
             Name = property.Name;

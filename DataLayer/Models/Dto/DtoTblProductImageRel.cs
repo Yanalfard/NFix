@@ -3,23 +3,23 @@ using DataLayer.Models.Regular;
 
 namespace DataLayer.Models.Dto
 {
-    public class DtoTblProductImageRel : TblProductImageRel
+    public class DtoTblProductImageRel : Metadata.MdProductImageRel
     {
         public HttpStatusCode StatusEffect { get; set; }
         public string ErrorStr { get; set; }
 
-        public TblProductImageRel ToRegular()
+        public Metadata.MdProductImageRel ToRegular()
         {
-            return new TblProductImageRel();
+            return new Metadata.MdProductImageRel();
         }
 
-        public DtoTblProductImageRel(TblProductImageRel productImageRel)
+        public DtoTblProductImageRel(Metadata.MdProductImageRel productImageRel)
         {
 
             StatusEffect = HttpStatusCode.OK;
         }
 
-        public DtoTblProductImageRel(TblProductImageRel productImageRel, HttpStatusCode statusEffect, string errorStr)
+        public DtoTblProductImageRel(Metadata.MdProductImageRel productImageRel, HttpStatusCode statusEffect, string errorStr)
         {
 
             StatusEffect = statusEffect;
