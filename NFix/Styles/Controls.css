@@ -724,7 +724,7 @@ footer {
         margin: 0; }
         footer .footer-container > * > ul > li {
           margin-top: 4px; }
-    footer .footer-container .contacts, footer .footer-container .links, footer .footer-container .header {
+    footer .footer-container .contacts, footer .footer-container .links, footer .footer-container .header, footer .footer-container .map {
       width: auto;
       margin: auto; }
     footer .footer-container .contacts img {
@@ -766,7 +766,7 @@ footer {
     footer .footer-container .map {
       margin: 0;
       padding: 0; }
-    footer .footer-container .contacts, footer .footer-container .links, footer .footer-container .header, footer .footer-container > .row {
+    footer .footer-container .contacts, footer .footer-container .links, footer .footer-container .map, footer .footer-container .header, footer .footer-container > .row {
       width: 100% !important;
       margin-left: auto !important; } }
 
