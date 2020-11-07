@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<DataLayer.Models.Regular.TblProduct>
 
-@foreach (var item in Model)
-{
-    <div id="product" dir="ltr" class="clipped uk-margin-auto owl-carousel uk-margin-small-top">
+<div id="product" dir="ltr" class="clipped uk-margin-auto owl-carousel uk-margin-small-top">
+    @foreach (var item in Model)
+    {
         <div class="product-block column card uk-padding-remove">
             <!-- 342 * 280 -->
             @foreach (var j in item.TblProductImageRel)
@@ -30,13 +30,13 @@
                         }
 
                     </div>
-                    <button class="uk-margin-auto-left uk-margin-auto-top"  onclick="ModalProduct(@item.id)">خرید</button>
+                    <button class="uk-margin-auto-left uk-margin-auto-top" onclick="ModalProduct(@item.id)">خرید</button>
                     @*<button class="uk-margin-auto-left uk-margin-auto-top">خرید</button>*@
                 </div>
             </content>
         </div>
-    </div>
-}
+    }
 
+</div>
 
 

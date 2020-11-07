@@ -42,10 +42,13 @@
     </content>
 </section>
 
+
+
+
 @section Scripts{
-
-    <script src="~/Scripts/ajaxfileupload.js"></script>
-
+    <script src="~/Scripts/Jquery/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/Jquery/ajaxfileupload.js"></script>
 
     <script type="text/javascript">
         function doUpload(data, status, xhr) {
@@ -58,21 +61,16 @@
                 data:
                 {
                     id: data.Id /* اين آي دي پس از ذخيره شدن محصول در سرور از آن دريافت مي‌شود */,
-                    name1: "test"
                     // , ...
                 }, // اطلاعات اضافي در صورت نياز
                 complete: function () {
                 },
                 success: function (successData, successStatus) {
+                    location.reload();
 
-                    if (typeof (successData.FileName) != "undefined") {
-                        alert(successData.FileName);
-                    }
                 },
                 error: function (errorData, errorStatus, e) {
-
                     alert(e);
-                    $("#loading").hide();
                 }
             });
 

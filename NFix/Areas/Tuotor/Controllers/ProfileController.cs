@@ -246,9 +246,9 @@ namespace NFix.Areas.Tuotor.Controllers
                 tblTutor.MainImage = selectTutor.MainImage;
                 bool d = _tutor.UpdateTutor(tblTutor, selectTutor.id);
             }
-            return RedirectToAction("Index");
+            return Json(new { FileName = "/Uploads/filename.ext" }, "text/html", JsonRequestBehavior.AllowGet);
             //return JavaScript("location.reload(true)");
-          //  return Json(new { FileName = "/Uploads/filename.ext" }, "text/html", JsonRequestBehavior.AllowGet);
+            //  return Json(new { FileName = "/Uploads/filename.ext" }, "text/html", JsonRequestBehavior.AllowGet);
         }
     }
 }

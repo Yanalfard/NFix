@@ -924,6 +924,9 @@ input[type=password], input[type=month], input[type=week], textarea {
     -webkit-border-radius: 0;
     border-radius: 0;*/ }
 
+textarea {
+  min-height: 64px !important; }
+
 input[type=text]:focus, textarea:focus {
   -moz-transition: all ease 0.2s;
   -o-transition: all ease 0.2s;

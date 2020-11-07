@@ -73,6 +73,16 @@ namespace NFix.Areas.User.Controllers
             }
             return PartialView(selectClientByUserName);
         }
+        [HttpPost]
+        public ActionResult EditInfo(TblClient client)
+        {
+            var selectClient = _client.SelectClientById(client.id);
+            client.PremiumTill = "sasda";
+            client.InviteCode="sasda";
+
+            bool T = _client.UpdateClient(client,client.id);
+            return PartialView("EditInfo", client);
+        }
         public ActionResult ShopCart()
         {
             return PartialView();

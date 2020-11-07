@@ -1,7 +1,7 @@
 ﻿@model DataLayer.Models.Regular.TblTutor
 
 
-<div class="uk-modal-dialog uk-modal-body full-width column" dir="rtl">
+<div class="uk-modal-dialog uk-modal-body full-width column" dir="rtl" id="ViewProfile">
 
     @using (Ajax.BeginForm(actionName: "ViewProfile",
                         controllerName: "Profile",
@@ -38,18 +38,18 @@
                 @Html.EditorFor(model => model.Specialty, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
             </div>
         </div>
-        <div class="row">
+        <div class="column uk-margin-bottom">
             <label class="uk-margin-top uk-margin-small-bottom">
-                تخصص
+                توضیحات
             </label>
-            @Html.TextAreaFor(m => m.Description,new {required = "required", @class = "uk-input uk-width-2-3   uk-margin-auto-left" })
+            @Html.TextAreaFor(m => m.Description, new { required = "required", @class = "uk-input uk-width-2-3   uk-margin-auto-left" })
         </div>
 
         <!-- #region Upload Image -->
-        <label class="uk-margin-small-bottom uk-margin-top">
+        <label class="uk-margin-top">
             عکس
         </label>
-        <div class="uk-placeholder uk-margin-remove-top uk-text-center" dir="rtl">
+        <div class="uk-placeholder uk-margin-small-top uk-text-center" dir="rtl">
             <span uk-icon="icon: cloud-upload"></span>
             <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
             <div uk-form-custom>
@@ -67,5 +67,7 @@
 
     }
 </div>
+
+
 
 

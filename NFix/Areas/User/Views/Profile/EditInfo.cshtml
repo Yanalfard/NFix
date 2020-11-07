@@ -1,54 +1,59 @@
 ﻿@model DataLayer.Models.Regular.TblClient
-    <div id="Modal-Edit" uk-modal>
+<div id="Modal-Edit" uk-modal>
+    <form action="/User/Profile/EditInfo" method="post">
         <div class="card column">
             <h2 class="uk-modal-title">
                 ویرایش پروفایل
             </h2>
+            <input type="hidden" name="id" value="@Model.id" />
+            <input type="hidden" name="InviteCode" value="@Model.InviteCode" />
+            <input type="hidden" name="IsPremium" value="@Model.IsPremium" />
+            <input type="hidden" name="PremiumTill" value="@Model.PremiumTill" />
+            <input type="hidden" name="Status" value="@Model.Status" />
+            <input type="hidden" name="UserPassId" value="@Model.UserPassId" />
+            <input type="hidden" name="InviteCode" value="@Model.InviteCode" />
             <div class="row">
                 <div class="column uk-margin-auto-left">
                     <label>
                         نام و نام خانوادگی
                     </label>
-                    <input type="text" value="@Model.Name" />
-                    <label>
-                        گذرواژه
-                    </label>
-                    <input type="password" value="ThisIsMyPassword" />
-                </div>
-                <div class="column uk-margin-auto-left">
+                    <input type="text" name="Name" value="@Model.Name" required />
                     <label>
                         نام کاربری
                     </label>
-                    <input type="text" value="@Model.TblUserPass.Username" />
+                    <input type="text" name="Username" value="@Model.TblUserPass.Username" required />
                     <label>
                         رایانامه
                     </label>
-                    <input type="email" value="@Model.Email" />
+                    <input type="email" name="Email" value="@Model.Email" />
+                </div>
+                <div class="column uk-margin-auto-left">
                     <label>
                         شماره تلفن
                     </label>
-                    <input type="tel" value="@Model.TellNo" />
+                    <input type="tel" name="TellNo" value="@Model.TellNo" required />
+                    <label>
+                        کد پستی
+                    </label>
+                    <input type="tel" name="PostalCode" value="@Model.PostalCode" />
+                    <label>
+                        کد ملی
+                    </label>
+                    <input type="tel" name="IdentificationNo" value="@Model.IdentificationNo" />
                 </div>
             </div>
             <label>
                 آدرس
             </label>
-            <textarea>
-    @Model.Address
-                </textarea>
-            <label>
-                کد پستی
-            </label>
-            <input type="text" value=" @Model.PostalCode" />
-            <div class="row uk-margin-top">
-                <button class="uk-modal-close uk-button-default uk-margin-auto-left uk-margin-right" type="button">
-                    بازگشت
-                </button>
-                <button class="uk-modal-close" type="button">
-                    ویرایش
-                </button>
+            <textarea name="Address">   @Model.Address   </textarea>
+
+
+            <div class="row uk-margin-medium-top" dir="rtl">
+                <input type="submit" value="ویرایش" class="button-primary" />
+                <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right uk-modal-close">بازگشت</a>
             </div>
         </div>
-    </div>
+    </form>
+</div>
 
 
