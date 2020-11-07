@@ -2,27 +2,47 @@
 
 
 <div class="uk-modal-dialog uk-modal-body full-width column" dir="rtl">
-    @*@using (Ajax.BeginForm("ViewProfile", "Profile", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ModalProfile" }, htmlAttributes: new { @id = "LoginForm", enctype = "multipart/form-data" }))*@
 
-    @using (Html.BeginForm("ViewProfile", "Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
-
+    @using (Ajax.BeginForm(actionName: "ViewProfile",
+                        controllerName: "Profile",
+                        ajaxOptions: new AjaxOptions
+                        {
+                            HttpMethod = "POST",
+                            OnSuccess = "doUpload"
+                        },
+                        routeValues: null,
+                        htmlAttributes: new { id = "uploadForm" }))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.id)
+        @Html.HiddenFor(m => m.MainImage)
+        @Html.HiddenFor(m => m.IdentificationNo)
+        @Html.HiddenFor(m => m.TellNo)
+        @Html.HiddenFor(m => m.UserPassId)
+
+
         <h2 class="uk-modal-title">اطلاعات کاربری</h2>
         <div class="row">
             <div class="column">
                 <label class="uk-margin-top uk-margin-small-bottom">
                     نام
                 </label>
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required", @readonly = "readonly" } })
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
             </div>
             <div class="column uk-margin-right">
                 <label class="uk-margin-top uk-margin-small-bottom">
-                    نام کاربری
+                    تخصص
                 </label>
-                @Html.EditorFor(model => model.TblUserPass.Username, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required", @readonly = "readonly" } })
+                @Html.EditorFor(model => model.Specialty, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
             </div>
+        </div>
+        <div class="row">
+            <label class="uk-margin-top uk-margin-small-bottom">
+                تخصص
+            </label>
+            @Html.TextAreaFor(m => m.Description,new {required = "required", @class = "uk-input uk-width-2-3   uk-margin-auto-left" })
         </div>
 
         <!-- #region Upload Image -->
@@ -33,7 +53,7 @@
             <span uk-icon="icon: cloud-upload"></span>
             <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
             <div uk-form-custom>
-                <input type="file" name="Image" multiple required>
+                <input type="file" name="Image" multiple>
                 <span class="uk-link">انتخاب کتید</span>
             </div>
         </div>
@@ -41,9 +61,8 @@
         <!-- #endregion -->
 
         <div class="row uk-margin-medium-top" dir="rtl">
-            <button type="submit" class="see">آپلود عکس</button>
-            <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
-               onclick="UIkit.modal(document.getElementById('ModalProfile')).hide();">بازگشت</a>
+            <input type="submit" value="ویرایش" class="button-primary" />
+            <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right uk-modal-close">بازگشت</a>
         </div>
 
     }

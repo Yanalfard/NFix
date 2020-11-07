@@ -269,9 +269,11 @@
     <Content Include="Resources\Svg\Gold.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
     <Content Include="Resources\Svg\Sliver.svg" />
+    <Content Include="Scripts\ajaxfileupload.js" />
     <Content Include="Scripts\Jquery\modal.js" />
     <Content Include="Scripts\Jquery\Model.js" />
     <Content Include="Scripts\Loading\Loading.js" />
+    <Content Include="Scripts\UIScripts\Global.js" />
     <Content Include="Styles\Loading\Loading.css" />
     <Content Include="Styles\Plans.css">
       <DependentUpon>Plans.scss</DependentUpon>
@@ -398,8 +400,6 @@
     <Content Include="Resources\Svg\NFixAnimated.svg" />
     <Content Include="Resources\Svg\Unio2n.svg" />
     <Content Include="Resources\Svg\Union.svg" />
-    <Content Include="Resources\User\3475674567.jpg" />
-    <Content Include="Resources\Videos\Image\3475674567.jpg" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
@@ -1657,6 +1657,8 @@
     <Content Include="Views\HomeAccount\RecoveryPass.cshtml" />
     <Content Include="Views\HomeAccount\Plans.cshtml" />
     <Content Include="Styles\Plans.scss" />
+    <Content Include="Views\HomeVideo\AllVideos.cshtml" />
+    <Content Include="Views\HomeBlogs\AllBlogs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1666,12 +1668,13 @@
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Areas\User\Views\Shared\" />
     <Folder Include="Resources\Blogs\" />
-    <Folder Include="Resources\NewFolder1\" />
     <Folder Include="Resources\Product\" />
     <Folder Include="Resources\Tutor\" />
     <Folder Include="Resources\UploadEditor\" />
+    <Folder Include="Resources\User\" />
     <Folder Include="Resources\VideoCatagory\Thumb\" />
     <Folder Include="Resources\Videos\Demo\" />
+    <Folder Include="Resources\Videos\Image\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

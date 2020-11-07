@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblVideo>
+@{
+    ViewBag.Title = "همه ویدیوها";
+}
+
+<!-- Project Css -->
+<link href="../Styles/videos.min.css" rel="stylesheet" />
+<link href="../Styles/Category.min.css" rel="stylesheet" />
+
+<div class="space-nav-bottom"></div>
+
+<section class="videos column">
+    <h4 class="clipped uk-margin-medium-top uk-text-muted uk-text-light">نتایج جستجو برای <span class="uk-text-bold">ساده</span></h4>
+    <content class="grid uk-margin-medium-bottom" dir="rtl">
+        @foreach (var item in Model)
+        {
+            @Html.Partial("_VideoBlock", item)
+        }
+    </content>
+</section>
+
+<section class="videos column">
+    <h4 class="clipped uk-margin-medium-top">پیشنهادی</h4>
+    <content class="grid uk-margin-medium-bottom" dir="rtl">
+        @foreach (var item in Model.Where(i => i.IsHome))
+        {
+            @Html.Partial("_VideoBlock", item)
+        }
+    </content>
+</section>
+
+
+

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblBlog>
+@{
+    ViewBag.Title = "همه مقاله ها";
+}
+
+
+<link href="~/Styles/blogs.min.css" rel="stylesheet" />
+
+<div class="space-nav-bottom"></div>
+
+<!-- #region All Blogs -->
+
+<h3 class="myBlogs clipped">تمام وبلاگ ها </h3>
+<content class="grid " dir="rtl">
+
+    @foreach (var item in Model)
+    {
+        @Html.Partial("_BlogBlock", item)
+    }
+
+</content>
+
+<!-- #endregion -->
+
+<div class="space"></div>

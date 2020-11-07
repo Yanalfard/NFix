@@ -348,6 +348,7 @@ namespace DataLayer.Utilities
                     val.id = update.id;
                     val.UserPassId = update.UserPassId;
                     val.Description = update.Description;
+                    val.Specialty = update.Specialty;
                 }
                 else if (table.GetType() == typeof(TblVideo))
                 {
