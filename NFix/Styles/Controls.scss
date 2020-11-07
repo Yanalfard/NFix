@@ -5,6 +5,10 @@
 
 /*Modal*/
 
+body {
+    overflow-x: hidden;
+}
+
 $Modal-width: 824px;
 
 #ModalLogin, #ModalRegister {
