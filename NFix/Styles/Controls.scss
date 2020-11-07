@@ -5,6 +5,10 @@
 
 /*Modal*/
 
+body {
+    overflow-x: hidden;
+}
+
 $Modal-width: 824px;
 
 #ModalLogin, #ModalRegister {
@@ -415,11 +419,22 @@ footer {
             }
         }
 
-        .contacts, .links, .header {
-            width: 100%;
+        .contacts, .links, .header, .map {
+            width: auto;
+            margin: auto;
         }
 
         .contacts {
+            img {
+                filter: saturate(0%);
+                @include trans(.4s);
+            }
+
+            a:hover {
+                img {
+                    filter: saturate(100%) !important;
+                }
+            }
         }
 
         .links {
@@ -465,8 +480,9 @@ footer {
                 padding: 0;
             }
 
-            .contacts, .links, .header {
-                width: 100%;
+            .contacts, .links, .map, .header, > .row {
+                width: 100% !important;
+                margin-left: auto !important;
             }
         }
     }

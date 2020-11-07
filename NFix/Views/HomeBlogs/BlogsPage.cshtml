@@ -5,7 +5,17 @@
         <!-- #region Blog -->
         @foreach (var item in Model)
         {
+            @*<div class="column card blog uk-padding-remove ">
+                    <img src="~/Resources/Blogs/@item.MainImage" class="uk-flex-1" alt="" />
+                    <content class="uk-padding uk-padding-remove-top uk-flex-1">
+                        <h3>@item.Title</h3>
+
+                        <a class="uk-margin-auto-top" href="/BlogView/@item.id/@item.Description">...بیشتر</a>
+                    </content>
+                </div>*@
+
             @Html.Partial("_BlogBlock", item)
+
         }
         <!-- #endregion -->
     </div>
