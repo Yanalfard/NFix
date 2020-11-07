@@ -416,10 +416,21 @@ footer {
         }
 
         .contacts, .links, .header {
-            width: 100%;
+            width: auto;
+            margin: auto;
         }
 
         .contacts {
+            img {
+                filter: saturate(0%);
+                @include trans(.4s);
+            }
+
+            a:hover {
+                img {
+                    filter: saturate(100%) !important;
+                }
+            }
         }
 
         .links {
@@ -465,8 +476,9 @@ footer {
                 padding: 0;
             }
 
-            .contacts, .links, .header {
-                width: 100%;
+            .contacts, .links, .header, > .row {
+                width: 100% !important;
+                margin-left: auto !important;
             }
         }
     }

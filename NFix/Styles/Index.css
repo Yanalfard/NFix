@@ -614,44 +614,39 @@ backdrop-filter: saturate(80%);
     margin: auto !important;
     text-decoration: none !important; }
 
-.categories {
-  overflow-y: hidden;
-  display: grid;
-  grid-template-rows: auto;
-  grid-gap: 2.2vw 5px;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-  .categories .category {
-    margin: auto;
-    padding: 0;
-    width: 220px;
-    height: 220px;
-    display: flex;
-    -ms-flex-direction: column;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    -ms-align-content: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -moz-border-radius: 8px 8px 8px 8px;
-    -webkit-border-radius: 8px 8px 8px 8px;
-    border-radius: 8px 8px 8px 8px;
-    /* -moz-border-radius: 0;
+#categories .category {
+  margin: auto;
+  padding: 0;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -ms-align-content: center;
+  -webkit-align-content: center;
+  align-content: center;
+  -moz-border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  border-radius: 8px 8px 8px 8px;
+  /* -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;*/
-    overflow: hidden !important;
-    cursor: pointer; }
-    .categories .category img {
-      margin: auto !important;
-      -o-object-fit: cover;
-      object-fit: cover;
-      width: 220px;
-      height: 220px;
-      -moz-transition: all ease 0.2s;
-      -o-transition: all ease 0.2s;
-      -webkit-transition: all ease 0.2s;
-      transition: all ease 0.2s; }
-  .categories .category:hover img {
-    filter: brightness(64%); }
+  overflow: hidden !important;
+  cursor: pointer; }
+  #categories .category img {
+    margin: auto !important;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 220px;
+    height: 220px;
+    -moz-transition: all ease 0.2s;
+    -o-transition: all ease 0.2s;
+    -webkit-transition: all ease 0.2s;
+    transition: all ease 0.2s; }
+
+#categories .category:hover img {
+  filter: brightness(64%); }
 
 .category-article {
   overflow: hidden !important;
@@ -724,15 +719,12 @@ article a:hover {
 .banner {
   background: #1F1F1F; }
   .banner img {
-    margin: auto;
-    flex: 1;
+    width: 280px;
+    height: auto;
     -o-object-fit: cover;
     object-fit: cover;
     -o-object-position: top;
-    object-position: top;
-    height: 20vw; }
-  .banner content {
-    flex: 2.5; }
+    object-position: top; }
 
 @media only screen and (max-width: 724px) {
   .banner img {
@@ -946,8 +938,16 @@ article a:hover {
     align-content: center;
     margin-top: 4px;
     padding-bottom: 16px !important; }
-    .blog content h3 {
-      margin: 0 !important; }
+    .blog content h4 {
+      direction: rtl;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      /* number of lines to show */
+      -webkit-box-orient: vertical; }
+    .blog content p {
+      color: #e5e5e5 !important; }
     .blog content a {
       margin-bottom: 0;
       margin-top: auto !important;

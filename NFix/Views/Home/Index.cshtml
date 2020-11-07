@@ -101,7 +101,7 @@
         </p>
         @*<button onclick="window.location='/Home/About'" dir="rtl" class="uk-margin-auto-right">بیشتر...</button>*@
     </content>
-    <img src="../Resources/Png/BodyBuilding.png" class="" alt="" />
+    <img src="../Resources/Png/BodyBuilding.png"alt="" />
 </section>
 
 <!-- #endregion -->
@@ -219,7 +219,7 @@
 
 
 @section Scripts{
-
+    <script src="~/Scripts/UIScripts/BMICalculator.js"></script>
     <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
     <script>
         function ModalProduct(id) {
@@ -321,6 +321,32 @@
                 },
                 1500: {
                     items: 5
+                }
+            }
+        })
+
+        $('#categories').owlCarousel({
+            loop: true,
+            margin: 20,
+            autoplay: false,
+            autoplayTimeout: 3500,
+            autoplayHoverPause: true,
+            nav: true,
+            responsive: {
+                1: {
+                    items: 2
+                },
+                800: {
+                    items: 3
+                },
+                1200: {
+                    items: 4
+                },
+                1600: {
+                    items: 5
+                },
+                1700: {
+                    items: 6
                 }
             }
         })
