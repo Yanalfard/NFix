@@ -1,59 +1,67 @@
 ﻿@model DataLayer.Models.Regular.TblClient
-<div id="Modal-Edit" uk-modal>
-    <form action="/User/Profile/EditInfo" method="post">
-        <div class="card column">
-            <h2 class="uk-modal-title">
-                ویرایش پروفایل
-            </h2>
-            <input type="hidden" name="id" value="@Model.id" />
-            <input type="hidden" name="InviteCode" value="@Model.InviteCode" />
-            <input type="hidden" name="IsPremium" value="@Model.IsPremium" />
-            <input type="hidden" name="PremiumTill" value="@Model.PremiumTill" />
-            <input type="hidden" name="Status" value="@Model.Status" />
-            <input type="hidden" name="UserPassId" value="@Model.UserPassId" />
-            <input type="hidden" name="InviteCode" value="@Model.InviteCode" />
+
+
+    @using (Ajax.BeginForm("EditInfo", "Profile", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "Modal-Edit" }, htmlAttributes: new { @id = "EditInfoForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.id)
+        @Html.HiddenFor(m => m.InviteCode)
+        @Html.HiddenFor(m => m.IsPremium)
+        @Html.HiddenFor(m => m.PremiumTill)
+        @Html.HiddenFor(m => m.Status)
+        @Html.HiddenFor(m => m.UserPassId)
+        @Html.HiddenFor(m => m.InviteCode)
+        <div class="column  card">
             <div class="row">
                 <div class="column uk-margin-auto-left">
                     <label>
                         نام و نام خانوادگی
                     </label>
-                    <input type="text" name="Name" value="@Model.Name" required />
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     <label>
-                        نام کاربری
+                        کد ملی
                     </label>
-                    <input type="text" name="Username" value="@Model.TblUserPass.Username" required />
+                    @Html.EditorFor(model => model.IdentificationNo, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.IdentificationNo, "", new { @class = "text-danger" })
                     <label>
                         رایانامه
                     </label>
-                    <input type="email" name="Email" value="@Model.Email" />
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
                 <div class="column uk-margin-auto-left">
                     <label>
                         شماره تلفن
                     </label>
-                    <input type="tel" name="TellNo" value="@Model.TellNo" required />
+                    @Html.EditorFor(model => model.TellNo, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.TellNo, "", new { @class = "text-danger" })
                     <label>
                         کد پستی
                     </label>
-                    <input type="tel" name="PostalCode" value="@Model.PostalCode" />
-                    <label>
-                        کد ملی
-                    </label>
-                    <input type="tel" name="IdentificationNo" value="@Model.IdentificationNo" />
+                    @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                
                 </div>
             </div>
             <label>
                 آدرس
             </label>
-            <textarea name="Address">   @Model.Address   </textarea>
+            @Html.TextAreaFor(model => model.Address, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
 
 
             <div class="row uk-margin-medium-top" dir="rtl">
                 <input type="submit" value="ویرایش" class="button-primary" />
                 <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right uk-modal-close">بازگشت</a>
             </div>
+
         </div>
-    </form>
-</div>
+
+
+    }
+
+
+
 
 

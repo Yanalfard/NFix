@@ -10,57 +10,71 @@
     @Html.HiddenFor(m => m.id)
     @Html.HiddenFor(m => m.UserPassId)
     @Html.HiddenFor(m => m.MainImage)
+    @Html.HiddenFor(m => m.UserPassId)
+    @Html.HiddenFor(m => m.IsActive)
+    @Html.HiddenFor(m => m.Password)
     @Html.AntiForgeryToken()
-<div class="mat uk-margin-large-top uk-padding-small column clipped">
-    <h4 class="uk-margin-remove-bottom">
-        مربی جدید
-    </h4>
-    <label for="Title" class="uk-margin-small-bottom uk-margin-top">
-        نام مربی
-    </label>
-    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
-    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-    <label for="IdentificationNo" class="uk-margin-small-bottom uk-margin-top">
-        کد ملی
-    </label>
-    @Html.EditorFor(model => model.IdentificationNo, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
-    @Html.ValidationMessageFor(model => model.IdentificationNo, "", new { @class = "text-danger" })
-    <label for="Title" class="uk-margin-small-bottom uk-margin-top">
-        شماره تلفن
-    </label>
-    @Html.EditorFor(model => model.TellNo, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
-    @Html.ValidationMessageFor(model => model.TellNo, "", new { @class = "text-danger" })
-    <label for="Title" class="uk-margin-small-bottom uk-margin-top">
-        نام کاربری
-    </label>
-    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
-    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-    <!-- #region Upload Image -->
-    <label class="uk-margin-small-bottom uk-margin-top">
-        عکس
-    </label>
-    <div class="uk-placeholder uk-margin-remove-top uk-text-center" dir="rtl">
-        <span uk-icon="icon: cloud-upload"></span>
-        <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
-        <div uk-form-custom>
-            <input type="file" name="Image" multiple>
-            <span class="uk-link">انتخاب کتید</span>
+    <div class="mat uk-margin-large-top uk-padding-small column clipped">
+        <h4 class="uk-margin-remove-bottom">
+            مربی جدید
+        </h4>
+        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+            نام مربی
+        </label>
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+            تخصص
+        </label>
+        @Html.EditorFor(model => model.Specialty, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Specialty, "", new { @class = "text-danger" })
+        <label for="IdentificationNo" class="uk-margin-small-bottom uk-margin-top">
+            کد ملی
+        </label>
+        @Html.EditorFor(model => model.IdentificationNo, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.IdentificationNo, "", new { @class = "text-danger" })
+        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+            شماره تلفن
+        </label>
+        @Html.EditorFor(model => model.TellNo, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.TellNo, "", new { @class = "text-danger" })
+        <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+            نام کاربری
+        </label>
+        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+        <!-- #region Upload Image -->
+        <label class="uk-margin-small-bottom uk-margin-top">
+            عکس
+        </label>
+        @if (Model.MainImage.Any())
+        {
+            <div class="uk-placeholder uk-margin-remove-top uk-text-center" dir="rtl">
+                <img src="~/Resources/Tutor/@Model.MainImage" alt="" />
+            </div>
+        }
+        <div class="uk-placeholder uk-margin-remove-top uk-text-center" dir="rtl">
+            <span uk-icon="icon: cloud-upload"></span>
+            <span class="uk-text-middle"> عکس خود را اینجا بیاندازید و یا</span>
+            <div uk-form-custom>
+                <input type="file" name="Image" multiple>
+                <span class="uk-link">انتخاب کتید</span>
+            </div>
         </div>
-    </div>
-    <div class="row uk-margin-auto-left">
-        <label for="IsSuggested" class="uk-margin-small-right">فعال باشد</label>
-        @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { @class = "uk-checkbox uk-margin-auto-top uk-margin-auto-bottom" } })
-    </div>
-    <!-- #endregion -->
-    <label for="Description" class="uk-margin-small-bottom uk-margin-top">
-        توضیحات
-    </label>
-    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
-    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        <div class="row uk-margin-auto-left">
+            <label for="IsSuggested" class="uk-margin-small-right">فعال باشد</label>
+            @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { @class = "uk-checkbox uk-margin-auto-top uk-margin-auto-bottom" } })
+        </div>
+        <!-- #endregion -->
+        <label for="Description" class="uk-margin-small-bottom uk-margin-top">
+            توضیحات
+        </label>
+        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
 
-    <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
-    <button type="submit" class="see uk-margin-medium-top uk-margin-auto-left">ویرایش</button>
-</div>
+        <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+        <button type="submit" class="see uk-margin-medium-top uk-margin-auto-left">ویرایش</button>
+    </div>
 }
 
 <div class="space"></div>

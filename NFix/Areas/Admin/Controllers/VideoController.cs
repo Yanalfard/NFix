@@ -19,6 +19,9 @@ namespace NFix.Areas.Admin.Controllers
         private VideoService _video = new VideoService();
         private TuotorVideoRelService _tuotorVideoRel = new TuotorVideoRelService();
         private VideoCatagoryService _videoCatagory = new VideoCatagoryService();
+        private ClientService _client = new ClientService();
+        private CommentService _comment = new CommentService();
+        private VideoCommentRelService _videoComment = new VideoCommentRelService();
 
         public ActionResult VideoTable(int? id)
         {
@@ -61,6 +64,7 @@ namespace NFix.Areas.Admin.Controllers
         public ActionResult VideoEdit(int id)
         {
             var video = _video.SelectVideoById(id);
+            ViewBag.Tags = string.Join("،", video.TblVideoKeyword.Select(t => t.Name).ToList());
             return View(video);
         }
         [HttpPost]
@@ -102,9 +106,52 @@ namespace NFix.Areas.Admin.Controllers
             bool del = _video.DeleteVideo(id);
             return JavaScript("");
         }
-        public ActionResult VideoComments()
+        public ActionResult VideoComments(int? id)
         {
-            return View();
+            List<TblComment> allComments = new List<TblComment>();
+            if (id == null)
+            {
+                _videoComment.SelectAllVideoCommentRels().ForEach(i => allComments.Add(_comment.SelectCommentById(i.CommentId)));
+            }
+            else
+            {
+                _videoComment.SelectVideoCommentRelByVideoId(id.Value).ForEach(i => allComments.Add(_comment.SelectCommentById(i.CommentId)));
+            }
+            return View(allComments);
+        }
+        public ActionResult ViewClientInfo(int id)
+        {
+            var c = _client.SelectClientById(id);
+            return PartialView(_client.SelectClientById(id));
+        }
+        public ActionResult ShowHideComments(int id, int videoId)
+        {
+            TblComment selectCommentById = _comment.SelectCommentById(id);
+            if (selectCommentById.IsValid)
+            {
+                selectCommentById.IsValid = false;
+            }
+            else
+            {
+                selectCommentById.IsValid = true;
+            }
+            TblComment tblComment = new TblComment()
+            {
+                Body = selectCommentById.Body,
+                ClientId = selectCommentById.ClientId,
+                id = selectCommentById.id,
+                IsValid = selectCommentById.IsValid,
+                DateSubmited = selectCommentById.DateSubmited,
+
+            };
+
+            bool x = _comment.UpdateComment(tblComment, id);
+            return RedirectToAction("VideoComments/" + videoId);
+        }
+        public ActionResult DeleteComment(int id)
+        {
+            _comment.DeleteComment(id);
+            return JavaScript("");
         }
         public ActionResult VideoKeyWords()
         {

@@ -27,6 +27,7 @@ namespace DataLayer.Models.Dto
         [Display(Name = "ایمیل")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [EmailAddress(ErrorMessage ="ایمیل وارد شده صحیح نیست")]
+        [MaxLength(50, ErrorMessage = "تعداد کاراکتر بیشتر است")]
         public string Email { get; set; }
         public string Address { get; set; }
         [Display(Name="مرا بخاطر بسپار")]
@@ -35,6 +36,7 @@ namespace DataLayer.Models.Dto
         [Display(Name = "نام کاربری ")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MinLength(4, ErrorMessage = "تعداد کاراکتر کم است")]
+        [MaxLength(15, ErrorMessage = "تعداد کاراکتر بیشتر است")]
         public string UserName { get; set; }
         [Display(Name = "کد واژه")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]

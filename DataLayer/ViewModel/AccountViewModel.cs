@@ -46,4 +46,24 @@ namespace DataLayer.ViewModel
         [Compare("Password", ErrorMessage = "کلمه های عبور مغایرت دارند")]
         public string RePassword { get; set; }
     }
+
+
+    public class ChangePasswordUserTutorViewModel
+    {
+
+        [Display(Name = "کلمه عبور جدید")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [DataType(DataType.Password)]
+        [MinLength(4, ErrorMessage = "تعداد کاراکتر کم است")]
+        [MaxLength(50, ErrorMessage = "تعداد کاراکتر بیشتر است")]
+        public string Password { get; set; }
+
+        [Display(Name = "تکرار کلمه عبور جدید")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [DataType(DataType.Password)]
+        [MinLength(4, ErrorMessage = "تعداد کاراکتر کم است")]
+        [MaxLength(50, ErrorMessage = "تعداد کاراکتر بیشتر است")]
+        [Compare("Password", ErrorMessage = "کلمه های عبور مغایرت دارند")]
+        public string RePassword { get; set; }
+    }
 }

@@ -59,6 +59,9 @@
                     <a href="/Admin/Video/VideoTable/@item.id" uk-icon="video-camera"></a>
                 </td>
                 <td>
+                    <a href="#" onclick="editPass(@item.id,'@item.TblUserPass.Username')" uk-icon="icon:lock; ratio:1"></a>
+                </td>
+                <td>
                     <a href="#" onclick="deleteTutor(@item.id)" uk-icon="icon:trash; ratio:1"></a>
                 </td>
                 <td>
@@ -68,6 +71,11 @@
         }
     </tbody>
 </table>
+
+<!-- Modal-Change-Password -->
+<div id="ModalChangePassword">
+</div>
+
 
 <!-- #endregion -->
 <script>
@@ -85,3 +93,28 @@
         };
     };
 </script>
+
+
+
+
+@section Scripts{
+
+    <!--Jquery-->
+    <script src="~/Scripts/Jquery/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function doneEdit() {
+            UIkit.notification('عملیات با موفقیت انجام شد');
+        }
+        function editPass(id, name) {
+            $.get("/Admin/Tutor/EditPass/" + id + "?Name=" + name,
+                function (result) {
+                    UIkit.modal(document.getElementById('ModalChangePassword')).show();
+                    $("#ModalChangePassword").html(result);
+                });
+        }
+    </script>
+}
+

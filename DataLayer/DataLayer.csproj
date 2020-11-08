@@ -241,6 +241,7 @@
     <Compile Include="Repositories\Api\IUserPassRepo.cs" />
     <Compile Include="Repositories\Api\IVideoCategoryRepo.cs" />
     <Compile Include="Repositories\Api\IVideoCommentRelRepo.cs" />
+    <Compile Include="Repositories\Api\IVideoKeywordRepo.cs" />
     <Compile Include="Repositories\Api\IVideoRepo.cs" />
     <Compile Include="Repositories\Impl\AdRepo.cs" />
     <Compile Include="Repositories\Impl\BlogCommentRelRepo.cs" />
@@ -268,6 +269,7 @@
     <Compile Include="Repositories\Impl\UserPassRepo.cs" />
     <Compile Include="Repositories\Impl\VideoCategoryRepo.cs" />
     <Compile Include="Repositories\Impl\VideoCommentRelRepo.cs" />
+    <Compile Include="Repositories\Impl\VideoKeywordRepo.cs" />
     <Compile Include="Repositories\Impl\VideoRepo.cs" />
     <Compile Include="Services\Api\IAdService.cs" />
     <Compile Include="Services\Api\IBlogCommentRelService.cs" />
@@ -294,6 +296,7 @@
     <Compile Include="Services\Api\IUserPassService.cs" />
     <Compile Include="Services\Api\IVideoCategoryService.cs" />
     <Compile Include="Services\Api\IVideoCommentRelService.cs" />
+    <Compile Include="Services\Api\IVideoKeywordService.cs" />
     <Compile Include="Services\Api\IVideoService.cs" />
     <Compile Include="Services\Impl\AdService.cs" />
     <Compile Include="Services\Impl\BlogCommentRelService.cs" />
@@ -320,6 +323,7 @@
     <Compile Include="Services\Impl\UserPassService.cs" />
     <Compile Include="Services\Impl\VideoCatagoryService.cs" />
     <Compile Include="Services\Impl\VideoCommentRelService.cs" />
+    <Compile Include="Services\Impl\VideoKeywordService.cs" />
     <Compile Include="Services\Impl\VideoService.cs" />
     <Compile Include="Utilities\Config.cs" />
     <Compile Include="Utilities\EnumRepo.cs" />

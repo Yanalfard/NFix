@@ -63,7 +63,7 @@
             توضیحات
         </label>
 
-        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
+        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "uk-input uk-width-2-3   uk-margin-auto-left", required = "required" } })
         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
 
         <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>

@@ -9,6 +9,14 @@
 {
     @Html.HiddenFor(m => m.id)
     @Html.HiddenFor(m => m.UserPassId)
+    @Html.HiddenFor(m => m. InviteCode)
+    @Html.HiddenFor(m => m. PremiumTill)
+    @Html.HiddenFor(m => m. Status)
+    @Html.HiddenFor(m => m. Address)
+    @Html.HiddenFor(m => m. Email)
+    @Html.HiddenFor(m => m. IdentificationNo)
+    @Html.HiddenFor(m => m.IsActive)
+    @Html.HiddenFor(m => m.IsPremium)
     @Html.AntiForgeryToken()
     <div class="mat uk-margin-large-top uk-padding-small column clipped">
         <h4 class="uk-margin-remove-bottom">

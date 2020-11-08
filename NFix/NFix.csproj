@@ -144,6 +144,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCatagoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
@@ -291,6 +292,12 @@
     <Content Include="Areas\Tuotor\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Tuotor\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Tuotor\Views\Profile\EditPass.cshtml" />
+    <Content Include="Areas\User\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\User\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\User\Views\Profile\EditPass.cshtml" />
+    <Content Include="Areas\Admin\Views\User\EditPass.cshtml" />
+    <Content Include="Areas\Admin\Views\Tutor\EditPass.cshtml" />
+    <Content Include="Areas\Admin\Views\Video\ViewClientInfo.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1665,10 +1672,10 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Comment\" />
     <Folder Include="Areas\Admin\Views\UploadImage\" />
     <Folder Include="Areas\Tuotor\Data\" />
     <Folder Include="Areas\User\Data\" />
-    <Folder Include="Areas\User\Views\Shared\" />
     <Folder Include="Resources\Blogs\" />
     <Folder Include="Resources\Product\" />
     <Folder Include="Resources\Tutor\" />

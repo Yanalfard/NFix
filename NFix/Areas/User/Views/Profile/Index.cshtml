@@ -6,9 +6,7 @@
 <!-- Project Css -->
 <link href="/Styles/Profile.min.css" rel="stylesheet" />
 
-<!-- #region EditModal -->
-@Html.Action("EditInfo", "Profile")
-<!-- #endregion -->
+
 
 <div class="space-nav-bottom"></div>
 
@@ -49,4 +47,32 @@
     setProgress(parseInt(percentage));
 
 </script>
+
+<!-- #region EditModal -->
+
+<div id="Modal-Edit" uk-modal>
+    @Html.Action("EditInfo", "Profile", new { area = "User" })
+</div>
+<!-- #endregion -->
+
+
+
+@section Scripts{
+
+    <script>
+        function doneEdit() {
+            UIkit.notification('عملیات با موفقیت انجام شد');
+        }
+        function editPass() {
+            $.get("/User/Profile/EditPass",
+                function (result) {
+                    UIkit.modal(document.getElementById('ModalChangePassword')).show();
+                    $("#ModalChangePassword").html(result);
+                });
+        }
+
+
+    </script>
+
+}
 

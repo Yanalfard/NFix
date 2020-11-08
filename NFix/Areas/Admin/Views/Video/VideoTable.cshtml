@@ -23,6 +23,7 @@
             <th>لینک اشتراک</th>
             <th>پیشنهادی</th>
             <th>مرئی</th>
+            <th>نظرات</th>
             <th></th>
             <th></th>
         </tr>
@@ -104,6 +105,9 @@
 
                 <td>
                     <input type="checkbox" onclick="return false" class="uk-checkbox" @((item.IsOnline) ? "checked" : "") />
+                </td>
+                <td>
+                    <a href="/Admin/Video/VideoComments/@item.id" uk-icon="comments"></a>
                 </td>
                 <td>
                     <a href="#" onclick="deleteVideo(@item.id)" uk-icon="icon:trash; ratio:2"></a>

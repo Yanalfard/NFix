@@ -22,7 +22,7 @@ namespace NFix.Areas.Tuotor.Controllers
         private VideoService _video = new VideoService();
         private TuotorVideoRelService _tuotorVideoRelService = new TuotorVideoRelService();
         private VideoCatagoryService _videoCatagory = new VideoCatagoryService();
-
+        private VideoKeywordService _videoKeyword = new VideoKeywordService();
         // GET: Tuotor/Profile
         public ActionResult Index()
         {
@@ -51,7 +51,7 @@ namespace NFix.Areas.Tuotor.Controllers
             return PartialView();
         }
         [HttpPost]
-        public ActionResult UploadVideo(TblVideo video, HttpPostedFileBase VideoUrl, HttpPostedFileBase VidioDemoUrl, HttpPostedFileBase MainImage)
+        public ActionResult UploadVideo(TblVideo video, HttpPostedFileBase VideoUrl, HttpPostedFileBase VidioDemoUrl, HttpPostedFileBase MainImage,string Keywords)
         {
             var selectUser = _userPass.SelectUserPassByUsername(User.Identity.Name);
             var selectTutor = _tutor.SelectTutorByUserPassId(selectUser.id);
@@ -78,6 +78,20 @@ namespace NFix.Areas.Tuotor.Controllers
                 ToutorId = selectTutor.id,
             };
             bool x1 = _tuotorVideoRelService.AddTuotorVideoRel(tuotorVideoRel);
+            if (!string.IsNullOrEmpty(Keywords))
+            {
+                string[] tag = Keywords.Split('،');
+                foreach (string t in tag)
+                {
+                    _videoKeyword.AddVideoKeyword(new TblVideoKeyword()
+                    {
+                        VideoId = video.id,
+                        Name = t.Trim()
+                    });
+
+                }
+            }
+
             return RedirectToAction("Index");
         }
         public ActionResult ViewProfile()
@@ -148,11 +162,11 @@ namespace NFix.Areas.Tuotor.Controllers
         {
             TblVideo tblVideo = _video.SelectVideoById(id);
             ViewBag.CatagoryId = new SelectList(_videoCatagory.SelectAllVideoCatagorys(), "id", "Name", tblVideo.CatagoryId);
-
+            ViewBag.Tags = string.Join("،", tblVideo.TblVideoKeyword.Select(t => t.Name).ToList());
             return PartialView(tblVideo);
         }
         [HttpPost]
-        public ActionResult EditVideo(TblVideo video, HttpPostedFileBase VideoUrl, HttpPostedFileBase VidioDemoUrl, HttpPostedFileBase MainImage)
+        public ActionResult EditVideo(TblVideo video, HttpPostedFileBase VideoUrl, HttpPostedFileBase VidioDemoUrl, HttpPostedFileBase MainImage, string Keywords)
         {
             if (MainImage != null)
             {
@@ -182,6 +196,20 @@ namespace NFix.Areas.Tuotor.Controllers
                 VidioDemoUrl.SaveAs(Server.MapPath("/Resources/Videos/Demo/" + video.VidioDemoUrl));
             }
             bool b1 = _video.UpdateVideo(video, video.id);
+            _videoKeyword.SelectAllVideoKeywords().Where(t => t.VideoId == video.id).ToList().ForEach(t =>_videoKeyword.DeleteVideoKeyword(t.id));
+
+            if (!string.IsNullOrEmpty(Keywords))
+            {
+                string[] tag = Keywords.Split('،');
+                foreach (string t in tag)
+                {
+                    _videoKeyword.AddVideoKeyword(new TblVideoKeyword()
+                    {
+                        VideoId = video.id,
+                        Name = t.Trim()
+                    });
+                }
+            }
             return RedirectToAction("Index");
         }
 

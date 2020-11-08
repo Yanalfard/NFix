@@ -189,6 +189,10 @@ namespace DataLayer.Utilities
                 {
                     Heart.TblVideoCatagory.Add((TblVideoCatagory)tableObj);
                 }
+                else if (table.GetType() == typeof(TblVideoKeyword))
+                {
+                    Heart.TblVideoKeyword.Add((TblVideoKeyword)tableObj);
+                }
                 
                 Heart.SaveChanges();
                 return true;
@@ -466,6 +470,14 @@ namespace DataLayer.Utilities
                     val.Name = update.Name;
                     val.Image = update.Image;
                 }
+                else if (table.GetType() == typeof(TblVideoKeyword))
+                {
+                    TblVideoKeyword val = Heart.TblVideoKeyword.SingleOrDefault(i => i.id == logId);
+                    TblVideoKeyword update = (TblVideoKeyword)tableObj;
+                    val.id = update.id;
+                    val.Name = update.Name;
+                    val.VideoId = update.VideoId;
+                }
 
                 Heart.SaveChanges();
                 return true;
@@ -559,6 +571,9 @@ namespace DataLayer.Utilities
                         break;
                     case EnumRepo.Tables.TblVideoCatagory:
                         Heart.TblVideoCatagory.Remove((TblVideoCatagory)SelectById(EnumRepo.Tables.TblVideoCatagory, id));
+                        break;
+                    case EnumRepo.Tables.TblVideoKeyword:
+                        Heart.TblVideoKeyword.Remove((TblVideoKeyword)SelectById(EnumRepo.Tables.TblVideoKeyword, id));
                         break;
                     default:
                         return false;
@@ -658,6 +673,9 @@ namespace DataLayer.Utilities
                 case EnumRepo.Tables.TblVideoCatagory:
                     return Heart.TblVideoCatagory.ToList();
 
+                case EnumRepo.Tables.TblVideoKeyword:
+                    return Heart.TblVideoKeyword.ToList();
+
                 default:
                     return new List<bool>();
             }
@@ -724,6 +742,8 @@ namespace DataLayer.Utilities
                     return Heart.TblVideoCommentRel.SingleOrDefault(i => i.id == id);
                 else if (table == EnumRepo.Tables.TblVideoCatagory)
                     return Heart.TblVideoCatagory.SingleOrDefault(i => i.id == id);
+                else if (table == EnumRepo.Tables.TblVideoKeyword)
+                    return Heart.TblVideoKeyword.SingleOrDefault(i => i.id == id);
 
                 return null;
             }
@@ -1359,6 +1379,22 @@ namespace DataLayer.Utilities
                 return null;
             }
         }
+        #endregion
+
+        #region VideoKeyword
+
+        public TblVideoKeyword SelectVideoKeywordByVideoId(int videoId)
+        {
+            try
+            {
+                return Heart.TblVideoKeyword.SingleOrDefault(i => i.VideoId == videoId);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         #endregion
     }
 }

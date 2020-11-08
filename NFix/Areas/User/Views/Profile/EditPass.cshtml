@@ -1,0 +1,29 @@
+﻿
+@model DataLayer.ViewModel.ChangePasswordViewModel
+
+
+@using (Ajax.BeginForm("EditPass", "Profile", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ModalChangePassword" }, htmlAttributes: new { @id = "ChangePasswordForm", @class = "uk-modal-dialog uk-modal-body column" }))
+{
+    @Html.AntiForgeryToken();
+
+    <h2 class="ویرایش رمز عبور"></h2>
+    <label for="password">رمز عبور قدیم</label>
+
+    @Html.EditorFor(model => model.OldPassword, new { htmlAttributes = new { @class = "uk-input uk-margin-bottom uk-margin-small-top", required = "required" } })
+    @Html.ValidationMessageFor(model => model.OldPassword, "", new { @class = "text-danger" })
+
+    <label for="password">رمز عبور جدید</label>
+    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "uk-input uk-margin-bottom uk-margin-small-top", required = "required" } })
+    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+    <label for="passwordRepeat">تکرار رمز عبور</label>
+    @Html.EditorFor(model => model.RePassword, new { htmlAttributes = new { @class = "uk-input uk-margin-bottom uk-margin-small-top", required = "required" } })
+    @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger" })
+
+    <div class="row uk-margin-medium-top" dir="rtl">
+        <input type="submit" value="ویرایش" class="button-primary" />
+        <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right uk-modal-close">بازگشت</a>
+    </div>
+
+
+}

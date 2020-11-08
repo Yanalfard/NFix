@@ -40,7 +40,7 @@ namespace DataLayer.ViewModel
         public string Username { get; set; }
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [Display(Name = "رمز")]
-        [MaxLength(15, ErrorMessage = "تعداد کاراکتر بیشتر است")]
+        [MaxLength(50, ErrorMessage = "تعداد کاراکتر بیشتر است")]
         public string Password { get; set; }
         public int UserPassId { get; set; }
     }

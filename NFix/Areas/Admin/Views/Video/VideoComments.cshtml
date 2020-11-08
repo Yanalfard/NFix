@@ -1,8 +1,125 @@
-﻿
+﻿@model IEnumerable<DataLayer.Models.Regular.TblComment>
 @{
-    ViewBag.Title = "VideoComments";
+    ViewBag.Title = "پیام های مقاله";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>VideoComments</h2>
+<!-- #region Table -->
 
+<table class="uk-table" dir="rtl">
+    <thead>
+        <tr>
+            <th></th>
+            <th>نام کاربر</th>
+            <th>متن</th>
+            <th>تاریخ</th>
+            <th>تایید شده</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- #region Foreach -->
+        @foreach (var item in Model)
+        {
+            <tr id="comment_@item.id">
+                <td>@(Model.ToList().IndexOf(item) + 1)</td>
+                <td>
+                    <a href="#" onclick="viewClientInfo(@item.TblClient.id);">
+                        @item.TblClient.Name
+                    </a>
+                </td>
+                <td>
+                    <a href="#Modal-Body@(item.id)" uk-toggle>متن </a>
+                    <div id="Modal-Body@(item.id)" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h3>
+                                متن
+                            </h3>
+                            <p>
+                                @item.Body
+                            </p>
+                            <button class="uk-modal-close">
+                                بستن
+                            </button>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @Convert.ToDateTime(item.DateSubmited).ToShamsi()
+                </td>
+                <td>
+                    <input type="checkbox" class="uk-checkbox" onchange="" @((item.IsValid) ? "checked" : "") />
+                </td>
+                @if (item.IsValid)
+                {
+                    <td>
+                        <a href="/Admin/Video/ShowHideComments?id=@item.id&videoId=@item.TblVideoCommentRel.Single().VideoId">مخفی</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a href="/Admin/Video/ShowHideComments?id=@item.id&videoId=@item.TblVideoCommentRel.Single().VideoId">نمایش</a>
+                    </td>
+                }
+
+                <td>
+                    <a href="#" onclick="deleteComment(@item.id)" uk-icon="icon:trash; ratio:1"></a>
+                </td>
+            </tr>
+        }
+
+        <!-- #endregion -->
+    </tbody>
+</table>
+
+<!-- #region name -->
+<!-- This is a button toggling the modal -->
+@*<button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #modal-example">Open</button>*@
+
+
+<!-- This is an anchor toggling the modal -->
+@*<a href="#modal-example" uk-toggle>Open</a>*@
+
+<!-- This is the modal -->
+<div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+
+
+        @*<h2 class="uk-modal-title">Headline</h2>*@
+        @*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="button">Save</button>
+            </p>*@
+    </div>
+</div>
+
+<!-- #endregion -->
+<!-- #endregion -->
+
+<script>
+    function viewClientInfo(id) {
+        $.get("/Admin/Video/ViewClientInfo/" + id, function (result) {
+            UIkit.modal(document.getElementById('modal-example')).show();
+            $(".uk-modal-body").html(result);
+        });
+    };
+
+
+    function deleteComment(id) {
+
+        if (confirm("آیا از حذف ویدیو مطمئن هستید؟")) {
+            $.ajax({
+                url: "/Admin/Video/DeleteComment/" + id,
+                type: "Get"
+            }).done(function () {
+                $("#comment_" + id).addClass("uk-text-danger");
+                $("#comment_" + id).hide('slow');
+            });
+
+        };
+    };
+
+</script>

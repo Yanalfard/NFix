@@ -33,6 +33,8 @@ namespace NFix.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                tutor.Username = tutor.Username.Trim().ToLower().Replace(" ", "");
+                tutor.TellNo = tutor.TellNo.Trim().ToLower().Replace(" ", "");
                 if (_userPass.SelectAllUserPasss().Any(u => u.Username == tutor.Username.ToLower()))
                 {
                     ModelState.AddModelError("UserName", "نام کاربری تکراریست");
@@ -50,7 +52,7 @@ namespace NFix.Areas.Admin.Controllers
 
                     TblUserPass userPass = new TblUserPass()
                     {
-                        Username = tutor.Username.ToLower(),
+                        Username = tutor.Username,
                         Password = FormsAuthentication.HashPasswordForStoringInConfigFile(tutor.Password, "SHA256"),
                         Auth = Guid.NewGuid().ToString(),
                         IsActive = tutor.IsActive,
@@ -72,6 +74,7 @@ namespace NFix.Areas.Admin.Controllers
                             Name = tutor.Name,
                             TellNo = tutor.TellNo,
                             UserPassId = userPass.id,
+                            Specialty= tutor.Specialty,
                         };
                         _tutor.AddTutor(tblTutor);
                         return RedirectToAction("TutorTable");
@@ -107,6 +110,8 @@ namespace NFix.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult TutorEdit(TutorViewModel tutor, HttpPostedFileBase Image)
         {
+            tutor.Username = tutor.Username.Trim().ToLower().Replace(" ", "");
+            tutor.TellNo = tutor.TellNo.Trim().ToLower().Replace(" ", "");
             if (_userPass.SelectAllUserPasss().Where(i => i.id != tutor.UserPassId).Any(u => u.Username == tutor.Username.ToLower()))
             {
                 ModelState.AddModelError("UserName", "نام کاربری وارد شده تکراری است");
@@ -142,12 +147,13 @@ namespace NFix.Areas.Admin.Controllers
                     Name = tutor.Name,
                     TellNo = tutor.TellNo,
                     UserPassId = tutor.UserPassId,
+                    Specialty=tutor.Specialty
                 };
                 bool X= _tutor.UpdateTutor(tblTutor, tutor.id);
                 TblUserPass userPass = new TblUserPass()
                 {
                     id = tutor.UserPassId,
-                    Username = tutor.Username.ToLower(),
+                    Username = tutor.Username,
                     Auth = Guid.NewGuid().ToString(),
                     IsActive = tutor.IsActive,
                     RoleId = 2,
@@ -172,6 +178,42 @@ namespace NFix.Areas.Admin.Controllers
             _userPass.DeleteUserPass(getBlogId.UserPassId);
             return JavaScript("");
         }
+
+
+
+        public ActionResult EditPass(int id, string name)
+        {
+            ViewBag.UserID = id;
+            ViewBag.UserName = name;
+            return PartialView();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPass(int UserID, string UserName, ChangePasswordUserTutorViewModel changePass)
+        {
+            if (ModelState.IsValid)
+            {
+                TblTutor selectTutor = _tutor.SelectTutorById(UserID);
+                TblUserPass selectUser = _userPass.SelectUserPassById(selectTutor.UserPassId);
+                TblUserPass tblUser = new TblUserPass()
+                {
+                    id = selectUser.id,
+                    Password = FormsAuthentication.HashPasswordForStoringInConfigFile(changePass.Password, "SHA256"),
+                    Auth = selectUser.Auth,
+                    IsActive = selectUser.IsActive,
+                    RoleId = selectUser.RoleId,
+                    Username = selectUser.Username,
+
+                };
+                bool x = _userPass.UpdateUserPass(tblUser, selectUser.id);
+                return JavaScript("UIkit.modal(document.getElementById('ModalChangePassword')).hide();doneEdit();");
+
+            }
+            ViewBag.UserID = UserID;
+            ViewBag.UserName = UserName;
+            return PartialView("EditPass", changePass);
+        }
+
         #endregion
 
     }

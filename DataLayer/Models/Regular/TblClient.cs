@@ -33,7 +33,6 @@ namespace DataLayer.Models.Regular
         public bool IsPremium { get; set; }
         public string PremiumTill { get; set; }
         public string InviteCode { get; set; }
-    
         public virtual TblUserPass TblUserPass { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblClientProductRel> TblClientProductRel { get; set; }
