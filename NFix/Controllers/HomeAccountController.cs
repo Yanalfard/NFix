@@ -28,7 +28,7 @@ namespace NFix.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [HandleError]
-        public ActionResult Login(DtoTblClient client, string ReturnUrl = "/")
+        public ActionResult Login(RegisterViewModel client, string ReturnUrl = "/")
         {
             //if (!MethodRepo.CheckRechapcha(form))
             //{
@@ -63,16 +63,18 @@ namespace NFix.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [HandleError]
-        public ActionResult Register(DtoTblClient client)
+        public ActionResult Register(RegisterViewModel client)
         {
             client.Name = client.UserName;
+            client.UserName = client.UserName.Trim().ToLower().Replace(" ", "");
+            client.Email = client.Email.Trim().ToLower().Replace(" ", "");
             if (ModelState.IsValid)
             {
                 if (_userPass.SelectAllUserPasss().Any(u => u.Username == client.UserName))
                 {
                     ModelState.AddModelError("Username", "نام کاربری  وارد شده تکراری است");
                 }
-                if (_client.SelectAllClients().Any(u => u.Email == client.Email))
+                else if (_client.SelectAllClients().Any(u => u.Email == client.Email))
                 {
                     ModelState.AddModelError("Email", "ایمیل  وارد شده تکراری است");
                 }
@@ -89,23 +91,29 @@ namespace NFix.Controllers
                     bool add = _userPass.AddUserPass(addUserPass);
                     if (add)
                     {
+
+
                         TblClient tblClient = new TblClient()
                         {
                             UserPassId = addUserPass.id,
-                            TellNo = "",
+                            TellNo = "شماره تلفن",
                             Name = client.Name,
-                            InviteCode = "",
-                            PremiumTill = "",
+                            InviteCode = "کد معرف",
+                            PremiumTill = new DateTime().ToString(),
                             Status = 1,
-                            Address = "",
+                            Address = "آدرس =",
                             Email = client.Email,
-                            IdentificationNo = "",
+                            IdentificationNo = "کد ملی ",
+                            IsPremium = false,
+                            PostalCode = "کد پستی ",
                         };
+
                         bool addClient = _client.AddClient(tblClient);
                         if (addClient)
                         {
-                            string body = PartialToStringClass.RenderPartialView("HomeAccount", "ActiviationEmail", client);
+                            string body = PartialToStringClass.RenderPartialView("HomeAccount", "ActiviationEmail", addUserPass);
                             SendEmail.Send(client.Email, "ایمیل فعالسازی", body);
+                            ModelState.Clear();
                             return JavaScript("document.getElementById('RegisterForm').reset();alert('ثبت نام شما انجام شد و لینک فعال سازی به ایمیل شما ارسال شد');UIkit.modal(document.getElementById('ModalLogin')).show();");
                             //return JavaScript("location.reload(true)");
                         };
@@ -128,8 +136,17 @@ namespace NFix.Controllers
                 user.IsActive = true;
                 user.Auth = Guid.NewGuid().ToString();
                 ViewBag.UserName = user.Username;
-                _userPass.UpdateUserPass(user, user.id);
-                return View();
+                TblUserPass tblUserPass = new TblUserPass()
+                {
+                    id = user.id,
+                    Auth = user.Auth,
+                    IsActive = user.IsActive,
+                    Password = user.Password,
+                    RoleId = user.RoleId,
+                    Username = user.Username,
+                };
+                bool x = _userPass.UpdateUserPass(tblUserPass, user.id);
+                return Redirect("/Home/Index?active=true");
             }
             catch
             {
@@ -186,7 +203,7 @@ namespace NFix.Controllers
                             string bodyEmail =
                                 PartialToStringClass.RenderPartialView("HomeAccount", "RecoveryPass", user);
                             SendEmail.Send(_client.SelectClientByUserPassId(user.id).Email, "بازیابی کلمه عبور", bodyEmail);
-                            return View("SuccesForgotPassword", user);
+                            return Redirect("/Home/Index?recoveryPassword=true");
                         }
                         else
                         {
@@ -210,6 +227,18 @@ namespace NFix.Controllers
         {
             try
             {
+                ViewBag.Auth = id;
+                return Redirect("/Home/Index?recoveryPasswordShowModal=" + id);
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+        }
+        public ActionResult RecoveryPassShowModal(string id)
+        {
+            try
+            {
                 return PartialView();
             }
             catch
@@ -217,9 +246,8 @@ namespace NFix.Controllers
                 return RedirectToAction("/ErrorPage/NotFound");
             }
         }
-
         [HttpPost]
-        public ActionResult RecoveryPassword(string id, RecoveryPasswordViewModel recovery)
+        public ActionResult RecoveryPassShowModal(string id, RecoveryPasswordViewModel recovery)
         {
             try
             {
@@ -228,13 +256,29 @@ namespace NFix.Controllers
                     var user = _userPass.SelectAllUserPasss().SingleOrDefault(u => u.Auth == id);
                     if (user == null)
                     {
-                        return HttpNotFound();
+                        ModelState.AddModelError("Password", "کاربری یافت نشد");
                     }
-                    user.Password = FormsAuthentication.HashPasswordForStoringInConfigFile(recovery.Password, "SHA256");
-                    user.Auth = Guid.NewGuid().ToString();
-                    return Redirect("/Login?recovery=true");
+                    else
+                    {
+
+                        user.Password = FormsAuthentication.HashPasswordForStoringInConfigFile(recovery.Password, "SHA256");
+                        user.Auth = Guid.NewGuid().ToString();
+                        TblUserPass tblUserPass = new TblUserPass()
+                        {
+                            id = user.id,
+                            Auth = user.Auth,
+                            IsActive = user.IsActive,
+                            Password = user.Password,
+                            RoleId = user.RoleId,
+                            Username = user.Username,
+                        };
+                        bool x = _userPass.UpdateUserPass(tblUserPass, user.id);
+
+                        // return Redirect("/Home/Index?DoneChangePassword=true");
+                        return JavaScript("alert('رمز شما تغیر یافت');window.location ='/Home/Index';");
+                    }
                 }
-                return View();
+                return PartialView("RecoveryPassShowModal", recovery);
             }
             catch
             {

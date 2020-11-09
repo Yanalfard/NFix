@@ -26,8 +26,8 @@ namespace DataLayer.ViewModel
         public string Title { get; set; }
         public string ImageName { get; set; }
         public int Count { get; set; }
-        public int Price { get; set; }
-        public int Sum { get; set; }
+        public long Price { get; set; }
+        public long Sum { get; set; }
         public int Discount { get; set; }
         public int SumFinal { get; set; }
     }

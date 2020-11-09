@@ -27,6 +27,7 @@ namespace DataLayer.ViewModel
         public string TutorName { get; set; }
         public string TutorMainImage { get; set; }
         public string TutorSpecialty { get; set; }
+        public string Keywords { get; set; }
 
     }
 }

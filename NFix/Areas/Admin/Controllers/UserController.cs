@@ -159,8 +159,8 @@ namespace NFix.Areas.Admin.Controllers
         public ActionResult DeleteUser(int id)
         {
             var client = _client.SelectClientById(id);
-            _client.DeleteClient(id);
-            _userPass.DeleteUserPass(client.UserPassId);
+            bool b = _client.DeleteClient(id);
+            bool c = _userPass.DeleteUserPass(client.UserPassId);
             return JavaScript("");
         }
 
@@ -173,9 +173,9 @@ namespace NFix.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPass(int UserID,string UserName, ChangePasswordUserTutorViewModel changePass)
+        public ActionResult EditPass(int UserID, string UserName, ChangePasswordUserTutorViewModel changePass)
         {
-           
+
             if (ModelState.IsValid)
             {
                 TblClient selectClient = _client.SelectClientById(UserID);
@@ -188,7 +188,7 @@ namespace NFix.Areas.Admin.Controllers
                     IsActive = selectUser.IsActive,
                     RoleId = selectUser.RoleId,
                     Username = selectUser.Username,
-                    
+
                 };
                 bool x = _userPass.UpdateUserPass(tblUser, selectUser.id);
                 return JavaScript("UIkit.modal(document.getElementById('ModalChangePassword')).hide();doneEdit();");
