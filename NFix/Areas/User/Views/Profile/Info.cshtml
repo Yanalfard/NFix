@@ -1,32 +1,30 @@
 ﻿@model DataLayer.Models.Regular.TblClient
-    <div class="alternate">
-        <!-- #region Plan -->
+<div class="alternate">
+    <!-- #region Plan -->
 
-        <section class="plan mat column uk-padding ">
-            <h4 class="center uk-margin-bottom">
-                اشتراک شما
-            </h4>
+    <section class="plan mat column uk-padding ">
+        <h4 class="center uk-margin-bottom">
+            اشتراک شما
+        </h4>
 
+        @if (ViewBag.totalMonth != 0)
+        {
+            <label class="uk-margin-small-bottom center">
+                اشتراک @ViewBag.totalMonth ماهه
+            </label>
+        }
 
-            @if (ViewBag.totalMonth != 0)
-            {
-                <label class="uk-margin-small-bottom center">
-                    اشتراک @ViewBag.totalMonth ماهه
-                </label>
-            }
-
-
-            <div class="row uk-margin-bottom center">
-                <!--<label class="uk-margin-small-right uk-margin-auto-top uk-margin-small-bottom">
+        <div class="row uk-margin-bottom center">
+            <!--<label class="uk-margin-small-right uk-margin-auto-top uk-margin-small-bottom">
                 روز
             </label>
             <h1 id="Days" class="uk-margin-remove overflow-hidden">
                 30
             </h1>-->
-                @*@{
+            @*@{
                     float percentage = (ViewBag.totalDays != 0) ? (Math.Floor(((double)ViewBag.daysTillFinished / ViewBag.totalDays) * 100)) : 0;
                 }*@
-                @*<div class="progress-ring-container" percentage="@(percentage)">
+            @*<div class="progress-ring-container" percentage="@(percentage)">
                     <svg class="progress-ring"
                          width="120"
                          height="120">
@@ -52,98 +50,98 @@
                         </div>
                     </div>
                 </div>*@
+        </div>
+        <a href="/HomeAccount/Plans" class="button-primary uk-margin-auto-top center ">
+            تمدید
+        </a>
+    </section>
+
+    <!-- #endregion -->
+    <div class="gap"></div>
+    <!-- #region Profile -->
+
+    <section class="profile mat column uk-padding">
+        <h4>
+            اطلاعات حساب
+        </h4>
+        <div class="row">
+            <div class="column uk-margin-auto-left">
+                <label>
+                    نام کاربری
+                </label>
+                <h5>
+                    @Model.TblUserPass.Username
+                </h5>
+
             </div>
-            <a href="/HomeAccount/Plans" class="button-primary uk-margin-auto-top center ">
-                تمدید
-            </a>
-        </section>
+            <div class="column uk-margin-auto-left">
+                <label>
+                    کد ملی
+                </label>
+                <h5>
+                    @Model.InviteCode
+                </h5>
 
-        <!-- #endregion -->
-        <div class="gap"></div>
-        <!-- #region Profile -->
-
-        <section class="profile mat column uk-padding">
-            <h4>
-                اطلاعات حساب
-            </h4>
-            <div class="row">
-                <div class="column uk-margin-auto-left">
+            </div>
+            <div class="column uk-margin-auto-left">
+                <label>
+                    نام
+                </label>
+                <h5>
+                    @Model.Name
+                </h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column uk-margin-auto-left">
+                <label>
+                    شماره تلفن
+                </label>
+                <h5>
+                    @Model.TellNo
+                </h5>
+            </div>
+            <div class="column uk-margin-auto-left">
+                <label>
+                    کد پستی
+                </label>
+                <h5>
+                    @Model.PostalCode
+                </h5>
+            </div>
+            <div class="column uk-margin-auto-left">
+                <label>
+                    رایانامه
+                </label>
+                <h5>
+                    @Model.Email
+                </h5>
+                @if (!string.IsNullOrEmpty(Model.InviteCode))
+                {
                     <label>
-                        نام کاربری
-                    </label>
-                    <h5>
-                        @Model.TblUserPass.Username
-                    </h5>
-
-                </div>
-                <div class="column uk-margin-auto-left">
-                    <label>
-                        کد ملی
+                        کد دعوت شما
                     </label>
                     <h5>
                         @Model.InviteCode
                     </h5>
-
-                </div>
-                <div class="column uk-margin-auto-left">
-                    <label>
-                        نام
-                    </label>
-                    <h5>
-                        @Model.Name
-                    </h5>
-                </div>
+                }
             </div>
-            <div class="row">
-                <div class="column uk-margin-auto-left">
-                    <label>
-                        شماره تلفن
-                    </label>
-                    <h5>
-                        @Model.TellNo
-                    </h5>
-                </div>
-                <div class="column uk-margin-auto-left">
-                    <label>
-                       کد پستی
-                    </label>
-                    <h5>
-                        @Model.PostalCode
-                    </h5>
-                </div>
-                <div class="column uk-margin-auto-left">
-                    <label>
-                        رایانامه
-                    </label>
-                    <h5>
-                        @Model.Email
-                    </h5>
-                    @if (!string.IsNullOrEmpty(Model.InviteCode))
-                    {
-                        <label>
-                            کد دعوت شما
-                        </label>
-                        <h5>
-                            @Model.InviteCode
-                        </h5>
-                    }
-                </div>
-            </div>
-            <div class="row uk-margin-auto-top uk-margin-auto-left ">
-                <button onclick="editPass()"
-                        class="uk-button uk-button-default uk-margin-right">
-                    تغییر گذرواژه
-                </button>
-                <button class="uk-margin-auto-top" type="button" uk-toggle="target: #Modal-Edit">
-                    ویرایش
-                </button>
-            </div>
-        </section>
-
-        <!-- Modal-Change-Password -->
-        <div id="ModalChangePassword">
         </div>
+        <div class="row uk-margin-auto-top uk-margin-auto-left ">
+            <button onclick="editPass()"
+                    class="uk-button uk-button-default uk-margin-right">
+                تغییر گذرواژه
+            </button>
+            <button class="uk-margin-auto-top" type="button" uk-toggle="target: #Modal-Edit">
+                ویرایش
+            </button>
+        </div>
+    </section>
 
-        <!-- #endregion -->
+    <!-- Modal-Change-Password -->
+    <div id="ModalChangePassword">
     </div>
+
+    <!-- #endregion -->
+</div>
 

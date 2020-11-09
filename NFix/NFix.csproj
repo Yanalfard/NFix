@@ -201,11 +201,6 @@
     <Compile Include="Utilities\SendEmail.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -298,6 +293,7 @@
     <Content Include="Areas\Admin\Views\User\EditPass.cshtml" />
     <Content Include="Areas\Admin\Views\Tutor\EditPass.cshtml" />
     <Content Include="Areas\Admin\Views\Video\ViewClientInfo.cshtml" />
+    <Content Include="Areas\User\Views\Profile\FactorView.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -349,10 +345,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\Jquery\jquery-3.5.1.intellisense.js" />
     <Content Include="Mocks\about.html" />
     <Content Include="Mocks\Admin\BlogAdder.html" />
