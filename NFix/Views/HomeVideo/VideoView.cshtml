@@ -20,9 +20,7 @@
             پیشنهادات
         </h4>
         <hr />
-        @Html.Action("VideoRecommendations", "HomeVideo",Model.Title)
-
-
+        @Html.Action("VideoRecommendations", "HomeVideo",new { Keywords= Model.Keywords, Title=Model.Title })
     </aside>
 
     <!-- #endregion -->

@@ -21,7 +21,22 @@
 
     <!-- UIkit JS -->
 
+    <script src="~/Scripts/UIKit/uikit.min.js"></script>
+    <script src="~/Scripts/UIKit/uikit-icons.js"></script>
 
+    <!--Owl Carousel Scripts-->
+    <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
+    <!--Scroll Reveal-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--Jquery-->
+    <script src="~/Scripts/Jquery/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
+
+    <!-- #region recaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
 </head>
 <body>
     <div id="MobileNavigation" dir="rtl" uk-offcanvas="overlay: true ;flip: true">
@@ -198,7 +213,26 @@
                         @Html.Action("ForgotPassword", "HomeAccount", new { area = "" })
                     </div>
 
+                    @if (Request.QueryString["recoveryPasswordShowModal"] != null)
+                    {
+                        <input type="hidden" id="AuthIdName" value="@Request.QueryString["recoveryPasswordShowModal"]" />
+                        <div id="recoveryPassShowModal" uk-modal>
+                            @*@Html.Action("RecoveryPassShowModal", "HomeAccount", new { area = "" })*@
+                        </div>
+                        <script>
+                            var id= ($('#AuthIdName').val());
+                            $.get("/HomeAccount/RecoveryPassShowModal/" + id, function (result) {
+                                UIkit.modal(document.getElementById('recoveryPassShowModal')).show();
+                                $("#recoveryPassShowModal").html(result);
+                            });
+                            //UIkit.modal(document.getElementById('recovery2222222222')).show();
+                        </script>
+                    }
+
+
                     <!--#endregion-->
+
+
                 </li>
 
                 <li>
@@ -348,8 +382,8 @@
         <div class="row uk-margin-right uk-margin-bottom uk-margin-top ">
             <div class="row">
                 @*<img src="https://picsum.photos/64" alt="" />
-                <img src="https://picsum.photos/64" alt="" />
-                <img src="https://picsum.photos/64" alt="" />*@
+                    <img src="https://picsum.photos/64" alt="" />
+                    <img src="https://picsum.photos/64" alt="" />*@
             </div>
             <a href="" class="uk-margin-auto-left" dir="rtl">
                 Ⓒ تمام حقوق مادی ومعنوی این سایت متعلق به شرکت یاقون وب ایرانیان می باشد.
@@ -365,6 +399,8 @@
 
     <!-- #endregion -->
 
+    <script>
+    </script>
 
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
             async defer>
@@ -374,6 +410,8 @@
             document.getElementById("demo-form").submit();
         }
     </script>
+
+
 
     <script>
         var onSubmit = function (token) {
@@ -387,22 +425,7 @@
             });
         };
     </script>
-    <script src="~/Scripts/UIKit/uikit.min.js"></script>
-    <script src="~/Scripts/UIKit/uikit-icons.js"></script>
 
-    <!--Owl Carousel Scripts-->
-    <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
-    <!--Scroll Reveal-->
-    <script src="https://unpkg.com/scrollreveal"></script>
-
-    <!--Jquery-->
-    <script src="~/Scripts/Jquery/jquery-3.5.1.min.js"></script>
-    <script src="~/Scripts/Jquery/jquery.validate.min.js"></script>
-    <script src="~/Scripts/Jquery/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
-
-    <!-- #region recaptcha -->
-    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
     <!-- #endregion -->
     @RenderSection("Scripts", false)
 </body>

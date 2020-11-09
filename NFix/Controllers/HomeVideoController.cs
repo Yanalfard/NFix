@@ -23,6 +23,7 @@ namespace NFix.Controllers
         private UserPassService _userPass = new UserPassService();
         private CommentService _comment = new CommentService();
         private VideoCommentRelService _videoComment = new VideoCommentRelService();
+        private VideoKeywordService _videoKeywords = new VideoKeywordService();
 
         public HomeVideoController()
         {
@@ -37,7 +38,7 @@ namespace NFix.Controllers
         public ActionResult AllVideos()
         {
             var allVideo = _video.SelectAllVideos();
-            return View(allVideo.OrderByDescending(i=>i.DateSubmited));
+            return View(allVideo.OrderByDescending(i => i.DateSubmited));
         }
         [Route("VideoView/{id}/{title}")]
         public ActionResult VideoView(int id, string title)
@@ -58,7 +59,10 @@ namespace NFix.Controllers
             tblVideo.Title = selectVideoById.Title;
             tblVideo.VideoUrl = selectVideoById.VideoUrl;
             tblVideo.VidioDemoUrl = selectVideoById.VidioDemoUrl;
-            bool x= _video.UpdateVideo(tblVideo, selectVideoById.id);
+            bool x = _video.UpdateVideo(tblVideo, selectVideoById.id);
+            //ViewBag.Keywords = string.Join("،", selectVideoById.TblVideoKeyword.Select(t => t.Name).ToList());
+            //  ViewBag.Tags = string.Join(".", products.Product_Tags.Select(t => t.Tag).ToList());
+
             VideoViewViewModel result = new VideoViewViewModel()
             {
                 VideoUrl = selectVideoById.VideoUrl,
@@ -76,6 +80,7 @@ namespace NFix.Controllers
                 TutorName = selectVideoById.TblTuotorVideoRel.SingleOrDefault().TblTutor.Name,
                 TutorMainImage = selectVideoById.TblTuotorVideoRel.SingleOrDefault().TblTutor.MainImage,
                 TutorSpecialty = selectVideoById.TblTuotorVideoRel.SingleOrDefault().TblTutor.Specialty,
+                Keywords = string.Join("،", selectVideoById.TblVideoKeyword.Select(t => t.Name).ToList()),
             };
             if (User.Identity.IsAuthenticated)
             {
@@ -189,9 +194,16 @@ namespace NFix.Controllers
             }
 
         }
-        public ActionResult VideoRecommendations(string Title)
+        public ActionResult VideoRecommendations(string Keywords,string Title)
         {
-            return PartialView(_video.SelectAllVideos().Where(i => i.Title.Contains(Title) || i.DescriptionDemo.Contains(Title) || i.Description.Contains(Title)).Distinct());
+            List<TblVideo> list = new List<TblVideo>();
+            foreach (var item in Keywords.Split('،'))
+            {
+                list.AddRange(_videoKeywords.SelectAllVideoKeywords().Where(t => t.Name.Contains(item)).Select(t => t.TblVideo).ToList());
+                list.AddRange(_video.SelectAllVideos().Where(i => i.Title.Contains(Keywords) || i.DescriptionDemo.Contains(Keywords) || i.Description.Contains(Keywords)).Distinct());
+            }
+            return PartialView(list.Take(5));
+            //return PartialView(_video.SelectAllVideos().Where(i => i.Title.Contains(Keywords) || i.DescriptionDemo.Contains(Keywords) || i.Description.Contains(Keywords)).Distinct());
         }
     }
 }

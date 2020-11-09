@@ -7,12 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.UI;
-
 namespace NFix
 {
     public static class PartialToStringClass
     {
-       public static string RenderPartialView(string controllerName, string partialView, object model)
+        public static string RenderPartialView(string controllerName, string partialView, object model)
         {
             var context = new HttpContextWrapper(System.Web.HttpContext.Current) as HttpContextBase;
 

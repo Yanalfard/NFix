@@ -9,6 +9,25 @@
 @Html.Action("Hero", "Home")
 
 <!-- #endregion -->
+@if (Request.QueryString["active"] != null)
+{
+    <script>
+        alert('حساب کاربری شما فعال شد  میتونید وار حساب کاربری خود شوید');
+    </script>
+}
+@if (Request.QueryString["recoveryPassword"] != null)
+{
+    <script>
+        alert('ایمیلی حاوی لینک بازیابی کلمه عبور به ایمیل شما ارسال شد');
+    </script>
+}
+@if (Request.QueryString["DoneChangePassword"] != null)
+{
+    <script>
+        //window.location = "/Home/Index";
+    </script>
+}
+
 
 <a name="videos"></a>
 
@@ -53,11 +72,11 @@
     }
     else
     {
-        <a href="#" uk-toggle="target: #ModalLogin"  class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
+        <a href="#" uk-toggle="target: #ModalLogin" class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
 
         @*<a class="nav-profile" href="#" uk-toggle="target: #ModalLogin" type="button">
-            ورود
-        </a>*@
+                ورود
+            </a>*@
     }
     <a href="#" class="stickIcon" uk-tooltip="title: اشتراک; pos:left" onclick="fallbackCopyTextToClipboard(window.location.href)"><img src="../Resources/Svg/asdfwe04.svg" /></a>
     <a href="#" class="stickIcon" uk-tooltip="title: فیس بوک; pos:left"><img src="../Resources/Svg/asdfwe03.svg" /></a>
@@ -127,7 +146,7 @@
         </p>
         @*<button onclick="window.location='/Home/About'" dir="rtl" class="uk-margin-auto-right">بیشتر...</button>*@
     </content>
-    <img src="../Resources/Png/BodyBuilding.png"alt="" />
+    <img src="../Resources/Png/BodyBuilding.png" alt="" />
 </section>
 
 <!-- #endregion -->
@@ -244,6 +263,7 @@
 @section Scripts{
     <script src="~/Scripts/UIScripts/BMICalculator.js"></script>
     <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
+ 
     <script>
         function ModalProduct(id) {
             $.get("/HomeProducts/ModalProduct/" + id, function (result) {
