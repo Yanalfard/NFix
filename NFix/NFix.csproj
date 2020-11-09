@@ -265,6 +265,7 @@
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
     <Content Include="Resources\Svg\Gold.svg" />
+    <Content Include="Resources\Svg\NFIXBlack.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
     <Content Include="Resources\Svg\Sliver.svg" />
     <Content Include="Scripts\Jquery\ajaxfileupload.js" />
