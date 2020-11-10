@@ -160,12 +160,7 @@
     <Compile Include="Areas\User\Controllers\ProfileController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Clases\PersianCalender.cs" />
-    <Compile Include="Connected Services\ZarinTest\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\Zarin\Reference.cs">
+    <Compile Include="Connected Services\ZarinPalTest\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -215,52 +210,28 @@
     <Compile Include="Utilities\SendEmail.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.GetUnverifiedTransactionsResponse.datasource">
+    <Content Include="Areas\Admin\Views\Product\FactorView.cshtml" />
+    <None Include="Connected Services\ZarinPalTest\configuration91.svcinfo" />
+    <None Include="Connected Services\ZarinPalTest\configuration.svcinfo" />
+    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.GetUnverifiedTransactionsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.PaymentRequestResponse.datasource">
+    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.PaymentRequestResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.PaymentRequestWithExtraResponse.datasource">
+    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.PaymentRequestWithExtraResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.PaymentVerificationResponse.datasource">
+    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.PaymentVerificationResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.PaymentVerificationWithExtraResponse.datasource">
+    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.PaymentVerificationWithExtraResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.RefreshAuthorityResponse.datasource">
+    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.RefreshAuthorityResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\ZarinTest\PaymentGatewayImplementationService.wsdl" />
-    <None Include="Connected Services\Zarin\configuration91.svcinfo" />
-    <None Include="Connected Services\Zarin\configuration.svcinfo" />
-    <None Include="Connected Services\ZarinTest\configuration91.svcinfo" />
-    <None Include="Connected Services\ZarinTest\configuration.svcinfo" />
-    <None Include="Connected Services\ZarinTest\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.GetUnverifiedTransactionsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.PaymentRequestResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.PaymentRequestWithExtraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.PaymentVerificationResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.PaymentVerificationWithExtraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.RefreshAuthorityResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\Zarin\Reference.svcmap">
+    <None Include="Connected Services\ZarinPalTest\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -409,7 +380,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <None Include="Connected Services\Zarin\PaymentGatewayImplementationService.wsdl" />
+    <None Include="Connected Services\ZarinPalTest\PaymentGatewayImplementationService.wsdl" />
     <None Include="Scripts\Jquery\jquery-3.5.1.intellisense.js" />
     <Content Include="Mocks\about.html" />
     <Content Include="Mocks\Admin\BlogAdder.html" />
@@ -1727,6 +1698,10 @@
     <Content Include="Views\HomeBlogs\AllBlogs.cshtml" />
     <Content Include="Views\HomeAccount\RecoveryPasswordShowInModal.cshtml" />
     <Content Include="Views\HomeAccount\RecoveryPassShowModal.cshtml" />
+    <Content Include="Views\HomeShopCart\Index.cshtml" />
+    <Content Include="Views\HomeShopCart\Order.cshtml" />
+    <Content Include="Views\HomeShopCart\ShowCart.cshtml" />
+    <Content Include="Views\HomeShopCart\Verify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1743,7 +1718,6 @@
     <Folder Include="Resources\VideoCatagory\Thumb\" />
     <Folder Include="Resources\Videos\Demo\" />
     <Folder Include="Resources\Videos\Image\" />
-    <Folder Include="Views\HomeShopCart\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1760,8 +1734,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ZarinTest\" />
-    <WCFMetadataStorage Include="Connected Services\Zarin\" />
+    <WCFMetadataStorage Include="Connected Services\ZarinPalTest\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

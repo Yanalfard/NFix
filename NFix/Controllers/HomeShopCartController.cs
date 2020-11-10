@@ -131,8 +131,7 @@ namespace NFix.Controllers
             }
         }
 
-        [Authorize]
-        [HttpPost]
+        //[Authorize]
         public ActionResult Payment()
         {
             try
@@ -163,11 +162,12 @@ namespace NFix.Controllers
                         Discount = _products.SelectProductById(item.ProductID).Discount,
                     });
                 }
+
                 System.Net.ServicePointManager.Expect100Continue = false;
-                ZarinTest.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinTest.PaymentGatewayImplementationServicePortTypeClient();
+                ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient();
                 string Authority;
 
-                int Status = zp.PaymentRequest("5f648351-94a0-4b6d-ab96-3eef0d58a8b5", SumOrder, "NFIX ", "info@newkharid.com", "09339634557", ConfigurationManager.AppSettings["MyDomain"] + "/ShopCart/Verify/" + order.id, out Authority);
+                int Status = zp.PaymentRequest("5f648351-94a0-4b6d-ab96-3eef0d58a8b5", SumOrder, "NFIX ", "info@newkharid.com", "09339634557", ConfigurationManager.AppSettings["MyDomain"] + "/HomeShopCart/Verify/" + order.id, out Authority);
                 if (Status == 100)
                 {
                     //Response.Redirect("https://www.zarinpal.com/pg/StartPay/" + Authority);
@@ -203,7 +203,7 @@ namespace NFix.Controllers
                         int Amount = (int)order.Sum;
                         long RefID;
                         System.Net.ServicePointManager.Expect100Continue = false;
-                        Zarin.PaymentGatewayImplementationServicePortTypeClient zp = new Zarin.PaymentGatewayImplementationServicePortTypeClient();
+                        ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient();
 
                         int Status = zp.PaymentVerification("a282a431-19d8-43ee-ae50-e3d056519667", Request.QueryString["Authority"].ToString(), Amount, out RefID);
                         if (Status == 100)
@@ -215,7 +215,7 @@ namespace NFix.Controllers
                             // Response.Write("Success!! RefId: " + RefID);
                             List<ShopCartItem> cart = Session["ShopCart"] as List<ShopCartItem>;
                             cart.Clear();
-                            return Redirect("/UserPanel/Home/FactorView/" + id + "?FinalFactor=" + RefID);
+                            return Redirect("/User/Profile/FactorView/" + id + "?FinalFactor=" + RefID);
                         }
                         else
                         {

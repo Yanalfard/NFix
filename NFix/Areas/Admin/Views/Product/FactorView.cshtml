@@ -1,18 +1,10 @@
-﻿@model IEnumerable<DataLayer.ViewModel.ShowOrderViewModel>
+﻿@model IEnumerable<DataLayer.Models.Regular.TblClientProductRel>
 @{
     ViewBag.Title = "OrderTable";
-    Layout = "~//Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="space-nav-bottom"></div>
 
-@if (Request.QueryString["FinalFactor"] != null)
-{
-    <div class="uk-alert uk-alert-success">
-        <h2>تراکنش با موفقیت انجام شد</h2>
-        <hr />
-        <p>کد پیگیری شما : @Request.QueryString["FinalFactor"]</p>
-    </div>
-}
 
 <content class="column clipped">
 
@@ -25,6 +17,12 @@
 
     <h4 class="uk-margin-remove-bottom" dir="rtl">
         کد فاکتور  @ViewBag.FactId
+    </h4>
+    <h4 class="uk-margin-remove-bottom" dir="rtl">
+        نام کاربر  @ViewBag.UserName
+    </h4>
+    <h4 class="uk-margin-remove-bottom" dir="rtl">
+        شماره تلفن  @ViewBag.Tell
     </h4>
 
     <table id="main" class="uk-table uk-table-divider" dir="rtl">
@@ -44,12 +42,12 @@
             {
                 <tr>
                     <td>@(Model.ToList().IndexOf(item)+1)</td>
-                    <td>@item.Title</td>
-                    <td>@item.Price.ToString("#,0")</td>
-                    <td>@item.CategoryName</td>
+                    <td>@item.TblProduct.Name</td>
+                    <td>@item.Price</td>
+                    <td>@item.TblProduct.TblCatagory.Name</td>
                     <td>@item.Count</td>
                     <td>@item.Discount%</td>
-                    <td>@((item.Discount == 0 ? item.Price * item.Count : (item.Price - (long)(Math.Floor((decimal)(item.Price * item.Discount / 100)))) * item.Count).ToString("#,0"))</td>
+                    <td>@(item.Discount == 0 ? item.Price * item.Count : (item.Price - (long)(Math.Floor((decimal)(item.Price * item.Discount / 100)))) * item.Count)</td>
                 </tr>
 
             }
@@ -61,10 +59,10 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>@Model.Sum(p => p.Count)</td>
+                <td>@Model.Sum(p=>p.Count)</td>
                 <td></td>
                 <td>
-                    @Model.Sum(p => p.Sum).ToString("#,0")
+                    @Model.Sum(p=>p.Price * p.Count)
                 </td>
             </tr>
         </tfoot>

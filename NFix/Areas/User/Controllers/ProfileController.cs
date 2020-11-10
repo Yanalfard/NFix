@@ -1,6 +1,7 @@
 ﻿using DataLayer.Models.Regular;
 using DataLayer.Services.Impl;
 using DataLayer.ViewModel;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,11 @@ namespace NFix.Areas.User.Controllers
 {
     public class ProfileController : Controller
     {
+        private ProductService _products = new ProductService();
         private ClientService _client = new ClientService();
         private UserPassService _userPass = new UserPassService();
-
+        private OrderService _order = new OrderService();
+        private ClientProductRelService _clientProductRel = new ClientProductRelService();
         // GET: User/Profile
         public ActionResult Index()
         {
@@ -107,11 +110,18 @@ namespace NFix.Areas.User.Controllers
         }
         public ActionResult History()
         {
-            return PartialView();
+            TblClient selectClientByUserName = _client.SelectClientByUserPassId(_userPass.SelectUserPassByUsername(User.Identity.Name).id);
+            List<TblClientProductRel> found = _clientProductRel.SelectClientProductRelByClientId(selectClientByUserName.id);
+            List<TblOrder> foundOrders = new List<TblOrder>();
+            List<TblOrder> allOrders = _order.SelectAllOrders();
+            foreach (TblClientProductRel i in found)
+                foreach (TblOrder j in allOrders)
+                    if (i.OrderId == j.id)
+                        foundOrders.Add(j);
+            foundOrders = foundOrders.DistinctBy(i => i.id).ToList();
+            // return PartialView(_order.SelectAllOrders().OrderByDescending(i => i.Date).ToList());
+            return PartialView(foundOrders.OrderByDescending(i=>i.Date));
         }
-
-
-
         public ActionResult EditPass()
         {
             return PartialView();
@@ -150,9 +160,38 @@ namespace NFix.Areas.User.Controllers
         }
 
 
-        public ActionResult FactorView()
+        public ActionResult FactorView(int id)
         {
-            return View();
+            TblOrder order = _order.SelectOrderById(id);
+            ViewBag.FactId = id;
+            ViewBag.Date = order.Date.ToShamsi();
+
+            List<ShowOrderViewModel> list = new List<ShowOrderViewModel>();
+            List<TblClientProductRel> listShop = _clientProductRel.SelectAllClientProductRels().Where(i => i.OrderId == id).ToList();
+            foreach (var item in listShop)
+            {
+                var product = _products.SelectAllProducts().Where(p => p.id == item.ProductId).Select(p => new
+                {
+                    p.TblProductImageRel.SingleOrDefault().TblImage.Image,
+                    p.Name,
+                    p.Price,
+                    p.TblCatagory,
+                    p.Discount,
+                }).Single();
+                list.Add(new ShowOrderViewModel()
+                {
+                    Count = item.Count,
+                    ProductID = item.ProductId,
+                    Price = product.Price,
+                    ImageName = product.Image,
+                    Title = product.Name,
+                    Sum = product.Discount == 0 ? item.Count * product.Price : (product.Price - (long)(Math.Floor((double)product.Price * product.Discount / 100))) * item.Count,
+                    CategoryName = product.TblCatagory.Name,
+                    Discount = product.Discount
+                });
+            }
+
+            return View(list);
         }
 
     }

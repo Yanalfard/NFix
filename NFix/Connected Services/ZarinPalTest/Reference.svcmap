@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d320e985-a559-470b-8e2f-27df88ad8c44" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1e53b40f-8605-4675-a29d-cd939e500311" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,7 +22,7 @@
     <MetadataSource Address="https://sandbox.zarinpal.com/pg/services/WebGate/wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PaymentGatewayImplementationService.wsdl" MetadataType="Wsdl" ID="14daa7c2-84de-42be-887c-5dba055fb426" SourceId="1" SourceUrl="https://sandbox.zarinpal.com/pg/services/WebGate/wsdl" />
+    <MetadataFile FileName="PaymentGatewayImplementationService.wsdl" MetadataType="Wsdl" ID="d62125c5-e888-489a-bb1b-45d23bf801a9" SourceId="1" SourceUrl="https://sandbox.zarinpal.com/pg/services/WebGate/wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

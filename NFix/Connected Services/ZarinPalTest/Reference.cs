@@ -8,49 +8,49 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NFix.Zarin {
+namespace NFix.ZarinPalTest {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://zarinpal.com/", ConfigurationName="Zarin.PaymentGatewayImplementationServicePortType")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://zarinpal.com/", ConfigurationName="ZarinPalTest.PaymentGatewayImplementationServicePortType")]
     public interface PaymentGatewayImplementationServicePortType {
         
         [System.ServiceModel.OperationContractAttribute(Action="#PaymentRequest", ReplyAction="*")]
-        NFix.Zarin.PaymentRequestResponse PaymentRequest(NFix.Zarin.PaymentRequestRequest request);
+        NFix.ZarinPalTest.PaymentRequestResponse PaymentRequest(NFix.ZarinPalTest.PaymentRequestRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="#PaymentRequest", ReplyAction="*")]
-        System.Threading.Tasks.Task<NFix.Zarin.PaymentRequestResponse> PaymentRequestAsync(NFix.Zarin.PaymentRequestRequest request);
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentRequestResponse> PaymentRequestAsync(NFix.ZarinPalTest.PaymentRequestRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="#PaymentRequestWithExtra", ReplyAction="*")]
-        NFix.Zarin.PaymentRequestWithExtraResponse PaymentRequestWithExtra(NFix.Zarin.PaymentRequestWithExtraRequest request);
+        NFix.ZarinPalTest.PaymentRequestWithExtraResponse PaymentRequestWithExtra(NFix.ZarinPalTest.PaymentRequestWithExtraRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="#PaymentRequestWithExtra", ReplyAction="*")]
-        System.Threading.Tasks.Task<NFix.Zarin.PaymentRequestWithExtraResponse> PaymentRequestWithExtraAsync(NFix.Zarin.PaymentRequestWithExtraRequest request);
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentRequestWithExtraResponse> PaymentRequestWithExtraAsync(NFix.ZarinPalTest.PaymentRequestWithExtraRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="#PaymentVerification", ReplyAction="*")]
-        NFix.Zarin.PaymentVerificationResponse PaymentVerification(NFix.Zarin.PaymentVerificationRequest request);
+        NFix.ZarinPalTest.PaymentVerificationResponse PaymentVerification(NFix.ZarinPalTest.PaymentVerificationRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="#PaymentVerification", ReplyAction="*")]
-        System.Threading.Tasks.Task<NFix.Zarin.PaymentVerificationResponse> PaymentVerificationAsync(NFix.Zarin.PaymentVerificationRequest request);
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentVerificationResponse> PaymentVerificationAsync(NFix.ZarinPalTest.PaymentVerificationRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="#PaymentVerificationWithExtra", ReplyAction="*")]
-        NFix.Zarin.PaymentVerificationWithExtraResponse PaymentVerificationWithExtra(NFix.Zarin.PaymentVerificationWithExtraRequest request);
+        NFix.ZarinPalTest.PaymentVerificationWithExtraResponse PaymentVerificationWithExtra(NFix.ZarinPalTest.PaymentVerificationWithExtraRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="#PaymentVerificationWithExtra", ReplyAction="*")]
-        System.Threading.Tasks.Task<NFix.Zarin.PaymentVerificationWithExtraResponse> PaymentVerificationWithExtraAsync(NFix.Zarin.PaymentVerificationWithExtraRequest request);
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentVerificationWithExtraResponse> PaymentVerificationWithExtraAsync(NFix.ZarinPalTest.PaymentVerificationWithExtraRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="#GetUnverifiedTransactions", ReplyAction="*")]
-        NFix.Zarin.GetUnverifiedTransactionsResponse GetUnverifiedTransactions(NFix.Zarin.GetUnverifiedTransactionsRequest request);
+        NFix.ZarinPalTest.GetUnverifiedTransactionsResponse GetUnverifiedTransactions(NFix.ZarinPalTest.GetUnverifiedTransactionsRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="#GetUnverifiedTransactions", ReplyAction="*")]
-        System.Threading.Tasks.Task<NFix.Zarin.GetUnverifiedTransactionsResponse> GetUnverifiedTransactionsAsync(NFix.Zarin.GetUnverifiedTransactionsRequest request);
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.GetUnverifiedTransactionsResponse> GetUnverifiedTransactionsAsync(NFix.ZarinPalTest.GetUnverifiedTransactionsRequest request);
         
         // CODEGEN: Generating message contract since element name MerchantID from namespace http://zarinpal.com/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="#RefreshAuthority", ReplyAction="*")]
-        NFix.Zarin.RefreshAuthorityResponse RefreshAuthority(NFix.Zarin.RefreshAuthorityRequest request);
+        NFix.ZarinPalTest.RefreshAuthorityResponse RefreshAuthority(NFix.ZarinPalTest.RefreshAuthorityRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="#RefreshAuthority", ReplyAction="*")]
-        System.Threading.Tasks.Task<NFix.Zarin.RefreshAuthorityResponse> RefreshAuthorityAsync(NFix.Zarin.RefreshAuthorityRequest request);
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.RefreshAuthorityResponse> RefreshAuthorityAsync(NFix.ZarinPalTest.RefreshAuthorityRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -59,12 +59,12 @@ namespace NFix.Zarin {
     public partial class PaymentRequestRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="PaymentRequest", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.PaymentRequestRequestBody Body;
+        public NFix.ZarinPalTest.PaymentRequestRequestBody Body;
         
         public PaymentRequestRequest() {
         }
         
-        public PaymentRequestRequest(NFix.Zarin.PaymentRequestRequestBody Body) {
+        public PaymentRequestRequest(NFix.ZarinPalTest.PaymentRequestRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -111,12 +111,12 @@ namespace NFix.Zarin {
     public partial class PaymentRequestResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="PaymentRequestResponse", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.PaymentRequestResponseBody Body;
+        public NFix.ZarinPalTest.PaymentRequestResponseBody Body;
         
         public PaymentRequestResponse() {
         }
         
-        public PaymentRequestResponse(NFix.Zarin.PaymentRequestResponseBody Body) {
+        public PaymentRequestResponse(NFix.ZarinPalTest.PaymentRequestResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -147,12 +147,12 @@ namespace NFix.Zarin {
     public partial class PaymentRequestWithExtraRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="PaymentRequestWithExtra", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.PaymentRequestWithExtraRequestBody Body;
+        public NFix.ZarinPalTest.PaymentRequestWithExtraRequestBody Body;
         
         public PaymentRequestWithExtraRequest() {
         }
         
-        public PaymentRequestWithExtraRequest(NFix.Zarin.PaymentRequestWithExtraRequestBody Body) {
+        public PaymentRequestWithExtraRequest(NFix.ZarinPalTest.PaymentRequestWithExtraRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -203,12 +203,12 @@ namespace NFix.Zarin {
     public partial class PaymentRequestWithExtraResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="PaymentRequestWithExtraResponse", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.PaymentRequestWithExtraResponseBody Body;
+        public NFix.ZarinPalTest.PaymentRequestWithExtraResponseBody Body;
         
         public PaymentRequestWithExtraResponse() {
         }
         
-        public PaymentRequestWithExtraResponse(NFix.Zarin.PaymentRequestWithExtraResponseBody Body) {
+        public PaymentRequestWithExtraResponse(NFix.ZarinPalTest.PaymentRequestWithExtraResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -239,12 +239,12 @@ namespace NFix.Zarin {
     public partial class PaymentVerificationRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="PaymentVerification", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.PaymentVerificationRequestBody Body;
+        public NFix.ZarinPalTest.PaymentVerificationRequestBody Body;
         
         public PaymentVerificationRequest() {
         }
         
-        public PaymentVerificationRequest(NFix.Zarin.PaymentVerificationRequestBody Body) {
+        public PaymentVerificationRequest(NFix.ZarinPalTest.PaymentVerificationRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -279,12 +279,12 @@ namespace NFix.Zarin {
     public partial class PaymentVerificationResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="PaymentVerificationResponse", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.PaymentVerificationResponseBody Body;
+        public NFix.ZarinPalTest.PaymentVerificationResponseBody Body;
         
         public PaymentVerificationResponse() {
         }
         
-        public PaymentVerificationResponse(NFix.Zarin.PaymentVerificationResponseBody Body) {
+        public PaymentVerificationResponse(NFix.ZarinPalTest.PaymentVerificationResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -315,12 +315,12 @@ namespace NFix.Zarin {
     public partial class PaymentVerificationWithExtraRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="PaymentVerificationWithExtra", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.PaymentVerificationWithExtraRequestBody Body;
+        public NFix.ZarinPalTest.PaymentVerificationWithExtraRequestBody Body;
         
         public PaymentVerificationWithExtraRequest() {
         }
         
-        public PaymentVerificationWithExtraRequest(NFix.Zarin.PaymentVerificationWithExtraRequestBody Body) {
+        public PaymentVerificationWithExtraRequest(NFix.ZarinPalTest.PaymentVerificationWithExtraRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -355,12 +355,12 @@ namespace NFix.Zarin {
     public partial class PaymentVerificationWithExtraResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="PaymentVerificationWithExtraResponse", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.PaymentVerificationWithExtraResponseBody Body;
+        public NFix.ZarinPalTest.PaymentVerificationWithExtraResponseBody Body;
         
         public PaymentVerificationWithExtraResponse() {
         }
         
-        public PaymentVerificationWithExtraResponse(NFix.Zarin.PaymentVerificationWithExtraResponseBody Body) {
+        public PaymentVerificationWithExtraResponse(NFix.ZarinPalTest.PaymentVerificationWithExtraResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -395,12 +395,12 @@ namespace NFix.Zarin {
     public partial class GetUnverifiedTransactionsRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUnverifiedTransactions", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.GetUnverifiedTransactionsRequestBody Body;
+        public NFix.ZarinPalTest.GetUnverifiedTransactionsRequestBody Body;
         
         public GetUnverifiedTransactionsRequest() {
         }
         
-        public GetUnverifiedTransactionsRequest(NFix.Zarin.GetUnverifiedTransactionsRequestBody Body) {
+        public GetUnverifiedTransactionsRequest(NFix.ZarinPalTest.GetUnverifiedTransactionsRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -427,12 +427,12 @@ namespace NFix.Zarin {
     public partial class GetUnverifiedTransactionsResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="GetUnverifiedTransactionsResponse", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.GetUnverifiedTransactionsResponseBody Body;
+        public NFix.ZarinPalTest.GetUnverifiedTransactionsResponseBody Body;
         
         public GetUnverifiedTransactionsResponse() {
         }
         
-        public GetUnverifiedTransactionsResponse(NFix.Zarin.GetUnverifiedTransactionsResponseBody Body) {
+        public GetUnverifiedTransactionsResponse(NFix.ZarinPalTest.GetUnverifiedTransactionsResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -464,12 +464,12 @@ namespace NFix.Zarin {
     public partial class RefreshAuthorityRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="RefreshAuthority", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.RefreshAuthorityRequestBody Body;
+        public NFix.ZarinPalTest.RefreshAuthorityRequestBody Body;
         
         public RefreshAuthorityRequest() {
         }
         
-        public RefreshAuthorityRequest(NFix.Zarin.RefreshAuthorityRequestBody Body) {
+        public RefreshAuthorityRequest(NFix.ZarinPalTest.RefreshAuthorityRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -506,12 +506,12 @@ namespace NFix.Zarin {
     public partial class RefreshAuthorityResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="RefreshAuthorityResponse", Namespace="http://zarinpal.com/", Order=0)]
-        public NFix.Zarin.RefreshAuthorityResponseBody Body;
+        public NFix.ZarinPalTest.RefreshAuthorityResponseBody Body;
         
         public RefreshAuthorityResponse() {
         }
         
-        public RefreshAuthorityResponse(NFix.Zarin.RefreshAuthorityResponseBody Body) {
+        public RefreshAuthorityResponse(NFix.ZarinPalTest.RefreshAuthorityResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -534,12 +534,12 @@ namespace NFix.Zarin {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface PaymentGatewayImplementationServicePortTypeChannel : NFix.Zarin.PaymentGatewayImplementationServicePortType, System.ServiceModel.IClientChannel {
+    public interface PaymentGatewayImplementationServicePortTypeChannel : NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class PaymentGatewayImplementationServicePortTypeClient : System.ServiceModel.ClientBase<NFix.Zarin.PaymentGatewayImplementationServicePortType>, NFix.Zarin.PaymentGatewayImplementationServicePortType {
+    public partial class PaymentGatewayImplementationServicePortTypeClient : System.ServiceModel.ClientBase<NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType>, NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType {
         
         public PaymentGatewayImplementationServicePortTypeClient() {
         }
@@ -561,49 +561,49 @@ namespace NFix.Zarin {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        NFix.Zarin.PaymentRequestResponse NFix.Zarin.PaymentGatewayImplementationServicePortType.PaymentRequest(NFix.Zarin.PaymentRequestRequest request) {
+        NFix.ZarinPalTest.PaymentRequestResponse NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.PaymentRequest(NFix.ZarinPalTest.PaymentRequestRequest request) {
             return base.Channel.PaymentRequest(request);
         }
         
         public int PaymentRequest(string MerchantID, int Amount, string Description, string Email, string Mobile, string CallbackURL, out string Authority) {
-            NFix.Zarin.PaymentRequestRequest inValue = new NFix.Zarin.PaymentRequestRequest();
-            inValue.Body = new NFix.Zarin.PaymentRequestRequestBody();
+            NFix.ZarinPalTest.PaymentRequestRequest inValue = new NFix.ZarinPalTest.PaymentRequestRequest();
+            inValue.Body = new NFix.ZarinPalTest.PaymentRequestRequestBody();
             inValue.Body.MerchantID = MerchantID;
             inValue.Body.Amount = Amount;
             inValue.Body.Description = Description;
             inValue.Body.Email = Email;
             inValue.Body.Mobile = Mobile;
             inValue.Body.CallbackURL = CallbackURL;
-            NFix.Zarin.PaymentRequestResponse retVal = ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).PaymentRequest(inValue);
+            NFix.ZarinPalTest.PaymentRequestResponse retVal = ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).PaymentRequest(inValue);
             Authority = retVal.Body.Authority;
             return retVal.Body.Status;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NFix.Zarin.PaymentRequestResponse> NFix.Zarin.PaymentGatewayImplementationServicePortType.PaymentRequestAsync(NFix.Zarin.PaymentRequestRequest request) {
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentRequestResponse> NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.PaymentRequestAsync(NFix.ZarinPalTest.PaymentRequestRequest request) {
             return base.Channel.PaymentRequestAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NFix.Zarin.PaymentRequestResponse> PaymentRequestAsync(string MerchantID, int Amount, string Description, string Email, string Mobile, string CallbackURL) {
-            NFix.Zarin.PaymentRequestRequest inValue = new NFix.Zarin.PaymentRequestRequest();
-            inValue.Body = new NFix.Zarin.PaymentRequestRequestBody();
+        public System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentRequestResponse> PaymentRequestAsync(string MerchantID, int Amount, string Description, string Email, string Mobile, string CallbackURL) {
+            NFix.ZarinPalTest.PaymentRequestRequest inValue = new NFix.ZarinPalTest.PaymentRequestRequest();
+            inValue.Body = new NFix.ZarinPalTest.PaymentRequestRequestBody();
             inValue.Body.MerchantID = MerchantID;
             inValue.Body.Amount = Amount;
             inValue.Body.Description = Description;
             inValue.Body.Email = Email;
             inValue.Body.Mobile = Mobile;
             inValue.Body.CallbackURL = CallbackURL;
-            return ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).PaymentRequestAsync(inValue);
+            return ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).PaymentRequestAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        NFix.Zarin.PaymentRequestWithExtraResponse NFix.Zarin.PaymentGatewayImplementationServicePortType.PaymentRequestWithExtra(NFix.Zarin.PaymentRequestWithExtraRequest request) {
+        NFix.ZarinPalTest.PaymentRequestWithExtraResponse NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.PaymentRequestWithExtra(NFix.ZarinPalTest.PaymentRequestWithExtraRequest request) {
             return base.Channel.PaymentRequestWithExtra(request);
         }
         
         public int PaymentRequestWithExtra(string MerchantID, int Amount, string Description, string AdditionalData, string Email, string Mobile, string CallbackURL, out string Authority) {
-            NFix.Zarin.PaymentRequestWithExtraRequest inValue = new NFix.Zarin.PaymentRequestWithExtraRequest();
-            inValue.Body = new NFix.Zarin.PaymentRequestWithExtraRequestBody();
+            NFix.ZarinPalTest.PaymentRequestWithExtraRequest inValue = new NFix.ZarinPalTest.PaymentRequestWithExtraRequest();
+            inValue.Body = new NFix.ZarinPalTest.PaymentRequestWithExtraRequestBody();
             inValue.Body.MerchantID = MerchantID;
             inValue.Body.Amount = Amount;
             inValue.Body.Description = Description;
@@ -611,19 +611,19 @@ namespace NFix.Zarin {
             inValue.Body.Email = Email;
             inValue.Body.Mobile = Mobile;
             inValue.Body.CallbackURL = CallbackURL;
-            NFix.Zarin.PaymentRequestWithExtraResponse retVal = ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).PaymentRequestWithExtra(inValue);
+            NFix.ZarinPalTest.PaymentRequestWithExtraResponse retVal = ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).PaymentRequestWithExtra(inValue);
             Authority = retVal.Body.Authority;
             return retVal.Body.Status;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NFix.Zarin.PaymentRequestWithExtraResponse> NFix.Zarin.PaymentGatewayImplementationServicePortType.PaymentRequestWithExtraAsync(NFix.Zarin.PaymentRequestWithExtraRequest request) {
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentRequestWithExtraResponse> NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.PaymentRequestWithExtraAsync(NFix.ZarinPalTest.PaymentRequestWithExtraRequest request) {
             return base.Channel.PaymentRequestWithExtraAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NFix.Zarin.PaymentRequestWithExtraResponse> PaymentRequestWithExtraAsync(string MerchantID, int Amount, string Description, string AdditionalData, string Email, string Mobile, string CallbackURL) {
-            NFix.Zarin.PaymentRequestWithExtraRequest inValue = new NFix.Zarin.PaymentRequestWithExtraRequest();
-            inValue.Body = new NFix.Zarin.PaymentRequestWithExtraRequestBody();
+        public System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentRequestWithExtraResponse> PaymentRequestWithExtraAsync(string MerchantID, int Amount, string Description, string AdditionalData, string Email, string Mobile, string CallbackURL) {
+            NFix.ZarinPalTest.PaymentRequestWithExtraRequest inValue = new NFix.ZarinPalTest.PaymentRequestWithExtraRequest();
+            inValue.Body = new NFix.ZarinPalTest.PaymentRequestWithExtraRequestBody();
             inValue.Body.MerchantID = MerchantID;
             inValue.Body.Amount = Amount;
             inValue.Body.Description = Description;
@@ -631,123 +631,123 @@ namespace NFix.Zarin {
             inValue.Body.Email = Email;
             inValue.Body.Mobile = Mobile;
             inValue.Body.CallbackURL = CallbackURL;
-            return ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).PaymentRequestWithExtraAsync(inValue);
+            return ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).PaymentRequestWithExtraAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        NFix.Zarin.PaymentVerificationResponse NFix.Zarin.PaymentGatewayImplementationServicePortType.PaymentVerification(NFix.Zarin.PaymentVerificationRequest request) {
+        NFix.ZarinPalTest.PaymentVerificationResponse NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.PaymentVerification(NFix.ZarinPalTest.PaymentVerificationRequest request) {
             return base.Channel.PaymentVerification(request);
         }
         
         public int PaymentVerification(string MerchantID, string Authority, int Amount, out long RefID) {
-            NFix.Zarin.PaymentVerificationRequest inValue = new NFix.Zarin.PaymentVerificationRequest();
-            inValue.Body = new NFix.Zarin.PaymentVerificationRequestBody();
+            NFix.ZarinPalTest.PaymentVerificationRequest inValue = new NFix.ZarinPalTest.PaymentVerificationRequest();
+            inValue.Body = new NFix.ZarinPalTest.PaymentVerificationRequestBody();
             inValue.Body.MerchantID = MerchantID;
             inValue.Body.Authority = Authority;
             inValue.Body.Amount = Amount;
-            NFix.Zarin.PaymentVerificationResponse retVal = ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).PaymentVerification(inValue);
+            NFix.ZarinPalTest.PaymentVerificationResponse retVal = ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).PaymentVerification(inValue);
             RefID = retVal.Body.RefID;
             return retVal.Body.Status;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NFix.Zarin.PaymentVerificationResponse> NFix.Zarin.PaymentGatewayImplementationServicePortType.PaymentVerificationAsync(NFix.Zarin.PaymentVerificationRequest request) {
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentVerificationResponse> NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.PaymentVerificationAsync(NFix.ZarinPalTest.PaymentVerificationRequest request) {
             return base.Channel.PaymentVerificationAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NFix.Zarin.PaymentVerificationResponse> PaymentVerificationAsync(string MerchantID, string Authority, int Amount) {
-            NFix.Zarin.PaymentVerificationRequest inValue = new NFix.Zarin.PaymentVerificationRequest();
-            inValue.Body = new NFix.Zarin.PaymentVerificationRequestBody();
+        public System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentVerificationResponse> PaymentVerificationAsync(string MerchantID, string Authority, int Amount) {
+            NFix.ZarinPalTest.PaymentVerificationRequest inValue = new NFix.ZarinPalTest.PaymentVerificationRequest();
+            inValue.Body = new NFix.ZarinPalTest.PaymentVerificationRequestBody();
             inValue.Body.MerchantID = MerchantID;
             inValue.Body.Authority = Authority;
             inValue.Body.Amount = Amount;
-            return ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).PaymentVerificationAsync(inValue);
+            return ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).PaymentVerificationAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        NFix.Zarin.PaymentVerificationWithExtraResponse NFix.Zarin.PaymentGatewayImplementationServicePortType.PaymentVerificationWithExtra(NFix.Zarin.PaymentVerificationWithExtraRequest request) {
+        NFix.ZarinPalTest.PaymentVerificationWithExtraResponse NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.PaymentVerificationWithExtra(NFix.ZarinPalTest.PaymentVerificationWithExtraRequest request) {
             return base.Channel.PaymentVerificationWithExtra(request);
         }
         
         public int PaymentVerificationWithExtra(string MerchantID, string Authority, int Amount, out long RefID, out string ExtraDetail) {
-            NFix.Zarin.PaymentVerificationWithExtraRequest inValue = new NFix.Zarin.PaymentVerificationWithExtraRequest();
-            inValue.Body = new NFix.Zarin.PaymentVerificationWithExtraRequestBody();
+            NFix.ZarinPalTest.PaymentVerificationWithExtraRequest inValue = new NFix.ZarinPalTest.PaymentVerificationWithExtraRequest();
+            inValue.Body = new NFix.ZarinPalTest.PaymentVerificationWithExtraRequestBody();
             inValue.Body.MerchantID = MerchantID;
             inValue.Body.Authority = Authority;
             inValue.Body.Amount = Amount;
-            NFix.Zarin.PaymentVerificationWithExtraResponse retVal = ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).PaymentVerificationWithExtra(inValue);
+            NFix.ZarinPalTest.PaymentVerificationWithExtraResponse retVal = ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).PaymentVerificationWithExtra(inValue);
             RefID = retVal.Body.RefID;
             ExtraDetail = retVal.Body.ExtraDetail;
             return retVal.Body.Status;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NFix.Zarin.PaymentVerificationWithExtraResponse> NFix.Zarin.PaymentGatewayImplementationServicePortType.PaymentVerificationWithExtraAsync(NFix.Zarin.PaymentVerificationWithExtraRequest request) {
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentVerificationWithExtraResponse> NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.PaymentVerificationWithExtraAsync(NFix.ZarinPalTest.PaymentVerificationWithExtraRequest request) {
             return base.Channel.PaymentVerificationWithExtraAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NFix.Zarin.PaymentVerificationWithExtraResponse> PaymentVerificationWithExtraAsync(string MerchantID, string Authority, int Amount) {
-            NFix.Zarin.PaymentVerificationWithExtraRequest inValue = new NFix.Zarin.PaymentVerificationWithExtraRequest();
-            inValue.Body = new NFix.Zarin.PaymentVerificationWithExtraRequestBody();
+        public System.Threading.Tasks.Task<NFix.ZarinPalTest.PaymentVerificationWithExtraResponse> PaymentVerificationWithExtraAsync(string MerchantID, string Authority, int Amount) {
+            NFix.ZarinPalTest.PaymentVerificationWithExtraRequest inValue = new NFix.ZarinPalTest.PaymentVerificationWithExtraRequest();
+            inValue.Body = new NFix.ZarinPalTest.PaymentVerificationWithExtraRequestBody();
             inValue.Body.MerchantID = MerchantID;
             inValue.Body.Authority = Authority;
             inValue.Body.Amount = Amount;
-            return ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).PaymentVerificationWithExtraAsync(inValue);
+            return ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).PaymentVerificationWithExtraAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        NFix.Zarin.GetUnverifiedTransactionsResponse NFix.Zarin.PaymentGatewayImplementationServicePortType.GetUnverifiedTransactions(NFix.Zarin.GetUnverifiedTransactionsRequest request) {
+        NFix.ZarinPalTest.GetUnverifiedTransactionsResponse NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.GetUnverifiedTransactions(NFix.ZarinPalTest.GetUnverifiedTransactionsRequest request) {
             return base.Channel.GetUnverifiedTransactions(request);
         }
         
         public int GetUnverifiedTransactions(string MerchantID, out string Authorities) {
-            NFix.Zarin.GetUnverifiedTransactionsRequest inValue = new NFix.Zarin.GetUnverifiedTransactionsRequest();
-            inValue.Body = new NFix.Zarin.GetUnverifiedTransactionsRequestBody();
+            NFix.ZarinPalTest.GetUnverifiedTransactionsRequest inValue = new NFix.ZarinPalTest.GetUnverifiedTransactionsRequest();
+            inValue.Body = new NFix.ZarinPalTest.GetUnverifiedTransactionsRequestBody();
             inValue.Body.MerchantID = MerchantID;
-            NFix.Zarin.GetUnverifiedTransactionsResponse retVal = ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).GetUnverifiedTransactions(inValue);
+            NFix.ZarinPalTest.GetUnverifiedTransactionsResponse retVal = ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).GetUnverifiedTransactions(inValue);
             Authorities = retVal.Body.Authorities;
             return retVal.Body.Status;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NFix.Zarin.GetUnverifiedTransactionsResponse> NFix.Zarin.PaymentGatewayImplementationServicePortType.GetUnverifiedTransactionsAsync(NFix.Zarin.GetUnverifiedTransactionsRequest request) {
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.GetUnverifiedTransactionsResponse> NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.GetUnverifiedTransactionsAsync(NFix.ZarinPalTest.GetUnverifiedTransactionsRequest request) {
             return base.Channel.GetUnverifiedTransactionsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NFix.Zarin.GetUnverifiedTransactionsResponse> GetUnverifiedTransactionsAsync(string MerchantID) {
-            NFix.Zarin.GetUnverifiedTransactionsRequest inValue = new NFix.Zarin.GetUnverifiedTransactionsRequest();
-            inValue.Body = new NFix.Zarin.GetUnverifiedTransactionsRequestBody();
+        public System.Threading.Tasks.Task<NFix.ZarinPalTest.GetUnverifiedTransactionsResponse> GetUnverifiedTransactionsAsync(string MerchantID) {
+            NFix.ZarinPalTest.GetUnverifiedTransactionsRequest inValue = new NFix.ZarinPalTest.GetUnverifiedTransactionsRequest();
+            inValue.Body = new NFix.ZarinPalTest.GetUnverifiedTransactionsRequestBody();
             inValue.Body.MerchantID = MerchantID;
-            return ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).GetUnverifiedTransactionsAsync(inValue);
+            return ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).GetUnverifiedTransactionsAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        NFix.Zarin.RefreshAuthorityResponse NFix.Zarin.PaymentGatewayImplementationServicePortType.RefreshAuthority(NFix.Zarin.RefreshAuthorityRequest request) {
+        NFix.ZarinPalTest.RefreshAuthorityResponse NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.RefreshAuthority(NFix.ZarinPalTest.RefreshAuthorityRequest request) {
             return base.Channel.RefreshAuthority(request);
         }
         
         public int RefreshAuthority(string MerchantID, string Authority, int ExpireIn) {
-            NFix.Zarin.RefreshAuthorityRequest inValue = new NFix.Zarin.RefreshAuthorityRequest();
-            inValue.Body = new NFix.Zarin.RefreshAuthorityRequestBody();
+            NFix.ZarinPalTest.RefreshAuthorityRequest inValue = new NFix.ZarinPalTest.RefreshAuthorityRequest();
+            inValue.Body = new NFix.ZarinPalTest.RefreshAuthorityRequestBody();
             inValue.Body.MerchantID = MerchantID;
             inValue.Body.Authority = Authority;
             inValue.Body.ExpireIn = ExpireIn;
-            NFix.Zarin.RefreshAuthorityResponse retVal = ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).RefreshAuthority(inValue);
+            NFix.ZarinPalTest.RefreshAuthorityResponse retVal = ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).RefreshAuthority(inValue);
             return retVal.Body.Status;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<NFix.Zarin.RefreshAuthorityResponse> NFix.Zarin.PaymentGatewayImplementationServicePortType.RefreshAuthorityAsync(NFix.Zarin.RefreshAuthorityRequest request) {
+        System.Threading.Tasks.Task<NFix.ZarinPalTest.RefreshAuthorityResponse> NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType.RefreshAuthorityAsync(NFix.ZarinPalTest.RefreshAuthorityRequest request) {
             return base.Channel.RefreshAuthorityAsync(request);
         }
         
-        public System.Threading.Tasks.Task<NFix.Zarin.RefreshAuthorityResponse> RefreshAuthorityAsync(string MerchantID, string Authority, int ExpireIn) {
-            NFix.Zarin.RefreshAuthorityRequest inValue = new NFix.Zarin.RefreshAuthorityRequest();
-            inValue.Body = new NFix.Zarin.RefreshAuthorityRequestBody();
+        public System.Threading.Tasks.Task<NFix.ZarinPalTest.RefreshAuthorityResponse> RefreshAuthorityAsync(string MerchantID, string Authority, int ExpireIn) {
+            NFix.ZarinPalTest.RefreshAuthorityRequest inValue = new NFix.ZarinPalTest.RefreshAuthorityRequest();
+            inValue.Body = new NFix.ZarinPalTest.RefreshAuthorityRequestBody();
             inValue.Body.MerchantID = MerchantID;
             inValue.Body.Authority = Authority;
             inValue.Body.ExpireIn = ExpireIn;
-            return ((NFix.Zarin.PaymentGatewayImplementationServicePortType)(this)).RefreshAuthorityAsync(inValue);
+            return ((NFix.ZarinPalTest.PaymentGatewayImplementationServicePortType)(this)).RefreshAuthorityAsync(inValue);
         }
     }
 }

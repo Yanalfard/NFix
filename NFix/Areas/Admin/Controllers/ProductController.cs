@@ -19,6 +19,10 @@ namespace NFix.Areas.Admin.Controllers
         private KeywordService _keyword = new KeywordService();
         private ProductKeywordRelService _productKeyword = new ProductKeywordRelService();
         private CatagoryService _catagory = new CatagoryService();
+        private OrderService _order = new OrderService();
+        private ClientProductRelService _clientProductRel = new ClientProductRelService();
+        private ClientService _client = new ClientService();
+        private UserPassService _user = new UserPassService();
         // GET: Admin/Product
         #region Product
 
@@ -115,7 +119,7 @@ namespace NFix.Areas.Admin.Controllers
                         tags = tags.Remove(tags.Length - 1);
                     }
                 }
-                
+
                 List<TblKeyword> idKeywords = new List<TblKeyword>();
                 string[] tag = tags.Split('،');
                 foreach (string t in tag)
@@ -273,7 +277,25 @@ namespace NFix.Areas.Admin.Controllers
         }
         public ActionResult OrderTable()
         {
-            return View();
+            //List<TblOrder> selectOrder = _order.SelectAllOrders().OrderByDescending(i => i.Date).ToList();
+            //List<OrderViewModel> ordere = new List<OrderViewModel>();
+            //List<TblClientProductRel> allOrders = _clientProductRel.SelectAllClientProductRels();
+            //foreach (var item in selectOrder)
+            //{
+            //    //  TblClient client = allOrders.SingleOrDefault(i => i.OrderId == item.id).TblClient;
+            //    TblClientProductRel clientProductRe = _clientProductRel.SelectAllClientProductRels().Where(i => i.OrderId == item.id).First();
+            //    TblClient client = _client.SelectClientById(clientProductRe.ClientId);
+            //    OrderViewModel orderViewModel = new OrderViewModel();
+            //    orderViewModel.Date = item.Date;
+            //    orderViewModel.DiscountId = item.DiscountId;
+            //    orderViewModel.IsFInaly = item.IsFInaly;
+            //    orderViewModel.Sum = item.Sum;
+            //    orderViewModel.id = item.id;
+            //    orderViewModel.Usernmae = client.TblUserPass.Username;
+            //    orderViewModel.TellClient = client.TellNo;
+            //    ordere.Add(orderViewModel);
+            //}
+            return View(_order.SelectAllOrders().OrderByDescending(i => i.Date).ToList());
         }
         public string ListCategory(int id)
         {
@@ -294,6 +316,21 @@ namespace NFix.Areas.Admin.Controllers
                 System.IO.File.Delete(fullPathLogo);
             }
             return JavaScript("");
+        }
+
+
+        public ActionResult FactorView(int id)
+        {
+            NFixEntities db = new NFixEntities();
+            TblOrder order = _order.SelectOrderById(id);
+            TblClientProductRel tblClientProd = _clientProductRel.SelectAllClientProductRels().Where(i => i.OrderId == order.id).FirstOrDefault();
+            TblClient tblClient = _client.SelectClientById(tblClientProd.ClientId);
+            TblUserPass tblUserPass = _user.SelectUserPassById(tblClient.UserPassId);
+            ViewBag.FactId = id;
+            ViewBag.Date = order.Date.ToShamsi();
+            ViewBag.UserName = tblUserPass.Username;
+            ViewBag.Tell = tblClient.TellNo;
+            return View(_clientProductRel.SelectAllClientProductRels().Where(i => i.OrderId == id).ToList());
         }
         #endregion
 
