@@ -435,6 +435,17 @@ body {
     display: none;
     flex: 0; } }
 
+.onprint {
+  display: none; }
+
+@media print {
+  .noprint {
+    display: none !important; }
+  .onprint {
+    display: block; }
+  h1, h2, h3, h4, h5, h6 {
+    color: #000 !important; } }
+
 #ModalProduct > .uk-modal-dialog {
   width: 100vw; }
 

@@ -90,6 +90,24 @@ $Modal-width: 824px;
     }
 }
 
+.onprint {
+    display: none;
+}
+
+@media print {
+    .noprint {
+        display: none !important;
+    }
+
+    .onprint {
+        display: block;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #000 !important;
+    }
+}
+
 #ModalProduct {
     > .uk-modal-dialog {
         width: 100vw;
@@ -654,7 +672,7 @@ input[type=password], input[type=month], input[type=week], textarea {
 }
 
 textarea {
-    min-height: 64px!important;
+    min-height: 64px !important;
 }
 
 input[type=text]:focus, textarea:focus {

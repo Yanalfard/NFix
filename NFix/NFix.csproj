@@ -61,8 +61,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -160,16 +158,6 @@
     <Compile Include="Areas\User\Controllers\ProfileController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Clases\PersianCalender.cs" />
-    <Compile Include="Connected Services\ZarinTest\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\Zarin\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\BlogCommentRelController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -215,55 +203,6 @@
     <Compile Include="Utilities\SendEmail.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.GetUnverifiedTransactionsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.PaymentRequestResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.PaymentRequestWithExtraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.PaymentVerificationResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.PaymentVerificationWithExtraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ZarinTest\NFix.ZarinTest.RefreshAuthorityResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\ZarinTest\PaymentGatewayImplementationService.wsdl" />
-    <None Include="Connected Services\Zarin\configuration91.svcinfo" />
-    <None Include="Connected Services\Zarin\configuration.svcinfo" />
-    <None Include="Connected Services\ZarinTest\configuration91.svcinfo" />
-    <None Include="Connected Services\ZarinTest\configuration.svcinfo" />
-    <None Include="Connected Services\ZarinTest\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.GetUnverifiedTransactionsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.PaymentRequestResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.PaymentRequestWithExtraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.PaymentVerificationResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.PaymentVerificationWithExtraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\Zarin\NFix.Zarin.RefreshAuthorityResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\Zarin\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -326,6 +265,7 @@
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
     <Content Include="Resources\Svg\Gold.svg" />
+    <Content Include="Resources\Svg\NFIXBlack.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
     <Content Include="Resources\Svg\Sliver.svg" />
     <Content Include="Scripts\Jquery\ajaxfileupload.js" />
@@ -356,6 +296,7 @@
     <Content Include="Areas\Admin\Views\User\EditPass.cshtml" />
     <Content Include="Areas\Admin\Views\Tutor\EditPass.cshtml" />
     <Content Include="Areas\Admin\Views\Video\ViewClientInfo.cshtml" />
+    <Content Include="Areas\User\Views\Profile\FactorView.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -407,7 +348,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <None Include="Connected Services\Zarin\PaymentGatewayImplementationService.wsdl" />
     <None Include="Scripts\Jquery\jquery-3.5.1.intellisense.js" />
     <Content Include="Mocks\about.html" />
     <Content Include="Mocks\Admin\BlogAdder.html" />
@@ -1725,9 +1665,6 @@
     <Content Include="Views\HomeBlogs\AllBlogs.cshtml" />
     <Content Include="Views\HomeAccount\RecoveryPasswordShowInModal.cshtml" />
     <Content Include="Views\HomeAccount\RecoveryPassShowModal.cshtml" />
-    <Content Include="Views\HomeShopCart\ShowCart.cshtml" />
-    <Content Include="Views\HomeShopCart\Index.cshtml" />
-    <Content Include="Views\HomeShopCart\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1744,6 +1681,7 @@
     <Folder Include="Resources\VideoCatagory\Thumb\" />
     <Folder Include="Resources\Videos\Demo\" />
     <Folder Include="Resources\Videos\Image\" />
+    <Folder Include="Views\HomeShopCart\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1755,13 +1693,6 @@
       <Project>{9e12d5e4-229a-4ec7-abf4-b84ae74f0702}</Project>
       <Name>DataLayer</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ZarinTest\" />
-    <WCFMetadataStorage Include="Connected Services\Zarin\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

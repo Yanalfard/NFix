@@ -28,7 +28,7 @@ namespace NFix.Areas.User.Controllers
             {
                 return HttpNotFound();
             }
-            
+
             if (selectClientByUserName.PremiumTill != "")
             {
                 int daysTillFinished = ((DateTime.Parse(selectClientByUserName.PremiumTill) - DateTime.Now).Days);
@@ -80,13 +80,13 @@ namespace NFix.Areas.User.Controllers
         {
 
             var selectClient = _client.SelectClientById(client.id);
-            client.Email = client.Email.Trim().ToLower().Replace(" ","");
-            client.IdentificationNo = client.IdentificationNo.Trim().ToLower().Replace(" ","");
-            client.TellNo = client.TellNo.Trim().ToLower().Replace(" ","");
-            if (_client.SelectAllClients().Any(i=>i.id!=client.id && i.TellNo == client.TellNo))
+            client.Email = client.Email.Trim().ToLower().Replace(" ", "");
+            client.IdentificationNo = client.IdentificationNo.Trim().ToLower().Replace(" ", "");
+            client.TellNo = client.TellNo.Trim().ToLower().Replace(" ", "");
+            if (_client.SelectAllClients().Any(i => i.id != client.id && i.TellNo == client.TellNo))
             {
                 ModelState.AddModelError("TellNo", "شماره تلفن تکراریست");
-                return PartialView("EditInfo",client);
+                return PartialView("EditInfo", client);
             }
             if (_client.SelectAllClients().Any(i => i.id != client.id && i.IdentificationNo == client.IdentificationNo))
             {
@@ -98,7 +98,7 @@ namespace NFix.Areas.User.Controllers
                 ModelState.AddModelError("Email", " ایمیل تکراریست");
                 return PartialView("EditInfo", client);
             }
-            bool T = _client.UpdateClient(client,client.id);
+            bool T = _client.UpdateClient(client, client.id);
             return JavaScript("location.reload(true)");
         }
         public ActionResult ShopCart()
@@ -147,6 +147,12 @@ namespace NFix.Areas.User.Controllers
                 }
             }
             return PartialView("EditPass", changePass);
+        }
+
+
+        public ActionResult FactorView()
+        {
+            return View();
         }
 
     }
