@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="eORQViKIsjr0I7Xklnx+jXx9fQxNpdEqXUBhLp+KZMU=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="JC54LanfCNY82y327KAcnnet02ZgQl/dJ5iK7zM34k8=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="PaymentGatewayImplementationServiceBinding">
+    <bindingConfiguration bindingType="basicHttpBinding" name="PaymentGatewayImplementationServiceBinding4">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>PaymentGatewayImplementationServiceBinding</serializedValue>
+          <serializedValue>PaymentGatewayImplementationServiceBinding4</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -110,10 +110,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="PaymentGatewayImplementationServiceBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="PaymentGatewayImplementationServiceBinding5">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>PaymentGatewayImplementationServiceBinding1</serializedValue>
+          <serializedValue>PaymentGatewayImplementationServiceBinding5</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -221,7 +221,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="PaymentGatewayImplementationServicePort" contract="Zarin.PaymentGatewayImplementationServicePortType" bindingType="basicHttpBinding" address="https://www.zarinpal.com/pg/services/WebGate/service" bindingConfiguration="PaymentGatewayImplementationServiceBinding">
+    <endpoint name="PaymentGatewayImplementationServicePort2" contract="Zarin.PaymentGatewayImplementationServicePortType" bindingType="basicHttpBinding" address="https://www.zarinpal.com/pg/services/WebGate/service" bindingConfiguration="PaymentGatewayImplementationServiceBinding4">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>https://www.zarinpal.com/pg/services/WebGate/service</serializedValue>
@@ -233,7 +233,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>PaymentGatewayImplementationServiceBinding</serializedValue>
+          <serializedValue>PaymentGatewayImplementationServiceBinding4</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>Zarin.PaymentGatewayImplementationServicePortType</serializedValue>
@@ -296,7 +296,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>PaymentGatewayImplementationServicePort</serializedValue>
+          <serializedValue>PaymentGatewayImplementationServicePort2</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
