@@ -1,7 +1,9 @@
-﻿using DataLayer.Services.Impl;
+﻿using DataLayer.Models.Regular;
+using DataLayer.Services.Impl;
 using DataLayer.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,9 +13,11 @@ namespace NFix.Controllers
     public class HomeShopCartController : Controller
     {
         private ProductService _products = new ProductService();
-        private UserPassService _users=new UserPassService();
-        private ClientService _client=new ClientService();
-        //private IOrdersRepository _orders;
+        private ClientProductRelService _clientProductRel = new ClientProductRelService();
+        private UserPassService _users = new UserPassService();
+        private ClientService _client = new ClientService();
+        private OrderService _order = new OrderService();
+        //private Orde _orders;
         public HomeShopCartController()
         {
         }
@@ -51,7 +55,7 @@ namespace NFix.Controllers
                 return RedirectToAction("/ErrorPage/NotFound");
             }
         }
-
+        [Route("ShopCart")]
         public ActionResult Index()
         {
             return View();
@@ -71,7 +75,9 @@ namespace NFix.Controllers
                     {
                         p.TblProductImageRel.SingleOrDefault().TblImage.Image,
                         p.Name,
-                        p.Price
+                        p.Price,
+                        p.TblCatagory,
+                        p.Discount
                     }).Single();
                     list.Add(new ShowOrderViewModel()
                     {
@@ -80,7 +86,9 @@ namespace NFix.Controllers
                         Price = product.Price,
                         ImageName = product.Image,
                         Title = product.Name,
-                        Sum = item.Count * product.Price
+                        Sum = product.Discount == 0 ? item.Count * product.Price : (product.Price - (long)(Math.Floor((double)product.Price * product.Discount / 100))) * item.Count,
+                        CategoryName = product.TblCatagory.Name,
+                        Discount = product.Discount
                     });
                 }
             }
@@ -123,127 +131,113 @@ namespace NFix.Controllers
             }
         }
 
-        //[Authorize]
-        //[HttpPost]
-        //public ActionResult Payment(string Discount, string DiscountId, string PriceSum)
-        //{
-        //    try
-        //    {
-        //        int userId = _users.SelectAllUserPasss().Single(u => u.Username == User.Identity.Name).id;
-        //        int sumPrice = Convert.ToInt32(PriceSum);
-        //        int Dis;
-        //        Dis = Convert.ToInt32(DiscountId);
-        //        Orders order = new Orders();
-        //        if (DiscountId != "0")
-        //        {
-        //            order.UserID = userId;
-        //            order.Date = DateTime.Now;
-        //            order.IsFinaly = false;
-        //            order.Sum = sumPrice;
-        //            order.DiscountId = Dis;
-        //        }
-        //        else
-        //        {
-        //            order.UserID = userId;
-        //            order.Date = DateTime.Now;
-        //            order.IsFinaly = false;
-        //            order.Sum = sumPrice;
-        //        }
-        //        _orders.InsertOrder(order);
-        //        var listDetails = getListOrder();
-        //        foreach (var item in listDetails)
-        //        {
-        //            _orderDetails.InsertOrderDetail(new OrderDetails()
-        //            {
-        //                Count = item.Count,
-        //                OrderID = order.OrderID,
-        //                Price = item.Price,
-        //                ProductID = item.ProductID,
-        //            });
-        //        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult Payment()
+        {
+            try
+            {
+                var listDetails = getListOrder();
 
-        //        if (DiscountId != "0")
-        //        {
-        //            int disId = Convert.ToInt32(DiscountId);
-        //            Discount discountToUpdate = _discount.GetDiscountById(disId);
-        //            discountToUpdate.Count--;
-        //            _discount.Save();
-        //        }
-        //        System.Net.ServicePointManager.Expect100Continue = false;
-        //        Zarin.PaymentGatewayImplementationServicePortTypeClient zp = new Zarin.PaymentGatewayImplementationServicePortTypeClient();
-        //        string Authority;
+                TblUserPass userId = _users.SelectUserPassByUsername(User.Identity.Name);
+                int clientId = _client.SelectClientByUserPassId(userId.id).id;
+                TblOrder order = new TblOrder()
+                {
+                    IsFInaly = false,
+                    Date = DateTime.Now,
+                    Sum = listDetails.Sum(i => i.Sum),
+                };
+                _order.AddOrder(order);
 
-        //        int Status = zp.PaymentRequest("5f648351-94a0-4b6d-ab96-3eef0d58a8b5", sumPrice, "نیو خرید ", "info@newkharid.com", "09339634557", ConfigurationManager.AppSettings["MyDomain"] + "/ShopCart/Verify/" + order.OrderID, out Authority);
-        //        if (Status == 100)
-        //        {
-        //            Response.Redirect("https://www.zarinpal.com/pg/StartPay/" + Authority);
+                int SumOrder = Convert.ToInt32(listDetails.Sum(i => i.Sum));
 
-        //            ////test
-        //            //return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + Authority);
-        //        }
-        //        else
-        //        {
-        //            ViewBag.Error = "Error : " + Status;
-        //            return RedirectToAction("Verify");
+                foreach (var item in listDetails)
+                {
+                    _clientProductRel.AddClientProductRel(new TblClientProductRel()
+                    {
+                        Count = item.Count,
+                        ClientId = clientId,
+                        OrderId = order.id,
+                        ProductId = item.ProductID,
+                        Price = Convert.ToInt32(item.Price),
+                        Discount = _products.SelectProductById(item.ProductID).Discount,
+                    });
+                }
+                System.Net.ServicePointManager.Expect100Continue = false;
+                ZarinTest.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinTest.PaymentGatewayImplementationServicePortTypeClient();
+                string Authority;
 
-        //        }
-        //        //TODO : Online Payment
-        //        return null;
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction("/ErrorPage/NotFound");
-        //    }
-        //}
+                int Status = zp.PaymentRequest("5f648351-94a0-4b6d-ab96-3eef0d58a8b5", SumOrder, "NFIX ", "info@newkharid.com", "09339634557", ConfigurationManager.AppSettings["MyDomain"] + "/ShopCart/Verify/" + order.id, out Authority);
+                if (Status == 100)
+                {
+                    //Response.Redirect("https://www.zarinpal.com/pg/StartPay/" + Authority);
 
-        //public ActionResult Verify(int id)
-        //{
-        //    try
-        //    {
+                    ////test
+                    return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + Authority);
+                }
+                else
+                {
+                    ViewBag.Error = "Error : " + Status;
+                    return RedirectToAction("Verify");
 
-        //        Orders order = _orders.GetOrdersById(id);
-        //        if (Request.QueryString["Status"] != "" && Request.QueryString["Status"] != null && Request.QueryString["Authority"] != "" && Request.QueryString["Authority"] != null)
-        //        {
-        //            if (Request.QueryString["Status"].ToString().Equals("OK"))
-        //            {
-        //                int Amount = order.Sum;
-        //                long RefID;
-        //                System.Net.ServicePointManager.Expect100Continue = false;
-        //                Zarin.PaymentGatewayImplementationServicePortTypeClient zp = new Zarin.PaymentGatewayImplementationServicePortTypeClient();
+                }
+                //TODO : Online Payment
+                return null;
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+        }
 
-        //                int Status = zp.PaymentVerification("a282a431-19d8-43ee-ae50-e3d056519667", Request.QueryString["Authority"].ToString(), Amount, out RefID);
-        //                if (Status == 100)
-        //                {
-        //                    order.IsFinaly = true;
-        //                    ViewBag.IsSuccess = true;
-        //                    ViewBag.RefId = RefID;
-        //                    _orders.Save();
-        //                    // Response.Write("Success!! RefId: " + RefID);
-        //                    List<ShopCartItem> cart = Session["ShopCart"] as List<ShopCartItem>;
-        //                    cart.Clear();
-        //                    return Redirect("/UserPanel/Home/FactorView/" + id + "?FinalFactor=" + RefID);
-        //                }
-        //                else
-        //                {
-        //                    ViewBag.Status = Status;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                Response.Write("Error! Authority: " + Request.QueryString["Authority"].ToString() + " Status: " + Request.QueryString["Status"].ToString());
-        //            }
-        //        }
-        //        else
-        //        {
-        //            Response.Write("Invalid Input");
-        //        }
-        //        return View();
-        //    }
-        //    catch
-        //    {
-        //        return RedirectToAction("/ErrorPage/NotFound");
-        //    }
+        public ActionResult Verify(int id)
+        {
+            try
+            {
 
-        //}
+                TblOrder order = _order.SelectOrderById(id);
+                if (Request.QueryString["Status"] != "" && Request.QueryString["Status"] != null && Request.QueryString["Authority"] != "" && Request.QueryString["Authority"] != null)
+                {
+                    if (Request.QueryString["Status"].ToString().Equals("OK"))
+                    {
+                        int Amount = (int)order.Sum;
+                        long RefID;
+                        System.Net.ServicePointManager.Expect100Continue = false;
+                        Zarin.PaymentGatewayImplementationServicePortTypeClient zp = new Zarin.PaymentGatewayImplementationServicePortTypeClient();
+
+                        int Status = zp.PaymentVerification("a282a431-19d8-43ee-ae50-e3d056519667", Request.QueryString["Authority"].ToString(), Amount, out RefID);
+                        if (Status == 100)
+                        {
+                            order.IsFInaly = true;
+                            ViewBag.IsSuccess = true;
+                            ViewBag.RefId = RefID;
+                            _order.UpdateOrder(order, order.id);
+                            // Response.Write("Success!! RefId: " + RefID);
+                            List<ShopCartItem> cart = Session["ShopCart"] as List<ShopCartItem>;
+                            cart.Clear();
+                            return Redirect("/UserPanel/Home/FactorView/" + id + "?FinalFactor=" + RefID);
+                        }
+                        else
+                        {
+                            ViewBag.Status = Status;
+                        }
+                    }
+                    else
+                    {
+                        Response.Write("Error! Authority: " + Request.QueryString["Authority"].ToString() + " Status: " + Request.QueryString["Status"].ToString());
+                    }
+                }
+                else
+                {
+                    Response.Write("Invalid Input");
+                }
+                return View();
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+
+        }
     }
 }

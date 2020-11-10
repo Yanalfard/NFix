@@ -19,6 +19,8 @@ namespace DataLayer.Models.Regular
         public int ProductId { get; set; }
         public int Count { get; set; }
         public int OrderId { get; set; }
+        public Nullable<int> Price { get; set; }
+        public Nullable<int> Discount { get; set; }
     
         public virtual TblClient TblClient { get; set; }
         public virtual TblOrder TblOrder { get; set; }

@@ -30,7 +30,8 @@ namespace DataLayer.Utilities
             TblLog,
             TblVideoCommentRel,
             TblVideoCatagory,
-            TblVideoKeyword
+            TblVideoKeyword,
+            TblOrder
         }
     }
 }

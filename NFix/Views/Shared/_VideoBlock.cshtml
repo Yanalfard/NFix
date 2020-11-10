@@ -5,13 +5,13 @@
 <div class="video column video_@(Model.id)" dir="rtl" >
     <div class="vid column">
         <img class="thumbnail" src="~/Resources/Videos/Image/@Model.MainImage" alt="" />
-        <a href="/VideoView/@Model.id/@Model.Title" class="uk-icon" uk-icon="icon: play; ratio:4"></a>
+        <a href="/VideoView/@Model.id/@Model.Title.Replace(" ","-")" class="uk-icon" uk-icon="icon: play; ratio:4"></a>
     </div>
     <div class="uk-margin-small-top row">
         <div class="tutor uk-margin-remove-top row">
             @foreach (var j in Model.TblTuotorVideoRel)
             {
-                <a href="/HomeVideo/VideoView/@j.id">
+                <a href="/VideoView/@j.id/@Model.Title.Replace(" ","-")">
                     <img class="profile-img uk-border-circle" src="~/Resources/Tutor/@j.TblTutor.MainImage" />
                 </a>
             }

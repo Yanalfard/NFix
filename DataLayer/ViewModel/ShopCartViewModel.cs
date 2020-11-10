@@ -25,6 +25,7 @@ namespace DataLayer.ViewModel
         public int ProductID { get; set; }
         public string Title { get; set; }
         public string ImageName { get; set; }
+        public string CategoryName { get; set; }
         public int Count { get; set; }
         public long Price { get; set; }
         public long Sum { get; set; }

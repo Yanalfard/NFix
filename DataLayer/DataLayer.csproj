@@ -312,6 +312,7 @@
     <Compile Include="Services\Impl\ImageService.cs" />
     <Compile Include="Services\Impl\KeywordService.cs" />
     <Compile Include="Services\Impl\LogService.cs" />
+    <Compile Include="Services\Impl\OrderService.cs" />
     <Compile Include="Services\Impl\ProductCommentRelService.cs" />
     <Compile Include="Services\Impl\ProductImageRelService.cs" />
     <Compile Include="Services\Impl\ProductKeywordRelService.cs" />

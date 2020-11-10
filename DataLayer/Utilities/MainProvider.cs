@@ -73,7 +73,7 @@ namespace DataLayer.Utilities
             ToutorId,
             VideoId
         }
-        
+
         public enum VideoCommentRel
         {
             CommentId,
@@ -193,7 +193,11 @@ namespace DataLayer.Utilities
                 {
                     Heart.TblVideoKeyword.Add((TblVideoKeyword)tableObj);
                 }
-                
+                else if (table.GetType() == typeof(TblOrder))
+                {
+                    Heart.TblOrder.Add((TblOrder)tableObj);
+                }
+
                 Heart.SaveChanges();
                 return true;
             }
@@ -478,6 +482,15 @@ namespace DataLayer.Utilities
                     val.Name = update.Name;
                     val.VideoId = update.VideoId;
                 }
+                else if (table.GetType() == typeof(TblOrder))
+                {
+                    TblOrder val = Heart.TblOrder.SingleOrDefault(i => i.id == logId);
+                    TblOrder update = (TblOrder)tableObj;
+                    val.id = update.id;
+                    val.IsFInaly = update.IsFInaly;
+                    val.Sum = update.Sum;
+                    val.Date = update.Date;
+                }
 
                 Heart.SaveChanges();
                 return true;
@@ -574,6 +587,9 @@ namespace DataLayer.Utilities
                         break;
                     case EnumRepo.Tables.TblVideoKeyword:
                         Heart.TblVideoKeyword.Remove((TblVideoKeyword)SelectById(EnumRepo.Tables.TblVideoKeyword, id));
+                        break;
+                    case EnumRepo.Tables.TblOrder:
+                        Heart.TblOrder.Remove((TblOrder)SelectById(EnumRepo.Tables.TblOrder, id));
                         break;
                     default:
                         return false;
@@ -676,6 +692,9 @@ namespace DataLayer.Utilities
                 case EnumRepo.Tables.TblVideoKeyword:
                     return Heart.TblVideoKeyword.ToList();
 
+                case EnumRepo.Tables.TblOrder:
+                    return Heart.TblOrder.ToList();
+
                 default:
                     return new List<bool>();
             }
@@ -744,6 +763,8 @@ namespace DataLayer.Utilities
                     return Heart.TblVideoCatagory.SingleOrDefault(i => i.id == id);
                 else if (table == EnumRepo.Tables.TblVideoKeyword)
                     return Heart.TblVideoKeyword.SingleOrDefault(i => i.id == id);
+                else if (table == EnumRepo.Tables.TblOrder)
+                    return Heart.TblOrder.SingleOrDefault(i => i.id == id);
 
                 return null;
             }
@@ -1388,6 +1409,34 @@ namespace DataLayer.Utilities
             try
             {
                 return Heart.TblVideoKeyword.SingleOrDefault(i => i.VideoId == videoId);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        #endregion
+
+        #region TblOrder
+
+        public TblOrder SelectOrderByIsFinaly(bool isFinaly)
+        {
+            try
+            {
+                return Heart.TblOrder.SingleOrDefault(i => i.IsFInaly == isFinaly);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public TblOrder SelectOrderByIsDate(DateTime date)
+        {
+            try
+            {
+                return Heart.TblOrder.SingleOrDefault(i => i.Date == date);
             }
             catch
             {

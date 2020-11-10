@@ -50,6 +50,7 @@ namespace NFix.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult ProductAdder(ProductViewModel product, HttpPostedFileBase Image)
         {
+            //product.Discount= product.Discount == 0 ? 1 : product.Discount;
             ViewBag.CatagoryMain = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == null), "id", "Name", product.CatagoryMain);
             ViewBag.CatagoryId = new SelectList(_catagory.SelectAllCatagorys().Where(i => i.CatagoryId == product.CatagoryMain), "id", "Name", product.CatagoryId);
             if (product.DescriptionHtml == "" || product.DescriptionHtml == null)

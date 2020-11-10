@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DataLayer.ViewModel.ShowOrderViewModel>
+
+
+<div style="margin-top:100px;">
+
+</div>
+<h4 class="uk-margin-remove-bottom">
+    سبد خرید
+</h4>
+
+<table class="uk-table uk-table-divider uk-margin-remove-bottom" dir="rtl">
+    <thead>
+        <tr>
+            <th>کد</th>
+            <th>نام</th>
+            <th>فی</th>
+            <th>دسته بندی</th>
+            <th>تعداد</th>
+            <th>تخفیف</th>
+            <th>مجموع</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(Model.ToList().IndexOf(item)+1)</td>
+                <td>@item.Title</td>
+                <td>@item.Price.ToString("0,#")</td>
+                <td>@item.CategoryName</td>
+                <td>
+                    <input name="points" min="1" max="30" step="1" value="@item.Count" onchange="commandOrder(@item.ProductID,$(this).val())" type="number">
+                </td>
+                <td>@item.Discount</td>
+                <td>@item.Sum.ToString("0,#")</td>
+                <td>
+                    <a onclick="commandOrder(@item.ProductID,0)"><i class="delete-button">X</i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Model.Sum(p => p.Count)</td>
+            <td></td>
+            <td>
+                @Model.Sum(p => p.Sum).ToString("#,0")
+            </td>
+            <td>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="row  uk-margin-xlarge">
+    <a href="/ShopCart/Payment" class="uk-margin-auto-right button-primary">
+        اتمام خرید
+    </a>
+</div>

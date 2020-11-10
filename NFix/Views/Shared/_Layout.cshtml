@@ -255,6 +255,12 @@
                 <li class="hide-on-mobile">
                     <a href="#">درباره ما</a>
                 </li>
+                <li>
+                    <a class="nav-profile row" dir="rtl" type="button"  href="/ShopCart">
+                        <span uk-icon="cart"></span>
+                        <span class="uk-margin-small-right">  سبد خرید   </span><span id="countShopCart">  </span>
+                    </a>
+                </li>
                 <li class="hide-on-mobile">
                     <a href="#">وبلاگ</a>
                 </li>
@@ -425,7 +431,29 @@
             });
         };
     </script>
+    <script>
+        $(function () {
+            countShopCart();
+        });
 
+        function countShopCart() {
+            $.get("/Api/Shop", function (res) {
+
+                $("#countShopCart").html(res);
+            });
+        }
+
+        function AddToCart(id) {
+            $.get("/Api/Shop/" + id, function (res) {
+                $("#countShopCart").html(res);
+                updateShopCart();
+            });
+        }
+
+        function updateShopCart() {
+            $("#showCart").load("/ShopCart/ShowCart").fadeOut(800).fadeIn(800);
+        }
+    </script>
     <!-- #endregion -->
     @RenderSection("Scripts", false)
 </body>

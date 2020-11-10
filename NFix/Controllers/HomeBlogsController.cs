@@ -38,10 +38,10 @@ namespace NFix.Controllers
             var allBlog = _blog.SelectAllBlogs();
             return PartialView(allBlog.OrderByDescending(i => i.id));
         }
-        [Route("BlogView/{id}/{Description}")]
-        public ActionResult BlogView(int id, string Description)
+        [Route("BlogView/{id}/{Title}")]
+        public ActionResult BlogView(int id, string Title)
         {
-            ViewBag.Description = Description;
+            ViewBag.Description = Title;
             TblBlog selectBlogById = _blog.SelectBlogById(id);
             return View(selectBlogById);
         }
