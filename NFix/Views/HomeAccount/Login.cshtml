@@ -10,6 +10,12 @@
                 <h3>
                     ورود
                 </h3>
+                @if (Request.QueryString["LoginInUser"] != null)
+                {
+                   <div>
+                      لطفا وارد حساب خود شوید
+                   </div>
+                }
                 @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
                 @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
@@ -24,7 +30,7 @@
 
                 <!-- #region     -->
                 <!--<div class="center uk-margin-medium-top">
-                    <div dir="rtl">-->
+                <div dir="rtl">-->
                 <!-- Site -->
                 <!-- localhost -->
                 <!--<div class="g-recaptcha" data-sitekey="6Ld_XsIZAAAAAD5pg4pDXJWD93von5OYhbai1zma"></div>
@@ -34,7 +40,7 @@
                 </div>-->
                 <!-- #endregion -->
                 <div>
-                     <a class=""
+                    <a class=""
                        onclick="UIkit.modal(document.getElementById('ModalForget')).show();"> فراموش کردن رمز</a>
                 </div>
                 <div class="row uk-margin-medium-top">

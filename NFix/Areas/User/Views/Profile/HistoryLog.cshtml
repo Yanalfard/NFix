@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblLog>
+@{
+    ViewBag.Title = "OrderTable";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- #region Table -->
+<div class="clipped">
+    <h4 class="uk-margin-remove-bottom">
+        سابقه خرید اشتراک
+    </h4>
+    <table class="uk-table uk-table-divider" dir="rtl">
+        <thead>
+            <tr>
+                <th>کد</th>
+                <th>تاریخ</th>
+                <th>وضعیت</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(Model.ToList().IndexOf(item)+1)</td>
+                    <td>@item.Date.ToShamsi()</td>
+                    @if (item.MoneyTransfered > 0)
+                    {
+                        <td>موفق</td>
+                    }
+                    else
+                    {
+                        <td>ناموفق</td>
+
+                    }
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+<!-- #endregion -->

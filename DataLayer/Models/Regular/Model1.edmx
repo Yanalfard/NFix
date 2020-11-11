@@ -147,6 +147,7 @@
           <Property Name="LogText" Type="nvarchar(max)" Nullable="false" />
           <Property Name="MoneyTransfered" Type="bigint" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
         </EntityType>
         <EntityType Name="TblOrder">
           <Key>
@@ -1055,6 +1056,7 @@
           <Property Name="LogText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MoneyTransfered" Type="Int64" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClientId" Type="Int32" />
         </EntityType>
         <EntityType Name="TblOrder">
           <Key>
@@ -1981,6 +1983,7 @@
           <EntitySetMapping Name="TblLog">
             <EntityTypeMapping TypeName="NFixModel.TblLog">
               <MappingFragment StoreEntitySet="TblLog">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="LogText" ColumnName="LogText" />
                 <ScalarProperty Name="MoneyTransfered" ColumnName="MoneyTransfered" />

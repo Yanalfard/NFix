@@ -1,4 +1,4 @@
-﻿@model DataLayer.Models.Regular.TblClient
+﻿@model DataLayer.ViewModel.TblClientViewModal
 <div class="alternate">
     <!-- #region Plan -->
 
@@ -7,12 +7,9 @@
             اشتراک شما
         </h4>
 
-        @if (ViewBag.totalMonth != 0)
-        {
-            <label class="uk-margin-small-bottom center">
-                اشتراک @ViewBag.totalMonth ماهه
-            </label>
-        }
+        <label class="uk-margin-small-bottom center">
+            @*اشتراک @Model.TotalMonth ماهه*@
+        </label>
 
         <div class="row uk-margin-bottom center">
             <!--<label class="uk-margin-small-right uk-margin-auto-top uk-margin-small-bottom">
@@ -21,37 +18,43 @@
             <h1 id="Days" class="uk-margin-remove overflow-hidden">
                 30
             </h1>-->
-            @*@{
-                    float percentage = (ViewBag.totalDays != 0) ? (Math.Floor(((double)ViewBag.daysTillFinished / ViewBag.totalDays) * 100)) : 0;
-                }*@
-            @*<div class="progress-ring-container" percentage="@(percentage)">
-                    <svg class="progress-ring"
-                         width="120"
-                         height="120">
-                        <circle class="progress-ring__circle"
-                                stroke="white"
-                                stroke-width="4"
-                                fill="transparent"
-                                r="56"
-                                cx="60"
-                                cy="60" />
-                    </svg>
-                    <div class="text">
-                        <div class="column">
+            @*<div class="progress-ring-container" percentage="@(Model.Percentage)">*@
+
+            <div class="progress-ring-container" percentage="100">
+                <svg class="progress-ring"
+                     width="120"
+                     height="120">
+                    <circle class="progress-ring__circle"
+                            stroke="white"
+                            stroke-width="4"
+                            fill="transparent"
+                            r="56"
+                            cx="60"
+                            cy="60" />
+                </svg>
+                <div class="text">
+                    <div class="column">
+                        @if (DateTime.Parse(Model.PremiumTill) > DateTime.Now)
+                        {
+                            int days = ((DateTime.Parse(Model.PremiumTill) - DateTime.Now).Days);
                             <p>
-                                @if (Model.PremiumTill != "")
-                                {
-                                    @((DateTime.Parse(Model.PremiumTill) - DateTime.Now).Days)
-                                }
+                                @days
                             </p>
                             <label>
-                                @((percentage == 0) ? "بدون اشتراک" : "روز")
+                                روز
                             </label>
-                        </div>
+                        }
+                        else
+                        {
+                            <label>
+                                بدون اشتراک
+                            </label>
+                        }
                     </div>
-                </div>*@
+                </div>
+            </div>
         </div>
-        <a href="/HomeAccount/Plans" class="button-primary uk-margin-auto-top center ">
+        <a href="/HomeShopCart/Plans" class="button-primary uk-margin-auto-top center ">
             تمدید
         </a>
     </section>
@@ -70,7 +73,7 @@
                     نام کاربری
                 </label>
                 <h5>
-                    @Model.TblUserPass.Username
+                    @Model.Username
                 </h5>
 
             </div>

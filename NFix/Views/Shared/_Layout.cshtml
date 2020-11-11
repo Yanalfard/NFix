@@ -220,15 +220,20 @@
                             @*@Html.Action("RecoveryPassShowModal", "HomeAccount", new { area = "" })*@
                         </div>
                         <script>
-                            var id= ($('#AuthIdName').val());
+                            var id = ($('#AuthIdName').val());
                             $.get("/HomeAccount/RecoveryPassShowModal/" + id, function (result) {
                                 UIkit.modal(document.getElementById('recoveryPassShowModal')).show();
                                 $("#recoveryPassShowModal").html(result);
                             });
-                            //UIkit.modal(document.getElementById('recovery2222222222')).show();
                         </script>
                     }
-
+                    @if (Request.QueryString["LoginInUser"] != null)
+                    {
+                        <script>
+                            UIkit.modal(document.getElementById('ModalLogin')).show();
+                            
+                        </script>
+                    }
 
                     <!--#endregion-->
 
@@ -256,7 +261,7 @@
                     <a href="#">درباره ما</a>
                 </li>
                 <li>
-                    <a class="nav-profile row" dir="rtl" type="button"  href="/ShopCart">
+                    <a class="nav-profile row" dir="rtl" type="button" href="/ShopCart">
                         <span uk-icon="cart"></span>
                         <span class="uk-margin-small-right">  سبد خرید   </span><span id="countShopCart">  </span>
                     </a>

@@ -42,7 +42,7 @@ namespace NFix.Controllers
                 if (user.IsActive)
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, client.RememberMe);
-                    return JavaScript("document.getElementById('LoginForm').disabled = true;UIkit.modal(document.getElementById('ModalLogin')).hide();location.reload(true)");
+                    return JavaScript("window.location = window.location.href.replace('?LoginInUser=true', '');document.getElementById('LoginForm').disabled = true;UIkit.modal(document.getElementById('ModalLogin')).hide();");
                 }
                 else
                 {
@@ -314,6 +314,11 @@ namespace NFix.Controllers
             }
         }
 
+
+        public ActionResult LoginPageShowModal()
+        {
+            return Redirect("/Home/Index?LoginInUser=true");
+        }
 
 
 

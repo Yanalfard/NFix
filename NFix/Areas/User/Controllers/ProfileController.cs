@@ -18,6 +18,7 @@ namespace NFix.Areas.User.Controllers
         private UserPassService _userPass = new UserPassService();
         private OrderService _order = new OrderService();
         private ClientProductRelService _clientProductRel = new ClientProductRelService();
+        private LogService _log = new LogService();
         // GET: User/Profile
         public ActionResult Index()
         {
@@ -31,42 +32,45 @@ namespace NFix.Areas.User.Controllers
             {
                 return HttpNotFound();
             }
-
-            if (selectClientByUserName.PremiumTill != "")
-            {
-                int daysTillFinished = ((DateTime.Parse(selectClientByUserName.PremiumTill) - DateTime.Now).Days);
-                int totalDays = 0;
-                int totalMonth = 0;
-                if (daysTillFinished <= 365 && daysTillFinished > 183)
-                {
-                    totalDays = 365;
-                    totalMonth = 12;
-                }
-                else if (daysTillFinished <= 183 && daysTillFinished > 91)
-                {
-                    totalDays = 183;
-                    totalMonth = 6;
-                }
-                else if (daysTillFinished <= 91 && daysTillFinished > 30)
-                {
-                    totalDays = 91;
-                    totalMonth = 3;
-                }
-                else if (daysTillFinished <= 30)
-                {
-                    totalDays = 1;
-                }
-                ViewBag.totalMonth = totalMonth;
-                ViewBag.daysTillFinished = daysTillFinished;
-                ViewBag.totalDays = totalDays;
-            }
-            else
-            {
-                ViewBag.totalMonth = 0;
-                ViewBag.daysTillFinished = 0;
-                ViewBag.totalDays = 0;
-            }
-            return PartialView(selectClientByUserName);
+            TblClientViewModal client = new TblClientViewModal();
+            client.id = selectClientByUserName.id;
+            client.Name = selectClientByUserName.Name;
+            client.Username = SelectUser.Username;
+            client.IdentificationNo = selectClientByUserName.IdentificationNo;
+            client.TellNo = selectClientByUserName.TellNo;
+            client.Email = selectClientByUserName.Email;
+            client.Address = selectClientByUserName.Address;
+            client.PostalCode = selectClientByUserName.PostalCode;
+            client.UserPassId = selectClientByUserName.UserPassId;
+            client.Status = selectClientByUserName.Status;
+            client.IsPremium = selectClientByUserName.IsPremium;
+            client.PremiumTill = selectClientByUserName.PremiumTill;
+            client.InviteCode = selectClientByUserName.InviteCode;
+            //if (DateTime.Parse(selectClientByUserName.PremiumTill) > DateTime.Now)
+            //{
+            //    client.DaysTillFinished = ((DateTime.Parse(selectClientByUserName.PremiumTill) - DateTime.Now).Days);
+            //    if (client.DaysTillFinished <= 365 && client.DaysTillFinished > 183)
+            //    {
+            //        client.TotalDays = 365;
+            //        client.TotalMonth = 12;
+            //    }
+            //    else if (client.DaysTillFinished <= 183 && client.DaysTillFinished > 91)
+            //    {
+            //        client.TotalDays = 183;
+            //        client.TotalMonth = 6;
+            //    }
+            //    else if (client.DaysTillFinished <= 91 && client.DaysTillFinished > 30)
+            //    {
+            //        client.TotalDays = 91;
+            //        client.TotalMonth = 3;
+            //    }
+            //    else if (client.DaysTillFinished <= 30)
+            //    {
+            //        client.TotalDays = 1;
+            //    }
+            //}
+            //client.Percentage = (client.TotalDays != 0) ? (Math.Floor(((double)client.DaysTillFinished / client.TotalDays) * 100)) : 0;
+            return PartialView(client);
         }
         public ActionResult EditInfo()
         {
@@ -108,6 +112,12 @@ namespace NFix.Areas.User.Controllers
         {
             return PartialView();
         }
+        public ActionResult HistoryLog()
+        {
+            TblClient selectClientByUserName = _client.SelectClientByUserPassId(_userPass.SelectUserPassByUsername(User.Identity.Name).id);
+            List<TblLog> clientLog = _log.SelectAllLogs().Where(i => i.ClientId == selectClientByUserName.id).ToList();
+            return PartialView(clientLog.OrderByDescending(i => i.Date));
+        }
         public ActionResult History()
         {
             TblClient selectClientByUserName = _client.SelectClientByUserPassId(_userPass.SelectUserPassByUsername(User.Identity.Name).id);
@@ -120,7 +130,7 @@ namespace NFix.Areas.User.Controllers
                         foundOrders.Add(j);
             foundOrders = foundOrders.DistinctBy(i => i.id).ToList();
             // return PartialView(_order.SelectAllOrders().OrderByDescending(i => i.Date).ToList());
-            return PartialView(foundOrders.OrderByDescending(i=>i.Date));
+            return PartialView(foundOrders.OrderByDescending(i => i.Date));
         }
         public ActionResult EditPass()
         {

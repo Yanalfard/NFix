@@ -148,6 +148,7 @@
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LogController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCatagoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\TutorController.cs" />
@@ -211,6 +212,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Product\FactorView.cshtml" />
+    <Content Include="Areas\User\Views\Profile\HistoryLog.cshtml" />
+    <Content Include="Areas\Admin\Views\Log\HistoryLog.cshtml" />
     <None Include="Connected Services\ZarinPalTest\configuration91.svcinfo" />
     <None Include="Connected Services\ZarinPalTest\configuration.svcinfo" />
     <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.GetUnverifiedTransactionsResponse.datasource">
@@ -1702,6 +1705,8 @@
     <Content Include="Views\HomeShopCart\Order.cshtml" />
     <Content Include="Views\HomeShopCart\ShowCart.cshtml" />
     <Content Include="Views\HomeShopCart\Verify.cshtml" />
+    <Content Include="Views\HomeShopCart\Plans.cshtml" />
+    <Content Include="Views\HomeShopCart\PlansVerify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

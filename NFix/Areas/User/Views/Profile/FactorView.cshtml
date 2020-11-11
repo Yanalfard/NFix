@@ -5,16 +5,17 @@
 }
 <div class="space-nav-bottom"></div>
 
-@if (Request.QueryString["FinalFactor"] != null)
-{
-    <div class="uk-alert uk-alert-success">
-        <h2>تراکنش با موفقیت انجام شد</h2>
-        <hr />
-        <p>کد پیگیری شما : @Request.QueryString["FinalFactor"]</p>
-    </div>
-}
+
 
 <content class="column clipped">
+
+    @if (Request.QueryString["FinalFactor"] != null)
+    {
+        <div class="uk-alert-success noprint" uk-alert>
+            <h2>تراکنش با موفقیت انجام شد</h2>
+            <p>کد پیگیری شما : @Request.QueryString["FinalFactor"]</p>
+        </div>
+    }
 
     <div class="row onprint" dir="rtl">
         <img src="~/Resources/Svg/NFIXBlack.svg" alt="" />

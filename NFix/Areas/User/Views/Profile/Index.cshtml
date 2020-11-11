@@ -13,12 +13,19 @@
     @Html.Action("Info", "Profile")
 
     <!-- #region Cart -->
-
     @*@Html.Action("ShopCart", "Profile")*@
 
     <!-- #endregion -->
     <!-- #region History -->
+    @if (Request.QueryString["BlogFactor"] != null)
+    {
+        <div class="uk-alert-success noprint" uk-alert>
+            <h2>تراکنش با موفقیت انجام شد</h2>
+            <p>کد پیگیری شما : @Request.QueryString["BlogFactor"]</p>
+        </div>
+    }
 
+    @Html.Action("HistoryLog", "Profile")
     @Html.Action("History", "Profile")
 
 
@@ -57,7 +64,6 @@
 @section Scripts{
 
     <script>
-
         function doneEdit() {
             UIkit.notification('عملیات با موفقیت انجام شد');
         }
@@ -68,8 +74,5 @@
                     $("#ModalChangePassword").html(result);
                 });
         }
-
     </script>
-
 }
-

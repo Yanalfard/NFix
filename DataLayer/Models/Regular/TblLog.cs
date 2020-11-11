@@ -18,5 +18,6 @@ namespace DataLayer.Models.Regular
         public string LogText { get; set; }
         public long MoneyTransfered { get; set; }
         public System.DateTime Date { get; set; }
+        public Nullable<int> ClientId { get; set; }
     }
 }
