@@ -1695,7 +1695,6 @@
     <Content Include="Views\HomeAccount\SuccessRegister.cshtml" />
     <Content Include="Views\HomeAccount\ForgotPassword.cshtml" />
     <Content Include="Views\HomeAccount\RecoveryPass.cshtml" />
-    <Content Include="Views\HomeAccount\Plans.cshtml" />
     <Content Include="Styles\Plans.scss" />
     <Content Include="Views\HomeVideo\AllVideos.cshtml" />
     <Content Include="Views\HomeBlogs\AllBlogs.cshtml" />

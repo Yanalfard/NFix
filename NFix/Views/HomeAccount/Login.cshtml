@@ -3,6 +3,9 @@
 <div class="uk-modal-dialog uk-modal-body">
     <div class="alternate" onclick="">
         <img src="https://picsum.photos/400/600" alt="" />
+
+
+
         @using (Ajax.BeginForm("Login", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ModalLogin" }, htmlAttributes: new { @id = "LoginForm" }))
         {
             @Html.AntiForgeryToken()
@@ -12,10 +15,12 @@
                 </h3>
                 @if (Request.QueryString["LoginInUser"] != null)
                 {
-                   <div>
-                      لطفا وارد حساب خود شوید
-                   </div>
+                    <div>
+                        لطفا وارد حساب خود شوید
+                    </div>
                 }
+
+
                 @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
                 @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
@@ -28,17 +33,9 @@
                 @Html.EditorFor(model => model.RememberMe, new { @class = "uk-margin-small-top uk-margin-right" })
                 @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
 
-                <!-- #region     -->
-                <!--<div class="center uk-margin-medium-top">
-                <div dir="rtl">-->
-                <!-- Site -->
-                <!-- localhost -->
-                <!--<div class="g-recaptcha" data-sitekey="6Ld_XsIZAAAAAD5pg4pDXJWD93von5OYhbai1zma"></div>
+                @Html.HiddenFor(m => m.GoogleCapcha, htmlAttributes: new { @class = "GoogleCapcha" })
+                @Html.ValidationMessageFor(model => model.GoogleCapcha, "", new { @class = "text-danger" })
 
-                        <span class=" uk-text-danger">@ViewBag.Message</span>
-                    </div>
-                </div>-->
-                <!-- #endregion -->
                 <div>
                     <a class=""
                        onclick="UIkit.modal(document.getElementById('ModalForget')).show();"> فراموش کردن رمز</a>
@@ -56,5 +53,4 @@
 
     </div>
 </div>
-
 

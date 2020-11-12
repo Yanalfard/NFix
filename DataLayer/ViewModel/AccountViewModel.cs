@@ -47,6 +47,7 @@ namespace DataLayer.ViewModel
         public int UserPassId { get; set; }
         public int Status { get; set; }
         public bool IsPremium { get; set; }
+        public string GoogleCapcha { get; set; }
         public string PremiumTill { get; set; }
         public string InviteCode { get; set; }
     } 
