@@ -25,7 +25,6 @@
                 <tr id="User_@item.id">
                     <td>@(Model.ToList().IndexOf(item)+1)</td>
                     <td>@item.UserName</td>
-                    <td>@item.IsActive</td>
                     <td>
                         <input type="checkbox" class="uk-checkbox" @((item.IsActive) ? "checked" : "") onclick="return false;" readonly />
                     </td>
