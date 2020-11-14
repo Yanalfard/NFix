@@ -299,6 +299,7 @@
     <Content Include="Areas\User\Views\Profile\ShopCart.cshtml" />
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
+    <Content Include="ManUp.js" />
     <Content Include="Resources\Svg\Gold.svg" />
     <Content Include="Resources\Svg\NFIXBlack.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
@@ -384,6 +385,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Connected Services\ZarinPalTest\PaymentGatewayImplementationService.wsdl" />
+    <Content Include="manifest.json" />
     <None Include="Scripts\Jquery\jquery-3.5.1.intellisense.js" />
     <Content Include="Mocks\about.html" />
     <Content Include="Mocks\Admin\BlogAdder.html" />
