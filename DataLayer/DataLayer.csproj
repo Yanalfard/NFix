@@ -332,6 +332,7 @@
     <Compile Include="Utilities\MethodRepo.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />
     <Compile Include="ViewModel\Blog.cs" />
+    <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\CommentViewModel.cs" />
     <Compile Include="ViewModel\CaptchaResponseViewModel.cs" />
     <Compile Include="ViewModel\HistoryLogViewModel.cs" />

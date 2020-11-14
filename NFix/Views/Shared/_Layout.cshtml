@@ -241,9 +241,11 @@
                 </li>
 
                 <li>
-                    <form class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left ">
-                        <a href="" uk-search-icon></a>
-                        <input class="uk-search-input" type="search" dir="rtl" placeholder="جستجو...">
+
+
+                    <form action="/HomeSearch/Index" class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left ">
+                        <button class="button-icon" uk-search-icon></button>
+                        <input class="uk-search-input" type="search" name="q" id="q" dir="rtl" placeholder="جستجو...">
                     </form>
                 </li>
             </ul>
@@ -292,7 +294,7 @@
 
     <!-- #region Footer -->
 
-    <footer class="column noprint">
+    <footer class="column noprint uk-margin-auto-top">
         <a href="#top" class="pill uk-card center uk-border-rounded">
             <span uk-icon="icon:chevron-up ; ratio:2"></span>
         </a>
@@ -405,8 +407,7 @@
         @*<a href="" class="uk-margin-right uk-margin-bottom">طراحی و توسعه توسط شرکت ایده پرداز آروین تاو</a>*@
     </footer>
 
-    <div class="footer-stripe"></div>
-
+    @*<div class="footer-stripe"></div>*@
 
     <!-- #endregion -->
     <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF"></script>

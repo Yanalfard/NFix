@@ -85,7 +85,7 @@
 <!-- #endregion -->
 <script>
     function deleteUser(id) {
-        if (confirm("آیا از حذف ویدیو مطمئن هستید؟")) {
+        if (confirm("آیا از حذف کاربر مطمئن هستید؟")) {
             $.ajax({
                 url: "/Admin/User/DeleteUser/" + id,
                 type: "Get"

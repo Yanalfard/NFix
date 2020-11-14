@@ -318,11 +318,6 @@ namespace NFix.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (!MethodRepo.CheckRechapcha(form))
-                    {
-                        ViewBag.Message = "لطفا گزینه من ربات نیستم را تکمیل کنید";
-                        return PartialView("RecoveryPassShowModal", recovery);
-                    }
                     var user = _userPass.SelectAllUserPasss().SingleOrDefault(u => u.Auth == id);
                     if (user == null)
                     {
