@@ -103,6 +103,22 @@ namespace NFix.Areas.Admin.Controllers
         }
         public ActionResult DeleteVideo(int id)
         {
+            TblVideo selectVideo = _video.SelectVideoById(id);
+            string fullPathImage = Request.MapPath("/Resources/Videos/Image/" + selectVideo.MainImage);
+            string fullPathVideo = Request.MapPath("/Resources/Videos/" + selectVideo.VideoUrl);
+            string fullPathVideoDemo = Request.MapPath("/Resources/Videos/Demo/" + selectVideo.VidioDemoUrl);
+            if (System.IO.File.Exists(fullPathImage))
+            {
+                System.IO.File.Delete(fullPathImage);
+            }
+            if (System.IO.File.Exists(fullPathVideo))
+            {
+                System.IO.File.Delete(fullPathVideo);
+            }
+            if (System.IO.File.Exists(fullPathVideoDemo))
+            {
+                System.IO.File.Delete(fullPathVideoDemo);
+            };
             bool del = _video.DeleteVideo(id);
             return JavaScript("");
         }

@@ -145,6 +145,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Controllers\HomeCategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeProductsController.cs" />
+    <Compile Include="Controllers\HomeSearchController.cs" />
     <Compile Include="Controllers\HomeShopCartController.cs" />
     <Compile Include="Controllers\HomeTutorsController.cs" />
     <Compile Include="Controllers\HomeVideoController.cs" />
@@ -214,6 +216,10 @@
     <Content Include="Areas\Admin\Views\Product\FactorView.cshtml" />
     <Content Include="Areas\User\Views\Profile\HistoryLog.cshtml" />
     <Content Include="Areas\Admin\Views\Log\HistoryLog.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditPass.cshtml" />
     <None Include="Connected Services\ZarinPalTest\configuration91.svcinfo" />
     <None Include="Connected Services\ZarinPalTest\configuration.svcinfo" />
     <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.GetUnverifiedTransactionsResponse.datasource">
@@ -302,6 +308,7 @@
     <Content Include="ManUp.js" />
     <Content Include="Resources\Svg\Gold.svg" />
     <Content Include="Resources\Svg\NFIXBlack.svg" />
+    <Content Include="Resources\Svg\NotFound.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
     <Content Include="Resources\Svg\Sliver.svg" />
     <Content Include="Scripts\Jquery\ajaxfileupload.js" />
@@ -1697,7 +1704,6 @@
     <Content Include="Views\HomeAccount\SuccessRegister.cshtml" />
     <Content Include="Views\HomeAccount\ForgotPassword.cshtml" />
     <Content Include="Views\HomeAccount\RecoveryPass.cshtml" />
-    <Content Include="Views\HomeAccount\Plans.cshtml" />
     <Content Include="Styles\Plans.scss" />
     <Content Include="Views\HomeVideo\AllVideos.cshtml" />
     <Content Include="Views\HomeBlogs\AllBlogs.cshtml" />
@@ -1709,6 +1715,7 @@
     <Content Include="Views\HomeShopCart\Verify.cshtml" />
     <Content Include="Views\HomeShopCart\Plans.cshtml" />
     <Content Include="Views\HomeShopCart\PlansVerify.cshtml" />
+    <Content Include="Views\HomeSearch\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

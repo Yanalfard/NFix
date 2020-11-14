@@ -136,6 +136,11 @@ namespace NFix.Areas.Admin.Controllers
                     {
                         return Json(new { success = false, responseText = "خطا در حذف  اول ویدیو مربوطه رو حذف کنید" }, JsonRequestBehavior.AllowGet);
                     }
+                    string fullPathLogo = Request.MapPath("/Resources/VideoCatagory/" + DeleteCheck.MainImage);
+                    if (System.IO.File.Exists(fullPathLogo))
+                    {
+                        System.IO.File.Delete(fullPathLogo);
+                    }
                     _videoCatagory.DeleteVideoCatagory(id);
                     return Json(new { success = true, responseText = "گروه حذف شد" }, JsonRequestBehavior.AllowGet);
                 }

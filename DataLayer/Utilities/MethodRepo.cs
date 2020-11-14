@@ -51,9 +51,8 @@ namespace DataLayer.Utilities
         {
             string urlToPost = "https://www.google.com/recaptcha/api/siteverify";
             //< !--Site-- >
-            //string secretKey = "6LevZMIZAAAAAEo3AIKVdQNkbobs8eHHzxOMQNdl"; // change this
+            //string secretKey = "6LepA-IZAAAAAH31nwaZGoIFt_mEOsLDBPlsg17J"; // change this
             //< !--localhost-- >
-            //string secretKey = "6Ld_XsIZAAAAAL8yHVP2OmPE0LYumkEuPWDq1-rS"; // change this //
             string secretKey = "6LfOVNwZAAAAAPj0ia7sDuqvApueRKSHU6y7gxsp"; // change this //
             string gRecaptchaResponse = form["g-recaptcha-response"];
 

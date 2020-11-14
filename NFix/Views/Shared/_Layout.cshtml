@@ -38,7 +38,7 @@
     <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
 
     <!-- #region recaptcha -->
-    <script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>
+    @*<script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>*@
 </head>
 <body>
     <div id="MobileNavigation" class="noprint" dir="rtl" uk-offcanvas="overlay: true ;flip: true">
@@ -233,7 +233,7 @@
                     {
                         <script>
                             UIkit.modal(document.getElementById('ModalLogin')).show();
-                            
+
                         </script>
                     }
 
@@ -243,9 +243,11 @@
                 </li>
 
                 <li>
-                    <form class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left ">
-                        <a href="" uk-search-icon></a>
-                        <input class="uk-search-input" type="search" dir="rtl" placeholder="جستجو...">
+
+
+                    <form action="/HomeSearch/Index" class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left ">
+                        <button class="button-icon" uk-search-icon></button>
+                        <input class="uk-search-input" type="search" name="q" id="q" dir="rtl" placeholder="جستجو...">
                     </form>
                 </li>
             </ul>
@@ -294,7 +296,7 @@
 
     <!-- #region Footer -->
 
-    <footer class="column noprint">
+    <footer class="column noprint uk-margin-auto-top">
         <a href="#top" class="pill uk-card center uk-border-rounded">
             <span uk-icon="icon:chevron-up ; ratio:2"></span>
         </a>
@@ -407,37 +409,19 @@
         @*<a href="" class="uk-margin-right uk-margin-bottom">طراحی و توسعه توسط شرکت ایده پرداز آروین تاو</a>*@
     </footer>
 
-    <div class="footer-stripe"></div>
-
+    @*<div class="footer-stripe"></div>*@
 
     <!-- #endregion -->
-
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF"></script>
     <script>
-    </script>
-
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-            async defer>
-    </script>
-    <script>
-        function onSubmit(token) {
-            document.getElementById("demo-form").submit();
-        }
-    </script>
-
-
-
-    <script>
-        var onSubmit = function (token) {
-            console.log('success!');
-        };
-
-        var onloadCallback = function () {
-            grecaptcha.render('submit', {
-                'sitekey': 'your_site_key',
-                'callback': onSubmit
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
+                $(".GoogleCapcha").val(token);
             });
-        };
+        });
     </script>
+
+
     <script>
         $(function () {
             countShopCart();
