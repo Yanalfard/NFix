@@ -102,9 +102,10 @@ namespace NFix.Controllers
                                 updateClient.IsPremium = false;
                             }
                             bool update = _client.UpdateClient(updateClient, selectClient.id);
-                        }
+                        };
                         FormsAuthentication.SetAuthCookie(user.Username, client.RememberMe);
-                        return JavaScript("window.location = window.location.href.replace('?LoginInUser=true', '');document.getElementById('LoginForm').disabled = true;UIkit.modal(document.getElementById('ModalLogin')).hide();");
+                        //return JavaScript("window.location = window.location.href.replace('?LoginInUser=true', '');document.getElementById('LoginForm').disabled = true;UIkit.modal(document.getElementById('ModalLogin')).hide();");
+                        return JavaScript("UIkit.modal(document.getElementById('ModalLogin')).hide();window.location = window.location.href='/Home/Index'");
                     }
                     else
                     {
@@ -148,6 +149,7 @@ namespace NFix.Controllers
                     else if (_client.SelectAllClients().Any(u => u.Email == client.Email))
                     {
                         ModelState.AddModelError("Email", "ایمیل  وارد شده تکراری است");
+                        client.Email = "";
                     }
                     else
                     {
@@ -163,7 +165,6 @@ namespace NFix.Controllers
                         if (add)
                         {
 
-
                             TblClient tblClient = new TblClient()
                             {
                                 UserPassId = addUserPass.id,
@@ -172,11 +173,11 @@ namespace NFix.Controllers
                                 InviteCode = "کد معرف",
                                 PremiumTill = new DateTime().ToString(),
                                 Status = 1,
-                                Address = "آدرس =",
+                                Address = "آدرس",
                                 Email = client.Email,
-                                IdentificationNo = "کد ملی ",
+                                IdentificationNo = "کد ملی",
                                 IsPremium = false,
-                                PostalCode = "کد پستی ",
+                                PostalCode = "کد پستی",
                             };
 
                             bool addClient = _client.AddClient(tblClient);
@@ -185,7 +186,7 @@ namespace NFix.Controllers
                                 string body = PartialToStringClass.RenderPartialView("HomeAccount", "ActiviationEmail", addUserPass);
                                 SendEmail.Send(client.Email, "ایمیل فعالسازی", body);
                                 ModelState.Clear();
-                                return JavaScript("document.getElementById('RegisterForm').reset();alert('ثبت نام شما انجام شد و لینک فعال سازی به ایمیل شما ارسال شد');UIkit.modal(document.getElementById('ModalLogin')).show();");
+                                return JavaScript("alert('ثبت نام شما انجام شد و لینک فعال سازی به ایمیل شما ارسال شد');UIkit.modal(document.getElementById('ModalRegister')).hide();");
                                 //return JavaScript("location.reload(true)");
                             };
                         };
@@ -265,10 +266,21 @@ namespace NFix.Controllers
                     {
                         if (user.IsActive)
                         {
-                            string bodyEmail =
-                                PartialToStringClass.RenderPartialView("HomeAccount", "RecoveryPass", user);
-                            SendEmail.Send(_client.SelectClientByUserPassId(user.id).Email, "بازیابی کلمه عبور", bodyEmail);
-                            return Redirect("/Home/Index?recoveryPassword=true");
+                            TblClient client = _client.SelectClientByUserPassId(user.id);
+                            if (client == null || client.Email == null || client.Email.Trim().Replace(" ", "") == "ایمیل")
+                            {
+                                ModelState.AddModelError("UserName", "ایمیل کاربر نامعتر است لطفا با پشتیبانی تماس بگیرید");
+                            }
+                            else
+                            {
+                                string bodyEmail =
+                                    PartialToStringClass.RenderPartialView("HomeAccount", "RecoveryPass", user);
+                                SendEmail.Send(client.Email, "بازیابی کلمه عبور", bodyEmail);
+                                //return Redirect("/Home/Index?recoveryPassword=true");
+                                ModelState.Clear();
+                                return JavaScript("UIkit.modal(document.getElementById('ModalForget')).hide(); alert('ایمیلی حاوی لینک بازیابی کلمه عبور به ایمیل شما ارسال شد');");
+
+                            }
                         }
                         else
                         {
@@ -287,20 +299,7 @@ namespace NFix.Controllers
                 return RedirectToAction("/ErrorPage/NotFound");
             }
         }
-
         public ActionResult RecoveryPassword(string id)
-        {
-            try
-            {
-                ViewBag.Auth = id;
-                return Redirect("/Home/Index?recoveryPasswordShowModal=" + id);
-            }
-            catch
-            {
-                return RedirectToAction("/ErrorPage/NotFound");
-            }
-        }
-        public ActionResult RecoveryPassShowModal(string id)
         {
             try
             {
@@ -312,7 +311,7 @@ namespace NFix.Controllers
             }
         }
         [HttpPost]
-        public ActionResult RecoveryPassShowModal(string id, RecoveryPasswordViewModel recovery)
+        public ActionResult RecoveryPassword(string id, RecoveryPasswordViewModel recovery)
         {
             try
             {
@@ -340,17 +339,16 @@ namespace NFix.Controllers
                         bool x = _userPass.UpdateUserPass(tblUserPass, user.id);
 
                         // return Redirect("/Home/Index?DoneChangePassword=true");
-                        return JavaScript("alert('رمز شما تغیر یافت');window.location ='/Home/Index';");
+                        return JavaScript("alert('رمز شما تغیر یافت');UIkit.modal(document.getElementById('RecoveryPassword')).hide();;window.location ='/Home/Index';");
                     }
                 }
-                return PartialView("RecoveryPassShowModal", recovery);
+                return PartialView("RecoveryPassword", recovery);
             }
             catch
             {
                 return RedirectToAction("/ErrorPage/NotFound");
             }
         }
-
         public ActionResult ActiviationEmail()
         {
             try
@@ -362,7 +360,6 @@ namespace NFix.Controllers
                 return RedirectToAction("/ErrorPage/NotFound");
             }
         }
-
         public ActionResult RecoveryPass()
         {
             try
@@ -374,8 +371,6 @@ namespace NFix.Controllers
                 return RedirectToAction("/ErrorPage/NotFound");
             }
         }
-
-
         public ActionResult LoginPageShowModal()
         {
             return Redirect("/Home/Index?LoginInUser=true");

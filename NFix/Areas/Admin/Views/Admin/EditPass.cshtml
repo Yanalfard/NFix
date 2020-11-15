@@ -1,7 +1,7 @@
 ﻿@model DataLayer.ViewModel.ChangePasswordUserTutorViewModel
 
 
-@using (Ajax.BeginForm("EditPass", "Admin", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ModalChangePassword" }, htmlAttributes: new { @id = "ChangePasswordForm", @class = "uk-modal-dialog uk-modal-body column" }))
+@using (Ajax.BeginForm("EditPass", "Admin", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "LoadingEnd('#ChangePasswordFormAdmin')", UpdateTargetId = "ModalChangePassword" }, htmlAttributes: new { @id = "ChangePasswordFormAdmin", @class = "uk-modal-dialog uk-modal-body column" }))
 {
     @Html.AntiForgeryToken();
     <h2 dir="rtl">ویرایش رمز عبور کاربر  @ViewBag.UserName </h2>
@@ -20,7 +20,7 @@
     <br />
 
     <div class="row uk-margin-medium-top" dir="rtl">
-        <input type="submit" value="ویرایش" class="button-primary" />
+        <input type="submit" value="ویرایش" class="button-primary" onclick="LoadingRun('#ChangePasswordFormAdmin')"/>
         <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right uk-modal-close">بازگشت</a>
     </div>
 }

@@ -318,7 +318,6 @@
     <Content Include="Scripts\Jquery\jquery-2.1.4.min.js" />
     <Content Include="Scripts\Jquery\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\UIScripts\Global.js" />
-    <Content Include="Styles\Loading\Loading.css" />
     <Content Include="Styles\Plans.css">
       <DependentUpon>Plans.scss</DependentUpon>
     </Content>
@@ -1700,15 +1699,11 @@
     <Content Include="Views\HomeBlogs\ShowComments.cshtml" />
     <Content Include="Views\HomeAccount\ActiviationEmail.cshtml" />
     <Content Include="Views\HomeAccount\RecoveryPassword.cshtml" />
-    <Content Include="Views\HomeAccount\SuccesForgotPassword.cshtml" />
-    <Content Include="Views\HomeAccount\SuccessRegister.cshtml" />
     <Content Include="Views\HomeAccount\ForgotPassword.cshtml" />
     <Content Include="Views\HomeAccount\RecoveryPass.cshtml" />
     <Content Include="Styles\Plans.scss" />
     <Content Include="Views\HomeVideo\AllVideos.cshtml" />
     <Content Include="Views\HomeBlogs\AllBlogs.cshtml" />
-    <Content Include="Views\HomeAccount\RecoveryPasswordShowInModal.cshtml" />
-    <Content Include="Views\HomeAccount\RecoveryPassShowModal.cshtml" />
     <Content Include="Views\HomeShopCart\Index.cshtml" />
     <Content Include="Views\HomeShopCart\Order.cshtml" />
     <Content Include="Views\HomeShopCart\ShowCart.cshtml" />
@@ -1716,6 +1711,7 @@
     <Content Include="Views\HomeShopCart\Plans.cshtml" />
     <Content Include="Views\HomeShopCart\PlansVerify.cshtml" />
     <Content Include="Views\HomeSearch\Index.cshtml" />
+    <Content Include="Styles\_cvSpinner.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

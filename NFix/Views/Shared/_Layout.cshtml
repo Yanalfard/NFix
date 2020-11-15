@@ -7,7 +7,7 @@
     @Scripts.Render("~/bundles/modernizr")
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="~/manifest.json"/>
+    <link rel="manifest" href="~/manifest.json" />
     <script src="~/ManUp.js"></script>
 
     <!-- Project Css -->
@@ -30,7 +30,8 @@
     <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
     <!--Scroll Reveal-->
     <script src="https://unpkg.com/scrollreveal"></script>
-
+    <!--Loading-->
+    <link href="~/Styles/Loading/Loading.css" rel="stylesheet" />
     <!--Jquery-->
     <script src="~/Scripts/Jquery/jquery-3.5.1.min.js"></script>
     <script src="~/Scripts/Jquery/jquery.validate.min.js"></script>
@@ -215,27 +216,13 @@
                         @Html.Action("ForgotPassword", "HomeAccount", new { area = "" })
                     </div>
 
-                    @if (Request.QueryString["recoveryPasswordShowModal"] != null)
-                    {
-                        <input type="hidden" id="AuthIdName" value="@Request.QueryString["recoveryPasswordShowModal"]" />
-                        <div id="recoveryPassShowModal" uk-modal>
-                            @*@Html.Action("RecoveryPassShowModal", "HomeAccount", new { area = "" })*@
-                        </div>
-                        <script>
-                            var id = ($('#AuthIdName').val());
-                            $.get("/HomeAccount/RecoveryPassShowModal/" + id, function (result) {
-                                UIkit.modal(document.getElementById('recoveryPassShowModal')).show();
-                                $("#recoveryPassShowModal").html(result);
-                            });
-                        </script>
-                    }
                     @if (Request.QueryString["LoginInUser"] != null)
                     {
                         <script>
                             UIkit.modal(document.getElementById('ModalLogin')).show();
-
                         </script>
                     }
+                    
 
                     <!--#endregion-->
 
@@ -411,6 +398,14 @@
 
     @*<div class="footer-stripe"></div>*@
 
+
+    <!-- #Loadin -->
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+    <!--#endregion-->
     <!-- #endregion -->
     <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF"></script>
     <script>
@@ -423,6 +418,20 @@
 
 
     <script>
+        //$("#overlay").fadeIn(300);
+        //$(function () {
+        //    $('form#ajaxForm').find('a.submit-link').click(function () {
+        //        $('form#ajaxForm').trigger('submit');
+        //    }).show();
+        //}
+        function LoadingRun(form) {
+            if (!$(form).valid()) return;
+            $("#overlay").fadeIn(300);
+        }
+        function LoadingEnd(form) {
+            $("#overlay").fadeOut(300);
+            $(form)[0].reset();
+        }
         $(function () {
             countShopCart();
         });

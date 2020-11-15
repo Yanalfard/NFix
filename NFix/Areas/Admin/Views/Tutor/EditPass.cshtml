@@ -2,7 +2,7 @@
 @model DataLayer.ViewModel.ChangePasswordUserTutorViewModel
 
 
-@using (Ajax.BeginForm("EditPass", "User", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ModalChangePassword" }, htmlAttributes: new { @id = "ChangePasswordForm", @class = "uk-modal-dialog uk-modal-body column" }))
+@using (Ajax.BeginForm("EditPass", "User", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "LoadingEnd('#ChangePasswordFormTutor')", UpdateTargetId = "ModalChangePassword" }, htmlAttributes: new { @id = "ChangePasswordFormTutor", @class = "uk-modal-dialog uk-modal-body column" }))
 {
     @Html.AntiForgeryToken();
     <h2 dir="rtl">ویرایش رمز عبور مربی  @ViewBag.UserName </h2>
@@ -20,7 +20,7 @@
     @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger" })
 
     <div class="row uk-margin-medium-top" dir="rtl">
-        <input type="submit" value="ویرایش" class="button-primary" />
+        <input type="submit" value="ویرایش" class="button-primary" onclick="LoadingRun('#ChangePasswordFormTutor')"/>
         <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right uk-modal-close">بازگشت</a>
     </div>
 
