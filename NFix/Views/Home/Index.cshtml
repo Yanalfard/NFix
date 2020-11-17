@@ -15,20 +15,17 @@
         alert('حساب کاربری شما فعال شد  میتونید وار حساب کاربری خود شوید');
     </script>
 }
-@if (Request.QueryString["recoveryPassword"] != null)
-{
-    <script>
-        alert('ایمیلی حاوی لینک بازیابی کلمه عبور به ایمیل شما ارسال شد');
-        location.reload(true);
-    </script>
-}
-@if (Request.QueryString["DoneChangePassword"] != null)
-{
-    <script>
-        //window.location = "/Home/Index";
-    </script>
-}
 
+@if (Request.QueryString["RecoveryPassWord"] != null)
+{
+    <div id="RecoveryPassword" uk-modal>
+        @Html.Action("RecoveryPassword", "HomeAccount", new { id = Request.QueryString["RecoveryPassWord"], area = "" })
+    </div>
+    <script>
+        UIkit.modal(document.getElementById('RecoveryPassword')).show();
+    </script>
+
+}
 
 <a name="videos"></a>
 
@@ -264,7 +261,7 @@
 @section Scripts{
     <script src="~/Scripts/UIScripts/BMICalculator.js"></script>
     <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
- 
+
     <script>
         function ModalProduct(id) {
             $.get("/HomeProducts/ModalProduct/" + id, function (result) {

@@ -64,11 +64,11 @@ namespace NFix.Areas.Admin.Controllers
                         tblClient.InviteCode = "کد معرف";
                         tblClient.PremiumTill = new DateTime().ToString();
                         tblClient.Status = 1;
-                        tblClient.Address = "آدرس =";
-                        tblClient.Email = "ایمیل ";
-                        tblClient.IdentificationNo = "کد ملی ";
+                        tblClient.Address = "آدرس";
+                        tblClient.Email = "ایمیل";
+                        tblClient.IdentificationNo = "کد ملی";
                         tblClient.IsPremium = false;
-                        tblClient.PostalCode = "کد پستی ";
+                        tblClient.PostalCode = "کد پستی";
                         bool addClient = _client.AddClient(tblClient);
                         if (addClient)
                         {

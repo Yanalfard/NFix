@@ -6,7 +6,7 @@
 
 
 
-        @using (Ajax.BeginForm("Login", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ModalLogin" }, htmlAttributes: new { @id = "LoginForm" }))
+        @using (Ajax.BeginForm("Login", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "LoadingEnd('#LoginForm')", UpdateTargetId = "ModalLogin" }, htmlAttributes: new { @id = "LoginForm" }))
         {
             @Html.AntiForgeryToken()
             <div class="column">
@@ -44,7 +44,7 @@
                     <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
                        onclick="UIkit.modal(document.getElementById('ModalRegister')).show();">ثبت نام</a>
 
-                    <button class=" uk-margin-auto-bottom ">
+                    <button class=" uk-margin-auto-bottom" onclick="LoadingRun('#LoginForm')">
                         ورود
                     </button>
                 </div>

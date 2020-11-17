@@ -5,7 +5,8 @@
     <h2>@Model.Username عزیز !</h2>
     <p>جهت بازیابی کلمه عبور خود روی لینک زیر کلیک کنید .</p>
     <p>
-        <a href="@ConfigurationManager.AppSettings["MyDomain"]/HomeAccount/RecoveryPassword/@Model.Auth">لینک بازیابی کلمه عبور</a>
+        @*<a href="@ConfigurationManager.AppSettings["MyDomain"]/HomeAccount/RecoveryPassword/@Model.Auth">لینک بازیابی کلمه عبور</a>*@
+        <a href="@ConfigurationManager.AppSettings["MyDomain"]/Home/Index?RecoveryPassWord=@Model.Auth">لینک بازیابی کلمه عبور</a>
     </p>
 </div>
 
