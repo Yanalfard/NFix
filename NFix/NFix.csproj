@@ -245,7 +245,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\User\Views\web.config" />
@@ -387,10 +386,6 @@
     <Content Include="Scripts\ckeditor\_samples\adobeair\run.sh" />
     <Content Include="Scripts\ckeditor\_samples\assets\output_for_flash.fla" />
     <Content Include="Scripts\ckeditor\skins\moono-dark\readme.md" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Connected Services\ZarinPalTest\PaymentGatewayImplementationService.wsdl" />
     <Content Include="manifest.json" />
     <None Include="Scripts\Jquery\jquery-3.5.1.intellisense.js" />

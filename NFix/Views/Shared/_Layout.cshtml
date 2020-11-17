@@ -7,7 +7,7 @@
     @Scripts.Render("~/bundles/modernizr")
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="~/manifest.json"/>
+    <link rel="manifest" href="~/manifest.json" />
     <script src="~/ManUp.js"></script>
 
     <!-- Project Css -->
@@ -264,12 +264,6 @@
                 <li class="hide-on-mobile">
                     <a href="#">درباره ما</a>
                 </li>
-                <li>
-                    <a class="nav-profile row" dir="rtl" type="button" href="/ShopCart">
-                        <span uk-icon="cart"></span>
-                        <span class="uk-margin-small-right">  سبد خرید   </span><span id="countShopCart">  </span>
-                    </a>
-                </li>
                 <li class="hide-on-mobile">
                     <a href="#">وبلاگ</a>
                 </li>
@@ -289,6 +283,20 @@
         <!-- #endregion -->
 
     </nav>
+
+    <!-- #endregion -->
+    <!-- #region Floating Cart -->
+
+    <div class="floating-cart uk-box-shadow-medium uk-box-shadow-hover-large">
+        <a class="floating-cart-main" href="/ShopCart">
+            <span uk-icon="icon:cart;ratio:1.5"></span>
+        </a>
+        <div class="floating-cart-counter">
+            <span id="countShopCart">
+                5
+            </span>
+        </div>
+    </div>
 
     <!-- #endregion -->
 
@@ -421,7 +429,6 @@
         });
     </script>
 
-
     <script>
         $(function () {
             countShopCart();
@@ -446,6 +453,8 @@
         }
     </script>
     <!-- #endregion -->
+
     @RenderSection("Scripts", false)
+
 </body>
 </html>

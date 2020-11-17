@@ -167,6 +167,50 @@ $Modal-width: 824px;
     }
 }
 
+.floating-cart {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 2000;
+    @include row;
+
+    &-main {
+        padding: 12px;
+        z-index: 2010;
+        background: $primary-light;
+
+        @include border-radius(12px,12px,12px,0);
+        @include trans(.2s);
+
+        span {
+            color: white;
+            margin: auto;
+        }
+    }
+
+    &-main:hover {
+        background: lighten($primary-light,6%);
+    }
+
+    &-counter {
+        background: $black;
+        z-index: 2005;
+        margin-left: -12px;
+        @include border-radius(0,12px,12px,0);
+        display: flex;
+
+        span {
+            padding: 12px 12px 12px 24px;
+            margin: auto;
+            font-size: 20px;
+        }
+    }
+}
+
+.grecaptcha-badge {
+    display: none;
+}
+
 .uk-comment {
     padding: 16px;
     background: $CommentBackground;
@@ -274,7 +318,6 @@ $Modal-width: 824px;
     min-height: 50px;
     min-width: 50px;
 }
-
 /*#region Video */
 
 $VideoWidth: 300px;
@@ -379,9 +422,7 @@ $VideoWidth: 300px;
         padding-bottom: 16px;
     }
 }
-
 /*#endregion */
-
 /*#region Footer */
 .pill {
     border: none;
@@ -408,7 +449,7 @@ footer {
     min-height: 50vh;
     width: 100%;
     overflow: visible;
-    
+
 
     .footer-container {
         @include row();
@@ -506,9 +547,7 @@ footer {
         }
     }
 }
-
 /*#endregion */
-
 .not {
     text-decoration: line-through;
     color: GrayText;
@@ -592,7 +631,6 @@ table {
         }
     }
 }
-
 /*#region Button */
 button, .button-primary {
     background: darken($primary-light, 5%);
