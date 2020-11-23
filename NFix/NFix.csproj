@@ -305,11 +305,20 @@
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
     <Content Include="ManUp.js" />
+    <Content Include="Resources\Png\Mobile\icon_128.png" />
+    <Content Include="Resources\Png\Mobile\icon_144.png" />
+    <Content Include="Resources\Png\Mobile\icon_152.png" />
+    <Content Include="Resources\Png\Mobile\icon_192.png" />
+    <Content Include="Resources\Png\Mobile\icon_384.png" />
+    <Content Include="Resources\Png\Mobile\icon_512.png" />
+    <Content Include="Resources\Png\Mobile\icon_72.png" />
+    <Content Include="Resources\Png\Mobile\icon_96.png" />
     <Content Include="Resources\Svg\Gold.svg" />
     <Content Include="Resources\Svg\NFIXBlack.svg" />
     <Content Include="Resources\Svg\NotFound.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
     <Content Include="Resources\Svg\Sliver.svg" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\Jquery\ajaxfileupload.js" />
     <Content Include="Scripts\Jquery\modal.js" />
     <Content Include="Scripts\Jquery\Model.js" />
@@ -323,6 +332,7 @@
     <Content Include="Styles\Plans.min.css">
       <DependentUpon>Plans.css</DependentUpon>
     </Content>
+    <Content Include="sw.js" />
     <Content Include="Views\Shared\_category.cshtml" />
     <Content Include="Areas\Admin\Views\VideoCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\VideoCategory\ListGroups.cshtml" />
