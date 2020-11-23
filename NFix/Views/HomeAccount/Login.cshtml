@@ -2,15 +2,15 @@
 
 <div class="uk-modal-dialog uk-modal-body">
     <div class="alternate" onclick="">
-        <img src="https://picsum.photos/400/600" alt="" />
-
+        <img src="~/Resources/Png/Login.png" alt="Boxing Club, Gym" />
 
 
         @using (Ajax.BeginForm("Login", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "LoadingEnd('#LoginForm')", UpdateTargetId = "ModalLogin" }, htmlAttributes: new { @id = "LoginForm" }))
         {
             @Html.AntiForgeryToken()
             <div class="column">
-                <h3>
+                <button class="no-glow uk-modal-close uk-margin-auto-left" type="button" uk-close></button>
+                <h3 class="uk-margin-small-top">
                     ورود
                 </h3>
                 @if (Request.QueryString["LoginInUser"] != null)
@@ -20,31 +20,32 @@
                     </div>
                 }
 
-
                 @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "uk-margin-small-top", required = "required" } })
                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
 
                 @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "uk-margin-small-top", required = "required" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
-                @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "uk-margin-small-top" })
-                @Html.EditorFor(model => model.RememberMe, new { @class = "uk-margin-small-top uk-margin-right" })
-                @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                <div class="uk-margin-auto-left uk-margin-small-top uk-margin-bottom row">
+                    @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "" })
+                    @Html.EditorFor(model => model.RememberMe, new { @class = "uk-checkbox uk-margin-small-left uk-margin-remove-bottom" })
+                    @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                </div>
 
                 @Html.HiddenFor(m => m.GoogleCapcha, htmlAttributes: new { @class = "GoogleCapcha" })
                 @Html.ValidationMessageFor(model => model.GoogleCapcha, "", new { @class = "text-danger" })
 
                 <div>
                     <a class=""
-                       onclick="UIkit.modal(document.getElementById('ModalForget')).show();"> فراموش کردن رمز</a>
+                       onclick="UIkit.modal(document.getElementById('ModalForget')).show();"> رمز خود را فراموش کرده اید؟</a>
                 </div>
                 <div class="row uk-margin-medium-top">
                     <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
                        onclick="UIkit.modal(document.getElementById('ModalRegister')).show();">ثبت نام</a>
 
-                    <button class=" uk-margin-auto-bottom" onclick="LoadingRun('#LoginForm')">
+                    <button class="uk-margin-auto-bottom" onclick="LoadingRun('#LoginForm')">
                         ورود
                     </button>
                 </div>

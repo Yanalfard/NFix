@@ -1,14 +1,17 @@
 ﻿@model DataLayer.ViewModel.RegisterViewModel
 <div class="uk-modal-dialog uk-modal-body">
     <div class="alternate">
-        <img src="https://picsum.photos/400/600" alt="" />
+        <img src="~/Resources/Png/Register.png" alt="Gym interior" />
+
         @using (Ajax.BeginForm("Register", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "LoadingEnd('#RegisterForm')", UpdateTargetId = "ModalRegister" }, htmlAttributes: new { @id = "RegisterForm" }))
         {
             @Html.AntiForgeryToken()
             <div class="column uk-padding-remove-bottom">
-                <h3>
+                <button class="uk-modal-close uk-margin-auto-left no-glow" type="button" uk-close></button>
+                <h3 class="uk-margin-small-top">
                     ثبت نام
                 </h3>
+
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })

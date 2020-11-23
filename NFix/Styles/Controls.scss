@@ -2,6 +2,7 @@
 @import '_starRating.scss';
 @import '_general.scss';
 @import '_cvSpinner.scss';
+@import '_popupCroppit.scss';
 
 /*Modal*/
 
@@ -34,6 +35,19 @@ $Modal-width: 824px;
             margin: auto;
 
             @include row();
+
+            .text-danger {
+                color: #ae511b;
+            }
+
+            input:not(.check-box) {
+                margin-bottom: 12px;
+            }
+
+            .check-box {
+                height: 24px;
+                margin: auto 0 auto 8px;
+            }
         }
     }
 
@@ -61,9 +75,11 @@ $Modal-width: 824px;
 @media only screen and (max-width: 712px) {
     #ModalLogin, #ModalRegister {
         .uk-modal-dialog {
+            padding: 6px !important;
+
             .alternate {
-                width: 92vw;
-                height: 92vh;
+                width: 95vw;
+                height: auto !important;
             }
         }
 
@@ -171,7 +187,7 @@ $Modal-width: 824px;
     position: fixed;
     bottom: 24px;
     left: 24px;
-    z-index: 2000;
+    z-index: 1001;
     @include row;
 
     &-main {
@@ -632,7 +648,7 @@ table {
     }
 }
 /*#region Button */
-button, .button-primary {
+button:not(.no-glow), .button-primary {
     background: darken($primary-light, 5%);
     padding: 10px 26px 11px 26px;
     font-size: 16px;
@@ -682,13 +698,13 @@ button, .button-primary {
     @include trans(.2s);
 }
 
-button:hover, .button-primary:hover {
+button:hover:not(.no-glow), .button-primary:hover {
     @include subtle-glow(rgba(221, 28, 28, 0.64));
     @include trans(.2s);
     color: white;
 }
 
-button:active {
+button:active:not(.no-glow) {
     background: lighten($primary-light, 2%);
     @include trans(0s);
 }

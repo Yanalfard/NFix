@@ -305,6 +305,8 @@
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
     <Content Include="ManUp.js" />
+    <Content Include="Resources\Png\Login.png" />
+    <Content Include="Resources\Png\Register.png" />
     <Content Include="Resources\Svg\Gold.svg" />
     <Content Include="Resources\Svg\NFIXBlack.svg" />
     <Content Include="Resources\Svg\NotFound.svg" />
@@ -316,7 +318,9 @@
     <Content Include="Scripts\Loading\Loading.js" />
     <Content Include="Scripts\Jquery\jquery-2.1.4.min.js" />
     <Content Include="Scripts\Jquery\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\croppie.min.js" />
     <Content Include="Scripts\UIScripts\Global.js" />
+    <Content Include="Styles\croppie.css" />
     <Content Include="Styles\Plans.css">
       <DependentUpon>Plans.scss</DependentUpon>
     </Content>
@@ -388,21 +392,6 @@
     <None Include="Connected Services\ZarinPalTest\PaymentGatewayImplementationService.wsdl" />
     <Content Include="manifest.json" />
     <None Include="Scripts\Jquery\jquery-3.5.1.intellisense.js" />
-    <Content Include="Mocks\about.html" />
-    <Content Include="Mocks\Admin\BlogAdder.html" />
-    <Content Include="Mocks\Admin\dashboardHUB.html" />
-    <Content Include="Mocks\Admin\TblBlog.html" />
-    <Content Include="Mocks\Admin\TblVideo.html" />
-    <Content Include="Mocks\Admin\VideoAdder.html" />
-    <Content Include="Mocks\Blogs.html" />
-    <Content Include="Mocks\Category.html" />
-    <Content Include="Mocks\Index.html" />
-    <Content Include="Mocks\test.html" />
-    <Content Include="Mocks\TutorView.html" />
-    <Content Include="Mocks\UserProfile.html" />
-    <Content Include="Mocks\Videos.html" />
-    <Content Include="Mocks\VideoUpload.html" />
-    <Content Include="Mocks\VideoView.html" />
     <Content Include="Resources\Png\Background.png" />
     <Content Include="Resources\Png\BodyBuilding.png" />
     <Content Include="Resources\Png\CalculatorBackground.png" />
@@ -1707,6 +1696,7 @@
     <Content Include="Views\HomeShopCart\PlansVerify.cshtml" />
     <Content Include="Views\HomeSearch\Index.cshtml" />
     <Content Include="Styles\_cvSpinner.scss" />
+    <Content Include="Styles\_popupCroppit.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

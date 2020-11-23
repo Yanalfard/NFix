@@ -426,6 +426,93 @@ backdrop-filter: saturate(80%);
 .is-hide {
   display: none; }
 
+/*#region name*/
+/*#endregion */
+/*#region Global */
+/*#endregion */
+/*#region difficulty */
+/*#endregion */
+.video-section-background {
+  background: #171717; }
+
+/*#region Card*/
+/*#endregion */
+/*#region Scrollbar */
+/*#endregion */
+/*#region shadow */
+/*#endregion */
+/*#region Material  */
+/*#endregion */
+/*
+backdrop-filter: blur(2px);
+backdrop-filter: brightness(60%);
+backdrop-filter: contrast(40%);
+backdrop-filter: drop-shadow(4px 4px 10px blue);
+backdrop-filter: grayscale(30%);
+backdrop-filter: hue-rotate(120deg);
+backdrop-filter: invert(70%);
+backdrop-filter: opacity(20%);
+backdrop-filter: sepia(90%);
+backdrop-filter: saturate(80%);
+*/
+.cr-slider-wrap {
+  margin: 0 !important;
+  padding: 6px 0;
+  background: white;
+  width: 100% !important;
+  -moz-border-radius: 0 0 12px 12px;
+  -webkit-border-radius: 0 0 12px 12px;
+  border-radius: 0 0 12px 12px;
+  /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/ }
+
+.croppie-container {
+  z-index: 100;
+  margin: auto;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(4px);
+  min-height: 420px; }
+
+.popup-croppie {
+  display: flex;
+  width: 320px;
+  height: 420px; }
+  .popup-croppie #item {
+    background: white;
+    -moz-border-radius: 0 0 12px 12px;
+    -webkit-border-radius: 0 0 12px 12px;
+    border-radius: 0 0 12px 12px;
+    /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+    width: 100%; }
+  .popup-croppie .controls {
+    -moz-border-radius: 12px 12px 0 0;
+    -webkit-border-radius: 12px 12px 0 0;
+    border-radius: 12px 12px 0 0;
+    /* -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;*/
+    background: white;
+    -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.24);
+    z-index: 110; }
+    .popup-croppie .controls .button-icon {
+      cursor: pointer;
+      height: 52px;
+      width: 52px;
+      background: none;
+      border: none;
+      border-radius: 0;
+      display: flex; }
+      .popup-croppie .controls .button-icon > span {
+        margin: auto;
+        width: 24px;
+        height: 24px;
+        color: #333; }
+
 /*Modal*/
 body {
   overflow-x: hidden; }
@@ -463,6 +550,13 @@ body {
       -ms-align-content: center;
       -webkit-align-content: center;
       align-content: center; }
+      #ModalLogin .uk-modal-dialog .alternate .text-danger, #ModalRegister .uk-modal-dialog .alternate .text-danger {
+        color: #ae511b; }
+      #ModalLogin .uk-modal-dialog .alternate input:not(.check-box), #ModalRegister .uk-modal-dialog .alternate input:not(.check-box) {
+        margin-bottom: 12px; }
+      #ModalLogin .uk-modal-dialog .alternate .check-box, #ModalRegister .uk-modal-dialog .alternate .check-box {
+        height: 24px;
+        margin: auto 0 auto 8px; }
   #ModalLogin form, #ModalRegister form {
     flex: 1;
     padding: 20px; }
@@ -479,9 +573,11 @@ body {
     object-position: center; }
 
 @media only screen and (max-width: 712px) {
-  #ModalLogin .uk-modal-dialog .alternate, #ModalRegister .uk-modal-dialog .alternate {
-    width: 92vw;
-    height: 92vh; }
+  #ModalLogin .uk-modal-dialog, #ModalRegister .uk-modal-dialog {
+    padding: 6px !important; }
+    #ModalLogin .uk-modal-dialog .alternate, #ModalRegister .uk-modal-dialog .alternate {
+      width: 95vw;
+      height: auto !important; }
   #ModalLogin img, #ModalRegister img {
     display: none;
     flex: 0; } }
@@ -557,7 +653,7 @@ body {
   position: fixed;
   bottom: 24px;
   left: 24px;
-  z-index: 2000;
+  z-index: 1001;
   display: flex;
   -ms-flex-direction: row;
   -webkit-flex-direction: row;
@@ -953,7 +1049,7 @@ table {
       width: 80vw; } }
 
 /*#region Button */
-button, .button-primary {
+button:not(.no-glow), .button-primary {
   background: #e41d1d;
   padding: 10px 26px 11px 26px;
   font-size: 16px;
@@ -1016,7 +1112,7 @@ button, .button-primary {
   -webkit-transition: all ease 0.2s;
   transition: all ease 0.2s; }
 
-button:hover, .button-primary:hover {
+button:hover:not(.no-glow), .button-primary:hover {
   -moz-box-shadow: rgba(221, 28, 28, 0.64) 0 6px 16px;
   -webkit-box-shadow: rgba(221, 28, 28, 0.64) 0 6px 16px;
   box-shadow: rgba(221, 28, 28, 0.64) 0 6px 16px;
@@ -1026,7 +1122,7 @@ button:hover, .button-primary:hover {
   transition: all ease 0.2s;
   color: white; }
 
-button:active {
+button:active:not(.no-glow) {
   background: #e83d3d;
   -moz-transition: all ease 0s;
   -o-transition: all ease 0s;
