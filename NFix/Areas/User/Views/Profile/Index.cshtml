@@ -13,9 +13,11 @@
     @Html.Action("Info", "Profile")
 
     <!-- #region Cart -->
-    @*@Html.Action("ShopCart", "Profile")*@
+
+    @Html.Action("ShopCart", "Profile")
 
     <!-- #endregion -->
+
     <!-- #region History -->
     @if (Request.QueryString["BlogFactor"] != null)
     {

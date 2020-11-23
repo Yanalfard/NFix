@@ -436,6 +436,7 @@ backdrop-filter: saturate(80%);
     .main > content .video-playback {
       background: #1C1C1C;
       width: 100%;
+      max-height: 64vh !important;
       height: auto; }
     .main > content .profile-media-container {
       display: flex;
