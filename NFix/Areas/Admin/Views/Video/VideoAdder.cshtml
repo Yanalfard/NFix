@@ -6,6 +6,31 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+@*
+    <!-- This is a button toggling the modal -->
+    <button uk-toggle="target: #my-id" type="button">OI</button>
+
+    <!-- This is the modal -->
+    <div id="my-id" uk-modal>
+        <div class="popup-croppie column uk-margin-auto">
+            <div class="controls uk-width-1-1 row ">
+                <input type="file" id="files" onchange="fileSelected(this)" class="display-none">
+                <label class="button-icon" for="files">
+                    <span uk-icon="image"></span>
+                </label>
+                <button class="button-icon" onclick="crop()">
+                    <span uk-icon="crop"></span>
+                </button>
+
+                <button class="button-icon uk-margin-auto-left uk-modal-close">
+                    <span uk-icon="close"></span>
+                </button>
+            </div>
+            <img src="~/resources/svg/Image.svg" id="item" />
+        </div>
+    </div>
+*@
+
 <!-- #region Card -->
 
 <form action="/Admin/Video/VideoAdder" method="post" enctype="multipart/form-data" class="mat uk-margin-large-top uk-padding-small column clipped">
@@ -19,10 +44,10 @@
     </label>
     <input type="text" id="Title" name="Title" class="uk-input uk-width-2-3 @("uk-width-1-3@m")  uk-margin-auto-left" required />
     <label for="Keywords" class="uk-margin-small-bottom uk-margin-top">
-       کلمات کلیدی
+        کلمات کلیدی
     </label>
 
-    <input type="text" id="Keywords" name="Keywords" class="uk-input uk-width-2-3 @("uk-width-1-3@m")  uk-margin-auto-left" required   placeholder = "کلمات کلیدی را با ، جدا کنید"/>
+    <input type="text" id="Keywords" name="Keywords" class="uk-input uk-width-2-3 @("uk-width-1-3@m")  uk-margin-auto-left" required placeholder="کلمات کلیدی را با ، جدا کنید" />
     <label for="Description" class="uk-margin-small-bottom uk-margin-top">
         توضیحات
     </label>

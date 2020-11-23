@@ -28,8 +28,6 @@
 
     <!--Owl Carousel Scripts-->
     <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
-    <!--Scroll Reveal-->
-    <script src="https://unpkg.com/scrollreveal"></script>
     <!--Loading-->
     <link href="~/Styles/Loading/Loading.css" rel="stylesheet" />
     <!--Jquery-->
@@ -99,19 +97,19 @@
                 }
 
                 <li>
-                    <a href="#">
+                    <a href="/Home/About">
                         <span uk-icon="info"></span>
                         درباره ما
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/HomeBlogs/AllBlogs">
                         <span uk-icon="file-text"></span>
                         وبلاگ ها
                     </a>
                 </li>
                 <li>
-                    <a href="#" mode="click" type="button">
+                    <a href="/Home/VideosPage" mode="click" type="button">
                         <span uk-icon="play"></span>
                         ویدیو ها
                     </a>
@@ -126,7 +124,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/Home/Index">
                         <span uk-icon="home"></span>
                         خانه
                     </a>
@@ -233,7 +231,7 @@
 
 
                     <form action="/HomeSearch/Index" class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left ">
-                        <button class="button-icon" uk-search-icon></button>
+                        <button class="button-icon no-glow" uk-search-icon></button>
                         <input class="uk-search-input" type="search" name="q" id="q" dir="rtl" placeholder="جستجو...">
                     </form>
                 </li>
@@ -249,14 +247,14 @@
                        uk-icon="icon: menu ; ratio:1.6" uk-toggle="target: #MobileNavigation"></a>
                 </li>
                 <li class="hide-on-mobile">
-                    <a href="#">درباره ما</a>
+                    <a href="/Home/About">درباره ما</a>
                 </li>
                 <li class="hide-on-mobile">
-                    <a href="#">وبلاگ</a>
+                    <a href="/HomeBlogs/AllBlogs">وبلاگ ها</a>
                 </li>
                 @*        <li class="hide-on-mobile"><a href="#">مربیان</a></li>*@
                 <li class="hide-on-mobile">
-                    <a href="#" mode="click" type="button">ویدیو</a>
+                    <a href="/HomeVideo/AllVideos" mode="click" type="button">ویدیو ها</a>
                 </li>
                 <li>
                     <a href="/Home/Index">
@@ -385,7 +383,7 @@
                                     041 333 735 56
                                 </span>
                                 <span dir="rtl">
-                                     پشتیبانی IT: 
+                                    پشتیبانی IT: 
                                 </span>
                             </a>
                         </li>
