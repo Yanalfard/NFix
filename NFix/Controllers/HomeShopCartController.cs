@@ -68,7 +68,6 @@ namespace NFix.Controllers
         [HttpPost]
         public ActionResult Plans(int id)
         {
-
             try
             {
                 int SumPrice = 0;
@@ -95,7 +94,6 @@ namespace NFix.Controllers
                     ClientId = clientId,
                 };
                 _log.AddLog(log);
-
                 System.Net.ServicePointManager.Expect100Continue = false;
                 ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient();
                 string Authority;
@@ -121,6 +119,30 @@ namespace NFix.Controllers
             {
                 return RedirectToAction("/ErrorPage/NotFound");
             }
+        }
+
+        public ActionResult PlansFinal(int id)
+        {
+            PlansViewModel plans = new PlansViewModel();
+            if (id == 1)
+            {
+                plans.id = 1;
+                plans.Price = 300000;
+                plans.PriceName = "خرید اشتراک یک ماهه";
+            }
+            else if (id == 2)
+            {
+                plans.id = 2;
+                plans.Price = 1620000;
+                plans.PriceName = "خرید اشتراک 6 ماهه";
+            }
+            else if (id == 3)
+            {
+                plans.id = 3;
+                plans.Price = 2960000;
+                plans.PriceName = "خرید اشتراک یک ساله";
+            }
+            return View(plans);
         }
         public ActionResult PlansVerify(int id)
         {
@@ -164,17 +186,17 @@ namespace NFix.Controllers
                                 if (order.MoneyTransfered == 300000)
                                 {
                                     DateTime nextMonth = date.AddDays(1).AddMonths(1).AddDays(-1);
-                                    tblClient.PremiumTill = nextMonth.ToString();
+                                    tblClient.PremiumTill = nextMonth.ToShortDateString();
                                 }
                                 else if (order.MoneyTransfered == 1620000)
                                 {
                                     DateTime nextMonth = date.AddDays(1).AddMonths(6).AddDays(-1);
-                                    tblClient.PremiumTill = nextMonth.ToString();
+                                    tblClient.PremiumTill = nextMonth.ToShortDateString();
                                 }
                                 else if (order.MoneyTransfered == 2960000)
                                 {
                                     DateTime nextMonth = date.AddDays(1).AddMonths(12).AddDays(-1);
-                                    tblClient.PremiumTill = nextMonth.ToString();
+                                    tblClient.PremiumTill = nextMonth.ToShortDateString();
                                 }
                             }
                             else
@@ -182,18 +204,18 @@ namespace NFix.Controllers
                                 DateTime date = DateTime.Now;
                                 if (order.MoneyTransfered == 300000)
                                 {
-                                    DateTime nextMonth = date.AddDays(1).AddMonths(1).AddDays(-1);
-                                    tblClient.PremiumTill = nextMonth.ToString();
+                                    DateTime nextMonth = date.AddDays(1).AddMonths(1).AddDays(-1); ;
+                                    tblClient.PremiumTill = nextMonth.ToShortDateString();
                                 }
                                 else if (order.MoneyTransfered == 1620000)
                                 {
                                     DateTime nextMonth = date.AddDays(1).AddMonths(6).AddDays(-1);
-                                    tblClient.PremiumTill = nextMonth.ToString();
+                                    tblClient.PremiumTill = nextMonth.ToShortDateString();
                                 }
                                 else if (order.MoneyTransfered == 2960000)
                                 {
                                     DateTime nextMonth = date.AddDays(1).AddMonths(12).AddDays(-1);
-                                    tblClient.PremiumTill = nextMonth.ToString();
+                                    tblClient.PremiumTill = nextMonth.ToShortDateString();
                                 }
                             }
                             _client.UpdateClient(tblClient, clientId.id);
@@ -205,7 +227,7 @@ namespace NFix.Controllers
                             order.MoneyTransfered = 0;
                             order.LogText = $" ناموفق{order.MoneyTransfered} اشتراک خرید";
                             ViewBag.Status = Status;
-                            bool x= _log.UpdateLog(order, order.id);
+                            bool x = _log.UpdateLog(order, order.id);
                         }
                     }
                     else
@@ -213,7 +235,7 @@ namespace NFix.Controllers
                         order.MoneyTransfered = 0;
                         order.LogText = $" ناموفق{order.MoneyTransfered} اشتراک خرید";
                         bool x = _log.UpdateLog(order, order.id);
-                        Response.Write("Error! Authority: " + Request.QueryString["Authority"].ToString() + " Status: " + Request.QueryString["Status"].ToString());
+                        //Response.Write("Error! Authority: " + Request.QueryString["Authority"].ToString() + " Status: " + Request.QueryString["Status"].ToString());
                     }
                 }
                 else
@@ -397,7 +419,7 @@ namespace NFix.Controllers
                     }
                     else
                     {
-                        Response.Write("Error! Authority: " + Request.QueryString["Authority"].ToString() + " Status: " + Request.QueryString["Status"].ToString());
+                        //Response.Write("Error! Authority: " + Request.QueryString["Authority"].ToString() + " Status: " + Request.QueryString["Status"].ToString());
                     }
                 }
                 else

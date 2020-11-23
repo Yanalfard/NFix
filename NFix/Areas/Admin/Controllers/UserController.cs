@@ -62,7 +62,7 @@ namespace NFix.Areas.Admin.Controllers
                         tblClient.TellNo = client.TellNo;
                         tblClient.Name = client.Name;
                         tblClient.InviteCode = "کد معرف";
-                        tblClient.PremiumTill = new DateTime().ToString();
+                        tblClient.PremiumTill = DateTime.Now.ToShortDateString();
                         tblClient.Status = 1;
                         tblClient.Address = "آدرس";
                         tblClient.Email = "ایمیل";

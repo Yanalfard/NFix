@@ -337,6 +337,7 @@
     <Compile Include="ViewModel\CaptchaResponseViewModel.cs" />
     <Compile Include="ViewModel\HistoryLogViewModel.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
+    <Compile Include="ViewModel\PlansViewModel.cs" />
     <Compile Include="ViewModel\Product.cs" />
     <Compile Include="ViewModel\reCaptchaResponse.cs" />
     <Compile Include="ViewModel\ShopCartViewModel.cs" />

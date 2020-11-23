@@ -1707,6 +1707,7 @@
     <Content Include="Views\HomeShopCart\PlansVerify.cshtml" />
     <Content Include="Views\HomeSearch\Index.cshtml" />
     <Content Include="Styles\_cvSpinner.scss" />
+    <Content Include="Views\HomeShopCart\PlansFinal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

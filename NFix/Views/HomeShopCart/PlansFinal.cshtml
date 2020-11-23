@@ -1,0 +1,54 @@
+﻿@model DataLayer.ViewModel.PlansViewModel
+@{
+    ViewBag.Title = "خرید اشتراک";
+}
+
+<div class="space-nav" role="none"></div>
+
+
+<content class="clipped column">
+    <h4 class="uk-margin-remove-bottom">
+        سبد خرید
+    </h4>
+
+    <table class="uk-table uk-table-divider uk-margin-remove-bottom" dir="rtl">
+        <thead>
+            <tr>
+                <th>نام</th>
+                <th>فی</th>
+                <th>مجموع</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>@Model.PriceName</td>
+                    <td>@Model.Price.ToString("0,#")</td>
+                    <td>@Model.Price.ToString("0,#")</td>
+                </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@Model.Price.ToString("0,#")</td>
+                <td></td>
+                <td>
+                    @Model.Price.ToString("0,#")
+                </td>
+                <td>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="row uk-margin-top uk-margin-xlarge-bottom">
+        <a href="/HomeShopCart/Payment" class="uk-margin-auto-left button-primary">
+            اتمام خرید
+        </a>
+    </div>
+
+
+</content>
