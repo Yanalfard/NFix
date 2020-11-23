@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<DataLayer.Models.Regular.TblBlog>
 @{
     ViewBag.Title = "همه مقاله ها";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
@@ -10,8 +11,8 @@
 
 <!-- #region All Blogs -->
 
-<h3 class="myBlogs clipped">تمام وبلاگ ها </h3>
-<content class="grid " dir="rtl">
+<h3 class="myBlogs clipped">وبلاگ ها </h3>
+<content class="grid" dir="rtl">
 
     @foreach (var item in Model)
     {
