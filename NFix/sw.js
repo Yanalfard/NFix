@@ -20,7 +20,6 @@ const assets = [
     '/Scripts/UIScripts/BMICalculator.js',
     '/Scripts/UIScripts/CommentSection.js',
     '/Scripts/UIScripts/Global.js',
-    '/Scripts/UIScripts/Index.js',
     '/Styles/about.min.css',
     '/Styles/Admin.min.css',
     '/Styles/blogs.min.css',
