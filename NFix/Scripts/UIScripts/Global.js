@@ -13,8 +13,7 @@
 
     try {
         var successful = document.execCommand('copy');
-    } catch (err) {
-    }
+    } catch { }
 
     document.body.removeChild(textArea);
     UIkit.notification("لینک صفحه کپی شد")

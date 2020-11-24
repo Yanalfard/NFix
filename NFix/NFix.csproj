@@ -305,6 +305,8 @@
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
     <Content Include="ManUp.js" />
+    <Content Include="Resources\Png\HoldingLift.png" />
+    <Content Include="Resources\Png\Login.png" />
     <Content Include="Resources\Png\Mobile\icon_128.png" />
     <Content Include="Resources\Png\Mobile\icon_144.png" />
     <Content Include="Resources\Png\Mobile\icon_152.png" />
@@ -313,12 +315,23 @@
     <Content Include="Resources\Png\Mobile\icon_512.png" />
     <Content Include="Resources\Png\Mobile\icon_72.png" />
     <Content Include="Resources\Png\Mobile\icon_96.png" />
+    <Content Include="Resources\Png\Register.png" />
+    <Content Include="Resources\Png\Tutors\Doctor.jpg" />
+    <Content Include="Resources\Png\Tutors\Tutor_1.jpg" />
+    <Content Include="Resources\Png\Tutors\Tutor_2.jpg" />
+    <Content Include="Resources\Png\zMan.png" />
+    <Content Include="Resources\Svg\Footer\maestro.svg" />
+    <Content Include="Resources\Svg\Footer\master.svg" />
+    <Content Include="Resources\Svg\Footer\paypal.svg" />
+    <Content Include="Resources\Svg\Footer\visa.svg" />
     <Content Include="Resources\Svg\Gold.svg" />
     <Content Include="Resources\Svg\NFIXBlack.svg" />
     <Content Include="Resources\Svg\NotFound.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
     <Content Include="Resources\Svg\Sliver.svg" />
+    <Content Include="Resources\Svg\VID-20201104-WA0001.mp4" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\croppie.min.js" />
     <Content Include="Scripts\Jquery\ajaxfileupload.js" />
     <Content Include="Scripts\Jquery\modal.js" />
     <Content Include="Scripts\Jquery\Model.js" />
@@ -326,6 +339,8 @@
     <Content Include="Scripts\Jquery\jquery-2.1.4.min.js" />
     <Content Include="Scripts\Jquery\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\UIScripts\Global.js" />
+    <Content Include="Scripts\UIScripts\Index.js" />
+    <Content Include="Styles\croppie.css" />
     <Content Include="Styles\Plans.css">
       <DependentUpon>Plans.scss</DependentUpon>
     </Content>
@@ -352,7 +367,7 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <Content Include="HtmlPage1.html" />
+    <Content Include="fallback.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\ckeditor\.htaccess" />
@@ -1718,6 +1733,7 @@
     <Content Include="Views\HomeSearch\Index.cshtml" />
     <Content Include="Styles\_cvSpinner.scss" />
     <Content Include="Views\HomeShopCart\PlansFinal.cshtml" />
+    <Content Include="Styles\_popupCroppit.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
