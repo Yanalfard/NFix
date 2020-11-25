@@ -149,6 +149,7 @@
     <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DiscountController.cs" />
     <Compile Include="Areas\Admin\Controllers\LogController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCatagoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
@@ -220,6 +221,10 @@
     <Content Include="Areas\Admin\Views\Admin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\EditPass.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\AddDiscount.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\AllDiscount.cshtml" />
+    <Content Include="Areas\Admin\Views\Discount\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Discount.cshtml" />
     <None Include="Connected Services\ZarinPalTest\configuration91.svcinfo" />
     <None Include="Connected Services\ZarinPalTest\configuration.svcinfo" />
     <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.GetUnverifiedTransactionsResponse.datasource">
@@ -1734,6 +1739,7 @@
     <Content Include="Styles\_cvSpinner.scss" />
     <Content Include="Views\HomeShopCart\PlansFinal.cshtml" />
     <Content Include="Styles\_popupCroppit.scss" />
+    <Content Include="Views\HomeShopCart\ListCompare.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
