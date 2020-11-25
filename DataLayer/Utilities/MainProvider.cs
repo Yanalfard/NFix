@@ -447,6 +447,12 @@ namespace DataLayer.Utilities
                     val.id = update.id;
                     val.LogText = update.LogText;
                     val.MoneyTransfered = update.MoneyTransfered;
+                    val.ClientId = update.ClientId;
+                    val.PriceId = update.PriceId;
+                    val.Discount = update.Discount;
+                    val.Date = update.Date;
+                    val.IsValid = update.IsValid;
+
                 }
                 else if (table.GetType() == typeof(TblVideoCommentRel))
                 {

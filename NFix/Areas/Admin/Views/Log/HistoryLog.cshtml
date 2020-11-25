@@ -16,6 +16,8 @@
                 <th>کد</th>
                 <th>تاریخ</th>
                 <th>متن</th>
+                <th>درصد تخفیف</th>
+                <th>اشتراک</th>
                 <th>مبلغ</th>
                 <th>وضعیت</th>
             </tr>
@@ -23,24 +25,46 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>@(Model.ToList().IndexOf(item)+1)</td>
-                    <td>@item.Date.ToShamsi()</td>
-                    <td>@item.LogText</td>
-                    <td>@item.MoneyTransfered</td>
-                    @if (item.MoneyTransfered > 0)
-                    {
-                        <td>موفق</td>
-                    }
-                    else
-                    {
-                        <td>ناموفق</td>
+            <tr>
+                <td>@(Model.ToList().IndexOf(item)+1)</td>
+                <td>@item.Date.ToShamsi()</td>
+                <td>@item.LogText</td>
+                @if (item.Discount == null)
+                {
+                    <td>0</td>
+                }
+                else
+                {
+                    <td>@item.Discount</td>
+                }
 
-                    }
-                </tr>
+                @if (item.PriceId == 1)
+                {
+                    <td>اشتراک 1 ماهه</td>
+                }
+                else if (item.PriceId == 2)
+                {
+                    <td>اشتراک 6 ماهه</td>
+                }
+                else if (item.PriceId == 3)
+                {
+                    <td>اشتراک 1 ساله</td>
+                }
+                else
+                {
+                    <td> بدون اشتراک </td>
+                }
+                <td>@item.MoneyTransfered</td>
+                @if (item.IsValid)
+                {
+                    <td>موفق</td>
+                }
+                else
+                {
+                    <td>ناموفق</td>
+                }
+            </tr>
             }
-
-
         </tbody>
     </table>
 </div>

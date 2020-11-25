@@ -109,110 +109,110 @@
     <Compile Include="Models\Dto\DtoTblUserPass.cs" />
     <Compile Include="Models\Dto\DtoTblVideo.cs" />
     <Compile Include="Models\Dto\DtoTblVideoCommentRel.cs" />
-    <Compile Include="Models\Regular\Model1.Context.cs">
+    <Compile Include="Models\Regular\Nfix.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>Nfix.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Regular\Model1.cs">
+    <Compile Include="Models\Regular\Nfix.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Regular\Model1.Designer.cs">
+    <Compile Include="Models\Regular\Nfix.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>Nfix.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblAd.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblBlog.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblBlogCommentRel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblBlogKeywordRel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblCatagory.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblClient.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblClientProductRel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblComment.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblDeal.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblDealPropertyRel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblDiscount.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblImage.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblKeyword.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblLog.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblOrder.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblProduct.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblProductCommentRel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblProductImageRel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblProductKeywordRel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblProductPropertyRel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblProperty.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblRole.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblTuotorVideoRel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblTutor.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblUserPass.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblVideo.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblVideoCatagory.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblVideoCommentRel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Regular\TblVideoKeyword.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Nfix.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Api\IAdRepo.cs" />
@@ -348,29 +348,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="Models\Regular\Model1.edmx">
+    <EntityDeploy Include="Models\Regular\Nfix.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Nfix.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\Regular\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="Models\Regular\Nfix.edmx.diagram">
+      <DependentUpon>Nfix.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Models\Regular\Model1.Context.tt">
+    <Content Include="Models\Regular\Nfix.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Nfix.edmx</DependentUpon>
+      <LastGenOutput>Nfix.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Regular\Model1.tt">
+    <Content Include="Models\Regular\Nfix.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>Nfix.edmx</DependentUpon>
+      <LastGenOutput>Nfix.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

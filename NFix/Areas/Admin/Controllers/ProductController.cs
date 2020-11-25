@@ -305,7 +305,6 @@ namespace NFix.Areas.Admin.Controllers
 
             //return Json(new { success = true, responseText = _catagory.SelectCatagoryByCatagoryId(id).ToList() }, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult deleteProduct(int id)
         {
             var getBlogId = _product.SelectImagesByProductId(id);
@@ -317,8 +316,6 @@ namespace NFix.Areas.Admin.Controllers
             }
             return JavaScript("");
         }
-
-
         public ActionResult FactorView(int id)
         {
             NFixEntities db = new NFixEntities();
@@ -332,6 +329,18 @@ namespace NFix.Areas.Admin.Controllers
             ViewBag.Tell = tblClient.TellNo;
             return View(_clientProductRel.SelectAllClientProductRels().Where(i => i.OrderId == id).ToList());
         }
+
+
+        public ActionResult Discount()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Discount(TblBlog blog)
+        {
+            return View();
+        }
+
         #endregion
 
     }

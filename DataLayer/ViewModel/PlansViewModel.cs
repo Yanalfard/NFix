@@ -11,6 +11,7 @@ namespace DataLayer.ViewModel
         public int id { get; set; }
         public string PriceName { get; set; }
         public int Price { get; set; }
+        public int SumPrice { get; set; }
         public int Discount { get; set; }
     }
 }

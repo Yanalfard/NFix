@@ -19,5 +19,8 @@ namespace DataLayer.Models.Regular
         public long MoneyTransfered { get; set; }
         public System.DateTime Date { get; set; }
         public Nullable<int> ClientId { get; set; }
+        public Nullable<int> Discount { get; set; }
+        public bool IsValid { get; set; }
+        public Nullable<int> PriceId { get; set; }
     }
 }

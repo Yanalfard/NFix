@@ -4,6 +4,7 @@ using DataLayer.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,6 +19,7 @@ namespace NFix.Controllers
         private ClientService _client = new ClientService();
         private OrderService _order = new OrderService();
         private LogService _log = new LogService();
+        private DiscountService _dis = new DiscountService();
         //private Orde _orders;
         public HomeShopCartController()
         {
@@ -66,39 +68,34 @@ namespace NFix.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Plans(int id)
+        [Authorize]
+        public ActionResult Plans(int? id)
         {
             try
             {
-                int SumPrice = 0;
-                if (id == 1)
+                PlansViewModel list = new PlansViewModel();
+                if (Session["Compare"] != null)
                 {
-                    SumPrice = 300000;
+                    list = Session["Compare"] as PlansViewModel;
                 }
-                else if (id == 2)
-                {
-                    SumPrice = 1620000;
-                }
-                else if (id == 3)
-                {
-                    SumPrice = 2960000;
-                }
-
                 TblUserPass userId = _users.SelectUserPassByUsername(User.Identity.Name);
                 int clientId = _client.SelectClientByUserPassId(userId.id).id;
                 TblLog log = new TblLog()
                 {
                     LogText = "ارسال به زرین پال",
                     Date = DateTime.Now,
-                    MoneyTransfered = SumPrice,
+                    MoneyTransfered = list.SumPrice,
                     ClientId = clientId,
+                    Discount = list.Discount,
+                    IsValid = false,
+                    PriceId=list.id,
                 };
                 _log.AddLog(log);
                 System.Net.ServicePointManager.Expect100Continue = false;
                 ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient();
                 string Authority;
 
-                int Status = zp.PaymentRequest("5f648351-94a0-4b6d-ab96-3eef0d58a8b5", SumPrice, "NFIX ", "info@newkharid.com", "09339634557", ConfigurationManager.AppSettings["MyDomain"] + "/HomeShopCart/PlansVerify/" + log.id, out Authority);
+                int Status = zp.PaymentRequest("5f648351-94a0-4b6d-ab96-3eef0d58a8b5", list.SumPrice, "NFIX ", "info@newkharid.com", "09339634557", ConfigurationManager.AppSettings["MyDomain"] + "/HomeShopCart/PlansVerify/" + log.id, out Authority);
                 if (Status == 100)
                 {
                     //Response.Redirect("https://www.zarinpal.com/pg/StartPay/" + Authority);
@@ -120,29 +117,88 @@ namespace NFix.Controllers
                 return RedirectToAction("/ErrorPage/NotFound");
             }
         }
-
-        public ActionResult PlansFinal(int id)
+        public ActionResult PlansCheck(int id)
         {
-            PlansViewModel plans = new PlansViewModel();
-            if (id == 1)
+            try
             {
-                plans.id = 1;
-                plans.Price = 300000;
-                plans.PriceName = "خرید اشتراک یک ماهه";
+                PlansViewModel list = new PlansViewModel();
+                if (id == 1)
+                {
+                    list.id = 1;
+                    list.Price = 300000;
+                    list.PriceName = "خرید اشتراک یک ماهه";
+                    list.Discount = 0;
+                    list.SumPrice = 300000;
+                }
+                else if (id == 2)
+                {
+                    list.id = 2;
+                    list.Price = 1620000;
+                    list.PriceName = "خرید اشتراک 6 ماهه";
+                    list.Discount = 0;
+                    list.SumPrice = 1620000;
+                }
+                else if (id == 3)
+                {
+                    list.id = 3;
+                    list.Price = 2960000;
+                    list.PriceName = "خرید اشتراک یک ساله";
+                    list.Discount = 0;
+                    list.SumPrice = 2960000;
+                }
+                Session["Compare"] = list;
+                return RedirectToAction("/PlansFinal");
             }
-            else if (id == 2)
+            catch
             {
-                plans.id = 2;
-                plans.Price = 1620000;
-                plans.PriceName = "خرید اشتراک 6 ماهه";
+                return RedirectToAction("/ErrorPage/NotFound");
             }
-            else if (id == 3)
+        }
+
+        public ActionResult PlansFinal()
+        {
+            return View();
+        }
+        public ActionResult ListCompare()
+        {
+            try
             {
-                plans.id = 3;
-                plans.Price = 2960000;
-                plans.PriceName = "خرید اشتراک یک ساله";
+                PlansViewModel list = new PlansViewModel();
+                if (Session["Compare"] != null)
+                {
+                    list = Session["Compare"] as PlansViewModel;
+                }
+                return PartialView(list);
             }
-            return View(plans);
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
+        }
+        [HttpPost]
+        public ActionResult CheckDiscount(string name)
+        {
+            try
+            {
+                TblDiscount discout = _dis.SelectAllDiscounts().FirstOrDefault(i => i.Name == name && i.Count != 0);
+                if (discout != null && discout.Count > 0 && discout.Discount > 0)
+                {
+                    PlansViewModel list = new PlansViewModel();
+                    list = Session["Compare"] as PlansViewModel;
+                    list.Price = list.Price;
+                    list.Discount = list.Discount;
+                    list.PriceName = list.PriceName;
+                    list.SumPrice = list.Price - (int)(Math.Floor((double)list.Price * discout.Discount / 100));
+                    Session["Compare"] = list;
+                    return PartialView("ListCompare", list);
+                    // return Json(new { success = true, responseText = discout.Discount }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { success = true, responseText = "کد تخفیف موجود نیست" }, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return RedirectToAction("/ErrorPage/NotFound");
+            }
         }
         public ActionResult PlansVerify(int id)
         {
@@ -163,6 +219,7 @@ namespace NFix.Controllers
                         {
                             TblClient clientId = _client.SelectClientById(Convert.ToInt32(order.ClientId));
                             order.LogText = $" کاربر مورد نظز با مبلغ{order.MoneyTransfered} اشتراک خرید";
+                            order.IsValid = true;
                             ViewBag.IsSuccess = true;
                             ViewBag.RefId = RefID;
 
@@ -183,17 +240,17 @@ namespace NFix.Controllers
                             if (DateTime.Parse(clientId.PremiumTill) > DateTime.Now)
                             {
                                 DateTime date = DateTime.Parse(clientId.PremiumTill);
-                                if (order.MoneyTransfered == 300000)
+                                if (order.PriceId == 1)
                                 {
                                     DateTime nextMonth = date.AddDays(1).AddMonths(1).AddDays(-1);
                                     tblClient.PremiumTill = nextMonth.ToShortDateString();
                                 }
-                                else if (order.MoneyTransfered == 1620000)
+                                else if (order.PriceId == 2)
                                 {
                                     DateTime nextMonth = date.AddDays(1).AddMonths(6).AddDays(-1);
                                     tblClient.PremiumTill = nextMonth.ToShortDateString();
                                 }
-                                else if (order.MoneyTransfered == 2960000)
+                                else if (order.PriceId == 3)
                                 {
                                     DateTime nextMonth = date.AddDays(1).AddMonths(12).AddDays(-1);
                                     tblClient.PremiumTill = nextMonth.ToShortDateString();
@@ -202,17 +259,17 @@ namespace NFix.Controllers
                             else
                             {
                                 DateTime date = DateTime.Now;
-                                if (order.MoneyTransfered == 300000)
+                                if (order.PriceId == 1)
                                 {
                                     DateTime nextMonth = date.AddDays(1).AddMonths(1).AddDays(-1); ;
                                     tblClient.PremiumTill = nextMonth.ToShortDateString();
                                 }
-                                else if (order.MoneyTransfered == 1620000)
+                                else if (order.PriceId == 2)
                                 {
                                     DateTime nextMonth = date.AddDays(1).AddMonths(6).AddDays(-1);
                                     tblClient.PremiumTill = nextMonth.ToShortDateString();
                                 }
-                                else if (order.MoneyTransfered == 2960000)
+                                else if (order.PriceId == 3)
                                 {
                                     DateTime nextMonth = date.AddDays(1).AddMonths(12).AddDays(-1);
                                     tblClient.PremiumTill = nextMonth.ToShortDateString();
@@ -220,6 +277,17 @@ namespace NFix.Controllers
                             }
                             _client.UpdateClient(tblClient, clientId.id);
                             _log.UpdateLog(order, order.id);
+                            //TblLog logupdate = new TblLog();
+                            //logupdate.ClientId = order.ClientId;
+                            //logupdate.Date = order.Date;
+                            //logupdate.Discount = order.Discount;
+                            //logupdate.id = order.id;
+                            //logupdate.IsValid = true;
+                            //logupdate.LogText = order.LogText;
+                            //logupdate.MoneyTransfered = order.MoneyTransfered;
+                            //logupdate.PriceId = order.PriceId;
+                            //NFixEntities db = new NFixEntities();
+                            //db.Entry(logupdate).State = EntityState.Modified;
                             return Redirect("/User/Profile/Index/" + id + "?BlogFactor=" + RefID);
                         }
                         else
@@ -235,6 +303,7 @@ namespace NFix.Controllers
                         order.MoneyTransfered = 0;
                         order.LogText = $" ناموفق{order.MoneyTransfered} اشتراک خرید";
                         bool x = _log.UpdateLog(order, order.id);
+                        
                         //Response.Write("Error! Authority: " + Request.QueryString["Authority"].ToString() + " Status: " + Request.QueryString["Status"].ToString());
                     }
                 }
@@ -245,6 +314,7 @@ namespace NFix.Controllers
                     bool x = _log.UpdateLog(order, order.id);
                     Response.Write("Invalid Input");
                 }
+                
                 return View();
             }
             catch

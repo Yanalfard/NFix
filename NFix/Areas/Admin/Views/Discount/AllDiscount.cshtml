@@ -1,0 +1,12 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblDiscount>
+
+@foreach (var item in Model)
+{
+    <div  id="group_@item.id"  class="row uk-margin-medium uk-padding-remove-bottom uk-margin-medium-right card uk-border-rounded black uk-box-shadow-medium uk-box-shadow-hover-large">
+        <span class="uk-label uk-label-warning uk-margin-auto-bottom"> @item.Count</span>
+        <span class=" uk-margin-small-left uk-margin-small-right">@item.Name</span>
+        <span class=" uk-margin-remove-vertical uk-badge uk-alert"> @item.Discount%</span>
+        <a class="" onclick="Delete(@item.id)" uk-icon="trash"></a>
+    </div>
+}
+

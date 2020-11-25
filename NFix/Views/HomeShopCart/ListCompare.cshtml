@@ -1,0 +1,25 @@
+﻿@model DataLayer.ViewModel.PlansViewModel
+<table id="ListPlans" class="uk-table uk-table-divider uk-margin-remove-bottom" dir="rtl">
+    <thead>
+        <tr>
+            <th>نام</th>
+            <th>فی</th>
+            <th>مجموع</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.PriceName</td>
+            <td>@Model.Price.ToString("0,#")</td>
+            <td id="FinalPricehid">@Model.Price.ToString("0,#")</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+            </td>
+            <td></td>
+            <td>@Model.SumPrice.ToString("0,#")</td>
+        </tr>
+    </tfoot>
+</table>

@@ -148,6 +148,9 @@
           <Property Name="MoneyTransfered" Type="bigint" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="ClientId" Type="int" />
+          <Property Name="Discount" Type="int" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+          <Property Name="PriceId" Type="int" />
         </EntityType>
         <EntityType Name="TblOrder">
           <Key>
@@ -220,7 +223,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="300" Nullable="false" />
         </EntityType>
@@ -979,11 +982,11 @@
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="Count" Type="Int32" Nullable="false" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Discount" Type="Int32" />
           <NavigationProperty Name="TblClient" Relationship="Self.FK_TblClientProductRel_TblClient" FromRole="TblClientProductRel" ToRole="TblClient" />
           <NavigationProperty Name="TblOrder" Relationship="Self.FK_TblClientProductRel_TblOrder" FromRole="TblClientProductRel" ToRole="TblOrder" />
           <NavigationProperty Name="TblProduct" Relationship="Self.FK_TblClientProductRel_TblProduct" FromRole="TblClientProductRel" ToRole="TblProduct" />
-          <Property Name="Price" Type="Int32" />
-          <Property Name="Discount" Type="Int32" />
         </EntityType>
         <EntityType Name="TblComment">
           <Key>
@@ -1057,6 +1060,9 @@
           <Property Name="MoneyTransfered" Type="Int64" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ClientId" Type="Int32" />
+          <Property Name="Discount" Type="Int32" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+          <Property Name="PriceId" Type="Int32" />
         </EntityType>
         <EntityType Name="TblOrder">
           <Key>
@@ -1147,7 +1153,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="TblUserPass" Relationship="Self.FK_TblUserPass_TblRole" FromRole="TblRole" ToRole="TblUserPass" />
@@ -1912,13 +1918,13 @@
           <EntitySetMapping Name="TblClientProductRel">
             <EntityTypeMapping TypeName="NFixModel.TblClientProductRel">
               <MappingFragment StoreEntitySet="TblClientProductRel">
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1983,11 +1989,14 @@
           <EntitySetMapping Name="TblLog">
             <EntityTypeMapping TypeName="NFixModel.TblLog">
               <MappingFragment StoreEntitySet="TblLog">
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="LogText" ColumnName="LogText" />
                 <ScalarProperty Name="MoneyTransfered" ColumnName="MoneyTransfered" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

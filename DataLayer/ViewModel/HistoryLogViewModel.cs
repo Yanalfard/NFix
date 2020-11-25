@@ -13,5 +13,8 @@ namespace DataLayer.ViewModel
         public long MoneyTransfered { get; set; }
         public System.DateTime Date { get; set; }
         public string ClientTell { get; set; }
+        public bool IsValid { get; set; }
+        public Nullable<int> PriceId { get; set; }
+        public Nullable<int> Discount { get; set; }
     }
 }

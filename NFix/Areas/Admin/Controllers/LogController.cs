@@ -21,14 +21,24 @@ namespace NFix.Areas.Admin.Controllers
             List<HistoryLogViewModel> viewModel = new List<HistoryLogViewModel>();
             foreach (var item in clientLog)
             {
-                viewModel.Add(new HistoryLogViewModel()
+                var client = _client.SelectClientById(Convert.ToInt32(item.ClientId));
+                HistoryLogViewModel tbl = new HistoryLogViewModel();
+                tbl.Date = item.Date;
+                if (client != null)
                 {
-                    Date=item.Date,
-                    ClientTell=_client.SelectClientById(Convert.ToInt32(item.ClientId)).TellNo,
-                    id=item.id,
-                    LogText=item.LogText,
-                    MoneyTransfered=item.MoneyTransfered
-                });
+                    tbl.ClientTell = client.TellNo;
+                }
+                else
+                {
+                    tbl.ClientTell = "کاربر حذف شده است";
+                }
+                tbl.id = item.id;
+                tbl.LogText = item.LogText;
+                tbl.MoneyTransfered = item.MoneyTransfered;
+                tbl.IsValid = item.IsValid;
+                tbl.PriceId = item.PriceId;
+                tbl.Discount = item.Discount;
+                viewModel.Add(tbl);
             }
             return PartialView(viewModel.OrderByDescending(i => i.Date));
         }
