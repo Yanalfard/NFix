@@ -9,6 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="~/manifest.json" />
     <script src="~/ManUp.js"></script>
+    <link rel="apple-touch-icon" href="/Resources/Png/Mobile/icon_96.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#E73434" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#E73434" />
+    <meta name="theme-color" content="#E73434" />
 
     <!-- Project Css -->
     <link href="/Styles/Index.min.css" rel="stylesheet" />
@@ -43,7 +47,7 @@
     <div id="MobileNavigation" class="noprint" dir="rtl" uk-offcanvas="overlay: true ;flip: true">
         <div class="uk-offcanvas-bar column">
 
-            <button class="uk-offcanvas-close" type="button" uk-close></button>
+            <button class="no-glow uk-offcanvas-close" type="button" uk-close></button>
 
             <a href="/Home/Index" class="uk-margin-auto">
                 <img src="/Resources/Svg/NFIX.svg" />
@@ -118,7 +122,7 @@
                     <hr class="uk-margin-top uk-margin-remove-bottom" />
                 </li>
                 <li dir="rtl">
-                    <a href="#">
+                    <a class="add-button">
                         <span uk-icon="phone"></span>
                         دانلود برنامه
                     </a>
@@ -404,11 +408,12 @@
                     <img src="https://picsum.photos/64" alt="" />
                     <img src="https://picsum.photos/64" alt="" />*@
             </div>
-            <a href="" class="uk-margin-auto-left" dir="rtl">
+            <span class="uk-link-muted uk-margin-auto-left" dir="rtl">
                 Ⓒ تمام حقوق مادی ومعنوی این سایت متعلق به شرکت یاقون وب ایرانیان می باشد.
                 <br />
-                طراحی و توسعه توسط شرکت ایده پرداز آروین تاو.
-            </a>
+                طراحی و توسعه توسط شرکت
+                <a href="https://arvintavco.com/" class="uk-link">ایده پرداز آروین تاو</a>.
+            </span>
         </div>
         @*<a href="" class="uk-margin-right uk-margin-bottom">طراحی و توسعه توسط شرکت ایده پرداز آروین تاو</a>*@
     </footer>
@@ -423,6 +428,9 @@
         </div>
     </div>
     <!--#endregion-->
+
+    <script src="~/Scripts/app.js"></script>
+
     <!-- #endregion -->
     <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF"></script>
     <script>
