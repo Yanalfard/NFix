@@ -186,7 +186,7 @@ namespace NFix.Controllers
                     PlansViewModel list = new PlansViewModel();
                     list = Session["Compare"] as PlansViewModel;
                     list.Price = list.Price;
-                    list.Discount = list.Discount;
+                    list.Discount = discout.Discount;
                     list.PriceName = list.PriceName;
                     list.SumPrice = list.Price - (int)(Math.Floor((double)list.Price * discout.Discount / 100));
                     Session["Compare"] = list;
