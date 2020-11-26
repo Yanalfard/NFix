@@ -69,6 +69,7 @@ namespace NFix.Controllers
         }
         [HttpPost]
         [Authorize]
+        [Authorize(Roles = "user")]
         public ActionResult Plans(int? id)
         {
             try
