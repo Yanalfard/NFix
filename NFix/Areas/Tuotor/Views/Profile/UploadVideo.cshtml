@@ -9,9 +9,9 @@
             <label for="Title" class="uk-margin-small-bottom uk-margin-top">
                 دسته ویدیو
             </label>
-            @Html.DropDownListFor(model => model.CatagoryId, (IEnumerable<SelectListItem>)ViewBag.CatagoryId, "دسته ویدیو را انتخاب کنید", new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-left", required = "required" })
+            @Html.DropDownListFor(model => model.CatagoryId, (IEnumerable<SelectListItem>)ViewBag.CatagoryId, "دسته ویدیو را انتخاب کنید", new { @class = "uk-select uk-input uk-width-2-3 uk-margin-auto-right ", dir="rtl", required = "required" })
 
-            <label for="Title" class="uk-margin-small-bottom uk-margin-top">
+            <label for="Title" class="uk-margin-small-bottom uk-margin-top ">
                 تیتر ویدیو
             </label>
             <input type="text" id="Title" name="Title" class="uk-input uk-width-2-3 @("uk-width-1-3@m")  uk-margin-auto-left" required />
@@ -96,66 +96,66 @@
 
 
             <script>
-                var bar = document.getElementById('js-progressbar');
+                //var bar = document.getElementById('js-progressbar');
 
-                UIkit.upload('.js-upload', {
+                //UIkit.upload('.js-upload', {
 
-                    url: '',
-                    multiple: true,
+                //    url: '',
+                //    multiple: true,
 
-                    beforeSend: function (environment) {
-                        console.log('beforeSend', arguments);
+                //    beforeSend: function (environment) {
+                //        console.log('beforeSend', arguments);
 
-                        // The environment object can still be modified here. 
-                        // var {data, method, headers, xhr, responseType} = environment;
+                //        // The environment object can still be modified here. 
+                //        // var {data, method, headers, xhr, responseType} = environment;
 
-                    },
-                    beforeAll: function () {
-                        console.log('beforeAll', arguments);
-                    },
-                    load: function () {
-                        console.log('load', arguments);
-                    },
-                    error: function () {
-                        console.log('error', arguments);
-                    },
-                    complete: function () {
-                        console.log('complete', arguments);
-                    },
+                //    },
+                //    beforeAll: function () {
+                //        console.log('beforeAll', arguments);
+                //    },
+                //    load: function () {
+                //        console.log('load', arguments);
+                //    },
+                //    error: function () {
+                //        console.log('error', arguments);
+                //    },
+                //    complete: function () {
+                //        console.log('complete', arguments);
+                //    },
 
-                    loadStart: function (e) {
-                        console.log('loadStart', arguments);
+                //    loadStart: function (e) {
+                //        console.log('loadStart', arguments);
 
-                        bar.removeAttribute('hidden');
-                        bar.max = e.total;
-                        bar.value = e.loaded;
-                    },
+                //        bar.removeAttribute('hidden');
+                //        bar.max = e.total;
+                //        bar.value = e.loaded;
+                //    },
 
-                    progress: function (e) {
-                        console.log('progress', arguments);
+                //    progress: function (e) {
+                //        console.log('progress', arguments);
 
-                        bar.max = e.total;
-                        bar.value = e.loaded;
-                    },
+                //        bar.max = e.total;
+                //        bar.value = e.loaded;
+                //    },
 
-                    loadEnd: function (e) {
-                        console.log('loadEnd', arguments);
+                //    loadEnd: function (e) {
+                //        console.log('loadEnd', arguments);
 
-                        bar.max = e.total;
-                        bar.value = e.loaded;
-                    },
+                //        bar.max = e.total;
+                //        bar.value = e.loaded;
+                //    },
 
-                    completeAll: function () {
-                        console.log('completeAll', arguments);
+                //    completeAll: function () {
+                //        console.log('completeAll', arguments);
 
-                        setTimeout(function () {
-                            bar.setAttribute('hidden', 'hidden');
-                        }, 1000);
+                //        setTimeout(function () {
+                //            bar.setAttribute('hidden', 'hidden');
+                //        }, 1000);
 
-                        alert('Upload Completed');
-                    }
+                //        alert('Upload Completed');
+                //    }
 
-                });
+                //});
 
             </script>
 

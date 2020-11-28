@@ -13,7 +13,7 @@ namespace NFix.Areas.Admin.Controllers
     {
         private ClientService _client = new ClientService();
         private LogService _log = new LogService();
-
+        private DiscountService _dis = new DiscountService();
         // GET: Admin/Log
         public ActionResult HistoryLog()
         {
@@ -37,7 +37,15 @@ namespace NFix.Areas.Admin.Controllers
                 tbl.MoneyTransfered = item.MoneyTransfered;
                 tbl.IsValid = item.IsValid;
                 tbl.PriceId = item.PriceId;
-                tbl.Discount = item.Discount;
+                tbl.Discount = 0;
+                if (item.Discount > 0)
+                {
+                    TblDiscount discount = _dis.SelectDiscountById((int)item.Discount);
+                    if (discount != null)
+                    {
+                        tbl.Discount = discount.Discount;
+                    }
+                }
                 viewModel.Add(tbl);
             }
             return PartialView(viewModel.OrderByDescending(i => i.Date));
