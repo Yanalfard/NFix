@@ -89,7 +89,7 @@ namespace NFix.Controllers
                     ClientId = clientId,
                     Discount = list.Discount,
                     IsValid = false,
-                    PriceId=list.id,
+                    PriceId = list.id,
                 };
                 _log.AddLog(log);
                 System.Net.ServicePointManager.Expect100Continue = false;
@@ -187,7 +187,7 @@ namespace NFix.Controllers
                     PlansViewModel list = new PlansViewModel();
                     list = Session["Compare"] as PlansViewModel;
                     list.Price = list.Price;
-                    list.Discount = discout.Discount;
+                    list.Discount = discout.id;
                     list.PriceName = list.PriceName;
                     list.SumPrice = list.Price - (int)(Math.Floor((double)list.Price * discout.Discount / 100));
                     Session["Compare"] = list;
@@ -278,17 +278,17 @@ namespace NFix.Controllers
                             }
                             _client.UpdateClient(tblClient, clientId.id);
                             _log.UpdateLog(order, order.id);
-                            //TblLog logupdate = new TblLog();
-                            //logupdate.ClientId = order.ClientId;
-                            //logupdate.Date = order.Date;
-                            //logupdate.Discount = order.Discount;
-                            //logupdate.id = order.id;
-                            //logupdate.IsValid = true;
-                            //logupdate.LogText = order.LogText;
-                            //logupdate.MoneyTransfered = order.MoneyTransfered;
-                            //logupdate.PriceId = order.PriceId;
-                            //NFixEntities db = new NFixEntities();
-                            //db.Entry(logupdate).State = EntityState.Modified;
+                            _log.UpdateLog(order, order.id);
+                            if (order.Discount > 0)
+                            {
+                                TblDiscount dis = _dis.SelectDiscountById(Convert.ToInt32(order.Discount));
+                                TblDiscount tblDiscount = new TblDiscount();
+                                tblDiscount.id = dis.id;
+                                tblDiscount.Discount = dis.Discount;
+                                tblDiscount.Count = dis.Count - 1;
+                                tblDiscount.Name = dis.Name;
+                                _dis.UpdateDiscount(tblDiscount, dis.id);
+                            }
                             return Redirect("/User/Profile/Index/" + id + "?BlogFactor=" + RefID);
                         }
                         else
@@ -304,7 +304,7 @@ namespace NFix.Controllers
                         order.MoneyTransfered = 0;
                         order.LogText = $" ناموفق{order.MoneyTransfered} اشتراک خرید";
                         bool x = _log.UpdateLog(order, order.id);
-                        
+
                         //Response.Write("Error! Authority: " + Request.QueryString["Authority"].ToString() + " Status: " + Request.QueryString["Status"].ToString());
                     }
                 }
@@ -315,7 +315,7 @@ namespace NFix.Controllers
                     bool x = _log.UpdateLog(order, order.id);
                     Response.Write("Invalid Input");
                 }
-                
+
                 return View();
             }
             catch

@@ -19,6 +19,8 @@ namespace NFix.Areas.User.Controllers
         private OrderService _order = new OrderService();
         private ClientProductRelService _clientProductRel = new ClientProductRelService();
         private LogService _log = new LogService();
+        private DiscountService _dis = new DiscountService();
+
         // GET: User/Profile
         public ActionResult Index()
         {
@@ -116,7 +118,37 @@ namespace NFix.Areas.User.Controllers
         {
             TblClient selectClientByUserName = _client.SelectClientByUserPassId(_userPass.SelectUserPassByUsername(User.Identity.Name).id);
             List<TblLog> clientLog = _log.SelectAllLogs().Where(i => i.ClientId == selectClientByUserName.id).ToList();
-            return PartialView(clientLog.OrderByDescending(i => i.Date));
+            List<HistoryLogViewModel> viewModel = new List<HistoryLogViewModel>();
+            foreach (var item in clientLog)
+            {
+                var client = _client.SelectClientById(Convert.ToInt32(item.ClientId));
+                HistoryLogViewModel tbl = new HistoryLogViewModel();
+                tbl.Date = item.Date;
+                if (client != null)
+                {
+                    tbl.ClientTell = client.TellNo;
+                }
+                else
+                {
+                    tbl.ClientTell = "کاربر حذف شده است";
+                }
+                tbl.id = item.id;
+                tbl.LogText = item.LogText;
+                tbl.MoneyTransfered = item.MoneyTransfered;
+                tbl.IsValid = item.IsValid;
+                tbl.PriceId = item.PriceId;
+                tbl.Discount = 0;
+                if (item.Discount > 0)
+                {
+                    TblDiscount discount = _dis.SelectDiscountById((int)item.Discount);
+                    if (discount != null)
+                    {
+                        tbl.Discount = discount.Discount;
+                    }
+                }
+                viewModel.Add(tbl);
+            }
+            return PartialView(viewModel.OrderByDescending(i => i.Date));
         }
         public ActionResult History()
         {
