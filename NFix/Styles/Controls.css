@@ -536,7 +536,6 @@ body {
       background-image: none !important;
       padding: 0 !important;
       width: 824px;
-      height: 500px;
       -moz-box-shadow: rgba(0, 0, 0, 0.38) 0 0px 2vw;
       -webkit-box-shadow: rgba(0, 0, 0, 0.38) 0 0px 2vw;
       box-shadow: rgba(0, 0, 0, 0.38) 0 0px 2vw;
@@ -547,6 +546,7 @@ body {
     -webkit-border-radius: 0;
     border-radius: 0;*/
       margin: auto;
+      overflow: hidden;
       display: flex;
       -ms-flex-direction: row;
       -webkit-flex-direction: row;
@@ -558,14 +558,16 @@ body {
         color: #ae511b; }
       #ModalLogin .uk-modal-dialog .alternate input:not(.check-box), #ModalRegister .uk-modal-dialog .alternate input:not(.check-box) {
         margin-bottom: 12px; }
-      #ModalLogin .uk-modal-dialog .alternate .check-box, #ModalRegister .uk-modal-dialog .alternate .check-box {
-        height: 24px;
-        margin: auto 0 auto 8px; }
+      #ModalLogin .uk-modal-dialog .alternate .uk-checkbox, #ModalRegister .uk-modal-dialog .alternate .uk-checkbox {
+        height: 16px !important;
+        width: 16px !important; }
   #ModalLogin form, #ModalRegister form {
     flex: 1;
     padding: 20px; }
     #ModalLogin form .row, #ModalRegister form .row {
       overflow: visible; }
+    #ModalLogin form .uk-button-default, #ModalLogin form .button-primary, #ModalRegister form .uk-button-default, #ModalRegister form .button-primary {
+      padding: 8px 16px !important; }
   #ModalLogin img, #ModalRegister img {
     background: #B41313;
     flex: 1;

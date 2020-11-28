@@ -1,9 +1,8 @@
 ﻿@model DataLayer.ViewModel.RegisterViewModel
 
 <div class="uk-modal-dialog uk-modal-body">
-    <div class="alternate" onclick="">
+    <div class="alternate">
         <img src="~/Resources/Png/Login.png" alt="Boxing Club, Gym" />
-
 
         @using (Ajax.BeginForm("Login", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "LoadingEnd('#LoginForm')", UpdateTargetId = "ModalLogin" }, htmlAttributes: new { @id = "LoginForm" }))
         {
@@ -28,24 +27,21 @@
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "uk-margin-small-top", required = "required" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
-                <div class="uk-margin-auto-left uk-margin-small-top uk-margin-bottom row">
+                <div class="uk-margin-auto-left row uk-margin-small-top uk-margin-bottom row">
                     @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "" })
-                    @Html.EditorFor(model => model.RememberMe, new { @class = "uk-checkbox uk-margin-small-left uk-margin-remove-bottom" })
+                    @Html.EditorFor(model => model.RememberMe, new { htmlAttributes = new { @class = "uk-checkbox uk-margin-small-left uk-margin-auto-top" } })
                     @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
                 </div>
 
                 @Html.HiddenFor(m => m.GoogleCapcha, htmlAttributes: new { @class = "GoogleCapcha" })
                 @Html.ValidationMessageFor(model => model.GoogleCapcha, "", new { @class = "text-danger" })
 
-                <div>
-                    <a class=""
-                       onclick="UIkit.modal(document.getElementById('ModalForget')).show();"> رمز خود را فراموش کرده اید؟</a>
-                </div>
-                <div class="row uk-margin-medium-top">
+                <a uk-toggle href="#ModalForget"> رمز خود را فراموش کرده اید؟</a>
+                <div class="row uk-margin-top">
                     <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
-                       onclick="UIkit.modal(document.getElementById('ModalRegister')).show();">ثبت نام</a>
+                       href="#ModalRegister" uk-toggle>ثبت نام</a>
 
-                    <button class="uk-margin-auto-bottom" onclick="LoadingRun('#LoginForm')">
+                    <button class="uk-margin-auto-botto m" onclick="LoadingRun('#LoginForm')">
                         ورود
                     </button>
                 </div>

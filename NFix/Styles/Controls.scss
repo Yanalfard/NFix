@@ -29,10 +29,10 @@ $Modal-width: 824px;
             background-image: none !important;
             padding: 0 !important;
             width: $Modal-width;
-            height: 500px;
             @include shadow-mega();
             @include border-radius(0,0,0,0);
             margin: auto;
+            overflow: hidden;
 
             @include row();
 
@@ -44,9 +44,9 @@ $Modal-width: 824px;
                 margin-bottom: 12px;
             }
 
-            .check-box {
-                height: 24px;
-                margin: auto 0 auto 8px;
+            .uk-checkbox {
+                height: 16px !important;
+                width: 16px !important;
             }
         }
     }
@@ -57,6 +57,10 @@ $Modal-width: 824px;
 
         .row {
             overflow: visible;
+        }
+
+        .uk-button-default, .button-primary {
+            padding: 8px 16px !important;
         }
     }
 
