@@ -1,5 +1,5 @@
-﻿const staticCacheName = 'site-static-v2';
-const dynamicCacheName = 'site-dynamic-v2';
+﻿const staticCacheName = 'site-static-v3';
+const dynamicCacheName = 'site-dynamic-v3';
 const cacheMaxSize = 3;
 
 const assets = [
@@ -20,6 +20,9 @@ const assets = [
     '/Scripts/UIScripts/BMICalculator.js',
     '/Scripts/UIScripts/CommentSection.js',
     '/Scripts/UIScripts/Global.js',
+    '/Scripts/UIScripts/CopyToClipboard.js',
+    '/Scripts/UIScripts/ImageLoadFailed.js',
+    '/Scripts/UIScripts/Index.js',
     '/Styles/about.min.css',
     '/Styles/Admin.min.css',
     '/Styles/blogs.min.css',
@@ -48,6 +51,7 @@ const assets = [
     '/Resources/Png/Mobile/icon_96.png',
     '/Resources/Png/Mobile/icon_72.png',
     '/Resources/Png/Tutors/Tutor_1.jpg',
+    '/Resources/Svg/NoImage.svg',
     '/Resources/Svg/3.svg',
     '/Resources/Svg/AnimatedBubble.svg',
     '/Resources/Svg/ArvinTavWhite.svg',
