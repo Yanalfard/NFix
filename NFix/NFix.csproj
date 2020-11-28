@@ -330,11 +330,13 @@
     <Content Include="Resources\Svg\Footer\paypal.svg" />
     <Content Include="Resources\Svg\Footer\visa.svg" />
     <Content Include="Resources\Svg\Gold.svg" />
+    <Content Include="Resources\Svg\NoImage.svg" />
     <Content Include="Resources\Svg\NFIXBlack.svg" />
     <Content Include="Resources\Svg\NotFound.svg" />
     <Content Include="Resources\Svg\Plat.svg" />
     <Content Include="Resources\Svg\Sliver.svg" />
     <Content Include="Resources\Svg\VID-20201104-WA0001.mp4" />
+    <Content Include="Resources\Svg\YaghoutWeb.svg" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\croppie.min.js" />
     <Content Include="Scripts\Jquery\ajaxfileupload.js" />
@@ -343,7 +345,9 @@
     <Content Include="Scripts\Loading\Loading.js" />
     <Content Include="Scripts\Jquery\jquery-2.1.4.min.js" />
     <Content Include="Scripts\Jquery\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\UIScripts\CopyToClipboard.js" />
     <Content Include="Scripts\UIScripts\Global.js" />
+    <Content Include="Scripts\UIScripts\ImageLoadFailed.js" />
     <Content Include="Scripts\UIScripts\Index.js" />
     <Content Include="Styles\croppie.css" />
     <Content Include="Styles\Plans.css">
@@ -1692,7 +1696,6 @@
     <Content Include="Styles\Profile.scss" />
     <Content Include="Views\Shared\_ProductBlock.cshtml" />
     <Content Include="Views\Shared\_BlogBlock.cshtml" />
-    <Content Include="Views\Home\VideoView.cshtml" />
     <Content Include="Views\Home\CategoryView.cshtml" />
     <Content Include="Views\Home\BlogsPage.cshtml" />
     <Content Include="Views\Home\TutorView.cshtml" />
@@ -1740,6 +1743,7 @@
     <Content Include="Views\HomeShopCart\PlansFinal.cshtml" />
     <Content Include="Styles\_popupCroppit.scss" />
     <Content Include="Views\HomeShopCart\ListCompare.cshtml" />
+    <Content Include="Styles\IRANYekan.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

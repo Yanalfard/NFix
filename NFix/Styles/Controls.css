@@ -245,18 +245,22 @@ backdrop-filter: saturate(80%);
 .text-center {
   text-align: center !important; }
 
+@font-face {
+  font-family: 'IRANYekan';
+  src: url("IRANYekan.ttf") format("truetype"); }
+
 * {
   margin: 0;
   padding: 0;
   float: none;
-  /*font-family: 'A Iranian Sans', 'numbers','Segoe UI';*/
-  font-family: 'Segoe UI';
+  font-family: 'iranyekan', IRANYekan, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   list-style: none !important;
   text-decoration: none;
   text-align: right;
   outline: none; }
 
 html {
+  font-family: 'iranyekan', IRANYekan, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   scroll-behavior: smooth;
   overflow-x: hidden !important;
   min-height: 100vh;
@@ -649,6 +653,9 @@ body {
     #ModalProduct .modal-product > .image {
       margin: 20px 0 0 0; } }
 
+.line-break-none {
+  white-space: nowrap !important; }
+
 .floating-cart {
   position: fixed;
   bottom: 24px;
@@ -722,6 +729,10 @@ body {
   transition: all ease 0.5s; }
   .uk-navbar-container .drop {
     width: 180px; }
+    .uk-navbar-container .drop > .mat {
+      padding: 16px; }
+      .uk-navbar-container .drop > .mat .nav-profile {
+        margin: 10px 0; }
   .uk-navbar-container .uk-navbar-dropdown {
     background: red !important;
     z-index: 500;
@@ -908,10 +919,19 @@ body {
   transition: all ease 0.1s;
   background: #e71d1d; }
 
+.uk-notification-message {
+  background: #252525 !important;
+  padding: 20px;
+  background: #252525;
+  -moz-box-shadow: rgba(0, 0, 0, 0.54) 0 0px 0.6vw;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.54) 0 0px 0.6vw;
+  box-shadow: rgba(0, 0, 0, 0.54) 0 0px 0.6vw; }
+
 footer {
   padding: 0;
   background: #1b1b1b;
   border-top: solid 1px #373737;
+  border-bottom: 8px solid #B41313;
   min-height: 50vh;
   width: 100%;
   overflow: visible; }
@@ -963,10 +983,6 @@ footer {
     color: #848484; }
   footer a:hover {
     color: #c1c1c1; }
-
-.footer-stripe {
-  height: 8px;
-  background: #B41313; }
 
 @media only screen and (max-device-width: 480px) {
   footer .footer-container {

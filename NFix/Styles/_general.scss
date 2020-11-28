@@ -1,12 +1,16 @@
 ﻿@import '_colors.scss';
 @import '_layout.scss';
 
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('IRANYekan.ttf') format('truetype');
+}
+
 * {
     margin: 0;
     padding: 0;
     float: none;
-    /*font-family: 'A Iranian Sans', 'numbers','Segoe UI';*/
-    font-family: 'Segoe UI';
+    font-family: 'iranyekan', IRANYekan, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     list-style: none !important;
     text-decoration: none;
     text-align: right;
@@ -14,6 +18,7 @@
 }
 
 html {
+    font-family: 'iranyekan', IRANYekan, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     scroll-behavior: smooth;
     overflow-x: hidden !important;
     min-height: 100vh;

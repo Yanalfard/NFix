@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <!-- Project Css -->
 <link href="~/Styles/Video.min.css" rel="stylesheet" />
 <div class="space-nav-bottom"></div>
@@ -50,8 +49,7 @@
                     <span>@Model.ViewCount</span>
                 </label>
                 @*<input type="text" style="width:0.1px;height:0.1px;opacity:0" id="dummyInput" value="" />*@
-                <a uk-icon="link" onclick="fallbackCopyTextToClipboard(window.location.href)" uk-tooltip="اشتراک گذاری"></a>
-
+                <a uk-icon="link" onclick="fallbackCopyTextToClipboard(window.location.href); UIkit.notification('لینک اشتراک کپی شد')" uk-tooltip="اشتراک گذاری"></a>
 
                 <!--<a class="uk-animation-slide-top-small" uk-tooltip="title:لایک" uk-icon="heart"></a>-->
                 <div class="row star-container uk-margin-small-left" uk-tooltip="@((float)Model.Raiting / 20)" dir="rtl">
@@ -123,6 +121,7 @@
 <div class="space"></div>
 
 <script src="~/Scripts/UIScripts/CommentSection.js"></script>
+<script src="~/Scripts/UIScripts/CopyToClipboard.js"></script>
 
 <script>
     function successComment() {

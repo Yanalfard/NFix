@@ -183,6 +183,10 @@ $Modal-width: 824px;
     }
 }
 
+.line-break-none {
+    white-space: nowrap !important;
+}
+
 .floating-cart {
     position: fixed;
     bottom: 24px;
@@ -250,6 +254,14 @@ $Modal-width: 824px;
 
     .drop {
         width: 180px;
+
+        > .mat {
+            padding: 16px;
+
+            .nav-profile {
+                margin: 10px 0;
+            }
+        }
     }
 
     .uk-navbar-dropdown {
@@ -458,10 +470,16 @@ $VideoWidth: 300px;
     background: lighten($primary,12%);
 }
 
+.uk-notification-message {
+    background: #252525 !important;
+    @include mat;
+}
+
 footer {
     padding: 0;
     background: $FooterBackround;
     border-top: solid 1px #373737;
+    border-bottom: 8px solid $primary;
     min-height: 50vh;
     width: 100%;
     overflow: visible;
@@ -535,11 +553,6 @@ footer {
     a:hover {
         color: lighten($black-light,24%);
     }
-}
-
-.footer-stripe {
-    height: 8px;
-    background: $primary;
 }
 
 @media only screen and (max-device-width : 480px) {

@@ -59,15 +59,26 @@
         @include trans(.4s);
     }
 
-    > .uk-icon:hover {
+    > .uk-icon:hover, .player:hover {
+        color: white;
         @include icon-glow();
     }
 
-    .player {
+    .player-container {
         position: absolute;
-        margin-left: 95vw;
-        margin-top: 48vh;
-        margin-bottom: 48vh;
+        overflow: visible;
+        width: auto;
+        right: 10px;
+        top: 0;
+        bottom: 0;
+
+        .player {
+            @include trans(.4s);
+            color: white;
+            min-height: 20px;
+            min-width: 20px;
+            margin: auto;
+        }
     }
 }
 
@@ -252,7 +263,7 @@ $bgPosition-Y: 60px;
 
 
 #darnVideo {
-    display:none;
+    display: none;
     position: absolute;
     width: 100vw;
     height: 100vh;
@@ -281,6 +292,11 @@ $bgPosition-Y: 60px;
     a {
         margin: auto !important;
         text-decoration: none !important;
+
+        img {
+            max-height: 36px;
+            max-width: 42px;
+        }
     }
 }
 
@@ -625,14 +641,25 @@ $Stickies-Width: 100px;
 
 #stickies {
     margin-left: auto !important;
-    margin-right: 24px;
+    margin-right: -20px;
     width: $Stickies-Width !important;
     background: coral;
+    @include trans(.2s);
+    opacity: 0;
 
     a:hover {
         pointer-events: auto !important;
         background: #3d3d3d;
+
+        img {
+            height: 28px;
+            width: 28px;
+        }
     }
+}
+
+.opacity-full {
+    opacity: 1 !important;
 }
 
 .animated-bubble {
@@ -680,7 +707,7 @@ $Stickies-Width: 100px;
 $blog-Object-Fit: cover;
 $blog-Height: auto;
 $blog-Width: 342px;
-$blog-Image-Height: 300px;
+$blog-Image-Height: 256px;
 
 .blog {
     height: $blog-Height;
@@ -691,6 +718,9 @@ $blog-Image-Height: 300px;
 
     img {
         flex: 1 !important;
+        min-height: $blog-Image-Height;
+        max-height: $blog-Image-Height;
+        background: coral;
         height: $blog-Image-Height;
         -o-object-fit: $blog-Object-Fit;
         object-fit: $blog-Object-Fit;
@@ -726,7 +756,7 @@ $blog-Image-Height: 300px;
 $product-Height: auto;
 $product-Width: 342px;
 $product-Image-Height: 280px;
-$product-Image-Fit: contain;
+$product-Image-Fit: cover;
 
 .product-block {
     margin: 16px auto;

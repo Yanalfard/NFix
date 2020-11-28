@@ -8,7 +8,6 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="~/manifest.json" />
-    <script src="~/ManUp.js"></script>
     <link rel="apple-touch-icon" href="/Resources/Png/Mobile/icon_96.png" />
     <meta name="apple-mobile-web-app-status-bar" content="#E73434" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#E73434" />
@@ -151,7 +150,7 @@
                             پروفایل
                         </a>
                         <div uk-drop="offset: -10" class="drop" dir="rtl">
-                            <div class="mat uk-padding column">
+                            <div class="mat column">
                                 @if (User.IsInRole("user"))
                                 {
                                     <a class="nav-profile row" dir="rtl" type="button" href="/User/Profile/Index">
@@ -167,7 +166,7 @@
                                 {
                                     <a class="nav-profile" type="button" href="/Admin/Blog/BlogTable">
                                         <span uk-icon="user"></span>
-                                        <span class="uk-margin-small-right">
+                                        <span class="uk-margin-small-right line-break-none">
                                             پنل مدیریت
                                         </span>
                                     </a>
@@ -213,7 +212,7 @@
                     </div>
 
                     <!--#endregion-->
-                    <!-- #region Login -->
+                    <!-- #region Forgot Password -->
                     <div id="ModalForget" uk-modal>
                         @Html.Action("ForgotPassword", "HomeAccount", new { area = "" })
                     </div>
@@ -228,12 +227,9 @@
 
                     <!--#endregion-->
 
-
                 </li>
 
                 <li>
-
-
                     <form action="/HomeSearch/Index" class="uk-search uk-search-default uk-width-small uk-margin-top uk-margin-left ">
                         <button class="button-icon no-glow" uk-search-icon></button>
                         <input class="uk-search-input" type="search" name="q" id="q" dir="rtl" placeholder="جستجو...">
@@ -274,6 +270,7 @@
     </nav>
 
     <!-- #endregion -->
+
     <!-- #region Floating Cart -->
 
     <div class="floating-cart uk-box-shadow-medium uk-box-shadow-hover-large">
@@ -415,24 +412,23 @@
                 <a href="https://arvintavco.com/" class="uk-link">ایده پرداز آروین تاو</a>.
             </span>
         </div>
-        @*<a href="" class="uk-margin-right uk-margin-bottom">طراحی و توسعه توسط شرکت ایده پرداز آروین تاو</a>*@
     </footer>
 
-    @*<div class="footer-stripe"></div>*@
-
-
-    <!-- #Loadin -->
+    <!-- #Loading -->
     <div id="overlay">
         <div class="cv-spinner">
             <span class="spinner"></span>
         </div>
     </div>
     <!--#endregion-->
+    <!-- PWA MAIN -->
+    @*<script src="~/Scripts/app.js"></script>*@
 
-    <script src="~/Scripts/app.js"></script>
+    <!-- #endregion Scripts -->
+    <script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
 
-    <!-- #endregion -->
     <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF"></script>
+
     <script>
         grecaptcha.ready(function () {
             grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {

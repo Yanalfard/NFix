@@ -16,7 +16,9 @@
     </header>
     <!--icons in header-->
     <div class="rowIcon uk-margin-auto-top">
-        <a href="#" uk-tooltip="اشتراک">
+        <a onclick="fallbackCopyTextToClipboard(window.location.href);
+                UIkit.notification('لینک اشتراک کپی شد')"
+           uk-tooltip="اشتراک گذاری">
             <img src="../Resources/Svg/Union.svg" />
         </a>
         <a href="#" uk-tooltip="اینستاکرام">
@@ -31,8 +33,11 @@
     <a href="#videos" uk-icon="icon:chevron-down; ratio:2.5"
        class="uk-icon center"></a>
 
-    <a onclick="slideInVideo()" uk-toggle uk-icon="icon: play-circle; ratio: 2"
-       class="player uk-icon uk-margin-small-right"></a>
+    <div class="player-container column">
+        <a onclick="slideInVideo()" uk-toggle
+           uk-icon="icon: play-circle; ratio: 2"
+           class="player uk-icon uk-margin-small-right"></a>
+    </div>
 
     <div id="darnVideo">
         <video id="video">
