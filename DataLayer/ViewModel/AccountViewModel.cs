@@ -16,6 +16,7 @@ namespace DataLayer.ViewModel
         [Display(Name = "کد ملی")]
         public string IdentificationNo { get; set; }
         [Display(Name = "شماره تلفن")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MinLength(4, ErrorMessage = "تعداد کاراکتر کم است")]
         [DataType(DataType.PhoneNumber)]
         public string TellNo { get; set; }

@@ -22,6 +22,10 @@
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = " uk-margin-small-top" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
+                 @Html.LabelFor(model => model.TellNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.TellNo, new { htmlAttributes = new { @class = " uk-margin-small-top", @type = "number", @min = "0", @step = "0.01", @value = "0" } })
+                @Html.ValidationMessageFor(model => model.TellNo, "", new { @class = "text-danger" })
+
                 @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
