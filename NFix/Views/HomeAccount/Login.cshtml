@@ -2,7 +2,7 @@
 
 <div class="uk-modal-dialog uk-modal-body">
     <div class="alternate">
-        <img src="~/Resources/Png/Login.png" alt="Boxing Club, Gym" />
+        <img src="~/Resources/Png/Login.png" alt="Boxing Club, Gym" width="400" height="600" />
 
         @using (Ajax.BeginForm("Login", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "LoadingEnd('#LoginForm')", UpdateTargetId = "ModalLogin" }, htmlAttributes: new { @id = "LoginForm" }))
         {
@@ -37,7 +37,8 @@
                 @Html.ValidationMessageFor(model => model.GoogleCapcha, "", new { @class = "text-danger" })
 
                 <a uk-toggle href="#ModalForget"> رمز خود را فراموش کرده اید؟</a>
-                <div class="row uk-margin-top">
+                    
+                <div class="buttons-panel">
                     <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-margin-right "
                        href="#ModalRegister" uk-toggle>ثبت نام</a>
 
@@ -45,6 +46,7 @@
                         ورود
                     </button>
                 </div>
+
             </div>
         }
 

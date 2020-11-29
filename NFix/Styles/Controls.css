@@ -247,7 +247,8 @@ backdrop-filter: saturate(80%);
 
 @font-face {
   font-family: 'IRANYekan';
-  src: url("IRANYekan.ttf") format("truetype"); }
+  src: url("IRANYekan.ttf") format("truetype");
+  font-display: swap; }
 
 * {
   margin: 0;
@@ -554,6 +555,11 @@ body {
       -ms-align-content: center;
       -webkit-align-content: center;
       align-content: center; }
+      #ModalLogin .uk-modal-dialog .alternate .buttons-panel, #ModalRegister .uk-modal-dialog .alternate .buttons-panel {
+        margin-top: 24px; }
+        #ModalLogin .uk-modal-dialog .alternate .buttons-panel > *, #ModalRegister .uk-modal-dialog .alternate .buttons-panel > * {
+          padding: 0 16px !important;
+          min-height: 42px !important; }
       #ModalLogin .uk-modal-dialog .alternate .text-danger, #ModalRegister .uk-modal-dialog .alternate .text-danger {
         color: #ae511b; }
       #ModalLogin .uk-modal-dialog .alternate input:not(.check-box), #ModalRegister .uk-modal-dialog .alternate input:not(.check-box) {
@@ -571,7 +577,7 @@ body {
   #ModalLogin img, #ModalRegister img {
     background: #B41313;
     flex: 1;
-    height: 100%;
+    height: 100% !important;
     width: 100%;
     -o-object-fit: cover;
     object-fit: cover;

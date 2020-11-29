@@ -12,12 +12,8 @@
 
     @Html.Action("Info", "Profile")
 
-    <!-- #region Cart -->
-
-
-    <!-- #endregion -->
-
     <!-- #region History -->
+
     @if (Request.QueryString["BlogFactor"] != null)
     {
         <div class="uk-alert-success noprint" uk-alert>
@@ -28,7 +24,6 @@
 
     @Html.Action("HistoryLog", "Profile")
     @Html.Action("History", "Profile")
-
 
     <!-- #endregion -->
 
