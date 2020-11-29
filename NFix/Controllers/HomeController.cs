@@ -6,12 +6,26 @@ namespace NFix.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+            catch
+            {
+                return Redirect("/fallback.html");
+            }
         }
 
         public ActionResult Hero()
         {
-            return PartialView();
+            try
+            {
+                return PartialView();
+            }
+            catch
+            {
+                return Redirect("/fallback.html");
+            }
         }
         public ActionResult Stripe()
         {

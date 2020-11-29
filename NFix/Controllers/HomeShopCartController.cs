@@ -55,7 +55,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         [Route("ShopCart")]
@@ -115,7 +115,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         public ActionResult PlansCheck(int id)
@@ -152,7 +152,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
 
@@ -173,7 +173,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         [HttpPost]
@@ -198,7 +198,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         public ActionResult PlansVerify(int id)
@@ -320,7 +320,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
 
         }
@@ -368,7 +368,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
 
@@ -392,7 +392,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
 
@@ -451,7 +451,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
 
@@ -501,7 +501,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
 
         }

@@ -234,7 +234,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
 
@@ -247,7 +247,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
 
@@ -259,7 +259,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         [HttpPost]
@@ -306,7 +306,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         public ActionResult RecoveryPassword(string id)
@@ -317,7 +317,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         [HttpPost]
@@ -356,7 +356,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         public ActionResult ActiviationEmail()
@@ -367,7 +367,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         public ActionResult RecoveryPass()
@@ -378,7 +378,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         public ActionResult LoginPageShowModal()
