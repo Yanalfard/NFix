@@ -106,7 +106,7 @@ namespace NFix.Controllers
                     };
                     FormsAuthentication.SetAuthCookie(user.Username, client.RememberMe);
                     //return JavaScript("window.location = window.location.href.replace('?LoginInUser=true', '');document.getElementById('LoginForm').disabled = true;UIkit.modal(document.getElementById('ModalLogin')).hide();");
-                    return JavaScript("UIkit.modal(document.getElementById('ModalLogin')).hide();window.location = window.location.href='/Home/Index'");
+                    return JavaScript("UIkit.modal(document.getElementById('ModalLogin')).hide();window.location = window.location.href='/'");
                 }
                 else
                 {
@@ -349,7 +349,7 @@ namespace NFix.Controllers
                         bool x = _userPass.UpdateUserPass(tblUserPass, user.id);
 
                         // return Redirect("/Home/Index?DoneChangePassword=true");
-                        return JavaScript("alert('رمز شما تغیر یافت');UIkit.modal(document.getElementById('RecoveryPassword')).hide();;window.location ='/Home/Index';");
+                        return JavaScript("alert('رمز شما تغیر یافت');UIkit.modal(document.getElementById('RecoveryPassword')).hide();;window.location ='/';");
                     }
                 }
                 return PartialView("RecoveryPassword", recovery);
