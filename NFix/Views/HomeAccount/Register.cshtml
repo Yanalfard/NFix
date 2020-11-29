@@ -1,7 +1,7 @@
 ﻿@model DataLayer.ViewModel.RegisterViewModel
 <div class="uk-modal-dialog uk-modal-body">
     <div class="alternate">
-        <img src="~/Resources/Png/Register.png" alt="Gym interior" />
+        <img src="~/Resources/Png/Register.png" width="400" height="600" alt="Gym interior" />
 
         @using (Ajax.BeginForm("Register", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "LoadingEnd('#RegisterForm')", UpdateTargetId = "ModalRegister" }, htmlAttributes: new { @id = "RegisterForm" }))
         {
@@ -33,7 +33,7 @@
                 @Html.HiddenFor(m => m.GoogleCapcha, htmlAttributes: new { @class = "GoogleCapcha" })
                 @Html.ValidationMessageFor(model => model.GoogleCapcha, "", new { @class = "text-danger" })
 
-                <div class="row uk-margin-medium-top">
+                <div class="buttons-panel">
                     <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
                        onclick="UIkit.modal(document.getElementById('ModalLogin')).show();">ورود</a>
                     <button class="uk-margin-remove-bottom" onclick="LoadingRun('#RegisterForm')">

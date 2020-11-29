@@ -47,14 +47,15 @@
 <!-- #endregion -->
 <!--#region Sticky icons-->
 <div id="stickies" class="column" uk-sticky="offset:250;cls-active: opacity-full">
-    <img class="animated-bubble" src="../Resources/Svg/AnimatedBubble.svg" />
+    <img class="animated-bubble" width="72" height="85" src="../Resources/Svg/AnimatedBubble.svg" />
     @if (User.Identity.IsAuthenticated)
     {
 
         if (User.IsInRole("user"))
         {
-            <a href="/User/Profile/Index" class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
-
+            <a href="/User/Profile/Index" class="stickIcon" uk-tooltip="title: پروفایل; pos:left">
+                <img src="../Resources/Svg/asdfwe01.svg" alt="user" width="28" height="28"/>
+            </a>
         }
         else if (User.IsInRole("admin"))
         {
@@ -75,10 +76,10 @@
                 ورود
             </a>*@
     }
-    <a class="stickIcon" uk-tooltip="title: اشتراک گذاری; pos:left" 
+    <a class="stickIcon" uk-tooltip="title: اشتراک گذاری; pos:left"
        onclick="fallbackCopyTextToClipboard(window.location.href);
                 UIkit.notification('لینک اشتراک کپی شد')">
-        <img src="../Resources/Svg/asdfwe04.svg" width="28" height="28"/>
+        <img src="../Resources/Svg/asdfwe04.svg" width="28" height="28" />
     </a>
     <a href="#" class="stickIcon" uk-tooltip="title: فیس بوک; pos:left">
         <img src="../Resources/Svg/asdfwe03.svg" width="28" height="28" />

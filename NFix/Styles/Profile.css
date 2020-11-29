@@ -177,7 +177,8 @@ backdrop-filter: saturate(80%);
 
 @font-face {
   font-family: 'IRANYekan';
-  src: url("IRANYekan.ttf") format("truetype"); }
+  src: url("IRANYekan.ttf") format("truetype");
+  font-display: swap; }
 
 * {
   margin: 0;

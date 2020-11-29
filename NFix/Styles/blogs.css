@@ -177,7 +177,8 @@ backdrop-filter: saturate(80%);
 
 @font-face {
   font-family: 'IRANYekan';
-  src: url("IRANYekan.ttf") format("truetype"); }
+  src: url("IRANYekan.ttf") format("truetype");
+  font-display: swap; }
 
 * {
   margin: 0;
@@ -454,6 +455,7 @@ article {
     font-weight: 600; }
 
 .grid {
+  min-height: 20vh;
   display: grid;
   grid-template-rows: auto;
   grid-gap: 1.1em;
