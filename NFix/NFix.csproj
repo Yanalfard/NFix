@@ -253,6 +253,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\User\Views\web.config" />
@@ -1699,10 +1700,6 @@
     <Content Include="Styles\Profile.scss" />
     <Content Include="Views\Shared\_ProductBlock.cshtml" />
     <Content Include="Views\Shared\_BlogBlock.cshtml" />
-    <Content Include="Views\Home\CategoryView.cshtml" />
-    <Content Include="Views\Home\BlogsPage.cshtml" />
-    <Content Include="Views\Home\TutorView.cshtml" />
-    <Content Include="Views\Home\VideosPage.cshtml" />
     <Content Include="Views\HomeVideo\VideosPage.cshtml" />
     <Content Include="Views\HomeVideo\VideoView.cshtml" />
     <Content Include="Views\HomeCategories\CategoriesPage.cshtml" />

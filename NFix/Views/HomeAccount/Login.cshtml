@@ -33,8 +33,8 @@
                     @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
                 </div>
 
-                @Html.HiddenFor(m => m.GoogleCapcha, htmlAttributes: new { @class = "GoogleCapcha" })
-                @Html.ValidationMessageFor(model => model.GoogleCapcha, "", new { @class = "text-danger" })
+                @*@Html.HiddenFor(m => m.GoogleCapcha, htmlAttributes: new { @class = "GoogleCapcha" })
+                @Html.ValidationMessageFor(model => model.GoogleCapcha, "", new { @class = "text-danger" })*@
 
                 <a uk-toggle href="#ModalForget"> رمز خود را فراموش کرده اید؟</a>
                     

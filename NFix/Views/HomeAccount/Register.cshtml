@@ -34,8 +34,8 @@
                 @Html.EditorFor(model => model.RePassword, new { htmlAttributes = new { @class = " uk-margin-small-top", required = "required" } })
                 @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger" })
 
-                @Html.HiddenFor(m => m.GoogleCapcha, htmlAttributes: new { @class = "GoogleCapcha" })
-                @Html.ValidationMessageFor(model => model.GoogleCapcha, "", new { @class = "text-danger" })
+                @*@Html.HiddenFor(m => m.GoogleCapcha, htmlAttributes: new { @class = "GoogleCapcha" })
+                @Html.ValidationMessageFor(model => model.GoogleCapcha, "", new { @class = "text-danger" })*@
 
                 <div class="buttons-panel">
                     <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-right "
