@@ -3,9 +3,9 @@ const dynamicCacheName = 'site-dynamic-v3';
 const cacheMaxSize = 3;
 
 const assets = [
-    '/',
+    
     '/manifest.json',
-    '/Scripts/app.js',
+    //'/Scripts/app.js',
     '/Scripts/Model.js',
     '/Scripts/modal.js',
     '/Scripts/bootstrap.js',

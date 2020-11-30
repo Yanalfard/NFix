@@ -1,12 +1,8 @@
 ﻿@{
     ViewBag.Title = "NFix";
 }
-
-<!--  -->
 <!-- #region Hero -->
-
 @Html.Action("Hero", "Home")
-
 <!-- #endregion -->
 @if (Request.QueryString["active"] != null)
 {
@@ -14,7 +10,6 @@
         alert('حساب کاربری شما فعال شد  میتونید وار حساب کاربری خود شوید');
     </script>
 }
-
 @if (Request.QueryString["RecoveryPassWord"] != null)
 {
     <div id="RecoveryPassword" uk-modal>
@@ -23,11 +18,8 @@
     <script>
         UIkit.modal(document.getElementById('RecoveryPassword')).show();
     </script>
-
 }
-
 <a name="videos"></a>
-
 <!-- #region Stripe -->
 <section class="stripe row">
     <a href="#" uk-tooltip="یاقوت وب ایرانیان">
@@ -43,7 +35,6 @@
         <img src="~/Resources/Svg/ArvinTavWhite.svg" width="42" height="36" alt="ArvinTavco.com Logo" />
     </a>
 </section>
-
 <!-- #endregion -->
 <!--#region Sticky icons-->
 <div id="stickies" class="column" uk-sticky="offset:250;cls-active: opacity-full">
@@ -91,22 +82,13 @@
 <!--#endregion-->
 <!-- #region Videos -->
 <!-- #Dynamic Videos -->
-
-
-
 @Html.Action("VideosPage", "HomeVideo")
-
-
 <!-- #endregion -->
-
 <img class="full-width" src="~/Resources/Svg/Biscuits/Poly_1.svg" />
 <!-- #region Categories -->
 <!-- #Dynamic Categories -->
 @Html.Action("CategoriesPage", "HomeCategories")
-
 <!-- #endregion -->
-
-
 <section class="category-article full-width row card uk-margin-top uk-padding-remove">
     <img src="~/Resources/Png/Tutors/Tutor_2.jpg" width="300" height="500" class="uk-child-width-1-5" alt="Tutor Man Flexing" />
     <article class="uk-width-4-5">
@@ -134,11 +116,8 @@
         <br />
     </article>
 </section>
-
 <div class="space"></div>
-
 <!-- #region Banner -->
-
 <section class="banner row">
     <content class="column uk-padding">
         <h3 class="uk-margin-remove" dir="rtl">تمرین واقعی وقتی شروع میشه که می‌خوای متوقفش کنی!</h3>
@@ -152,28 +131,18 @@
     </content>
     <img src="../Resources/Png/BodyBuilding.png" alt="Body Builder Man Flexing" />
 </section>
-
 <!-- #endregion -->
-
 <h3 class="clipped uk-margin-medium-top text-center">مربیان</h3>
-
 <!-- #region  Tutors -->
 <!-- #Dynamic Tutors -->
 @Html.Action("TutorsPage", "HomeTutors")
-
-
 <!-- #endregion -->
-
 <h3 class="clipped uk-margin-medium-top uk-margin-remove-bottom text-center">محصولات</h3>
-
 <!-- #region Products -->
 <!-- #Dynamic Products -->
-
 @Html.Action("ProductsPage", "HomeProducts")
 <!-- #endregion -->
-
 <div class="space-half"></div>
-
 <div class="calculator full-width row">
     <div class="column card center">
         <h5>
@@ -224,11 +193,8 @@
         </div>
     </div>
 </div>
-
 <div class="space-double"></div>
-
 <!-- #region Banner -->
-
 <a href="/Home/About" class="image-banner column">
     <div class="column">
         <h2>
@@ -241,34 +207,19 @@
     <div class="cover"></div>
     <img src="~/Resources/Png/Tutors/Tutor_1.jpg" alt="Motivational Image" />
 </a>
-
-
 <!-- #endregion -->
-
 <div class="space"></div>
-
 <h3 class="clipped uk-margin-medium-top text-center">وبلاگ ها  </h3>
-
 <!-- #region Blogs -->
 <!-- #Dynamic Blogs -->
-
 @Html.Action("BlogsPage", "HomeBlogs")
-
 <!-- #endregion -->
-
 <div class="space"></div>
-
-
 <div id="ModalProduct" uk-modal>
-
 </div>
-
 @section Scripts{
     <script src="~/Scripts/UIScripts/BMICalculator.js"></script>
     <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
     <script src="~/Scripts/UIScripts/CopyToClipboard.js"></script>
     <script src="~/Scripts/UIScripts/Index.js"></script>
-
-    
-
 }

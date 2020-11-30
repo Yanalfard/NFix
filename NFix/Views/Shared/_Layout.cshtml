@@ -426,7 +426,7 @@
     <script src="~/Scripts/app.js"></script>
 
     <!-- #endregion Scripts -->
-    <script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
+    @*<script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
 
     <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF"></script>
 
@@ -436,44 +436,11 @@
                 $(".GoogleCapcha").val(token);
             });
         });
-    </script>
+    </script>*@
 
     <script>
-        //$("#overlay").fadeIn(300);
-        //$(function () {
-        //    $('form#ajaxForm').find('a.submit-link').click(function () {
-        //        $('form#ajaxForm').trigger('submit');
-        //    }).show();
-        //}
-        function LoadingRun(form) {
-            if (!$(form).valid()) return;
-            $("#overlay").fadeIn(300);
-        }
-        function LoadingEnd(form) {
-            $("#overlay").fadeOut(300);
-            $(form)[0].reset();
-        }
-        $(function () {
-            countShopCart();
-        });
 
-        function countShopCart() {
-            $.get("/Api/Shop", function (res) {
-
-                $("#countShopCart").html(res);
-            });
-        }
-
-        function AddToCart(id) {
-            $.get("/Api/Shop/" + id, function (res) {
-                $("#countShopCart").html(res);
-                updateShopCart();
-            });
-        }
-
-        function updateShopCart() {
-            $("#showCart").load("/ShopCart/ShowCart").fadeOut(800).fadeIn(800);
-        }
+        
     </script>
 
     <!-- #endregion -->
