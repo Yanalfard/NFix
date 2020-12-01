@@ -6,8 +6,10 @@
 
     @Scripts.Render("~/bundles/modernizr")
     <meta name="description" content="سایت ورزشی و بدنسازی ان فیکس" />
-    <meta name="keywords" content="بدنسازی، آنلاین، ویدیو، ویدیو آموزشی، ان فیکس"/>
+    <meta name="keywords" content="بدنسازی، آنلاین، ویدیو، ویدیو آموزشی، ان فیکس" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link rel="icon" type="image/png" href="/favicon.ico" />
     <link rel="manifest" href="~/manifest.json" />
     <link rel="apple-touch-icon" href="/Resources/Png/Mobile/icon_96.png" />
     <meta name="apple-mobile-web-app-status-bar" content="#E73434" />
@@ -32,8 +34,7 @@
 
     <!--Owl Carousel Scripts-->
     <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
-    <!--Loading-->
-    <link href="~/Styles/Loading/Loading.css" rel="stylesheet" />
+
     <!--Jquery-->
     <script src="~/Scripts/Jquery/jquery-3.5.1.min.js"></script>
     <script src="~/Scripts/Jquery/jquery.validate.min.js"></script>
@@ -425,7 +426,7 @@
     <script src="~/Scripts/app.js"></script>
 
     <!-- #endregion Scripts -->
-    <script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
+    @*<script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
 
     <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF"></script>
 
@@ -435,44 +436,11 @@
                 $(".GoogleCapcha").val(token);
             });
         });
-    </script>
+    </script>*@
 
     <script>
-        //$("#overlay").fadeIn(300);
-        //$(function () {
-        //    $('form#ajaxForm').find('a.submit-link').click(function () {
-        //        $('form#ajaxForm').trigger('submit');
-        //    }).show();
-        //}
-        function LoadingRun(form) {
-            if (!$(form).valid()) return;
-            $("#overlay").fadeIn(300);
-        }
-        function LoadingEnd(form) {
-            $("#overlay").fadeOut(300);
-            $(form)[0].reset();
-        }
-        $(function () {
-            countShopCart();
-        });
 
-        function countShopCart() {
-            $.get("/Api/Shop", function (res) {
-
-                $("#countShopCart").html(res);
-            });
-        }
-
-        function AddToCart(id) {
-            $.get("/Api/Shop/" + id, function (res) {
-                $("#countShopCart").html(res);
-                updateShopCart();
-            });
-        }
-
-        function updateShopCart() {
-            $("#showCart").load("/ShopCart/ShowCart").fadeOut(800).fadeIn(800);
-        }
+        
     </script>
 
     <!-- #endregion -->

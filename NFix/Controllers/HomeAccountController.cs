@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Web.UI;
+using System.Configuration;
 
 namespace NFix.Controllers
 {
@@ -67,60 +68,60 @@ namespace NFix.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [HandleError]
-        public async Task<ActionResult> Login(RegisterViewModel client, string ReturnUrl = "/")
+        public ActionResult Login(RegisterViewModel client, string ReturnUrl = "/")
         {
-            var isCaptchaValid = await IsCaptchaValid(client.GoogleCapcha);
-            if (isCaptchaValid)
+            //var isCaptchaValid = await IsCaptchaValid(client.GoogleCapcha);
+            //if (isCaptchaValid)
+            //{
+            string hashPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(client.Password, "SHA256");
+            TblUserPass user = _userPass.SelectUserPassByUsernameAndPassword(client.UserName.Trim().ToLower(), hashPassword);
+            if (user != null)
             {
-                string hashPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(client.Password, "SHA256");
-                TblUserPass user = _userPass.SelectUserPassByUsernameAndPassword(client.UserName.Trim().ToLower(), hashPassword);
-                if (user != null)
+                if (user.IsActive)
                 {
-                    if (user.IsActive)
+                    TblClient selectClient = _client.SelectClientByUserPassId(user.id);
+                    if (selectClient != null)
                     {
-                        TblClient selectClient = _client.SelectClientByUserPassId(user.id);
-                        if (selectClient != null)
+                        TblClient updateClient = new TblClient();
+                        updateClient.id = selectClient.id;
+                        updateClient.Name = selectClient.Name;
+                        updateClient.IdentificationNo = selectClient.IdentificationNo;
+                        updateClient.TellNo = selectClient.TellNo;
+                        updateClient.Email = selectClient.Email;
+                        updateClient.Address = selectClient.Address;
+                        updateClient.PostalCode = selectClient.PostalCode;
+                        updateClient.UserPassId = selectClient.UserPassId;
+                        updateClient.Status = selectClient.Status;
+                        updateClient.PremiumTill = selectClient.PremiumTill;
+                        updateClient.InviteCode = selectClient.InviteCode;
+                        if (DateTime.Parse(selectClient.PremiumTill) >= DateTime.Now)
                         {
-                            TblClient updateClient = new TblClient();
-                            updateClient.id = selectClient.id;
-                            updateClient.Name = selectClient.Name;
-                            updateClient.IdentificationNo = selectClient.IdentificationNo;
-                            updateClient.TellNo = selectClient.TellNo;
-                            updateClient.Email = selectClient.Email;
-                            updateClient.Address = selectClient.Address;
-                            updateClient.PostalCode = selectClient.PostalCode;
-                            updateClient.UserPassId = selectClient.UserPassId;
-                            updateClient.Status = selectClient.Status;
-                            updateClient.PremiumTill = selectClient.PremiumTill;
-                            updateClient.InviteCode = selectClient.InviteCode;
-                            if (DateTime.Parse(selectClient.PremiumTill) >= DateTime.Now)
-                            {
-                                updateClient.IsPremium = true;
-                            }
-                            else if (DateTime.Parse(selectClient.PremiumTill) < DateTime.Now)
-                            {
-                                updateClient.IsPremium = false;
-                            }
-                            bool update = _client.UpdateClient(updateClient, selectClient.id);
-                        };
-                        FormsAuthentication.SetAuthCookie(user.Username, client.RememberMe);
-                        //return JavaScript("window.location = window.location.href.replace('?LoginInUser=true', '');document.getElementById('LoginForm').disabled = true;UIkit.modal(document.getElementById('ModalLogin')).hide();");
-                        return JavaScript("UIkit.modal(document.getElementById('ModalLogin')).hide();window.location = window.location.href='/Home/Index'");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("UserName", "حساب کاربری شما فعال نیست");
-                    }
+                            updateClient.IsPremium = true;
+                        }
+                        else if (DateTime.Parse(selectClient.PremiumTill) < DateTime.Now)
+                        {
+                            updateClient.IsPremium = false;
+                        }
+                        bool update = _client.UpdateClient(updateClient, selectClient.id);
+                    };
+                    FormsAuthentication.SetAuthCookie(user.Username, client.RememberMe);
+                    //return JavaScript("window.location = window.location.href.replace('?LoginInUser=true', '');document.getElementById('LoginForm').disabled = true;UIkit.modal(document.getElementById('ModalLogin')).hide();");
+                    return JavaScript("UIkit.modal(document.getElementById('ModalLogin')).hide();window.location = window.location.href='/'");
                 }
                 else
                 {
-                    ModelState.AddModelError("UserName", "کاربری با اطلاعات وارد شده یافت نشد");
+                    ModelState.AddModelError("UserName", "حساب کاربری شما فعال نیست");
                 }
             }
             else
             {
-                ModelState.AddModelError("GoogleCapcha", "شما ربات هستید");
-            };
+                ModelState.AddModelError("UserName", "کاربری با اطلاعات وارد شده یافت نشد");
+            }
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError("GoogleCapcha", "شما ربات هستید");
+            //};
             return PartialView("Login", client);
         }
         public ActionResult Register()
@@ -130,75 +131,82 @@ namespace NFix.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [HandleError]
-        public async Task<ActionResult> Register(RegisterViewModel client)
+        public ActionResult Register(RegisterViewModel client)
         {
-            var isCaptchaValid = await IsCaptchaValid(client.GoogleCapcha);
-            if (isCaptchaValid)
+            //var isCaptchaValid = await IsCaptchaValid(client.GoogleCapcha);
+            //if (isCaptchaValid)
+            //{
+            string hashPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(client.Password, "SHA256");
+            client.Name = client.UserName;
+            client.UserName = client.UserName.Trim().ToLower().Replace(" ", "");
+            client.Email = client.Email.Trim().ToLower().Replace(" ", "");
+            client.TellNo = client.TellNo.Trim().ToLower().Replace(" ", "");
+            if (ModelState.IsValid)
             {
-                string hashPassword = FormsAuthentication.HashPasswordForStoringInConfigFile(client.Password, "SHA256");
-
-                client.Name = client.UserName;
-                client.UserName = client.UserName.Trim().ToLower().Replace(" ", "");
-                client.Email = client.Email.Trim().ToLower().Replace(" ", "");
-                if (ModelState.IsValid)
+                if (_userPass.SelectAllUserPasss().Any(u => u.Username == client.UserName))
                 {
-                    if (_userPass.SelectAllUserPasss().Any(u => u.Username == client.UserName))
+                    ModelState.AddModelError("Username", "نام کاربری  وارد شده تکراری است");
+                }
+                else if (_client.SelectAllClients().Any(u => u.Email == client.Email))
+                {
+                    ModelState.AddModelError("Email", "ایمیل  وارد شده تکراری است");
+                    client.Email = "";
+                }
+                else if (_client.SelectAllClients().Any(u => u.TellNo == client.TellNo))
+                {
+                    ModelState.AddModelError("TellNo", "شماره وارد شده تکراری است");
+                    client.TellNo = "";
+                }
+                else
+                {
+                    TblUserPass addUserPass = new TblUserPass()
                     {
-                        ModelState.AddModelError("Username", "نام کاربری  وارد شده تکراری است");
-                    }
-                    else if (_client.SelectAllClients().Any(u => u.Email == client.Email))
+                        IsActive = false,
+                        Auth = Guid.NewGuid().ToString(),
+                        Username = client.UserName.Trim().ToLower(),
+                        Password = FormsAuthentication.HashPasswordForStoringInConfigFile(client.Password, "SHA256"),
+                        RoleId = 1
+                    };
+                    bool add = _userPass.AddUserPass(addUserPass);
+                    if (add)
                     {
-                        ModelState.AddModelError("Email", "ایمیل  وارد شده تکراری است");
-                        client.Email = "";
-                    }
-                    else
-                    {
-                        TblUserPass addUserPass = new TblUserPass()
+                        TblClient tblClient = new TblClient()
                         {
-                            IsActive = false,
-                            Auth = Guid.NewGuid().ToString(),
-                            Username = client.UserName.Trim().ToLower(),
-                            Password = FormsAuthentication.HashPasswordForStoringInConfigFile(client.Password, "SHA256"),
-                            RoleId = 1
+                            UserPassId = addUserPass.id,
+                            TellNo = client.TellNo,
+                            Name = client.Name,
+                            InviteCode = "کد معرف",
+                            PremiumTill = new DateTime().ToString(),
+                            Status = 1,
+                            Address = "آدرس",
+                            Email = client.Email,
+                            IdentificationNo = "کد ملی",
+                            IsPremium = false,
+                            PostalCode = "کد پستی",
                         };
-                        bool add = _userPass.AddUserPass(addUserPass);
-                        if (add)
+                        bool addClient = _client.AddClient(tblClient);
+                        if (addClient)
                         {
-
-                            TblClient tblClient = new TblClient()
-                            {
-                                UserPassId = addUserPass.id,
-                                TellNo = "شماره تلفن",
-                                Name = client.Name,
-                                InviteCode = "کد معرف",
-                                PremiumTill = new DateTime().ToString(),
-                                Status = 1,
-                                Address = "آدرس",
-                                Email = client.Email,
-                                IdentificationNo = "کد ملی",
-                                IsPremium = false,
-                                PostalCode = "کد پستی",
-                            };
-
-                            bool addClient = _client.AddClient(tblClient);
-                            if (addClient)
-                            {
-                                string body = PartialToStringClass.RenderPartialView("HomeAccount", "ActiviationEmail", addUserPass);
-                                SendEmail.Send(client.Email, "ایمیل فعالسازی", body);
-                                ModelState.Clear();
-                                return JavaScript("alert('ثبت نام شما انجام شد و لینک فعال سازی به ایمیل شما ارسال شد');UIkit.modal(document.getElementById('ModalRegister')).hide();");
-                                //return JavaScript("location.reload(true)");
-                            };
+                           // string body = PartialToStringClass.RenderPartialView("HomeAccount", "ActiviationEmail", addUserPass);
+                            //SendEmail.Send(client.Email, "ایمیل فعالسازی", body);
+                            //ModelState.Clear();
+                            string message = ConfigurationManager.AppSettings["MyDomain"] + "/HomeAccount/ActiveUser/" + addUserPass.Auth;
+                            Sms.SendSms(tblClient.TellNo, message, "RegisterNfix");
+                            return JavaScript("alert('ثبت نام شما انجام شد و لینک فعال سازی به شماره شما ارسال شد');UIkit.modal(document.getElementById('ModalRegister')).hide();");
+                            //return JavaScript("location.reload(true)");
                         };
                     };
                 };
-                return PartialView("Register", client);
-            }
-            else
-            {
-                ModelState.AddModelError("GoogleCapcha", "شما ربات هستید");
             };
             return PartialView("Register", client);
+
+
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError("GoogleCapcha", "شما ربات هستید");
+            //};
+            //return PartialView("Register", client);
         }
         public ActionResult ActiveUser(string id)
         {
@@ -226,7 +234,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
 
@@ -239,7 +247,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
 
@@ -251,7 +259,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         [HttpPost]
@@ -267,18 +275,20 @@ namespace NFix.Controllers
                         if (user.IsActive)
                         {
                             TblClient client = _client.SelectClientByUserPassId(user.id);
-                            if (client == null || client.Email == null || client.Email.Trim().Replace(" ", "") == "ایمیل")
+                            if (client == null || client.TellNo == null || client.TellNo.Trim().Replace(" ", "") == "تلفن")
                             {
-                                ModelState.AddModelError("UserName", "ایمیل کاربر نامعتر است لطفا با پشتیبانی تماس بگیرید");
+                                ModelState.AddModelError("UserName", "شماره تلفن کاربر نامعتر است لطفا با پشتیبانی تماس بگیرید");
                             }
                             else
                             {
-                                string bodyEmail =
-                                    PartialToStringClass.RenderPartialView("HomeAccount", "RecoveryPass", user);
-                                SendEmail.Send(client.Email, "بازیابی کلمه عبور", bodyEmail);
+                                //string bodyEmail =
+                                //    PartialToStringClass.RenderPartialView("HomeAccount", "RecoveryPass", user);
+                                //SendEmail.Send(client.Email, "بازیابی کلمه عبور", bodyEmail);
+                                string message = ConfigurationManager.AppSettings["MyDomain"] + "/Home/Index?RecoveryPassWord=" + user.Auth;
+                                Sms.SendSms(client.TellNo, message, "ForgotPasswordNfix");
                                 //return Redirect("/Home/Index?recoveryPassword=true");
                                 ModelState.Clear();
-                                return JavaScript("UIkit.modal(document.getElementById('ModalForget')).hide(); alert('ایمیلی حاوی لینک بازیابی کلمه عبور به ایمیل شما ارسال شد');");
+                                return JavaScript("UIkit.modal(document.getElementById('ModalForget')).hide(); alert('متنی حاوی لینک بازیابی کلمه عبور به شماره شما ارسال شد');");
 
                             }
                         }
@@ -296,7 +306,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         public ActionResult RecoveryPassword(string id)
@@ -307,7 +317,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         [HttpPost]
@@ -339,14 +349,14 @@ namespace NFix.Controllers
                         bool x = _userPass.UpdateUserPass(tblUserPass, user.id);
 
                         // return Redirect("/Home/Index?DoneChangePassword=true");
-                        return JavaScript("alert('رمز شما تغیر یافت');UIkit.modal(document.getElementById('RecoveryPassword')).hide();;window.location ='/Home/Index';");
+                        return JavaScript("alert('رمز شما تغیر یافت');UIkit.modal(document.getElementById('RecoveryPassword')).hide();;window.location ='/';");
                     }
                 }
                 return PartialView("RecoveryPassword", recovery);
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         public ActionResult ActiviationEmail()
@@ -357,7 +367,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         public ActionResult RecoveryPass()
@@ -368,7 +378,7 @@ namespace NFix.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         public ActionResult LoginPageShowModal()

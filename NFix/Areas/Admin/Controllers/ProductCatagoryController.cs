@@ -27,7 +27,7 @@ namespace NFix.Areas.Admin.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
         // GET: Admin/Product_Groups/Details/5
@@ -48,7 +48,7 @@ namespace NFix.Areas.Admin.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
 
         }
@@ -65,7 +65,7 @@ namespace NFix.Areas.Admin.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
 
         }
@@ -84,7 +84,7 @@ namespace NFix.Areas.Admin.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
 
@@ -107,7 +107,7 @@ namespace NFix.Areas.Admin.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
 
         }
@@ -126,7 +126,7 @@ namespace NFix.Areas.Admin.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
 
         }
@@ -167,7 +167,7 @@ namespace NFix.Areas.Admin.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
         }
 

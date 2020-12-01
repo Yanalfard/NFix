@@ -44,7 +44,7 @@ namespace NFix.Areas.Admin.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
 
         }
@@ -57,7 +57,7 @@ namespace NFix.Areas.Admin.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
 
         }
@@ -69,7 +69,7 @@ namespace NFix.Areas.Admin.Controllers
             }
             catch
             {
-                return RedirectToAction("/ErrorPage/NotFound");
+                return Redirect("/fallback.html");
             }
 
         }
