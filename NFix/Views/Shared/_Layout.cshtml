@@ -8,7 +8,7 @@
     <meta name="description" content="سایت ورزشی و بدنسازی ان فیکس" />
     <meta name="keywords" content="بدنسازی، آنلاین، ویدیو، ویدیو آموزشی، ان فیکس" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
     <link rel="icon" type="image/png" href="/favicon.ico" />
     <link rel="manifest" href="~/manifest.json" />
     <link rel="apple-touch-icon" href="/Resources/Png/Mobile/icon_96.png" />
@@ -51,7 +51,7 @@
             <button class="no-glow uk-offcanvas-close" type="button" uk-close></button>
 
             <a href="/Home/Index" class="uk-margin-auto">
-                <img src="/Resources/Svg/NFIX.svg" width="80" height="25" alt="لوگو ان فیکس"/>
+                <img src="/Resources/Svg/NFIX.svg" width="80" height="25" alt="لوگو ان فیکس" />
             </a>
             <ul class="column">
 
@@ -94,7 +94,7 @@
                 else
                 {
                     <li>
-                        <a href="#" uk-toggle="target: #ModalLogin">
+                        <a onclick="showLogin()">
                             <span uk-icon="user"></span>
                             ورود / ثبت نام
                         </a>
@@ -191,7 +191,7 @@
                     }
                     else
                     {
-                        <a class="nav-profile" href="#" uk-toggle="target: #ModalLogin" type="button">
+                        <a class="nav-profile" onclick="showLogin()">
                             ورود
                         </a>
                     }
@@ -201,17 +201,16 @@
                     <!--tell-->
                     <!--user-->
                     <!--pass-->
-
-                    <div id="ModalRegister" uk-modal>
-                        @Html.Action("Register", "HomeAccount", new { area = "" })
-                    </div>
+                    @*<div id="ModalRegister" uk-modal>
+                            @Html.Action("Register", "HomeAccount", new { area = "" })
+                        </div>*@
 
                     @*@Html.Action("Register", "HomeAccount", new { area = "" })*@
                     <!-- #endregion -->
                     <!-- #region Login -->
-                    <div id="ModalLogin" uk-modal>
-                        @Html.Action("Login", "HomeAccount", new { area = "" })
-                    </div>
+                    @*<div id="ModalLogin" uk-modal>
+                            @Html.Action("Login", "HomeAccount", new { area = "" })
+                        </div>*@
 
                     <!--#endregion-->
                     <!-- #region Forgot Password -->
@@ -281,7 +280,7 @@
         </a>
         <div class="floating-cart-counter">
             <span id="countShopCart">
-                
+
             </span>
         </div>
     </div>
@@ -421,26 +420,61 @@
             <span class="spinner"></span>
         </div>
     </div>
+
+
+
+
+
     <!--#endregion-->
     <!-- PWA MAIN -->
     <script src="~/Scripts/app.js"></script>
 
     <!-- #endregion Scripts -->
-    @*<script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
-
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF"></script>
-
+    <script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
+    <script src="~/Scripts/layout.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF&&hl=fa"></script>
     <script>
         grecaptcha.ready(function () {
             grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
-                $(".GoogleCapcha").val(token);
+                $('.GoogleCapcha').val(token);
             });
         });
-    </script>*@
+        function reloadRech() {
+            grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
+                //document.getElementById("GoogleCapcha").value = token;
+                $('.GoogleCapcha').val(token);
+            });
+        }
+    </script>
 
+
+
+    <div id="Modal-Show" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body" id="Modal-Body">
+
+        </div>
+    </div>
     <script>
+        function showLogin() {
+            $.get('/HomeAccount/Login', function (result) {
+                reloadRech();
+                UIkit.modal(document.getElementById('Modal-Show')).show();
+                $('#Modal-Body').html(result);
+            });
+        };
 
-        
+        function showRegister() {
+            $.get('/HomeAccount/Register', function (result) {
+                reloadRech();
+                UIkit.modal(document.getElementById('Modal-Show')).show();
+                $('#Modal-Body').html(result);
+            });
+        };
+        function doneModal(form) {
+            $("#overlay").fadeOut();
+            UIkit.modal(document.getElementById(form)).hide();
+            window.location.href = "/";
+        }
     </script>
 
     <!-- #endregion -->
