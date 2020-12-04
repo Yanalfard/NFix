@@ -1,12 +1,45 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
-    <a class="nav-profile" href="/User/Profile/Index">
-       پروفایل
-    </a>
+    if (User.IsInRole("admin"))
+    {
+        <li>
+            <a href="/Admin/Blog/BlogTable" class="row">
+                <span uk-icon="user"></span>
+                پنل مدیریت
+            </a>
+        </li>
+    }
+    if (User.IsInRole("tutor"))
+    {
+        <li>
+            <a href="/Tuotor/Profile/Index" class="row">
+                <span uk-icon="user"></span>
+                پنل مربی
+            </a>
+        </li>
+    }
+    if (User.IsInRole("user"))
+    {
+        <li>
+            <a href="/User/Profile/Index" class="row">
+                <span uk-icon="user"></span>
+                پروفایل
+            </a>
+        </li>
+    }
+    <li>
+        <a href="/HomeAccount/LogOff" class="row">
+            <span uk-icon="sign-out"></span>
+            خروج
+        </a>
+    </li>
 }
 else
 {
-    <a class="nav-profile" href="#" uk-toggle="target: #ModalLogin" type="button">
-        ورود
-    </a>
+    <li>
+        <a onclick="showLogin()">
+            <span uk-icon="user"></span>
+            ورود / ثبت نام
+        </a>
+    </li>
 }
