@@ -532,23 +532,40 @@ article {
 }
 
 .calculator {
-    padding: 64px 0;
-    background-image: url('../Resources/Png/CalculatorBackground.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow-y: hidden;
-    /*img {
+    width: 100vw;
+    position: relative;
+    display: flex;
+    padding: 32px 0;
+    overflow: hidden;
+    -moz-box-shadow: 0 0 16px rgba(0,0,0,.7) inset;
+    -webkit-box-shadow: 0 0 16px rgba(0,0,0,.7) inset;
+    box-shadow: 0 0 16px rgba(0,0,0,.7) inset;
+
+    &-image {
         -o-object-position: bottom;
         object-position: bottom;
         -o-object-fit: cover;
         object-fit: cover;
-    }*/
-    .card {
-        margin-top: auto;
-        margin-bottom: auto;
-        width: 290px;
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: red;
+        width: 100vw;
+        height: 100%;
+        min-height: 10px;
+        filter: blur(5px);
+    }
+
+    &-card {
+        z-index: 3;
+        margin: auto;
+        display: flex;
+        width: 280px !important;
         @include shadow-mega();
+
 
         hr {
             margin: 10px 0;
@@ -643,7 +660,6 @@ $Stickies-Width: 100px;
     margin-left: auto !important;
     margin-right: -20px;
     width: $Stickies-Width !important;
-    background: coral;
     @include trans(.2s);
     opacity: 0;
 
@@ -720,7 +736,6 @@ $blog-Image-Height: 256px;
         flex: 1 !important;
         min-height: $blog-Image-Height;
         max-height: $blog-Image-Height;
-        background: coral;
         height: $blog-Image-Height;
         -o-object-fit: $blog-Object-Fit;
         object-fit: $blog-Object-Fit;

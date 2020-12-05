@@ -827,32 +827,45 @@ article a:hover {
         font-size: 26px; }
 
 .calculator {
-  padding: 64px 0;
-  background-image: url("../Resources/Png/CalculatorBackground.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow-y: hidden;
-  /*img {
-        -o-object-position: bottom;
-        object-position: bottom;
-        -o-object-fit: cover;
-        object-fit: cover;
-    }*/ }
-  .calculator .card {
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 290px;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  padding: 32px 0;
+  overflow: hidden;
+  -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.7) inset;
+  -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.7) inset;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.7) inset; }
+  .calculator-image {
+    -o-object-position: bottom;
+    object-position: bottom;
+    -o-object-fit: cover;
+    object-fit: cover;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: red;
+    width: 100vw;
+    height: 100%;
+    min-height: 10px;
+    filter: blur(5px); }
+  .calculator-card {
+    z-index: 3;
+    margin: auto;
+    display: flex;
+    width: 280px !important;
     -moz-box-shadow: rgba(0, 0, 0, 0.38) 0 0px 2vw;
     -webkit-box-shadow: rgba(0, 0, 0, 0.38) 0 0px 2vw;
     box-shadow: rgba(0, 0, 0, 0.38) 0 0px 2vw; }
-    .calculator .card hr {
+    .calculator-card hr {
       margin: 10px 0; }
-    .calculator .card label {
+    .calculator-card label {
       margin-bottom: 6px; }
-    .calculator .card input {
+    .calculator-card input {
       margin-bottom: 12px; }
-    .calculator .card .row {
+    .calculator-card .row {
       overflow: visible !important;
       margin-bottom: 24px; }
 
@@ -909,7 +922,6 @@ article a:hover {
   margin-left: auto !important;
   margin-right: -20px;
   width: 100px !important;
-  background: coral;
   -moz-transition: all ease 0.2s;
   -o-transition: all ease 0.2s;
   -webkit-transition: all ease 0.2s;
@@ -971,7 +983,6 @@ article a:hover {
     flex: 1 !important;
     min-height: 256px;
     max-height: 256px;
-    background: coral;
     height: 256px;
     -o-object-fit: cover;
     object-fit: cover; }

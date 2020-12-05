@@ -4,20 +4,22 @@
 }
 
 <div class="space-nav"></div>
-<div class="column uk-container uk-margin-auto">
-    @using (Html.BeginForm())
-    {
-        <h3>
-            برای فعال سازی حساب کاربری روی دکمه زیر کلید کنید
-        </h3>
-        @Html.ValidationMessageFor(m => m.id, "", new { @class = "uk-text-danger" })
-        <div class="column center uk-margin-large-top">
-            <button class="btn-primary uk-margin-bottom text-center">
-                  فعال سازی
-            </button>
-        </div>
-    }
+<div class="uk-container uk-flex">
+    <div class="mat column uk-container uk-padding-remove uk-margin-auto">
+        @using (Html.BeginForm())
+        {
+            <div class="uk-padding column">
+                <h1 class="uk-h3 center">
+                    برای فعال سازی حساب کاربری روی دکمه زیر کلید کنید
+                </h1>
+                @Html.ValidationMessageFor(m => m.id, "", new { @class = "uk-text-danger uk-margin-auto" })
+                <button class="btn-primary uk-margin-auto uk-margin-medium-top text-center">
+                    فعال سازی
+                </button>
+            </div>
+        }
+    </div>
 </div>
 
-<div class="space-nav"></div>
+<div class="space"></div>
 <div class="space-nav"></div>

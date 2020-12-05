@@ -17,6 +17,8 @@ $Modal-width: 824px;
     padding: 0;
     height: 100%;
     width: 100%;
+    position: relative;
+
 
     .uk-modal-dialog {
         display: flex;
@@ -64,6 +66,11 @@ $Modal-width: 824px;
         flex: 1;
         padding: 20px;
 
+        .text-danger {
+            font-size: 12px !important;
+            margin: 2px 0 !important;
+        }
+
         .row {
             overflow: visible;
         }
@@ -86,7 +93,7 @@ $Modal-width: 824px;
 }
 
 @media only screen and (max-width: 712px) {
-    #ModalLogin, #ModalRegister {
+    #ModalLogin, #ModalRegister, #Modal-Show {
         .uk-modal-dialog {
             padding: 6px !important;
 
@@ -104,7 +111,7 @@ $Modal-width: 824px;
 }
 
 @media only screen and (max-device-width : 480px) {
-    #ModalLogin, #ModalRegister {
+    #ModalLogin, #ModalRegister, #Modal-Show {
         .uk-modal-dialog {
             .alternate {
                 width: 92vw;
@@ -241,7 +248,7 @@ $Modal-width: 824px;
 }
 
 .grecaptcha-badge {
-    /*display: none;*/
+    display: none;
 }
 
 .uk-comment {
