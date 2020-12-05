@@ -38,7 +38,7 @@
 
     <!--Jquery-->
     <script src="~/Scripts/Jquery/jquery-3.5.1.min.js"></script>
-    <script src="~/Scripts/Jquery/jquery.validate.min.js"></script>
+    <script src="~/Scripts/Jquery/`jquery.validate.min.js"></script>
     <script src="~/Scripts/Jquery/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/Jquery/jquery.unobtrusive-ajax.min.js"></script>
 
@@ -46,6 +46,7 @@
     @*<script src='https://www.google.com/recaptcha/api.js?hl=fa'></script>*@
 </head>
 <body>
+
     <div id="MobileNavigation" class="noprint" dir="rtl" uk-offcanvas="overlay: true ;flip: true">
         <div class="uk-offcanvas-bar column">
 
@@ -112,9 +113,6 @@
                 <li id="loggedInUser2">
 
                     @Html.Partial("_LoggedInUser2")
-
-
-                    <!--#endregion-->
 
                 </li>
 
@@ -309,11 +307,8 @@
         </div>
     </div>
 
-
     <div id="Modal-Show" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body" id="Modal-Body">
-
-        </div>
+        <div class="uk-modal-dialog uk-modal-body" id="Modal-Body"></div>
     </div>
 
     <!--#endregion-->
@@ -322,9 +317,13 @@
 
     <!-- #endregion Scripts -->
     <script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
+
     <script src="~/Scripts/layout.js"></script>
+
     <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF&&hl=fa"></script>
+
     <script src="~/Scripts/UIScripts/Global.js"></script>
+
     <script>
         grecaptcha.ready(function () {
             grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
@@ -339,36 +338,35 @@
         }
     </script>
 
-
     <script>
         function showLogin() {
-            $.get('/HomeAccount/Login', function (result) {
+            $.get('/HomeAccount/Login').then((res) => {
                 reloadRech();
+                document.querySelector('#Modal-Body').innerHTML = res;
                 UIkit.modal(document.getElementById('Modal-Show')).show();
-                $('#Modal-Body').html(result);
             });
+
         };
 
         function showRegister() {
-            $.get('/HomeAccount/Register', function (result) {
+            $.get('/HomeAccount/Register').then((res) => {
                 reloadRech();
+                $('#Modal-Body').html(res);
                 UIkit.modal(document.getElementById('Modal-Show')).show();
-                $('#Modal-Body').html(result);
-
             });
         };
         function ForgotPassword() {
-            $.get('/HomeAccount/ForgotPassword', function (result) {
+            $.get('/HomeAccount/ForgotPassword').then((res) => {
                 reloadRech();
                 UIkit.modal(document.getElementById('Modal-Show')).show();
-                $('#Modal-Body').html(result);
+                $('#Modal-Body').html(res);
             });
         };
         function changePassword(name) {
-            $.get('/HomeAccount/RecoveryPassword/' + name, function (result) {
+            $.get('/HomeAccount/RecoveryPassword/' + name).then((res) => {
                 reloadRech();
                 UIkit.modal(document.getElementById('Modal-Show')).show();
-                $('#Modal-Body').html(result);
+                $('#Modal-Body').html(res);
             });
         };
         function doneModal(form) {

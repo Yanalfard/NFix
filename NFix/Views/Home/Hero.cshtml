@@ -1,5 +1,5 @@
 ﻿<section class="hero column">
-    <header id="header" uk-scrollspy="cls: uk-animation-slide-left-small; delay: 1000" class="column uk-margin-auto-right">
+    <header id="header" class="column uk-margin-auto-right">
         <h1 class="uk-margin-remove-bottom"><span>N</span>FIX</h1>
         <hr class="uk-margin-remove" />
         <p class="uk-margin-small-top">
@@ -17,23 +17,23 @@
     <!--icons in header-->
     <div class="rowIcon uk-margin-auto-top">
         <a onclick="fallbackCopyTextToClipboard(window.location.href);
-                UIkit.notification('لینک اشتراک کپی شد')" uk-scrollspy="cls: uk-animation-slide-bottom-medium; delay: 1000"
+                UIkit.notification('لینک اشتراک کپی شد')"
            uk-tooltip="اشتراک گذاری" >
             <img src="../Resources/Svg/Union.svg" width="30" height="30" alt="share"/>
         </a>
-        <a href="#" uk-tooltip="اینستاکرام"  uk-scrollspy="cls: uk-animation-slide-bottom-medium; delay: 1400">
+        <a href="#" uk-tooltip="اینستاکرام">
             <img src="../Resources/Svg/Unio2n.svg" width="30" height="30" alt="instagram"/>
         </a>
-        <a href="#" uk-tooltip="فیس بوک"  uk-scrollspy="cls: uk-animation-slide-bottom-medium; delay: 1800">
+        <a href="#" uk-tooltip="فیس بوک">
             <img src="../Resources/Svg/asdfwe03.svg" width="30" height="30" alt="facebook"/>
         </a>
     </div>
     <!---->
 
-    <a href="#videos" uk-scrollspy="cls: uk-animation-slide-top; delay: 3000" uk-icon="icon:chevron-down; ratio:2.5"
+    <a href="#videos" uk-icon="icon:chevron-down; ratio:2.5"
        class="uk-icon center"></a>
 
-    <div class="player-container column" uk-scrollspy="cls: uk-animation-slide-right; delay: 2000">
+    <div class="player-container column">
         <a onclick="slideInVideo()" uk-toggle
            uk-icon="icon: play-circle; ratio: 2"
            class="player uk-icon uk-margin-small-right"></a>
@@ -46,8 +46,7 @@
     </div>
 
 </section>
-<div class="man" uk-scrollspy="cls: uk-animation-slide-bottom-small; delay: 300"></div>
-
+<div class="man"></div>
 
 <script>
     function slideInVideo() {
@@ -57,6 +56,7 @@
         const man = document.getElementsByClassName('man')[0];
 
         video.src = '/Resources/Svg/VID-20201104-WA0001.mp4';
+        
 
         darn.style.display = "block";
         darn.style.transition = "all ease .5s";
@@ -65,15 +65,33 @@
 
         video.style.visibility = "visible";
 
-        header.style.transition = "all ease .5s";
         header.style.opacity = "0";
+        header.style.transition = "all ease .5s";
 
-        man.style.transition = "all ease .5s";
         man.style.opacity = "0";
+        man.style.transition = "all ease .5s";
 
         setTimeout(function () {
             video.play();
+
         }, 500)
+
+        document.getElementById('video').addEventListener('ended', () => {
+            darn.style.display = "block";
+            darn.style.transition = "all ease 0";
+            darn.style.opacity = "0";
+            darn.style.left = "100vw";
+
+            video.style.visibility = "collapsed";
+
+            header.style.opacity = "1";
+            header.style.transition = "all ease .5s";
+
+            man.style.opacity = "1";
+            man.style.transition = "all ease .5s";
+        });
+
+
 
     }
 </script>

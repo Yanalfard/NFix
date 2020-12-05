@@ -477,7 +477,8 @@ backdrop-filter: saturate(80%);
     width: auto;
     right: 10px;
     top: 0;
-    bottom: 0; }
+    bottom: 0;
+    z-index: 100; }
     .hero .player-container .player {
       -moz-transition: all ease 0.4s;
       -o-transition: all ease 0.4s;

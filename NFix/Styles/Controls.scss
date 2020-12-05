@@ -17,8 +17,6 @@ $Modal-width: 824px;
     padding: 0;
     height: 100%;
     width: 100%;
-    position: relative;
-
 
     .uk-modal-dialog {
         display: flex;
@@ -48,6 +46,7 @@ $Modal-width: 824px;
             @include row();
 
             .text-danger {
+                margin: 0;
                 color: #ae511b;
             }
 

@@ -526,8 +526,7 @@ body {
   backdrop-filter: blur(4px) brightness(80%);
   padding: 0;
   height: 100%;
-  width: 100%;
-  position: relative; }
+  width: 100%; }
   #ModalLogin .uk-modal-dialog, #ModalRegister .uk-modal-dialog, #Modal-Show .uk-modal-dialog {
     display: flex;
     background: transparent;
@@ -562,6 +561,7 @@ body {
           padding: 0 16px !important;
           min-height: 42px !important; }
       #ModalLogin .uk-modal-dialog .alternate .text-danger, #ModalRegister .uk-modal-dialog .alternate .text-danger, #Modal-Show .uk-modal-dialog .alternate .text-danger {
+        margin: 0;
         color: #ae511b; }
       #ModalLogin .uk-modal-dialog .alternate input:not(.check-box), #ModalRegister .uk-modal-dialog .alternate input:not(.check-box), #Modal-Show .uk-modal-dialog .alternate input:not(.check-box) {
         margin-bottom: 12px; }

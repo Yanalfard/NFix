@@ -71,6 +71,7 @@
         right: 10px;
         top: 0;
         bottom: 0;
+        z-index:100;
 
         .player {
             @include trans(.4s);

@@ -1,5 +1,4 @@
-﻿
-function LoadingRun(form) {
+﻿function LoadingRun(form) {
     if (!$(form).valid()) return;
     $("#overlay").fadeIn(300);
 }
@@ -8,6 +7,7 @@ function LoadingEnd(form) {
     reloadRech();
     $(form)[0].reset();
 }
+
 $(function () {
     countShopCart();
 });
