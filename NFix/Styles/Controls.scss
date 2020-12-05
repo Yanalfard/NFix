@@ -213,12 +213,12 @@ $Modal-width: 824px;
     left: 24px;
     z-index: 1001;
     @include row;
+    @include trans(.3s);
 
     &-main {
         padding: 12px;
         z-index: 2010;
         background: $primary-light;
-
         @include border-radius(12px,12px,12px,0);
         @include trans(.2s);
 

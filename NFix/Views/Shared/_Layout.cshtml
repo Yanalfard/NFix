@@ -17,7 +17,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#E73434" />
     <meta name="theme-color" content="#E73434" />
 
-
     <!-- Project Css -->
     <link href="/Styles/Index.min.css" rel="stylesheet" />
     <link href="/Styles/Controls.min.css" rel="stylesheet" />
@@ -163,8 +162,7 @@
     <!-- #endregion -->
     <!-- #region Floating Cart -->
 
-    <div class="floating-cart uk-box-shadow-medium uk-box-shadow-hover-large"
-         uk-scrollspy="cls: uk-animation-slide-bottom; delay: 2500 ;">
+    <div class="floating-cart uk-box-shadow-medium uk-box-shadow-hover-large">
         <a class="floating-cart-main" href="/ShopCart">
             <span uk-icon="icon:cart;ratio:1.5"></span>
         </a>
@@ -312,8 +310,11 @@
     </div>
 
 
+    <div id="Modal-Show" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body" id="Modal-Body">
 
-
+        </div>
+    </div>
 
     <!--#endregion-->
     <!-- PWA MAIN -->
@@ -323,6 +324,7 @@
     <script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
     <script src="~/Scripts/layout.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF&&hl=fa"></script>
+    <script src="~/Scripts/UIScripts/Global.js"></script>
     <script>
         grecaptcha.ready(function () {
             grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
@@ -337,11 +339,6 @@
         }
     </script>
 
-    <div id="Modal-Show" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body" id="Modal-Body">
-
-        </div>
-    </div>
 
     <script>
         function showLogin() {

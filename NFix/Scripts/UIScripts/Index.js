@@ -1,15 +1,39 @@
-﻿let deferredPrompt;
+﻿function ModalProduct(id) {
+    $.get("/HomeProducts/ModalProduct/" + id, function (result) {
+        UIkit.modal(document.getElementById('ModalProduct')).show();
+        $("#ModalProduct").html(result);
+    });
+}
+
+let deferredPrompt;
 const addBtn = document.getElementsByClassName('add-button')[0];
 const addBtn2 = document.getElementsByClassName('add-button')[1];
 window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    e.preventDefault();
-    // Stash the event so it can be triggered later.
-    deferredPrompt = e;
+    try {
+        // Prevent Chrome 67 and earlier from automatically showing the prompt
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
 
-    addBtn.addEventListener('click', btnDownloadClick);
-    addBtn2.addEventListener('click', btnDownloadClick);
+        addBtn.addEventListener('click', btnDownloadClick);
+        addBtn2.addEventListener('click', btnDownloadClick);
+    } catch { }
 });
+
+const floatingCart = document.getElementsByClassName('floating-cart')[0];
+floatingCart.style.opacity = "0";
+window.addEventListener('scroll', () => {
+    if (window.scrollY >= 10) {
+        floatingCart.style.opacity = "1";
+        floatingCart.style.transition = "0.3s";
+        floatingCart.style.transform = "translateY(0)";
+    }
+    else {
+        floatingCart.style.opacity = "0";
+        floatingCart.style.transition = "0.3s";
+        floatingCart.style.transform = "translateY(100px)";
+    }
+})
 
 function btnDownloadClick(e) {
 
@@ -37,15 +61,6 @@ function btnDownloadClick(e) {
         deferredPrompt = null;
     });
 }
-
-
-function ModalProduct(id) {
-    $.get("/HomeProducts/ModalProduct/" + id, function (result) {
-        UIkit.modal(document.getElementById('ModalProduct')).show();
-        $("#ModalProduct").html(result);
-    });
-}
-
 
 $('#product').owlCarousel({
     loop: true,
