@@ -61,13 +61,16 @@ namespace NFix.Controllers
         }
         [HttpPost]
         [Authorize]
-        [Authorize(Roles = "user")]
         public ActionResult CreateComment(CommentViewModel comment)
         {
             try
             {
                 TblUserPass tblUserPass = _userPass.SelectUserPassByUsername(User.Identity.Name);
                 TblClient tblClient = _client.SelectClientByUserPassId(tblUserPass.id);
+                if (tblClient == null)
+                {
+                    return JavaScript("UIkit.notification('شما مجاز به ثبت پیام نیستید')");
+                }
                 TblComment tblComment = new TblComment();
 
                 tblComment.Body = comment.Body;

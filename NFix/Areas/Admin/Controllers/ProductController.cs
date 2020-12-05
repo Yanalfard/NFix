@@ -102,6 +102,7 @@ namespace NFix.Areas.Admin.Controllers
                 ImageResizer img = new ImageResizer();
                 img.Resize(Server.MapPath("/Resources/Product/" + addImage.Image),
                     Server.MapPath("/Resources/Product/Thumb/" + addImage.Image));
+
                 _image.AddImage(addImage);
                 TblProductImageRel tblProductImageRel = new TblProductImageRel()
                 {
@@ -319,17 +320,21 @@ namespace NFix.Areas.Admin.Controllers
         public ActionResult deleteProduct(int id)
         {
             var getBlogId = _product.SelectImagesByProductId(id);
+            if (getBlogId.Count() !=0)
+            {
+                string fullPathLogo = Request.MapPath("/Resources/Product/" + getBlogId.FirstOrDefault().Image);
+                if (System.IO.File.Exists(fullPathLogo))
+                {
+                    System.IO.File.Delete(fullPathLogo);
+                }
+                string fullPathLogo2 = Request.MapPath("/Resources/Product/Thumb/" + getBlogId.FirstOrDefault().Image);
+                if (System.IO.File.Exists(fullPathLogo2))
+                {
+                    System.IO.File.Delete(fullPathLogo2);
+                }
+            }
+
             _product.DeleteProduct(id);
-            string fullPathLogo = Request.MapPath("/Resources/Product/" + getBlogId.SingleOrDefault().Image);
-            if (System.IO.File.Exists(fullPathLogo))
-            {
-                System.IO.File.Delete(fullPathLogo);
-            }
-            string fullPathLogo2 = Request.MapPath("/Resources/Product/Thumb/" + getBlogId.SingleOrDefault().Image);
-            if (System.IO.File.Exists(fullPathLogo2))
-            {
-                System.IO.File.Delete(fullPathLogo2);
-            }
             return JavaScript("");
         }
         public ActionResult FactorView(int id)

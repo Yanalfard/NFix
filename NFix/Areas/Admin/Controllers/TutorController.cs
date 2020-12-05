@@ -106,6 +106,7 @@ namespace NFix.Areas.Admin.Controllers
                 UserPassId = tutor.UserPassId,
                 Password = tutor.TblUserPass.Password,
                 IsActive=tutor.TblUserPass.IsActive,
+                Specialty=tutor.Specialty,
             };
             return View(tutorViewModel);
         }
