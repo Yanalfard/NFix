@@ -65,6 +65,9 @@ namespace NFix.Areas.Admin.Controllers
                         {
                             tutor.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
                             Image.SaveAs(Server.MapPath("/Resources/Tutor/" + tutor.MainImage));
+                            ImageResizer img = new ImageResizer();
+                            img.Resize(Server.MapPath("/Resources/Tutor/" + tutor.MainImage),
+                                Server.MapPath("/Resources/Tutor/Thumb/" + tutor.MainImage));
                         }
                         TblTutor tblTutor = new TblTutor()
                         {
@@ -103,6 +106,7 @@ namespace NFix.Areas.Admin.Controllers
                 UserPassId = tutor.UserPassId,
                 Password = tutor.TblUserPass.Password,
                 IsActive=tutor.TblUserPass.IsActive,
+                Specialty=tutor.Specialty,
             };
             return View(tutorViewModel);
         }
@@ -135,8 +139,16 @@ namespace NFix.Areas.Admin.Controllers
                     {
                         System.IO.File.Delete(fullPathLogo);
                     }
+                    string fullPathLogo2 = Request.MapPath("/Resources/Tutor/Thumb/" + selectimage.MainImage);
+                    if (System.IO.File.Exists(fullPathLogo2))
+                    {
+                        System.IO.File.Delete(fullPathLogo2);
+                    }
                     tutor.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
                     Image.SaveAs(Server.MapPath("/Resources/Tutor/" + tutor.MainImage));
+                    ImageResizer img = new ImageResizer();
+                    img.Resize(Server.MapPath("/Resources/Tutor/" + tutor.MainImage),
+                        Server.MapPath("/Resources/Tutor/Thumb/" + tutor.MainImage));
                 }
                 TblTutor tblTutor = new TblTutor()
                 {
@@ -173,6 +185,11 @@ namespace NFix.Areas.Admin.Controllers
             if (System.IO.File.Exists(fullPathLogo))
             {
                 System.IO.File.Delete(fullPathLogo);
+            }
+            string fullPathLogo2 = Request.MapPath("/Resources/Tutor/Thumb/" + getBlogId.MainImage);
+            if (System.IO.File.Exists(fullPathLogo2))
+            {
+                System.IO.File.Delete(fullPathLogo2);
             }
             _tutor.DeleteTutor(id);
             _userPass.DeleteUserPass(getBlogId.UserPassId);

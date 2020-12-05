@@ -14,7 +14,6 @@ $(function () {
 
 function countShopCart() {
     $.get("/Api/Shop", function (res) {
-
         $("#countShopCart").html(res);
     });
 }

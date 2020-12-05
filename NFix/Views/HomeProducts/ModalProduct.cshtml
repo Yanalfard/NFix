@@ -11,7 +11,7 @@
                     @foreach (var j in Model.TblProductImageRel)
                     {
                         <li>
-                            <img src="~/Resources/Product/@j.TblImage.Image" alt="@Model.Name" />
+                            <img src="~/Resources/Product/Thumb/@j.TblImage.Image" alt="@Model.Name" />
                         </li>
                     }
                 </ul>
@@ -23,24 +23,9 @@
                     @foreach (var j in Model.TblProductImageRel)
                     {
                         <li uk-slideshow-item="0" class="uk-active">
-                            <img src="~/Resources/Product/@j.TblImage.Image" alt="@Model.Name" />
+                            <img src="~/Resources/Product/Thumb/@j.TblImage.Image" alt="@Model.Name" />
                         </li>
                     }
-                    @*<li uk-slideshow-item="0" class="uk-active">
-                        <a href="#">
-                            <img src="https://picsum.photos/id/10/600/400" width="64" height="64" alt="">
-                        </a>
-                    </li>
-                    <li uk-slideshow-item="1">
-                        <a href="#">
-                            <img src="https://picsum.photos/id/11/600/400" width="64" height="64" alt="">
-                        </a>
-                    </li>
-                    <li uk-slideshow-item="2">
-                        <a href="#">
-                            <img src="https://picsum.photos/id/12/600" width="64" height="64" alt="">
-                        </a>
-                    </li>*@
                 </ul>
             </div>
         </aside>

@@ -61,7 +61,6 @@ namespace NFix.Controllers
             {
                 return false;
             }
-
         }
         // GET: HomeAccount
         public ActionResult Login()

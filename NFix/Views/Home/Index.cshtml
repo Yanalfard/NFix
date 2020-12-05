@@ -31,7 +31,6 @@
     <img class="animated-bubble" width="72" height="85" src="../Resources/Svg/AnimatedBubble.svg" />
     @if (User.Identity.IsAuthenticated)
     {
-
         if (User.IsInRole("user"))
         {
             <a href="/User/Profile/Index" class="stickIcon" uk-tooltip="title: پروفایل; pos:left">
