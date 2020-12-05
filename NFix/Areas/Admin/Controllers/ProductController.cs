@@ -99,6 +99,9 @@ namespace NFix.Areas.Admin.Controllers
             {
                 addImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
                 Image.SaveAs(Server.MapPath("/Resources/Product/" + addImage.Image));
+                ImageResizer img = new ImageResizer();
+                img.Resize(Server.MapPath("/Resources/Product/" + addImage.Image),
+                    Server.MapPath("/Resources/Product/Thumb/" + addImage.Image));
                 _image.AddImage(addImage);
                 TblProductImageRel tblProductImageRel = new TblProductImageRel()
                 {
@@ -225,10 +228,18 @@ namespace NFix.Areas.Admin.Controllers
                     {
                         System.IO.File.Delete(fullPathLogo);
                     }
+                    string fullPathLogo2 = Request.MapPath("/Resources/Product/Thumb/" + j.TblImage.Image);
+                    if (System.IO.File.Exists(fullPathLogo2))
+                    {
+                        System.IO.File.Delete(fullPathLogo2);
+                    }
                     bool h = _image.DeleteImage(j.ImageId);
                 }
                 addImage.Image = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
                 Image.SaveAs(Server.MapPath("/Resources/Product/" + addImage.Image));
+                ImageResizer img = new ImageResizer();
+                img.Resize(Server.MapPath("/Resources/Product/" + addImage.Image),
+                    Server.MapPath("/Resources/Product/Thumb/" + addImage.Image));
                 _image.AddImage(addImage);
                 TblProductImageRel tblProductImageRel = new TblProductImageRel()
                 {
@@ -313,6 +324,11 @@ namespace NFix.Areas.Admin.Controllers
             if (System.IO.File.Exists(fullPathLogo))
             {
                 System.IO.File.Delete(fullPathLogo);
+            }
+            string fullPathLogo2 = Request.MapPath("/Resources/Product/Thumb/" + getBlogId.SingleOrDefault().Image);
+            if (System.IO.File.Exists(fullPathLogo2))
+            {
+                System.IO.File.Delete(fullPathLogo2);
             }
             return JavaScript("");
         }

@@ -52,7 +52,7 @@ namespace NFix.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [HandleError]
+
         public ActionResult Create(TblVideoCatagory video_Groups, HttpPostedFileBase Image)
         {
             try
@@ -61,6 +61,9 @@ namespace NFix.Areas.Admin.Controllers
                 {
                     video_Groups.Image = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
                     Image.SaveAs(Server.MapPath("/Resources/VideoCatagory/" + video_Groups.Image));
+                    ImageResizer img = new ImageResizer();
+                    img.Resize(Server.MapPath("/Resources/VideoCatagory/" + video_Groups.Image),
+                        Server.MapPath("/Resources/VideoCatagory/Thumb/" + video_Groups.Image));
                 }
                 bool x = _videoCatagory.AddVideoCatagory(video_Groups);
                 return RedirectToAction("Index");
@@ -106,12 +109,20 @@ namespace NFix.Areas.Admin.Controllers
                 if (Image != null && Image.IsImage())
                 {
                     string fullPathLogo = Request.MapPath("/Resources/VideoCatagory/" + video_Groups.Image);
+                    string fullPathLogo2 = Request.MapPath("/Resources/VideoCatagory/Thumb/" + video_Groups.Image);
                     if (System.IO.File.Exists(fullPathLogo))
                     {
                         System.IO.File.Delete(fullPathLogo);
                     }
+                    if (System.IO.File.Exists(fullPathLogo2))
+                    {
+                        System.IO.File.Delete(fullPathLogo2);
+                    }
                     video_Groups.Image = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
                     Image.SaveAs(Server.MapPath("/Resources/VideoCatagory/" + video_Groups.Image));
+                    ImageResizer img = new ImageResizer();
+                    img.Resize(Server.MapPath("/Resources/VideoCatagory/" + video_Groups.Image),
+                        Server.MapPath("/Resources/VideoCatagory/Thumb/" + video_Groups.Image));
 
                 }
                 _videoCatagory.UpdateVideoCatagory(video_Groups, video_Groups.id);
@@ -136,10 +147,20 @@ namespace NFix.Areas.Admin.Controllers
                     {
                         return Json(new { success = false, responseText = "خطا در حذف  اول ویدیو مربوطه رو حذف کنید" }, JsonRequestBehavior.AllowGet);
                     }
-                    string fullPathLogo = Request.MapPath("/Resources/VideoCatagory/" + DeleteCheck.MainImage);
+                    TblVideoCatagory DeleteCheckCatagory = _videoCatagory.SelectVideoCatagoryById(id);
+                    if (DeleteCheckCatagory == null)
+                    {
+                        return Json(new { success = false, responseText = "فایلی یافت نشد" }, JsonRequestBehavior.AllowGet);
+                    }
+                    string fullPathLogo = Request.MapPath("/Resources/VideoCatagory/" + DeleteCheckCatagory.Image);
                     if (System.IO.File.Exists(fullPathLogo))
                     {
                         System.IO.File.Delete(fullPathLogo);
+                    }
+                    string fullPathLogo2 = Request.MapPath("/Resources/VideoCatagory/Thumb/" + DeleteCheckCatagory.Image);
+                    if (System.IO.File.Exists(fullPathLogo2))
+                    {
+                        System.IO.File.Delete(fullPathLogo2);
                     }
                     _videoCatagory.DeleteVideoCatagory(id);
                     return Json(new { success = true, responseText = "گروه حذف شد" }, JsonRequestBehavior.AllowGet);

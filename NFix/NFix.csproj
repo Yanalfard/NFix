@@ -1757,9 +1757,9 @@
     <Folder Include="Areas\Admin\Views\UploadImage\" />
     <Folder Include="Areas\Tuotor\Data\" />
     <Folder Include="Areas\User\Data\" />
-    <Folder Include="Resources\Blogs\" />
+    <Folder Include="Resources\Blogs\Thumb\" />
     <Folder Include="Resources\Product\" />
-    <Folder Include="Resources\Tutor\" />
+    <Folder Include="Resources\Tutor\Thumb\" />
     <Folder Include="Resources\UploadEditor\" />
     <Folder Include="Resources\User\" />
     <Folder Include="Resources\VideoCatagory\Thumb\" />

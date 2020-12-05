@@ -264,6 +264,9 @@ namespace NFix.Areas.Tuotor.Controllers
                 TblTutor tblTutor = new TblTutor();
                 selectTutor.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
                 Image.SaveAs(Server.MapPath("/Resources/Tutor/" + selectTutor.MainImage));
+                ImageResizer img = new ImageResizer();
+                img.Resize(Server.MapPath("/Resources/Tutor/" + selectTutor.MainImage),
+                    Server.MapPath("/Resources/Tutor/Thumb/" + selectTutor.MainImage));
                 tblTutor.Description = selectTutor.Description;
                 tblTutor.IdentificationNo = selectTutor.IdentificationNo;
                 tblTutor.Name = selectTutor.Name;
