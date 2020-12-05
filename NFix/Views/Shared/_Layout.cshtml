@@ -414,38 +414,31 @@
         </div>
     </footer>
 
-    <!-- #Loading -->
+    <!-- #endregion -->
+
     <div id="overlay">
         <div class="cv-spinner">
             <span class="spinner"></span>
         </div>
     </div>
-
-
-
-
-
     <!--#endregion-->
     <!-- PWA MAIN -->
     <script src="~/Scripts/app.js"></script>
 
-    <!-- #endregion Scripts -->
     <script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
-    <script src="~/Scripts/layout.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF&&hl=fa"></script>
+    <!-- #endregion -->
+    <!-- #endregion Scripts -->
+    @*<script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF"></script>
+
     <script>
         grecaptcha.ready(function () {
             grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
-                $('.GoogleCapcha').val(token);
+                $(".GoogleCapcha").val(token);
             });
         });
-        function reloadRech() {
-            grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
-                //document.getElementById("GoogleCapcha").value = token;
-                $('.GoogleCapcha').val(token);
-            });
-        }
-    </script>
+    </script>*@
 
 
 
@@ -455,26 +448,8 @@
         </div>
     </div>
     <script>
-        function showLogin() {
-            $.get('/HomeAccount/Login', function (result) {
-                reloadRech();
-                UIkit.modal(document.getElementById('Modal-Show')).show();
-                $('#Modal-Body').html(result);
-            });
-        };
 
-        function showRegister() {
-            $.get('/HomeAccount/Register', function (result) {
-                reloadRech();
-                UIkit.modal(document.getElementById('Modal-Show')).show();
-                $('#Modal-Body').html(result);
-            });
-        };
-        function doneModal(form) {
-            $("#overlay").fadeOut();
-            UIkit.modal(document.getElementById(form)).hide();
-            window.location.href = "/";
-        }
+        
     </script>
 
     <!-- #endregion -->
