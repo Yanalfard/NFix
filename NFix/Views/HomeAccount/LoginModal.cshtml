@@ -1,0 +1,10 @@
+﻿
+<div id="ModalLogin" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body" id="Modal-Body">
+
+        @Html.Action("Login", "HomeAccount", new { area = "" })
+    </div>
+</div>
+<script>
+    UIkit.modal(document.getElementById('ModalLogin')).show();
+</script>

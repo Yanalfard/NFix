@@ -346,6 +346,7 @@
     <Content Include="Scripts\Jquery\ajaxfileupload.js" />
     <Content Include="Scripts\Jquery\modal.js" />
     <Content Include="Scripts\Jquery\Model.js" />
+    <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\Loading\Loading.js" />
     <Content Include="Scripts\Jquery\jquery-2.1.4.min.js" />
     <Content Include="Scripts\Jquery\jquery.unobtrusive-ajax.js" />
@@ -1744,6 +1745,10 @@
     <Content Include="Styles\_popupCroppit.scss" />
     <Content Include="Views\HomeShopCart\ListCompare.cshtml" />
     <Content Include="Styles\IRANYekan.ttf" />
+    <Content Include="Views\HomeAccount\LoginModal.cshtml" />
+    <Content Include="Views\Shared\_LoggedInUser2.cshtml" />
+    <Content Include="Views\HomeAccount\ActiveUser.cshtml" />
+    <Content Include="Views\HomeAccount\Recovery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
