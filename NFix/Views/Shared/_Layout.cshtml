@@ -54,52 +54,9 @@
                 <img src="/Resources/Svg/NFIX.svg" width="80" height="25" alt="لوگو ان فیکس" />
             </a>
             <ul class="column">
+                @Html.Partial("_LoggedInUser")
 
-                @if (User.Identity.IsAuthenticated)
-                {
-                    if (User.IsInRole("admin"))
-                    {
-                        <li>
-                            <a href="/Admin/Blog/BlogTable" class="row">
-                                <span uk-icon="user"></span>
-                                پنل مدیریت
-                            </a>
-                        </li>
-                    }
-                    if (User.IsInRole("tutor"))
-                    {
-                        <li>
-                            <a href="/Tuotor/Profile/Index" class="row">
-                                <span uk-icon="user"></span>
-                                پنل مربی
-                            </a>
-                        </li>
-                    }
-                    if (User.IsInRole("user"))
-                    {
-                        <li>
-                            <a href="/User/Profile/Index" class="row">
-                                <span uk-icon="user"></span>
-                                پروفایل
-                            </a>
-                        </li>
-                    }
-                    <li>
-                        <a href="/HomeAccount/LogOff" class="row">
-                            <span uk-icon="sign-out"></span>
-                            خروج
-                        </a>
-                    </li>
-                }
-                else
-                {
-                    <li>
-                        <a onclick="showLogin()">
-                            <span uk-icon="user"></span>
-                            ورود / ثبت نام
-                        </a>
-                    </li>
-                }
+
 
                 <li>
                     <a href="/Home/About">
@@ -145,85 +102,9 @@
 
         <div class="uk-navbar-left uk-margin-small-left">
             <ul class="uk-navbar-nav">
-                <li>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <a class="nav-profile" type="button" href="#">
-                            پروفایل
-                        </a>
-                        <div uk-drop="offset: -10" class="drop" dir="rtl">
-                            <div class="mat column">
-                                @if (User.IsInRole("user"))
-                                {
-                                    <a class="nav-profile row" dir="rtl" type="button" href="/User/Profile/Index">
-                                        <span uk-icon="user"></span>
-                                        <span class="uk-margin-small-right">پروفایل</span>
-                                    </a>
-                                    <a class="nav-profile row" dir="rtl" type="button" href="/User/Profile/Index">
-                                        <span uk-icon="cart"></span>
-                                        <span class="uk-margin-small-right">سبد خرید</span>
-                                    </a>
-                                }
-                                else if (User.IsInRole("admin"))
-                                {
-                                    <a class="nav-profile" type="button" href="/Admin/Blog/BlogTable">
-                                        <span uk-icon="user"></span>
-                                        <span class="uk-margin-small-right line-break-none">
-                                            پنل مدیریت
-                                        </span>
-                                    </a>
-                                }
-                                else if (User.IsInRole("tutor"))
-                                {
-                                    <a class="nav-profile row" type="button" href="/Tuotor/Profile/Index">
-                                        <span uk-icon="user"></span>
-                                        <span class="uk-margin-small-right">
-                                            پنل مربی
-                                        </span>
-                                    </a>
-                                }
-                                <a class="nav-profile" href="/HomeAccount/LogOff">
-                                    <span uk-icon="sign-out"></span>
-                                    <span class="uk-margin-small-right">خروج</span>
-                                </a>
-                            </div>
-                        </div>
-                    }
-                    else
-                    {
-                        <a class="nav-profile" onclick="showLogin()">
-                            ورود
-                        </a>
-                    }
+                <li id="loggedInUser2">
 
-                    <!-- #region Register -->
-                    <!--name-->
-                    <!--tell-->
-                    <!--user-->
-                    <!--pass-->
-                    @*<div id="ModalRegister" uk-modal>
-                            @Html.Action("Register", "HomeAccount", new { area = "" })
-                        </div>*@
-
-                    @*@Html.Action("Register", "HomeAccount", new { area = "" })*@
-                    <!-- #endregion -->
-                    <!-- #region Login -->
-                    @*<div id="ModalLogin" uk-modal>
-                            @Html.Action("Login", "HomeAccount", new { area = "" })
-                        </div>*@
-
-                    <!--#endregion-->
-                    <!-- #region Forgot Password -->
-                    <div id="ModalForget" uk-modal>
-                        @Html.Action("ForgotPassword", "HomeAccount", new { area = "" })
-                    </div>
-
-                    @if (Request.QueryString["LoginInUser"] != null)
-                    {
-                        <script>
-                            UIkit.modal(document.getElementById('ModalLogin')).show();
-                        </script>
-                    }
+                    @Html.Partial("_LoggedInUser2")
 
 
                     <!--#endregion-->
@@ -414,31 +295,38 @@
         </div>
     </footer>
 
-    <!-- #endregion -->
-
+    <!-- #Loading -->
     <div id="overlay">
         <div class="cv-spinner">
             <span class="spinner"></span>
         </div>
     </div>
+
+
+
+
+
     <!--#endregion-->
     <!-- PWA MAIN -->
     <script src="~/Scripts/app.js"></script>
 
-    <script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
-    <!-- #endregion -->
     <!-- #endregion Scripts -->
-    @*<script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
-
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF"></script>
-
+    <script src="~/Scripts/UIScripts/ImageLoadFailed.js"></script>
+    <script src="~/Scripts/layout.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF&&hl=fa"></script>
     <script>
         grecaptcha.ready(function () {
             grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
-                $(".GoogleCapcha").val(token);
+                $('.GoogleCapcha').val(token);
             });
         });
-    </script>*@
+        function reloadRech() {
+            grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
+                //document.getElementById("GoogleCapcha").value = token;
+                $('.GoogleCapcha').val(token);
+            });
+        }
+    </script>
 
 
 
@@ -448,8 +336,41 @@
         </div>
     </div>
     <script>
+        function showLogin() {
+            $.get('/HomeAccount/Login', function (result) {
+                reloadRech();
+                UIkit.modal(document.getElementById('Modal-Show')).show();
+                $('#Modal-Body').html(result);
+            });
+        };
 
-        
+        function showRegister() {
+            $.get('/HomeAccount/Register', function (result) {
+                reloadRech();
+                UIkit.modal(document.getElementById('Modal-Show')).show();
+                $('#Modal-Body').html(result);
+
+            });
+        };
+        function ForgotPassword() {
+            $.get('/HomeAccount/ForgotPassword', function (result) {
+                reloadRech();
+                UIkit.modal(document.getElementById('Modal-Show')).show();
+                $('#Modal-Body').html(result);
+            });
+        };
+        function changePassword(name) {
+            $.get('/HomeAccount/RecoveryPassword/' + name, function (result) {
+                reloadRech();
+                UIkit.modal(document.getElementById('Modal-Show')).show();
+                $('#Modal-Body').html(result);
+            });
+        };
+        function doneModal(form) {
+            $("#overlay").fadeOut();
+            UIkit.modal(document.getElementById(form)).hide();
+            window.location.href = "/";
+        }
     </script>
 
     <!-- #endregion -->

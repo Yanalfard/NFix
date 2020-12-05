@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataLayer.ViewModel
 {
+    public class ActiveViewModel
+    {
+        public string id { get; set; }
+       
+    }
     public class LoginViewModel
     {
         public int id { get; set; }

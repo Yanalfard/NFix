@@ -111,18 +111,12 @@ namespace NFix.Controllers
             }
         }
         [HttpPost]
+        [Authorize]
+        [Authorize(Roles = "user")]
         public ActionResult CreateComment(CommentViewModel comment)
         {
             try
             {
-                if (!User.Identity.IsAuthenticated)
-                {
-                    return JavaScript("UIkit.modal(document.getElementById('ModalLogin')).show();");
-                }
-                if (!User.IsInRole("user"))
-                {
-                    return JavaScript("alert('شما مجاز به ثبت پیام نیستید')");
-                }
                 TblUserPass tblUserPass = _userPass.SelectUserPassByUsername(User.Identity.Name);
                 TblClient tblClient = _client.SelectClientByUserPassId(tblUserPass.id);
                 TblComment tblComment = new TblComment();

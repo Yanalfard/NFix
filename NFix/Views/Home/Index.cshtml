@@ -1,24 +1,13 @@
 ﻿@{
     ViewBag.Title = "NFix";
 }
+
+
+@Html.Action("LoginModal", "HomeAccount")
+
 <!-- #region Hero -->
 @Html.Action("Hero", "Home")
 <!-- #endregion -->
-@if (Request.QueryString["active"] != null)
-{
-    <script>
-        alert('حساب کاربری شما فعال شد  میتونید وار حساب کاربری خود شوید');
-    </script>
-}
-@if (Request.QueryString["RecoveryPassWord"] != null)
-{
-    <div id="RecoveryPassword" uk-modal>
-        @Html.Action("RecoveryPassword", "HomeAccount", new { id = Request.QueryString["RecoveryPassWord"], area = "" })
-    </div>
-    <script>
-        UIkit.modal(document.getElementById('RecoveryPassword')).show();
-    </script>
-}
 
 <a name="videos"></a>
 <!-- #region Stripe -->
@@ -64,9 +53,6 @@
     {
         <a href="#" uk-toggle="target: #ModalLogin" class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
 
-        @*<a class="nav-profile" href="#" uk-toggle="target: #ModalLogin" type="button">
-                ورود
-            </a>*@
     }
     <a class="stickIcon" uk-tooltip="title: اشتراک گذاری; pos:left"
        onclick="fallbackCopyTextToClipboard(window.location.href);
