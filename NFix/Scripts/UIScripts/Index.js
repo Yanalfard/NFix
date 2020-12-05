@@ -13,11 +13,17 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 function btnDownloadClick(e) {
 
-    //var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    //if (isSafari) {
-    //    window.location = 'https://stackoverflow.com/questions/49328396/how-to-create-progressive-web-app-apk-any-type-of-file-that-can-be-distributed-i';
-    //    return;
-    //}
+    const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+    if (isInStandaloneMode) {
+        UIkit.notification('برنامه نصب شده است');
+        return;
+    }
+
+    var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari) {
+
+        return;
+    }
 
     // Show the prompt
     deferredPrompt.prompt();

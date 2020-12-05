@@ -12,9 +12,11 @@
     <link rel="icon" type="image/png" href="/favicon.ico" />
     <link rel="manifest" href="~/manifest.json" />
     <link rel="apple-touch-icon" href="/Resources/Png/Mobile/icon_96.png" />
+    <link href="/Resources/Png/Mobile/icon_512.png" sizes="640x1136" rel="apple-touch-startup-image" />
     <meta name="apple-mobile-web-app-status-bar" content="#E73434" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#E73434" />
     <meta name="theme-color" content="#E73434" />
+
 
     <!-- Project Css -->
     <link href="/Styles/Index.min.css" rel="stylesheet" />
@@ -53,10 +55,9 @@
             <a href="/Home/Index" class="uk-margin-auto">
                 <img src="/Resources/Svg/NFIX.svg" width="80" height="25" alt="لوگو ان فیکس" />
             </a>
-            <ul class="column">
+            <ul class="column uk-padding-remove">
+
                 @Html.Partial("_LoggedInUser")
-
-
 
                 <li>
                     <a href="/Home/About">
@@ -74,6 +75,13 @@
                     <a href="/Home/VideosPage" mode="click" type="button">
                         <span uk-icon="play"></span>
                         ویدیو ها
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/VideosPage" mode="click" type="button">
+                        <span uk-icon="rss"></span>
+                        ویدیو های لایو
+                        <small class="uk-margin-auto-right uk-alert-success">به زودی</small>
                     </a>
                 </li>
                 <li>
@@ -155,7 +163,8 @@
     <!-- #endregion -->
     <!-- #region Floating Cart -->
 
-    <div class="floating-cart uk-box-shadow-medium uk-box-shadow-hover-large shopCartDisplay">
+    <div class="floating-cart uk-box-shadow-medium uk-box-shadow-hover-large"
+         uk-scrollspy="cls: uk-animation-slide-bottom; delay: 2500 ;">
         <a class="floating-cart-main" href="/ShopCart">
             <span uk-icon="icon:cart;ratio:1.5"></span>
         </a>
@@ -328,13 +337,12 @@
         }
     </script>
 
-
-
     <div id="Modal-Show" uk-modal>
         <div class="uk-modal-dialog uk-modal-body" id="Modal-Body">
 
         </div>
     </div>
+
     <script>
         function showLogin() {
             $.get('/HomeAccount/Login', function (result) {

@@ -1,6 +1,8 @@
 ﻿@model DataLayer.ViewModel.LoginViewModel
 <div class="alternate">
+
     <img src="~/Resources/Png/Login.png" alt="Boxing Club, Gym" width="400" height="600" />
+
     @using (Ajax.BeginForm("Login", "HomeAccount", new AjaxOptions() { HttpMethod = "POST", OnFailure = "doneModal('Modal-Show')", OnSuccess = "LoadingEnd('#Modal-Body')", UpdateTargetId = "Modal-Body" }, htmlAttributes: new { @id = "LoginForm" }))
     {
         @Html.AntiForgeryToken()

@@ -314,6 +314,7 @@
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
     <Content Include="ManUp.js" />
+    <Content Include="Resources\Png\CalculatorBackground.jpeg" />
     <Content Include="Resources\Png\HoldingLift.png" />
     <Content Include="Resources\Png\Login.png" />
     <Content Include="Resources\Png\Mobile\icon_128.png" />
@@ -444,7 +445,6 @@
     <Content Include="Mocks\VideoView.html" />
     <Content Include="Resources\Png\Background.png" />
     <Content Include="Resources\Png\BodyBuilding.png" />
-    <Content Include="Resources\Png\CalculatorBackground.png" />
     <Content Include="Resources\Png\Categories\Aero.png" />
     <Content Include="Resources\Png\Categories\Bike.png" />
     <Content Include="Resources\Png\Categories\BodyB.png" />

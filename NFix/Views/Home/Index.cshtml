@@ -51,7 +51,6 @@
     else
     {
         <a href="#" uk-toggle="target: #ModalLogin" class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
-
     }
     <a class="stickIcon" uk-tooltip="title: اشتراک گذاری; pos:left"
        onclick="fallbackCopyTextToClipboard(window.location.href);
@@ -129,11 +128,12 @@
 @Html.Action("ProductsPage", "HomeProducts")
 <!-- #endregion -->
 <div class="space-half"></div>
-<div class="calculator full-width row">
-    <div class="column card center">
-        <h5>
+<div class="calculator">
+    <img class="calculator-image" uk-parallax="bgy: -200" src="~/Resources/Png/CalculatorBackground.jpeg"/>
+    <div class="calculator-card column card center">
+        <h4>
             محاسبه شاخص توده بدنی
-        </h5>
+        </h4>
         <!--<label>سن</label>
         <input id="txtAge" type="text" value="" />-->
         <label>قد</label>
