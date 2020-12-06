@@ -1,0 +1,86 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("admin"))
+    {
+        <li>
+            <a href="/Admin/Blog/BlogTable" class="row">
+                <span uk-icon="user"></span>
+                پنل مدیریت
+            </a>
+        </li>
+    }
+    if (User.IsInRole("tutor"))
+    {
+        <li>
+            <a href="/Tuotor/Profile/Index" class="row">
+                <span uk-icon="user"></span>
+                پنل مربی
+            </a>
+        </li>
+    }
+    if (User.IsInRole("user"))
+    {
+        <li>
+            <a href="/User/Profile/Index" class="row">
+                <span uk-icon="user"></span>
+                پروفایل
+            </a>
+        </li>
+    }
+    <li>
+        <a href="/HomeAccount/LogOff" class="row">
+            <span uk-icon="sign-out"></span>
+            خروج
+        </a>
+    </li>
+}
+else
+{
+    <li>
+        <a onclick="showLogin()">
+            <span uk-icon="user"></span>
+            ورود / ثبت نام
+        </a>
+    </li>
+}
+
+<li>
+    <a href="/Home/About">
+        <span uk-icon="info"></span>
+        درباره ما
+    </a>
+</li>
+<li>
+    <a href="/HomeBlogs/AllBlogs">
+        <span uk-icon="file-text"></span>
+        وبلاگ ها
+    </a>
+</li>
+<li>
+    <a href="/Home/VideosPage" mode="click" type="button">
+        <span uk-icon="play"></span>
+        ویدیو ها
+    </a>
+</li>
+<li>
+    <a href="/Home/VideosPage" mode="click" type="button">
+        <span uk-icon="rss"></span>
+        ویدیو های لایو
+        <small class="uk-margin-auto-right uk-alert-success">به زودی</small>
+    </a>
+</li>
+<li>
+    <hr class="uk-margin-top uk-margin-remove-bottom" />
+</li>
+<li dir="rtl">
+    <a class="add-button">
+        <span uk-icon="phone"></span>
+        دانلود برنامه
+    </a>
+</li>
+<li>
+    <a href="/Home/Index">
+        <span uk-icon="home"></span>
+        خانه
+    </a>
+</li>

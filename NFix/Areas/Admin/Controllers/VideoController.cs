@@ -45,6 +45,9 @@ namespace NFix.Areas.Admin.Controllers
             {
                 video.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(MainImage.FileName);
                 MainImage.SaveAs(Server.MapPath("/Resources/Videos/Image/" + video.MainImage));
+                ImageResizer img = new ImageResizer();
+                img.Resize(Server.MapPath("/Resources/Videos/Image/" + video.MainImage),
+                    Server.MapPath("/Resources/Videos/Image/Thumb/" + video.MainImage));
             }
             if (VideoUrl != null)
             {
@@ -76,9 +79,13 @@ namespace NFix.Areas.Admin.Controllers
                 if (video.MainImage != null)
                 {
                     System.IO.File.Delete(Server.MapPath("/Resources/Videos/Image/" + video.MainImage));
+                    System.IO.File.Delete(Server.MapPath("/Resources/Videos/Image/Thumb/" + video.MainImage));
                 }
                 video.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(MainImage.FileName);
                 MainImage.SaveAs(Server.MapPath("/Resources/Videos/Image/" + video.MainImage));
+                ImageResizer img = new ImageResizer();
+                img.Resize(Server.MapPath("/Resources/Videos/Image/" + video.MainImage),
+                    Server.MapPath("/Resources/Videos/Image/Thumb/" + video.MainImage));
             }
             if (VideoUrl != null)
             {
@@ -105,11 +112,16 @@ namespace NFix.Areas.Admin.Controllers
         {
             TblVideo selectVideo = _video.SelectVideoById(id);
             string fullPathImage = Request.MapPath("/Resources/Videos/Image/" + selectVideo.MainImage);
+            string fullPathImage2 = Request.MapPath("/Resources/Videos/Image/Thumb/" + selectVideo.MainImage);
             string fullPathVideo = Request.MapPath("/Resources/Videos/" + selectVideo.VideoUrl);
             string fullPathVideoDemo = Request.MapPath("/Resources/Videos/Demo/" + selectVideo.VidioDemoUrl);
             if (System.IO.File.Exists(fullPathImage))
             {
                 System.IO.File.Delete(fullPathImage);
+            } 
+            if (System.IO.File.Exists(fullPathImage2))
+            {
+                System.IO.File.Delete(fullPathImage2);
             }
             if (System.IO.File.Exists(fullPathVideo))
             {

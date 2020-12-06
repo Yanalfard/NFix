@@ -190,16 +190,17 @@ namespace NFix.Controllers
             }
 
         }
-        public ActionResult VideoRecommendations(string Keywords,string Title)
+        public ActionResult VideoRecommendations(string Keywords, string Title)
         {
             List<TblVideo> list = new List<TblVideo>();
             foreach (var item in Keywords.Split('،'))
             {
-                list.AddRange(_videoKeywords.SelectAllVideoKeywords().Where(t => t.Name.Contains(item)).Select(t => t.TblVideo).ToList());
-                list.AddRange(_video.SelectAllVideos().Where(i => i.Title.Contains(Keywords) || i.DescriptionDemo.Contains(Keywords) || i.Description.Contains(Keywords)).Distinct());
+                // list.AddRange(_videoKeywords.SelectAllVideoKeywords().Where(t => t.Name.Contains(item)).Select(t => t.TblVideo).ToList());
+                list = _videoKeywords.SelectAllVideoKeywords().Where(t => t.Name.Contains(item)).Select(t => t.TblVideo).ToList();
+                // list.AddRange(_video.SelectAllVideos().Where(i => i.Title.Contains(Keywords) || i.DescriptionDemo.Contains(Keywords) || i.Description.Contains(Keywords)).Distinct());
             }
-            return PartialView(list.Take(5));
-            //return PartialView(_video.SelectAllVideos().Where(i => i.Title.Contains(Keywords) || i.DescriptionDemo.Contains(Keywords) || i.Description.Contains(Keywords)).Distinct());
+            list = _video.SelectAllVideos().Where(i => i.Title.Contains(Title) || i.DescriptionDemo.Contains(Title) || i.Description.Contains(Title)).ToList();
+            return PartialView(list.Distinct().Take(5));
         }
     }
 }

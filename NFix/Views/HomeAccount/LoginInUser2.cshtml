@@ -1,0 +1,50 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <a class="nav-profile" type="button" href="#">
+        پروفایل
+    </a>
+    <div uk-drop="offset: -10" class="drop" dir="rtl">
+        <div class="mat column">
+            @if (User.IsInRole("user"))
+            {
+                <a class="nav-profile row" dir="rtl" type="button" href="/User/Profile/Index">
+                    <span uk-icon="user"></span>
+                    <span class="uk-margin-small-right">پروفایل</span>
+                </a>
+                <a class="nav-profile row" dir="rtl" type="button" href="/User/Profile/Index">
+                    <span uk-icon="cart"></span>
+                    <span class="uk-margin-small-right">سبد خرید</span>
+                </a>
+            }
+            else if (User.IsInRole("admin"))
+            {
+                <a class="nav-profile" type="button" href="/Admin/Blog/BlogTable">
+                    <span uk-icon="user"></span>
+                    <span class="uk-margin-small-right line-break-none">
+                        پنل مدیریت
+                    </span>
+                </a>
+            }
+            else if (User.IsInRole("tutor"))
+            {
+                <a class="nav-profile row" type="button" href="/Tuotor/Profile/Index">
+                    <span uk-icon="user"></span>
+                    <span class="uk-margin-small-right">
+                        پنل مربی
+                    </span>
+                </a>
+            }
+            <a class="nav-profile" href="/HomeAccount/LogOff">
+                <span uk-icon="sign-out"></span>
+                <span class="uk-margin-small-right">خروج</span>
+            </a>
+        </div>
+    </div>
+}
+else
+{
+    <a class="nav-profile" onclick="showLogin()">
+        ورود
+    </a>
+}
+

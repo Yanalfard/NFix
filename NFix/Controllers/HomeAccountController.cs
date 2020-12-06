@@ -112,7 +112,7 @@ namespace NFix.Controllers
                                     bool update = _client.UpdateClient(updateClient, selectClient.id);
                                 };
                                 FormsAuthentication.SetAuthCookie(user.Username, client.RememberMe);
-                                return JavaScript("UIkit.modal(document.getElementById('Modal-Show')).hide();window.location = window.location.href='/'");
+                                return JavaScript("UIkit.modal(document.getElementById('Modal-Show')).hide();reloadLogin()");
                             }
                             else
                             {
@@ -373,7 +373,7 @@ namespace NFix.Controllers
             {
                 return Redirect("/fallback.html");
             }
-           
+
         }
         public ActionResult RecoveryPassword(int id)
         {
@@ -445,7 +445,14 @@ namespace NFix.Controllers
             }
         }
 
-
+        public ActionResult LoginInUser()
+        {
+            return PartialView();
+        }
+        public ActionResult LoginInUser2()
+        {
+            return PartialView();
+        }
 
 
         public ActionResult Category()
