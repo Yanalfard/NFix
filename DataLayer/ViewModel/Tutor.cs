@@ -24,9 +24,13 @@ namespace DataLayer.ViewModel
         [Display(Name = "کد ملی")]
         [MaxLength(10, ErrorMessage = "تعداد کاراکتر بیشتر است")]
         public string IdentificationNo { get; set; }
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [Display(Name = "شماره تلفن")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [MinLength(11, ErrorMessage = "تعداد کاراکتر کم است")]
         [MaxLength(11, ErrorMessage = "تعداد کاراکتر بیشتر است")]
+        [DataType(DataType.PhoneNumber)]
+        //[RegularExpression("09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}", ErrorMessage = "{0} معتبر نیست")]
+        [RegularExpression("[0]{1}[9]{1}[0-9]{9}", ErrorMessage = "شماره تلفن وارد شده معتبر نمی باشد")]
         public string TellNo { get; set; }
         public string MainImage { get; set; }
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
