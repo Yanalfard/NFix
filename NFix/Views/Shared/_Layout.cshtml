@@ -285,12 +285,18 @@
 
     <script>
         grecaptcha.ready(function () {
-            grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
+            // < !-- #localhost  -->
+            // grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
+            // < !-- #site  -->
+            grecaptcha.execute('6LcplvwZAAAAAPLSoiR4UIlmGwcIE7OIe-2r0dgH', { action: 'contact_us' }).then(function (token) {
                 $('.GoogleCapcha').val(token);
             });
         });
         function reloadRech() {
-            grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
+            // < !-- #localhost  -->
+            //  grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
+            // < !-- #site  -->
+            grecaptcha.execute('6LcplvwZAAAAAPLSoiR4UIlmGwcIE7OIe-2r0dgH', { action: 'contact_us' }).then(function (token) {
                 //document.getElementById("GoogleCapcha").value = token;
                 $('.GoogleCapcha').val(token);
             });
