@@ -499,6 +499,23 @@ backdrop-filter: saturate(80%);
   background-repeat: no-repeat;
   z-index: 2; }
 
+@media screen and (min-width: 0px) and (max-width: 640px) and (orientation: landscape) {
+  .hero #header {
+    z-index: 10;
+    position: absolute;
+    top: 70px;
+    width: 14vw;
+    margin-left: 90px; }
+    .hero #header h1 {
+      font-size: 14vw !important;
+      text-align: left;
+      margin-left: -10px; }
+    .hero #header p {
+      text-align: left;
+      font-size: 1.2em !important; }
+  .rowIcon {
+    display: none !important; } }
+
 .rowIcon {
   display: flex;
   -ms-flex-direction: row;
@@ -964,6 +981,10 @@ article a:hover {
     height: 28px;
     width: 28px;
     margin: auto; }
+
+@media (max-height: 600px) and (min-height: 0px) {
+  #stickies {
+    display: none; } }
 
 @media only screen and (max-device-width: 512px) {
   .image-banner .column {

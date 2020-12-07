@@ -71,7 +71,7 @@
         right: 10px;
         top: 0;
         bottom: 0;
-        z-index:100;
+        z-index: 100;
 
         .player {
             @include trans(.4s);
@@ -92,6 +92,35 @@
     background-size: cover;
     background-repeat: no-repeat;
     z-index: 2;
+}
+
+@media screen and (min-width: 0px) and (max-width: 640px) and (orientation: landscape) {
+
+    .hero {
+
+        #header {
+            z-index: 10;
+            position: absolute;
+            top: 70px;
+            width: 14vw;
+            margin-left: 90px;
+
+            h1 {
+                font-size: 14vw !important;
+                text-align: left;
+                margin-left: -10px;
+            }
+
+            p {
+                text-align: left;
+                font-size: 1.2em !important;
+            }
+        }
+    }
+
+    .rowIcon {
+        display: none !important;
+    }
 }
 
 $bgPosition-X: 50%;
@@ -262,7 +291,6 @@ $bgPosition-Y: 60px;
     }
 }
 
-
 #darnVideo {
     display: none;
     position: absolute;
@@ -279,8 +307,6 @@ $bgPosition-Y: 60px;
         width: 100vw;
     }
 }
-
-
 
 .stripe {
     width: 100vw;
@@ -698,6 +724,12 @@ $Stickies-Width: 100px;
         height: 28px;
         width: 28px;
         margin: auto;
+    }
+}
+
+@media (max-height:600px) and (min-height:0px) {
+    #stickies {
+        display:none;
     }
 }
 
