@@ -23,19 +23,14 @@ namespace NFix.Controllers
         private ClientService _client = new ClientService();
         private UserPassService _userPass = new UserPassService();
         private CatagoryService _catagory = new CatagoryService();
-
-
-
-
-
         private async Task<bool> IsCaptchaValid(string response)
         {
             try
             {
                 //Localhost
-                var secret = "6LfeB-IZAAAAAFJGzrD4-Vz9B4GPnjaps0gjQwFq";
-                //Site
                 //var secret = "6LfeB-IZAAAAAFJGzrD4-Vz9B4GPnjaps0gjQwFq";
+                //Site
+                var secret = "6LcplvwZAAAAAAQdmtaDjzzOkWm7SqKwZQaQ_iN8";
                 using (var client = new HttpClient())
                 {
                     var values = new Dictionary<string, string>
@@ -44,12 +39,9 @@ namespace NFix.Controllers
                         {"response", response},
                         {"remoteip", Request.UserHostAddress}
                     };
-
                     var content = new FormUrlEncodedContent(values);
                     var verify = await client.PostAsync("https://www.google.com/recaptcha/api/siteverify", content);
-
                     //return verify.IsSuccessStatusCode;
-
                     var captchaResponseJson = await verify.Content.ReadAsStringAsync();
                     var captchaResult = JsonConvert.DeserializeObject<CaptchaResponseViewModel>(captchaResponseJson);
                     return captchaResult.Success
