@@ -879,3 +879,7 @@ textarea {
     max-width: 100%;
     margin: 0 auto;
 }
+
+.imgcover{
+    @include imgcover;
+}
