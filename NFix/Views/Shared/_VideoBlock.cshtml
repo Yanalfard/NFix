@@ -3,7 +3,7 @@
 <!-- #region Video -->
 <div class="video column video_@(Model.id)" dir="rtl" >
     <div class="vid column">
-        <img class="thumbnail" width="300" height="256" src="~/Resources/Videos/Image/Thumb/@Model.MainImage" alt="عکس ویدیو" />
+        <img class="thumbnail" width="300" height="256" src="/Resources/Videos/Image/Thumb/@Model.MainImage" alt="عکس ویدیو" />
         <a href="/VideoView/@Model.id/@Model.Title.Replace(" ","-")" class="uk-icon" uk-icon="icon: play; ratio:4"></a>
     </div>
     <div class="uk-margin-small-top row">
@@ -11,7 +11,7 @@
             @foreach (var j in Model.TblTuotorVideoRel)
             {
                 <a href="/VideoView/@j.id/@Model.Title.Replace(" ","-")">
-                    <img class="profile-img uk-border-circle" src="~/Resources/Tutor/Thumb/@j.TblTutor.MainImage" />
+                    <img class="profile-img uk-border-circle" src="/Resources/Tutor/Thumb/@j.TblTutor.MainImage" />
                 </a>
             }
 
