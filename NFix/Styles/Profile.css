@@ -116,6 +116,10 @@ backdrop-filter: saturate(80%);
   width: 100vw;
   height: 80px; }
 
+/* Safari 7.1+ */
+_::-webkit-full-page-media .space-nav-bottom, _:future .space-nav-bottom, :root .safari .space-nav-bottom {
+  height: 120px; }
+
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .space-nav {
     width: 100vw;
@@ -361,6 +365,10 @@ backdrop-filter: saturate(80%);
 .space-nav-bottom {
   width: 100vw;
   height: 80px; }
+
+/* Safari 7.1+ */
+_::-webkit-full-page-media .space-nav-bottom, _:future .space-nav-bottom, :root .safari .space-nav-bottom {
+  height: 120px; }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .space-nav {

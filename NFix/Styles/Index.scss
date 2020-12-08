@@ -335,6 +335,7 @@ $bgPosition-Y: 60px;
         padding: 0;
         width: $Category-Size;
         height: $Category-Size;
+        background:#222;
         @include column();
         @include border-radius(8px,8px,8px,8px);
         overflow: hidden !important;
@@ -423,6 +424,11 @@ $bgPosition-Y: 60px;
     }
 
     .category-article {
+        display:none!important;
+    }
+
+/*
+    .category-article {
         width: 100vw;
         @include border-radius(0,0,0,0);
 
@@ -430,7 +436,7 @@ $bgPosition-Y: 60px;
             flex: 0;
             display: none;
         }
-    }
+    }*/
 }
 
 article {
@@ -466,12 +472,17 @@ article {
 }
 
 @media only screen and (max-device-width: 512px) {
-    .banner {
+    /*.banner {
         img {
             display: none;
             flex: 0;
         }
+    }*/
+
+    .banner {
+        display: none!important;
     }
+
 }
 
 #tutors {
@@ -673,6 +684,32 @@ article {
 .image-banner:hover .cover {
     background: rgba(0, 0, 0, 0.32);
 }
+
+@media only screen and (max-width : 512px) {
+    .image-banner {
+        
+        h2 {
+            margin: auto;
+            margin-bottom: 16px;
+            width: 90%;
+            text-align: justify!important;
+            vertical-align: central!important;
+            -ms-text-justify: kashida!important;
+            text-justify: kashida!important;
+        }
+
+        h4 {
+            margin: 0 auto;
+            margin-bottom: auto;
+            width: 70%;
+            text-align: justify!important;
+            vertical-align: central!important;
+            -ms-text-justify: kashida!important;
+            text-justify: kashida!important;
+        }
+    }
+}
+
 
 .uk-sticky {
     display: block;

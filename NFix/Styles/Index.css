@@ -116,6 +116,10 @@ backdrop-filter: saturate(80%);
   width: 100vw;
   height: 80px; }
 
+/* Safari 7.1+ */
+_::-webkit-full-page-media .space-nav-bottom, _:future .space-nav-bottom, :root .safari .space-nav-bottom {
+  height: 120px; }
+
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .space-nav {
     width: 100vw;
@@ -361,6 +365,10 @@ backdrop-filter: saturate(80%);
 .space-nav-bottom {
   width: 100vw;
   height: 80px; }
+
+/* Safari 7.1+ */
+_::-webkit-full-page-media .space-nav-bottom, _:future .space-nav-bottom, :root .safari .space-nav-bottom {
+  height: 120px; }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .space-nav {
@@ -671,6 +679,7 @@ backdrop-filter: saturate(80%);
   padding: 0;
   width: 200px;
   height: 200px;
+  background: #222;
   display: flex;
   -ms-flex-direction: column;
   -webkit-flex-direction: column;
@@ -751,16 +760,17 @@ backdrop-filter: saturate(80%);
         flex: 0;
         display: none; }
   .category-article {
-    width: 100vw;
-    -moz-border-radius: 0 0 0 0;
-    -webkit-border-radius: 0 0 0 0;
-    border-radius: 0 0 0 0;
-    /* -moz-border-radius: 0;
-    -webkit-border-radius: 0;
-    border-radius: 0;*/ }
-    .category-article img {
-      flex: 0;
-      display: none; } }
+    display: none !important; }
+  /*
+    .category-article {
+        width: 100vw;
+        @include border-radius(0,0,0,0);
+
+        img {
+            flex: 0;
+            display: none;
+        }
+    }*/ }
 
 article a {
   color: #E91E1E !important; }
@@ -784,9 +794,14 @@ article a:hover {
     flex: 0; } }
 
 @media only screen and (max-device-width: 512px) {
-  .banner img {
-    display: none;
-    flex: 0; } }
+  /*.banner {
+        img {
+            display: none;
+            flex: 0;
+        }
+    }*/
+  .banner {
+    display: none !important; } }
 
 #tutors {
   margin: 0 !important;
@@ -929,6 +944,24 @@ article a:hover {
 
 .image-banner:hover .cover {
   background: rgba(0, 0, 0, 0.32); }
+
+@media only screen and (max-width: 512px) {
+  .image-banner h2 {
+    margin: auto;
+    margin-bottom: 16px;
+    width: 90%;
+    text-align: justify !important;
+    vertical-align: central !important;
+    -ms-text-justify: kashida !important;
+    text-justify: kashida !important; }
+  .image-banner h4 {
+    margin: 0 auto;
+    margin-bottom: auto;
+    width: 70%;
+    text-align: justify !important;
+    vertical-align: central !important;
+    -ms-text-justify: kashida !important;
+    text-justify: kashida !important; } }
 
 .uk-sticky {
   display: block;
