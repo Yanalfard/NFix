@@ -892,7 +892,11 @@ _::-webkit-full-page-media .uk-navbar-container, _:future .uk-navbar-container, 
     border-radius: 0;*/
         height: 38px;
         width: 38px;
-        background: #222; }
+        background: #222;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center; }
 
 .vid:hover .thumbnail {
   filter: brightness(64%);

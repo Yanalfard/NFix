@@ -819,7 +819,11 @@ article a:hover {
       height: 72px;
       -moz-border-radius: 100%;
       -webkit-border-radius: 100%;
-      border-radius: 100%; }
+      border-radius: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+      -o-object-position: center;
+      object-position: center; }
     #tutors a content {
       flex: 2;
       padding: 12px 20px; }

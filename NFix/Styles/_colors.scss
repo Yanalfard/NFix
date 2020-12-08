@@ -165,6 +165,14 @@ $ScrollbarHandle: $white-dark;
     background: linear-gradient(-45deg, rgba(208,72,72,1) 0%, rgba(255,192,0,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#d04848",endColorstr="#ffc000",GradientType=1);
 }
+
+@mixin imgcover() {
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+}
+
 /*#endregion */
 
 /*
