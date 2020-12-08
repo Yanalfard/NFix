@@ -93,16 +93,16 @@ namespace NFix.Controllers
                 };
                 _log.AddLog(log);
                 System.Net.ServicePointManager.Expect100Continue = false;
-                ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient();
+                ZarinPal.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPal.PaymentGatewayImplementationServicePortTypeClient();
                 string Authority;
 
                 int Status = zp.PaymentRequest("5f648351-94a0-4b6d-ab96-3eef0d58a8b5", list.SumPrice, "NFIX ", "info@newkharid.com", "09339634557", ConfigurationManager.AppSettings["MyDomain"] + "/HomeShopCart/PlansVerify/" + log.id, out Authority);
                 if (Status == 100)
                 {
-                    //Response.Redirect("https://www.zarinpal.com/pg/StartPay/" + Authority);
+                    Response.Redirect("https://www.zarinpal.com/pg/StartPay/" + Authority);
 
                     ////test
-                    return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + Authority);
+                    //return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + Authority);
                 }
                 else
                 {
@@ -213,9 +213,9 @@ namespace NFix.Controllers
                         int Amount = (int)order.MoneyTransfered;
                         long RefID;
                         System.Net.ServicePointManager.Expect100Continue = false;
-                        ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient();
+                        ZarinPal.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPal.PaymentGatewayImplementationServicePortTypeClient();
 
-                        int Status = zp.PaymentVerification("a282a431-19d8-43ee-ae50-e3d056519667", Request.QueryString["Authority"].ToString(), Amount, out RefID);
+                        int Status = zp.PaymentVerification("7116ce36-6163-4850-9b8b-4cd392630557", Request.QueryString["Authority"].ToString(), Amount, out RefID);
                         if (Status == 100)
                         {
                             TblClient clientId = _client.SelectClientById(Convert.ToInt32(order.ClientId));
@@ -429,16 +429,16 @@ namespace NFix.Controllers
                 }
 
                 System.Net.ServicePointManager.Expect100Continue = false;
-                ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient();
+                ZarinPal.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPal.PaymentGatewayImplementationServicePortTypeClient();
                 string Authority;
 
                 int Status = zp.PaymentRequest("5f648351-94a0-4b6d-ab96-3eef0d58a8b5", SumOrder, "NFIX ", "info@newkharid.com", "09339634557", ConfigurationManager.AppSettings["MyDomain"] + "/HomeShopCart/Verify/" + order.id, out Authority);
                 if (Status == 100)
                 {
-                    //Response.Redirect("https://www.zarinpal.com/pg/StartPay/" + Authority);
+                    Response.Redirect("https://www.zarinpal.com/pg/StartPay/" + Authority);
 
                     ////test
-                    return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + Authority);
+                    //return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + Authority);
                 }
                 else
                 {
@@ -469,9 +469,9 @@ namespace NFix.Controllers
                         int Amount = (int)order.Sum;
                         long RefID;
                         System.Net.ServicePointManager.Expect100Continue = false;
-                        ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPalTest.PaymentGatewayImplementationServicePortTypeClient();
+                        ZarinPal.PaymentGatewayImplementationServicePortTypeClient zp = new ZarinPal.PaymentGatewayImplementationServicePortTypeClient();
 
-                        int Status = zp.PaymentVerification("a282a431-19d8-43ee-ae50-e3d056519667", Request.QueryString["Authority"].ToString(), Amount, out RefID);
+                        int Status = zp.PaymentVerification("7116ce36-6163-4850-9b8b-4cd392630557", Request.QueryString["Authority"].ToString(), Amount, out RefID);
                         if (Status == 100)
                         {
                             order.IsFInaly = true;
