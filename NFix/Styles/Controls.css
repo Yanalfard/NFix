@@ -581,7 +581,8 @@ body {
     #ModalLogin form .row, #ModalRegister form .row, #Modal-Show form .row {
       overflow: visible; }
     #ModalLogin form .uk-button-default, #ModalLogin form .button-primary, #ModalRegister form .uk-button-default, #ModalRegister form .button-primary, #Modal-Show form .uk-button-default, #Modal-Show form .button-primary {
-      padding: 8px 16px !important; }
+      padding: 6px 16px !important;
+      height: 40px; }
   #ModalLogin img, #ModalRegister img, #Modal-Show img {
     background: #B41313;
     flex: 1;
@@ -891,7 +892,11 @@ _::-webkit-full-page-media .uk-navbar-container, _:future .uk-navbar-container, 
     border-radius: 0;*/
         height: 38px;
         width: 38px;
-        background: #222; }
+        background: #222;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center; }
 
 .vid:hover .thumbnail {
   filter: brightness(64%);
@@ -1119,7 +1124,10 @@ table {
 /*#region Button */
 button:not(.no-glow), .button-primary {
   background: #e41d1d;
-  padding: 10px 26px 11px 26px;
+  padding: 0px 26px;
+  height: 40px;
+  max-height: 40px;
+  line-height: 40px;
   font-size: 16px;
   color: #fff;
   border: 0;
@@ -1159,7 +1167,11 @@ button:not(.no-glow), .button-primary {
   -moz-transition: all ease 0.2s;
   -o-transition: all ease 0.2s;
   -webkit-transition: all ease 0.2s;
-  transition: all ease 0.2s; }
+  transition: all ease 0.2s;
+  height: 40px;
+  max-height: 40px;
+  line-height: 40px;
+  font-size: 16px; }
 
 .uk-button:hover {
   border-color: #B41313; }
@@ -1239,20 +1251,21 @@ textarea {
   -webkit-transition: none !important;
   transition: none !important; }
 
-.uk-offcanvas-bar .uk-close:hover {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none; }
-
-.uk-offcanvas-bar ul {
-  padding-left: 0 !important;
-  padding-right: 4px;
-  list-style: none !important; }
-  .uk-offcanvas-bar ul li {
-    list-style: none !important;
-    margin-top: 8px; }
-    .uk-offcanvas-bar ul li a {
-      font-size: 18px; }
+.uk-offcanvas-bar {
+  z-index: 5100; }
+  .uk-offcanvas-bar .uk-close:hover {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+  .uk-offcanvas-bar ul {
+    padding-left: 0 !important;
+    padding-right: 4px;
+    list-style: none !important; }
+    .uk-offcanvas-bar ul li {
+      list-style: none !important;
+      margin-top: 8px; }
+      .uk-offcanvas-bar ul li a {
+        font-size: 18px; }
 
 .uk-tooltip {
   background: #212121 !important;

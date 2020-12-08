@@ -67,7 +67,7 @@
         <h4>
             اطلاعات حساب
         </h4>
-        <div class="row">
+        <div class="profile-grid uk-margin-small-bottom">
             <div class="column uk-margin-auto-left">
                 <label>
                     نام کاربری
@@ -75,7 +75,6 @@
                 <h5>
                     @Model.Username
                 </h5>
-
             </div>
             <div class="column uk-margin-auto-left">
                 <label>
@@ -84,7 +83,6 @@
                 <h5>
                     @Model.InviteCode
                 </h5>
-
             </div>
             <div class="column uk-margin-auto-left">
                 <label>
@@ -94,8 +92,6 @@
                     @Model.Name
                 </h5>
             </div>
-        </div>
-        <div class="row">
             <div class="column uk-margin-auto-left">
                 <label>
                     شماره تلفن
@@ -119,16 +115,18 @@
                 <h5>
                     @Model.Email
                 </h5>
-                @if (!string.IsNullOrEmpty(Model.InviteCode))
-                {
+            </div>
+            @if (!string.IsNullOrEmpty(Model.InviteCode))
+            {
+                <div class="column uk-margin-auto-left">
                     <label>
                         کد دعوت شما
                     </label>
                     <h5>
                         @Model.InviteCode
                     </h5>
-                }
-            </div>
+                </div>
+            }
         </div>
         <div class="row uk-margin-auto-top uk-margin-auto-left ">
             <button onclick="editPass()"

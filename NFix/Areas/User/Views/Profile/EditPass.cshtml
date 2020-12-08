@@ -6,7 +6,7 @@
 {
     @Html.AntiForgeryToken();
 
-    <h2 class="ویرایش رمز عبور"></h2>
+    <h2 class="uk-h4 uk-margin-remove-top">ویرایش رمز عبور</h2>
     <label for="password">رمز عبور قدیم</label>
 
     @Html.EditorFor(model => model.OldPassword, new { htmlAttributes = new { @class = "uk-input uk-margin-bottom uk-margin-small-top", required = "required" } })
