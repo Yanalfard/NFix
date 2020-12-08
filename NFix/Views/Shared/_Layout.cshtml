@@ -11,8 +11,8 @@
 
     <link rel="icon" type="image/png" href="/favicon.ico" />
     <link rel="manifest" href="~/manifest.json" />
-    <link rel="apple-touch-icon" href="/Resources/Png/Mobile/icon_96.png" />
-    <link href="/Resources/Png/Mobile/icon_512.png" sizes="640x1136" rel="apple-touch-startup-image" />
+    <link rel="apple-touch-icon" href="~/Resources/Png/Mobile/icon_96.png" />
+    <link href="~/Resources/Png/Mobile/icon_512.png" sizes="640x1136" rel="apple-touch-startup-image" />
     <meta name="apple-mobile-web-app-status-bar" content="#E73434" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#E73434" />
     <meta name="theme-color" content="#E73434" />
@@ -53,7 +53,7 @@
             <button class="no-glow uk-offcanvas-close" type="button" uk-close></button>
 
             <a href="/Home/Index" class="uk-margin-auto">
-                <img src="/Resources/Svg/NFIX.svg" width="80" height="25" alt="لوگو ان فیکس" />
+                <img src="~/Resources/Svg/NFIX.svg" width="80" height="25" alt="لوگو ان فیکس" />
             </a>
             <ul class="column uk-padding-remove" id="loginInUser">
 
@@ -103,7 +103,7 @@
                 </li>
                 <li>
                     <a href="/Home/Index">
-                        <img width="80" height="25" src="/Resources/Svg/NFIX.svg" alt="لوگو ان فیکس" />
+                        <img width="80" height="25" src="~/Resources/Svg/NFIX.svg" alt="لوگو ان فیکس" />
                     </a>
                 </li>
 
@@ -273,7 +273,7 @@
 
     <script src="~/Scripts/UIScripts/Global.js"></script>
     <!-- #localhost  -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF&&hl=fa"></script>
+    @*<script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF&&hl=fa"></script>
         <script>
             grecaptcha.ready(function () {
                 grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
@@ -285,10 +285,10 @@
                     $('.GoogleCapcha').val(token);
                 });
             }
-        </script>
+        </script>*@
 
     <!-- #Site  -->
-    @*<script src="https://www.google.com/recaptcha/api.js?render=6LeO5vwZAAAAANXhfOXKib-g58QSDTcJjvVNNWTE&hl=fa"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeO5vwZAAAAANXhfOXKib-g58QSDTcJjvVNNWTE&hl=fa"></script>
     <script>
         grecaptcha.ready(function () {
             grecaptcha.execute('6LeO5vwZAAAAANXhfOXKib-g58QSDTcJjvVNNWTE', { action: 'contact_us' }).then(function (token) {
@@ -300,7 +300,7 @@
                 $('.GoogleCapcha').val(token);
             });
         }
-    </script>*@
+    </script>
 
     <script>
 

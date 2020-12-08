@@ -64,10 +64,10 @@ namespace NFix.Areas.Admin.Controllers
                         if (Image != null)
                         {
                             tutor.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
-                            Image.SaveAs(Server.MapPath("/Resources/Tutor/" + tutor.MainImage));
+                            Image.SaveAs(Server.MapPath("~/Resources/Tutor/" + tutor.MainImage));
                             ImageResizer img = new ImageResizer();
-                            img.Resize(Server.MapPath("/Resources/Tutor/" + tutor.MainImage),
-                                Server.MapPath("/Resources/Tutor/Thumb/" + tutor.MainImage));
+                            img.Resize(Server.MapPath("~/Resources/Tutor/" + tutor.MainImage),
+                                Server.MapPath("~/Resources/Tutor/Thumb/" + tutor.MainImage));
                         }
                         TblTutor tblTutor = new TblTutor()
                         {
@@ -134,21 +134,21 @@ namespace NFix.Areas.Admin.Controllers
                 var selectimage = _tutor.SelectTutorById(tutor.id);
                 if (Image != null)
                 {
-                    string fullPathLogo = Request.MapPath("/Resources/Tutor/" + selectimage.MainImage);
+                    string fullPathLogo = Request.MapPath("~/Resources/Tutor/" + selectimage.MainImage);
                     if (System.IO.File.Exists(fullPathLogo))
                     {
                         System.IO.File.Delete(fullPathLogo);
                     }
-                    string fullPathLogo2 = Request.MapPath("/Resources/Tutor/Thumb/" + selectimage.MainImage);
+                    string fullPathLogo2 = Request.MapPath("~/Resources/Tutor/Thumb/" + selectimage.MainImage);
                     if (System.IO.File.Exists(fullPathLogo2))
                     {
                         System.IO.File.Delete(fullPathLogo2);
                     }
                     tutor.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
-                    Image.SaveAs(Server.MapPath("/Resources/Tutor/" + tutor.MainImage));
+                    Image.SaveAs(Server.MapPath("~/Resources/Tutor/" + tutor.MainImage));
                     ImageResizer img = new ImageResizer();
-                    img.Resize(Server.MapPath("/Resources/Tutor/" + tutor.MainImage),
-                        Server.MapPath("/Resources/Tutor/Thumb/" + tutor.MainImage));
+                    img.Resize(Server.MapPath("~/Resources/Tutor/" + tutor.MainImage),
+                        Server.MapPath("~/Resources/Tutor/Thumb/" + tutor.MainImage));
                 }
                 TblTutor tblTutor = new TblTutor()
                 {
@@ -181,12 +181,12 @@ namespace NFix.Areas.Admin.Controllers
         public ActionResult deleteTutor(int id)
         {
             var getBlogId = _tutor.SelectTutorById(id);
-            string fullPathLogo = Request.MapPath("/Resources/Tutor/" + getBlogId.MainImage);
+            string fullPathLogo = Request.MapPath("~/Resources/Tutor/" + getBlogId.MainImage);
             if (System.IO.File.Exists(fullPathLogo))
             {
                 System.IO.File.Delete(fullPathLogo);
             }
-            string fullPathLogo2 = Request.MapPath("/Resources/Tutor/Thumb/" + getBlogId.MainImage);
+            string fullPathLogo2 = Request.MapPath("~/Resources/Tutor/Thumb/" + getBlogId.MainImage);
             if (System.IO.File.Exists(fullPathLogo2))
             {
                 System.IO.File.Delete(fullPathLogo2);

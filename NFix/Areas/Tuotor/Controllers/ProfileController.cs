@@ -58,20 +58,20 @@ namespace NFix.Areas.Tuotor.Controllers
             if (MainImage != null)
             {
                 video.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(MainImage.FileName);
-                MainImage.SaveAs(Server.MapPath("/Resources/Videos/Image/" + video.MainImage));
+                MainImage.SaveAs(Server.MapPath("~/Resources/Videos/Image/" + video.MainImage));
                 ImageResizer img = new ImageResizer();
-                img.Resize(Server.MapPath("/Resources/Videos/Image/" + video.MainImage),
-                    Server.MapPath("/Resources/Videos/Image/Thumb/" + video.MainImage));
+                img.Resize(Server.MapPath("~/Resources/Videos/Image/" + video.MainImage),
+                    Server.MapPath("~/Resources/Videos/Image/Thumb/" + video.MainImage));
             }
             if (VideoUrl != null)
             {
                 video.VideoUrl = Guid.NewGuid().ToString() + Path.GetExtension(VideoUrl.FileName);
-                VideoUrl.SaveAs(Server.MapPath("/Resources/Videos/" + video.VideoUrl));
+                VideoUrl.SaveAs(Server.MapPath("~/Resources/Videos/" + video.VideoUrl));
             }
             if (VidioDemoUrl != null)
             {
                 video.VidioDemoUrl = Guid.NewGuid().ToString() + Path.GetExtension(VidioDemoUrl.FileName);
-                VidioDemoUrl.SaveAs(Server.MapPath("/Resources/Videos/Demo/" + video.VidioDemoUrl));
+                VidioDemoUrl.SaveAs(Server.MapPath("~/Resources/Videos/Demo/" + video.VidioDemoUrl));
             }
             video.DateSubmited = DateTime.Now.ToShortDateString();
             bool b1 = _video.AddVideo(video);
@@ -142,10 +142,10 @@ namespace NFix.Areas.Tuotor.Controllers
         public ActionResult DeleteVideo(int id)
         {
             TblVideo selectVideo = _video.SelectVideoById(id);
-            string fullPathImage = Request.MapPath("/Resources/Videos/Image/" + selectVideo.MainImage);
-            string fullPathImage2 = Request.MapPath("/Resources/Videos/Image/Thumb/" + selectVideo.MainImage);
-            string fullPathVideo = Request.MapPath("/Resources/Videos/" + selectVideo.VideoUrl);
-            string fullPathVideoDemo = Request.MapPath("/Resources/Videos/Demo/" + selectVideo.VidioDemoUrl);
+            string fullPathImage = Request.MapPath("~/Resources/Videos/Image/" + selectVideo.MainImage);
+            string fullPathImage2 = Request.MapPath("~/Resources/Videos/Image/Thumb/" + selectVideo.MainImage);
+            string fullPathVideo = Request.MapPath("~/Resources/Videos/" + selectVideo.VideoUrl);
+            string fullPathVideoDemo = Request.MapPath("~/Resources/Videos/Demo/" + selectVideo.VidioDemoUrl);
             if (System.IO.File.Exists(fullPathImage))
             {
                 System.IO.File.Delete(fullPathImage);
@@ -180,32 +180,32 @@ namespace NFix.Areas.Tuotor.Controllers
             {
                 if (video.MainImage != null)
                 {
-                    System.IO.File.Delete(Server.MapPath("/Resources/Videos/Image/" + video.MainImage));
-                    System.IO.File.Delete(Server.MapPath("/Resources/Videos/Image/Thumb/" + video.MainImage));
+                    System.IO.File.Delete(Server.MapPath("~/Resources/Videos/Image/" + video.MainImage));
+                    System.IO.File.Delete(Server.MapPath("~/Resources/Videos/Image/Thumb/" + video.MainImage));
                 }
                 video.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(MainImage.FileName);
-                MainImage.SaveAs(Server.MapPath("/Resources/Videos/Image/" + video.MainImage));
+                MainImage.SaveAs(Server.MapPath("~/Resources/Videos/Image/" + video.MainImage));
                 ImageResizer img = new ImageResizer();
-                img.Resize(Server.MapPath("/Resources/Videos/Image/" + video.MainImage),
-                    Server.MapPath("/Resources/Videos/Image/Thumb/" + video.MainImage));
+                img.Resize(Server.MapPath("~/Resources/Videos/Image/" + video.MainImage),
+                    Server.MapPath("~/Resources/Videos/Image/Thumb/" + video.MainImage));
             }
             if (VideoUrl != null)
             {
                 if (video.VideoUrl != null)
                 {
-                    System.IO.File.Delete(Server.MapPath("/Resources/Videos/" + video.VideoUrl));
+                    System.IO.File.Delete(Server.MapPath("~/Resources/Videos/" + video.VideoUrl));
                 }
                 video.VideoUrl = Guid.NewGuid().ToString() + Path.GetExtension(VideoUrl.FileName);
-                VideoUrl.SaveAs(Server.MapPath("/Resources/Videos/" + video.VideoUrl));
+                VideoUrl.SaveAs(Server.MapPath("~/Resources/Videos/" + video.VideoUrl));
             }
             if (VidioDemoUrl != null)
             {
                 if (video.VidioDemoUrl != null)
                 {
-                    System.IO.File.Delete(Server.MapPath("/Resources/Videos/Demo/" + video.VidioDemoUrl));
+                    System.IO.File.Delete(Server.MapPath("~/Resources/Videos/Demo/" + video.VidioDemoUrl));
                 }
                 video.VidioDemoUrl = Guid.NewGuid().ToString() + Path.GetExtension(VidioDemoUrl.FileName);
-                VidioDemoUrl.SaveAs(Server.MapPath("/Resources/Videos/Demo/" + video.VidioDemoUrl));
+                VidioDemoUrl.SaveAs(Server.MapPath("~/Resources/Videos/Demo/" + video.VidioDemoUrl));
             }
             bool b1 = _video.UpdateVideo(video, video.id);
             _videoKeyword.SelectAllVideoKeywords().Where(t => t.VideoId == video.id).ToList().ForEach(t =>_videoKeyword.DeleteVideoKeyword(t.id));
@@ -275,10 +275,10 @@ namespace NFix.Areas.Tuotor.Controllers
                 TblTutor selectTutor = _tutor.SelectTutorById(id);
                 TblTutor tblTutor = new TblTutor();
                 selectTutor.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(Image.FileName);
-                Image.SaveAs(Server.MapPath("/Resources/Tutor/" + selectTutor.MainImage));
+                Image.SaveAs(Server.MapPath("~/Resources/Tutor/" + selectTutor.MainImage));
                 ImageResizer img = new ImageResizer();
-                img.Resize(Server.MapPath("/Resources/Tutor/" + selectTutor.MainImage),
-                    Server.MapPath("/Resources/Tutor/Thumb/" + selectTutor.MainImage));
+                img.Resize(Server.MapPath("~/Resources/Tutor/" + selectTutor.MainImage),
+                    Server.MapPath("~/Resources/Tutor/Thumb/" + selectTutor.MainImage));
                 tblTutor.Description = selectTutor.Description;
                 tblTutor.IdentificationNo = selectTutor.IdentificationNo;
                 tblTutor.Name = selectTutor.Name;

@@ -24,14 +24,14 @@ namespace NFix.Areas.Admin.Controllers
                     {
                         var vFileName = DateTime.Now.ToString("yyyyMMdd-HHMMssff") +
                                         Path.GetExtension(upload.FileName).ToLower();
-                        var vFolderPath = Server.MapPath("/Resources/UploadEditor/");
+                        var vFolderPath = Server.MapPath("~/Resources/UploadEditor/");
                         if (!Directory.Exists(vFolderPath))
                         {
                             Directory.CreateDirectory(vFolderPath);
                         }
                         vFilePath = Path.Combine(vFolderPath, vFileName);
                         upload.SaveAs(vFilePath);
-                        vImagePath = Url.Content("/Resources/UploadEditor/" + vFileName);
+                        vImagePath = Url.Content("~/Resources/UploadEditor/" + vFileName);
                         vMessage = "عکس مورد نظر آپلود شد";
                     }
                 }
@@ -51,7 +51,7 @@ namespace NFix.Areas.Admin.Controllers
         //[HttpPost]
         //public JsonResult AjaxPostCall(Product_Galleries employeeData)
         //{
-        //    System.IO.File.Delete(Server.MapPath("/Resources/UploadEditor/" + employeeData.ImageName));
+        //    System.IO.File.Delete(Server.MapPath("~/Resources/UploadEditor/" + employeeData.ImageName));
         //    return Json("True");
         //}
     }
