@@ -39,6 +39,16 @@ content {
 
     .profile {
         flex: 3;
+
+        .profile-grid {
+            direction: rtl;
+            @include grid(170px);
+            grid-gap: 16px 8px;
+
+            h5 {
+                margin-bottom: 0;
+            }
+        }
     }
 
     .gap {
@@ -107,5 +117,16 @@ content {
                 margin-bottom: 12px !important;
             }
         }
+    }
+}
+
+.modal-edit-grid {
+    @include grid(120px);
+    grid-gap: 8px;
+    direction: rtl;
+
+    * {
+        white-space: nowrap;
+        width: calc(100%-10px)
     }
 }

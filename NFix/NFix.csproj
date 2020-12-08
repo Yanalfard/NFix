@@ -342,6 +342,7 @@
     <Content Include="Resources\Svg\Sliver.svg" />
     <Content Include="Resources\Svg\VID-20201104-WA0001.mp4" />
     <Content Include="Resources\Svg\YaghoutWeb.svg" />
+    <Content Include="Resources\Svg\Zarinpal.svg" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\croppie.min.js" />
     <Content Include="Scripts\Jquery\ajaxfileupload.js" />
@@ -1710,7 +1711,6 @@
     <Content Include="Views\HomeBlogs\BlogsPage.cshtml" />
     <Content Include="Views\HomeBlogs\BlogView.cshtml" />
     <Content Include="Views\Home\Hero.cshtml" />
-    <Content Include="Views\Home\Stripe.cshtml" />
     <Content Include="Views\HomeCategories\CategoryView.cshtml" />
     <Content Include="Views\HomeTutors\TutorView.cshtml" />
     <Content Include="Views\HomeAccount\Login.cshtml" />

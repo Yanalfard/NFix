@@ -6,8 +6,6 @@
 
 /*Modal*/
 
-
-
 body {
     overflow-x: hidden;
 }
@@ -77,7 +75,8 @@ $Modal-width: 824px;
         }
 
         .uk-button-default, .button-primary {
-            padding: 8px 16px !important;
+            padding: 6px 16px !important;
+            height: 40px;
         }
     }
 
@@ -724,7 +723,10 @@ table {
 /*#region Button */
 button:not(.no-glow), .button-primary {
     background: darken($primary-light, 5%);
-    padding: 10px 26px 11px 26px;
+    padding: 0px 26px;
+    height: 40px;
+    max-height: 40px;
+    line-height:40px;
     font-size: 16px;
     color: $white;
     border: 0;
@@ -754,6 +756,10 @@ button:not(.no-glow), .button-primary {
 
 .uk-button {
     @include trans(.2s);
+    height: 40px;
+    max-height: 40px;
+    line-height: 40px;
+    font-size: 16px;
 }
 
 .uk-button:hover {
@@ -819,6 +825,7 @@ textarea {
 }
 
 .uk-offcanvas-bar {
+    z-index:5100;
     .uk-close:hover {
         -moz-box-shadow: none;
         -webkit-box-shadow: none;
@@ -865,7 +872,6 @@ textarea {
 .display-none {
     display: none;
 }
-
 
 .editorText img {
     display: block;
