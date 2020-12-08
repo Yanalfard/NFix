@@ -33,7 +33,7 @@ namespace NFix
         /// </summary>
         public ImageResizer()
         {
-            MaxX = MaxY = 186;
+            MaxX = MaxY = 250;
             TrimImage = false;
             SaveFormat = ImageFormat.Jpeg;
         }

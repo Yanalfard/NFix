@@ -12,7 +12,7 @@ namespace NFix.Controllers
 {
     public class HomeTutorsController : Controller
     {
-        private TutorService _tutor=new TutorService();
+        private TutorService _tutor = new TutorService();
 
         // GET: HomeTutors
         public ActionResult TutorsPage()
@@ -21,8 +21,10 @@ namespace NFix.Controllers
             //List<DtoTblTutor> result = MethodRepo.ConvertToDto<TblTutor, DtoTblTutor>(allTutors);
             return PartialView(allTutors);
         }
-        public ActionResult TutorView(int id)
+        [Route("TutorName/{id}/{name}")]
+        public ActionResult TutorView(int id, string name)
         {
+            ViewBag.Name = name;
             TblTutor selectTutorById = _tutor.SelectTutorById(id);
             DtoTblTutor result = new DtoTblTutor()
             {

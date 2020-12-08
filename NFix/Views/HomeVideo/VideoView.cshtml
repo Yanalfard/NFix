@@ -27,7 +27,7 @@
     <content class="column">
 
         <!--<img class="video-playback" src="https://picsum.photos/800/400" />-->
-        @if (User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium)
+        @if ((User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium) || User.IsInRole("admin"))
         {
             <video class="video-playback" controls controlsList="nodownload">
                 <source src="~/Resources/Videos/@Model.VideoUrl" type="video/mp4">
@@ -75,7 +75,7 @@
 
             </a>
         </div>
-        @if (User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium)
+        @if ((User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium) || User.IsInRole("admin"))
         {
 
             <p>
