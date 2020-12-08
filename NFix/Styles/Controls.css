@@ -1293,3 +1293,9 @@ textarea {
   display: block;
   max-width: 100%;
   margin: 0 auto; }
+
+.imgcover {
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center; }
