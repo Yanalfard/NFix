@@ -747,7 +747,7 @@ body {
   -o-transition: all ease 0.5s;
   -webkit-transition: all ease 0.5s;
   transition: all ease 0.5s;
-  z-index: 800; }
+  z-index: 5000; }
   .uk-navbar-container .drop {
     width: 180px; }
     .uk-navbar-container .drop > .mat {
@@ -759,7 +759,8 @@ body {
     z-index: 500;
     position: fixed !important; }
   .uk-navbar-container a {
-    color: #fff; }
+    color: #fff;
+    z-index: 5002; }
 
 /* Safari 7.1+ */
 _::-webkit-full-page-media .uk-navbar-container, _:future .uk-navbar-container, :root .safari .uk-navbar-container {

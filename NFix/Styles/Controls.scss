@@ -272,7 +272,7 @@ $Modal-width: 824px;
     backdrop-filter: blur(12px);
     background: transparent !important;
     @include trans(.5s);
-    z-index: 800;
+    z-index: 5000;
 
     .drop {
         width: 180px;
@@ -294,6 +294,7 @@ $Modal-width: 824px;
 
     a {
         color: $white;
+        z-index: 5002;
     }
 }
 
