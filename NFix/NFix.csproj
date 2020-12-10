@@ -166,11 +166,6 @@
     <Compile Include="Areas\User\Controllers\ProfileController.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="Clases\PersianCalender.cs" />
-    <Compile Include="Connected Services\ZarinPalTest\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Connected Services\ZarinPal\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -234,30 +229,6 @@
     <Content Include="Areas\Admin\Views\Discount\AllDiscount.cshtml" />
     <Content Include="Areas\Admin\Views\Discount\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Discount.cshtml" />
-    <None Include="Connected Services\ZarinPalTest\configuration91.svcinfo" />
-    <None Include="Connected Services\ZarinPalTest\configuration.svcinfo" />
-    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.GetUnverifiedTransactionsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.PaymentRequestResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.PaymentRequestWithExtraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.PaymentVerificationResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.PaymentVerificationWithExtraResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ZarinPalTest\NFix.ZarinPalTest.RefreshAuthorityResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\ZarinPalTest\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Connected Services\ZarinPal\configuration91.svcinfo" />
     <None Include="Connected Services\ZarinPal\configuration.svcinfo" />
     <Content Include="Connected Services\ZarinPal\NFix.ZarinPal.GetUnverifiedTransactionsResponse.datasource">
@@ -455,7 +426,6 @@
     <Content Include="Scripts\ckeditor\_samples\adobeair\run.sh" />
     <Content Include="Scripts\ckeditor\_samples\assets\output_for_flash.fla" />
     <Content Include="Scripts\ckeditor\skins\moono-dark\readme.md" />
-    <None Include="Connected Services\ZarinPalTest\PaymentGatewayImplementationService.wsdl" />
     <Content Include="manifest.json" />
     <None Include="Connected Services\ZarinPal\PaymentGatewayImplementationService.wsdl" />
     <None Include="Scripts\Jquery\jquery-3.5.1.intellisense.js" />
@@ -1813,7 +1783,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ZarinPalTest\" />
     <WCFMetadataStorage Include="Connected Services\ZarinPal\" />
   </ItemGroup>
   <PropertyGroup>
