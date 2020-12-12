@@ -10,7 +10,7 @@
     @foreach (var item in Model)
     {
         <a href="/CategoryView/@item.id/@item.Name.Replace(" ","-")" class="category">
-            <img src="~/Resources/VideoCatagory/Thumb/@item.Image" alt="" />
+            <img src="/Resources/VideoCatagory/Thumb/@item.Image" alt="" />
         </a>
     }
 </section>

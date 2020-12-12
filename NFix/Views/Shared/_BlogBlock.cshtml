@@ -1,6 +1,6 @@
 ﻿@model DataLayer.Models.Regular.TblBlog
 <div class="blog column card uk-padding-remove ">
-    <img src="~/Resources/Blogs/Thumb/@Model.MainImage" class="uk-flex-1" alt="" />
+    <img src="/Resources/Blogs/Thumb/@Model.MainImage" class="uk-flex-1" alt="" />
     <content class="uk-padding-small uk-padding-remove-top uk-flex-1">
         <h4 class="uk-margin-remove">@Model.Title</h4>
         <a class="uk-margin-auto-top" href="/BlogView/@Model.id/@Model.Title.Replace(" ","-")">...بیشتر</a>

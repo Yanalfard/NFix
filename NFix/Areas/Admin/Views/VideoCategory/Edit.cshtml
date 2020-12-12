@@ -20,7 +20,7 @@
         <div class="form-group">
             @if (Model.Image.Any())
             {
-                <img src="~/Resources/VideoCatagory/Thumb/@Model.Image" class="thumbnail" style="width:100px;" />
+                <img src="/Resources/VideoCatagory/Thumb/@Model.Image" class="thumbnail" style="width:100px;" />
             }
             @Html.LabelFor(model => model.Image, "عکس", htmlAttributes: new { @class = "uk-margin-small-bottom" })
             <div class="col-md-10">

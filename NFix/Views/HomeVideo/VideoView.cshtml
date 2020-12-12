@@ -30,13 +30,13 @@
         @if ((User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium) || User.IsInRole("admin"))
         {
             <video class="video-playback" controls controlsList="nodownload">
-                <source src="~/Resources/Videos/@Model.VideoUrl" type="video/mp4">
+                <source src="/Resources/Videos/@Model.VideoUrl" type="video/mp4">
             </video>
         }
         else
         {
             <video class="video-playback" controls controlsList="nodownload">
-                <source src="~/Resources/Videos/Demo/@Model.VidioDemoUrl" type="video/mp4">
+                <source src="/Resources/Videos/Demo/@Model.VidioDemoUrl" type="video/mp4">
                 <source src="~/Resources/Svg/NoImage.svg" type="image/svg+xml">
             </video>
 
@@ -70,7 +70,7 @@
                     <h6>@Model.TutorName</h6>
                     <p>@Model.TutorSpecialty</p>
                 </div>
-                <img class="tutor-img uk-margin-small-left" src="~/Resources/Tutor/Thumb/@Model.TutorMainImage" />
+                <img class="tutor-img uk-margin-small-left" src="/Resources/Tutor/Thumb/@Model.TutorMainImage" />
 
 
             </a>
