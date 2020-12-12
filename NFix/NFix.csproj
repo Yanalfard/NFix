@@ -334,6 +334,7 @@
     <Content Include="Resources\Svg\Footer\master.svg" />
     <Content Include="Resources\Svg\Footer\paypal.svg" />
     <Content Include="Resources\Svg\Footer\visa.svg" />
+    <Content Include="Resources\Svg\Footer\zarinpal.svg" />
     <Content Include="Resources\Svg\Gold.svg" />
     <Content Include="Resources\Svg\NoImage.svg" />
     <Content Include="Resources\Svg\NFIXBlack.svg" />

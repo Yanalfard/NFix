@@ -709,6 +709,11 @@ _::-webkit-full-page-media .space-nav-bottom, _:future .space-nav-bottom, :root 
 #categories .category:hover img {
   filter: brightness(64%); }
 
+@media only screen and (max-device-width: 412px) {
+  #categories .category {
+    width: 180px;
+    height: 180px; } }
+
 .category-article {
   overflow: hidden !important;
   -moz-border-radius: 0 !important;

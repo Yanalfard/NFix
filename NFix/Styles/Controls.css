@@ -1299,3 +1299,9 @@ textarea {
   object-fit: cover;
   -o-object-position: center;
   object-position: center; }
+
+*:focus, *:active, *:hover {
+  -webkit-tap-highlight-color: rgba(255, 71, 71, 0.12);
+  outline: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation; }

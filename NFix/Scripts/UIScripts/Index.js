@@ -20,21 +20,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
     } catch { }
 });
 
-const floatingCart = document.getElementsByClassName('floating-cart')[0];
-floatingCart.style.opacity = "0";
-window.addEventListener('scroll', () => {
-    if (window.scrollY >= 10) {
-        floatingCart.style.opacity = "1";
-        floatingCart.style.transition = "0.3s";
-        floatingCart.style.transform = "translateY(0)";
-    }
-    else {
-        floatingCart.style.opacity = "0";
-        floatingCart.style.transition = "0.3s";
-        floatingCart.style.transform = "translateY(100px)";
-    }
-})
-
 function btnDownloadClick(e) {
 
     const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
@@ -61,6 +46,22 @@ function btnDownloadClick(e) {
         deferredPrompt = null;
     });
 }
+
+
+const floatingCart = document.getElementsByClassName('floating-cart')[0];
+floatingCart.style.opacity = "0";
+window.addEventListener('scroll', () => {
+    if (window.scrollY >= 10) {
+        floatingCart.style.opacity = "1";
+        floatingCart.style.transition = "0.3s";
+        floatingCart.style.transform = "translateY(0)";
+    }
+    else {
+        floatingCart.style.opacity = "0";
+        floatingCart.style.transition = "0.3s";
+        floatingCart.style.transform = "translateY(100px)";
+    }
+})
 
 $('#product').owlCarousel({
     loop: true,

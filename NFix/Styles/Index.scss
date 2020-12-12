@@ -356,6 +356,17 @@ $bgPosition-Y: 60px;
     }
 }
 
+@media only screen and (max-device-width: 412px) {
+    #categories {
+        $Category-Size: 180px;
+
+        .category {
+            width: $Category-Size;
+            height: $Category-Size;
+        }
+    }
+}
+
 .category-article {
     overflow: hidden !important;
     -moz-border-radius: 0 !important;
