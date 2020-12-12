@@ -336,6 +336,7 @@
     <Content Include="Resources\Svg\Footer\visa.svg" />
     <Content Include="Resources\Svg\Footer\zarinpal.svg" />
     <Content Include="Resources\Svg\Gold.svg" />
+    <Content Include="Resources\Svg\Iphone.svg" />
     <Content Include="Resources\Svg\NoImage.svg" />
     <Content Include="Resources\Svg\NFIXBlack.svg" />
     <Content Include="Resources\Svg\NotFound.svg" />
@@ -349,7 +350,6 @@
     <Content Include="Scripts\Jquery\ajaxfileupload.js" />
     <Content Include="Scripts\Jquery\modal.js" />
     <Content Include="Scripts\Jquery\Model.js" />
-    <Content Include="Scripts\layout.js" />
     <Content Include="Scripts\Loading\Loading.js" />
     <Content Include="Scripts\Jquery\jquery-2.1.4.min.js" />
     <Content Include="Scripts\Jquery\jquery.unobtrusive-ajax.js" />

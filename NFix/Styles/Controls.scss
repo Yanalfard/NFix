@@ -727,7 +727,7 @@ button:not(.no-glow), .button-primary {
     padding: 0px 26px;
     height: 40px;
     max-height: 40px;
-    line-height:40px;
+    line-height: 40px;
     font-size: 16px;
     color: $white;
     border: 0;
@@ -826,7 +826,8 @@ textarea {
 }
 
 .uk-offcanvas-bar {
-    z-index:5100;
+    z-index: 5100;
+
     .uk-close:hover {
         -moz-box-shadow: none;
         -webkit-box-shadow: none;
@@ -880,7 +881,7 @@ textarea {
     margin: 0 auto;
 }
 
-.imgcover{
+.imgcover {
     @include imgcover;
 }
 
@@ -889,4 +890,23 @@ textarea {
     outline: none;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
+}
+
+.popup-ios {
+    height: calc(100vh);
+    background-color: #3A3A3A !important;
+    padding: 0 !important;
+
+    *, uk-icon {
+        fill: #fff;
+        color: #fff;
+    }
+
+    img {
+        height: calc(100vh - 300px);
+    }
+}
+
+.add-button {
+    z-index: 10000!important;
 }

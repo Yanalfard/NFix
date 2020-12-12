@@ -482,11 +482,10 @@ _::-webkit-full-page-media .space-nav-bottom, _:future .space-nav-bottom, :root 
   .hero .player-container {
     position: absolute;
     overflow: visible;
-    width: auto;
+    width: unset;
     right: 10px;
     top: 0;
-    bottom: 0;
-    z-index: 100; }
+    bottom: 0; }
     .hero .player-container .player {
       -moz-transition: all ease 0.4s;
       -o-transition: all ease 0.4s;
@@ -495,6 +494,7 @@ _::-webkit-full-page-media .space-nav-bottom, _:future .space-nav-bottom, :root 
       color: white;
       min-height: 20px;
       min-width: 20px;
+      z-index: 100;
       margin: auto; }
 
 .man {
