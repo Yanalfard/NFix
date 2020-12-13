@@ -585,6 +585,10 @@ footer {
         /*#endregion */
     }
 
+    .creds {
+        font-size: 13px;
+    }
+
     a {
         color: $black-light;
     }
@@ -908,5 +912,5 @@ textarea {
 }
 
 .add-button {
-    z-index: 10000!important;
+    z-index: 10000 !important;
 }
