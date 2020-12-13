@@ -33,6 +33,7 @@ namespace NFix.Controllers
             var allBlog = _blog.SelectAllBlogs();
             return PartialView(allBlog.OrderByDescending(i=>i.id).Take(20));
         }
+        [Route("AllBlogs")]
         public ActionResult AllBlogs()
         {
             var allBlog = _blog.SelectAllBlogs();
