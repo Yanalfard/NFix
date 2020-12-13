@@ -472,13 +472,16 @@ _::-webkit-full-page-media .space-nav-bottom, _:future .space-nav-bottom, :root 
     .plans .plan-card .row.plan-price > span {
       margin-right: 6px;
       margin-top: 12px; }
+    .plans .plan-card .uk-button, .plans .plan-card .uk-button:hover {
+      color: white; }
     .plans .plan-card ul {
       list-style: disc !important;
-      padding-right: 20px;
-      padding-left: 0; }
+      padding-right: 16px;
+      padding-left: 0;
+      min-height: 160px; }
       .plans .plan-card ul li {
         list-style: disc !important;
-        margin-bottom: 8px; }
+        margin-bottom: 16px; }
 
 @media only screen and (max-width: 1080px) {
   .plans {
@@ -496,11 +499,23 @@ _::-webkit-full-page-media .space-nav-bottom, _:future .space-nav-bottom, :root 
 .plan-card.silver {
   background: #313131;
   border: 8px #8FA6BA solid; }
+  .plan-card.silver .uk-button {
+    background: #A4B2BE; }
+  .plan-card.silver .uk-button:hover:hover {
+    background: #bcc6cf; }
 
 .plan-card.gold {
   background: #3A3A3A;
   border: 8px #F9B53B solid; }
+  .plan-card.gold .uk-button {
+    background: #FDA13E; }
+  .plan-card.gold .uk-button:hover:hover {
+    background: #fdb566; }
 
 .plan-card.platinum {
-  background: #303030;
   border: 8px #2F3F54 solid; }
+  .plan-card.platinum .uk-button {
+    color: white;
+    background: #344659; }
+  .plan-card.platinum .uk-button:hover:hover {
+    background: #435a73; }

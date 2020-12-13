@@ -50,15 +50,19 @@ $card-width: 280px;
             }
         }
 
+        .uk-button, .uk-button:hover {
+            color:white;
+        }
 
         ul {
             list-style: disc !important;
-            padding-right: 20px;
+            padding-right: 16px;
             padding-left: 0;
+            min-height: 160px;
 
             li {
                 list-style: disc !important;
-                margin-bottom: 8px;
+                margin-bottom: 16px;
             }
         }
     }
@@ -80,14 +84,38 @@ $card-width: 280px;
 .plan-card.silver {
     background: #313131;
     border: 8px #8FA6BA solid;
+
+    .uk-button {
+        background: #A4B2BE;
+    }
+
+    .uk-button:hover:hover {
+        background: lighten(#A4B2BE,8%);
+    }
 }
 
 .plan-card.gold {
     background: #3A3A3A;
     border: 8px #F9B53B solid;
+
+    .uk-button {
+        background: #FDA13E;
+    }
+
+    .uk-button:hover:hover {
+        background: lighten(#FDA13E,8%);
+    }
 }
 
 .plan-card.platinum {
-    background: #303030;
     border: 8px #2F3F54 solid;
+
+    .uk-button {
+        color: white;
+        background: #344659;
+    }
+
+    .uk-button:hover:hover {
+        background: lighten(#344659,8%);
+    }
 }
