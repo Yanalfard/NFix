@@ -31,7 +31,7 @@ namespace NFix.Controllers
         {
             return PartialView();
         }
-
+        [Route("About")]
         public ActionResult About()
         {
             return View();

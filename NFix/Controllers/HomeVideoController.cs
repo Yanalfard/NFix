@@ -35,6 +35,7 @@ namespace NFix.Controllers
             var allVideo = _video.SelectAllVideos();
             return PartialView(allVideo.OrderByDescending(i => i.DateSubmited).Take(20));
         }
+        [Route("AllVideos")]
         public ActionResult AllVideos()
         {
             var allVideo = _video.SelectAllVideos();
