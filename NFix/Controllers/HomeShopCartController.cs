@@ -126,26 +126,26 @@ namespace NFix.Controllers
                 if (id == 1)
                 {
                     list.id = 1;
-                    list.Price = 300000;
+                    list.Price = 30000;
                     list.PriceName = "خرید اشتراک یک ماهه";
                     list.Discount = 0;
-                    list.SumPrice = 300000;
+                    list.SumPrice = 30000;
                 }
                 else if (id == 2)
                 {
                     list.id = 2;
-                    list.Price = 1620000;
+                    list.Price = 162000;
                     list.PriceName = "خرید اشتراک 6 ماهه";
                     list.Discount = 0;
-                    list.SumPrice = 1620000;
+                    list.SumPrice = 162000;
                 }
                 else if (id == 3)
                 {
                     list.id = 3;
-                    list.Price = 2960000;
+                    list.Price = 296000;
                     list.PriceName = "خرید اشتراک یک ساله";
                     list.Discount = 0;
-                    list.SumPrice = 2960000;
+                    list.SumPrice = 296000;
                 }
                 Session["Compare"] = list;
                 return RedirectToAction("/PlansFinal");
