@@ -5,8 +5,9 @@
     <title>@ViewBag.Title</title>
 
     @Scripts.Render("~/bundles/modernizr")
-    <meta name="description" content="سایت ورزشی و بدنسازی ان فیکس" />
-    <meta name="keywords" content="بدنسازی، آنلاین، ویدیو، ویدیو آموزشی، ان فیکس" />
+    <meta name="description" content="@((string.IsNullOrEmpty((string)ViewBag.Description)) ? "سایت ورزشی و بدنسازی ان فیکس" : ViewBag.Description)" />
+    <meta name="keywords" content="@((string.IsNullOrEmpty((string)ViewBag.Keywords)) ? "NFIX ،بدنسازی، آنلاین، ویدیو، ویدیو آموزشی، ان فیکس" : ViewBag.Keywords) " />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/png" href="/favicon.ico" />
