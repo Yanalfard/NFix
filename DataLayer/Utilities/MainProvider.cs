@@ -197,7 +197,10 @@ namespace DataLayer.Utilities
                 {
                     Heart.TblOrder.Add((TblOrder)tableObj);
                 }
-
+                else if (table.GetType() == typeof(TblLive))
+                {
+                    Heart.TblLive.Add((TblLive) tableObj);
+                }
                 Heart.SaveChanges();
                 return true;
             }
@@ -497,6 +500,20 @@ namespace DataLayer.Utilities
                     val.Sum = update.Sum;
                     val.Date = update.Date;
                 }
+                else if (table.GetType() == typeof(TblLive))
+                {
+                    TblLive val = Heart.TblLive.SingleOrDefault(i => i.id == logId);
+                    TblLive update = (TblLive)tableObj;
+                    val.id = update.id;
+                    val.Chanel = update.Chanel;
+                    val.DescriptionLong = update.DescriptionLong;
+                    val.DescriptionShort = update.DescriptionShort;
+                    val.IsHome = update.IsHome;
+                    val.MainImage = update.MainImage;
+                    val.Price = update.Price;
+                    val.TimeStart = update.TimeStart;
+                    val.Title = update.Title;
+                }
 
                 Heart.SaveChanges();
                 return true;
@@ -596,6 +613,9 @@ namespace DataLayer.Utilities
                         break;
                     case EnumRepo.Tables.TblOrder:
                         Heart.TblOrder.Remove((TblOrder)SelectById(EnumRepo.Tables.TblOrder, id));
+                        break;
+                    case EnumRepo.Tables.TblLive:
+                        Heart.TblLive.Remove((TblLive)SelectById(EnumRepo.Tables.TblLive, id));
                         break;
                     default:
                         return false;
@@ -701,6 +721,9 @@ namespace DataLayer.Utilities
                 case EnumRepo.Tables.TblOrder:
                     return Heart.TblOrder.ToList();
 
+                case EnumRepo.Tables.TblLive:
+                    return Heart.TblLive.ToList();
+
                 default:
                     return new List<bool>();
             }
@@ -771,6 +794,8 @@ namespace DataLayer.Utilities
                     return Heart.TblVideoKeyword.SingleOrDefault(i => i.id == id);
                 else if (table == EnumRepo.Tables.TblOrder)
                     return Heart.TblOrder.SingleOrDefault(i => i.id == id);
+                else if (table == EnumRepo.Tables.TblLive)
+                    return Heart.TblLive.SingleOrDefault(i => i.id == id);
 
                 return null;
             }

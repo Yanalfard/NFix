@@ -57,7 +57,7 @@ namespace NFix.Areas.Tuotor.Controllers
             var selectTutor = _tutor.SelectTutorByUserPassId(selectUser.id);
             if (MainImage != null)
             {
-                video.MainImage = Guid.NewGuid().ToString() + Path.GetExtension(MainImage.FileName);
+                video.MainImage = Guid.NewGuid() + Path.GetExtension(MainImage.FileName);
                 MainImage.SaveAs(Server.MapPath("/Resources/Videos/Image/" + video.MainImage));
                 ImageResizer img = new ImageResizer();
                 img.Resize(Server.MapPath("/Resources/Videos/Image/" + video.MainImage),
@@ -65,12 +65,12 @@ namespace NFix.Areas.Tuotor.Controllers
             }
             if (VideoUrl != null)
             {
-                video.VideoUrl = Guid.NewGuid().ToString() + Path.GetExtension(VideoUrl.FileName);
+                video.VideoUrl = Guid.NewGuid() + Path.GetExtension(VideoUrl.FileName);
                 VideoUrl.SaveAs(Server.MapPath("/Resources/Videos/" + video.VideoUrl));
             }
             if (VidioDemoUrl != null)
             {
-                video.VidioDemoUrl = Guid.NewGuid().ToString() + Path.GetExtension(VidioDemoUrl.FileName);
+                video.VidioDemoUrl = Guid.NewGuid() + Path.GetExtension(VidioDemoUrl.FileName);
                 VidioDemoUrl.SaveAs(Server.MapPath("/Resources/Videos/Demo/" + video.VidioDemoUrl));
             }
             video.DateSubmited = DateTime.Now.ToShortDateString();
@@ -292,6 +292,27 @@ namespace NFix.Areas.Tuotor.Controllers
             return Json(new { FileName = "/Uploads/filename.ext" }, "text/html", JsonRequestBehavior.AllowGet);
             //return JavaScript("location.reload(true)");
             //  return Json(new { FileName = "/Uploads/filename.ext" }, "text/html", JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult CreateLive(TblLive live, HttpPostedFileBase MainImage)
+        {
+            if (ModelState.IsValid)
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (MainImage != null && MainImage.IsImage())
+                    {
+                        live.MainImage = Guid.NewGuid() + Path.GetExtension(MainImage.FileName);
+                        MainImage.SaveAs(Server.MapPath("/Resources/Live/Image/" + live.MainImage));
+                        ImageResizer img = new ImageResizer();
+                        img.Resize(Server.MapPath("/Resources/Live/Image/" + live.MainImage),
+                            Server.MapPath("/Resources/Live/Image/Thumb/" + live.MainImage));
+                    }
+
+                    TblTutor tuotor = new TutorService().SelectTutorByUserPassId(new UserPassService().SelectUserPassByUsername(User.Identity.Name).id);
+                    live.ToutorId = tuotor.id;
+                    new LiveService().AddLive(live);
+                }
+
+            return View("Index");
         }
     }
 }

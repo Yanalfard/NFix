@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using DataLayer.Models.Regular;
@@ -57,7 +58,7 @@ namespace DataLayer.Services.Impl
             List<TblClientProductRel> stp1 = new ClientProductRelRepo().SelectClientProductRelByClientId(clientId);
             List<TblProduct> stp2 = new List<TblProduct>();
             foreach (TblClientProductRel rel in stp1)
-                stp2.Add(new ProductRepo().SelectById<TblProduct>(rel.ProductId));
+                stp2.Add(new ProductRepo().SelectById<TblProduct>(Convert.ToInt32(rel.ProductId)));
             return stp2;
         }
 

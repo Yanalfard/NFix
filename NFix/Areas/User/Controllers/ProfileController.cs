@@ -223,7 +223,7 @@ namespace NFix.Areas.User.Controllers
                 list.Add(new ShowOrderViewModel()
                 {
                     Count = item.Count,
-                    ProductID = item.ProductId,
+                    ProductID = Convert.ToInt32(item.ProductId),
                     Price = product.Price,
                     ImageName = product.Image,
                     Title = product.Name,

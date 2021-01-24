@@ -1,0 +1,34 @@
+﻿@model DataLayer.Models.Regular.TblLive
+        <!-- #region Video -->
+<div class="video column video_@(Model.id)" dir="rtl">
+    <div class="vid column">
+        <img class="thumbnail" width="300" height="256" src="/Resources/Videos/Image/Thumb/@Model.MainImage" alt="عکس ویدیو" />
+        <a href="/LiveView/@Model.id/@Model.Title.Replace(" ","-")" class="uk-icon" uk-icon="icon: play; ratio:4"></a>
+    </div>
+    <div class="uk-margin-small-top row">
+        <div class="tutor uk-margin-remove-top row">
+            <a href="/TutorName/@Model.TblTutor.id/@Model.TblTutor.Name.Replace(" ","-")">
+                <img class="profile-img uk-border-circle" src="/Resources/Tutor/Thumb/@Model.TblTutor.MainImage" />
+            </a>
+
+        </div>
+        <div class="title column uk-margin-auto-left uk-margin-small-right uk-margin-remove-top">
+            <a href="/LiveView/@Model.id/@Model.Title.Replace(" ","-")">
+                <h5 class="uk-margin-auto-left">
+                    @Model.Title
+                </h5>
+            </a>
+            <div class="row">
+                <a href="/TutorName/@Model.TblTutor.id/@Model.TblTutor.Name.Replace(" ","-")" class="tutor-link uk-margin-auto-left">
+                    @Model.TblTutor.Name
+                </a>
+                <span class="row">
+                    <span> @Model.TimeStart.TimeOfDay.Hours:@Model.TimeStart.TimeOfDay.Minutes @Model.TimeStart.ToShamsi() </span>
+                    <span uk-icon="icon: clock" class="uk-margin-small-right"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- #endregion -->

@@ -4,67 +4,69 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7864fa284cdc494fb92c7a22e527ee6e" Name="Diagram1">
-        <EntityTypeShape EntityType="NFixModel.sysdiagrams" Width="1.5" PointX="13.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblAd" Width="1.5" PointX="10.75" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblBlog" Width="1.5" PointX="5.75" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblBlogCommentRel" Width="1.5" PointX="8" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblBlogKeywordRel" Width="1.5" PointX="8" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblCatagory" Width="1.5" PointX="1.5" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblClient" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblClientProductRel" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblComment" Width="1.5" PointX="3.75" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblDeal" Width="1.5" PointX="3.75" PointY="19.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblDealPropertyRel" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblDiscount" Width="1.5" PointX="1.5" PointY="30.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblImage" Width="1.5" PointX="3.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblKeyword" Width="1.5" PointX="3.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblLog" Width="1.5" PointX="13.75" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblOrder" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblProduct" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblProductCommentRel" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblProductImageRel" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblProductKeywordRel" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblProductPropertyRel" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblProperty" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblRole" Width="1.5" PointX="1.5" PointY="27.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblTuotorVideoRel" Width="1.5" PointX="13.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblTutor" Width="1.5" PointX="11" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblUserPass" Width="1.5" PointX="1.5" PointY="22.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblVideo" Width="1.5" PointX="11" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblVideoCatagory" Width="1.5" PointX="8.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblVideoCommentRel" Width="1.5" PointX="16.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="NFixModel.TblVideoKeyword" Width="1.5" PointX="13.25" PointY="10.5" IsExpanded="true" />
-        <AssociationConnector Association="NFixModel.FK_TblBlogCommentRel_TblBlog" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblBlogKeywordRel_TblBlog" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblBlogCommentRel_TblComment" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblBlogKeywordRel_TblKeyword" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblCatagory_TblCatagory" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblProduct_TblCatagory" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblClient_TblUserPass" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblClientProductRel_TblClient" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblComment_TblClient" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblClientProductRel_TblOrder" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblClientProductRel_TblProduct" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblProductCommentRel_TblComment" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblVideoCommentRel_TblComment" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblDealPropertyRel_TblDeal" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblDealPropertyRel_TblProperty" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblOrder_TblDiscount" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblProductImageRel_TblImage" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblProductKeywordRel_TblKeywords" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblProductCommentRel_TblProduct" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblProductImageRel_TblProduct" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblProductKeywordRel_TblProduct" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblProductPropertyRel_TblProduct" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblProductPropertyRel_TblProperty" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblUserPass_TblRole" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblTuotorVideoRel_TblTutor" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblTuotorVideoRel_TblVideo" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblTutor_TblUserPass" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblVideo_TblVideoCatagory" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblVideoCommentRel_TblVideo" ManuallyRouted="false" />
-        <AssociationConnector Association="NFixModel.FK_TblVideoKeyword_TblVideo" ManuallyRouted="false" />
+      <Diagram DiagramId="edc1481949d241c7851b43a81610482a" Name="Diagram1">
+        <EntityTypeShape EntityType="NfixModel.TblAd" Width="1.5" PointX="8.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblBlog" Width="1.5" PointX="5.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblBlogCommentRel" Width="1.5" PointX="8" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblBlogKeywordRel" Width="1.5" PointX="8" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblCatagory" Width="1.5" PointX="1.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblClient" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblClientProductRel" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblComment" Width="1.5" PointX="3.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblDeal" Width="1.5" PointX="3.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblDealPropertyRel" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblDiscount" Width="1.5" PointX="1.5" PointY="36.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblImage" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblKeyword" Width="1.5" PointX="3.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblLive" Width="1.5" PointX="0.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblLog" Width="1.5" PointX="13.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblOrder" Width="1.5" PointX="0.75" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblProduct" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblProductCommentRel" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblProductImageRel" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblProductKeywordRel" Width="1.5" PointX="6" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblProductPropertyRel" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblProperty" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblRole" Width="1.5" PointX="1.5" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblTuotorVideoRel" Width="1.5" PointX="13.25" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblTutor" Width="1.5" PointX="1.5" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblUserPass" Width="1.5" PointX="1.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblVideo" Width="1.5" PointX="11" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblVideoCatagory" Width="1.5" PointX="8.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblVideoCommentRel" Width="1.5" PointX="13.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NfixModel.TblVideoKeyword" Width="1.5" PointX="13.25" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="NfixModel.FK_TblBlogCommentRel_TblBlog" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblBlogKeywordRel_TblBlog" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblBlogCommentRel_TblComment" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblBlogKeywordRel_TblKeyword" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblCatagory_TblCatagory" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblProduct_TblCatagory" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblClient_TblUserPass" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblClientProductRel_TblClient" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblComment_TblClient" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblClientProductRel_TblLive" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblClientProductRel_TblOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblClientProductRel_TblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblProductCommentRel_TblComment" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblVideoCommentRel_TblComment" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblDealPropertyRel_TblDeal" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblDealPropertyRel_TblProperty" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblOrder_TblDiscount" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblProductImageRel_TblImage" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblProductKeywordRel_TblKeywords" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblLive_TblTutor" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblProductCommentRel_TblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblProductImageRel_TblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblProductKeywordRel_TblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblProductPropertyRel_TblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblProductPropertyRel_TblProperty" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblUserPass_TblRole" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblTuotorVideoRel_TblTutor" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblTuotorVideoRel_TblVideo" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblTutor_TblUserPass" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblVideo_TblVideoCatagory" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblVideoCommentRel_TblVideo" ManuallyRouted="false" />
+        <AssociationConnector Association="NfixModel.FK_TblVideoKeyword_TblVideo" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

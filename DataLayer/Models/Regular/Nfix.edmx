@@ -4,17 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="NFixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
+      <Schema Namespace="NfixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TblAd">
           <Key>
             <PropertyRef Name="id" />
@@ -81,11 +71,13 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ClientId" Type="int" Nullable="false" />
-          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="LiveId" Type="int" />
           <Property Name="Count" Type="int" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="Price" Type="int" />
           <Property Name="Discount" Type="int" />
+          <Property Name="IsLive" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TblComment">
           <Key>
@@ -138,6 +130,21 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblLive">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Chanel" Type="nvarchar" MaxLength="50" />
+          <Property Name="MainImage" Type="nvarchar" MaxLength="500" />
+          <Property Name="DescriptionShort" Type="nvarchar" MaxLength="500" />
+          <Property Name="DescriptionLong" Type="nvarchar" MaxLength="4000" />
+          <Property Name="TimeStart" Type="datetime" Nullable="false" />
+          <Property Name="Price" Type="bigint" />
+          <Property Name="IsHome" Type="bit" Nullable="false" />
+          <Property Name="ToutorId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TblLog">
           <Key>
@@ -396,6 +403,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblClientProductRel_TblLive">
+          <End Role="TblLive" Type="Self.TblLive" Multiplicity="0..1" />
+          <End Role="TblClientProductRel" Type="Self.TblClientProductRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblLive">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblClientProductRel">
+              <PropertyRef Name="LiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblClientProductRel_TblOrder">
           <End Role="TblOrder" Type="Self.TblOrder" Multiplicity="1" />
           <End Role="TblClientProductRel" Type="Self.TblClientProductRel" Multiplicity="*" />
@@ -409,7 +428,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TblClientProductRel_TblProduct">
-          <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="1">
+          <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="TblClientProductRel" Type="Self.TblClientProductRel" Multiplicity="*" />
@@ -459,6 +478,18 @@
             </Principal>
             <Dependent Role="TblDealPropertyRel">
               <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblLive_TblTutor">
+          <End Role="TblTutor" Type="Self.TblTutor" Multiplicity="1" />
+          <End Role="TblLive" Type="Self.TblLive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblTutor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblLive">
+              <PropertyRef Name="ToutorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -704,39 +735,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="NFixModelStoreContainer">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+        <EntityContainer Name="NfixModelStoreContainer">
           <EntitySet Name="TblAd" EntityType="Self.TblAd" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBlog" EntityType="Self.TblBlog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblBlogCommentRel" EntityType="Self.TblBlogCommentRel" Schema="dbo" store:Type="Tables" />
@@ -750,6 +749,7 @@
           <EntitySet Name="TblDiscount" EntityType="Self.TblDiscount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblImage" EntityType="Self.TblImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblKeyword" EntityType="Self.TblKeyword" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblLive" EntityType="Self.TblLive" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblLog" EntityType="Self.TblLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblOrder" EntityType="Self.TblOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblProduct" EntityType="Self.TblProduct" Schema="dbo" store:Type="Tables" />
@@ -794,6 +794,10 @@
             <End Role="TblClient" EntitySet="TblClient" />
             <End Role="TblClientProductRel" EntitySet="TblClientProductRel" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblClientProductRel_TblLive" Association="Self.FK_TblClientProductRel_TblLive">
+            <End Role="TblLive" EntitySet="TblLive" />
+            <End Role="TblClientProductRel" EntitySet="TblClientProductRel" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblClientProductRel_TblOrder" Association="Self.FK_TblClientProductRel_TblOrder">
             <End Role="TblOrder" EntitySet="TblOrder" />
             <End Role="TblClientProductRel" EntitySet="TblClientProductRel" />
@@ -813,6 +817,10 @@
           <AssociationSet Name="FK_TblDealPropertyRel_TblProperty" Association="Self.FK_TblDealPropertyRel_TblProperty">
             <End Role="TblProperty" EntitySet="TblProperty" />
             <End Role="TblDealPropertyRel" EntitySet="TblDealPropertyRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblLive_TblTutor" Association="Self.FK_TblLive_TblTutor">
+            <End Role="TblTutor" EntitySet="TblTutor" />
+            <End Role="TblLive" EntitySet="TblLive" />
           </AssociationSet>
           <AssociationSet Name="FK_TblOrder_TblDiscount" Association="Self.FK_TblOrder_TblDiscount">
             <End Role="TblDiscount" EntitySet="TblDiscount" />
@@ -887,20 +895,11 @@
             <End Role="TblVideoKeyword" EntitySet="TblVideoKeyword" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="NFixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
+      <Schema Namespace="NfixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="TblAd">
           <Key>
             <PropertyRef Name="id" />
@@ -979,12 +978,15 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClientId" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="LiveId" Type="Int32" />
           <Property Name="Count" Type="Int32" Nullable="false" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int32" />
           <Property Name="Discount" Type="Int32" />
+          <Property Name="IsLive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TblClient" Relationship="Self.FK_TblClientProductRel_TblClient" FromRole="TblClientProductRel" ToRole="TblClient" />
+          <NavigationProperty Name="TblLive" Relationship="Self.FK_TblClientProductRel_TblLive" FromRole="TblClientProductRel" ToRole="TblLive" />
           <NavigationProperty Name="TblOrder" Relationship="Self.FK_TblClientProductRel_TblOrder" FromRole="TblClientProductRel" ToRole="TblOrder" />
           <NavigationProperty Name="TblProduct" Relationship="Self.FK_TblClientProductRel_TblProduct" FromRole="TblClientProductRel" ToRole="TblProduct" />
         </EntityType>
@@ -1050,6 +1052,23 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="TblBlogKeywordRel" Relationship="Self.FK_TblBlogKeywordRel_TblKeyword" FromRole="TblKeyword" ToRole="TblBlogKeywordRel" />
           <NavigationProperty Name="TblProductKeywordRel" Relationship="Self.FK_TblProductKeywordRel_TblKeywords" FromRole="TblKeyword" ToRole="TblProductKeywordRel" />
+        </EntityType>
+        <EntityType Name="TblLive">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Chanel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MainImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionShort" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionLong" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="TimeStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Price" Type="Int64" />
+          <Property Name="IsHome" Type="Boolean" Nullable="false" />
+          <Property Name="ToutorId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TblClientProductRel" Relationship="Self.FK_TblClientProductRel_TblLive" FromRole="TblLive" ToRole="TblClientProductRel" />
+          <NavigationProperty Name="TblTutor" Relationship="Self.FK_TblLive_TblTutor" FromRole="TblLive" ToRole="TblTutor" />
         </EntityType>
         <EntityType Name="TblLog">
           <Key>
@@ -1180,6 +1199,7 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserPassId" Type="Int32" Nullable="false" />
           <Property Name="Specialty" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblLive" Relationship="Self.FK_TblLive_TblTutor" FromRole="TblTutor" ToRole="TblLive" />
           <NavigationProperty Name="TblTuotorVideoRel" Relationship="Self.FK_TblTuotorVideoRel_TblTutor" FromRole="TblTutor" ToRole="TblTuotorVideoRel" />
           <NavigationProperty Name="TblUserPass" Relationship="Self.FK_TblTutor_TblUserPass" FromRole="TblTutor" ToRole="TblUserPass" />
         </EntityType>
@@ -1366,6 +1386,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TblClientProductRel_TblLive">
+          <End Role="TblLive" Type="Self.TblLive" Multiplicity="0..1" />
+          <End Role="TblClientProductRel" Type="Self.TblClientProductRel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblLive">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblClientProductRel">
+              <PropertyRef Name="LiveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblClientProductRel_TblOrder">
           <End Role="TblOrder" Type="Self.TblOrder" Multiplicity="1" />
           <End Role="TblClientProductRel" Type="Self.TblClientProductRel" Multiplicity="*" />
@@ -1379,7 +1411,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TblClientProductRel_TblProduct">
-          <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="1">
+          <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="TblClientProductRel" Type="Self.TblClientProductRel" Multiplicity="*" />
@@ -1485,6 +1517,18 @@
             </Principal>
             <Dependent Role="TblProductKeywordRel">
               <PropertyRef Name="KeywordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblLive_TblTutor">
+          <End Role="TblTutor" Type="Self.TblTutor" Multiplicity="1" />
+          <End Role="TblLive" Type="Self.TblLive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblTutor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TblLive">
+              <PropertyRef Name="ToutorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1651,7 +1695,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="NFixEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TblAd" EntityType="Self.TblAd" />
           <EntitySet Name="TblBlog" EntityType="Self.TblBlog" />
           <EntitySet Name="TblBlogCommentRel" EntityType="Self.TblBlogCommentRel" />
@@ -1665,6 +1708,7 @@
           <EntitySet Name="TblDiscount" EntityType="Self.TblDiscount" />
           <EntitySet Name="TblImage" EntityType="Self.TblImage" />
           <EntitySet Name="TblKeyword" EntityType="Self.TblKeyword" />
+          <EntitySet Name="TblLive" EntityType="Self.TblLive" />
           <EntitySet Name="TblLog" EntityType="Self.TblLog" />
           <EntitySet Name="TblOrder" EntityType="Self.TblOrder" />
           <EntitySet Name="TblProduct" EntityType="Self.TblProduct" />
@@ -1717,6 +1761,10 @@
             <End Role="TblClient" EntitySet="TblClient" />
             <End Role="TblComment" EntitySet="TblComment" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblClientProductRel_TblLive" Association="Self.FK_TblClientProductRel_TblLive">
+            <End Role="TblLive" EntitySet="TblLive" />
+            <End Role="TblClientProductRel" EntitySet="TblClientProductRel" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblClientProductRel_TblOrder" Association="Self.FK_TblClientProductRel_TblOrder">
             <End Role="TblOrder" EntitySet="TblOrder" />
             <End Role="TblClientProductRel" EntitySet="TblClientProductRel" />
@@ -1752,6 +1800,10 @@
           <AssociationSet Name="FK_TblProductKeywordRel_TblKeywords" Association="Self.FK_TblProductKeywordRel_TblKeywords">
             <End Role="TblKeyword" EntitySet="TblKeyword" />
             <End Role="TblProductKeywordRel" EntitySet="TblProductKeywordRel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblLive_TblTutor" Association="Self.FK_TblLive_TblTutor">
+            <End Role="TblTutor" EntitySet="TblTutor" />
+            <End Role="TblLive" EntitySet="TblLive" />
           </AssociationSet>
           <AssociationSet Name="FK_TblProductCommentRel_TblProduct" Association="Self.FK_TblProductCommentRel_TblProduct">
             <End Role="TblProduct" EntitySet="TblProduct" />
@@ -1801,56 +1853,15 @@
             <End Role="TblVideo" EntitySet="TblVideo" />
             <End Role="TblVideoKeyword" EntitySet="TblVideoKeyword" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="NFixModelStoreContainer" CdmEntityContainer="NFixEntities">
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="NFixModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="NfixModelStoreContainer" CdmEntityContainer="NFixEntities">
           <EntitySetMapping Name="TblAd">
-            <EntityTypeMapping TypeName="NFixModel.TblAd">
+            <EntityTypeMapping TypeName="NfixModel.TblAd">
               <MappingFragment StoreEntitySet="TblAd">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Link" ColumnName="Link" />
@@ -1859,7 +1870,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblBlog">
-            <EntityTypeMapping TypeName="NFixModel.TblBlog">
+            <EntityTypeMapping TypeName="NfixModel.TblBlog">
               <MappingFragment StoreEntitySet="TblBlog">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -1871,7 +1882,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblBlogCommentRel">
-            <EntityTypeMapping TypeName="NFixModel.TblBlogCommentRel">
+            <EntityTypeMapping TypeName="NfixModel.TblBlogCommentRel">
               <MappingFragment StoreEntitySet="TblBlogCommentRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="BlogId" ColumnName="BlogId" />
@@ -1880,7 +1891,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblBlogKeywordRel">
-            <EntityTypeMapping TypeName="NFixModel.TblBlogKeywordRel">
+            <EntityTypeMapping TypeName="NfixModel.TblBlogKeywordRel">
               <MappingFragment StoreEntitySet="TblBlogKeywordRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="BlogId" ColumnName="BlogId" />
@@ -1889,7 +1900,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblCatagory">
-            <EntityTypeMapping TypeName="NFixModel.TblCatagory">
+            <EntityTypeMapping TypeName="NfixModel.TblCatagory">
               <MappingFragment StoreEntitySet="TblCatagory">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1898,7 +1909,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblClient">
-            <EntityTypeMapping TypeName="NFixModel.TblClient">
+            <EntityTypeMapping TypeName="NfixModel.TblClient">
               <MappingFragment StoreEntitySet="TblClient">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1916,20 +1927,22 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblClientProductRel">
-            <EntityTypeMapping TypeName="NFixModel.TblClientProductRel">
+            <EntityTypeMapping TypeName="NfixModel.TblClientProductRel">
               <MappingFragment StoreEntitySet="TblClientProductRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="LiveId" ColumnName="LiveId" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="IsLive" ColumnName="IsLive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblComment">
-            <EntityTypeMapping TypeName="NFixModel.TblComment">
+            <EntityTypeMapping TypeName="NfixModel.TblComment">
               <MappingFragment StoreEntitySet="TblComment">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
@@ -1940,7 +1953,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblDeal">
-            <EntityTypeMapping TypeName="NFixModel.TblDeal">
+            <EntityTypeMapping TypeName="NfixModel.TblDeal">
               <MappingFragment StoreEntitySet="TblDeal">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1952,7 +1965,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblDealPropertyRel">
-            <EntityTypeMapping TypeName="NFixModel.TblDealPropertyRel">
+            <EntityTypeMapping TypeName="NfixModel.TblDealPropertyRel">
               <MappingFragment StoreEntitySet="TblDealPropertyRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="DealId" ColumnName="DealId" />
@@ -1961,7 +1974,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblDiscount">
-            <EntityTypeMapping TypeName="NFixModel.TblDiscount">
+            <EntityTypeMapping TypeName="NfixModel.TblDiscount">
               <MappingFragment StoreEntitySet="TblDiscount">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1971,7 +1984,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblImage">
-            <EntityTypeMapping TypeName="NFixModel.TblImage">
+            <EntityTypeMapping TypeName="NfixModel.TblImage">
               <MappingFragment StoreEntitySet="TblImage">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -1979,29 +1992,45 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblKeyword">
-            <EntityTypeMapping TypeName="NFixModel.TblKeyword">
+            <EntityTypeMapping TypeName="NfixModel.TblKeyword">
               <MappingFragment StoreEntitySet="TblKeyword">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TblLive">
+            <EntityTypeMapping TypeName="NfixModel.TblLive">
+              <MappingFragment StoreEntitySet="TblLive">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Chanel" ColumnName="Chanel" />
+                <ScalarProperty Name="MainImage" ColumnName="MainImage" />
+                <ScalarProperty Name="DescriptionShort" ColumnName="DescriptionShort" />
+                <ScalarProperty Name="DescriptionLong" ColumnName="DescriptionLong" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsHome" ColumnName="IsHome" />
+                <ScalarProperty Name="ToutorId" ColumnName="ToutorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TblLog">
-            <EntityTypeMapping TypeName="NFixModel.TblLog">
+            <EntityTypeMapping TypeName="NfixModel.TblLog">
               <MappingFragment StoreEntitySet="TblLog">
-                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
-                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="LogText" ColumnName="LogText" />
                 <ScalarProperty Name="MoneyTransfered" ColumnName="MoneyTransfered" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblOrder">
-            <EntityTypeMapping TypeName="NFixModel.TblOrder">
+            <EntityTypeMapping TypeName="NfixModel.TblOrder">
               <MappingFragment StoreEntitySet="TblOrder">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Sum" ColumnName="Sum" />
@@ -2012,7 +2041,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProduct">
-            <EntityTypeMapping TypeName="NFixModel.TblProduct">
+            <EntityTypeMapping TypeName="NfixModel.TblProduct">
               <MappingFragment StoreEntitySet="TblProduct">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2030,7 +2059,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProductCommentRel">
-            <EntityTypeMapping TypeName="NFixModel.TblProductCommentRel">
+            <EntityTypeMapping TypeName="NfixModel.TblProductCommentRel">
               <MappingFragment StoreEntitySet="TblProductCommentRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -2039,7 +2068,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProductImageRel">
-            <EntityTypeMapping TypeName="NFixModel.TblProductImageRel">
+            <EntityTypeMapping TypeName="NfixModel.TblProductImageRel">
               <MappingFragment StoreEntitySet="TblProductImageRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -2048,7 +2077,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProductKeywordRel">
-            <EntityTypeMapping TypeName="NFixModel.TblProductKeywordRel">
+            <EntityTypeMapping TypeName="NfixModel.TblProductKeywordRel">
               <MappingFragment StoreEntitySet="TblProductKeywordRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -2057,7 +2086,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProductPropertyRel">
-            <EntityTypeMapping TypeName="NFixModel.TblProductPropertyRel">
+            <EntityTypeMapping TypeName="NfixModel.TblProductPropertyRel">
               <MappingFragment StoreEntitySet="TblProductPropertyRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -2066,7 +2095,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblProperty">
-            <EntityTypeMapping TypeName="NFixModel.TblProperty">
+            <EntityTypeMapping TypeName="NfixModel.TblProperty">
               <MappingFragment StoreEntitySet="TblProperty">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2075,7 +2104,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblRole">
-            <EntityTypeMapping TypeName="NFixModel.TblRole">
+            <EntityTypeMapping TypeName="NfixModel.TblRole">
               <MappingFragment StoreEntitySet="TblRole">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -2084,7 +2113,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblTuotorVideoRel">
-            <EntityTypeMapping TypeName="NFixModel.TblTuotorVideoRel">
+            <EntityTypeMapping TypeName="NfixModel.TblTuotorVideoRel">
               <MappingFragment StoreEntitySet="TblTuotorVideoRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ToutorId" ColumnName="ToutorId" />
@@ -2093,7 +2122,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblTutor">
-            <EntityTypeMapping TypeName="NFixModel.TblTutor">
+            <EntityTypeMapping TypeName="NfixModel.TblTutor">
               <MappingFragment StoreEntitySet="TblTutor">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2107,7 +2136,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblUserPass">
-            <EntityTypeMapping TypeName="NFixModel.TblUserPass">
+            <EntityTypeMapping TypeName="NfixModel.TblUserPass">
               <MappingFragment StoreEntitySet="TblUserPass">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -2119,7 +2148,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblVideo">
-            <EntityTypeMapping TypeName="NFixModel.TblVideo">
+            <EntityTypeMapping TypeName="NfixModel.TblVideo">
               <MappingFragment StoreEntitySet="TblVideo">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
@@ -2139,7 +2168,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblVideoCatagory">
-            <EntityTypeMapping TypeName="NFixModel.TblVideoCatagory">
+            <EntityTypeMapping TypeName="NfixModel.TblVideoCatagory">
               <MappingFragment StoreEntitySet="TblVideoCatagory">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -2148,7 +2177,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblVideoCommentRel">
-            <EntityTypeMapping TypeName="NFixModel.TblVideoCommentRel">
+            <EntityTypeMapping TypeName="NfixModel.TblVideoCommentRel">
               <MappingFragment StoreEntitySet="TblVideoCommentRel">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="VideoId" ColumnName="VideoId" />
@@ -2157,7 +2186,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblVideoKeyword">
-            <EntityTypeMapping TypeName="NFixModel.TblVideoKeyword">
+            <EntityTypeMapping TypeName="NfixModel.TblVideoKeyword">
               <MappingFragment StoreEntitySet="TblVideoKeyword">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="VideoId" ColumnName="VideoId" />
@@ -2165,13 +2194,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="NFixModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="NFixModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="NFixModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="NFixModel.Store.sp_helpdiagramdefinition" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="NFixModel.Store.sp_helpdiagrams" />
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="NFixModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="NFixModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblLive>
+<section class="videos ">
+    <div class="space-half"></div>
+    <h3 class="clipped text-center">پخش زنده</h3>
+
+    <content class="grid" dir="rtl">
+        <!-- #region Video -->
+        @foreach (var item in Model.Where(i => i.IsHome))
+        {
+            @Html.Partial("_LiveBlock", item)
+        }
+        <!-- #endregion -->
+    </content>
+
+</section>

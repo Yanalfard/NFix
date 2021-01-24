@@ -153,6 +153,7 @@
     <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\DiscountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LiveController.cs" />
     <Compile Include="Areas\Admin\Controllers\LogController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCatagoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Controllers\HomeBlogsController.cs" />
     <Compile Include="Controllers\HomeCategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeLivesController.cs" />
     <Compile Include="Controllers\HomeProductsController.cs" />
     <Compile Include="Controllers\HomeSearchController.cs" />
     <Compile Include="Controllers\HomeShopCartController.cs" />
@@ -229,6 +231,8 @@
     <Content Include="Areas\Admin\Views\Discount\AllDiscount.cshtml" />
     <Content Include="Areas\Admin\Views\Discount\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Discount.cshtml" />
+    <Content Include="Areas\Admin\Views\Live\LiveTable.cshtml" />
+    <Content Include="Areas\Admin\Views\Live\LiveAdder.cshtml" />
     <None Include="Connected Services\ZarinPal\configuration91.svcinfo" />
     <None Include="Connected Services\ZarinPal\configuration.svcinfo" />
     <Content Include="Connected Services\ZarinPal\NFix.ZarinPal.GetUnverifiedTransactionsResponse.datasource">
@@ -314,6 +318,10 @@
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
     <Content Include="ManUp.js" />
+    <Content Include="Resources\Live\Image\27693ec2-5f05-4109-aa43-7a62312a8a38.jpg" />
+    <Content Include="Resources\Live\Image\59892b3b-c64a-4b77-9fcd-d51b0162c392.png" />
+    <Content Include="Resources\Live\Image\7f1de603-17fb-46fa-8109-7d0780c5eea1.jpg" />
+    <Content Include="Resources\Live\Image\c68a907d-eae1-447f-9140-1c9f075e3e18.jpg" />
     <Content Include="Resources\Png\CalculatorBackground.jpeg" />
     <Content Include="Resources\Png\HoldingLift.png" />
     <Content Include="Resources\Png\Login.png" />
@@ -1752,6 +1760,10 @@
     <Content Include="Views\HomeAccount\Recovery.cshtml" />
     <Content Include="Views\HomeAccount\LoginInUser.cshtml" />
     <Content Include="Views\HomeAccount\LoginInUser2.cshtml" />
+    <Content Include="Views\HomeVideo\LivePage.cshtml" />
+    <Content Include="Views\Shared\_LiveBlock.cshtml" />
+    <Content Include="Views\HomeVideo\LiveView.cshtml" />
+    <Content Include="Views\HomeLives\AllLives.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1761,6 +1773,7 @@
     <Folder Include="Areas\Tuotor\Data\" />
     <Folder Include="Areas\User\Data\" />
     <Folder Include="Resources\Blogs\Thumb\" />
+    <Folder Include="Resources\Live\Image\Thumb\" />
     <Folder Include="Resources\Product\Thumb\" />
     <Folder Include="Resources\Tutor\Thumb\" />
     <Folder Include="Resources\UploadEditor\" />

@@ -1,0 +1,82 @@
+﻿@using DataLayer.ViewModel
+@model IEnumerable<DataLayer.ViewModel.LiveShowCaseViewModel>
+@{
+    ViewBag.Title = "LiveTable";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- #region Table -->
+
+<table class="uk-table" dir="rtl">
+    <thead>
+        <tr>
+            <th></th>
+            <th>تیتر</th>
+            <th>کانال</th>
+            <th>عکس</th>
+            <th>توضیحات مختصر</th>
+            <th>توضیحات کامل</th>
+            <th>تاریخ شروع</th>
+            <th>قیمت</th>
+            <th>خانه؟</th>
+            <th>نام مربی</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (LiveShowCaseViewModel i in Model)
+        {
+            <tr>
+                <td>@i.id</td>
+                <td>@i.Title</td>
+                <td>@i.Chanel</td>
+                <td uk-lightbox>
+                    <a href="~/Resources/Png/@i.MainImage">
+                        <img src="~/Resources/Png/@i.MainImage" />
+                    </a>
+                </td>
+                <td>
+                    <a href="#Modal-Address" uk-toggle>توضیحات مختصر</a>
+                    <div id="Modal-Address" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h3>
+                                توضیحات مختصر
+                            </h3>
+                            <p>
+                                @i.DescriptionShort
+                            </p>
+                            <button class="uk-modal-close">
+                                بستن
+                            </button>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <a href="#Modal-ER" uk-toggle>توضیحات کامل</a>
+                    <div id="Modal-ER" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h3>
+                                توضیحات کامل
+                            </h3>
+                            <p>
+                                @i.DescriptionLong
+                            </p>
+                            <button class="uk-modal-close">
+                                بستن
+                            </button>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    @i.TimeStart.ToShamsi()
+                </td>
+                <td>@i.Price</td>
+                <td>
+                    <input type="checkbox" class="uk-checkbox" onclick="return false;" readonly @(i.IsHome ? "checked" : "") />
+                </td>
+                <td>@i.ToutorName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- #endregion -->

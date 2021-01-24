@@ -24,6 +24,7 @@ namespace NFix.Controllers
         private CommentService _comment = new CommentService();
         private VideoCommentRelService _videoComment = new VideoCommentRelService();
         private VideoKeywordService _videoKeywords = new VideoKeywordService();
+        private LiveService _live = new LiveService();
 
         public HomeVideoController()
         {
@@ -35,6 +36,16 @@ namespace NFix.Controllers
             var allVideo = _video.SelectAllVideos();
             return PartialView(allVideo.OrderByDescending(i => i.DateSubmited).Take(20));
         }
+
+        public ActionResult LivePage(int id = 0)
+        {
+            List<TblLive> lives = new List<TblLive>();
+            foreach (TblLive i in _live.SelectAllLives())
+                if (i.TimeStart > DateTime.Now)
+                    lives.Add(i);
+            return PartialView(id != 0 ? lives.Take(id) : lives);
+        }
+
         [Route("AllVideos")]
         public ActionResult AllVideos()
         {
@@ -97,6 +108,27 @@ namespace NFix.Controllers
             }
             return View(result);
         }
+
+        [Route("LiveView/{id}/{title}")]
+        public ActionResult LiveView(int id, string title)
+        {
+            ViewBag.Title = title;
+            LiveViewModel vm = new LiveViewModel(_live.SelectLiveById(id));
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("user"))
+                {
+
+                    TblUserPass tblUserPass = _userPass.SelectUserPassByUsername(User.Identity.Name);
+                    TblClient tblClient = _client.SelectClientByUserPassId(tblUserPass.id);
+                    vm.Username = User.Identity.Name;
+                    vm.IsPremium = tblClient.IsPremium;
+                    vm.UserPass = tblUserPass;
+                }
+            }
+            return View(vm);
+        }
+
         public ActionResult CreateComment(int id)
         {
             try
@@ -202,6 +234,11 @@ namespace NFix.Controllers
             }
             list = _video.SelectAllVideos().Where(i => i.Title.Contains(Title) || i.DescriptionDemo.Contains(Title) || i.Description.Contains(Title)).ToList();
             return PartialView(list.Distinct().Take(5));
+        }
+
+        public ActionResult VideoRecommendationsForLive()
+        {
+            return PartialView("VideoRecommendations", _video.SelectAllVideos().Where(i => i.IsHome).Take(5));
         }
     }
 }

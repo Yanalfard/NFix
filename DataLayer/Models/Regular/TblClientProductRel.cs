@@ -16,13 +16,16 @@ namespace DataLayer.Models.Regular
     {
         public int id { get; set; }
         public int ClientId { get; set; }
-        public int ProductId { get; set; }
+        public Nullable<int> ProductId { get; set; }
+        public Nullable<int> LiveId { get; set; }
         public int Count { get; set; }
         public int OrderId { get; set; }
         public Nullable<int> Price { get; set; }
         public Nullable<int> Discount { get; set; }
+        public bool IsLive { get; set; }
     
         public virtual TblClient TblClient { get; set; }
+        public virtual TblLive TblLive { get; set; }
         public virtual TblOrder TblOrder { get; set; }
         public virtual TblProduct TblProduct { get; set; }
     }

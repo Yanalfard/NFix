@@ -3,18 +3,13 @@
     <div class="space-half"></div>
     <h3 class="clipped text-center">ویدیو های اخیر</h3>
 
-
         <content class="grid" dir="rtl">
             <!-- #region Video -->
-
             @foreach (var item in Model.Where(i=>i.IsHome))
             {
                 @Html.Partial("_VideoBlock", item)
             }
-
-
             <!-- #endregion -->
         </content>
-
 
 </section>

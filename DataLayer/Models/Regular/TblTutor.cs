@@ -17,6 +17,7 @@ namespace DataLayer.Models.Regular
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TblTutor()
         {
+            this.TblLive = new HashSet<TblLive>();
             this.TblTuotorVideoRel = new HashSet<TblTuotorVideoRel>();
         }
     
@@ -29,6 +30,8 @@ namespace DataLayer.Models.Regular
         public int UserPassId { get; set; }
         public string Specialty { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblLive> TblLive { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblTuotorVideoRel> TblTuotorVideoRel { get; set; }
         public virtual TblUserPass TblUserPass { get; set; }

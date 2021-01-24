@@ -66,26 +66,27 @@ namespace NFix
                         if (TrimImage)
                         {
                             // Trim to exactly fit maximum dimensions
-                            double factor = Math.Max((double)MaxX / (double)origX,
-                                (double)MaxY / (double)origY);
-                            newX = (int)Math.Ceiling((double)origX * factor);
-                            newY = (int)Math.Ceiling((double)origY * factor);
+                            double factor = Math.Max(MaxX / (double)origX,
+                                MaxY / (double)origY);
+                            newX = (int)Math.Ceiling(origX * factor);
+                            newY = (int)Math.Ceiling(origY * factor);
                             trimX = newX - MaxX;
                             trimY = newY - MaxY;
                         }
                         else
                         {
                             // Resize (no trim) to keep within maximum dimensions
-                            double factor = Math.Min((double)MaxX / (double)origX,
-                                (double)MaxY / (double)origY);
-                            newX = (int)Math.Ceiling((double)origX * factor);
-                            newY = (int)Math.Ceiling((double)origY * factor);
+                            double factor = Math.Min(MaxX / (double)origX,
+                                MaxY / (double)origY);
+                            newX = (int)Math.Ceiling(origX * factor);
+                            newY = (int)Math.Ceiling(origY * factor);
                         }
                     }
 
                     // Create destination image
                     using (Image dest = new Bitmap(newX - trimX, newY - trimY))
                     {
+
                         Graphics graph = Graphics.FromImage(dest);
                         graph.InterpolationMode =
                             System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
