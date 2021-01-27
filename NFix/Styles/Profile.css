@@ -529,3 +529,17 @@ content {
   .modal-edit-grid * {
     white-space: nowrap;
     width: calc(100%-10px); }
+
+#me {
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  display: block; }
+
+#me video {
+  position: relative !important; }
+
+.stream {
+  background: #000; }
+  .stream video {
+    transform: unset !important; }

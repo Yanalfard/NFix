@@ -233,6 +233,8 @@
     <Content Include="Areas\Admin\Views\Product\Discount.cshtml" />
     <Content Include="Areas\Admin\Views\Live\LiveTable.cshtml" />
     <Content Include="Areas\Admin\Views\Live\LiveAdder.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\Stream.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\ListStreams.cshtml" />
     <None Include="Connected Services\ZarinPal\configuration91.svcinfo" />
     <None Include="Connected Services\ZarinPal\configuration.svcinfo" />
     <Content Include="Connected Services\ZarinPal\NFix.ZarinPal.GetUnverifiedTransactionsResponse.datasource">
@@ -318,6 +320,7 @@
     <Content Include="Areas\User\Views\Profile\History.cshtml" />
     <Content Include="Areas\User\Views\Profile\EditInfo.cshtml" />
     <Content Include="ManUp.js" />
+    <Content Include="Resources\giphy.gif" />
     <Content Include="Resources\Live\Image\27693ec2-5f05-4109-aa43-7a62312a8a38.jpg" />
     <Content Include="Resources\Live\Image\59892b3b-c64a-4b77-9fcd-d51b0162c392.png" />
     <Content Include="Resources\Live\Image\7f1de603-17fb-46fa-8109-7d0780c5eea1.jpg" />
@@ -353,6 +356,7 @@
     <Content Include="Resources\Svg\VID-20201104-WA0001.mp4" />
     <Content Include="Resources\Svg\YaghoutWeb.svg" />
     <Content Include="Resources\Svg\Zarinpal.svg" />
+    <Content Include="Scripts\AgoraRTCSDK-3.3.1.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\croppie.min.js" />
     <Content Include="Scripts\Jquery\ajaxfileupload.js" />

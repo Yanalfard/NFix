@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblLive>
+
+<h2 class="uk-modal-title">ویدیو های آپلودی</h2>
+
+<table class="uk-table" dir="rtl">
+    <thead>
+        <tr>
+            <th></th>
+            <th>تیتر</th>
+            <th>عکس</th>
+            <th>توضیحات کوناه</th>
+            <th>توضیحات کامل</th>
+            <th>زمان شروع</th>
+            <th>قیمت</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var live in Model)
+        {
+            <tr>
+                <td>@(Model.ToList().IndexOf(live) + 1)</td>
+                <td>@live.Title</td>
+                <td>
+                    <div uk-lightbox>
+                        <a href="~/Resources/Live/Image/@live.MainImage">
+                            <img src="~/Resources/Live/Image/@live.MainImage" width="48" height="48" alt="" />
+                        </a>
+                    </div>
+                </td>
+                <td>
+                    <a href="#Modal-Description" uk-toggle> کوتاه</a>
+                    <div id="Modal-Description" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h3>
+                                توضیحات کوتاه
+                            </h3>
+                            <p>
+                                @live.DescriptionShort
+                            </p>
+                            <button class="uk-modal-close">
+                                بستن
+                            </button>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <a href="#Modal-Description-Demo" uk-toggle> کامل</a>
+                    <div id="Modal-Description-Demo" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h3>
+                                توضیحات کامل
+                            </h3>
+                            <p>
+                                @live.DescriptionLong
+                            </p>
+                            <button class="uk-modal-close">
+                                بستن
+                            </button>
+                        </div>
+                    </div>
+                </td>
+                <td dir="rtl"> @live.TimeStart.TimeOfDay.Hours:@live.TimeStart.TimeOfDay.Minutes @live.TimeStart.ToShamsi()</td>
+                <td>@live.Price</td>
+                <td>
+                    <a href="/Tuotor/Profile/Stream/@live.id" style="min-width:24px" uk-icon="rss" uk-tooltip="شروع پخش"></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left uk-modal-close">بازگشت</a>

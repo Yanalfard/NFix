@@ -521,3 +521,32 @@ _::-webkit-full-page-media .space-nav-bottom, _:future .space-nav-bottom, :root 
   -o-transition: all ease 0.2s;
   -webkit-transition: all ease 0.2s;
   transition: all ease 0.2s; }
+
+#remote-container, #stream-swapper {
+  display: flex;
+  min-height: 50vh; }
+  #remote-container video, #stream-swapper video {
+    min-height: 50vh;
+    max-height: 80vh;
+    background-color: #5B5B5B;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    position: relative !important; }
+
+#stream-swapper {
+  background-color: rgba(0, 0, 0, 0.24);
+  background-image: url("../Resources/giphy.gif");
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 24px;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -ms-align-content: center;
+  -webkit-align-content: center;
+  align-content: center; }
+  #stream-swapper span {
+    margin: auto; }

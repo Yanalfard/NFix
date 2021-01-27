@@ -23,6 +23,8 @@ namespace NFix.Areas.Tuotor.Controllers
         private TuotorVideoRelService _tuotorVideoRelService = new TuotorVideoRelService();
         private VideoCatagoryService _videoCatagory = new VideoCatagoryService();
         private VideoKeywordService _videoKeyword = new VideoKeywordService();
+        private LiveService _live = new LiveService();
+
         // GET: Tuotor/Profile
         public ActionResult Index()
         {
@@ -51,7 +53,7 @@ namespace NFix.Areas.Tuotor.Controllers
             return PartialView();
         }
         [HttpPost]
-        public ActionResult UploadVideo(TblVideo video, HttpPostedFileBase VideoUrl, HttpPostedFileBase VidioDemoUrl, HttpPostedFileBase MainImage,string Keywords)
+        public ActionResult UploadVideo(TblVideo video, HttpPostedFileBase VideoUrl, HttpPostedFileBase VidioDemoUrl, HttpPostedFileBase MainImage, string Keywords)
         {
             var selectUser = _userPass.SelectUserPassByUsername(User.Identity.Name);
             var selectTutor = _tutor.SelectTutorByUserPassId(selectUser.id);
@@ -120,7 +122,7 @@ namespace NFix.Areas.Tuotor.Controllers
             selectTutor.TellNo = tutor.TellNo;
             selectTutor.UserPassId = tutor.UserPassId;
             selectTutor.MainImage = tutor.MainImage;
-            bool d=_tutor.UpdateTutor(tutor, tutor.id);
+            bool d = _tutor.UpdateTutor(tutor, tutor.id);
             var isAjax = this.Request.IsAjaxRequest();
 
             return Json(new { result = "ok", Id = selectTutor.id }, JsonRequestBehavior.AllowGet);
@@ -149,7 +151,7 @@ namespace NFix.Areas.Tuotor.Controllers
             if (System.IO.File.Exists(fullPathImage))
             {
                 System.IO.File.Delete(fullPathImage);
-            } 
+            }
             if (System.IO.File.Exists(fullPathImage2))
             {
                 System.IO.File.Delete(fullPathImage2);
@@ -208,7 +210,7 @@ namespace NFix.Areas.Tuotor.Controllers
                 VidioDemoUrl.SaveAs(Server.MapPath("/Resources/Videos/Demo/" + video.VidioDemoUrl));
             }
             bool b1 = _video.UpdateVideo(video, video.id);
-            _videoKeyword.SelectAllVideoKeywords().Where(t => t.VideoId == video.id).ToList().ForEach(t =>_videoKeyword.DeleteVideoKeyword(t.id));
+            _videoKeyword.SelectAllVideoKeywords().Where(t => t.VideoId == video.id).ToList().ForEach(t => _videoKeyword.DeleteVideoKeyword(t.id));
 
             if (!string.IsNullOrEmpty(Keywords))
             {
@@ -314,5 +316,17 @@ namespace NFix.Areas.Tuotor.Controllers
 
             return View("Index");
         }
+
+        public ActionResult ListStreams(int id)
+        {
+            return PartialView(_live.SelectAllLives().Where(i => i.ToutorId == id));
+        }
+
+
+        public ActionResult Stream(int id)
+        {
+            return View(_live.SelectLiveById(id));
+        }
+
     }
 }

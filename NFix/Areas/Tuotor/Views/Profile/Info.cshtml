@@ -6,88 +6,29 @@
 
     <h6 class="uk-margin-auto uk-margin-small-top">@Model.Specialty</h6>
     <div class="row uk-margin-auto">
-        <a href="#ModalUpload" uk-toggle uk-tooltip="آپلود ویدیوئ جدید" uk-icon="icon:cloud-upload;ratio:1.2"></a>
+        <a href="#ModalUpload" uk-toggle uk-tooltip="آپلود ویدیوئ جدید">آپلود ویدیو</a>
         <span class="unselectable uk-margin-small-left uk-margin-small-right">•</span>
-        <a href="#ModalProfile" uk-toggle uk-tooltip="ویرایش اطلاعات کاربری" uk-icon="icon:user;ratio:1.2"></a>
+        <a href="#ModalProfile" uk-toggle uk-tooltip="ویرایش اطلاعات کاربری">ویرایش پروفایل</a>
         <span class="unselectable uk-margin-small-left uk-margin-small-right">•</span>
-        <a href="#ModalTable" uk-toggle uk-tooltip="مشاهده ویدیو های آپلودی" uk-icon="icon:menu;ratio:1.2"></a>
+        <a href="#ModalTable" uk-toggle uk-tooltip="مشاهده ویدیو های آپلودی">ویدیو ها</a>
         <span class="unselectable uk-margin-small-left uk-margin-small-right">•</span>
-        <a href="#" uk-tooltip="تغییر گذرواژه" onclick="editPass()" uk-icon="icon:lock;ratio:1.2"></a>
+        <a href="#" uk-tooltip="تغییر گذرواژه" onclick="editPass()">تغییر گذرواژه</a>
         <span class="unselectable uk-margin-small-left uk-margin-small-right">•</span>
-        <a href="#ModalAddLive" uk-tooltip="آپلود لایو" uk-toggle uk-icon="icon:rss;ratio:1.2"></a>
+        <a href="#ModalLives" uk-tooltip="ویدیو های لایو" uk-toggle>استریم ها</a>
         <span class="unselectable uk-margin-small-left uk-margin-small-right">•</span>
-        <a href="#ModalLives" uk-tooltip="ویدیو های لایو" uk-toggle uk-icon="icon:list;ratio:1.2"></a>
+        <a href="#ModalAddLive" uk-tooltip="تنظیم لایو جدید" uk-toggle>استریم جدید</a>
     </div>
 </div>
 
 <div id="ModalLives" uk-modal>
     <div class="uk-modal-dialog uk-modal-body full-width column" dir="rtl">
-        <h2 class="uk-modal-title">ویدیو های آپلودی</h2>
-
-        <table class="uk-table" dir="rtl">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>تیتر</th>
-                    <th>عکس</th>
-                    <th>توضیحات کوناه</th>
-                    <th>توضیحات کامل</th>
-                    <th>زمان شروع</th>
-                    <th>قیمت</th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>این تیتر می باشد</td>
-                <td>
-                    <div uk-lightbox>
-                        <a href="/Resources/Videos/">نام عکس</a>
-                    </div>
-                </td>
-                <td>
-                    <a href="#Modal-Description" uk-toggle>توضیحات</a>
-                    <div id="Modal-Description" uk-modal>
-                        <div class="uk-modal-dialog uk-modal-body">
-                            <h3>
-                                توضیحات ویدیو
-                            </h3>
-                            <p>
-                            </p>
-                            <button class="uk-modal-close">
-                                بستن
-                            </button>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <a href="#Modal-Description-Demo" uk-toggle>توضیحات دمو</a>
-                    <div id="Modal-Description-Demo" uk-modal>
-                        <div class="uk-modal-dialog uk-modal-body">
-                            <h3>
-                                این توضیحات دمو می باشد
-                            </h3>
-                            <p>
-                            </p>
-                            <button class="uk-modal-close">
-                                بستن
-                            </button>
-                        </div>
-                    </div>
-                </td>
-                <td>1399/02/02</td>
-                <td>19000</td>
-            </tr>
-            </tbody>
-        </table>
-        <a class="uk-button uk-button-default uk-margin-auto-bottom uk-margin-auto-left"
-           onclick="UIkit.modal(document.getElementById('ModalTable')).hide();">بازگشت</a>
+        @Html.Action("ListStreams", new { id = Model.id })
     </div>
 </div>
 
 <div id="ModalAddLive" uk-modal>
     <div class="uk-modal-dialog uk-modal-body full-width">
-        <h2 class="uk-modal-title">لایو جدید</h2>
+        <h2 class="uk-modal-title">تنظیم لایو جدید</h2>
 
         <!-- #region Card -->
 

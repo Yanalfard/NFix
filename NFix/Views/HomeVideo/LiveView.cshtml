@@ -18,41 +18,51 @@
         </h4>
         <hr />
         @Html.Action("VideoRecommendationsForLive", "HomeVideo")
+
     </aside>
 
     <!-- #endregion -->
 
-    <content class="column">
+    <content class="column" id="remote-container">
+
+        <div id="stream-swapper">
+            <span dir="rtl">استریم در تاریخ <strong>@Model.TimeStart.ToShamsi()</strong> و در ساعت <strong>@Model.TimeStart.TimeOfDay.Hours:@Model.TimeStart.TimeOfDay.Minutes</strong> شروع خواهد شد</span>
+        </div>
 
         <!--<img class="video-playback" src="https://picsum.photos/800/400" />-->
         @if ((User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium) || User.IsInRole("admin"))
         {
             @*<video class="video-playback" controls controlsList="nodownload">
-                <source src="/Resources/Videos/@Model.VideoUrl" type="video/mp4">
-            </video>*@
+                    <source src="/Resources/Videos/@Model.VideoUrl" type="video/mp4">
+                </video>*@
         }
         else
         {
             @*<video class="video-playback" controls controlsList="nodownload">
-                <source src="/Resources/Videos/Demo/@Model.VidioDemoUrl" type="video/mp4">
-                <source src="~/Resources/Svg/NoImage.svg" type="image/svg+xml">
-            </video>
+                    <source src="/Resources/Videos/Demo/@Model.VidioDemoUrl" type="video/mp4">
+                    <source src="~/Resources/Svg/NoImage.svg" type="image/svg+xml">
+                </video>
 
-            <a href="/HomeShopCart/Plans" class="uk-alert uk-alert-danger uk-margin-remove-bottom">
-                <p dir="rtl">
-                    برای تماشا ویدیو کامل لطفا <span class="uk-text-danger">اشتراک</span> تهیه نمایید
-                </p>
-            </a>*@
+                <a href="/HomeShopCart/Plans" class="uk-alert uk-alert-danger uk-margin-remove-bottom">
+                    <p dir="rtl">
+                        برای تماشا ویدیو کامل لطفا <span class="uk-text-danger">اشتراک</span> تهیه نمایید
+                    </p>
+                </a>*@
         }
 
-        <h4 class="video-title">
-            @Model.Title
-        </h4>
+        <div class="row">
+            <div class="uk-alert-success uk-margin-medium-bottom uk-margin-auto-right uk-margin-auto-vertical">
+                <span class="uk-margin-small-left uk-margin-small-right uk-margin-small-bottom" dir="rtl">@long.Parse(Model.Price.ToString()).ToString("#,0") تومان</span>
+            </div>
+            <h4 class="video-title uk-margin-remove-top">
+                @Model.Title
+            </h4>
+        </div>
 
         <div class="profile-media-container">
             <section class="media row uk-padding-small">
-                <label class="view-count" uk-tooltip="قیمت">
-                    <span>@Model.Price</span>
+                <label class="view-count" uk-tooltip="زمان شروع">
+                    <span dir="rtl">@Model.TimeStart.TimeOfDay.Hours:@Model.TimeStart.TimeOfDay.Minutes @Model.TimeStart.ToShamsi()</span>
                 </label>
                 @*<input type="text" style="width:0.1px;height:0.1px;opacity:0" id="dummyInput" value="" />*@
                 <a uk-icon="link" onclick="fallbackCopyTextToClipboard(window.location.href); UIkit.notification('لینک اشتراک کپی شد')" uk-tooltip="اشتراک گذاری"></a>
@@ -69,6 +79,7 @@
 
             </a>
         </div>
+
         @if ((User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium) || User.IsInRole("admin"))
         {
             <p>
@@ -82,18 +93,112 @@
             </p>
         }
 
-        <hr />
-
     </content>
 </div>
 
 <div class="space"></div>
 
-<script src="~/Scripts/UIScripts/CommentSection.js"></script>
-<script src="~/Scripts/UIScripts/CopyToClipboard.js"></script>
+@section scripts{
 
-<script>
-    function successComment() {
-        $("#Body").val("");
-    }
-</script>
+    <script src="~/Scripts/UIScripts/CommentSection.js"></script>
+    <script src="~/Scripts/UIScripts/CopyToClipboard.js"></script>
+    <script src="~/Scripts/AgoraRTCSDK-3.3.1.js"></script>
+
+    <script>
+        function successComment() {
+            $("#Body").val("");
+        }
+    </script>
+
+    <script>
+        // Handle errors.
+        let handleError = function (err) {
+            console.log("Error: ", err);
+        };
+
+        // Query the container to which the remote stream belong.
+        let remoteContainer = document.getElementById("remote-container");
+
+        // Add video streams to the container.
+        function addVideoStream(elementId) {
+            // Creates a new div for every stream
+            let streamDiv = document.createElement("div");
+            // Assigns the elementId to the div.
+            streamDiv.id = elementId;
+
+            // Adds the div to the container.
+            document.getElementById('stream-swapper').replaceWith(streamDiv);
+
+            setTimeout(() => {
+                const video = streamDiv.querySelector('video');
+                const audio = streamDiv.querySelector('audio');
+                video.setAttribute('controls', '');
+                video.setAttribute('controlslist', 'nofoobar');
+                video.muted = false;
+                video.removeAttribute('muted');
+                video.style.width = 'unset';
+                video.style.height = 'unset';
+                video.style.position = 'relative';
+
+                video.onvolumechange = () => {
+                    audio.volume = video.volume;
+                }
+
+                video.parentElement.style.display = 'flex';
+                video.parentElement.style.backgroundColor = 'rgba(0,0,0,.24)';
+
+                var snd = new Audio("data:audio/wav;base64,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qJrx4KOQjahZxWbcZgztj2c49nKmkId44S71j0c8eV9yDK6uPRzx5X18eDvjvQ6yKo9ZSS6l//8elePK/Lf//IInrOF/FvDoADYAGBMGb7FtErm5MXMlmPAJQVgWta7Zx2go+8xJ0UiCb8LHHdftWyLJE0QIAIsI+UbXu67dZMjmgDGCGl1H+vpF4NSDckSIkk7Vd+sxEhBQMRU8j/12UIRhzSaUdQ+rQU5kGeFxm+hb1oh6pWWmv3uvmReDl0UnvtapVaIzo1jZbf/pD6ElLqSX+rUmOQNpJFa/r+sa4e/pBlAABoAAAAA3CUgShLdGIxsY7AUABPRrgCABdDuQ5GC7DqPQCgbbJUAoRSUj+NIEig0YfyWUho1VBBBA//uQZB4ABZx5zfMakeAAAAmwAAAAF5F3P0w9GtAAACfAAAAAwLhMDmAYWMgVEG1U0FIGCBgXBXAtfMH10000EEEEEECUBYln03TTTdNBDZopopYvrTTdNa325mImNg3TTPV9q3pmY0xoO6bv3r00y+IDGid/9aaaZTGMuj9mpu9Mpio1dXrr5HERTZSmqU36A3CumzN/9Robv/Xx4v9ijkSRSNLQhAWumap82WRSBUqXStV/YcS+XVLnSS+WLDroqArFkMEsAS+eWmrUzrO0oEmE40RlMZ5+ODIkAyKAGUwZ3mVKmcamcJnMW26MRPgUw6j+LkhyHGVGYjSUUKNpuJUQoOIAyDvEyG8S5yfK6dhZc0Tx1KI/gviKL6qvvFs1+bWtaz58uUNnryq6kt5RzOCkPWlVqVX2a/EEBUdU1KrXLf40GoiiFXK///qpoiDXrOgqDR38JB0bw7SoL+ZB9o1RCkQjQ2CBYZKd/+VJxZRRZlqSkKiws0WFxUyCwsKiMy7hUVFhIaCrNQsKkTIsLivwKKigsj8XYlwt/WKi2N4d//uQRCSAAjURNIHpMZBGYiaQPSYyAAABLAAAAAAAACWAAAAApUF/Mg+0aohSIRobBAsMlO//Kk4soosy1JSFRYWaLC4qZBYWFRGZdwqKiwkNBVmoWFSJkWFxX4FFRQWR+LsS4W/rFRb/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VEFHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRib3kuZGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAwNGh0dHA6Ly93d3cuc291bmRib3kuZGUAAAAAAAAAACU=");
+                snd.play();
+            }, 200)
+
+        };
+
+        // Remove the video stream from the container.
+        function removeVideoStream(elementId) {
+            let remoteDiv = document.getElementById(elementId);
+            if (remoteDiv) remoteDiv.parentNode.removeChild(remoteDiv);
+        };
+
+        let client = AgoraRTC.createClient({
+            mode: 'live',
+            codec: 'h264',
+        })
+
+        client.init('a455ef87e9064e628131e30e12c28334');
+
+        client.setClientRole('audience');
+
+        // Join a channel
+        client.join("a455ef87e9064e628131e30e12c28334", "Yanal", null, (uid) => {
+            // Create a local stream
+        }, handleError);
+
+        // Subscribe to the remote stream when it is published
+        client.on("stream-added", function (evt) {
+            client.subscribe(evt.stream, handleError);
+        });
+        // Play the remote stream when it is subsribed
+        client.on("stream-subscribed", function (evt) {
+            let stream = evt.stream;
+            let streamId = String(stream.getId());
+            addVideoStream(streamId);
+            stream.play(streamId);
+        });
+
+        // Remove the corresponding view when a remote user unpublishes.
+        client.on("stream-removed", function (evt) {
+            let stream = evt.stream;
+            let streamId = String(stream.getId());
+            stream.close();
+            removeVideoStream(streamId);
+        });
+        // Remove the corresponding view when a remote user leaves the channel.
+        client.on("peer-leave", function (evt) {
+            let stream = evt.stream;
+            let streamId = String(stream.getId());
+            stream.close();
+            removeVideoStream(streamId);
+        });
+    </script>
+
+}

@@ -130,3 +130,22 @@ content {
         width: calc(100%-10px)
     }
 }
+
+#me {
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+#me video {
+    position: relative !important;
+}
+
+.stream {
+    background: #000;
+
+    video {
+        transform: unset !important;
+    }
+}
