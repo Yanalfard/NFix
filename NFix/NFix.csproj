@@ -343,6 +343,7 @@
     <Content Include="Resources\Png\Tutors\Tutor_1.jpg" />
     <Content Include="Resources\Png\Tutors\Tutor_2.jpg" />
     <Content Include="Resources\Png\zMan.png" />
+    <Content Include="Resources\Svg\FileFading.svg" />
     <Content Include="Resources\Svg\Footer\maestro.svg" />
     <Content Include="Resources\Svg\Footer\master.svg" />
     <Content Include="Resources\Svg\Footer\paypal.svg" />
@@ -379,6 +380,7 @@
       <DependentUpon>Plans.css</DependentUpon>
     </Content>
     <Content Include="sw.js" />
+    <Content Include="Unavailable.html" />
     <Content Include="Views\Shared\_category.cshtml" />
     <Content Include="Areas\Admin\Views\VideoCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\VideoCategory\ListGroups.cshtml" />
