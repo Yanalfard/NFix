@@ -26,33 +26,12 @@
     <content class="column" id="remote-container">
 
         <div id="stream-swapper">
-            <span dir="rtl">استریم در تاریخ <strong>@Model.TimeStart.ToShamsi()</strong> و در ساعت <strong>@Model.TimeStart.TimeOfDay.Hours:@Model.TimeStart.TimeOfDay.Minutes</strong> شروع خواهد شد</span>
+            <span dir="rtl">پخش زنده در تاریخ <strong>@Model.TimeStart.ToShamsi()</strong> و در ساعت <strong>@Model.TimeStart.TimeOfDay.Hours:@Model.TimeStart.TimeOfDay.Minutes</strong> شروع خواهد شد</span>
         </div>
-
-        <!--<img class="video-playback" src="https://picsum.photos/800/400" />-->
-        @if ((User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium) || User.IsInRole("admin"))
-        {
-            @*<video class="video-playback" controls controlsList="nodownload">
-                    <source src="/Resources/Videos/@Model.VideoUrl" type="video/mp4">
-                </video>*@
-        }
-        else
-        {
-            @*<video class="video-playback" controls controlsList="nodownload">
-                    <source src="/Resources/Videos/Demo/@Model.VidioDemoUrl" type="video/mp4">
-                    <source src="~/Resources/Svg/NoImage.svg" type="image/svg+xml">
-                </video>
-
-                <a href="/HomeShopCart/Plans" class="uk-alert uk-alert-danger uk-margin-remove-bottom">
-                    <p dir="rtl">
-                        برای تماشا ویدیو کامل لطفا <span class="uk-text-danger">اشتراک</span> تهیه نمایید
-                    </p>
-                </a>*@
-        }
 
         <div class="row">
             <div class="uk-alert-success uk-margin-medium-bottom uk-margin-auto-right uk-margin-auto-vertical">
-                <span class="uk-margin-small-left uk-margin-small-right uk-margin-small-bottom" dir="rtl">@long.Parse(Model.Price.ToString()).ToString("#,0") تومان</span>
+                <span class="uk-margin-small-left uk-margin-small-right uk-margin-small-bottom" dir="rtl">@(Model.IsPremium || User.IsInRole("admin") ? "رایگان" : long.Parse(Model.Price.ToString()).ToString("#,0"+" تومان "))</span>
             </div>
             <h4 class="video-title uk-margin-remove-top">
                 @Model.Title
@@ -80,7 +59,7 @@
             </a>
         </div>
 
-        @if ((User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium) || User.IsInRole("admin"))
+        @if (User.Identity.IsAuthenticated && User.IsInRole("user") && Model.IsPremium || User.IsInRole("admin"))
         {
             <p>
                 @Model.DescriptionLong
@@ -111,6 +90,10 @@
     </script>
 
     <script>
+
+        const channelName = '@Model.Chanel';
+        const appId = 'a455ef87e9064e628131e30e12c28334';
+
         // Handle errors.
         let handleError = function (err) {
             console.log("Error: ", err);
@@ -164,12 +147,12 @@
             codec: 'h264',
         })
 
-        client.init('a455ef87e9064e628131e30e12c28334');
+        client.init(appId);
 
         client.setClientRole('audience');
 
         // Join a channel
-        client.join("a455ef87e9064e628131e30e12c28334", "Yanal", null, (uid) => {
+        client.join(appId, channelName, null, (uid) => {
             // Create a local stream
         }, handleError);
 

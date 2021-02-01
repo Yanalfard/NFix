@@ -235,6 +235,8 @@
     <Content Include="Areas\Admin\Views\Live\LiveAdder.cshtml" />
     <Content Include="Areas\Tuotor\Views\Profile\Stream.cshtml" />
     <Content Include="Areas\Tuotor\Views\Profile\ListStreams.cshtml" />
+    <Content Include="Areas\Tuotor\Views\Profile\LiveBlock.cshtml" />
+    <Content Include="Areas\Admin\Views\Live\LiveEdit.cshtml" />
     <None Include="Connected Services\ZarinPal\configuration91.svcinfo" />
     <None Include="Connected Services\ZarinPal\configuration.svcinfo" />
     <Content Include="Connected Services\ZarinPal\NFix.ZarinPal.GetUnverifiedTransactionsResponse.datasource">

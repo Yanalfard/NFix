@@ -1,0 +1,6 @@
+﻿@model IEnumerable<DataLayer.Models.Regular.TblLive>
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_LiveBlock", item)
+}

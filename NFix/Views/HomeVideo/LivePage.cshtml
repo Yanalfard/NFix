@@ -5,7 +5,7 @@
 
     <content class="grid" dir="rtl">
         <!-- #region Video -->
-        @foreach (var item in Model.Where(i => i.IsHome))
+        @foreach (var item in Model)
         {
             @Html.Partial("_LiveBlock", item)
         }

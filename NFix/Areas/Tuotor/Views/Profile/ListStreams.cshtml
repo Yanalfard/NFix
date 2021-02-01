@@ -8,7 +8,7 @@
             <th></th>
             <th>تیتر</th>
             <th>عکس</th>
-            <th>توضیحات کوناه</th>
+            <th>توضیحات کوتاه</th>
             <th>توضیحات کامل</th>
             <th>زمان شروع</th>
             <th>قیمت</th>
@@ -64,6 +64,7 @@
                 <td>@live.Price</td>
                 <td>
                     <a href="/Tuotor/Profile/Stream/@live.id" style="min-width:24px" uk-icon="rss" uk-tooltip="شروع پخش"></a>
+                    <a onclick="window.location = (confirm('آیا مطمئن هستید؟') == true) ? '/Tuotor/Profile/DeleteLive/@live.id' : '#' " style="min-width:24px" uk-icon="trash" uk-tooltip="حذف"></a>
                 </td>
             </tr>
         }
