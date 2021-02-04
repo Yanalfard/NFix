@@ -204,7 +204,7 @@ namespace DataLayer.Utilities
                 Heart.SaveChanges();
                 return true;
             }
-            catch
+            catch(Exception e)
             {
                 return false;
             }

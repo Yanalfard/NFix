@@ -20,6 +20,8 @@
             <th>قیمت</th>
             <th>خانه؟</th>
             <th>نام مربی</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -30,8 +32,8 @@
                 <td>@i.Title</td>
                 <td>@i.Chanel</td>
                 <td uk-lightbox>
-                    <a href="~/Resources/Png/@i.MainImage">
-                        <img src="~/Resources/Png/@i.MainImage" />
+                    <a href="~/Resources/Live/Image/@i.MainImage">
+                        <img src="~/Resources/Live/Image/@i.MainImage" />
                     </a>
                 </td>
                 <td>
@@ -74,6 +76,12 @@
                     <input type="checkbox" class="uk-checkbox" onclick="return false;" readonly @(i.IsHome ? "checked" : "") />
                 </td>
                 <td>@i.ToutorName</td>
+                <td>
+                    <a onclick="window.location = confirm('آیا مطمئن می باشید؟') ? '/Live/LiveDelete/@i.id' : '#'" uk-icon="icon:trash; ratio:1"></a>
+                </td>
+                <td>
+                    <a href="/Admin/Live/LiveEdit/@i.id" uk-icon="icon:file-edit; ratio:1"></a>
+                </td>
             </tr>
         }
     </tbody>

@@ -40,8 +40,9 @@ namespace NFix.Controllers
         public ActionResult LivePage(int id = 0)
         {
             List<TblLive> lives = new List<TblLive>();
-            foreach (TblLive i in _live.SelectAllLives())
-                if (i.TimeStart > DateTime.Now)
+            List<TblLive> ll = _live.SelectAllLives();
+            foreach (TblLive i in ll)
+                if (i.TimeStart < DateTime.Now.AddMinutes(30))
                     lives.Add(i);
             return PartialView(id != 0 ? lives.Take(id) : lives);
         }

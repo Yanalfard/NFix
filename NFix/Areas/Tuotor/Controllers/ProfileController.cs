@@ -140,6 +140,13 @@ namespace NFix.Areas.Tuotor.Controllers
             return PartialView(selectVideoById);
         }
 
+        public ActionResult LiveBlock()
+        {
+            TblUserPass userPass = _userPass.SelectUserPassByUsername(User.Identity.Name);
+            TblTutor toutor = _tutor.SelectTutorByUserPassId(userPass.id);
+            List<TblLive> lives = _live.SelectAllLives().Where(i => i.ToutorId == toutor.id).OrderBy(j => j.TimeStart).ToList();
+            return PartialView(lives);
+        }
 
         public ActionResult DeleteVideo(int id)
         {
@@ -163,7 +170,7 @@ namespace NFix.Areas.Tuotor.Controllers
             if (System.IO.File.Exists(fullPathVideoDemo))
             {
                 System.IO.File.Delete(fullPathVideoDemo);
-            };
+            };    //  --->SAHANDI 2021/1/30
             bool del = _video.DeleteVideo(id);
             return JavaScript("");
         }
@@ -295,26 +302,29 @@ namespace NFix.Areas.Tuotor.Controllers
             //return JavaScript("location.reload(true)");
             //  return Json(new { FileName = "/Uploads/filename.ext" }, "text/html", JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult CreateLive(TblLive live, HttpPostedFileBase MainImage)
         {
             if (ModelState.IsValid)
                 if (User.Identity.IsAuthenticated)
                 {
-                    if (MainImage != null && MainImage.IsImage())
-                    {
-                        live.MainImage = Guid.NewGuid() + Path.GetExtension(MainImage.FileName);
-                        MainImage.SaveAs(Server.MapPath("/Resources/Live/Image/" + live.MainImage));
-                        ImageResizer img = new ImageResizer();
-                        img.Resize(Server.MapPath("/Resources/Live/Image/" + live.MainImage),
-                            Server.MapPath("/Resources/Live/Image/Thumb/" + live.MainImage));
-                    }
+                    if (!_live.SelectAllLives().Any(i => i.Title == live.Title))
+                        if (MainImage != null && MainImage.IsImage())
+                        {
+                            live.MainImage = Guid.NewGuid() + Path.GetExtension(MainImage.FileName);
+                            MainImage.SaveAs(Server.MapPath("/Resources/Live/Image/" + live.MainImage));
+                            ImageResizer img = new ImageResizer();
+                            img.Resize(Server.MapPath("/Resources/Live/Image/" + live.MainImage),
+                                Server.MapPath("/Resources/Live/Image/Thumb/" + live.MainImage));
+                        }
 
+                    live.IsHome = false;
                     TblTutor tuotor = new TutorService().SelectTutorByUserPassId(new UserPassService().SelectUserPassByUsername(User.Identity.Name).id);
                     live.ToutorId = tuotor.id;
                     new LiveService().AddLive(live);
                 }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         public ActionResult ListStreams(int id)
@@ -325,8 +335,29 @@ namespace NFix.Areas.Tuotor.Controllers
 
         public ActionResult Stream(int id)
         {
-            return View(_live.SelectLiveById(id));
+            TblLive live = _live.SelectLiveById(id);
+            if (live.TimeStart <= DateTime.Now)
+                return View(live);
+            else
+                return View(new TblLive()
+                {
+                    Title = "∅",
+                    Chanel = "∅",
+                    DescriptionLong = "∅",
+                    DescriptionShort = "∅",
+                    id = -1,
+                    IsHome = false,
+                    MainImage = "∅",
+                    ToutorId = 0,
+                    Price = 0,
+                    TimeStart = live.TimeStart
+                });
         }
 
+        public ActionResult DeleteLive(int id)
+        {
+            _live.DeleteLive(id);
+            return RedirectToAction("Index");
+        }
     }
 }

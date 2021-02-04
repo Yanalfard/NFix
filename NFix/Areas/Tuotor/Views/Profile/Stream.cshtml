@@ -18,128 +18,161 @@
         </div>
     </div>
     <div class="mat">
-        <h1 class="uk-h3">
-            @Model.Title
-        </h1>
-        <dl>
-            <dt>
-                توضیحات کوناه
-            </dt>
-            <dd class="uk-margin-small-top">
-                @Model.DescriptionShort
-            </dd>
-            <dt>
-                توضیحات کامل
-            </dt>
-            <dd class="uk-margin-small-top">
-                @Model.DescriptionLong
-            </dd>
-            <dt>
-                قیمت
-            </dt>
-            <dd class="row uk-margin-small-top">
-                <div class="uk-alert-success uk-margin-auto-left">
-                    @Model.Price
-                </div>
-            </dd>
-        </dl>
-        <button class="button button-primary">اتمام پخش</button>
+        @if (Model.id != -1)
+        {
+            <h1 class="uk-h3">
+                @Model.Title
+            </h1>
+            <dl>
+                <dt>
+                    توضیحات کوتاه
+                </dt>
+                <dd class="uk-margin-small-top">
+                    @Model.DescriptionShort
+                </dd>
+                <dt>
+                    توضیحات کامل
+                </dt>
+                <dd class="uk-margin-small-top">
+                    @Model.DescriptionLong
+                </dd>
+                <dt>
+                    نام کانال
+                </dt>
+                <dd class="uk-margin-small-top">
+                    @Model.Chanel
+                </dd>
+                <dt>
+                    قیمت
+                </dt>
+                <dd class="row uk-margin-small-top">
+                    <div class="uk-alert-success uk-margin-auto-left">
+                        @Model.Price
+                    </div>
+                </dd>
+            </dl>
+            <button class="button button-primary" onclick="window.history.back()">اتمام پخش</button>
+        }
+        else
+        {
+            <h1 class="uk-h3" dir="rtl">
+                زمان پخش زنده شما
+                <span>@Model.TimeStart.Second<text>:</text>@Model.TimeStart.Minute<text>:</text>@Model.TimeStart.Hour @Model.TimeStart.ToShamsi()</span>
+                میباشد
+                .
+                تا شروع زمان پخش زنده هنوز زمان باقیست
+                .
+            </h1>
+        }
     </div>
 </div>
 
 @section Scripts{
-    <script src="~/Scripts/AgoraRTCSDK-3.3.1.js"></script>
+    @if (Model.id != -1)
+    {
+        <script src="~/Scripts/AgoraRTCSDK-3.3.1.js"></script>
 
-    <script>
+        <script>
 
-        const channelName = '@Model.Chanel';
-        const appId = 'a455ef87e9064e628131e30e12c28334';
+            const channelName = '@Model.Chanel';
+            const appId = 'a455ef87e9064e628131e30e12c28334';
 
-        // Handle errors.
-        let handleError = function (err) {
-            console.log("Error: ", err);
-        };
+            // Handle errors.
+            let handleError = function(err) {
+                console.log("Error: ", err);
+            };
 
-        // Query the container to which the remote stream belong.
-        let remoteContainer = document.getElementById("remote-container");
+            // Query the container to which the remote stream belong.
+            let remoteContainer = document.getElementById("remote-container");
 
-        // Add video streams to the container.
-        function addVideoStream(elementId) {
-            // Creates a new div for every stream
-            let streamDiv = document.createElement("div");
-            // Assigns the elementId to the div.
-            streamDiv.id = elementId;
-            // Adds the div to the container.
-            remoteContainer.appendChild(streamDiv);
+            // Add video streams to the container.
+            function addVideoStream(elementId) {
+                // Creates a new div for every stream
+                let streamDiv = document.createElement("div");
+                // Assigns the elementId to the div.
+                streamDiv.id = elementId;
+                // Adds the div to the container.
+                remoteContainer.appendChild(streamDiv);
 
-            setTimeout(() => {
-                const video = streamDiv.querySelector('video');
-                video.style.transform = '';
-                video.style.position = 'relative';
+                setTimeout(() => {
+                        const video = streamDiv.querySelector('video');
+                        video.style.transform = '';
+                        video.style.position = 'relative';
 
-                var snd = new Audio("data:audio/wav;base64,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YnkiaS1oizycqJrx4KOQjahZxWbcZgztj2c49nKmkId44S71j0c8eV9yDK6uPRzx5X18eDvjvQ6yKo9ZSS6l//8elePK/Lf//IInrOF/FvDoADYAGBMGb7FtErm5MXMlmPAJQVgWta7Zx2go+8xJ0UiCb8LHHdftWyLJE0QIAIsI+UbXu67dZMjmgDGCGl1H+vpF4NSDckSIkk7Vd+sxEhBQMRU8j/12UIRhzSaUdQ+rQU5kGeFxm+hb1oh6pWWmv3uvmReDl0UnvtapVaIzo1jZbf/pD6ElLqSX+rUmOQNpJFa/r+sa4e/pBlAABoAAAAA3CUgShLdGIxsY7AUABPRrgCABdDuQ5GC7DqPQCgbbJUAoRSUj+NIEig0YfyWUho1VBBBA//uQZB4ABZx5zfMakeAAAAmwAAAAF5F3P0w9GtAAACfAAAAAwLhMDmAYWMgVEG1U0FIGCBgXBXAtfMH10000EEEEEECUBYln03TTTdNBDZopopYvrTTdNa325mImNg3TTPV9q3pmY0xoO6bv3r00y+IDGid/9aaaZTGMuj9mpu9Mpio1dXrr5HERTZSmqU36A3CumzN/9Robv/Xx4v9ijkSRSNLQhAWumap82WRSBUqXStV/YcS+XVLnSS+WLDroqArFkMEsAS+eWmrUzrO0oEmE40RlMZ5+ODIkAyKAGUwZ3mVKmcamcJnMW26MRPgUw6j+LkhyHGVGYjSUUKNpuJUQoOIAyDvEyG8S5yfK6dhZc0Tx1KI/gviKL6qvvFs1+bWtaz58uUNnryq6kt5RzOCkPWlVqVX2a/EEBUdU1KrXLf40GoiiFXK///qpoiDXrOgqDR38JB0bw7SoL+ZB9o1RCkQjQ2CBYZKd/+VJxZRRZlqSkKiws0WFxUyCwsKiMy7hUVFhIaCrNQsKkTIsLivwKKigsj8XYlwt/WKi2N4d//uQRCSAAjURNIHpMZBGYiaQPSYyAAABLAAAAAAAACWAAAAApUF/Mg+0aohSIRobBAsMlO//Kk4soosy1JSFRYWaLC4qZBYWFRGZdwqKiwkNBVmoWFSJkWFxX4FFRQWR+LsS4W/rFRb/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VEFHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRib3kuZGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAwNGh0dHA6Ly93d3cuc291bmRib3kuZGUAAAAAAAAAACU=");
-                snd.play();
-            }, 200)
+                        var snd = new Audio("data:audio/wav;base64,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YnkiaS1oizycqJrx4KOQjahZxWbcZgztj2c49nKmkId44S71j0c8eV9yDK6uPRzx5X18eDvjvQ6yKo9ZSS6l//8elePK/Lf//IInrOF/FvDoADYAGBMGb7FtErm5MXMlmPAJQVgWta7Zx2go+8xJ0UiCb8LHHdftWyLJE0QIAIsI+UbXu67dZMjmgDGCGl1H+vpF4NSDckSIkk7Vd+sxEhBQMRU8j/12UIRhzSaUdQ+rQU5kGeFxm+hb1oh6pWWmv3uvmReDl0UnvtapVaIzo1jZbf/pD6ElLqSX+rUmOQNpJFa/r+sa4e/pBlAABoAAAAA3CUgShLdGIxsY7AUABPRrgCABdDuQ5GC7DqPQCgbbJUAoRSUj+NIEig0YfyWUho1VBBBA//uQZB4ABZx5zfMakeAAAAmwAAAAF5F3P0w9GtAAACfAAAAAwLhMDmAYWMgVEG1U0FIGCBgXBXAtfMH10000EEEEEECUBYln03TTTdNBDZopopYvrTTdNa325mImNg3TTPV9q3pmY0xoO6bv3r00y+IDGid/9aaaZTGMuj9mpu9Mpio1dXrr5HERTZSmqU36A3CumzN/9Robv/Xx4v9ijkSRSNLQhAWumap82WRSBUqXStV/YcS+XVLnSS+WLDroqArFkMEsAS+eWmrUzrO0oEmE40RlMZ5+ODIkAyKAGUwZ3mVKmcamcJnMW26MRPgUw6j+LkhyHGVGYjSUUKNpuJUQoOIAyDvEyG8S5yfK6dhZc0Tx1KI/gviKL6qvvFs1+bWtaz58uUNnryq6kt5RzOCkPWlVqVX2a/EEBUdU1KrXLf40GoiiFXK///qpoiDXrOgqDR38JB0bw7SoL+ZB9o1RCkQjQ2CBYZKd/+VJxZRRZlqSkKiws0WFxUyCwsKiMy7hUVFhIaCrNQsKkTIsLivwKKigsj8XYlwt/WKi2N4d//uQRCSAAjURNIHpMZBGYiaQPSYyAAABLAAAAAAAACWAAAAApUF/Mg+0aohSIRobBAsMlO//Kk4soosy1JSFRYWaLC4qZBYWFRGZdwqKiwkNBVmoWFSJkWFxX4FFRQWR+LsS4W/rFRb/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VEFHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRib3kuZGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAwNGh0dHA6Ly93d3cuc291bmRib3kuZGUAAAAAAAAAACU=");
+                        snd.play();
+                    },
+                    200)
 
-        };
+            };
 
-        // Remove the video stream from the container.
-        function removeVideoStream(elementId) {
-            let remoteDiv = document.getElementById(elementId);
-            if (remoteDiv) remoteDiv.parentNode.removeChild(remoteDiv);
-        };
+            // Remove the video stream from the container.
+            function removeVideoStream(elementId) {
+                let remoteDiv = document.getElementById(elementId);
+                if (remoteDiv) remoteDiv.parentNode.removeChild(remoteDiv);
+            };
 
-        let client = AgoraRTC.createClient({
-            mode: 'live',
-            codec: 'h264',
-        })
+            let client = AgoraRTC.createClient({
+                mode: 'live',
+                codec: 'h264',
+            })
 
-        client.init(appId);
+            client.init(appId);
 
-        client.setClientRole('host');
+            client.setClientRole('host');
 
-        // Join a channel
-        client.join(appId, channelName , null, (uid) => {
-            // Create a local stream
-            let localStream = AgoraRTC.createStream({
-                audio: true,
-                video: true,
-            });
-            // Initialize the local stream
-            localStream.init(() => {
-                // Play the local stream
-                localStream.play("me");
-                // Publish the local stream
-                client.publish(localStream, handleError);
-            }, handleError);
+            // Join a channel
+            client.join(appId,
+                channelName,
+                null,
+                (uid) => {
+                    // Create a local stream
+                    let localStream = AgoraRTC.createStream({
+                        audio: true,
+                        video: true,
+                    });
+                    // Initialize the local stream
+                    localStream.init(() => {
+                            // Play the local stream
+                            localStream.play("me");
+                            // Publish the local stream
+                            client.publish(localStream, handleError);
+                        },
+                        handleError);
 
-        }, handleError);
+                },
+                handleError);
 
-        // Subscribe to the remote stream when it is published
-        client.on("stream-added", function (evt) {
-            client.subscribe(evt.stream, handleError);
-        });
-        // Play the remote stream when it is subsribed
-        client.on("stream-subscribed", function (evt) {
-            let stream = evt.stream;
-            let streamId = String(stream.getId());
-            addVideoStream(streamId);
-            stream.play(streamId);
-        });
+            // Subscribe to the remote stream when it is published
+            client.on("stream-added",
+                function(evt) {
+                    client.subscribe(evt.stream, handleError);
+                });
+            // Play the remote stream when it is subsribed
+            client.on("stream-subscribed",
+                function(evt) {
+                    let stream = evt.stream;
+                    let streamId = String(stream.getId());
+                    addVideoStream(streamId);
+                    stream.play(streamId);
+                });
 
-        // Remove the corresponding view when a remote user unpublishes.
-        client.on("stream-removed", function (evt) {
-            let stream = evt.stream;
-            let streamId = String(stream.getId());
-            stream.close();
-            removeVideoStream(streamId);
-        });
-        // Remove the corresponding view when a remote user leaves the channel.
-        client.on("peer-leave", function (evt) {
-            let stream = evt.stream;
-            let streamId = String(stream.getId());
-            stream.close();
-            removeVideoStream(streamId);
-        });
-    </script>
+            // Remove the corresponding view when a remote user unpublishes.
+            client.on("stream-removed",
+                function(evt) {
+                    let stream = evt.stream;
+                    let streamId = String(stream.getId());
+                    stream.close();
+                    removeVideoStream(streamId);
+                });
+            // Remove the corresponding view when a remote user leaves the channel.
+            client.on("peer-leave",
+                function(evt) {
+                    let stream = evt.stream;
+                    let streamId = String(stream.getId());
+                    stream.close();
+                    removeVideoStream(streamId);
+                });
+        </script>
+    }
 }
