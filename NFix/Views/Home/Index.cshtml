@@ -1,217 +1,56 @@
-﻿@{
-    ViewBag.Title = "NFix";
-    ViewBag.Description = "سایت ورزشی و بدنسازی ان فیکس  ";
-    ViewBag.Keywords = "ان فیکس، NFIX، ورزشی،بدن سازی،بالاتنه، آموزش بدن سازی";
+﻿
+@{
+    Layout = null;
 }
 
+<!DOCTYPE html>
 
-@Html.Action("LoginModal", "HomeAccount")
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>سیت در دسترس نمی باشد</title>
 
-<!-- #region Hero -->
-@Html.Action("Hero", "Home")
-<!-- #endregion -->
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
 
-<a name="videos"></a>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- #region Stripe -->
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="~/Resources/Png/Mobile/icon_96.png" />
+    <link href="~/Resources/Png/Mobile/icon_512.png" sizes="640x1136" rel="apple-touch-startup-image" />
 
-<section class="stripe row">
-    <a href="#" uk-tooltip="یاقوت وب ایرانیان">
-        <img src="~/Resources/Svg/YaghoutWeb.svg" width="36" height="36" alt="Yaghout Web Logo" />
-    </a>
-    <a href="https://arvintavco.com" uk-tooltip="ایده پرداز آروین تاو">
-        <img src="~/Resources/Svg/ArvinTavWhite.svg" width="42" height="36" alt="ArvinTavxco.com Logo" />
-    </a>
-    <a href="https://next.zarinpal.com" uk-tooltip="زرین پال">
-        <img src="~/Resources/Svg/Zarinpal.svg" width="36" height="36" alt="Zarinpal.com Logo" />
-    </a>
-    <a href="https://arvintavco.com" uk-tooltip="ایده پرداز آروین تاو">
-        <img src="~/Resources/Svg/ArvinTavWhite.svg" width="42" height="36" alt="ArvinTavco.com Logo" />
-    </a>
-</section>
+    <meta name="apple-mobile-web-app-status-bar" content="#E73434" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#E73434" />
+    <meta name="theme-color" content="#E73434" />
 
-<!-- #endregion -->
-<!--#region Sticky icons-->
-<div id="stickies" class="column" uk-sticky="offset:250;cls-active: opacity-full">
-    <img class="animated-bubble" width="72" height="85" src="../Resources/Svg/AnimatedBubble.svg" />
-    @if (User.Identity.IsAuthenticated)
-    {
-        if (User.IsInRole("user"))
-        {
-            <a href="/User/Profile/Index" class="stickIcon" uk-tooltip="title: پروفایل; pos:left">
-                <img src="../Resources/Svg/asdfwe01.svg" alt="user" width="28" height="28" />
-            </a>
-        }
-        else if (User.IsInRole("admin"))
-        {
-            <a href="/Admin/Blog/BlogTable" class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
+    <!-- Project Css -->
+    <link href="/Styles/Index.min.css" rel="stylesheet" />
+    <link href="/Styles/Controls.min.css" rel="stylesheet" />
 
-        }
-        else if (User.IsInRole("tutor"))
-        {
-            <a href="/Tuotor/Profile/Index" class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
+    <!-- UIkit CSS -->
+    <link href="/Styles/UIKit/uikit.min.css" rel="stylesheet" />
 
-        }
-    }
-    else
-    {
-        <a href="#" uk-toggle="target: #ModalLogin" class="stickIcon" uk-tooltip="title: پروفایل; pos:left"><img src="../Resources/Svg/asdfwe01.svg" /></a>
-    }
-    <a class="stickIcon" uk-tooltip="title: اشتراک گذاری; pos:left"
-       onclick="fallbackCopyTextToClipboard(window.location.href);
-                UIkit.notification('لینک اشتراک کپی شد')">
-        <img src="../Resources/Svg/asdfwe04.svg" width="28" height="28" />
-    </a>
-    <a href="#" class="stickIcon" uk-tooltip="title: فیس بوک; pos:left">
-        <img src="../Resources/Svg/asdfwe03.svg" width="28" height="28" />
-    </a>
-    <a href="#" class="stickIcon" uk-tooltip="title: اینستاگرام; pos:left">
-        <img src="../Resources/Svg/Unio2n.svg" width="28" height="28" />
-    </a>
-</div>
-<!--#endregion-->
-<!-- #region Videos -->
-<!-- #Dynamic Videos -->
-@Html.Action("VideosPage", "HomeVideo")
-@Html.Action("LivePage", "HomeVideo", new { id = 8 })
-<!-- #endregion -->
-<img class="full-width" src="~/Resources/Svg/Biscuits/Poly_1.svg" />
-<!-- #region Categories -->
-<!-- #Dynamic Categories -->
-@Html.Action("CategoriesPage", "HomeCategories")
-<!-- #endregion -->
-<section class="category-article full-width row card uk-margin-top uk-padding-remove">
-    <img src="~/Resources/Png/Tutors/Tutor_2.jpg" width="300" height="500" class="uk-child-width-1-5" alt="Tutor Man Flexing" />
-    <article class="uk-width-4-5">
-        <h3>انگیزه ورزشی</h3>
-        <p>
-            هر کاری در ابتدا برایمان سخت است. هرچقدر که جلوتر می‌رویم، احساس می‌کنیم برایمان راحت تر می‌شود. اما حقیقت این است که آن کار راحت تر نمی‌شود، بلکه قدرت باور به خود و مهارت ما بیشتر می‌شود که این احساس را داریم. با این متن ورزشی انگیزشی ، می‌توانیم به خودمان تلقین کنیم که بله من می‌توانم کاری کنم که همه چیز برایم آسان شود، اگر خودم را قوی تر کنم.
-        </p>
-
-        <strong>
-            "رسیدن به قله پیروزی آسان است، به شرط اینکه راه رسیدن به قله را بشناسی و توانش را هم داشته باشی."
-        </strong>
-
-        <p>
-            طبیعی است که وقتی مقصد و راهمان مشخص نباشد، رسیدن به آن برایمان غیر ممکن خواهد بود. مگر می‌شود تو بدون مقصدی حرکت کنی و بخواهی به آن برسی؟ هر چقدر شناختت و البته توانت نسبت به آن هدف بیشتر باشد، شانس موفقیتت بیشتر خواهد شد.
-        </p>
-
-        <strong>
-            تو توانایی انجام کارهای شگفت انگیز را داری، به شرطی که از آینده نترسی.
-        </strong>
-
-        <p>
-            توانایی رسیدن به موفقیت و هدف و البته انجام کارهای شگفت انگیز، چیزی است که خداوند در وجود همه ما قرار داده و همه می‌توانند از این نعمت ویژه بهره مند شوند. اما مهم ترین تفاوت انسان های عادی با افراد موفق، این است که افراد موفق بدون ترس از آینده برای هدف خود تلاش می‌کنند، اما افراد عادی هرگز برای رسیدن به موفقیت کار خاصی انجام نمی‌دهند و فقط آرزو می‌کنند…
-        </p>
-
-        <br />
-    </article>
-</section>
-<div class="space"></div>
-<!-- #region Banner -->
-<section class="banner row">
-    <content class="column uk-padding">
-        <h3 class="uk-margin-remove" dir="rtl">تمرین واقعی وقتی شروع میشه که می‌خوای متوقفش کنی!</h3>
-        <p>
-            <b uk-tooltip="راننده فرمول یک"> مایکل شوماخر</b>
-            درباره راز موفقیتش می‌گفت
-            سر پیچ ها که همه ترمز می‌کردند، من با سرعت بیشتری گاز می‌دادم. حکایت این جمله ورزشی هم دقیقاً مانند همین است. اگر موفقیت می‌خواهی، باید با نفست مبارزه کنی و حتی در زمان استراحتت هم تمرین کنی…
-            همه افراد موفق دنیا، از استیو جابز گرفته تا انیشتین و ادیسون و هنری فورد و…، همگی در کارشان بارها شکست خورده اند. پس به هیچ وجه نمی‌توان گفت که من نباید هیچ وقت شکست بخورم. بلکه باید از شکست هایمان درس بگیریم و آنها را به موفقیت تبدیل کنیم و در مسیرمان، متوقف نشویم…
-        </p>
-        @*<button onclick="window.location='/About'" dir="rtl" class="uk-margin-auto-right">بیشتر...</button>*@
-    </content>
-    <img src="../Resources/Png/BodyBuilding.png" alt="Body Builder Man Flexing" />
-</section>
-<!-- #endregion -->
-<h3 class="clipped uk-margin-medium-top text-center">مربیان</h3>
-<!-- #region  Tutors -->
-<!-- #Dynamic Tutors -->
-@Html.Action("TutorsPage", "HomeTutors")
-<!-- #endregion -->
-<h3 class="clipped uk-margin-medium-top uk-margin-remove-bottom text-center">محصولات</h3>
-<!-- #region Products -->
-<!-- #Dynamic Products -->
-@Html.Action("ProductsPage", "HomeProducts")
-<!-- #endregion -->
-<div class="space-half"></div>
-<div class="calculator">
-    <img class="calculator-image" uk-parallax="bgy: -200" src="~/Resources/Png/CalculatorBackground.jpeg" />
-    <div class="calculator-card column card center">
-        <h4>
-            محاسبه شاخص توده بدنی
-        </h4>
-        <!--<label>سن</label>
-        <input id="txtAge" type="text" value="" />-->
-        <label>قد</label>
-        <input id="txtHeight" type="text" value="" placeholder="cm" />
-        <label>وزن</label>
-        <input id="txtWeight" type="text" value="" placeholder="kg" />
-        <div class="row">
-            <a href="#BMIModal" class="uk-margin-auto-top" uk-toggle>
-                <span>شاخص توده بدنی</span>
-            </a>
-            <!-- This is the modal -->
-            <div id="BMIModal" uk-modal>
-                <div class="card uk-margin-auto uk-width-2-3-at-m uk-width-1-1-at-s">
-                    <h2 class=" uk-modal-title">جدول شاخص توده بدنی</h2>
-                    <div class="row">
-                        <ul class="uk-list uk-margin-auto-left" dir="rtl">
-                            <li>- کمتراز 15 معادل کمبود وزن بسیار شدید</li>
-                            <li>- کمتراز 16 و بیشتراز 15 معادل کمبود وزن شدید</li>
-                            <li>- درمحدوده 16 تا 18.5 بمعنی کمبود وزن</li>
-                            <li>- بین 18.5 و 25 بمعنی وزن طبیعی و نرمال</li>
-                            <li>- بیشتراز 25 و کمتراز 30 شخص دارای اضافه وزن</li>
-                            <li>- درمحدوده 30 و 35 نشانگر چاقی معمولی (چاقی نوع اول)</li>
-                            <li>- بین 35 و 40 نشان دهنده چاقی شدید (چاقی نوع دوم)</li>
-                            <li>- بیشتر از 40 شخص دارای چاقی بسیار شدید (چاقی نوع سوم)</li>
-                        </ul>
-                    </div>
-                    <button type="button" onclick="UIkit.modal(document.getElementById('BMIModal')).hide();">
-                        باشه
-                    </button>
-                </div>
+    <!-- UIkit JS -->
+    <script src="~/Scripts/UIKit/uikit.min.js"></script>
+    <script src="~/Scripts/UIKit/uikit-icons.js"></script>
+</head>
+<body>
+    <div>
+        <div class="space"></div>
+        <div class="uk-container">
+            <div class="column uk-margin-medium-bottom">
+                <img src="~/Resources/Svg/FileFading.svg" width="256" height="256" class="uk-margin-auto" />
             </div>
-            <button class="uk-margin-auto-left uk-margin-top" onclick="Calculate('bmi')">
-                <span uk-icon="right"></span>
-                <span>نتیجه</span>
-            </button>
-        </div>
+            <div class="uk-alert-danger uk-padding-small uk-box-shadow-large">
+                <h2>
+                    سایت غیر قابل دسترس
+                </h2>
+                <p dir="rtl">
+                    تا اطلاع ثانوی به علت برخی تغییرات، سایت در دسترس نمی باشد.
+                </p>
+            </div>
 
-        <hr />
-
-        <div class="row" dir="rtl">
-            <span>شاخص توده بدنی شما:</span>
-            <span id="bmi" class="uk-margin-small-right"></span>
         </div>
     </div>
-</div>
-<div class="space-double"></div>
-<!-- #region Banner -->
-<a href="/About" class="image-banner column">
-    <div class="column">
-        <h2 dir="rtl">
-            شکست یک انتخاب نیست، همه باید موفق بشن.
-        </h2>
-        <h4 dir="rtl">
-            وقتی در کاری شکست می‌خورید، قرار نیست همیشه در همان حالت باقی بمانید! با کمی تلاش بیشتر، شکستمان تبدیل به موفقیت خواهد شد. پس شکست را انتخاب نکنید، چون در این مورد به هیچ وجه حق انتخاب ندارید! خودتان به راحتی آن را به موفقیت تبدیل کنید…
-        </h4>
-    </div>
-    <div class="cover"></div>
-    <img loading="lazy" src="~/Resources/Png/Tutors/Tutor_1.jpg" alt="Motivational Image" />
-</a>
-<!-- #endregion -->
-<div class="space"></div>
-<h3 class="clipped uk-margin-medium-top text-center">وبلاگ ها  </h3>
-<!-- #region Blogs -->
-<!-- #Dynamic Blogs -->
-@Html.Action("BlogsPage", "HomeBlogs")
-<!-- #endregion -->
-<div class="space"></div>
-<div id="ModalProduct" uk-modal>
-</div>
-@section Scripts{
-    <script src="~/Scripts/UIScripts/BMICalculator.js"></script>
-    <script src="~/Scripts/OwlCarousel/owl.carousel.min.js"></script>
-    <script src="~/Scripts/UIScripts/CopyToClipboard.js"></script>
-    <script src="~/Scripts/UIScripts/Index.js"></script>
-}
+</body>
+</html>
