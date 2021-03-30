@@ -293,34 +293,20 @@
 
     <script src="~/Scripts/UIScripts/Global.js"></script>
     <!-- #localhost  -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF&&hl=fa"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfQPpUaAAAAAONo6vR-RUiCELT4dvDLiNmZMLkb&&hl=fa"></script>
         <script>
             grecaptcha.ready(function () {
-                grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
+                grecaptcha.execute('6LfQPpUaAAAAAONo6vR-RUiCELT4dvDLiNmZMLkb', { action: 'contact_us' }).then(function (token) {
                     $('.GoogleCapcha').val(token);
                 });
             });
             function reloadRech() {
-                grecaptcha.execute('6LfeB-IZAAAAANpiuFCp-HURWmy1NGqmj-p4owkF', { action: 'contact_us' }).then(function (token) {
+                grecaptcha.execute('6LfQPpUaAAAAAONo6vR-RUiCELT4dvDLiNmZMLkb', { action: 'contact_us' }).then(function (token) {
                     $('.GoogleCapcha').val(token);
                 });
             }
         </script>
 
-    <!-- #Site  -->
-    @*<script src="https://www.google.com/recaptcha/api.js?render=6LeO5vwZAAAAANXhfOXKib-g58QSDTcJjvVNNWTE&hl=fa"></script>
-    <script>
-        grecaptcha.ready(function () {
-            grecaptcha.execute('6LeO5vwZAAAAANXhfOXKib-g58QSDTcJjvVNNWTE', { action: 'contact_us' }).then(function (token) {
-                $('.GoogleCapcha').val(token);
-            });
-        });
-        function reloadRech() {
-            grecaptcha.execute('6LeO5vwZAAAAANXhfOXKib-g58QSDTcJjvVNNWTE', { action: 'contact_us' }).then(function (token) {
-                $('.GoogleCapcha').val(token);
-            });
-        }
-    </script>*@
 
     <script>
 

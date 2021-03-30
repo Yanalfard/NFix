@@ -28,9 +28,7 @@ namespace NFix.Controllers
             try
             {
                 //Localhost
-                var secret = "6LfeB-IZAAAAAFJGzrD4-Vz9B4GPnjaps0gjQwFq";
-                //Site
-                //var secret = "6LeO5vwZAAAAAPHQnCjk6eojCht6e3vusSMIp9hq";
+                var secret = "6LfQPpUaAAAAAKJ26R1CJbdAynMjDTtv0g4DZPYV";
                 using (var client = new HttpClient())
                 {
                     var values = new Dictionary<string, string>
